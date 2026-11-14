@@ -86,7 +86,6 @@ describe("@NamelessLiberty/connections - Provider Registry", () => {
       "MAL",
       "SIMKL",
       "BANGUMI",
-      "STEAM",
       "RIOT_GAMES",
       "RADARR",
       "SONARR",
@@ -106,9 +105,8 @@ describe("@NamelessLiberty/connections - Provider Registry", () => {
 
   it("should list supported providers metadata for UI rendering", () => {
     const list = getSupportedProviders();
-    assert.ok(list.length >= 12);
+    assert.ok(list.length >= 11);
     assert.ok(list.some((p) => p.provider === "MAL"));
-    assert.ok(list.some((p) => p.provider === "STEAM"));
     assert.ok(list.some((p) => p.provider === "RADARR"));
     assert.ok(list.some((p) => p.provider === "HIKKA"));
     assert.ok(list.some((p) => p.provider === "MANGAUPDATES"));
@@ -139,7 +137,7 @@ describe("@NamelessLiberty/connections - Search Proxy", () => {
   it("should throw error when searching on provider without search capability", async () => {
     await assert.rejects(
       async () => {
-        await SearchProxyManager.search("STEAM" as any, "Elden Ring");
+        await SearchProxyManager.search("RIOT_GAMES" as any, "Elden Ring");
       },
       {
         message: /does not support media search/,

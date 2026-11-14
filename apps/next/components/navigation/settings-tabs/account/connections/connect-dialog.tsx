@@ -42,7 +42,6 @@ export function ConnectDialog({
   const [hostUrl, setHostUrl] = useState("")
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [useApiKeyForIris, setUseApiKeyForIris] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -51,7 +50,6 @@ export function ConnectDialog({
     setHostUrl(provider?.defaultHostUrl || "")
     setUsername("")
     setPassword("")
-    setUseApiKeyForIris(false)
     setError(null)
   }, [provider])
 
@@ -66,50 +64,12 @@ export function ConnectDialog({
 
   const isServarr = provider.category === "SERVARR"
   const isBangumi = provider.provider === "BANGUMI"
-  const isSteam = provider.provider === "STEAM"
   const isRiot = provider.provider === "RIOT_GAMES"
   const isLastFm = provider.provider === "LASTFM"
-  const isIris = provider.provider === "IRIS"
   const isHikka = provider.provider === "HIKKA"
   const isMangaUpdates = provider.provider === "MANGAUPDATES"
   const isMangaBaka = provider.provider === "MANGABAKA"
   const isTrakt = provider.provider === "TRAKT"
-
-  const handleIrisOAuthConnect = async () => {
-    if (!hostUrl.trim()) {
-      setError("Please enter the remote IRIS instance URL.")
-      return
-    }
-    setIsSubmitting(true)
-    setError(null)
-    try {
-      const returnTo =
-        typeof window !== "undefined"
-          ? window.location.href
-          : "/settings?tab=connections"
-
-      const normalizedHost = hostUrl.trim().replace(/\/+$/, "")
-      const { data, error: authErr } = await elysia.carina
-        .connections({ connectionId: "iris" })
-        .auth.get({
-          query: { returnTo, hostUrl: normalizedHost },
-        })
-
-      if (authErr || !data?.url) {
-        throw new Error(
-          (authErr as any)?.value?.message ||
-            "Failed to initiate remote IRIS authorization"
-        )
-      }
-
-      window.location.href = data.url
-    } catch (err: unknown) {
-      setError(
-        (err as Error).message || "Failed to connect to remote IRIS instance"
-      )
-      setIsSubmitting(false)
-    }
-  }
 
   const handleManualConnect = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -168,27 +128,23 @@ export function ConnectDialog({
             <div>
               <DialogTitle>Connect {provider.name}</DialogTitle>
               <DialogDescription className="mt-0.5 text-xs">
-                {isIris
-                  ? "Connect to another IRIS instance to federate accounts and synchronize media libraries."
-                  : isServarr
-                    ? "Enter your server host URL and API key to connect."
-                    : isBangumi
-                      ? "Enter your Bangumi Personal Access Token."
-                      : isHikka
-                        ? "Enter your Hikka.io personal access token from your account settings."
-                        : isMangaUpdates
-                          ? "Enter your MangaUpdates username and password, or session token."
-                          : isMangaBaka
-                            ? "Enter your MangaBaka API Key or access token."
-                            : isTrakt
-                              ? "Enter your Trakt OAuth access token or API credentials."
-                              : isRiot
-                                ? "Enter your Riot ID (e.g. Player#1234) or API Key."
-                                : isSteam
-                                  ? "Enter your SteamID64 or Steam Web API Key."
-                                  : isLastFm
-                                    ? "Enter your Last.fm username or Session Key to scrobble tracks."
-                                    : "Enter connection credentials."}
+                {isServarr
+                  ? "Enter your server host URL and API key to connect."
+                  : isBangumi
+                    ? "Enter your Bangumi Personal Access Token."
+                    : isHikka
+                      ? "Enter your Hikka.io personal access token from your account settings."
+                      : isMangaUpdates
+                        ? "Enter your MangaUpdates username and password, or session token."
+                        : isMangaBaka
+                          ? "Enter your MangaBaka API Key or access token."
+                          : isTrakt
+                            ? "Enter your Trakt OAuth access token or API credentials."
+                            : isRiot
+                              ? "Enter your Riot ID (e.g. Player#1234) or API Key."
+                              : isLastFm
+                                ? "Enter your Last.fm username or Session Key to scrobble tracks."
+                                : "Enter connection credentials."}
               </DialogDescription>
             </div>
           </div>
@@ -202,29 +158,25 @@ export function ConnectDialog({
             </div>
           )}
 
-          {(isServarr || isIris) && (
+          {isServarr && (
             <div className="space-y-1.5">
               <Label
                 htmlFor="hostUrl"
                 className="flex items-center gap-1.5 text-xs font-medium"
               >
                 <IconServer className="h-3.5 w-3.5 text-muted-foreground" />
-                {isIris ? "Remote IRIS Instance URL" : "Server Host URL"}
+                Server Host URL
               </Label>
               <Input
                 id="hostUrl"
-                placeholder={
-                  isIris ? "https://iris.example.com" : "http://localhost:7878"
-                }
+                placeholder="http://localhost:7878"
                 value={hostUrl}
                 onChange={(e) => setHostUrl(e.target.value)}
                 className="font-mono text-xs"
                 required
               />
               <p className="text-[11px] text-muted-foreground">
-                {isIris
-                  ? "Include protocol (https:// or http://) and domain or IP without trailing slash."
-                  : "Include protocol (http/https) and port without trailing slash."}
+                Include protocol (http/https) and port without trailing slash.
               </p>
             </div>
           )}
@@ -314,14 +266,12 @@ export function ConnectDialog({
 
           {(isServarr ||
             isBangumi ||
-            isSteam ||
             isRiot ||
             isLastFm ||
             isHikka ||
             isMangaBaka ||
             isTrakt ||
-            isMangaUpdates ||
-            (isIris && useApiKeyForIris)) && (
+            isMangaUpdates) && (
             <div className="space-y-1.5">
               <Label
                 htmlFor="apiKey"
@@ -338,15 +288,11 @@ export function ConnectDialog({
                         ? "Trakt Access Token"
                         : isMangaUpdates
                           ? "Or Session Token"
-                          : isSteam
-                            ? "Steam Web API Key / SteamID"
-                            : isRiot
-                              ? "Riot API Key (Optional if configured in server .env)"
-                              : isLastFm
-                                ? "Last.fm Session Key / API Key (Optional for basic scrobbling)"
-                                : isIris
-                                  ? "Personal Access Token / API Key"
-                                  : "API Key"}
+                          : isRiot
+                            ? "Riot API Key (Optional if configured in server .env)"
+                            : isLastFm
+                              ? "Last.fm Session Key / API Key (Optional for basic scrobbling)"
+                              : "API Key"}
               </Label>
               <Input
                 id="apiKey"
@@ -362,35 +308,17 @@ export function ConnectDialog({
                           ? "Enter Trakt access token"
                           : isMangaUpdates
                             ? "Enter session token"
-                            : isSteam
-                              ? "SteamID64 or Web API Key"
-                              : isRiot
-                                ? "RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-                                : isLastFm
-                                  ? "Enter Last.fm session key (optional)"
-                                  : isIris
-                                    ? "Enter remote IRIS API key or Bearer token"
-                                    : "Enter 32-character API key"
+                            : isRiot
+                              ? "RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                              : isLastFm
+                                ? "Enter Last.fm session key (optional)"
+                                : "Enter 32-character API key"
                 }
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
                 className="font-mono text-xs"
                 required={!isRiot && !isLastFm && !isMangaUpdates}
               />
-            </div>
-          )}
-
-          {isIris && (
-            <div className="flex items-center justify-start pt-1">
-              <button
-                type="button"
-                onClick={() => setUseApiKeyForIris(!useApiKeyForIris)}
-                className="text-[11px] text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
-              >
-                {useApiKeyForIris
-                  ? "← Switch to OAuth 2.0 (Recommended)"
-                  : "Connect with an API Key instead →"}
-              </button>
             </div>
           )}
 
@@ -415,32 +343,12 @@ export function ConnectDialog({
           >
             Cancel
           </Button>
-          {isIris && !useApiKeyForIris ? (
-            <Button
-              size="sm"
-              onPress={handleIrisOAuthConnect}
-              isDisabled={isSubmitting || !hostUrl.trim()}
-              className="gap-2"
-            >
-              {isSubmitting ? (
-                <>
-                  <Spinner className="h-3.5 w-3.5" />
-                  Connecting...
-                </>
-              ) : (
-                <>
-                  <IconExternalLink className="h-4 w-4" />
-                  Authorize with IRIS
-                </>
-              )}
-            </Button>
-          ) : (
-            <Button
-              type="submit"
-              size="sm"
-              isDisabled={isSubmitting}
-              className="gap-2"
-            >
+          <Button
+            type="submit"
+            size="sm"
+            isDisabled={isSubmitting}
+            className="gap-2"
+          >
               {isSubmitting ? (
                 <>
                   <Spinner className="h-3.5 w-3.5" />
@@ -453,7 +361,6 @@ export function ConnectDialog({
                 </>
               )}
             </Button>
-          )}
         </DialogFooter>
       </form>
     </Dialog>

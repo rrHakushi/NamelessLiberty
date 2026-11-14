@@ -24,7 +24,6 @@ import { NotFound, BadRequest } from '../../lib/errors'
 import { BorealisListsServ } from '../borealis/lists.serv'
 import { ActivityServ } from './activity.serv'
 import { CarinaUsersServ } from './users.serv'
-import { GoogleBooksProvider, type GoogleBookPayload } from '../borealis/providers/google-books.provider'
 
 export class CarinaConnectionsServ {
   public static readonly REGISTERED_PROVIDERS: readonly string[] = [
@@ -32,7 +31,6 @@ export class CarinaConnectionsServ {
     'MAL',
     'SIMKL',
     'BANGUMI',
-    'STEAM',
     'RIOT_GAMES',
     'RADARR',
     'SONARR',
@@ -43,7 +41,6 @@ export class CarinaConnectionsServ {
     'DEEZER',
     'LASTFM',
     'CUSTOM',
-    'IRIS',
     'HIKKA',
     'MANGAUPDATES',
     'MANGABAKA',
@@ -375,7 +372,6 @@ export class CarinaConnectionsServ {
       'MAL',
       'SIMKL',
       'BANGUMI',
-      'STEAM',
       'RIOT_GAMES',
       'RADARR',
       'SONARR',
@@ -386,7 +382,6 @@ export class CarinaConnectionsServ {
       'DEEZER',
       'LASTFM',
       'CUSTOM',
-      'IRIS',
       'HIKKA',
       'MANGAUPDATES',
       'MANGABAKA',
@@ -506,7 +501,6 @@ export class CarinaConnectionsServ {
         'MAL',
         'SIMKL',
         'BANGUMI',
-        'STEAM',
         'RIOT_GAMES',
         'RADARR',
         'SONARR',
@@ -517,7 +511,6 @@ export class CarinaConnectionsServ {
         'DEEZER',
         'LASTFM',
         'CUSTOM',
-        'IRIS',
         'HIKKA',
         'MANGAUPDATES',
         'MANGABAKA',
@@ -542,7 +535,12 @@ export class CarinaConnectionsServ {
       redirectUri = `${apiBaseUrl}/carina/connections/${provider.toLowerCase()}/callback`
     }
 
-    const adapter = getConnectionAdapter(provider)
+    if (!provider) {
+      throw new BadRequest('Missing OAuth provider')
+    }
+    const resolvedProvider: ConnectionProvider = provider
+
+    const adapter = getConnectionAdapter(resolvedProvider)
 
     const tokens: OAuthTokens = await adapter.exchangeAuthCode(
       authCode,
@@ -580,8 +578,9 @@ export class CarinaConnectionsServ {
       })
     } else {
       // Find existing connection for this user and provider/externalId, or create new
+
       let existingQuery = prisma.orm.public.Connection.where((c) =>
-        and(c.userId.eq(userId), c.provider.eq(provider))
+        and(c.userId.eq(userId), c.provider.eq(resolvedProvider))
       )
       if (externalId) {
         existingQuery = existingQuery.where((c) => c.externalId.eq(externalId))
@@ -682,11 +681,8 @@ export class CarinaConnectionsServ {
           else if (prov.includes('MANGABAKA')) externalIds.mangabakaId = item.externalId
           else if (prov.includes('TRAKT')) externalIds.traktId = item.externalId
           else if (prov.includes('HIKKA')) externalIds.hikkaId = item.externalId
-          else if (prov.includes('TMDB') || prov.includes('RADARR')) externalIds.tmdbId = item.externalId
+          else if (prov.includes('RADARR')) externalIds.tmdbId = item.externalId
           else if (prov.includes('TVDB') || prov.includes('SONARR')) externalIds.tvDBId = item.externalId
-          else if (prov.includes('IGDB')) externalIds.igdbId = item.externalId
-          else if (prov.includes('STEAM')) externalIds.steamAppId = item.externalId
-          else if (prov.includes('GOOGLE')) externalIds.googleBookId = item.externalId
           else if (prov.includes('DEEZER')) externalIds.deezerId = item.externalId
 
           return {
@@ -725,9 +721,9 @@ export class CarinaConnectionsServ {
           mediaTypes: touchedTypes,
           mediaType:
             touchedTypes.length === 1 &&
-            ['ANIME', 'MANGA', 'MOVIE', 'TV', 'GAME', 'BOOK', 'MUSIC', 'OTHER'].includes(
-              touchedTypes[0]!
-            )
+              ['ANIME', 'MANGA', 'MOVIE', 'TV', 'GAME', 'BOOK', 'MUSIC', 'OTHER'].includes(
+                touchedTypes[0]!
+              )
               ? (touchedTypes[0] as MediaType)
               : null,
           isPrivate: Boolean((connection.settings as any)?.isPrivate),
@@ -811,98 +807,6 @@ export class CarinaConnectionsServ {
     const rawProvider = query.provider.trim().toUpperCase()
     const provider = rawProvider as ConnectionProvider
 
-    // Handle Google Books search and ID lookup natively
-    if (rawProvider === 'GOOGLEBOOKS' || rawProvider === 'GOOGLE_BOOKS') {
-      const gbProvider = new GoogleBooksProvider()
-      const rawQuery = (query.q || '').trim()
-      const rawId = (query.id || '').trim()
-
-      const mapVolume = (item: GoogleBookPayload) => {
-        const info = item.volumeInfo || ({} as GoogleBookPayload['volumeInfo'])
-        const rawCover =
-          info.imageLinks?.large ||
-          info.imageLinks?.medium ||
-          info.imageLinks?.thumbnail ||
-          info.imageLinks?.smallThumbnail ||
-          undefined
-        const cover = rawCover ? rawCover.replace(/^http:\/\//i, 'https://') : undefined
-        const releaseYear = info.publishedDate
-          ? parseInt(String(info.publishedDate).substring(0, 4), 10)
-          : undefined
-
-        return {
-          id: String(item.id),
-          externalId: String(item.id),
-          provider: 'GOOGLEBOOKS',
-          mediaType: 'BOOK',
-          format: 'BOOK',
-          title: {
-            userPreferred: info.title || 'Untitled',
-            english: info.title || 'Untitled',
-            romaji: Array.isArray(info.authors) ? info.authors.join(', ') : undefined,
-          },
-          description: info.description,
-          coverImage: cover ? { large: cover, medium: cover } : undefined,
-          chapters: info.pageCount,
-          releaseYear: Number.isNaN(releaseYear) ? undefined : releaseYear,
-          url: `https://books.google.com/books?id=${item.id}`,
-        }
-      }
-
-      const extractVolumeId = (input: string): string | null => {
-        const trimmed = input.trim()
-        if (!trimmed) return null
-        const urlIdMatch =
-          trimmed.match(/[?&]id=([^&#\s]+)/i) ||
-          trimmed.match(/\/volumes\/([^/?#\s]+)/i)
-        if (urlIdMatch && urlIdMatch[1]) return urlIdMatch[1]
-        const prefixMatch = trimmed.match(/^(?:id:|gb:|googlebooks:|#)([A-Za-z0-9_-]{6,})$/i)
-        if (prefixMatch && prefixMatch[1]) return prefixMatch[1]
-        return null
-      }
-
-      const explicitVolId = extractVolumeId(rawId || rawQuery) || (rawId && !rawQuery ? rawId : null)
-      if (explicitVolId) {
-        const book = await gbProvider.fetchBook(explicitVolId)
-        return {
-          success: true,
-          provider: 'GOOGLEBOOKS',
-          results: book ? [mapVolume(book)] : [],
-        }
-      }
-
-      if (!rawQuery) {
-        return {
-          success: true,
-          provider: 'GOOGLEBOOKS',
-          results: [],
-        }
-      }
-
-      const isVolumeIdCandidate = /^[A-Za-z0-9_-]{10,16}$/.test(rawQuery) && /\d/.test(rawQuery)
-      const [idBook, searchBooks] = await Promise.all([
-        isVolumeIdCandidate ? gbProvider.fetchBook(rawQuery).catch(() => null) : Promise.resolve(null),
-        gbProvider.searchBooks(rawQuery, query.perPage ?? 20).catch(() => [] as GoogleBookPayload[]),
-      ])
-
-      const mappedSearch = searchBooks.map(mapVolume)
-      if (idBook) {
-        const mappedDirect = mapVolume(idBook)
-        const deduped = mappedSearch.filter((r) => r.externalId !== mappedDirect.externalId)
-        return {
-          success: true,
-          provider: 'GOOGLEBOOKS',
-          results: [mappedDirect, ...deduped],
-        }
-      }
-
-      return {
-        success: true,
-        provider: 'GOOGLEBOOKS',
-        results: mappedSearch,
-      }
-    }
-
     // Handle Last.fm connection search natively if requested
     if (rawProvider === 'LASTFM') {
       const apiKey = Bun.env.LASTFM_API_KEY?.trim()
@@ -921,306 +825,306 @@ export class CarinaConnectionsServ {
         const isAlbum = rawType === 'ALBUM' || rawType === 'MUSIC_ALBUM'
         const baseUrl = 'https://ws.audioscrobbler.com/2.0/'
 
-          const idCandidate = (query.id || searchQuery).trim()
-          const mbidMatch = idCandidate.match(
-            /^(?:id:|mbid:|lastfm:|#)?([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i
-          )
+        const idCandidate = (query.id || searchQuery).trim()
+        const mbidMatch = idCandidate.match(
+          /^(?:id:|mbid:|lastfm:|#)?([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i
+        )
 
-          if (mbidMatch && mbidMatch[1]) {
-            const mbid = mbidMatch[1]
-            const method = isAlbum ? 'album.getInfo' : 'track.getInfo'
+        if (mbidMatch && mbidMatch[1]) {
+          const mbid = mbidMatch[1]
+          const method = isAlbum ? 'album.getInfo' : 'track.getInfo'
+          const res = await fetch(
+            `${baseUrl}?method=${method}&api_key=${apiKey}&mbid=${encodeURIComponent(mbid)}&format=json`
+          )
+          if (res.ok) {
+            const data = (await res.json()) as any
+            const item = data?.album || data?.track
+            if (item) {
+              const img =
+                (item.image || item.album?.image)
+                  ?.slice()
+                  ?.reverse()
+                  ?.find((i: any) => i['#text']?.trim())?.['#text'] || null
+              const artistName = typeof item.artist === 'string' ? item.artist : item.artist?.name || ''
+              return {
+                success: true,
+                provider: 'LASTFM',
+                results: [
+                  {
+                    id: item.mbid || item.url || mbid,
+                    externalId: item.url || item.mbid || mbid,
+                    provider: 'LASTFM',
+                    mediaType: isAlbum ? 'MUSIC_ALBUM' : 'MUSIC_TRACK',
+                    format: isAlbum ? 'ALBUM' : 'TRACK',
+                    title: {
+                      userPreferred: `${item.name}${artistName ? ` - ${artistName}` : ''}`.trim(),
+                      english: item.name,
+                    },
+                    coverImage: img ? { large: img, medium: img } : undefined,
+                    url: item.url,
+                  },
+                ],
+              }
+            }
+          }
+        }
+
+        if (query.id || idCandidate.includes('/music/')) {
+          const trackMatch = idCandidate.match(/\/music\/([^/]+)\/_\/([^/?#]+)/i)
+          const albumMatch = idCandidate.match(/\/music\/([^/]+)\/([^/?#]+)/i)
+
+          if (trackMatch && trackMatch[1] && trackMatch[2]) {
+            const artist = decodeURIComponent(trackMatch[1])
+            const trackTitle = decodeURIComponent(trackMatch[2])
             const res = await fetch(
-              `${baseUrl}?method=${method}&api_key=${apiKey}&mbid=${encodeURIComponent(mbid)}&format=json`
+              `${baseUrl}?method=track.getInfo&api_key=${apiKey}&artist=${encodeURIComponent(artist)}&track=${encodeURIComponent(trackTitle)}&format=json`
             )
             if (res.ok) {
               const data = (await res.json()) as any
-              const item = data?.album || data?.track
-              if (item) {
-                const img =
-                  (item.image || item.album?.image)
-                    ?.slice()
-                    ?.reverse()
-                    ?.find((i: any) => i['#text']?.trim())?.['#text'] || null
-                const artistName = typeof item.artist === 'string' ? item.artist : item.artist?.name || ''
+              if (data?.track) {
+                const tr = data.track
+                const img = tr.album?.image?.reverse()?.find((i: any) => i['#text']?.trim())?.['#text'] || null
                 return {
                   success: true,
                   provider: 'LASTFM',
                   results: [
                     {
-                      id: item.mbid || item.url || mbid,
-                      externalId: item.url || item.mbid || mbid,
+                      id: tr.mbid || tr.url || idCandidate,
+                      externalId: tr.url || idCandidate,
                       provider: 'LASTFM',
-                      mediaType: isAlbum ? 'MUSIC_ALBUM' : 'MUSIC_TRACK',
-                      format: isAlbum ? 'ALBUM' : 'TRACK',
+                      mediaType: 'MUSIC_TRACK',
+                      format: 'TRACK',
                       title: {
-                        userPreferred: `${item.name}${artistName ? ` - ${artistName}` : ''}`.trim(),
-                        english: item.name,
+                        userPreferred: `${tr.name} - ${tr.artist?.name || ''}`.trim(),
+                        english: tr.name,
                       },
                       coverImage: img ? { large: img, medium: img } : undefined,
-                      url: item.url,
+                      url: tr.url || idCandidate,
+                    },
+                  ],
+                }
+              }
+            }
+          } else if (albumMatch && albumMatch[1] && albumMatch[2] && albumMatch[2] !== '_') {
+            const artist = decodeURIComponent(albumMatch[1])
+            const albumTitle = decodeURIComponent(albumMatch[2])
+            const res = await fetch(
+              `${baseUrl}?method=album.getInfo&api_key=${apiKey}&artist=${encodeURIComponent(artist)}&album=${encodeURIComponent(albumTitle)}&format=json`
+            )
+            if (res.ok) {
+              const data = (await res.json()) as any
+              if (data?.album) {
+                const al = data.album
+                const img = al.image?.reverse()?.find((i: any) => i['#text']?.trim())?.['#text'] || null
+                return {
+                  success: true,
+                  provider: 'LASTFM',
+                  results: [
+                    {
+                      id: al.mbid || al.url || idCandidate,
+                      externalId: al.url || idCandidate,
+                      provider: 'LASTFM',
+                      mediaType: 'MUSIC_ALBUM',
+                      format: 'ALBUM',
+                      title: {
+                        userPreferred: `${al.name} - ${al.artist}`.trim(),
+                        english: al.name,
+                      },
+                      coverImage: img ? { large: img, medium: img } : undefined,
+                      url: al.url || idCandidate,
                     },
                   ],
                 }
               }
             }
           }
+        }
 
-          if (query.id || idCandidate.includes('/music/')) {
-            const trackMatch = idCandidate.match(/\/music\/([^/]+)\/_\/([^/?#]+)/i)
-            const albumMatch = idCandidate.match(/\/music\/([^/]+)\/([^/?#]+)/i)
+        const method = isAlbum ? 'album.search' : 'track.search'
+        const paramKey = isAlbum ? 'album' : 'track'
+        const limit = Math.min(query.perPage ?? 15, 50)
 
-            if (trackMatch && trackMatch[1] && trackMatch[2]) {
-              const artist = decodeURIComponent(trackMatch[1])
-              const trackTitle = decodeURIComponent(trackMatch[2])
-              const res = await fetch(
-                `${baseUrl}?method=track.getInfo&api_key=${apiKey}&artist=${encodeURIComponent(artist)}&track=${encodeURIComponent(trackTitle)}&format=json`
-              )
-              if (res.ok) {
-                const data = (await res.json()) as any
-                if (data?.track) {
-                  const tr = data.track
-                  const img = tr.album?.image?.reverse()?.find((i: any) => i['#text']?.trim())?.['#text'] || null
-                  return {
-                    success: true,
-                    provider: 'LASTFM',
-                    results: [
-                      {
-                        id: tr.mbid || tr.url || idCandidate,
-                        externalId: tr.url || idCandidate,
-                        provider: 'LASTFM',
-                        mediaType: 'MUSIC_TRACK',
-                        format: 'TRACK',
-                        title: {
-                          userPreferred: `${tr.name} - ${tr.artist?.name || ''}`.trim(),
-                          english: tr.name,
-                        },
-                        coverImage: img ? { large: img, medium: img } : undefined,
-                        url: tr.url || idCandidate,
-                      },
-                    ],
-                  }
-                }
-              }
-            } else if (albumMatch && albumMatch[1] && albumMatch[2] && albumMatch[2] !== '_') {
-              const artist = decodeURIComponent(albumMatch[1])
-              const albumTitle = decodeURIComponent(albumMatch[2])
-              const res = await fetch(
-                `${baseUrl}?method=album.getInfo&api_key=${apiKey}&artist=${encodeURIComponent(artist)}&album=${encodeURIComponent(albumTitle)}&format=json`
-              )
-              if (res.ok) {
-                const data = (await res.json()) as any
-                if (data?.album) {
-                  const al = data.album
-                  const img = al.image?.reverse()?.find((i: any) => i['#text']?.trim())?.['#text'] || null
-                  return {
-                    success: true,
-                    provider: 'LASTFM',
-                    results: [
-                      {
-                        id: al.mbid || al.url || idCandidate,
-                        externalId: al.url || idCandidate,
-                        provider: 'LASTFM',
-                        mediaType: 'MUSIC_ALBUM',
-                        format: 'ALBUM',
-                        title: {
-                          userPreferred: `${al.name} - ${al.artist}`.trim(),
-                          english: al.name,
-                        },
-                        coverImage: img ? { large: img, medium: img } : undefined,
-                        url: al.url || idCandidate,
-                      },
-                    ],
-                  }
-                }
-              }
-            }
-          }
-
-          const method = isAlbum ? 'album.search' : 'track.search'
-          const paramKey = isAlbum ? 'album' : 'track'
-          const limit = Math.min(query.perPage ?? 15, 50)
-
-          const res = await fetch(
-            `${baseUrl}?method=${method}&${paramKey}=${encodeURIComponent(searchQuery)}&limit=${limit}&api_key=${apiKey}&format=json`
-          )
-          if (res.ok) {
-            const data = (await res.json()) as any
-            const list = isAlbum
-              ? data?.results?.albummatches?.album
-              : data?.results?.trackmatches?.track
-            const normalized = Array.isArray(list) ? list : list ? [list] : []
-            const results = normalized.map((item: any) => {
-              const img = item.image?.reverse()?.find((i: any) => i['#text']?.trim())?.['#text'] || null
-              return {
-                id: item.mbid || item.url,
-                externalId: item.url || item.mbid || `${item.artist} - ${item.name}`,
-                provider: 'LASTFM',
-                mediaType: isAlbum ? 'MUSIC_ALBUM' : 'MUSIC_TRACK',
-                format: isAlbum ? 'ALBUM' : 'TRACK',
-                title: {
-                  userPreferred: `${item.name} - ${item.artist}`,
-                  english: item.name,
-                },
-                coverImage: img ? { large: img, medium: img } : undefined,
-                url: item.url,
-              }
-            })
+        const res = await fetch(
+          `${baseUrl}?method=${method}&${paramKey}=${encodeURIComponent(searchQuery)}&limit=${limit}&api_key=${apiKey}&format=json`
+        )
+        if (res.ok) {
+          const data = (await res.json()) as any
+          const list = isAlbum
+            ? data?.results?.albummatches?.album
+            : data?.results?.trackmatches?.track
+          const normalized = Array.isArray(list) ? list : list ? [list] : []
+          const results = normalized.map((item: any) => {
+            const img = item.image?.reverse()?.find((i: any) => i['#text']?.trim())?.['#text'] || null
             return {
-              success: true,
+              id: item.mbid || item.url,
+              externalId: item.url || item.mbid || `${item.artist} - ${item.name}`,
               provider: 'LASTFM',
-              results,
+              mediaType: isAlbum ? 'MUSIC_ALBUM' : 'MUSIC_TRACK',
+              format: isAlbum ? 'ALBUM' : 'TRACK',
+              title: {
+                userPreferred: `${item.name} - ${item.artist}`,
+                english: item.name,
+              },
+              coverImage: img ? { large: img, medium: img } : undefined,
+              url: item.url,
             }
-          }
-        } catch {
+          })
           return {
             success: true,
             provider: 'LASTFM',
-            results: [],
+            results,
           }
         }
+      } catch {
+        return {
+          success: true,
+          provider: 'LASTFM',
+          results: [],
+        }
       }
+    }
 
     // Lookup user's connection if available to leverage user credentials
     const userConnRaw = await prisma.orm.public.Connection.where((c) =>
-        and(
-          c.userId.eq(userId),
-          c.provider.eq(provider),
-          c.status.eq('CONNECTED')
-        )
-      ).first()
+      and(
+        c.userId.eq(userId),
+        c.provider.eq(provider),
+        c.status.eq('CONNECTED')
+      )
+    ).first()
 
-      const userConnection = userConnRaw
-        ? {
-          ...userConnRaw,
-          expiresAt: userConnRaw.expiresAt ? toDate(userConnRaw.expiresAt) : null,
-        }
-        : null
+    const userConnection = userConnRaw
+      ? {
+        ...userConnRaw,
+        expiresAt: userConnRaw.expiresAt ? toDate(userConnRaw.expiresAt) : null,
+      }
+      : null
 
-      const searchQuery = (query.q || '').trim()
-      const isExplicitIdOnly = Boolean(query.id) && (!searchQuery || /^(?:id:|#|[a-z]+:|https?:\/\/|tt\d+$)/i.test(searchQuery))
+    const searchQuery = (query.q || '').trim()
+    const isExplicitIdOnly = Boolean(query.id) && (!searchQuery || /^(?:id:|#|[a-z]+:|https?:\/\/|tt\d+$)/i.test(searchQuery))
 
-      let directItem: any = null
-      if (query.id) {
-        try {
-          const direct = await SearchProxyManager.getById(
-            provider,
-            query.id,
-            userConnection,
-            {
-              type: query.type?.toUpperCase() as MediaType,
-            }
-          )
-          if (direct) {
-            const hasValidExt =
-              Boolean(direct.externalId) &&
-              direct.externalId !== 'undefined' &&
-              direct.externalId !== 'null'
-            const hasValidId =
-              Boolean(direct.id) &&
-              direct.id !== 'undefined' &&
-              direct.id !== 'null'
-            const finalId = hasValidExt
-              ? direct.externalId
-              : hasValidId
-                ? direct.id
-                : query.id
-
-              directItem = {
-                ...direct,
-                id: hasValidId ? direct.id : finalId,
-                externalId: finalId,
-              }
-
-          if(isExplicitIdOnly) {
-                return {
-                  success: true,
-                  provider,
-                  results: [directItem],
-                }
-              }
-            }
-          } catch { }
-        }
-
-        if (!searchQuery) {
-          return {
-            success: true,
-            provider,
-            results: directItem ? [directItem] : [],
-          }
-        }
-
-        const results = await SearchProxyManager.search(
+    let directItem: any = null
+    if (query.id) {
+      try {
+        const direct = await SearchProxyManager.getById(
           provider,
-          searchQuery,
+          query.id,
           userConnection,
           {
             type: query.type?.toUpperCase() as MediaType,
-            page: query.page,
-            perPage: query.perPage,
-          },
-          async (connId, updatedEncrypted, expiresAt) => {
-            await prisma.orm.public.Connection.where((c) => c.id.eq(connId)).update({
-              encryptedData: updatedEncrypted,
-              expiresAt: expiresAt ?? null,
-            })
           }
         )
+        if (direct) {
+          const hasValidExt =
+            Boolean(direct.externalId) &&
+            direct.externalId !== 'undefined' &&
+            direct.externalId !== 'null'
+          const hasValidId =
+            Boolean(direct.id) &&
+            direct.id !== 'undefined' &&
+            direct.id !== 'null'
+          const finalId = hasValidExt
+            ? direct.externalId
+            : hasValidId
+              ? direct.id
+              : query.id
 
-          const buildFallbackUrl = (prov: string, extId: string, mType?: string): string => {
-            const isManga = mType === 'MANGA' || mType === 'BOOK'
-            const isMovie = mType === 'MOVIE'
-            const isTv = mType === 'TV'
-            switch (prov) {
-              case 'ANILIST':
-                return `https://anilist.co/${isManga ? 'manga' : 'anime'}/${extId}`
-              case 'MAL':
-                return `https://myanimelist.net/${isManga ? 'manga' : 'anime'}/${extId}`
-              case 'BANGUMI':
-                return `https://bgm.tv/subject/${extId}`
-              case 'HIKKA':
-                return `https://hikka.io/${isManga ? 'manga' : 'anime'}/${extId}`
-              case 'MANGAUPDATES':
-                return `https://www.mangaupdates.com/series/${extId}`
-              case 'MANGABAKA':
-                return `https://mangabaka.org/series/${extId}`
-              case 'TRAKT':
-                return `https://trakt.tv/${isMovie ? 'movies' : 'shows'}/${extId}`
-              case 'SIMKL':
-              default:
-                return `https://simkl.com/${isMovie ? 'movies' : isTv ? 'tv' : 'anime'}/${extId}`
-            }
+          directItem = {
+            ...direct,
+            id: hasValidId ? direct.id : finalId,
+            externalId: finalId,
           }
 
-          const combinedRaw = directItem
-            ? [
-              directItem,
-              ...(results || []).filter(
-                (r) => String(r.externalId || r.id) !== String(directItem.externalId || directItem.id)
-              ),
-            ]
-            : results || []
-
-          const cleanedResults = combinedRaw.map((r, idx: number) => {
-            const hasValidExt =
-              Boolean(r.externalId) &&
-              r.externalId !== 'undefined' &&
-              r.externalId !== 'null'
-            const hasValidId =
-              Boolean(r.id) && r.id !== 'undefined' && r.id !== 'null'
-            const finalId = hasValidExt
-              ? r.externalId
-              : hasValidId
-                ? r.id
-                : String(idx)
-
+          if (isExplicitIdOnly) {
             return {
-              ...r,
-              id: hasValidId ? r.id : finalId,
-              externalId: finalId,
-              url:
-                r.url && !r.url.endsWith('/undefined')
-                  ? r.url
+              success: true,
+              provider,
+              results: [directItem],
+            }
+          }
+        }
+      } catch { }
+    }
+
+    if (!searchQuery) {
+      return {
+        success: true,
+        provider,
+        results: directItem ? [directItem] : [],
+      }
+    }
+
+    const results = await SearchProxyManager.search(
+      provider,
+      searchQuery,
+      userConnection,
+      {
+        type: query.type?.toUpperCase() as MediaType,
+        page: query.page,
+        perPage: query.perPage,
+      },
+      async (connId, updatedEncrypted, expiresAt) => {
+        await prisma.orm.public.Connection.where((c) => c.id.eq(connId)).update({
+          encryptedData: updatedEncrypted,
+          expiresAt: expiresAt ?? null,
+        })
+      }
+    )
+
+    const buildFallbackUrl = (prov: string, extId: string, mType?: string): string => {
+      const isManga = mType === 'MANGA' || mType === 'BOOK'
+      const isMovie = mType === 'MOVIE'
+      const isTv = mType === 'TV'
+      switch (prov) {
+        case 'ANILIST':
+          return `https://anilist.co/${isManga ? 'manga' : 'anime'}/${extId}`
+        case 'MAL':
+          return `https://myanimelist.net/${isManga ? 'manga' : 'anime'}/${extId}`
+        case 'BANGUMI':
+          return `https://bgm.tv/subject/${extId}`
+        case 'HIKKA':
+          return `https://hikka.io/${isManga ? 'manga' : 'anime'}/${extId}`
+        case 'MANGAUPDATES':
+          return `https://www.mangaupdates.com/series/${extId}`
+        case 'MANGABAKA':
+          return `https://mangabaka.org/series/${extId}`
+        case 'TRAKT':
+          return `https://trakt.tv/${isMovie ? 'movies' : 'shows'}/${extId}`
+        case 'SIMKL':
+        default:
+          return `https://simkl.com/${isMovie ? 'movies' : isTv ? 'tv' : 'anime'}/${extId}`
+      }
+    }
+
+    const combinedRaw = directItem
+      ? [
+        directItem,
+        ...(results || []).filter(
+          (r) => String(r.externalId || r.id) !== String(directItem.externalId || directItem.id)
+        ),
+      ]
+      : results || []
+
+    const cleanedResults = combinedRaw.map((r, idx: number) => {
+      const hasValidExt =
+        Boolean(r.externalId) &&
+        r.externalId !== 'undefined' &&
+        r.externalId !== 'null'
+      const hasValidId =
+        Boolean(r.id) && r.id !== 'undefined' && r.id !== 'null'
+      const finalId = hasValidExt
+        ? r.externalId
+        : hasValidId
+          ? r.id
+          : String(idx)
+
+      return {
+        ...r,
+        id: hasValidId ? r.id : finalId,
+        externalId: finalId,
+        url:
+          r.url && !r.url.endsWith('/undefined')
+            ? r.url
             : buildFallbackUrl(provider, finalId, r.mediaType || query.type?.toUpperCase()),
       }
     })
