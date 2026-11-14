@@ -14,12 +14,11 @@ export function CancerFullBackground(props: ReactiveBackgroundVariantProps) {
       textureUrl="/images/reactive-backgrounds/cancer-full-v2.png"
       swayMaskUrl="/images/reactive-backgrounds/masks/cancer-full-v2.png"
       uvRect={UV_RECT}
-      textureWidth={780}
-      textureHeight={944}
+      textureWidth={1950}
+      textureHeight={2360}
       roughness={0.82}
       specularTint={0.62352941}
       {...props}
     />
   )
 }
-

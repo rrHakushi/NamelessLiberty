@@ -406,7 +406,7 @@ export function useIrisSidebar(config?: SidebarConfig) {
   const { setSidebarConfig } = context
 
   useEffect(() => {
-    if (config && config.length > 0) {
+    if (config !== undefined) {
       setSidebarConfig((prev) => {
         if (areConfigsEqual(prev, config)) return prev
         return config

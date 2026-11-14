@@ -99,9 +99,11 @@ export function IrisSidebar({
   const { isMobile, setOpenMobile, state } = useSidebar()
   const { sidebarConfig, position } = useIrisSidebar(initialConfig)
   const activeConfig =
-    sidebarConfig && sidebarConfig.length > 0
-      ? sidebarConfig
-      : initialConfig || []
+    initialConfig !== undefined && initialConfig.length === 0
+      ? []
+      : sidebarConfig && sidebarConfig.length > 0
+        ? sidebarConfig
+        : initialConfig || []
 
   // Track expanded state of menu items with submenus
   const [openItems, setOpenItems] = useState<Record<string, boolean>>({})

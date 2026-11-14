@@ -2,16 +2,20 @@ import type { ComponentType } from "react"
 import {
   AquariusBackground,
   AriesBackground,
+  AriesFullBackground,
   CancerBackground,
   CancerFullBackground,
   CapricornBackground,
   GeminiBackground,
+  GeminiFullBackground,
   LeoBackground,
+  LeoFullBackground,
   LibraBackground,
   PiscesBackground,
   SagittariusBackground,
   ScorpioBackground,
   TaurusBackground,
+  TaurusFullBackground,
   VirgoBackground,
   type ImageFilterPreset,
   type ReactiveBackgroundVariantProps,
@@ -46,7 +50,13 @@ export type ZodiacId =
   | "aquarius"
   | "pisces"
 
-export type BackgroundId = ZodiacId | "cancer-full"
+export type BackgroundId =
+  | ZodiacId
+  | "aries-full"
+  | "taurus-full"
+  | "gemini-full"
+  | "cancer-full"
+  | "leo-full"
 export type BackgroundSelection = BackgroundId | "none"
 export type IconSelection = ZodiacId | "none"
 
@@ -152,20 +162,44 @@ export const ZODIAC_VARIANTS: readonly ZodiacEntry[] = [
   },
 ] as const
 
+const FULL_BODY_BY_ZODIAC: Partial<Record<ZodiacId, BackgroundEntry>> = {
+  aries: {
+    id: "aries-full",
+    name: "Aries Full",
+    zhName: "白羊座 · 全身",
+    Background: AriesFullBackground,
+  },
+  taurus: {
+    id: "taurus-full",
+    name: "Taurus Full",
+    zhName: "金牛座 · 全身",
+    Background: TaurusFullBackground,
+  },
+  gemini: {
+    id: "gemini-full",
+    name: "Gemini Full",
+    zhName: "双子座 · 全身",
+    Background: GeminiFullBackground,
+  },
+  cancer: {
+    id: "cancer-full",
+    name: "Cancer Full",
+    zhName: "巨蟹座 · 全身",
+    Background: CancerFullBackground,
+  },
+  leo: {
+    id: "leo-full",
+    name: "Leo Full",
+    zhName: "狮子座 · 全身",
+    Background: LeoFullBackground,
+  },
+}
+
 export const BACKGROUND_VARIANTS: readonly BackgroundEntry[] =
-  ZODIAC_VARIANTS.flatMap((entry): BackgroundEntry[] =>
-    entry.id === "cancer"
-      ? [
-          entry,
-          {
-            id: "cancer-full",
-            name: "Cancer Full",
-            zhName: "巨蟹座 · 全身",
-            Background: CancerFullBackground,
-          },
-        ]
-      : [entry]
-  )
+  ZODIAC_VARIANTS.flatMap((entry): BackgroundEntry[] => {
+    const fullEntry = FULL_BODY_BY_ZODIAC[entry.id]
+    return fullEntry ? [entry, fullEntry] : [entry]
+  })
 
 export const ZODIAC_BY_ID: Record<ZodiacId, ZodiacEntry> = Object.fromEntries(
   ZODIAC_VARIANTS.map((entry) => [entry.id, entry])
