@@ -215,6 +215,23 @@ export class TraktAdapter extends BaseConnectionAdapter {
     }
   }
 
+  private extractCoverImage(images?: {
+    poster?: string[];
+    thumb?: string[];
+    fanart?: string[];
+  }): { large?: string; medium?: string } | undefined {
+    const raw = images?.poster?.[0] || images?.thumb?.[0] || images?.fanart?.[0];
+    if (!raw || typeof raw !== "string") return undefined;
+    const trimmed = raw.trim();
+    if (!trimmed) return undefined;
+    const url = trimmed.startsWith("http://") || trimmed.startsWith("https://")
+      ? trimmed
+      : trimmed.startsWith("//")
+        ? `https:${trimmed}`
+        : `https://${trimmed}`;
+    return { large: url, medium: url };
+  }
+
   async searchMedia(
     query: string,
     credentials?: ConnectionCredentials,
@@ -244,12 +261,12 @@ export class TraktAdapter extends BaseConnectionAdapter {
 
     // If type is explicitly MOVIE or TV, search that specific endpoint; otherwise search movies and shows
     const endpoints = isMovie
-      ? [`/search/movie?query=${encodeURIComponent(cleanQuery)}&limit=${limit}&page=${page}`]
+      ? [`/search/movie?query=${encodeURIComponent(cleanQuery)}&limit=${limit}&page=${page}&extended=images`]
       : isTv
-        ? [`/search/show?query=${encodeURIComponent(cleanQuery)}&limit=${limit}&page=${page}`]
+        ? [`/search/show?query=${encodeURIComponent(cleanQuery)}&limit=${limit}&page=${page}&extended=images`]
         : [
-            `/search/movie?query=${encodeURIComponent(cleanQuery)}&limit=${Math.ceil(limit / 2)}&page=${page}`,
-            `/search/show?query=${encodeURIComponent(cleanQuery)}&limit=${Math.ceil(limit / 2)}&page=${page}`,
+            `/search/movie?query=${encodeURIComponent(cleanQuery)}&limit=${Math.ceil(limit / 2)}&page=${page}&extended=images`,
+            `/search/show?query=${encodeURIComponent(cleanQuery)}&limit=${Math.ceil(limit / 2)}&page=${page}&extended=images`,
           ];
 
     const fetchTextSearch = async (): Promise<MediaSearchResult[]> => {
@@ -266,12 +283,14 @@ export class TraktAdapter extends BaseConnectionAdapter {
                 year?: number;
                 ids: { trakt: number; slug: string; tmdb?: number; imdb?: string };
                 overview?: string;
+                images?: { poster?: string[]; thumb?: string[]; fanart?: string[] };
               };
               show?: {
                 title: string;
                 year?: number;
                 ids: { trakt: number; slug: string; tmdb?: number; imdb?: string };
                 overview?: string;
+                images?: { poster?: string[]; thumb?: string[]; fanart?: string[] };
               };
             }>
           >(`${TraktAdapter.BASE_URL}${ep}`, {
@@ -296,6 +315,7 @@ export class TraktAdapter extends BaseConnectionAdapter {
                 english: item.title,
               },
               description: item.overview,
+              coverImage: this.extractCoverImage(item.images),
               releaseYear: item.year,
               url: `https://trakt.tv/${hit.type === "movie" ? "movies" : "shows"}/${item.ids?.slug || traktId}`,
             });
@@ -346,8 +366,8 @@ export class TraktAdapter extends BaseConnectionAdapter {
 
     for (const isMovie of candidateModes) {
       const endpoint = isMovie
-        ? `/movies/${encodeURIComponent(cleanId)}?extended=full`
-        : `/shows/${encodeURIComponent(cleanId)}?extended=full`;
+        ? `/movies/${encodeURIComponent(cleanId)}?extended=full,images`
+        : `/shows/${encodeURIComponent(cleanId)}?extended=full,images`;
 
       try {
         const item = await this.fetchJson<{
@@ -357,6 +377,7 @@ export class TraktAdapter extends BaseConnectionAdapter {
           overview?: string;
           rating?: number;
           aired_episodes?: number;
+          images?: { poster?: string[]; thumb?: string[]; fanart?: string[] };
         }>(`${TraktAdapter.BASE_URL}${endpoint}`, {
           headers: this.buildHeaders(credentials),
         });
@@ -374,6 +395,7 @@ export class TraktAdapter extends BaseConnectionAdapter {
             english: item.title,
           },
           description: item.overview,
+          coverImage: this.extractCoverImage(item.images),
           episodes: item.aired_episodes,
           releaseYear: item.year,
           averageScore: item.rating ? Math.round(item.rating * 10) : undefined,
