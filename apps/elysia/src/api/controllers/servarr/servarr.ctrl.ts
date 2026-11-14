@@ -2,6 +2,7 @@ import { Elysia } from 'elysia'
 import { session } from '../../../plugins/session'
 import { ServarrModel } from '../../models/servarr/servarr.model'
 import { ServarrServ } from '../../../services/servarr/servarr.serv'
+import { servarrExtendedRouter } from './servarr-extended.ctrl'
 
 function createServarrAppCoreRouter<const T extends 'sonarr' | 'radarr'>(app: T) {
   return new Elysia({ prefix: `/${app}` })
@@ -1477,6 +1478,7 @@ export const servarrController = new Elysia({ prefix: '/servarr' })
   .use(servarrGenericOpsRouter)
   .use(servarrWantedRadarrRouter)
   .use(servarrSonarrRouter)
+  .use(servarrExtendedRouter)
 
 export default servarrController
 

@@ -1,4 +1,4 @@
-import { ServarrBaseAdapter } from "./servarr.base.js";
+import { ServarrBaseAdapter, buildServarrQuery } from "./servarr.base.js";
 import type {
   ConnectionCredentials,
   ConnectionProvider,
@@ -26,6 +26,7 @@ export interface SonarrSeries {
 
 export class SonarrAdapter extends ServarrBaseAdapter {
   readonly provider: ConnectionProvider = "SONARR";
+  readonly apiVersion = "v5" as const;
   readonly iconUrl = "/icons/connections/sonarr.svg";
   readonly defaultHostUrl = "http://localhost:8989";
 
@@ -250,7 +251,7 @@ export class SonarrAdapter extends ServarrBaseAdapter {
 
   async updateEpisode(
     credentials: ConnectionCredentials,
-    episode: { id: number; [key: string]: unknown }
+    episode: { id: number;[key: string]: unknown }
   ): Promise<any> {
     return await this.servarrFetch(`episode/${episode.id}`, credentials, {
       method: "PUT",
@@ -267,6 +268,255 @@ export class SonarrAdapter extends ServarrBaseAdapter {
       method: "PUT",
       body: JSON.stringify({ episodeIds, monitored }),
     });
+  }
+
+  // ===========================================================================
+  // Extended Sonarr v5 Coverage (/api/v5)
+  // ===========================================================================
+
+  private mapSettingsSection(section: string): string {
+    const normalized = section.toLowerCase();
+    return normalized === "host" ? "general" : normalized;
+  }
+
+  async getConfigSection(
+    credentials: ConnectionCredentials,
+    section: string
+  ): Promise<any> {
+    return await this.servarrFetch(
+      `settings/${this.mapSettingsSection(section)}`,
+      credentials
+    );
+  }
+
+  async updateConfigSection(
+    credentials: ConnectionCredentials,
+    section: string,
+    body: Record<string, unknown>
+  ): Promise<any> {
+    const mapped = this.mapSettingsSection(section);
+    const id = body.id ? `/${body.id}` : "";
+    return await this.servarrFetch(`settings/${mapped}${id}`, credentials, {
+      method: "PUT",
+      body: JSON.stringify(body),
+    });
+  }
+
+  async getNamingExamples(credentials: ConnectionCredentials): Promise<any> {
+    return await this.servarrFetch("settings/naming/examples", credentials);
+  }
+
+  async getQualityDefinitions(credentials: ConnectionCredentials): Promise<any[]> {
+    return await this.servarrFetch<any[]>("qualitydefinition", credentials);
+  }
+
+  async updateQualityDefinition(
+    credentials: ConnectionCredentials,
+    id: number,
+    body: Record<string, unknown>
+  ): Promise<any> {
+    return await this.servarrFetch(`qualitydefinition/${id}`, credentials, {
+      method: "PUT",
+      body: JSON.stringify(body),
+    });
+  }
+
+  async bulkUpdateQualityDefinitions(
+    credentials: ConnectionCredentials,
+    definitions: Array<Record<string, unknown>>
+  ): Promise<any[]> {
+    return await this.servarrFetch<any[]>("qualitydefinition", credentials, {
+      method: "PUT",
+      body: JSON.stringify(definitions),
+    });
+  }
+
+  async importSeries(
+    credentials: ConnectionCredentials,
+    series: Array<Record<string, unknown>>
+  ): Promise<any[]> {
+    return await this.servarrFetch<any[]>("series/import", credentials, {
+      method: "POST",
+      body: JSON.stringify(series),
+    });
+  }
+
+  async getSeriesFolder(
+    credentials: ConnectionCredentials,
+    id: number
+  ): Promise<any> {
+    return await this.servarrFetch(`series/${id}/folder`, credentials);
+  }
+
+  async updateSeriesSeason(
+    credentials: ConnectionCredentials,
+    seriesId: number,
+    body: Record<string, unknown>
+  ): Promise<any> {
+    return await this.servarrFetch(`series/${seriesId}/season`, credentials, {
+      method: "PUT",
+      body: JSON.stringify(body),
+    });
+  }
+
+  async runSeasonPass(
+    credentials: ConnectionCredentials,
+    body: Record<string, unknown>
+  ): Promise<void> {
+    await this.servarrFetch("seasonpass", credentials, {
+      method: "POST",
+      body: JSON.stringify(body),
+    });
+  }
+
+  async getEpisodeById(
+    credentials: ConnectionCredentials,
+    id: number
+  ): Promise<any> {
+    return await this.servarrFetch(`episode/${id}`, credentials);
+  }
+
+  async updateEpisodeFile(
+    credentials: ConnectionCredentials,
+    id: number,
+    body: Record<string, unknown>
+  ): Promise<any> {
+    return await this.servarrFetch(`episodefile/${id}`, credentials, {
+      method: "PUT",
+      body: JSON.stringify(body),
+    });
+  }
+
+  async bulkUpdateEpisodeFiles(
+    credentials: ConnectionCredentials,
+    episodeFiles: Array<Record<string, unknown>>
+  ): Promise<any[]> {
+    return await this.servarrFetch<any[]>("episodefile/bulk", credentials, {
+      method: "PUT",
+      body: JSON.stringify(episodeFiles),
+    });
+  }
+
+  async bulkDeleteEpisodeFiles(
+    credentials: ConnectionCredentials,
+    episodeFileIds: number[]
+  ): Promise<void> {
+    await this.servarrFetch("episodefile/bulk", credentials, {
+      method: "DELETE",
+      body: JSON.stringify({ episodeFileIds }),
+    });
+  }
+
+  async getRenameBulkPreview(
+    credentials: ConnectionCredentials,
+    seriesIds: number[]
+  ): Promise<any[]> {
+    return await this.servarrFetch<any[]>(
+      `rename/bulk${buildServarrQuery({ seriesIds })}`,
+      credentials
+    );
+  }
+
+  async getSeriesHistory(
+    credentials: ConnectionCredentials,
+    seriesId: number,
+    seasonNumber?: number,
+    eventType?: number | string
+  ): Promise<any[]> {
+    if (seasonNumber !== undefined) {
+      return await this.servarrFetch<any[]>(
+        `history/season${buildServarrQuery({ seriesId, seasonNumber, eventType })}`,
+        credentials
+      );
+    }
+    return await this.servarrFetch<any[]>(
+      `history/series${buildServarrQuery({ seriesId, eventType })}`,
+      credentials
+    );
+  }
+
+  async getEpisodeHistory(
+    credentials: ConnectionCredentials,
+    episodeId: number,
+    eventType?: number | string
+  ): Promise<any[]> {
+    return await this.servarrFetch<any[]>(
+      `history/episode${buildServarrQuery({ episodeId, eventType })}`,
+      credentials
+    );
+  }
+
+  async getWantedMissingById(
+    credentials: ConnectionCredentials,
+    id: number
+  ): Promise<any> {
+    return await this.servarrFetch(`wanted/missing/${id}`, credentials);
+  }
+
+  async getWantedCutoffById(
+    credentials: ConnectionCredentials,
+    id: number
+  ): Promise<any> {
+    return await this.servarrFetch(`wanted/cutoff/${id}`, credentials);
+  }
+
+  async getStatistics(credentials: ConnectionCredentials): Promise<any> {
+    return await this.servarrFetch("statistics", credentials);
+  }
+
+  async getExclusions(credentials: ConnectionCredentials): Promise<any[]> {
+    return await this.servarrFetch<any[]>("importlistexclusion", credentials);
+  }
+
+  async createExclusion(
+    credentials: ConnectionCredentials,
+    body: Record<string, unknown>
+  ): Promise<any> {
+    return await this.servarrFetch("importlistexclusion", credentials, {
+      method: "POST",
+      body: JSON.stringify(body),
+    });
+  }
+
+  async updateExclusion(
+    credentials: ConnectionCredentials,
+    id: number,
+    body: Record<string, unknown>
+  ): Promise<any> {
+    return await this.servarrFetch(`importlistexclusion/${id}`, credentials, {
+      method: "PUT",
+      body: JSON.stringify(body),
+    });
+  }
+
+  async deleteExclusion(
+    credentials: ConnectionCredentials,
+    id: number
+  ): Promise<void> {
+    await this.servarrFetch(`importlistexclusion/${id}`, credentials, {
+      method: "DELETE",
+    });
+  }
+
+  async bulkDeleteExclusions(
+    credentials: ConnectionCredentials,
+    ids: number[]
+  ): Promise<void> {
+    await this.servarrFetch("importlistexclusion/bulk", credentials, {
+      method: "DELETE",
+      body: JSON.stringify({ ids }),
+    });
+  }
+
+  async getMediaCover(
+    credentials: ConnectionCredentials,
+    seriesId: number,
+    filename: string
+  ): Promise<Response> {
+    return await this.servarrFetchRaw(
+      `mediacover/${seriesId}/${encodeURIComponent(filename)}`,
+      credentials
+    );
   }
 }
 

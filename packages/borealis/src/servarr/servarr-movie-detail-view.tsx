@@ -19,7 +19,34 @@ import {
   IconFolderOpen,
   IconBookmark,
   IconBookmarkOff,
+  IconExternalLink,
+  IconUsers,
+  IconFiles,
+  IconTags,
+  IconHistory,
+  IconEdit,
+  IconDeviceTv,
 } from "@tabler/icons-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@workspace/ui/components/tabs"
+import {
+  Dialog,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@workspace/ui/components/dialog"
+import { Input } from "@workspace/ui/components/input"
+import { Label } from "@workspace/ui/components/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectList,
+  SelectTrigger,
+  SelectValue,
+} from "@workspace/ui/components/select"
+import { Switch } from "@workspace/ui/components/switch"
+import { servarrRequest } from "./servarr-client"
+import { useServarrRealtime } from "./use-servarr-realtime"
 import { elysia } from "@/lib/elysia"
 import { dedupGet, invalidateDedup } from "@/lib/request-dedup"
 import { toast } from "sonner"
@@ -27,9 +54,7 @@ import { cn } from "@workspace/ui/lib/utils"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { ServarrInteractiveSearchDialog } from "./servarr-interactive-search-dialog"
-import { ServarrRenameDialog } from "./servarr-rename-dialog"
 import { ServarrFileManagerDialog } from "./servarr-file-manager-dialog"
-import { ServarrManualImportDialog } from "./servarr-manual-import-dialog"
 import { ServarrDeleteMediaDialog } from "./servarr-delete-dialog"
 
 export interface ServarrMovieDetailViewProps {
@@ -75,6 +100,27 @@ export function ServarrMovieDetailView({
   const [isFileManagerOpen, setIsFileManagerOpen] = useState(false)
   const [isManualImportOpen, setIsManualImportOpen] = useState(false)
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
+  const [isEditOpen, setIsEditOpen] = useState(false)
+
+  // Extended Radarr Metadata
+  const [borealisHref, setBorealisHref] = useState<string | null>(null)
+  const [credits, setCredits] = useState<any[]>([])
+  const [extraFiles, setExtraFiles] = useState<any[]>([])
+  const [altTitles, setAltTitles] = useState<any[]>([])
+  const [movieHistory, setMovieHistory] = useState<any[]>([])
+  const [qualityProfiles, setQualityProfiles] = useState<{ id: number; name: string }[]>([])
+  const [editForm, setEditForm] = useState<{
+    monitored: boolean
+    qualityProfileId: number
+    minimumAvailability: string
+    path: string
+  }>({
+    monitored: true,
+    qualityProfileId: 1,
+    minimumAvailability: "released",
+    path: "",
+  })
+  const [isSavingEdit, setIsSavingEdit] = useState(false)
 
   const inFlightRef = React.useRef(false)
   const lastFetchedIdRef = React.useRef<number | null>(null)
@@ -85,11 +131,11 @@ export function ServarrMovieDetailView({
       inFlightRef.current = true
       setIsLoading(true)
       try {
-        const res = await dedupGet(
+        const res = (await dedupGet(
           `servarr:radarr:movie:${movieId}`,
           () => elysia.servarr.radarr.movies({ id: movieId }).get(),
           { force, ttlMs: 3000 }
-        )
+        )) as any
         if (res?.data?.success && res.data.movie) {
           setMovieData(res.data.movie)
           setFiles(res.data.files || [])
@@ -108,11 +154,93 @@ export function ServarrMovieDetailView({
     [movieId]
   )
 
+  const fetchExtended = React.useCallback(
+    async (movie: any) => {
+      if (!movie) return
+      setEditForm({
+        monitored: Boolean(movie.monitored),
+        qualityProfileId: Number(movie.qualityProfileId || 1),
+        minimumAvailability: movie.minimumAvailability || "released",
+        path: movie.path || "",
+      })
+      const params = new URLSearchParams()
+      if (movie.tmdbId) params.set("tmdbId", String(movie.tmdbId))
+      if (movie.imdbId) params.set("imdbId", String(movie.imdbId))
+      if (movie.title) params.set("title", String(movie.title))
+
+      const [linkRes, credRes, extraRes, altRes, histRes, qpRes] =
+        await Promise.all([
+          servarrRequest<{ href: string | null }>(
+            "radarr",
+            `/borealis-link?${params.toString()}`
+          ),
+          servarrRequest<any[]>("radarr", `/credits?movieId=${movieId}`),
+          servarrRequest<any[]>("radarr", `/extrafiles?movieId=${movieId}`),
+          servarrRequest<any[]>("radarr", `/alttitles?movieId=${movieId}`),
+          servarrRequest<any[]>("radarr", `/history/movie/${movieId}`),
+          servarrRequest<{ id: number; name: string }[]>(
+            "radarr",
+            "/rules/qualityprofile"
+          ),
+        ])
+
+      if (linkRes.ok && linkRes.data?.href) setBorealisHref(linkRes.data.href)
+      if (credRes.ok && Array.isArray(credRes.data)) setCredits(credRes.data)
+      if (extraRes.ok && Array.isArray(extraRes.data)) setExtraFiles(extraRes.data)
+      if (altRes.ok && Array.isArray(altRes.data)) setAltTitles(altRes.data)
+      if (histRes.ok && Array.isArray(histRes.data)) setMovieHistory(histRes.data)
+      if (qpRes.ok && Array.isArray(qpRes.data)) setQualityProfiles(qpRes.data)
+    },
+    [movieId]
+  )
+
   useEffect(() => {
     if (lastFetchedIdRef.current === movieId) return
     lastFetchedIdRef.current = movieId
     fetchMovie()
   }, [movieId, fetchMovie])
+
+  useEffect(() => {
+    if (movieData?.id) {
+      void fetchExtended(movieData)
+    }
+  }, [movieData?.id, fetchExtended])
+
+  useServarrRealtime({
+    app: "radarr",
+    topics: ["movie", "moviefile", "command", "queue"],
+    onSync: () => {
+      invalidateDedup(`servarr:radarr:movie:${movieId}`)
+      void fetchMovie(true)
+    },
+    fallbackPollMs: 45_000,
+  })
+
+  const handleSaveEdit = async () => {
+    if (!movieData) return
+    setIsSavingEdit(true)
+    try {
+      const res = await elysia.servarr.radarr.movies({ id: movieId }).put({
+        ...movieData,
+        monitored: editForm.monitored,
+        qualityProfileId: editForm.qualityProfileId,
+        minimumAvailability: editForm.minimumAvailability,
+        path: editForm.path,
+      })
+      if (res?.data?.success) {
+        toast.success("Movie settings saved")
+        setIsEditOpen(false)
+        invalidateDedup(`servarr:radarr:movie:${movieId}`)
+        await fetchMovie(true)
+      } else {
+        toast.error(res?.data?.message || "Failed to update movie")
+      }
+    } catch (err: any) {
+      toast.error(err?.message || "Failed to update movie")
+    } finally {
+      setIsSavingEdit(false)
+    }
+  }
 
   const handleToggleMovieMonitoring = async () => {
     if (!movieData) return
@@ -171,7 +299,7 @@ export function ServarrMovieDetailView({
         <p className="mt-1 text-xs text-muted-foreground">
           The requested movie could not be loaded from Radarr.
         </p>
-        <Link href="/borealis/servarr/radarr">
+        <Link href="/borealis/servarr/radarr/movies">
           <Button variant="outline" size="sm" className="mt-4 gap-2 rounded-xl">
             <IconArrowLeft className="size-4" /> Return to Movies List
           </Button>
@@ -226,7 +354,7 @@ export function ServarrMovieDetailView({
           {/* Floating Back Navigation Pill */}
           <div className="absolute start-3 top-3 z-20 sm:start-6 sm:top-4">
             <Link
-              href="/borealis/servarr/radarr"
+              href="/borealis/servarr/radarr/movies"
               className="inline-flex items-center gap-1.5 rounded-full border border-border/40 bg-background/80 px-3 py-1.5 text-xs font-semibold text-foreground shadow-xs backdrop-blur-md transition-colors hover:bg-background hover:text-primary"
             >
               <IconArrowLeft className="size-3.5" />
@@ -397,16 +525,6 @@ export function ServarrMovieDetailView({
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setIsRenameOpen(true)}
-                    className="h-8 gap-1.5 rounded-xl text-xs font-medium"
-                  >
-                    <IconFilePencil className="size-3.5" />
-                    <span>Rename Files</span>
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    size="sm"
                     onClick={() => setIsFileManagerOpen(true)}
                     className="h-8 gap-1.5 rounded-xl text-xs font-medium"
                   >
@@ -414,15 +532,15 @@ export function ServarrMovieDetailView({
                     <span>Manage Files</span>
                   </Button>
 
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setIsManualImportOpen(true)}
-                    className="h-8 gap-1.5 rounded-xl text-xs font-medium"
-                  >
-                    <IconFileCheck className="size-3.5" />
-                    <span>Manual Import</span>
-                  </Button>
+                  {borealisHref && (
+                    <Link
+                      href={borealisHref}
+                      className="inline-flex h-8 items-center gap-1.5 rounded-xl border border-input bg-background px-3 text-xs font-medium text-primary shadow-xs transition-colors hover:bg-accent"
+                    >
+                      <IconDeviceTv className="size-3.5" />
+                      <span>Open in Borealis</span>
+                    </Link>
+                  )}
 
                   <Button
                     variant="ghost"
@@ -542,7 +660,230 @@ export function ServarrMovieDetailView({
             </div>
           </div>
         )}
+
+        {/* Extended Radarr Metadata Tabs */}
+        <Tabs defaultSelectedKey="credits" className="w-full">
+          <TabsList className="h-9 rounded-xl">
+            <TabsTrigger id="credits" className="gap-1.5 text-xs">
+              <IconUsers className="size-3.5" />
+              <span>Credits ({credits.length})</span>
+            </TabsTrigger>
+            <TabsTrigger id="extrafiles" className="gap-1.5 text-xs">
+              <IconFiles className="size-3.5" />
+              <span>Extra Files ({extraFiles.length})</span>
+            </TabsTrigger>
+            <TabsTrigger id="alttitles" className="gap-1.5 text-xs">
+              <IconTags className="size-3.5" />
+              <span>Alt Titles ({altTitles.length})</span>
+            </TabsTrigger>
+            <TabsTrigger id="history" className="gap-1.5 text-xs">
+              <IconHistory className="size-3.5" />
+              <span>History ({movieHistory.length})</span>
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent id="credits" className="mt-4">
+            {credits.length === 0 ? (
+              <p className="rounded-2xl border border-border/40 bg-card p-6 text-center text-xs text-muted-foreground">
+                No credits metadata available.
+              </p>
+            ) : (
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {credits.slice(0, 24).map((c, idx) => (
+                  <div
+                    key={c.id ?? `${c.personName}-${idx}`}
+                    className="flex items-center justify-between rounded-2xl border border-border/40 bg-card p-3 text-xs"
+                  >
+                    <div className="min-w-0">
+                      <p className="truncate font-semibold text-foreground">
+                        {c.personName}
+                      </p>
+                      <p className="truncate text-[11px] text-muted-foreground">
+                        {c.character || c.job || c.type}
+                      </p>
+                    </div>
+                    <Badge variant="outline" className="ms-2 shrink-0 text-[10px]">
+                      {c.type || "cast"}
+                    </Badge>
+                  </div>
+                ))}
+              </div>
+            )}
+          </TabsContent>
+
+          <TabsContent id="extrafiles" className="mt-4">
+            {extraFiles.length === 0 ? (
+              <p className="rounded-2xl border border-border/40 bg-card p-6 text-center text-xs text-muted-foreground">
+                No extra files (subtitles, metadata, other) indexed.
+              </p>
+            ) : (
+              <div className="space-y-2 rounded-2xl border border-border/40 bg-card p-4">
+                {extraFiles.map((ef) => (
+                  <div
+                    key={ef.id ?? ef.relativePath}
+                    className="flex items-center justify-between border-b border-border/30 pb-2 text-xs last:border-0 last:pb-0"
+                  >
+                    <span className="truncate font-mono text-foreground">
+                      {ef.relativePath}
+                    </span>
+                    <Badge variant="outline" className="ms-2 shrink-0 text-[10px]">
+                      {ef.type || ef.extension}
+                    </Badge>
+                  </div>
+                ))}
+              </div>
+            )}
+          </TabsContent>
+
+          <TabsContent id="alttitles" className="mt-4">
+            {altTitles.length === 0 ? (
+              <p className="rounded-2xl border border-border/40 bg-card p-6 text-center text-xs text-muted-foreground">
+                No alternative titles recorded.
+              </p>
+            ) : (
+              <div className="flex flex-wrap gap-2 rounded-2xl border border-border/40 bg-card p-4">
+                {altTitles.map((at) => (
+                  <Badge key={at.id ?? at.title} variant="secondary" className="text-xs">
+                    {at.title}
+                    {at.language?.name ? ` (${at.language.name})` : ""}
+                  </Badge>
+                ))}
+              </div>
+            )}
+          </TabsContent>
+
+          <TabsContent id="history" className="mt-4">
+            {movieHistory.length === 0 ? (
+              <p className="rounded-2xl border border-border/40 bg-card p-6 text-center text-xs text-muted-foreground">
+                No history events recorded for this movie.
+              </p>
+            ) : (
+              <div className="overflow-x-auto rounded-2xl border border-border/40 bg-card">
+                <table className="w-full text-start text-xs">
+                  <thead>
+                    <tr className="border-b border-border/40 bg-muted/40 text-muted-foreground">
+                      <th className="p-3 text-start">Event</th>
+                      <th className="p-3 text-start">Source Title</th>
+                      <th className="p-3 text-start">Quality</th>
+                      <th className="p-3 text-start">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border/30">
+                    {movieHistory.map((h) => (
+                      <tr key={h.id}>
+                        <td className="p-3 font-medium text-foreground">
+                          {h.eventType}
+                        </td>
+                        <td className="max-w-xs truncate p-3 font-mono text-muted-foreground">
+                          {h.sourceTitle}
+                        </td>
+                        <td className="p-3">{h.quality?.quality?.name || "—"}</td>
+                        <td className="p-3 text-muted-foreground">
+                          {formatDate(h.date)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
       </main>
+
+      {/* Edit Movie Dialog */}
+      <Dialog
+        isOpen={isEditOpen}
+        onOpenChange={(o) => !o && setIsEditOpen(false)}
+        className="p-6 sm:max-w-md"
+      >
+        <DialogHeader>
+          <DialogTitle>Edit Movie — {movieData.title}</DialogTitle>
+        </DialogHeader>
+        <div className="space-y-4 py-2">
+          <div className="flex items-center justify-between">
+            <Label className="text-xs">Monitored</Label>
+            <Switch
+              isSelected={editForm.monitored}
+              onChange={(v) =>
+                setEditForm((prev) => ({ ...prev, monitored: v }))
+              }
+            />
+          </div>
+
+          {qualityProfiles.length > 0 && (
+            <div className="space-y-1.5">
+              <Label className="text-xs">Quality Profile</Label>
+              <Select
+                selectedKey={String(editForm.qualityProfileId)}
+                onSelectionChange={(v) =>
+                  setEditForm((prev) => ({
+                    ...prev,
+                    qualityProfileId: Number(v),
+                  }))
+                }
+              >
+                <SelectTrigger className="h-9 text-xs">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectList>
+                    {qualityProfiles.map((qp) => (
+                      <SelectItem key={qp.id} id={String(qp.id)}>
+                        {qp.name}
+                      </SelectItem>
+                    ))}
+                  </SelectList>
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+
+          <div className="space-y-1.5">
+            <Label className="text-xs">Minimum Availability</Label>
+            <Select
+              selectedKey={editForm.minimumAvailability}
+              onSelectionChange={(v) =>
+                setEditForm((prev) => ({ ...prev, minimumAvailability: String(v) }))
+              }
+            >
+              <SelectTrigger className="h-9 text-xs">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectList>
+                  <SelectItem id="announced">Announced</SelectItem>
+                  <SelectItem id="inCinemas">In Cinemas</SelectItem>
+                  <SelectItem id="released">Released</SelectItem>
+                </SelectList>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label className="text-xs">Path</Label>
+            <Input
+              value={editForm.path}
+              onChange={(e) =>
+                setEditForm((prev) => ({ ...prev, path: e.target.value }))
+              }
+              className="h-9 font-mono text-xs"
+            />
+          </div>
+        </div>
+        <DialogFooter>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsEditOpen(false)}
+          >
+            Cancel
+          </Button>
+          <Button size="sm" disabled={isSavingEdit} onClick={handleSaveEdit}>
+            {isSavingEdit ? "Saving..." : "Save"}
+          </Button>
+        </DialogFooter>
+      </Dialog>
 
       {/* Sub-modals */}
       <ServarrDeleteMediaDialog
@@ -553,7 +894,7 @@ export function ServarrMovieDetailView({
         mediaTitle={movieData.title}
         path={movieData.path}
         fileCount={files.length}
-        onDeleted={() => router.push("/borealis/servarr/radarr")}
+        onDeleted={() => router.push("/borealis/servarr/radarr/movies")}
       />
 
       <ServarrInteractiveSearchDialog
@@ -564,15 +905,6 @@ export function ServarrMovieDetailView({
         mediaTitle={movieData.title}
       />
 
-      <ServarrRenameDialog
-        isOpen={isRenameOpen}
-        onClose={() => setIsRenameOpen(false)}
-        provider="RADARR"
-        mediaId={movieId}
-        mediaTitle={movieData.title}
-        onRenamed={() => fetchMovie(true)}
-      />
-
       <ServarrFileManagerDialog
         isOpen={isFileManagerOpen}
         onClose={() => setIsFileManagerOpen(false)}
@@ -580,15 +912,6 @@ export function ServarrMovieDetailView({
         mediaId={movieId}
         mediaTitle={movieData.title}
         onFilesChanged={() => fetchMovie(true)}
-      />
-
-      <ServarrManualImportDialog
-        isOpen={isManualImportOpen}
-        onClose={() => setIsManualImportOpen(false)}
-        provider="RADARR"
-        mediaId={movieId}
-        mediaTitle={movieData.title}
-        onImported={() => fetchMovie(true)}
       />
     </div>
   )

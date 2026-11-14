@@ -19,13 +19,15 @@ import {
   IconLink,
   IconClock,
   IconBrandSpeedtest,
+  IconDownload,
 } from "@tabler/icons-react"
+import { servarrRequest, type ServarrApp } from "./servarr-client"
+import { useServarrRealtime } from "./use-servarr-realtime"
 import { elysia } from "@/lib/elysia"
 import { dedupGet, invalidateDedup } from "@/lib/request-dedup"
 import { toast } from "sonner"
 import { cn } from "@workspace/ui/lib/utils"
 import Link from "next/link"
-import { ServarrManualImportDialog } from "./servarr-manual-import-dialog"
 
 export interface ServarrQueueViewProps {
   provider: "SONARR" | "RADARR" | "ALL"
@@ -57,6 +59,7 @@ export function ServarrQueueView({ provider }: ServarrQueueViewProps) {
   const [autoRefresh, setAutoRefresh] = useState<number>(5) // 5s interval default
   const [isManualImportOpen, setIsManualImportOpen] = useState(false)
   const [removingId, setRemovingId] = useState<number | null>(null)
+  const [grabbingId, setGrabbingId] = useState<number | null>(null)
 
   const inFlightRef = React.useRef(false)
   const lastLoadedKeyRef = React.useRef<string | null>(null)
@@ -124,6 +127,35 @@ export function ServarrQueueView({ provider }: ServarrQueueViewProps) {
     lastLoadedKeyRef.current = provider
     loadQueue()
   }, [authStatus, provider, loadQueue])
+
+  useServarrRealtime({
+    app: provider === "RADARR" ? "radarr" : "sonarr",
+    topics: ["queue", "command"],
+    onSync: () => {
+      invalidateDedup(`servarr:${provider}:queue`)
+      void loadQueue(true, true)
+    },
+    enabled: provider !== "ALL",
+    fallbackPollMs: 15_000,
+  })
+
+  const handleGrabQueueItem = async (item: any) => {
+    const itemApp: ServarrApp = item._provider === "RADARR" ? "radarr" : "sonarr"
+    setGrabbingId(item.id)
+    try {
+      const res = await servarrRequest(itemApp, `/queue/grab/${item.id}`, {
+        method: "POST",
+      })
+      if (!res.ok) throw new Error(res.error || "Failed to grab release")
+      toast.success("Grab triggered for queued release")
+      invalidateDedup(`servarr:${provider}:queue`)
+      await loadQueue(true, true)
+    } catch (err: any) {
+      toast.error(err?.message || "Failed to grab queued release")
+    } finally {
+      setGrabbingId(null)
+    }
+  }
 
   // Auto-refresh timer
   useEffect(() => {
@@ -226,16 +258,6 @@ export function ServarrQueueView({ provider }: ServarrQueueViewProps) {
               <IconRefresh className="size-3.5 text-primary" />
             )}
             <span>Refresh Queue</span>
-          </Button>
-
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setIsManualImportOpen(true)}
-            className="h-8 gap-1.5 rounded-xl text-xs font-medium"
-          >
-            <IconFileImport className="size-3.5 text-amber-500" />
-            <span>Manual Import</span>
           </Button>
         </div>
 
@@ -416,20 +438,36 @@ export function ServarrQueueView({ provider }: ServarrQueueViewProps) {
                     </td>
 
                     <td className="p-3.5 text-end">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        disabled={isRemoving}
-                        onClick={() => handleRemoveQueueItem(item)}
-                        className="h-7 rounded-xl px-2 text-xs text-destructive hover:bg-destructive/10"
-                        aria-label="Cancel and remove from queue"
-                      >
-                        {isRemoving ? (
-                          <Spinner className="size-3" />
-                        ) : (
-                          <IconTrash className="size-3.5" />
-                        )}
-                      </Button>
+                      <div className="flex items-center justify-end gap-1">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          disabled={grabbingId === item.id}
+                          onClick={() => handleGrabQueueItem(item)}
+                          className="h-7 rounded-xl px-2 text-xs text-emerald-500 hover:bg-emerald-500/10"
+                          aria-label="Grab / Force Download"
+                        >
+                          {grabbingId === item.id ? (
+                            <Spinner className="size-3" />
+                          ) : (
+                            <IconDownload className="size-3.5" />
+                          )}
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          disabled={isRemoving}
+                          onClick={() => handleRemoveQueueItem(item)}
+                          className="h-7 rounded-xl px-2 text-xs text-destructive hover:bg-destructive/10"
+                          aria-label="Cancel and remove from queue"
+                        >
+                          {isRemoving ? (
+                            <Spinner className="size-3" />
+                          ) : (
+                            <IconTrash className="size-3.5" />
+                          )}
+                        </Button>
+                      </div>
                     </td>
                   </tr>
                 )
@@ -438,14 +476,6 @@ export function ServarrQueueView({ provider }: ServarrQueueViewProps) {
           </table>
         </div>
       )}
-
-      {/* Manual Import Dialog */}
-      <ServarrManualImportDialog
-        isOpen={isManualImportOpen}
-        onClose={() => setIsManualImportOpen(false)}
-        provider={provider === "ALL" ? "SONARR" : provider}
-        onImportComplete={() => loadQueue(true)}
-      />
     </div>
   )
 }

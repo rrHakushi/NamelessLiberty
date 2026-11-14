@@ -25,7 +25,27 @@ import {
   IconX,
   IconFilter,
   IconLayoutGrid,
+  IconEdit,
+  IconExternalLink,
 } from "@tabler/icons-react"
+import {
+  Dialog,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@workspace/ui/components/dialog"
+import { Label } from "@workspace/ui/components/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectList,
+  SelectTrigger,
+  SelectValue,
+} from "@workspace/ui/components/select"
+import { Switch } from "@workspace/ui/components/switch"
+import { servarrRequest } from "./servarr-client"
+import { useServarrRealtime } from "./use-servarr-realtime"
 import { elysia } from "@/lib/elysia"
 import { dedupGet, invalidateDedup } from "@/lib/request-dedup"
 import { toast } from "sonner"
@@ -33,9 +53,7 @@ import { cn } from "@workspace/ui/lib/utils"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { ServarrInteractiveSearchDialog } from "./servarr-interactive-search-dialog"
-import { ServarrRenameDialog } from "./servarr-rename-dialog"
 import { ServarrFileManagerDialog } from "./servarr-file-manager-dialog"
-import { ServarrManualImportDialog } from "./servarr-manual-import-dialog"
 import { ServarrDeleteMediaDialog } from "./servarr-delete-dialog"
 
 export interface ServarrSeriesDetailViewProps {
@@ -98,6 +116,25 @@ export function ServarrSeriesDetailView({
   const [isFileManagerOpen, setIsFileManagerOpen] = useState(false)
   const [isManualImportOpen, setIsManualImportOpen] = useState(false)
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
+  const [isEditOpen, setIsEditOpen] = useState(false)
+  const [borealisHref, setBorealisHref] = useState<string | null>(null)
+  const [qualityProfiles, setQualityProfiles] = useState<{ id: number; name: string }[]>([])
+  const [editForm, setEditForm] = useState<{
+    monitored: boolean
+    qualityProfileId: number
+    seriesType: string
+    seasonFolder: boolean
+    monitorNewItems: string
+    path: string
+  }>({
+    monitored: true,
+    qualityProfileId: 1,
+    seriesType: "standard",
+    seasonFolder: true,
+    monitorNewItems: "all",
+    path: "",
+  })
+  const [isSavingEdit, setIsSavingEdit] = useState(false)
 
   const inFlightRef = useRef(false)
   const lastFetchedIdRef = useRef<number | null>(null)
@@ -108,11 +145,11 @@ export function ServarrSeriesDetailView({
       inFlightRef.current = true
       setIsLoading(true)
       try {
-        const res = await dedupGet(
+        const res = (await dedupGet(
           `servarr:sonarr:series:${seriesId}`,
           () => elysia.servarr.sonarr.series({ id: seriesId }).get(),
           { force, ttlMs: 3000 }
-        )
+        )) as any
         if (res?.data?.success && res.data.series) {
           setSeriesData(res.data.series)
           setEpisodes(res.data.episodes || [])
@@ -155,6 +192,74 @@ export function ServarrSeriesDetailView({
     lastFetchedIdRef.current = seriesId
     fetchSeries()
   }, [seriesId, fetchSeries])
+
+  useEffect(() => {
+    if (!seriesData?.id) return
+    setEditForm({
+      monitored: Boolean(seriesData.monitored),
+      qualityProfileId: Number(seriesData.qualityProfileId || 1),
+      seriesType: seriesData.seriesType || "standard",
+      seasonFolder: Boolean(seriesData.seasonFolder ?? true),
+      monitorNewItems: seriesData.monitorNewItems || "all",
+      path: seriesData.path || "",
+    })
+    const params = new URLSearchParams()
+    if (seriesData.tvdbId) params.set("tvdbId", String(seriesData.tvdbId))
+    if (seriesData.imdbId) params.set("imdbId", String(seriesData.imdbId))
+    if (seriesData.title) params.set("title", String(seriesData.title))
+
+    void Promise.all([
+      servarrRequest<{ href: string | null }>(
+        "sonarr",
+        `/borealis-link?${params.toString()}`
+      ),
+      servarrRequest<{ id: number; name: string }[]>(
+        "sonarr",
+        "/rules/qualityprofile"
+      ),
+    ]).then(([linkRes, qpRes]) => {
+      if (linkRes.ok && linkRes.data?.href) setBorealisHref(linkRes.data.href)
+      if (qpRes.ok && Array.isArray(qpRes.data)) setQualityProfiles(qpRes.data)
+    })
+  }, [seriesData?.id])
+
+  useServarrRealtime({
+    app: "sonarr",
+    topics: ["series", "episode", "episodefile", "command", "queue"],
+    onSync: () => {
+      invalidateDedup(`servarr:sonarr:series:${seriesId}`)
+      void fetchSeries(true)
+    },
+    fallbackPollMs: 45_000,
+  })
+
+  const handleSaveEdit = async () => {
+    if (!seriesData) return
+    setIsSavingEdit(true)
+    try {
+      const res = await elysia.servarr.sonarr.series({ id: seriesId }).put({
+        ...seriesData,
+        monitored: editForm.monitored,
+        qualityProfileId: editForm.qualityProfileId,
+        seriesType: editForm.seriesType,
+        seasonFolder: editForm.seasonFolder,
+        monitorNewItems: editForm.monitorNewItems,
+        path: editForm.path,
+      })
+      if (res?.data?.success) {
+        toast.success("Series settings saved")
+        setIsEditOpen(false)
+        invalidateDedup(`servarr:sonarr:series:${seriesId}`)
+        await fetchSeries(true)
+      } else {
+        toast.error(res?.data?.message || "Failed to update series")
+      }
+    } catch (err: any) {
+      toast.error(err?.message || "Failed to update series")
+    } finally {
+      setIsSavingEdit(false)
+    }
+  }
 
   // Handle click outside for Season Picker Popover
   useEffect(() => {
@@ -400,7 +505,7 @@ export function ServarrSeriesDetailView({
         <p className="mt-1 text-xs text-muted-foreground">
           The requested series could not be loaded from Sonarr.
         </p>
-        <Link href="/borealis/servarr/sonarr">
+        <Link href="/borealis/servarr/sonarr/series">
           <Button variant="outline" size="sm" className="mt-4 gap-2 rounded-xl">
             <IconArrowLeft className="size-4" /> Return to Series List
           </Button>
@@ -460,7 +565,7 @@ export function ServarrSeriesDetailView({
           {/* Floating Back Navigation Pill */}
           <div className="absolute start-3 top-3 z-20 sm:start-6 sm:top-4">
             <Link
-              href="/borealis/servarr/sonarr"
+              href="/borealis/servarr/sonarr/series"
               className="group inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-background/80 px-3 py-1 text-xs font-semibold text-foreground shadow-xs backdrop-blur-md transition-colors hover:border-border hover:bg-background"
             >
               <IconArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
@@ -622,16 +727,6 @@ export function ServarrSeriesDetailView({
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setIsRenameOpen(true)}
-                    className="h-8 gap-1.5 rounded-xl text-xs font-medium"
-                  >
-                    <IconFilePencil className="size-3.5 text-amber-500" />
-                    <span>Rename Files</span>
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    size="sm"
                     onClick={() => setIsFileManagerOpen(true)}
                     className="h-8 gap-1.5 rounded-xl text-xs font-medium"
                   >
@@ -639,15 +734,15 @@ export function ServarrSeriesDetailView({
                     <span>Manage Files</span>
                   </Button>
 
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setIsManualImportOpen(true)}
-                    className="h-8 gap-1.5 rounded-xl text-xs font-medium"
-                  >
-                    <IconFileCheck className="size-3.5 text-emerald-500" />
-                    <span>Manual Import</span>
-                  </Button>
+                  {borealisHref && (
+                    <Link
+                      href={borealisHref}
+                      className="inline-flex h-8 items-center gap-1.5 rounded-xl border border-input bg-background px-3 text-xs font-medium text-primary shadow-xs transition-colors hover:bg-accent"
+                    >
+                      <IconDeviceTv className="size-3.5" />
+                      <span>Open in Borealis</span>
+                    </Link>
+                  )}
                 </div>
 
                 <Button
@@ -1408,16 +1503,6 @@ export function ServarrSeriesDetailView({
         />
       )}
 
-      <ServarrRenameDialog
-        isOpen={isRenameOpen}
-        onClose={() => setIsRenameOpen(false)}
-        provider="SONARR"
-        mediaId={seriesId}
-        mediaTitle={seriesData.title}
-        seasonNumber={activeSeason || undefined}
-        onRenamed={() => fetchSeries(true)}
-      />
-
       <ServarrFileManagerDialog
         isOpen={isFileManagerOpen}
         onClose={() => setIsFileManagerOpen(false)}
@@ -1425,15 +1510,6 @@ export function ServarrSeriesDetailView({
         mediaId={seriesId}
         mediaTitle={seriesData.title}
         onFilesChanged={() => fetchSeries(true)}
-      />
-
-      <ServarrManualImportDialog
-        isOpen={isManualImportOpen}
-        onClose={() => setIsManualImportOpen(false)}
-        provider="SONARR"
-        mediaId={seriesId}
-        mediaTitle={seriesData.title}
-        onImported={() => fetchSeries(true)}
       />
 
       <ServarrDeleteMediaDialog
@@ -1444,8 +1520,132 @@ export function ServarrSeriesDetailView({
         mediaTitle={seriesData.title}
         path={seriesData.path}
         fileCount={files.length}
-        onDeleted={() => router.push("/borealis/servarr/sonarr")}
+        onDeleted={() => router.push("/borealis/servarr/sonarr/series")}
       />
+
+      {/* Edit Series Dialog (Sonarr v5 fields) */}
+      <Dialog
+        isOpen={isEditOpen}
+        onOpenChange={(o) => !o && setIsEditOpen(false)}
+        className="p-6 sm:max-w-md"
+      >
+        <DialogHeader>
+          <DialogTitle>Edit Series — {seriesData.title}</DialogTitle>
+        </DialogHeader>
+        <div className="space-y-4 py-2">
+          <div className="flex items-center justify-between">
+            <Label className="text-xs">Monitored</Label>
+            <Switch
+              isSelected={editForm.monitored}
+              onChange={(v) =>
+                setEditForm((prev) => ({ ...prev, monitored: v }))
+              }
+            />
+          </div>
+
+          <div className="flex items-center justify-between">
+            <Label className="text-xs">Use Season Folder</Label>
+            <Switch
+              isSelected={editForm.seasonFolder}
+              onChange={(v) =>
+                setEditForm((prev) => ({ ...prev, seasonFolder: v }))
+              }
+            />
+          </div>
+
+          {qualityProfiles.length > 0 && (
+            <div className="space-y-1.5">
+              <Label className="text-xs">Quality Profile</Label>
+              <Select
+                selectedKey={String(editForm.qualityProfileId)}
+                onSelectionChange={(v) =>
+                  setEditForm((prev) => ({
+                    ...prev,
+                    qualityProfileId: Number(v),
+                  }))
+                }
+              >
+                <SelectTrigger className="h-9 text-xs">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectList>
+                    {qualityProfiles.map((qp) => (
+                      <SelectItem key={qp.id} id={String(qp.id)}>
+                        {qp.name}
+                      </SelectItem>
+                    ))}
+                  </SelectList>
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+
+          <div className="space-y-1.5">
+            <Label className="text-xs">Series Type</Label>
+            <Select
+              selectedKey={editForm.seriesType}
+              onSelectionChange={(v) =>
+                setEditForm((prev) => ({ ...prev, seriesType: String(v) }))
+              }
+            >
+              <SelectTrigger className="h-9 text-xs">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectList>
+                  <SelectItem id="standard">Standard</SelectItem>
+                  <SelectItem id="daily">Daily</SelectItem>
+                  <SelectItem id="anime">Anime</SelectItem>
+                </SelectList>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label className="text-xs">Monitor New Seasons</Label>
+            <Select
+              selectedKey={editForm.monitorNewItems}
+              onSelectionChange={(v) =>
+                setEditForm((prev) => ({ ...prev, monitorNewItems: String(v) }))
+              }
+            >
+              <SelectTrigger className="h-9 text-xs">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectList>
+                  <SelectItem id="all">All</SelectItem>
+                  <SelectItem id="none">None</SelectItem>
+                </SelectList>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label className="text-xs">Path</Label>
+            <Input
+              value={editForm.path}
+              onChange={(e) =>
+                setEditForm((prev) => ({ ...prev, path: e.target.value }))
+              }
+              className="h-9 font-mono text-xs"
+            />
+          </div>
+        </div>
+        <DialogFooter>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsEditOpen(false)}
+          >
+            Cancel
+          </Button>
+          <Button size="sm" disabled={isSavingEdit} onClick={handleSaveEdit}>
+            {isSavingEdit ? "Saving..." : "Save"}
+          </Button>
+        </DialogFooter>
+      </Dialog>
     </div>
   )
 }

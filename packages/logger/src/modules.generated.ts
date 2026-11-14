@@ -35,6 +35,7 @@ export interface KnownModules {
   "NotificationService": true
   "ProdModule": true
   "Scoped": true
+  "Servarr:Realtime": true
   "SubModule": true
   "Worker:ConnectionSync": true
   "Worker:Email": true

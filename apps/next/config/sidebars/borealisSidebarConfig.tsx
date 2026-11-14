@@ -17,6 +17,12 @@ import {
   IconListDetails,
   IconListCheck,
   IconCloudDownload,
+  IconShieldLock,
+  IconCode,
+  IconSettings,
+  IconServer,
+  IconCompass,
+  IconFolders,
 } from "@tabler/icons-react"
 import type { Session } from "@/context/session-context"
 import { elysia } from "@/lib/elysia"
@@ -39,18 +45,13 @@ export function getBorealisSidebarConfig(
     servarrItems.push({
       label: t("sonarr") || "Sonarr",
       dataKey: "servarr-sonarr",
-      href: `/borealis/servarr/sonarr`,
+      href: `/borealis/servarr/sonarr/series`,
       icon: <IconDeviceTv className="size-4" />,
       children: [
         {
           label: t("series") || "Series",
-          href: `/borealis/servarr/sonarr`,
+          href: `/borealis/servarr/sonarr/series`,
           icon: <IconDeviceTv className="size-4" />,
-        },
-        {
-          label: t("manageSeries") || "Manage Series",
-          href: `/borealis/servarr/sonarr/manage`,
-          icon: <IconListCheck className="size-4" />,
         },
         {
           label: t("activityQueue") || "Activity Queue",
@@ -67,6 +68,16 @@ export function getBorealisSidebarConfig(
           href: `/borealis/servarr/sonarr/history`,
           icon: <IconListDetails className="size-4" />,
         },
+        {
+          label: t("blocklist") || "Blocklist",
+          href: `/borealis/servarr/sonarr/blocklist`,
+          icon: <IconShieldLock className="size-4" />,
+        },
+        {
+          label: t("system") || "System",
+          href: `/borealis/servarr/sonarr/system`,
+          icon: <IconServer className="size-4" />,
+        },
       ],
     })
   }
@@ -75,18 +86,13 @@ export function getBorealisSidebarConfig(
     servarrItems.push({
       label: t("radarr") || "Radarr",
       dataKey: "servarr-radarr",
-      href: `/borealis/servarr/radarr`,
+      href: `/borealis/servarr/radarr/movies`,
       icon: <IconMovie className="size-4" />,
       children: [
         {
           label: t("movies") || "Movies",
-          href: `/borealis/servarr/radarr`,
+          href: `/borealis/servarr/radarr/movies`,
           icon: <IconMovie className="size-4" />,
-        },
-        {
-          label: t("manageMovies") || "Manage Movies",
-          href: `/borealis/servarr/radarr/manage`,
-          icon: <IconListCheck className="size-4" />,
         },
         {
           label: t("activityQueue") || "Activity Queue",
@@ -102,6 +108,16 @@ export function getBorealisSidebarConfig(
           label: t("history") || "History",
           href: `/borealis/servarr/radarr/history`,
           icon: <IconListDetails className="size-4" />,
+        },
+        {
+          label: t("blocklist") || "Blocklist",
+          href: `/borealis/servarr/radarr/blocklist`,
+          icon: <IconShieldLock className="size-4" />,
+        },
+        {
+          label: t("system") || "System",
+          href: `/borealis/servarr/radarr/system`,
+          icon: <IconServer className="size-4" />,
         },
       ],
     })

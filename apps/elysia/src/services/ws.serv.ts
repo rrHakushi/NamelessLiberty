@@ -33,6 +33,7 @@ export class WsServ {
 
   // Mapping from connection -> Set of channels it subscribed to
   private connectionChannels = new Map<IrisWebSocket, Set<string>>()
+  private userDisconnectListeners = new Set<(userId: string) => void>()
 
   public static getInstance(): WsServ {
     if (!WsServ.instance) {
@@ -47,6 +48,18 @@ export class WsServ {
 
   public getUserId(ws: IrisWebSocket): string | undefined {
     return this.connectionUsers.get(ws)
+  }
+
+  public hasUserConnections(userId: string): boolean {
+    const sockets = this.userConnections.get(userId)
+    return Boolean(sockets && sockets.size > 0)
+  }
+
+  public onUserDisconnected(listener: (userId: string) => void): () => void {
+    this.userDisconnectListeners.add(listener)
+    return () => {
+      this.userDisconnectListeners.delete(listener)
+    }
   }
 
   /**
@@ -83,6 +96,11 @@ export class WsServ {
         sockets.delete(ws)
         if (sockets.size === 0) {
           this.userConnections.delete(userId)
+          for (const listener of this.userDisconnectListeners) {
+            try {
+              listener(userId)
+            } catch {}
+          }
         }
       }
       this.connectionUsers.delete(ws)

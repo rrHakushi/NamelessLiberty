@@ -1,19 +1,5 @@
-import type { Metadata } from "next"
-import React from "react"
-import { ServarrMediaView } from "@NamelessLiberty/borealis"
+import { redirect } from "next/navigation"
 
-export const metadata: Metadata = {
-  title: "Borealis | Servarr > Radarr > Movies",
-  description:
-    "Browse and manage added movies from your connected Radarr instance.",
-}
-
-export default function RadarrPage() {
-  return (
-    <ServarrMediaView
-      provider="RADARR"
-      pageTitle="Radarr"
-      subtitle="Connected movie library & monitoring"
-    />
-  )
+export default function RadarrRootRedirect() {
+  redirect("/borealis/servarr/radarr/movies")
 }

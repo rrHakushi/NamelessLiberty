@@ -11,6 +11,7 @@ import {
 import {
   getConnectionAdapter,
   decryptConnectionData,
+  ConnectionError,
   type ConnectionCredentials,
 } from '@NamelessLiberty/connections'
 import {
@@ -217,6 +218,88 @@ export function parseRadarrAnimeConfig(
         ? cfg.animeMovieFormats
         : (['MOVIE'] as AnimeFormat[]),
   }
+}
+
+export function findCoverUrl(
+  images: Array<{ coverType?: string; url?: string; remoteUrl?: string }> | undefined,
+  coverType: string
+): string | null {
+  if (!Array.isArray(images)) return null
+  const match = images.find(
+    (img) => img?.coverType?.toLowerCase() === coverType.toLowerCase()
+  )
+  return match?.url || match?.remoteUrl || null
+}
+
+/**
+ * Rewrites *arr `images[]` paths to authenticated Elysia proxy routes
+ * (`/elysia/servarr/:app/mediacover/:id/:filename`) so browsers never talk
+ * directly to the upstream *arr host.
+ */
+export function rewriteServarrImages<T extends { id?: number; images?: any[] }>(
+  item: T,
+  app: ServarrApp
+): T {
+  if (!item || !Array.isArray(item.images) || !item.id) return item
+  const images = item.images.map((img: any) => {
+    const rawUrl: string | undefined = img?.url
+    let proxiedUrl = rawUrl
+    if (rawUrl && typeof rawUrl === 'string') {
+      const cleanPath = rawUrl.split('?')[0] ?? ''
+      const filePart = cleanPath.split('/').pop()
+      if (filePart && /\.(jpg|jpeg|png|gif|webp)$/i.test(filePart)) {
+        proxiedUrl = `/elysia/servarr/${app}/mediacover/${item.id}/${encodeURIComponent(filePart)}`
+      }
+    } else if (img?.coverType) {
+      proxiedUrl = `/elysia/servarr/${app}/mediacover/${item.id}/${encodeURIComponent(`${img.coverType.toLowerCase()}.jpg`)}`
+    }
+    return {
+      ...img,
+      url: proxiedUrl ?? img?.remoteUrl ?? null,
+    }
+  })
+  return { ...item, images }
+}
+
+export function formatServarrError(err: unknown, fallback: string): string {
+  if (err instanceof ConnectionError) {
+    if (typeof err.rawError === 'string' && err.rawError.trim().startsWith('[')) {
+      try {
+        const parsed = JSON.parse(err.rawError) as Array<{
+          propertyName?: string
+          errorMessage?: string
+        }>
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed
+            .map((e) =>
+              e.propertyName ? `${e.propertyName}: ${e.errorMessage}` : e.errorMessage
+            )
+            .filter(Boolean)
+            .join('; ')
+        }
+      } catch {}
+    }
+    return err.message || fallback
+  }
+  return (err as Error)?.message || fallback
+}
+
+export function extractServarrValidationErrors(
+  err: unknown
+): Array<{ propertyName: string; errorMessage: string; severity?: string }> {
+  if (err instanceof ConnectionError && typeof err.rawError === 'string') {
+    try {
+      const parsed = JSON.parse(err.rawError)
+      if (Array.isArray(parsed)) {
+        return parsed.map((item: any) => ({
+          propertyName: String(item.propertyName || ''),
+          errorMessage: String(item.errorMessage || item.message || ''),
+          severity: item.severity ? String(item.severity) : undefined,
+        }))
+      }
+    } catch {}
+  }
+  return []
 }
 
 export class ServarrServ {
@@ -714,252 +797,156 @@ export class ServarrServ {
       }
     }
 
-    try {
-      if (app === 'radarr') {
-        const [rawMovies, rawProfiles] = await Promise.all([
-          ctx.adapter.getMovies(ctx.credentials).catch(() => null),
-          ctx.adapter.getQualityProfiles?.(ctx.credentials).catch(() => null),
-        ])
-
-        const profileMap = new Map<number, string>()
-        if (Array.isArray(rawProfiles)) {
-          rawProfiles.forEach((p: any) => {
-            if (p?.id && p?.name) profileMap.set(p.id, p.name)
-          })
-        }
-
-        if (Array.isArray(rawMovies)) {
-          const mapped = rawMovies.map((m: any) => {
-            const poster =
-              m.images?.find((img: any) => img.coverType === 'poster')
-                ?.remoteUrl ||
-              m.images?.find((img: any) => img.coverType === 'poster')?.url ||
-              null
-            const fanart =
-              m.images?.find((img: any) => img.coverType === 'fanart')
-                ?.remoteUrl ||
-              m.images?.find((img: any) => img.coverType === 'fanart')?.url ||
-              null
-
-            const qualityName =
-              (m.qualityProfileId
-                ? profileMap.get(m.qualityProfileId)
-                : null) ||
-              m.qualityProfile?.name ||
-              'Any'
-
-            return {
-              id: m.id || m.tmdbId || m.title,
-              title: m.title || 'Unknown Movie',
-              originalTitle: m.originalTitle || null,
-              year: m.year || null,
-              overview: m.overview || null,
-              monitored: Boolean(m.monitored),
-              hasFile: Boolean(m.hasFile),
-              qualityProfile: qualityName,
-              qualityProfileId: m.qualityProfileId || null,
-              sizeOnDisk: m.sizeOnDisk || m.statistics?.sizeOnDisk || null,
-              status: m.hasFile
-                ? 'Downloaded'
-                : m.monitored
-                  ? 'Wanted'
-                  : 'Unmonitored',
-              added: m.added || null,
-              posterUrl: poster,
-              fanartUrl: fanart,
-              tmdbId: m.tmdbId || null,
-              imdbId: m.imdbId || null,
-              path: m.path || null,
-              genres: m.genres || null,
-            }
-          })
-
-          return {
-            success: true,
-            connected: true,
-            provider: ctx.provider,
-            hostUrl: ctx.hostUrl,
-            items: mapped,
-            totalCount: mapped.length,
-          }
-        }
-      } else {
-        // Sonarr library
-        const [rawSeries, rawProfiles] = await Promise.all([
-          ctx.adapter.getSeries(ctx.credentials).catch(() => null),
-          ctx.adapter.getQualityProfiles?.(ctx.credentials).catch(() => null),
-        ])
-
-        const profileMap = new Map<number, string>()
-        if (Array.isArray(rawProfiles)) {
-          rawProfiles.forEach((p: any) => {
-            if (p?.id && p?.name) profileMap.set(p.id, p.name)
-          })
-        }
-
-        if (Array.isArray(rawSeries)) {
-          const mapped = rawSeries.map((s: any) => {
-            const poster =
-              s.images?.find((img: any) => img.coverType === 'poster')
-                ?.remoteUrl ||
-              s.images?.find((img: any) => img.coverType === 'poster')?.url ||
-              null
-            const fanart =
-              s.images?.find((img: any) => img.coverType === 'fanart')
-                ?.remoteUrl ||
-              s.images?.find((img: any) => img.coverType === 'fanart')?.url ||
-              null
-
-            const qualityName =
-              (s.qualityProfileId
-                ? profileMap.get(s.qualityProfileId)
-                : null) || 'Any'
-
-            const epCount =
-              s.statistics?.episodeCount ?? s.statistics?.totalEpisodeCount
-            const epFileCount = s.statistics?.episodeFileCount ?? 0
-            const hasAllFiles = epCount > 0 && epFileCount >= epCount
-
-            return {
-              id: s.id || s.tvdbId || s.title,
-              title: s.title || 'Unknown Series',
-              originalTitle: s.originalTitle || null,
-              year: s.year || null,
-              overview: s.overview || null,
-              monitored: Boolean(s.monitored),
-              hasFile: hasAllFiles,
-              qualityProfile: qualityName,
-              qualityProfileId: s.qualityProfileId || null,
-              sizeOnDisk: s.statistics?.sizeOnDisk || null,
-              status: hasAllFiles
-                ? 'Downloaded'
-                : s.monitored
-                  ? 'Wanted'
-                  : 'Unmonitored',
-              added: s.added || null,
-              posterUrl: poster,
-              fanartUrl: fanart,
-              tvdbId: s.tvdbId || null,
-              imdbId: s.imdbId || null,
-              path: s.path || null,
-              genres: s.genres || null,
-              episodeCount: epCount || null,
-              episodeFileCount: epFileCount || null,
-              seasonCount: s.statistics?.seasonCount || null,
-            }
-          })
-
-          return {
-            success: true,
-            connected: true,
-            provider: ctx.provider,
-            hostUrl: ctx.hostUrl,
-            items: mapped,
-            totalCount: mapped.length,
-          }
-        }
-      }
-    } catch (err) {
-      console.warn(`[Servarr] Live ${ctx.provider} fetch failed, falling back to local database:`, err)
-    }
-
-    // Fallback to local database lists
     if (app === 'radarr') {
-      const localList = await prisma.orm.public.MovieList.where((m) => m.userId.eq(userId))
-        .include('movie', (m) =>
-          m.select(
-            'id',
-            'titlePrimary',
-            'titleSecondary',
-            'releaseDateYear',
-            'description',
-            'coverImage',
-            'bannerImage',
-            'imdbId'
-          )
-        )
-        .orderBy((m) => m.createdAt.desc())
-        .limit(100)
-        .all()
+      try {
+        const [rawMovies, rawProfiles] = await Promise.all([
+          ctx.adapter.getMovies(ctx.credentials),
+          ctx.adapter.getQualityProfiles?.(ctx.credentials).catch(() => null),
+        ])
 
-      const fallbackItems = localList.map((entry: any) => ({
-        id: entry.movie.id,
-        title: entry.movie.titlePrimary,
-        originalTitle: entry.movie.titleSecondary || null,
-        year: entry.movie.releaseDateYear || null,
-        overview: entry.movie.description || null,
-        monitored: true,
-        hasFile: entry.status === 'COMPLETED',
-        qualityProfile: 'Any',
-        qualityProfileId: 1,
-        sizeOnDisk: null,
-        status: entry.status === 'COMPLETED' ? 'Downloaded' : 'Wanted',
-        added: toDate(entry.createdAt).toISOString(),
-        posterUrl: entry.movie.coverImage || null,
-        fanartUrl: entry.movie.bannerImage || null,
-        tmdbId: entry.movie.id,
-        imdbId: entry.movie.imdbId || null,
-        path: null,
-        genres: entry.movie.genres || null,
-      }))
+        const profileMap = new Map<number, string>()
+        if (Array.isArray(rawProfiles)) {
+          rawProfiles.forEach((p: any) => {
+            if (p?.id && p?.name) profileMap.set(p.id, p.name)
+          })
+        }
 
-      return {
-        success: true,
-        connected: true,
-        provider: ctx.provider,
-        hostUrl: ctx.hostUrl,
-        isLocalFallback: true,
-        items: fallbackItems,
-        totalCount: fallbackItems.length,
+        const mapped = (Array.isArray(rawMovies) ? rawMovies : []).map((m: any) => {
+          const rewritten = rewriteServarrImages(m, 'radarr')
+          const poster = findCoverUrl(rewritten.images, 'poster')
+          const fanart = findCoverUrl(rewritten.images, 'fanart')
+          const banner = findCoverUrl(rewritten.images, 'banner')
+          const qualityName =
+            (m.qualityProfileId ? profileMap.get(m.qualityProfileId) : null) ||
+            m.qualityProfile?.name ||
+            'Any'
+
+          return {
+            ...m,
+            images: rewritten.images,
+            id: m.id || m.tmdbId || m.title,
+            title: m.title || 'Unknown Movie',
+            originalTitle: m.originalTitle || null,
+            year: m.year || null,
+            overview: m.overview || null,
+            monitored: Boolean(m.monitored),
+            hasFile: Boolean(m.hasFile),
+            qualityProfile: qualityName,
+            qualityProfileId: m.qualityProfileId || null,
+            sizeOnDisk: m.sizeOnDisk || m.statistics?.sizeOnDisk || null,
+            status: m.hasFile
+              ? 'Downloaded'
+              : m.monitored
+                ? 'Wanted'
+                : 'Unmonitored',
+            added: m.added || null,
+            posterUrl: poster,
+            fanartUrl: fanart,
+            bannerUrl: banner,
+            tmdbId: m.tmdbId || null,
+            imdbId: m.imdbId || null,
+            path: m.path || null,
+            genres: m.genres || null,
+          }
+        })
+
+        return {
+          success: true,
+          connected: true,
+          provider: ctx.provider,
+          hostUrl: ctx.hostUrl,
+          items: mapped,
+          totalCount: mapped.length,
+        }
+      } catch (err: any) {
+        return {
+          success: false,
+          connected: true,
+          provider: ctx.provider,
+          hostUrl: ctx.hostUrl,
+          items: [],
+          totalCount: 0,
+          message: formatServarrError(err, 'Failed to fetch movies from Radarr'),
+        }
       }
     } else {
-      const localList = await prisma.orm.public.TvList.where((t) => t.userId.eq(userId))
-        .include('tv', (t) =>
-          t.select(
-            'id',
-            'titlePrimary',
-            'titleSecondary',
-            'firstAiredYear',
-            'description',
-            'coverImage',
-            'bannerImage',
-            'tvDBId',
-            'imdbId'
-          )
-        )
-        .orderBy((t) => t.createdAt.desc())
-        .limit(100)
-        .all()
+      try {
+        const [rawSeries, rawProfiles] = await Promise.all([
+          ctx.adapter.getSeries(ctx.credentials),
+          ctx.adapter.getQualityProfiles?.(ctx.credentials).catch(() => null),
+        ])
 
-      const fallbackItems = localList.map((entry: any) => ({
-        id: entry.tv.id,
-        title: entry.tv.titlePrimary,
-        originalTitle: entry.tv.titleSecondary || null,
-        year: entry.tv.firstAiredYear || null,
-        overview: entry.tv.description || null,
-        monitored: true,
-        hasFile: entry.status === 'COMPLETED',
-        qualityProfile: 'Any',
-        qualityProfileId: 1,
-        sizeOnDisk: null,
-        status: entry.status === 'COMPLETED' ? 'Downloaded' : 'Wanted',
-        added: toDate(entry.createdAt).toISOString(),
-        posterUrl: entry.tv.coverImage || null,
-        fanartUrl: entry.tv.bannerImage || null,
-        tvdbId: entry.tv.tvDBId || null,
-        imdbId: entry.tv.imdbId || null,
-        path: null,
-        genres: entry.tv.genres || null,
-      }))
+        const profileMap = new Map<number, string>()
+        if (Array.isArray(rawProfiles)) {
+          rawProfiles.forEach((p: any) => {
+            if (p?.id && p?.name) profileMap.set(p.id, p.name)
+          })
+        }
 
-      return {
-        success: true,
-        connected: true,
-        provider: ctx.provider,
-        hostUrl: ctx.hostUrl,
-        isLocalFallback: true,
-        items: fallbackItems,
-        totalCount: fallbackItems.length,
+        const mapped = (Array.isArray(rawSeries) ? rawSeries : []).map((s: any) => {
+          const rewritten = rewriteServarrImages(s, 'sonarr')
+          const poster = findCoverUrl(rewritten.images, 'poster')
+          const fanart = findCoverUrl(rewritten.images, 'fanart')
+          const banner = findCoverUrl(rewritten.images, 'banner')
+          const qualityName =
+            (s.qualityProfileId ? profileMap.get(s.qualityProfileId) : null) ||
+            'Any'
+
+          const epCount =
+            s.statistics?.episodeCount ?? s.statistics?.totalEpisodeCount ?? 0
+          const epFileCount = s.statistics?.episodeFileCount ?? 0
+          const hasAllFiles = epCount > 0 && epFileCount >= epCount
+
+          return {
+            ...s,
+            images: rewritten.images,
+            id: s.id || s.tvdbId || s.title,
+            title: s.title || 'Unknown Series',
+            originalTitle: s.originalTitle || null,
+            year: s.year || null,
+            overview: s.overview || null,
+            monitored: Boolean(s.monitored),
+            hasFile: hasAllFiles,
+            qualityProfile: qualityName,
+            qualityProfileId: s.qualityProfileId || null,
+            sizeOnDisk: s.statistics?.sizeOnDisk || null,
+            status: hasAllFiles
+              ? 'Downloaded'
+              : s.monitored
+                ? 'Wanted'
+                : 'Unmonitored',
+            added: s.added || null,
+            posterUrl: poster,
+            fanartUrl: fanart,
+            bannerUrl: banner,
+            tvdbId: s.tvdbId || null,
+            imdbId: s.imdbId || null,
+            path: s.path || null,
+            genres: s.genres || null,
+            episodeCount: epCount || null,
+            episodeFileCount: epFileCount || null,
+            seasonCount: s.statistics?.seasonCount || null,
+          }
+        })
+
+        return {
+          success: true,
+          connected: true,
+          provider: ctx.provider,
+          hostUrl: ctx.hostUrl,
+          items: mapped,
+          totalCount: mapped.length,
+        }
+      } catch (err: any) {
+        return {
+          success: false,
+          connected: true,
+          provider: ctx.provider,
+          hostUrl: ctx.hostUrl,
+          items: [],
+          totalCount: 0,
+          message: formatServarrError(err, 'Failed to fetch series from Sonarr'),
+        }
       }
     }
   }
@@ -1904,7 +1891,7 @@ export class ServarrServ {
         success: true,
         connected: true,
         provider: 'RADARR',
-        movie,
+        movie: rewriteServarrImages(movie, 'radarr'),
         files: Array.isArray(files) ? files : [],
       }
     } catch (err: any) {
@@ -2157,7 +2144,7 @@ export class ServarrServ {
         success: true,
         connected: true,
         provider: 'SONARR',
-        series,
+        series: rewriteServarrImages(series, 'sonarr'),
         episodes: Array.isArray(episodes) ? episodes : [],
         files: Array.isArray(files) ? files : [],
       }

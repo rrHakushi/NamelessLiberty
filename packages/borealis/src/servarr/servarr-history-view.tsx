@@ -19,6 +19,8 @@ import { elysia } from "@/lib/elysia"
 import { dedupGet, invalidateDedup } from "@/lib/request-dedup"
 import { toast } from "sonner"
 import { cn } from "@workspace/ui/lib/utils"
+import { servarrRequest } from "./servarr-client"
+import { useServarrRealtime } from "./use-servarr-realtime"
 
 export interface ServarrHistoryViewProps {
   provider: "SONARR" | "RADARR"
@@ -104,7 +106,7 @@ export function ServarrHistoryView({ provider }: ServarrHistoryViewProps) {
       setIsLoading(true)
       try {
         const cacheKey = `servarr:${provider}:history:${eventTypeFilter}:${page}:${pageSize}`
-        const res = await dedupGet(
+        const res = (await dedupGet(
           cacheKey,
           () =>
             provider === "SONARR"
@@ -133,7 +135,7 @@ export function ServarrHistoryView({ provider }: ServarrHistoryViewProps) {
                   },
                 }),
           { force, ttlMs: 2500 }
-        )
+        )) as any
 
         if (res?.data?.success && Array.isArray(res.data.records)) {
           setRecords(res.data.records)
@@ -153,6 +155,36 @@ export function ServarrHistoryView({ provider }: ServarrHistoryViewProps) {
     },
     [provider, eventTypeFilter, page, pageSize]
   )
+
+  const app = provider === "RADARR" ? "radarr" : "sonarr"
+  const [markingFailedId, setMarkingFailedId] = useState<number | null>(null)
+
+  useServarrRealtime({
+    app,
+    topics: ["history", "command"],
+    onSync: () => {
+      invalidateDedup(`servarr:${provider}:history`)
+      void fetchHistory(true)
+    },
+    fallbackPollMs: 45_000,
+  })
+
+  const handleMarkFailed = async (historyId: number) => {
+    setMarkingFailedId(historyId)
+    try {
+      const res = await servarrRequest(app, `/history/failed/${historyId}`, {
+        method: "POST",
+      })
+      if (!res.ok) throw new Error(res.error || "Failed to mark release failed")
+      toast.success("Release marked as failed and blocklisted")
+      invalidateDedup(`servarr:${provider}:history`)
+      await fetchHistory(true)
+    } catch (err: any) {
+      toast.error(err?.message || "Failed to mark release as failed")
+    } finally {
+      setMarkingFailedId(null)
+    }
+  }
 
   useEffect(() => {
     const key = `${provider}-${eventTypeFilter}-${page}`
@@ -246,7 +278,8 @@ export function ServarrHistoryView({ provider }: ServarrHistoryViewProps) {
                   <th className="p-3.5">Media Title</th>
                   <th className="p-3.5">Release / File Name</th>
                   <th className="p-3.5">Quality / Indexer</th>
-                  <th className="p-3.5 text-right">Date</th>
+                  <th className="p-3.5 text-end">Date</th>
+                  <th className="p-3.5 text-end">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
@@ -315,7 +348,7 @@ export function ServarrHistoryView({ provider }: ServarrHistoryViewProps) {
                         </div>
                       </td>
 
-                      <td className="p-3.5 text-right whitespace-nowrap text-muted-foreground">
+                      <td className="p-3.5 text-end whitespace-nowrap text-muted-foreground">
                         <span
                           title={
                             item.date
@@ -325,6 +358,26 @@ export function ServarrHistoryView({ provider }: ServarrHistoryViewProps) {
                         >
                           {formatRelativeTime(item.date)}
                         </span>
+                      </td>
+                      <td className="p-3.5 text-end">
+                        {(String(item.eventType || "").toLowerCase().includes("grab") ||
+                          String(item.eventType) === "1") && (
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            isDisabled={markingFailedId === item.id}
+                            onClick={() => handleMarkFailed(item.id)}
+                            className="h-7 rounded-xl px-2 text-xs text-destructive hover:bg-destructive/10"
+                            aria-label="Mark as Failed"
+                          >
+                            {markingFailedId === item.id ? (
+                              <Spinner className="size-3" />
+                            ) : (
+                              <IconAlertCircle className="size-3.5" />
+                            )}
+                            <span className="ms-1 hidden sm:inline">Fail</span>
+                          </Button>
+                        )}
                       </td>
                     </tr>
                   )
