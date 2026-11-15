@@ -1,5 +1,5 @@
 import { Queue, type Job, type JobsOptions } from 'bullmq'
-import { prisma, and, or, not } from '@NamelessLiberty/db'
+import { prisma, and, or, not, toDate } from '@NamelessLiberty/db'
 import { LogFactory, c } from '@NamelessLiberty/logger'
 import { getRedisConnectionOptions } from '../email/queue'
 import {
@@ -7,7 +7,11 @@ import {
   closeMediaWorker,
   executeMediaUpdate,
 } from '../../workers/media.wrk'
-import { getEntityFreshness } from './freshness'
+import {
+  getEntityFreshness,
+  evaluateRecordFreshness,
+  type FreshnessRecord,
+} from './freshness'
 
 export { getMediaWorker, closeMediaWorker, executeMediaUpdate }
 
@@ -373,6 +377,37 @@ export const MediaQueueManager = {
       )
       return null
     }
+  },
+
+  /**
+   * Evaluates freshness of an already-loaded media record in-memory and,
+   * if stale and an externalId is present, enqueues a non-blocking background refresh.
+   */
+  queueIfStale(
+    mediaType: MediaType,
+    mediaId: number,
+    record: FreshnessRecord,
+    externalId?: number | string | null
+  ): void {
+    if (!externalId) return
+
+    const freshness = evaluateRecordFreshness(mediaType, {
+      ...record,
+      updatedAt: record.updatedAt ? toDate(record.updatedAt) : null,
+    })
+
+    if (freshness.isFresh) return
+
+    const todayKey = new Date().toISOString().slice(0, 10)
+    void this.enqueueMediaUpdate(mediaType, mediaId, {
+      externalId,
+      priority: 2,
+      depth: 0,
+      maxDepth: 0,
+      triggeredBy: 'sync',
+      jobId: `media-update-${mediaType}-${mediaId}-${todayKey}`,
+      forceRefresh: true,
+    }).catch(() => {})
   },
 
   /**

@@ -245,6 +245,8 @@ export class BorealisAnimeServ {
       anime = (await load()) ?? anime
     }
 
+    MediaQueueManager.queueIfStale('ANIME', id, anime, anime.anilistId)
+
     const characters = await fetchTopCharacters('ANIME', id, 16)
 
     const a: any = anime

@@ -208,6 +208,8 @@ export class BorealisMusicServ {
       throw new NotFound(`Music with ID ${id} not found`)
     }
 
+    MediaQueueManager.queueIfStale('MUSIC', id, music, music.deezerId)
+
     const artist = Array.isArray(music.artist) ? music.artist[0] : music.artist
     return {
       success: true,

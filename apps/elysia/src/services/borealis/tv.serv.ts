@@ -237,6 +237,8 @@ export class BorealisTvServ {
       tv = (await load()) ?? tv
     }
 
+    MediaQueueManager.queueIfStale('TV', id, tv, tv.tvDBId)
+
     const characters = await fetchTopCharacters('TV', id)
     const t: any = tv
     return {

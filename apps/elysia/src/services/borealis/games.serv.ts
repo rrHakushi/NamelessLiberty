@@ -228,6 +228,8 @@ export class BorealisGamesServ {
       game = (await load()) ?? game
     }
 
+    MediaQueueManager.queueIfStale('GAME', id, game, game.igdbId)
+
     const characters = await fetchTopCharacters('GAME', id)
     const g: any = game
     return {

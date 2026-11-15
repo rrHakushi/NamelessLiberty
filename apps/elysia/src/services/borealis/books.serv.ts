@@ -199,6 +199,8 @@ export class BorealisBooksServ {
       throw new NotFound(`Book with ID ${id} not found`)
     }
 
+    MediaQueueManager.queueIfStale('BOOK', id, raw, raw.googleBookId)
+
     const characters = await fetchTopCharacters('BOOK', id)
 
     const media = {

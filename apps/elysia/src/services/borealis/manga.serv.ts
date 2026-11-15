@@ -227,6 +227,8 @@ export class BorealisMangaServ {
       manga = (await load()) ?? manga
     }
 
+    MediaQueueManager.queueIfStale('MANGA', id, manga, manga.anilistId)
+
     const characters = await fetchTopCharacters('MANGA', id)
     const m: any = manga
     return {

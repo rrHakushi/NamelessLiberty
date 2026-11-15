@@ -222,6 +222,8 @@ export class BorealisMoviesServ {
       movie = (await load()) ?? movie
     }
 
+    MediaQueueManager.queueIfStale('MOVIE', id, movie, movie.tvDBId)
+
     const characters = await fetchTopCharacters('MOVIE', id)
     const m: any = movie
     return {
