@@ -7,6 +7,7 @@ export { blockPresets } from "./blocks"
 export { typographyPresets } from "./typography"
 export { formPresets } from "./forms"
 export { feedbackPresets } from "./feedback"
+export { htmlPresets } from "./html"
 
 import { docsPresets } from "./docs"
 import { sectionPresets } from "./sections"
@@ -14,6 +15,7 @@ import { blockPresets } from "./blocks"
 import { typographyPresets } from "./typography"
 import { formPresets } from "./forms"
 import { feedbackPresets } from "./feedback"
+import { htmlPresets } from "./html"
 
 /**
  * All pre-built component blocks and section templates available in the builder.
@@ -26,4 +28,5 @@ export const COMPONENT_PRESETS: ComponentPresetItem[] = [
   ...typographyPresets,
   ...formPresets,
   ...feedbackPresets,
+  ...htmlPresets,
 ]

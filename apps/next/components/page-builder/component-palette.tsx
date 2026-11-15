@@ -147,7 +147,7 @@ export const PALETTE_ITEMS: PaletteItem[] = [
     description: "Tabbed switchable panels",
     defaultNode: {
       type: "Tabs",
-      props: { defaultValue: "tab1", className: "w-full space-y-4" },
+      props: { defaultSelectedKey: "tab1", className: "w-full space-y-4" },
       children: [
         {
           type: "TabsList",
@@ -375,7 +375,7 @@ export const PALETTE_ITEMS: PaletteItem[] = [
     description: "Status notification banner",
     defaultNode: {
       type: "Alert",
-      props: { variant: "info" },
+      props: { variant: "default" },
       children: [
         {
           type: "Icon",

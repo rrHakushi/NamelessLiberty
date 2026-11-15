@@ -1,0 +1,484 @@
+import { Worker, UnrecoverableError, type Job } from 'bullmq'
+import {
+  prisma,
+  and,
+  toDate,
+  type ConnectionProvider,
+  type MediaType,
+} from '@NamelessLiberty/db'
+import { LogFactory, c } from '@NamelessLiberty/logger'
+import { BaseBullMQWorker } from '../../../core/bullmq/base.wrk'
+import {
+  getConnectionAdapter,
+  decryptConnectionData,
+  encryptConnectionData,
+  ConnectionAuthError,
+  ConnectionRateLimitError,
+  type ConnectionCredentials,
+  type UpdateMediaPayload,
+} from '@NamelessLiberty/connections'
+import { CarinaNotificationsServ } from '../notifications/notifications.serv'
+
+const logger = new LogFactory('Worker:ConnectionSync')
+
+export interface ConnectionSyncJobData {
+  userId: string
+  provider: ConnectionProvider
+  providerMediaId: number | string
+  mediaType: MediaType
+  mediaId: number
+  mediaTitle: string
+  autoInjected?: boolean
+  payload: {
+    status: string
+    progress?: number
+    score?: number | null
+    notes?: string | null
+    rewatched?: number
+    startedAt?: string | null
+    completedAt?: string | null
+    seasonNumber?: number
+    episodeNumber?: number
+    extra?: Record<string, unknown>
+  }
+}
+
+export const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
+  ANILIST: 'AniList',
+  MAL: 'MyAnimeList',
+  SIMKL: 'Simkl',
+  BANGUMI: 'Bangumi',
+  HIKKA: 'Hikka',
+  MANGAUPDATES: 'MangaUpdates',
+  MANGABAKA: 'MangaBaka',
+  TRAKT: 'Trakt',
+}
+
+/**
+ * Provider-specific rate limits and concurrency limits
+ */
+export const PROVIDER_WORKER_CONFIGS: Record<
+  string,
+  { concurrency: number; max: number; duration: number }
+> = {
+  ANILIST: { concurrency: 3, max: 80, duration: 60000 },
+  MAL: { concurrency: 1, max: 30, duration: 60000 },
+  SIMKL: { concurrency: 2, max: 40, duration: 60000 },
+  BANGUMI: { concurrency: 3, max: 60, duration: 60000 },
+  HIKKA: { concurrency: 2, max: 30, duration: 60000 },
+  MANGAUPDATES: { concurrency: 1, max: 20, duration: 60000 },
+  MANGABAKA: { concurrency: 2, max: 40, duration: 60000 },
+  TRAKT: { concurrency: 2, max: 40, duration: 60000 },
+}
+
+const workerInstances = new Map<ConnectionProvider, Worker<ConnectionSyncJobData>>()
+let isShuttingDown = false
+
+export interface ProcessConnectionSyncJobDeps {
+  adapter?: any
+  decrypt?: (encrypted: string, secret: string) => any
+  encrypt?: (data: any, secret: string) => string
+}
+
+/**
+ * Core processor for connection sync jobs.
+ * Fetches latest encrypted credentials, handles proactive and reactive token refresh,
+ * rate limit pausing, and updates connection lastSyncedAt on success.
+ */
+export async function processConnectionSyncJob(
+  job: Job<ConnectionSyncJobData>,
+  worker?: Worker<ConnectionSyncJobData>,
+  deps?: ProcessConnectionSyncJobDeps
+): Promise<boolean> {
+  const { userId, provider, providerMediaId, mediaType, mediaTitle, payload, autoInjected } =
+    job.data
+  const displayName = PROVIDER_DISPLAY_NAMES[provider] || provider
+
+  const decryptFn = deps?.decrypt ?? decryptConnectionData
+  const encryptFn = deps?.encrypt ?? encryptConnectionData
+
+  let adapter = deps?.adapter
+  if (!adapter) {
+    try {
+      adapter = getConnectionAdapter(provider)
+    } catch (err: any) {
+      logger.warn(`[Worker:${provider}] Unsupported connection provider: ${provider}`)
+      throw new UnrecoverableError(`Unsupported connection provider: ${provider}`)
+    }
+  }
+
+  if (!adapter.updateMediaEntry) {
+    logger.warn(`[Worker:${provider}] Adapter does not support updateMediaEntry`)
+    throw new UnrecoverableError(`Provider ${displayName} does not support syncing media entries`)
+  }
+
+  // 1. Fetch user's active connection from database
+  const userConn = await prisma.orm.public.Connection.where((c) =>
+    and(
+      c.userId.eq(userId),
+      c.provider.eq(provider),
+      c.status.in(['CONNECTED', 'EXPIRED'])
+    )
+  ).first()
+
+  if (!userConn) {
+    if (!autoInjected) {
+      await CarinaNotificationsServ.createNotification({
+        userId,
+        app: 'Borealis',
+        category: 'Connections',
+        type: 'INFO',
+        priority: 'NORMAL',
+        content: {
+          title: `${displayName} Not Connected`,
+          body: `Could not sync "${mediaTitle}" to ${displayName}. Please connect your ${displayName} account in Settings > Connections.`,
+          icon: adapter.iconUrl,
+          link: '/settings?tab=connections',
+        },
+      }).catch((notifErr) => {
+        logger.warn(`Failed to dispatch not connected notification: ${notifErr?.message || notifErr}`)
+      })
+    }
+    // Non-retryable: do not throw to avoid retrying missing connection
+    return false
+  }
+
+  // 2. Decrypt credentials using user secret
+  let credentials: ConnectionCredentials
+  try {
+    credentials = decryptFn<ConnectionCredentials>(
+      userConn.encryptedData,
+      userId
+    )
+  } catch (decryptErr: any) {
+    throw new UnrecoverableError(
+      `Failed to decrypt credentials for ${displayName}. Please reconnect your account.`
+    )
+  }
+
+  // 3. Proactive token refresh if expiring (< 5 minutes left)
+  const isExpiring =
+    userConn.expiresAt &&
+    toDate(userConn.expiresAt).getTime() - Date.now() < 300000
+
+  if (isExpiring && credentials.refreshToken && adapter.refreshAccessToken) {
+    try {
+      const refreshed = await adapter.refreshAccessToken(credentials.refreshToken)
+      credentials = { ...credentials, ...refreshed }
+      const updatedEncrypted = encryptFn(credentials, userId)
+      await prisma.orm.public.Connection.where((c) => c.id.eq(userConn.id)).update({
+        encryptedData: updatedEncrypted,
+        expiresAt: refreshed.expiresAt ? new Date(refreshed.expiresAt) : null,
+        status: 'CONNECTED',
+      })
+      logger.info(`[Worker:${provider}] Proactive token refresh succeeded for user ${userId}`)
+    } catch (refreshErr: any) {
+      logger.warn(`[Worker:${provider}] Proactive token refresh failed: ${refreshErr?.message || refreshErr}`)
+    }
+  }
+
+  const updatePayload: UpdateMediaPayload = {
+    mediaId: providerMediaId,
+    mediaType: mediaType as any,
+    status: payload.status,
+    progress: payload.progress,
+    score: payload.score,
+    notes: payload.notes,
+    rewatched: payload.rewatched,
+    startedAt: payload.startedAt,
+    completedAt: payload.completedAt,
+    seasonNumber: payload.seasonNumber,
+    episodeNumber: payload.episodeNumber,
+    extra: payload.extra,
+  }
+
+  // 4. Execute external API update with automatic 401 retry & 429 rate limit check
+  try {
+    await adapter.updateMediaEntry(credentials, updatePayload)
+  } catch (firstErr: any) {
+    const isRateLimit =
+      firstErr instanceof ConnectionRateLimitError ||
+      firstErr?.statusCode === 429 ||
+      /rate limit|too many requests/i.test(firstErr?.message || '')
+
+    if (isRateLimit) {
+      const retryAfterSec = firstErr?.retryAfterSeconds || 60
+      logger.warn(
+        `${c.yellow('⏳ [Rate Limited]')}: ${provider} rate limit hit. Pausing worker for ${retryAfterSec}s...`
+      )
+      if (worker && typeof (worker as any).rateLimit === 'function') {
+        try {
+          await (worker as any).rateLimit(Math.max(retryAfterSec, 60) * 1000)
+        } catch {}
+      }
+      // Re-throw regular error to allow BullMQ fixed 60s backoff (retry 3x)
+      throw firstErr
+    }
+
+    const is404 =
+      firstErr?.statusCode === 404 ||
+      /status 404|404 (page not found|not found)|"status":\s*404/i.test(firstErr?.message || '')
+
+    if (is404) {
+      logger.warn(
+        `[Worker:${provider}] Media #${providerMediaId} not found (404) on ${provider}. Skipping retries.`
+      )
+      throw new UnrecoverableError(
+        `Media not found (404) on ${provider}: ${firstErr?.message || firstErr}`
+      )
+    }
+
+    const isAuthErr =
+      firstErr instanceof ConnectionAuthError ||
+      firstErr?.statusCode === 401 ||
+      /unauthorized|token/i.test(firstErr?.message || '')
+
+    if (isAuthErr && credentials.refreshToken && adapter.refreshAccessToken) {
+      try {
+        const refreshed = await adapter.refreshAccessToken(credentials.refreshToken)
+        credentials = { ...credentials, ...refreshed }
+        const updatedEncrypted = encryptFn(credentials, userId)
+        await prisma.orm.public.Connection.where((c) => c.id.eq(userConn.id)).update({
+          encryptedData: updatedEncrypted,
+          expiresAt: refreshed.expiresAt ? new Date(refreshed.expiresAt) : null,
+          status: 'CONNECTED',
+        })
+
+        // Retry update with fresh token
+        await adapter.updateMediaEntry(credentials, updatePayload)
+      } catch (retryErr: any) {
+        const isRetryRateLimit =
+          retryErr instanceof ConnectionRateLimitError ||
+          retryErr?.statusCode === 429 ||
+          /rate limit|too many requests/i.test(retryErr?.message || '')
+
+        if (isRetryRateLimit) {
+          throw retryErr
+        }
+        throw new UnrecoverableError(retryErr?.message || String(retryErr))
+      }
+    } else {
+      // Non-429 error fails immediately without retrying
+      throw new UnrecoverableError(firstErr?.message || String(firstErr))
+    }
+  }
+
+  // 5. Update lastSyncedAt on successful sync
+  await prisma.orm.public.Connection.where((c) => c.id.eq(userConn.id)).update({
+    lastSyncedAt: new Date(),
+    status: 'CONNECTED',
+    errorMessage: null,
+  })
+
+  logger.info(
+    `${c.green('✅ [Sync Success]')}: Synced ${mediaTitle} to ${displayName} for user ${c.cyan(userId)}`
+  )
+  return true
+}
+
+/**
+ * Handles failed connection sync attempts and complete exhaustion notifications.
+ */
+export async function handleJobFailure(
+  provider: ConnectionProvider,
+  job: Job<ConnectionSyncJobData> | undefined,
+  err: any
+): Promise<void> {
+  if (!job) return
+
+  const maxAttempts = job.opts.attempts ?? 4
+  const isRateLimit =
+    err instanceof ConnectionRateLimitError ||
+    err?.statusCode === 429 ||
+    /rate limit|too many requests/i.test(err?.message || '')
+
+  const is404 =
+    err?.statusCode === 404 ||
+    /status 404|404 (page not found|not found)|"status":\s*404/i.test(err?.message || '')
+
+  const isUnrecoverable =
+    err instanceof UnrecoverableError ||
+    err?.name === 'UnrecoverableError' ||
+    is404 ||
+    !isRateLimit
+
+  // Discard job to ensure BullMQ does not attempt retries on 404 or unrecoverable errors
+  if (isUnrecoverable && typeof (job as any).discard === 'function') {
+    try {
+      await (job as any).discard()
+    } catch {}
+  }
+
+  const isExhausted = job.attemptsMade >= maxAttempts
+  const isTerminal = isUnrecoverable || isExhausted
+
+  if (is404) {
+    logger.warn(
+      `${c.red(c.bold('❌ [Job Dropped (404 Not Found)]'))}: [${provider}] "${job.data.mediaTitle}" was not found on ${provider}. Discarding job without retrying.`
+    )
+  } else {
+    logger.warn(
+      `${c.red(c.bold('❌ [Job Attempt Failed]'))}: [${provider}] Attempt ${job.attemptsMade}/${maxAttempts} failed: ${err?.message || err}`
+    )
+  }
+
+  // Send failure notification & persist error message when failure is terminal
+  if (isTerminal) {
+    const displayName = PROVIDER_DISPLAY_NAMES[provider] || provider
+    const errMsg = err?.message || String(err)
+
+    logger.error(
+      `${c.red(c.bold('🚨 [Sync Completely Failed]'))}: [${provider}] Sync failed for "${job.data.mediaTitle}" (User: ${job.data.userId}): ${errMsg}`
+    )
+
+    let adapter
+    try {
+      adapter = getConnectionAdapter(provider)
+    } catch {}
+
+    // 1. Send in-app notification to user
+    await CarinaNotificationsServ.createNotification({
+      userId: job.data.userId,
+      app: 'Borealis',
+      category: 'Connections',
+      type: 'INFO',
+      priority: 'HIGH',
+      content: {
+        title: `${displayName} Sync Failed`,
+        body: `Failed to update "${job.data.mediaTitle}" on ${displayName}: ${errMsg}`,
+        icon: adapter?.iconUrl,
+        link: '/settings?tab=connections',
+      },
+    }).catch((notifErr) => {
+      logger.warn(`Failed to dispatch failure notification: ${notifErr?.message || notifErr}`)
+    })
+
+    // 2. Persist error message on the connection record
+    await prisma.orm.public.Connection
+      .where((c) => and(c.userId.eq(job.data.userId), c.provider.eq(provider)))
+      .updateAndCount({
+        errorMessage: `Sync failed: ${errMsg}`,
+      })
+      .catch(() => {})
+  }
+}
+
+
+const managedWorkers = new Map<ConnectionProvider, ConnectionProviderWorker>()
+
+/**
+ * BullMQ worker subclass handling connection sync jobs for a single external provider.
+ */
+export class ConnectionProviderWorker extends BaseBullMQWorker<ConnectionSyncJobData, unknown> {
+  private readonly provider: ConnectionProvider
+
+  constructor(provider: ConnectionProvider) {
+    const config = PROVIDER_WORKER_CONFIGS[provider] || {
+      concurrency: 2,
+      max: 30,
+      duration: 60000,
+    }
+    super({
+      queueName: `connection-sync-${provider.toLowerCase()}`,
+      concurrency: config.concurrency,
+      limiter: {
+        max: config.max,
+        duration: config.duration,
+      },
+    })
+    this.provider = provider
+  }
+
+  /**
+   * Executes a single connection sync job with provider-specific rate-limit & auth handling.
+   */
+  protected async processJob(job: Job<ConnectionSyncJobData>): Promise<unknown> {
+    // Step 1: Delegate to shared connection sync job processor
+    return await processConnectionSyncJob(job, workerInstances.get(this.provider))
+  }
+}
+
+/**
+ * Creates and initializes a production-ready BullMQ worker for a specific connection provider.
+ */
+export function createConnectionProviderWorker(
+  provider: ConnectionProvider
+): Worker<ConnectionSyncJobData> {
+  // Step 1: Instantiate BaseBullMQWorker subclass for this provider
+  const instance = new ConnectionProviderWorker(provider)
+  const worker = instance.start()
+
+  // Step 2: Attach provider-specific failed notification handler
+  worker.on('failed', async (job, err) => {
+    await handleJobFailure(provider, job, err)
+  })
+
+  managedWorkers.set(provider, instance)
+  workerInstances.set(provider, worker)
+  return worker
+}
+
+/**
+ * Returns worker instance for a provider, instantiating it if not yet running.
+ */
+export function getConnectionWorker(
+  provider: ConnectionProvider
+): Worker<ConnectionSyncJobData> {
+  let worker = workerInstances.get(provider)
+  if (!worker && !isShuttingDown) {
+    worker = createConnectionProviderWorker(provider)
+  }
+  return worker!
+}
+
+/**
+ * Initializes all provider workers simultaneously.
+ */
+export function initConnectionWorkers(): void {
+  const providers: ConnectionProvider[] = [
+    'ANILIST',
+    'MAL',
+    'SIMKL',
+    'BANGUMI',
+    'HIKKA',
+    'MANGAUPDATES',
+    'MANGABAKA',
+    'TRAKT',
+  ]
+  for (const provider of providers) {
+    getConnectionWorker(provider)
+  }
+}
+
+/**
+ * Gracefully shuts down all active provider workers.
+ */
+export async function closeConnectionWorkers(): Promise<void> {
+  if (isShuttingDown) return
+  isShuttingDown = true
+
+  logger.info(`${c.yellow('🛑 [Worker Shutdown]')}: Closing all connection sync workers gracefully...`)
+
+  for (const [provider, worker] of workerInstances.entries()) {
+    try {
+      await worker.pause()
+      await worker.close()
+    } catch (err: any) {
+      logger.warn(`Error closing worker for ${provider}: ${err?.message || err}`)
+    }
+  }
+
+  workerInstances.clear()
+  isShuttingDown = false
+  logger.info(`${c.green('✅ [Worker Shutdown]')}: All connection workers closed successfully`)
+}
+
+// Graceful process signal handling
+if (typeof process !== 'undefined') {
+  process.once('SIGTERM', async () => {
+    await closeConnectionWorkers()
+  })
+  process.once('SIGINT', async () => {
+    await closeConnectionWorkers()
+  })
+}

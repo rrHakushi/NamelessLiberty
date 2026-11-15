@@ -1,0 +1,1824 @@
+{
+  "id": "apps/borealis/books/books.serv",
+  "title": "books.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/books/books.serv.ts",
+    "relPath": "apps/borealis/books/books.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "books.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/books/books.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/books/books.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/books/books.ctrl.ts (BorealisBooksServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "13 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getCatalog"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getFilters"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getById"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.refresh"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getSimilar"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getRelations"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getCharacters"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getStaff"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getImages"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getStats"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getFriends"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id, currentUserId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getPeople"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisBooksServ.getRecommendations"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(_id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getCatalog",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getCatalog",
+                "title": "BorealisBooksServ.getCatalog(query)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`, `search`",
+                    "payload": "const skip = query?.cursor ? 0 : (page - 1) * limit\nconst search = query?.search?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_3_4",
+                    "kind": "step",
+                    "title": "Calls `parseList` and stores result as `genres`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_4_5",
+                    "kind": "step",
+                    "title": "Calls `parseList` and stores result as `tags`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_5_6",
+                    "kind": "step",
+                    "title": "Calls `parseList` and stores result as `statuses`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_6_7",
+                    "kind": "var_def",
+                    "title": "Define `years`",
+                    "payload": "const years = parseList(query?.years).map((y) => Number(y)).filter((y) => !isNaN(y))",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_7_8",
+                    "kind": "step",
+                    "title": "Calls `parseList` and stores result as `authors`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_8_9",
+                    "kind": "step",
+                    "title": "Calls `parseList` and stores result as `publishers`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_9_10",
+                    "kind": "var_def",
+                    "title": "Define `sortBy`, `sortOrder`",
+                    "payload": "const sortBy = query?.sortBy ?? 'popularity'\nconst sortOrder = query?.sortOrder ?? sortBy === 'title' ? 'asc' : 'desc'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_10_11",
+                    "kind": "step",
+                    "title": "Database `query` on `Book` and stores it as `q`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_11_12",
+                    "kind": "selection",
+                    "title": "`search`",
+                    "selectionMode": "if_else",
+                    "condition": "`search`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getCatalog_11_12_then_0_12_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => or( m.titlePrimary.ilike(`%${search}%`), m.titleSecondary.ilike(`%${search}%`), m.subtitle.ilike(`%${search}%`) ) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_12_13",
+                    "kind": "selection",
+                    "title": "`genres.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`genres.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getCatalog_12_13_then_0_13_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => m.genres.some((g) => g.genre.some((ge) => ge.name.in(genres))) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_13_14",
+                    "kind": "selection",
+                    "title": "`tags.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`tags.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getCatalog_13_14_then_0_14_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => m.tags.some((t) => t.tag.some((te) => te.name.in(tags))) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_14_15",
+                    "kind": "selection",
+                    "title": "`statuses.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`statuses.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getCatalog_14_15_then_0_15_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => m.status.in(statuses as any))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_15_16",
+                    "kind": "selection",
+                    "title": "`years.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`years.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getCatalog_15_16_then_0_16_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => m.releaseDateYear.in(years))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_16_17",
+                    "kind": "selection",
+                    "title": "`query?.cursor`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.cursor`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getCatalog_16_17_then_0_17_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => sortOrder === 'asc' ? m.id.gt(query.cursor!) : m.id.lt(query.cursor!) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_17_18",
+                    "kind": "var_def",
+                    "title": "Define `itemsQ`",
+                    "payload": "let itemsQ = q",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_18_19",
+                    "kind": "selection",
+                    "title": "`sortBy === 'score'`",
+                    "selectionMode": "if_else",
+                    "condition": "`sortBy === 'score'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getCatalog_18_19_then_0_19_1",
+                        "kind": "step",
+                        "title": "Assign `itemsQ`",
+                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.averageScore.asc() : x.averageScore.desc() )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getCatalog_18_19_else_0_20_1",
+                        "kind": "selection",
+                        "title": "`sortBy === 'title'`",
+                        "selectionMode": "if_else",
+                        "condition": "`sortBy === 'title'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisBooksServ_getCatalog_18_19_else_0_20_1_then_0_20_1_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.titlePrimary.asc() : x.titlePrimary.desc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "m_BorealisBooksServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1",
+                            "kind": "selection",
+                            "title": "`sortBy === 'releaseDate'`",
+                            "selectionMode": "if_else",
+                            "condition": "`sortBy === 'releaseDate'`",
+                            "thenBranch": [
+                              {
+                                "id": "m_BorealisBooksServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_then_0_20_2_1_1",
+                                "kind": "step",
+                                "title": "Assign `itemsQ`",
+                                "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.releaseDateYear.asc() : x.releaseDateYear.desc() )",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "m_BorealisBooksServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_else_0_20_2_2_1",
+                                "kind": "selection",
+                                "title": "`sortBy === 'favorites'`",
+                                "selectionMode": "if_else",
+                                "condition": "`sortBy === 'favorites'`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_BorealisBooksServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_else_0_20_2_2_1_then_0_20_2_2_1_1",
+                                    "kind": "step",
+                                    "title": "Assign `itemsQ`",
+                                    "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.favorites.asc() : x.favorites.desc() )",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "m_BorealisBooksServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_else_0_20_2_2_1_else_0_20_2_2_2_1",
+                                    "kind": "selection",
+                                    "title": "`sortBy === 'updatedAt'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`sortBy === 'updatedAt'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_BorealisBooksServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_else_0_20_2_2_1_else_0_20_2_2_2_1_then_0_20_2_2_2_1_1",
+                                        "kind": "step",
+                                        "title": "Assign `itemsQ`",
+                                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.updatedAt.asc() : x.updatedAt.desc() )",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ],
+                                    "elseBranch": [
+                                      {
+                                        "id": "m_BorealisBooksServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_else_0_20_2_2_1_else_0_20_2_2_2_1_else_0_20_2_2_2_2_1",
+                                        "kind": "step",
+                                        "title": "Assign `itemsQ`",
+                                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.popularity.asc() : x.popularity.desc() )",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_20_21",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawItems]`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_21_22",
+                    "kind": "var_def",
+                    "title": "Define `items`, `nextCursor`, `hasMore`",
+                    "payload": "const items = rawItems.map((m: any) => ({ id: m.id, titlePrimary: m.titlePrimary, titleSecondary: m.titleSecondary ?? null, titleNative: m.subtitle ?? null, coverImage: m.coverImage ?? null, bannerImage: m.bannerImage ?? null, ...)\nconst nextCursor = items.length === limit ? items[items.length - 1]!.id : null\nconst hasMore = query?.cursor ? nextCursor !== null : skip + limit < total",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCatalog_22_23",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"items\": \"<items>\",\n  \"nextCursor\": \"<nextCursor>\",\n  \"hasMore\": \"<hasMore>\",\n  \"total\": \"<total>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit)>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getFilters",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getFilters",
+                "title": "BorealisBooksServ.getFilters()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getFilters_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `Book` and stores it as `[allBooks, allGenres]`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getFilters_1_2",
+                    "kind": "var_def",
+                    "title": "Define `statusCounts`, `formatCounts`, `yearCounts`",
+                    "payload": "const statusCounts: Record<string, number> = {}\nconst formatCounts: Record<string, number> = {}\nconst yearCounts: Record<number, number> = {}",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getFilters_2_3",
+                    "kind": "iteration",
+                    "title": "Iterate `const b` over `allBooks`",
+                    "loopType": "while",
+                    "condition": "Iterate `const b` over `allBooks`",
+                    "children": [
+                      {
+                        "id": "m_BorealisBooksServ_getFilters_2_3_loop_0_3_1",
+                        "kind": "selection",
+                        "title": "`b.status`",
+                        "selectionMode": "if_else",
+                        "condition": "`b.status`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisBooksServ_getFilters_2_3_loop_0_3_1_then_0_3_1_1",
+                            "kind": "step",
+                            "title": "Assign `statusCounts[b.status]`",
+                            "payload": "statusCounts[b.status] = (statusCounts[b.status] || 0) + 1",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_BorealisBooksServ_getFilters_2_3_loop_1_3_2",
+                        "kind": "selection",
+                        "title": "`b.format`",
+                        "selectionMode": "if_else",
+                        "condition": "`b.format`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisBooksServ_getFilters_2_3_loop_1_3_2_then_0_3_2_1",
+                            "kind": "step",
+                            "title": "Assign `formatCounts[b.format]`",
+                            "payload": "formatCounts[b.format] = (formatCounts[b.format] || 0) + 1",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_BorealisBooksServ_getFilters_2_3_loop_2_3_3",
+                        "kind": "selection",
+                        "title": "`b.releaseDateYear`",
+                        "selectionMode": "if_else",
+                        "condition": "`b.releaseDateYear`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisBooksServ_getFilters_2_3_loop_2_3_3_then_0_3_3_1",
+                            "kind": "step",
+                            "title": "Assign `yearCounts[b.releaseDateYear]`",
+                            "payload": "yearCounts[b.releaseDateYear] = (yearCounts[b.releaseDateYear] || 0) + 1",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getFilters_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"statuses\": \"<Object.entries(statusCounts).map(([value, count]) => ({ value, count }))>\",\n  \"formats\": \"<Object.entries(formatCounts).map(([value, count]) => ({ value, count }))>\",\n  \"genres\": \"<allGenres.map((g: any) => ({ value: g.name, count: g.books ?? 0 }))>\",\n  \"tags\": [],\n  \"years\": \"<Object.entries(yearCounts).map(([value, count]) => ({ value: Number(value), count })).sort((a, b) => b.value - a.value)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getById",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getById",
+                "title": "BorealisBooksServ.getById(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getById_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Book` and stores it as `raw`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getById_1_2",
+                    "kind": "selection",
+                    "title": "`!raw`",
+                    "selectionMode": "if_else",
+                    "condition": "`!raw`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getById_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Book with ID ${id} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getById_2_3",
+                    "kind": "step",
+                    "title": "Calls `MediaQueueManager.queueIfStale`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getById_3_4",
+                    "kind": "step",
+                    "title": "Calls `fetchTopCharacters` and stores result as `characters`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getById_4_5",
+                    "kind": "var_def",
+                    "title": "Define `media`",
+                    "payload": "const media = { id: raw.id, characters, titlePrimary: raw.titlePrimary, titleSecondary: raw.titleSecondary ?? null, titleNative: raw.subtitle ?? null, subtitle: raw.subtitle ?? null, ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getById_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"media\": \"<media>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-refresh",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-refresh",
+                "title": "BorealisBooksServ.refresh(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_refresh_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Book` and stores it as `book`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_refresh_1_2",
+                    "kind": "selection",
+                    "title": "`!book`",
+                    "selectionMode": "if_else",
+                    "condition": "`!book`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_refresh_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Book with ID ${id} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_refresh_2_3",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_BorealisBooksServ_refresh_2_3_try_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `MediaEntitySyncer.syncBook` and stores result as `synced`"
+                      },
+                      {
+                        "id": "m_BorealisBooksServ_refresh_2_3_try_1_3_2",
+                        "kind": "selection",
+                        "title": "`synced`",
+                        "selectionMode": "if_else",
+                        "condition": "`synced`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisBooksServ_refresh_2_3_try_1_3_2_then_0_3_2_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"message\": \"Book refreshed successfully\"\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_refresh_4_5",
+                    "kind": "step",
+                    "title": "Calls `MediaQueueManager.enqueueMediaUpdate`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_refresh_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Book refresh enqueued\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getSimilar",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getSimilar",
+                "title": "BorealisBooksServ.getSimilar(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getSimilar_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Book` and stores it as `book`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getSimilar_1_2",
+                    "kind": "selection",
+                    "title": "`!book`",
+                    "selectionMode": "if_else",
+                    "condition": "`!book`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getSimilar_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Book with ID ${id} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getSimilar_2_3",
+                    "kind": "var_def",
+                    "title": "Define `genreIds`",
+                    "payload": "const genreIds = book.genres || [].map((g: any) => g.genreId ?? g.genre?.id).filter(Boolean)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getSimilar_3_4",
+                    "kind": "step",
+                    "title": "Database `query` on `Book` and stores it as `q`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getSimilar_4_5",
+                    "kind": "selection",
+                    "title": "`genreIds.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`genreIds.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getSimilar_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((b) => b.genres.some((bg) => bg.genreId.in(genreIds)) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getSimilar_5_6",
+                    "kind": "step",
+                    "title": "Calls `q.orderBy((b) => b.popularity.desc()).limit(24).include('genres', (g) => g.include('genre')).include('tags', (t) => t.include('tag')).all` and stores result as `raw`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getSimilar_6_7",
+                    "kind": "var_def",
+                    "title": "Define `similar`",
+                    "payload": "const similar = raw.map((m: any) => ({ id: m.id, titlePrimary: m.titlePrimary, titleSecondary: m.titleSecondary ?? null, titleNative: m.subtitle ?? null, coverImage: m.coverImage ?? null, bannerImage: m.bannerImage ?? null, ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getSimilar_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"similar\": \"<similar>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getRelations",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getRelations",
+                "title": "BorealisBooksServ.getRelations(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getRelations_0_1",
+                    "kind": "step",
+                    "title": "Calls `fetchMediaRelations` and stores result as `raw`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getRelations_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"relations\": \"<raw.map((r) => ({ id: r.id, sourceType: r.sourceType, sourceId: r.sourceId, targetType: r.targetType, targetId: r.targetId, type: r.type, ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getCharacters",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getCharacters",
+                "title": "BorealisBooksServ.getCharacters(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getCharacters_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `MediaCharacter` and stores it as `raw`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getCharacters_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"characters\": \"<raw.map((c: any) => ({ id: c.id, mediaId: c.mediaId, mediaType: c.mediaType, characterId: c.characterId, actorId: c.actorId ?? null, role: c.role, ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getStaff",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getStaff",
+                "title": "BorealisBooksServ.getStaff(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getStaff_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `MediaStaff` and stores it as `raw`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getStaff_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"staff\": \"<raw.map((s: any) => ({ id: s.id, mediaId: s.mediaId, mediaType: s.mediaType, personId: s.personId, role: s.role, customRole: s.customRole ?? null, ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getImages",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getImages",
+                "title": "BorealisBooksServ.getImages(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getImages_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Book` and stores it as `book`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getImages_1_2",
+                    "kind": "selection",
+                    "title": "`!book`",
+                    "selectionMode": "if_else",
+                    "condition": "`!book`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getImages_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Book with ID ${id} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getImages_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"images\": {\n    \"googlebooks\": \"<imageSource(book.images, 'googlebooks')>\",\n    \"openlibrary\": \"<imageSource(book.images, 'openlibrary')>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getStats",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getStats",
+                "title": "BorealisBooksServ.getStats(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getStats_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Book` and stores it as `book`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getStats_1_2",
+                    "kind": "selection",
+                    "title": "`!book`",
+                    "selectionMode": "if_else",
+                    "condition": "`!book`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getStats_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Book with ID ${id} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getStats_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"stats\": {\n    \"averageScore\": \"<book.averageScore ?? null>\",\n    \"favorites\": \"<book.favorites ?? 0>\",\n    \"popularity\": \"<book.popularity ?? 0>\",\n    \"scoreDistribution\": \"<book.scoreDistribution ?? {}>\",\n    \"statusDistribution\": \"<book.statusDistribution ?? {}>\",\n    \"googleBooksRating\": \"<book.googleBooksRating ?? null>\",\n    \"googleBooksRatingsCount\": \"<book.googleBooksRatingsCount ?? null>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getFriends",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getFriends",
+                "title": "BorealisBooksServ.getFriends(id, currentUserId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getFriends_0_1",
+                    "kind": "selection",
+                    "title": "`!currentUserId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!currentUserId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getFriends_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getFriends_1_2",
+                    "kind": "step",
+                    "title": "Database `all` on `Friend` and stores it as `userFriends`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getFriends_2_3",
+                    "kind": "var_def",
+                    "title": "Define `friendIds`",
+                    "payload": "const friendIds = userFriends.map((f) => f.friendId)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getFriends_3_4",
+                    "kind": "selection",
+                    "title": "`friendIds.length === 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`friendIds.length === 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getFriends_3_4_then_0_4_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getFriends_4_5",
+                    "kind": "step",
+                    "title": "Database `all` on `BookList` and stores it as `rawEntries`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getFriends_5_6",
+                    "kind": "var_def",
+                    "title": "Define `friends`",
+                    "payload": "const friends = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) return { id: raw.id, userId: raw.userId, status: raw.status, score: raw.score, ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getFriends_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"friends\": \"<friends>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getPeople",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getPeople",
+                "title": "BorealisBooksServ.getPeople(id, query)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getPeople_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getPeople_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getPeople_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`, `filterStatus`",
+                    "payload": "const skip = page - 1 * limit\nconst filterStatus = query?.status?.toUpperCase()?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getPeople_3_4",
+                    "kind": "step",
+                    "title": "Database `query` on `BookList` and stores it as `q`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getPeople_4_5",
+                    "kind": "selection",
+                    "title": "`filterStatus`",
+                    "selectionMode": "if_else",
+                    "condition": "`filterStatus`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisBooksServ_getPeople_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where({ status: filterStatus as any })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getPeople_5_6",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawEntries]`"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getPeople_6_7",
+                    "kind": "var_def",
+                    "title": "Define `people`",
+                    "payload": "const people = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) return { id: raw.id, userId: raw.userId, status: raw.status, score: raw.score, ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisBooksServ_getPeople_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"mediaType\": \"book\",\n  \"mediaId\": \"<id>\",\n  \"total\": \"<total>\",\n  \"page\": \"<page>\",\n  \"limit\": \"<limit>\",\n  \"totalPages\": \"<Math.ceil(total / limit)>\",\n  \"people\": \"<people>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisBooksServ-getRecommendations",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/books/books.serv.ts-BorealisBooksServ-getRecommendations",
+                "title": "BorealisBooksServ.getRecommendations(_id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisBooksServ_getRecommendations_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"recommendations\": []\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Book with ID ${id} not found"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

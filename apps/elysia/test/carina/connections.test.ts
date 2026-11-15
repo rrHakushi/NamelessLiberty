@@ -1,15 +1,15 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia, ValidationError } from 'elysia'
-import { carinaConnections } from '../../src/api/controllers/carina/connections.ctrl'
-import { CarinaConnectionsServ } from '../../src/services/carina/connections.serv'
+import { carinaConnections } from '../../src/apps/carina/connections/connections.ctrl'
+import { CarinaConnectionsServ } from '../../src/apps/carina/connections/connections.serv'
 import {
   encryptConnectionData,
   decryptConnectionData,
   getConnectionAdapter,
   createOAuthStateToken,
 } from '@NamelessLiberty/connections'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt } from '../../src/utils/auth-crypto'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
 import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------

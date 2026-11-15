@@ -1,0 +1,678 @@
+{
+  "id": "apps/borealis/_shared/freshness",
+  "title": "freshness",
+  "description": "",
+  "icon": "IconFunction",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/_shared/freshness.ts",
+    "relPath": "apps/borealis/_shared/freshness.ts",
+    "role": "Functions",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconFunction",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "freshness"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Functions"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/_shared/freshness.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "2 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/sync/media-preview.syncer",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/sync/media-preview.syncer.ts (evaluateRecordFreshness)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/borealis/sync/media.queue",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/sync/media.queue.ts (getEntityFreshness, evaluateRecordFreshness, FreshnessRecord)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-normalizeToStartOfDay",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/freshness.ts-normalizeToStartOfDay",
+                "title": "function normalizeToStartOfDay",
+                "description": "Normalizes a date to midnight (00:00:00.000) so time of day is completely ignored in accordance with the day/month calendar difference rule.",
+                "steps": [
+                  {
+                    "id": "exp_normalizeToStartOfDay_0_1",
+                    "kind": "var_def",
+                    "title": "Define `d`",
+                    "payload": "const d = new Date(date)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_normalizeToStartOfDay_1_2",
+                    "kind": "step",
+                    "title": "Calls `d.setHours`"
+                  },
+                  {
+                    "id": "exp_normalizeToStartOfDay_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`d`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-isRecordHydrated",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/freshness.ts-isRecordHydrated",
+                "title": "function isRecordHydrated",
+                "description": "Checks if a record has completed its initial external provider data fetch. Stubs created with null provider timestamps are unhydrated and must always be fetched.",
+                "steps": [
+                  {
+                    "id": "exp_isRecordHydrated_0_1",
+                    "kind": "selection",
+                    "title": "Branch on `mediaType`",
+                    "selectionMode": "switch",
+                    "condition": "Branch on `mediaType`",
+                    "cases": [
+                      {
+                        "id": "exp_isRecordHydrated_0_1_case_0",
+                        "label": "Case `'ANIME'`",
+                        "children": []
+                      },
+                      {
+                        "id": "exp_isRecordHydrated_0_1_case_1",
+                        "label": "Case `'MANGA'`",
+                        "children": [
+                          {
+                            "id": "exp_isRecordHydrated_0_1_c1_0_1_2_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`record.alUpdatedAt !== null && record.alUpdatedAt !== undefined && record.alUpdatedAt > 0`"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "exp_isRecordHydrated_0_1_case_2",
+                        "label": "Case `'TV'`",
+                        "children": []
+                      },
+                      {
+                        "id": "exp_isRecordHydrated_0_1_case_3",
+                        "label": "Case `'MOVIE'`",
+                        "children": [
+                          {
+                            "id": "exp_isRecordHydrated_0_1_c3_0_1_4_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`record.tvdbUpdatedAt !== null && record.tvdbUpdatedAt !== undefined && record.tvdbUpdatedAt > 0`"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "exp_isRecordHydrated_0_1_case_4",
+                        "label": "Case `'BOOK'`",
+                        "children": [
+                          {
+                            "id": "exp_isRecordHydrated_0_1_c4_0_1_5_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`record.googleBooksUpdatedAt !== null && record.googleBooksUpdatedAt !== undefined && record.googleBooksUpdatedAt > 0`"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "exp_isRecordHydrated_0_1_case_5",
+                        "label": "Case `'GAME'`",
+                        "children": [
+                          {
+                            "id": "exp_isRecordHydrated_0_1_c5_0_1_6_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`record.igdbUpdatedAt !== null && record.igdbUpdatedAt !== undefined && record.igdbUpdatedAt > 0`"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "exp_isRecordHydrated_0_1_case_6",
+                        "label": "Case `'MUSIC'`",
+                        "children": [
+                          {
+                            "id": "exp_isRecordHydrated_0_1_c6_0_1_7_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`record.deezerUpdatedAt !== null && record.deezerUpdatedAt !== undefined && record.deezerUpdatedAt > 0`"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "exp_isRecordHydrated_0_1_case_7",
+                        "label": "Default",
+                        "children": [
+                          {
+                            "id": "exp_isRecordHydrated_0_1_c7_0_1_8_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-evaluateRecordFreshness",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/freshness.ts-evaluateRecordFreshness",
+                "title": "function evaluateRecordFreshness",
+                "description": "Evaluates whether a media entity record is still fresh in the local database. Rules: - If record does not exist or has no updatedAt -> stale (must fetch). - If record is an unhydrated stub (missing provider sync timestamp) -> stale (must fetch initial payload). - Finished/Ended/Released/Published/Cancelled -> fresh unless ≥ 3 calendar months old. - Releasing/Upcoming/In Production/Unknown etc. -> fresh unless ≥ 7 calendar days old. - Date comparison normalizes both dates to start-of-day (ignoring time).",
+                "steps": [
+                  {
+                    "id": "exp_evaluateRecordFreshness_0_1",
+                    "kind": "selection",
+                    "title": "`!record || !record.updatedAt`",
+                    "selectionMode": "if_else",
+                    "condition": "`!record || !record.updatedAt`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_evaluateRecordFreshness_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"isFresh\": false,\n  \"isHydrated\": false,\n  \"statusGroup\": \"one-week\",\n  \"reason\": \"Record does not exist or has no updatedAt timestamp\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_evaluateRecordFreshness_1_2",
+                    "kind": "step",
+                    "title": "Calls `isRecordHydrated` and stores result as `hydrated`"
+                  },
+                  {
+                    "id": "exp_evaluateRecordFreshness_2_3",
+                    "kind": "selection",
+                    "title": "`!hydrated`",
+                    "selectionMode": "if_else",
+                    "condition": "`!hydrated`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_evaluateRecordFreshness_2_3_then_0_3_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"isFresh\": false,\n  \"isHydrated\": false,\n  \"statusGroup\": \"one-week\",\n  \"reason\": \"Unhydrated stub (missing provider sync timestamp)\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_evaluateRecordFreshness_3_4",
+                    "kind": "step",
+                    "title": "Calls `normalizeToStartOfDay` and stores result as `today`"
+                  },
+                  {
+                    "id": "exp_evaluateRecordFreshness_4_5",
+                    "kind": "step",
+                    "title": "Calls `normalizeToStartOfDay` and stores result as `lastUpdated`"
+                  },
+                  {
+                    "id": "exp_evaluateRecordFreshness_5_6",
+                    "kind": "step",
+                    "title": "Calls `normalizeMediaStatus` and stores result as `normStatus`"
+                  },
+                  {
+                    "id": "exp_evaluateRecordFreshness_6_7",
+                    "kind": "step",
+                    "title": "Calls `THREE_MONTH_STATUSES.has` and stores result as `isThreeMonthStatus`"
+                  },
+                  {
+                    "id": "exp_evaluateRecordFreshness_7_8",
+                    "kind": "selection",
+                    "title": "`isThreeMonthStatus`",
+                    "selectionMode": "if_else",
+                    "condition": "`isThreeMonthStatus`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_evaluateRecordFreshness_7_8_then_0_8_1",
+                        "kind": "var_def",
+                        "title": "Define `targetDate`",
+                        "payload": "const targetDate = new Date(lastUpdated)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_evaluateRecordFreshness_7_8_then_1_8_2",
+                        "kind": "step",
+                        "title": "Calls `targetDate.setMonth`"
+                      },
+                      {
+                        "id": "exp_evaluateRecordFreshness_7_8_then_2_8_3",
+                        "kind": "var_def",
+                        "title": "Define `isFresh`",
+                        "payload": "const isFresh = today.getTime() < targetDate.getTime()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_evaluateRecordFreshness_7_8_then_3_8_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"isFresh\": \"<isFresh>\",\n  \"isHydrated\": true,\n  \"statusGroup\": \"three-months\",\n  \"reason\": \"<isFresh ? `Status \\\"${normStatus}\\\" is fresh until ${targetDate.toISOString().split('T')[0]}` : `Status \\\"${normStatus}\\\" reached 3-month threshold (${targetDate.toISOString().split('T')[0]})`>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "exp_evaluateRecordFreshness_7_8_else_0_9_1",
+                        "kind": "var_def",
+                        "title": "Define `targetDate`",
+                        "payload": "const targetDate = new Date(lastUpdated)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_evaluateRecordFreshness_7_8_else_1_9_2",
+                        "kind": "step",
+                        "title": "Calls `targetDate.setDate`"
+                      },
+                      {
+                        "id": "exp_evaluateRecordFreshness_7_8_else_2_9_3",
+                        "kind": "var_def",
+                        "title": "Define `isFresh`",
+                        "payload": "const isFresh = today.getTime() < targetDate.getTime()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_evaluateRecordFreshness_7_8_else_3_9_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"isFresh\": \"<isFresh>\",\n  \"isHydrated\": true,\n  \"statusGroup\": \"one-week\",\n  \"reason\": \"<isFresh ? `Status \\\"${normStatus || 'UNKNOWN'}\\\" is fresh until ${targetDate.toISOString().split('T')[0]}` : `Status \\\"${normStatus || 'UNKNOWN'}\\\" reached 1-week threshold (${targetDate.toISOString().split('T')[0]})`>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-getEntityFreshness",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/freshness.ts-getEntityFreshness",
+                "title": "function getEntityFreshness",
+                "description": "Queries the database for a media item's timestamps and evaluates its freshness.",
+                "steps": [
+                  {
+                    "id": "exp_getEntityFreshness_0_1",
+                    "kind": "var_def",
+                    "title": "Define `record`",
+                    "payload": "let record: FreshnessRecord | null = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_getEntityFreshness_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_getEntityFreshness_1_2_try_0_2_1",
+                        "kind": "selection",
+                        "title": "Branch on `mediaType`",
+                        "selectionMode": "switch",
+                        "condition": "Branch on `mediaType`",
+                        "cases": [
+                          {
+                            "id": "exp_getEntityFreshness_1_2_try_0_2_1_case_0",
+                            "label": "Case `'ANIME'`",
+                            "children": []
+                          },
+                          {
+                            "id": "exp_getEntityFreshness_1_2_try_0_2_1_case_1",
+                            "label": "Case `'MANGA'`",
+                            "children": []
+                          },
+                          {
+                            "id": "exp_getEntityFreshness_1_2_try_0_2_1_case_2",
+                            "label": "Case `'TV'`",
+                            "children": []
+                          },
+                          {
+                            "id": "exp_getEntityFreshness_1_2_try_0_2_1_case_3",
+                            "label": "Case `'MOVIE'`",
+                            "children": []
+                          },
+                          {
+                            "id": "exp_getEntityFreshness_1_2_try_0_2_1_case_4",
+                            "label": "Case `'BOOK'`",
+                            "children": []
+                          },
+                          {
+                            "id": "exp_getEntityFreshness_1_2_try_0_2_1_case_5",
+                            "label": "Case `'GAME'`",
+                            "children": []
+                          },
+                          {
+                            "id": "exp_getEntityFreshness_1_2_try_0_2_1_case_6",
+                            "label": "Case `'MUSIC'`",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_getEntityFreshness_1_2_catch_0_3_1",
+                        "kind": "warning",
+                        "code": "Warning",
+                        "message": "Failed to query ${mediaType} #${mediaId} for freshness check: ${err?.message || err}"
+                      },
+                      {
+                        "id": "exp_getEntityFreshness_1_2_catch_1_3_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"isFresh\": false,\n  \"isHydrated\": false,\n  \"statusGroup\": \"one-week\",\n  \"reason\": \"Failed to query database\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_getEntityFreshness_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`evaluateRecordFreshness(mediaType, record, now)`"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to query ${mediaType} #${mediaId} for freshness check: ${err?.message || err}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

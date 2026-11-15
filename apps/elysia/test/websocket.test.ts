@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'bun:test'
-import { WsServ, type IrisWebSocket } from '../src/services/ws.serv'
+import { WsServ, type IrisWebSocket } from '../src/core/ws/ws.serv'
 import { app } from '../src/server'
 
 describe('WebSocket Server & WsServ Test Suite', () => {

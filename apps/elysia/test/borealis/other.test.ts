@@ -2,10 +2,10 @@ import { describe, it, expect, beforeAll } from 'bun:test'
 import { Elysia, ValidationError } from 'elysia'
 import { prisma } from '@NamelessLiberty/db'
 import { IRISFlags } from '@NamelessLiberty/permissions'
-import { isHttpError } from '../../src/lib/errors'
-import { borealisOther } from '../../src/api/controllers/borealis/other.ctrl'
-import { borealisLists } from '../../src/api/controllers/borealis/lists.ctrl'
-import { signUserJwt } from '../../src/utils/auth-crypto'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { borealisOther } from '../../src/apps/borealis/other/other.ctrl'
+import { borealisLists } from '../../src/apps/borealis/lists/lists.ctrl'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
 
 describe('Borealis Other & Custom Item System', () => {
   let app: any

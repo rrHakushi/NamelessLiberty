@@ -1,8 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, spyOn } from 'bun:test'
-import { ServarrServ } from '../../src/services/servarr/servarr.serv'
-import { ServarrExtendedServ } from '../../src/services/servarr/servarr-extended.serv'
-import { ServarrRealtimeServ } from '../../src/services/servarr/servarr-realtime.serv'
-import { wsHub } from '../../src/services/ws.serv'
+import { ServarrServ } from '../../src/apps/servarr/core/servarr.serv'
+import { ServarrExtendedServ } from '../../src/apps/servarr/extended/servarr-extended.serv'
+import { ServarrRealtimeServ } from '../../src/apps/servarr/realtime/servarr-realtime.serv'
+import { wsHub } from '../../src/core/ws/ws.serv'
 
 describe('Servarr Extended Services & Realtime Bridge', () => {
   let getCtxSpy: ReturnType<typeof spyOn>

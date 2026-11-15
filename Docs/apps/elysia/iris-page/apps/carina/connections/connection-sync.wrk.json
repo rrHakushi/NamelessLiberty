@@ -1,0 +1,1918 @@
+{
+  "id": "apps/carina/connections/connection-sync.wrk",
+  "title": "connection-sync.wrk",
+  "description": "",
+  "icon": "IconSettingsAutomation",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/carina/connections/connection-sync.wrk.ts",
+    "relPath": "apps/carina/connections/connection-sync.wrk.ts",
+    "role": "Worker",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 18
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconSettingsAutomation",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "connection-sync.wrk"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Worker"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/carina/connections/connection-sync.wrk.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/carina/connections/connection-sync.queue",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/connections/connection-sync.queue.ts (initConnectionWorkers, closeConnectionWorkers, ConnectionSyncJobData)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "2 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ConnectionProviderWorker.constructor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(provider)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ConnectionProviderWorker.processJob"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(job)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<unknown>"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-processConnectionSyncJob",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connection-sync.wrk.ts-processConnectionSyncJob",
+                "title": "function processConnectionSyncJob",
+                "description": "Core processor for connection sync jobs. Fetches latest encrypted credentials, handles proactive and reactive token refresh, rate limit pausing, and updates connection lastSyncedAt on success.",
+                "steps": [
+                  {
+                    "id": "exp_processConnectionSyncJob_0_1",
+                    "kind": "var_def",
+                    "title": "Define `{ userId, provider, providerMediaId, mediaType, mediaTitle, payload, autoInjected }`, `displayName`, `decryptFn`, `encryptFn`, `adapter`",
+                    "payload": "const { userId, provider, providerMediaId, mediaType, mediaTitle, payload, autoInjected } = job.data\nconst displayName = PROVIDER_DISPLAY_NAMES[provider] || provider\nconst decryptFn = deps?.decrypt ?? decryptConnectionData\nconst encryptFn = deps?.encrypt ?? encryptConnectionData\nlet adapter = deps?.adapter",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_1_2",
+                    "kind": "selection",
+                    "title": "`!adapter`",
+                    "selectionMode": "if_else",
+                    "condition": "`!adapter`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_processConnectionSyncJob_1_2_then_0_2_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "exp_processConnectionSyncJob_1_2_then_0_2_1_try_0_2_1_1",
+                            "kind": "step",
+                            "title": "Assign `adapter`",
+                            "payload": "adapter = getConnectionAdapter(provider)",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "exp_processConnectionSyncJob_1_2_then_0_2_1_catch_0_2_2_1",
+                            "kind": "warning",
+                            "code": "Warning",
+                            "message": "[Worker:${provider}] Unsupported connection provider: ${provider}"
+                          },
+                          {
+                            "id": "exp_processConnectionSyncJob_1_2_then_0_2_1_catch_1_2_2_2",
+                            "kind": "error",
+                            "code": "UnrecoverableError",
+                            "httpStatus": 500,
+                            "message": "Unsupported connection provider: ${provider}"
+                          }
+                        ],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_2_3",
+                    "kind": "selection",
+                    "title": "`!adapter.updateMediaEntry`",
+                    "selectionMode": "if_else",
+                    "condition": "`!adapter.updateMediaEntry`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_processConnectionSyncJob_2_3_then_0_3_1",
+                        "kind": "warning",
+                        "code": "Warning",
+                        "message": "[Worker:${provider}] Adapter does not support updateMediaEntry"
+                      },
+                      {
+                        "id": "exp_processConnectionSyncJob_2_3_then_1_3_2",
+                        "kind": "error",
+                        "code": "UnrecoverableError",
+                        "httpStatus": 500,
+                        "message": "Provider ${displayName} does not support syncing media entries"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_3_4",
+                    "kind": "step",
+                    "title": "Database `first` on `Connection` and stores it as `userConn`"
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_4_5",
+                    "kind": "selection",
+                    "title": "`!userConn`",
+                    "selectionMode": "if_else",
+                    "condition": "`!userConn`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_processConnectionSyncJob_4_5_then_0_5_1",
+                        "kind": "selection",
+                        "title": "`!autoInjected`",
+                        "selectionMode": "if_else",
+                        "condition": "`!autoInjected`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_processConnectionSyncJob_4_5_then_0_5_1_then_0_5_1_1",
+                            "kind": "warning",
+                            "code": "Warning",
+                            "message": "await CarinaNotificationsServ.createNotification({ userId, app: 'Borealis', category: 'Connections', type: 'INFO', priority: 'NORMAL', content: { ...).catch((notifErr) => { logger.warn(`Failed to dispatch not connected notification: ${notifErr?.message || notifErr}`) })"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_processConnectionSyncJob_4_5_then_1_5_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_5_6",
+                    "kind": "var_def",
+                    "title": "Define `credentials`",
+                    "payload": "let credentials: ConnectionCredentials",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_6_7",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "decryptErr",
+                    "tryBlock": [
+                      {
+                        "id": "exp_processConnectionSyncJob_6_7_try_0_7_1",
+                        "kind": "step",
+                        "title": "Assign `credentials`",
+                        "payload": "credentials = decryptFn<ConnectionCredentials>( userConn.encryptedData, userId )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_processConnectionSyncJob_6_7_catch_0_8_1",
+                        "kind": "error",
+                        "code": "UnrecoverableError",
+                        "httpStatus": 500,
+                        "message": "Failed to decrypt credentials for ${displayName}. Please reconnect your account."
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_8_9",
+                    "kind": "var_def",
+                    "title": "Define `isExpiring`",
+                    "payload": "const isExpiring = userConn.expiresAt && toDate(userConn.expiresAt).getTime() - Date.now() < 300000",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_9_10",
+                    "kind": "selection",
+                    "title": "`isExpiring && credentials.refreshToken && adapter.refreshAccessToken`",
+                    "selectionMode": "if_else",
+                    "condition": "`isExpiring && credentials.refreshToken && adapter.refreshAccessToken`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_processConnectionSyncJob_9_10_then_0_10_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "refreshErr",
+                        "tryBlock": [
+                          {
+                            "id": "exp_processConnectionSyncJob_9_10_then_0_10_1_try_0_10_1_1",
+                            "kind": "step",
+                            "title": "Calls `adapter.refreshAccessToken` and stores result as `refreshed`"
+                          },
+                          {
+                            "id": "exp_processConnectionSyncJob_9_10_then_0_10_1_try_1_10_1_2",
+                            "kind": "step",
+                            "title": "Assign `credentials`",
+                            "payload": "credentials = { ...credentials, ...refreshed }",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "exp_processConnectionSyncJob_9_10_then_0_10_1_try_2_10_1_3",
+                            "kind": "step",
+                            "title": "Calls `encryptFn` and stores result as `updatedEncrypted`"
+                          },
+                          {
+                            "id": "exp_processConnectionSyncJob_9_10_then_0_10_1_try_3_10_1_4",
+                            "kind": "step",
+                            "title": "Database `update` on `Connection`"
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "exp_processConnectionSyncJob_9_10_then_0_10_1_catch_0_10_2_1",
+                            "kind": "warning",
+                            "code": "Warning",
+                            "message": "[Worker:${provider}] Proactive token refresh failed: ${refreshErr?.message || refreshErr}"
+                          }
+                        ],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_10_11",
+                    "kind": "var_def",
+                    "title": "Define `updatePayload`",
+                    "payload": "const updatePayload: UpdateMediaPayload = { mediaId: providerMediaId, mediaType: mediaType as any, status: payload.status, progress: payload.progress, score: payload.score, notes: payload.notes, ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_11_12",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "firstErr",
+                    "tryBlock": [
+                      {
+                        "id": "exp_processConnectionSyncJob_11_12_try_0_12_1",
+                        "kind": "step",
+                        "title": "Calls `adapter.updateMediaEntry`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_processConnectionSyncJob_11_12_catch_0_13_1",
+                        "kind": "var_def",
+                        "title": "Define `isRateLimit`",
+                        "payload": "const isRateLimit = firstErr instanceof ConnectionRateLimitError || firstErr?.statusCode === 429 || /rate limit|too many requests/i.test(firstErr?.message || '')",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_processConnectionSyncJob_11_12_catch_1_13_2",
+                        "kind": "selection",
+                        "title": "`isRateLimit`",
+                        "selectionMode": "if_else",
+                        "condition": "`isRateLimit`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_processConnectionSyncJob_11_12_catch_1_13_2_then_0_13_2_1",
+                            "kind": "var_def",
+                            "title": "Define `retryAfterSec`",
+                            "payload": "const retryAfterSec = firstErr?.retryAfterSeconds || 60",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "exp_processConnectionSyncJob_11_12_catch_1_13_2_then_1_13_2_2",
+                            "kind": "warning",
+                            "code": "Warning",
+                            "message": "${c.yellow('⏳ [Rate Limited]')}: ${provider} rate limit hit. Pausing worker for ${retryAfterSec}s..."
+                          },
+                          {
+                            "id": "exp_processConnectionSyncJob_11_12_catch_1_13_2_then_2_13_2_3",
+                            "kind": "selection",
+                            "title": "`worker && typeofworker as any.rateLimit === 'function'`",
+                            "selectionMode": "if_else",
+                            "condition": "`worker && typeofworker as any.rateLimit === 'function'`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_processConnectionSyncJob_11_12_catch_1_13_2_then_2_13_2_3_then_0_13_2_3_1",
+                                "kind": "try_catch_finally",
+                                "title": "Try block",
+                                "catchVar": "err",
+                                "tryBlock": [
+                                  {
+                                    "id": "exp_processConnectionSyncJob_11_12_catch_1_13_2_then_2_13_2_3_then_0_13_2_3_1_try_0_13_2_3_1_1",
+                                    "kind": "step",
+                                    "title": "Calls `worker as any.rateLimit`"
+                                  }
+                                ],
+                                "catchBlock": [],
+                                "finallyBlock": []
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "exp_processConnectionSyncJob_11_12_catch_1_13_2_then_3_13_2_4",
+                            "kind": "error",
+                            "code": "firstErr",
+                            "httpStatus": 500,
+                            "message": "firstErr"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_processConnectionSyncJob_11_12_catch_2_13_3",
+                        "kind": "var_def",
+                        "title": "Define `is404`",
+                        "payload": "const is404 = firstErr?.statusCode === 404 || /status 404|404 (page not found|not found)|\"status\":\\s*404/i.test(firstErr?.message || '')",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_processConnectionSyncJob_11_12_catch_3_13_4",
+                        "kind": "selection",
+                        "title": "`is404`",
+                        "selectionMode": "if_else",
+                        "condition": "`is404`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_processConnectionSyncJob_11_12_catch_3_13_4_then_0_13_4_1",
+                            "kind": "warning",
+                            "code": "Warning",
+                            "message": "[Worker:${provider}] Media #${providerMediaId} not found (404) on ${provider}. Skipping retries."
+                          },
+                          {
+                            "id": "exp_processConnectionSyncJob_11_12_catch_3_13_4_then_1_13_4_2",
+                            "kind": "error",
+                            "code": "UnrecoverableError",
+                            "httpStatus": 500,
+                            "message": "Media not found (404) on ${provider}: ${firstErr?.message || firstErr}"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_processConnectionSyncJob_11_12_catch_4_13_5",
+                        "kind": "var_def",
+                        "title": "Define `isAuthErr`",
+                        "payload": "const isAuthErr = firstErr instanceof ConnectionAuthError || firstErr?.statusCode === 401 || /unauthorized|token/i.test(firstErr?.message || '')",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6",
+                        "kind": "selection",
+                        "title": "`isAuthErr && credentials.refreshToken && adapter.refreshAccessToken`",
+                        "selectionMode": "if_else",
+                        "condition": "`isAuthErr && credentials.refreshToken && adapter.refreshAccessToken`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6_then_0_13_6_1",
+                            "kind": "try_catch_finally",
+                            "title": "Try block",
+                            "catchVar": "retryErr",
+                            "tryBlock": [
+                              {
+                                "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6_then_0_13_6_1_try_0_13_6_1_1",
+                                "kind": "step",
+                                "title": "Calls `adapter.refreshAccessToken` and stores result as `refreshed`"
+                              },
+                              {
+                                "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6_then_0_13_6_1_try_1_13_6_1_2",
+                                "kind": "step",
+                                "title": "Assign `credentials`",
+                                "payload": "credentials = { ...credentials, ...refreshed }",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6_then_0_13_6_1_try_2_13_6_1_3",
+                                "kind": "step",
+                                "title": "Calls `encryptFn` and stores result as `updatedEncrypted`"
+                              },
+                              {
+                                "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6_then_0_13_6_1_try_3_13_6_1_4",
+                                "kind": "step",
+                                "title": "Database `update` on `Connection`"
+                              },
+                              {
+                                "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6_then_0_13_6_1_try_4_13_6_1_5",
+                                "kind": "step",
+                                "title": "Calls `adapter.updateMediaEntry`"
+                              }
+                            ],
+                            "catchBlock": [
+                              {
+                                "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6_then_0_13_6_1_catch_0_13_6_2_1",
+                                "kind": "var_def",
+                                "title": "Define `isRetryRateLimit`",
+                                "payload": "const isRetryRateLimit = retryErr instanceof ConnectionRateLimitError || retryErr?.statusCode === 429 || /rate limit|too many requests/i.test(retryErr?.message || '')",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6_then_0_13_6_1_catch_1_13_6_2_2",
+                                "kind": "selection",
+                                "title": "`isRetryRateLimit`",
+                                "selectionMode": "if_else",
+                                "condition": "`isRetryRateLimit`",
+                                "thenBranch": [
+                                  {
+                                    "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6_then_0_13_6_1_catch_1_13_6_2_2_then_0_13_6_2_2_1",
+                                    "kind": "error",
+                                    "code": "retryErr",
+                                    "httpStatus": 500,
+                                    "message": "retryErr"
+                                  }
+                                ],
+                                "elseBranch": []
+                              },
+                              {
+                                "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6_then_0_13_6_1_catch_2_13_6_2_3",
+                                "kind": "error",
+                                "code": "UnrecoverableError",
+                                "httpStatus": 500,
+                                "message": "retryErr?.message || String(retryErr)"
+                              }
+                            ],
+                            "finallyBlock": []
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "exp_processConnectionSyncJob_11_12_catch_5_13_6_else_0_13_7_1",
+                            "kind": "error",
+                            "code": "UnrecoverableError",
+                            "httpStatus": 500,
+                            "message": "firstErr?.message || String(firstErr)"
+                          }
+                        ]
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_13_14",
+                    "kind": "step",
+                    "title": "Database `update` on `Connection`"
+                  },
+                  {
+                    "id": "exp_processConnectionSyncJob_14_15",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`true`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-handleJobFailure",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connection-sync.wrk.ts-handleJobFailure",
+                "title": "function handleJobFailure",
+                "description": "Handles failed connection sync attempts and complete exhaustion notifications.",
+                "steps": [
+                  {
+                    "id": "exp_handleJobFailure_0_1",
+                    "kind": "selection",
+                    "title": "`!job`",
+                    "selectionMode": "if_else",
+                    "condition": "`!job`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_handleJobFailure_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_handleJobFailure_1_2",
+                    "kind": "var_def",
+                    "title": "Define `maxAttempts`, `isRateLimit`, `is404`, `isUnrecoverable`",
+                    "payload": "const maxAttempts = job.opts.attempts ?? 4\nconst isRateLimit = err instanceof ConnectionRateLimitError || err?.statusCode === 429 || /rate limit|too many requests/i.test(err?.message || '')\nconst is404 = err?.statusCode === 404 || /status 404|404 (page not found|not found)|\"status\":\\s*404/i.test(err?.message || '')\nconst isUnrecoverable = err instanceof UnrecoverableError || err?.name === 'UnrecoverableError' || is404 || !isRateLimit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_handleJobFailure_2_3",
+                    "kind": "selection",
+                    "title": "`isUnrecoverable && typeofjob as any.discard === 'function'`",
+                    "selectionMode": "if_else",
+                    "condition": "`isUnrecoverable && typeofjob as any.discard === 'function'`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_handleJobFailure_2_3_then_0_3_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "exp_handleJobFailure_2_3_then_0_3_1_try_0_3_1_1",
+                            "kind": "step",
+                            "title": "Calls `job as any.discard`"
+                          }
+                        ],
+                        "catchBlock": [],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_handleJobFailure_3_4",
+                    "kind": "var_def",
+                    "title": "Define `isExhausted`, `isTerminal`",
+                    "payload": "const isExhausted = job.attemptsMade >= maxAttempts\nconst isTerminal = isUnrecoverable || isExhausted",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_handleJobFailure_4_5",
+                    "kind": "selection",
+                    "title": "`is404`",
+                    "selectionMode": "if_else",
+                    "condition": "`is404`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_handleJobFailure_4_5_then_0_5_1",
+                        "kind": "warning",
+                        "code": "Warning",
+                        "message": "${c.red(c.bold('❌ [Job Dropped (404 Not Found)]'))}: [${provider}] \"${job.data.mediaTitle}\" was not found on ${provider}. Discarding job without retrying."
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "exp_handleJobFailure_4_5_else_0_6_1",
+                        "kind": "warning",
+                        "code": "Warning",
+                        "message": "${c.red(c.bold('❌ [Job Attempt Failed]'))}: [${provider}] Attempt ${job.attemptsMade}/${maxAttempts} failed: ${err?.message || err}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_handleJobFailure_6_7",
+                    "kind": "selection",
+                    "title": "`isTerminal`",
+                    "selectionMode": "if_else",
+                    "condition": "`isTerminal`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_handleJobFailure_6_7_then_0_7_1",
+                        "kind": "var_def",
+                        "title": "Define `displayName`, `errMsg`",
+                        "payload": "const displayName = PROVIDER_DISPLAY_NAMES[provider] || provider\nconst errMsg = err?.message || String(err)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_handleJobFailure_6_7_then_1_7_2",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      },
+                      {
+                        "id": "exp_handleJobFailure_6_7_then_2_7_3",
+                        "kind": "var_def",
+                        "title": "Define `adapter`",
+                        "payload": "let adapter",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_handleJobFailure_6_7_then_3_7_4",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "exp_handleJobFailure_6_7_then_3_7_4_try_0_7_4_1",
+                            "kind": "step",
+                            "title": "Assign `adapter`",
+                            "payload": "adapter = getConnectionAdapter(provider)",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "catchBlock": [],
+                        "finallyBlock": []
+                      },
+                      {
+                        "id": "exp_handleJobFailure_6_7_then_5_7_6",
+                        "kind": "warning",
+                        "code": "Warning",
+                        "message": "await CarinaNotificationsServ.createNotification({ userId: job.data.userId, app: 'Borealis', category: 'Connections', type: 'INFO', priority: 'HIGH', content: { ...).catch((notifErr) => { logger.warn(`Failed to dispatch failure notification: ${notifErr?.message || notifErr}`) })"
+                      },
+                      {
+                        "id": "exp_handleJobFailure_6_7_then_6_7_7",
+                        "kind": "step",
+                        "title": "Database `query` on `Connection`"
+                      }
+                    ],
+                    "elseBranch": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ConnectionProviderWorker-constructor",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connection-sync.wrk.ts-ConnectionProviderWorker-constructor",
+                "title": "ConnectionProviderWorker.constructor(provider)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ConnectionProviderWorker_constructor_0_1",
+                    "kind": "var_def",
+                    "title": "Define `config`",
+                    "payload": "const config = PROVIDER_WORKER_CONFIGS[provider] || { concurrency: 2, max: 30, duration: 60000, }",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ConnectionProviderWorker_constructor_1_2",
+                    "kind": "step",
+                    "title": "Assign `this.provider`",
+                    "payload": "this.provider = provider",
+                    "payloadLanguage": "typescript"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ConnectionProviderWorker-processJob",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connection-sync.wrk.ts-ConnectionProviderWorker-processJob",
+                "title": "ConnectionProviderWorker.processJob(job)",
+                "description": "Executes a single connection sync job with provider-specific rate-limit & auth handling.",
+                "steps": [
+                  {
+                    "id": "m_ConnectionProviderWorker_processJob_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await processConnectionSyncJob(job, workerInstances.get(this.provider))`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-createConnectionProviderWorker",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connection-sync.wrk.ts-createConnectionProviderWorker",
+                "title": "function createConnectionProviderWorker",
+                "description": "Creates and initializes a production-ready BullMQ worker for a specific connection provider.",
+                "steps": [
+                  {
+                    "id": "exp_createConnectionProviderWorker_0_1",
+                    "kind": "var_def",
+                    "title": "Define `instance`",
+                    "payload": "const instance = new ConnectionProviderWorker(provider)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_createConnectionProviderWorker_1_2",
+                    "kind": "step",
+                    "title": "Calls `instance.start` and stores result as `worker`"
+                  },
+                  {
+                    "id": "exp_createConnectionProviderWorker_2_3",
+                    "kind": "step",
+                    "title": "Calls `worker.on`"
+                  },
+                  {
+                    "id": "exp_createConnectionProviderWorker_3_4",
+                    "kind": "step",
+                    "title": "Calls `managedWorkers.set`"
+                  },
+                  {
+                    "id": "exp_createConnectionProviderWorker_4_5",
+                    "kind": "step",
+                    "title": "Calls `workerInstances.set`"
+                  },
+                  {
+                    "id": "exp_createConnectionProviderWorker_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`worker`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-getConnectionWorker",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connection-sync.wrk.ts-getConnectionWorker",
+                "title": "function getConnectionWorker",
+                "description": "Returns worker instance for a provider, instantiating it if not yet running.",
+                "steps": [
+                  {
+                    "id": "exp_getConnectionWorker_0_1",
+                    "kind": "step",
+                    "title": "Calls `workerInstances.get` and stores result as `worker`"
+                  },
+                  {
+                    "id": "exp_getConnectionWorker_1_2",
+                    "kind": "selection",
+                    "title": "`!worker && !isShuttingDown`",
+                    "selectionMode": "if_else",
+                    "condition": "`!worker && !isShuttingDown`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_getConnectionWorker_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Assign `worker`",
+                        "payload": "worker = createConnectionProviderWorker(provider)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_getConnectionWorker_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`worker!`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-initConnectionWorkers",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connection-sync.wrk.ts-initConnectionWorkers",
+                "title": "function initConnectionWorkers",
+                "description": "Initializes all provider workers simultaneously.",
+                "steps": [
+                  {
+                    "id": "exp_initConnectionWorkers_0_1",
+                    "kind": "var_def",
+                    "title": "Define `providers`",
+                    "payload": "const providers: ConnectionProvider[] = [ 'ANILIST', 'MAL', 'SIMKL', 'BANGUMI', 'HIKKA', 'MANGAUPDATES', ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_initConnectionWorkers_1_2",
+                    "kind": "iteration",
+                    "title": "Iterate `const provider` over `providers`",
+                    "loopType": "while",
+                    "condition": "Iterate `const provider` over `providers`",
+                    "children": [
+                      {
+                        "id": "exp_initConnectionWorkers_1_2_loop_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `getConnectionWorker`"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-closeConnectionWorkers",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connection-sync.wrk.ts-closeConnectionWorkers",
+                "title": "function closeConnectionWorkers",
+                "description": "Gracefully shuts down all active provider workers.",
+                "steps": [
+                  {
+                    "id": "exp_closeConnectionWorkers_0_1",
+                    "kind": "selection",
+                    "title": "`isShuttingDown`",
+                    "selectionMode": "if_else",
+                    "condition": "`isShuttingDown`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_closeConnectionWorkers_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_closeConnectionWorkers_1_2",
+                    "kind": "step",
+                    "title": "Assign `isShuttingDown`",
+                    "payload": "isShuttingDown = true",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_closeConnectionWorkers_2_3",
+                    "kind": "iteration",
+                    "title": "Iterate `const [provider, worker]` over `workerInstances.entries()`",
+                    "loopType": "while",
+                    "condition": "Iterate `const [provider, worker]` over `workerInstances.entries()`",
+                    "children": [
+                      {
+                        "id": "exp_closeConnectionWorkers_2_3_loop_0_3_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "exp_closeConnectionWorkers_2_3_loop_0_3_1_try_0_3_1_1",
+                            "kind": "step",
+                            "title": "Calls `worker.pause`"
+                          },
+                          {
+                            "id": "exp_closeConnectionWorkers_2_3_loop_0_3_1_try_1_3_1_2",
+                            "kind": "step",
+                            "title": "Calls `worker.close`"
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "exp_closeConnectionWorkers_2_3_loop_0_3_1_catch_0_3_2_1",
+                            "kind": "warning",
+                            "code": "Warning",
+                            "message": "Error closing worker for ${provider}: ${err?.message || err}"
+                          }
+                        ],
+                        "finallyBlock": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_closeConnectionWorkers_3_4",
+                    "kind": "step",
+                    "title": "Calls `workerInstances.clear`"
+                  },
+                  {
+                    "id": "exp_closeConnectionWorkers_4_5",
+                    "kind": "step",
+                    "title": "Assign `isShuttingDown`",
+                    "payload": "isShuttingDown = false",
+                    "payloadLanguage": "typescript"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "18 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[Worker:${provider}] Unsupported connection provider: ${provider}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "UnrecoverableError"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Unsupported connection provider: ${provider}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[Worker:${provider}] Adapter does not support updateMediaEntry"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "UnrecoverableError"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Provider ${displayName} does not support syncing media entries"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "await CarinaNotificationsServ.createNotification({ userId, app: 'Borealis', category: 'Connections', type: 'INFO', priority: 'NORMAL', content: { ...).catch((notifErr) => { logger.warn(`Failed to dispatch not connected notification: ${notifErr?.message || notifErr}`) })"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "UnrecoverableError"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to decrypt credentials for ${displayName}. Please reconnect your account."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[Worker:${provider}] Proactive token refresh failed: ${refreshErr?.message || refreshErr}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "${c.yellow('⏳ [Rate Limited]')}: ${provider} rate limit hit. Pausing worker for ${retryAfterSec}s..."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "firstErr"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "firstErr"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[Worker:${provider}] Media #${providerMediaId} not found (404) on ${provider}. Skipping retries."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "UnrecoverableError"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Media not found (404) on ${provider}: ${firstErr?.message || firstErr}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "retryErr"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "retryErr"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "UnrecoverableError"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "retryErr?.message || String(retryErr)"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "UnrecoverableError"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "firstErr?.message || String(firstErr)"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "${c.red(c.bold('❌ [Job Dropped (404 Not Found)]'))}: [${provider}] \"${job.data.mediaTitle}\" was not found on ${provider}. Discarding job without retrying."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "${c.red(c.bold('❌ [Job Attempt Failed]'))}: [${provider}] Attempt ${job.attemptsMade}/${maxAttempts} failed: ${err?.message || err}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "await CarinaNotificationsServ.createNotification({ userId: job.data.userId, app: 'Borealis', category: 'Connections', type: 'INFO', priority: 'HIGH', content: { ...).catch((notifErr) => { logger.warn(`Failed to dispatch failure notification: ${notifErr?.message || notifErr}`) })"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Error closing worker for ${provider}: ${err?.message || err}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

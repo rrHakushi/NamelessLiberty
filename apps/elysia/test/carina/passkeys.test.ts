@@ -1,9 +1,9 @@
 import { describe, expect, it, beforeEach, mock } from 'bun:test'
 import * as realWebAuthn from '@simplewebauthn/server'
 import { Elysia } from 'elysia'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt } from '../../src/utils/auth-crypto'
-import { cache } from '../../src/utils/cache'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
+import { cache } from '../../src/core/utils/cache'
 import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------
@@ -33,7 +33,7 @@ mock.module('@simplewebauthn/server', () => ({
 }))
 
 // Import controller after module mock is set up
-const { carinaPasskeys } = await import('../../src/api/controllers/carina/passkeys.ctrl')
+const { carinaPasskeys } = await import('../../src/apps/carina/passkeys/passkeys.ctrl')
 
 // -----------------------------------------------------------------------------
 // In-Memory Database Mock for Passkeys and Users

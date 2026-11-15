@@ -1,0 +1,1349 @@
+{
+  "id": "apps/carina/backupcodes/backupcodes.serv",
+  "title": "backupcodes.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/carina/backupcodes/backupcodes.serv.ts",
+    "relPath": "apps/carina/backupcodes/backupcodes.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 10
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "backupcodes.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/carina/backupcodes/backupcodes.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/carina/backupcodes/backupcodes.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/backupcodes/backupcodes.ctrl.ts (CarinaBackupCodesServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "4 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaBackupCodesServ.constructor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaBackupCodesServ.generateCodes"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaBackupCodesServ.regenerateCodes"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaBackupCodesServ.verifyCode"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaBackupCodesServ-generateCodes",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/backupcodes/backupcodes.serv.ts-CarinaBackupCodesServ-generateCodes",
+                "title": "CarinaBackupCodesServ.generateCodes(userId)",
+                "description": "Generate initial backup codes for an MFA-protected user account.",
+                "steps": [
+                  {
+                    "id": "m_CarinaBackupCodesServ_generateCodes_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `user`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_generateCodes_1_2",
+                    "kind": "selection",
+                    "title": "`!user`",
+                    "selectionMode": "if_else",
+                    "condition": "`!user`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaBackupCodesServ_generateCodes_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User with ID '${userId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_generateCodes_2_3",
+                    "kind": "var_def",
+                    "title": "Define `hasMfaActive`",
+                    "payload": "const hasMfaActive = user.TOTPEnabled || user.emailMfaEnabled || user.passkeys.length > 0",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_generateCodes_3_4",
+                    "kind": "selection",
+                    "title": "`!hasMfaActive`",
+                    "selectionMode": "if_else",
+                    "condition": "`!hasMfaActive`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaBackupCodesServ_generateCodes_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Multi-factor authentication must be enabled to generate backup codes."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_generateCodes_4_5",
+                    "kind": "selection",
+                    "title": "`user.backupCodes.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`user.backupCodes.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaBackupCodesServ_generateCodes_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Backup codes have already been generated for this account. Use regenerate to create new ones."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_generateCodes_5_6",
+                    "kind": "step",
+                    "title": "Calls `generateBackupCodes` and stores result as `{ plain, hashed }`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_generateCodes_6_7",
+                    "kind": "step",
+                    "title": "Database `update` on `User`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_generateCodes_7_8",
+                    "kind": "step",
+                    "title": "Cache `del`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_generateCodes_8_9",
+                    "kind": "step",
+                    "title": "Cache `del`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_generateCodes_9_10",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"backupCodes\": \"<plain>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaBackupCodesServ-regenerateCodes",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/backupcodes/backupcodes.serv.ts-CarinaBackupCodesServ-regenerateCodes",
+                "title": "CarinaBackupCodesServ.regenerateCodes(userId)",
+                "description": "Regenerate 10 new backup recovery codes, replacing all previous ones.",
+                "steps": [
+                  {
+                    "id": "m_CarinaBackupCodesServ_regenerateCodes_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `user`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_regenerateCodes_1_2",
+                    "kind": "selection",
+                    "title": "`!user`",
+                    "selectionMode": "if_else",
+                    "condition": "`!user`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaBackupCodesServ_regenerateCodes_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User with ID '${userId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_regenerateCodes_2_3",
+                    "kind": "var_def",
+                    "title": "Define `hasMfaActive`",
+                    "payload": "const hasMfaActive = user.TOTPEnabled || user.emailMfaEnabled || user.passkeys.length > 0",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_regenerateCodes_3_4",
+                    "kind": "selection",
+                    "title": "`!hasMfaActive`",
+                    "selectionMode": "if_else",
+                    "condition": "`!hasMfaActive`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaBackupCodesServ_regenerateCodes_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Multi-factor authentication must be enabled to generate backup codes."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_regenerateCodes_4_5",
+                    "kind": "step",
+                    "title": "Calls `generateBackupCodes` and stores result as `{ plain, hashed }`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_regenerateCodes_5_6",
+                    "kind": "step",
+                    "title": "Database `update` on `User`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_regenerateCodes_6_7",
+                    "kind": "step",
+                    "title": "Cache `del`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_regenerateCodes_7_8",
+                    "kind": "step",
+                    "title": "Cache `del`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_regenerateCodes_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"backupCodes\": \"<plain>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaBackupCodesServ-verifyCode",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/backupcodes/backupcodes.serv.ts-CarinaBackupCodesServ-verifyCode",
+                "title": "CarinaBackupCodesServ.verifyCode(userId, body)",
+                "description": "Verify and consume a single-use backup recovery code. Supports both active login challenges (via mfaTicket) and authenticated verification.",
+                "steps": [
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_0_1",
+                    "kind": "selection",
+                    "title": "`body.mfaTicket`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.mfaTicket`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_0_1_1",
+                        "kind": "step",
+                        "title": "Cache `get` -> `ticketData`"
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_1_1_2",
+                        "kind": "selection",
+                        "title": "`!ticketData?.userId`",
+                        "selectionMode": "if_else",
+                        "condition": "`!ticketData?.userId`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_1_1_2_then_0_1_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Invalid or expired MFA session ticket."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_2_1_3",
+                        "kind": "step",
+                        "title": "Database `first` on `User` and stores it as `user`"
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_3_1_4",
+                        "kind": "selection",
+                        "title": "`!user`",
+                        "selectionMode": "if_else",
+                        "condition": "`!user`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_3_1_4_then_0_1_4_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "User account not found."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_4_1_5",
+                        "kind": "selection",
+                        "title": "`user.backupCodes.length === 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`user.backupCodes.length === 0`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_4_1_5_then_0_1_5_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "No backup codes exist for this account."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_5_1_6",
+                        "kind": "step",
+                        "title": "Calls `verifyBackupCode` and stores result as `matchedIndex`"
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_6_1_7",
+                        "kind": "selection",
+                        "title": "`matchedIndex === -1`",
+                        "selectionMode": "if_else",
+                        "condition": "`matchedIndex === -1`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_6_1_7_then_0_1_7_1",
+                            "kind": "var_def",
+                            "title": "Define `attemptKey`",
+                            "payload": "const attemptKey = `auth:mfa-ticket:attempts:${body.mfaTicket}`",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_6_1_7_then_1_1_7_2",
+                            "kind": "step",
+                            "title": "Cache `get` -> `attempts`"
+                          },
+                          {
+                            "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_6_1_7_then_2_1_7_3",
+                            "kind": "selection",
+                            "title": "`attempts >= 4`",
+                            "selectionMode": "if_else",
+                            "condition": "`attempts >= 4`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_6_1_7_then_2_1_7_3_then_0_1_7_3_1",
+                                "kind": "step",
+                                "title": "Cache `del`"
+                              },
+                              {
+                                "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_6_1_7_then_2_1_7_3_then_1_1_7_3_2",
+                                "kind": "step",
+                                "title": "Cache `del`"
+                              },
+                              {
+                                "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_6_1_7_then_2_1_7_3_then_2_1_7_3_3",
+                                "kind": "error",
+                                "code": "Unauthorized",
+                                "httpStatus": 401,
+                                "message": "Too many failed verification attempts. Please log in again."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_6_1_7_then_3_1_7_4",
+                            "kind": "step",
+                            "title": "Cache `set`"
+                          },
+                          {
+                            "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_6_1_7_then_4_1_7_5",
+                            "kind": "error",
+                            "code": "Unauthorized",
+                            "httpStatus": 401,
+                            "message": "Invalid or previously used backup recovery code. ${4 - attempts} attempt(s) remaining."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_7_1_8",
+                        "kind": "var_def",
+                        "title": "Define `updatedCodes`",
+                        "payload": "const updatedCodes = user.backupCodes.filter((_, idx) => idx !== matchedIndex)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_8_1_9",
+                        "kind": "step",
+                        "title": "Database `update` on `User`"
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_9_1_10",
+                        "kind": "step",
+                        "title": "Calls `CarinaBackupCodesServ.instance.clearMfaTicket`"
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_10_1_11",
+                        "kind": "step",
+                        "title": "Calls `CarinaBackupCodesServ.instance.invalidateUserMfaCache`"
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_11_1_12",
+                        "kind": "step",
+                        "title": "Calls `toDate` and stores result as `pwdChangedAt`"
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_12_1_13",
+                        "kind": "step",
+                        "title": "Calls `CarinaBackupCodesServ.instance.issueMfaSessionToken` and stores result as `token`"
+                      },
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_0_1_then_13_1_14",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"Backup code verified successfully\",\n  \"remainingCount\": \"<updatedCodes.length>\",\n  \"token\": \"<token>\",\n  \"user\": {\n    \"id\": \"<user.id>\",\n    \"username\": \"<user.username.trim()>\",\n    \"email\": \"<user.email>\",\n    \"passwordChangedAt\": \"<pwdChangedAt ? Math.floor(pwdChangedAt.getTime() / 1000) : null>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_1_2",
+                    "kind": "selection",
+                    "title": "`!userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "Unauthorized",
+                        "httpStatus": 401,
+                        "message": "Authentication required or valid mfaTicket required."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `user`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_3_4",
+                    "kind": "selection",
+                    "title": "`!user`",
+                    "selectionMode": "if_else",
+                    "condition": "`!user`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User with ID '${userId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_4_5",
+                    "kind": "selection",
+                    "title": "`user.backupCodes.length === 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`user.backupCodes.length === 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "No backup codes exist for this account."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_5_6",
+                    "kind": "step",
+                    "title": "Calls `verifyBackupCode` and stores result as `matchedIndex`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_6_7",
+                    "kind": "selection",
+                    "title": "`matchedIndex === -1`",
+                    "selectionMode": "if_else",
+                    "condition": "`matchedIndex === -1`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaBackupCodesServ_verifyCode_6_7_then_0_7_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Invalid or previously used backup recovery code."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_7_8",
+                    "kind": "var_def",
+                    "title": "Define `updatedCodes`",
+                    "payload": "const updatedCodes = user.backupCodes.filter((_, idx) => idx !== matchedIndex)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_8_9",
+                    "kind": "step",
+                    "title": "Database `update` on `User`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_9_10",
+                    "kind": "step",
+                    "title": "Cache `del`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_10_11",
+                    "kind": "step",
+                    "title": "Cache `del`"
+                  },
+                  {
+                    "id": "m_CarinaBackupCodesServ_verifyCode_11_12",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Backup code verified successfully\",\n  \"remainingCount\": \"<updatedCodes.length>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "10 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User with ID '${userId}' was not found."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Multi-factor authentication must be enabled to generate backup codes."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Backup codes have already been generated for this account. Use regenerate to create new ones."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid or expired MFA session ticket."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User account not found."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "No backup codes exist for this account."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Too many failed verification attempts. Please log in again."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid or previously used backup recovery code. ${4 - attempts} attempt(s) remaining."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Authentication required or valid mfaTicket required."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid or previously used backup recovery code."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

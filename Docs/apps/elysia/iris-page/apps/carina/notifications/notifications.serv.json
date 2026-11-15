@@ -1,0 +1,2192 @@
+{
+  "id": "apps/carina/notifications/notifications.serv",
+  "title": "notifications.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/carina/notifications/notifications.serv.ts",
+    "relPath": "apps/carina/notifications/notifications.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 8
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "notifications.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/carina/notifications/notifications.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "3 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/other/other.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/other/other.serv.ts (CarinaNotificationsServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/carina/connections/connection-sync.wrk",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/connections/connection-sync.wrk.ts (CarinaNotificationsServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/carina/notifications/notifications.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/notifications/notifications.ctrl.ts (CarinaNotificationsServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "12 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.encryptNotificationPayload"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(content, recipientPublicKeyPem)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "EncryptedNotificationPayload"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.decryptNotificationPayload"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(encryptedKeyBase64, encryptedData, privateKeyPem)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "NotificationContent"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.createNotification"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(params)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.listNotifications"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.deleteAllNotifications"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.getNotification"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, notificationId, secretKey)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.deleteNotification"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, notificationId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.executeNotificationAction"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, notificationId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.markNotificationRead"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, notificationId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.markAllRead"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.countUnread"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<number>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaNotificationsServ.onSend"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(listener)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "() => void"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-encryptNotificationPayload",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-encryptNotificationPayload",
+                "title": "CarinaNotificationsServ.encryptNotificationPayload(content, recipientPublicKeyPem)",
+                "description": "Encrypts arbitrary notification content using standard RSA-OAEP (2048-bit) and AES-256-GCM.",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_0_1",
+                    "kind": "var_def",
+                    "title": "Define `targetPublicKey`",
+                    "payload": "let targetPublicKey = recipientPublicKeyPem?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_1_2",
+                    "kind": "selection",
+                    "title": "`!targetPublicKey || !targetPublicKey.includes('BEGIN')`",
+                    "selectionMode": "if_else",
+                    "condition": "`!targetPublicKey || !targetPublicKey.includes('BEGIN')`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_encryptNotificationPayload_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `crypto.generateKeyPairSync` and stores result as `{ publicKey }`"
+                      },
+                      {
+                        "id": "m_CarinaNotificationsServ_encryptNotificationPayload_1_2_then_1_2_2",
+                        "kind": "step",
+                        "title": "Assign `targetPublicKey`",
+                        "payload": "targetPublicKey = publicKey",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_2_3",
+                    "kind": "step",
+                    "title": "Calls `crypto.randomBytes` and stores result as `aesKey`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_3_4",
+                    "kind": "step",
+                    "title": "Calls `crypto.randomBytes` and stores result as `iv`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_4_5",
+                    "kind": "step",
+                    "title": "Calls `crypto.createCipheriv` and stores result as `cipher`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_5_6",
+                    "kind": "step",
+                    "title": "Calls `JSON.stringify` and stores result as `plaintext`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_6_7",
+                    "kind": "step",
+                    "title": "Calls `Buffer.concat` and stores result as `encrypted`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_7_8",
+                    "kind": "step",
+                    "title": "Calls `cipher.getAuthTag` and stores result as `authTag`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_8_9",
+                    "kind": "var_def",
+                    "title": "Define `encryptedData`, `encryptedKeyBuffer`",
+                    "payload": "const encryptedData = `${iv.toString('hex')}:${authTag.toString('hex')}:${encrypted.toString('hex')}`\nlet encryptedKeyBuffer: Buffer",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_9_10",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_CarinaNotificationsServ_encryptNotificationPayload_9_10_try_0_10_1",
+                        "kind": "step",
+                        "title": "Assign `encryptedKeyBuffer`",
+                        "payload": "encryptedKeyBuffer = crypto.publicEncrypt( { key: targetPublicKey, padding: crypto.constants.RSA_PKCS1_OAEP_PADDING, oaepHash: 'sha256', }, aesKey ...",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_CarinaNotificationsServ_encryptNotificationPayload_9_10_catch_0_11_1",
+                        "kind": "step",
+                        "title": "Calls `crypto.generateKeyPairSync` and stores result as `{ publicKey }`"
+                      },
+                      {
+                        "id": "m_CarinaNotificationsServ_encryptNotificationPayload_9_10_catch_1_11_2",
+                        "kind": "step",
+                        "title": "Assign `encryptedKeyBuffer`",
+                        "payload": "encryptedKeyBuffer = crypto.publicEncrypt( { key: publicKey, padding: crypto.constants.RSA_PKCS1_OAEP_PADDING, oaepHash: 'sha256', }, aesKey ...",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_11_12",
+                    "kind": "var_def",
+                    "title": "Define `encryptedKey`",
+                    "payload": "const encryptedKey = encryptedKeyBuffer.toString('base64')",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_encryptNotificationPayload_12_13",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"encryptedKey\": \"<encryptedKey>\",\n  \"encryptedData\": \"<encryptedData>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-decryptNotificationPayload",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-decryptNotificationPayload",
+                "title": "CarinaNotificationsServ.decryptNotificationPayload(encryptedKeyBase64, encryptedData, privateKeyPem)",
+                "description": "Decrypts an encrypted notification payload using an RSA-OAEP private key.",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_decryptNotificationPayload_0_1",
+                    "kind": "var_def",
+                    "title": "Define `parts`",
+                    "payload": "const parts = encryptedData.split(':')",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_decryptNotificationPayload_1_2",
+                    "kind": "selection",
+                    "title": "`parts.length !== 3`",
+                    "selectionMode": "if_else",
+                    "condition": "`parts.length !== 3`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_decryptNotificationPayload_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "Invalid encrypted notification format (expected iv:authTag:cipher)"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_decryptNotificationPayload_2_3",
+                    "kind": "var_def",
+                    "title": "Define `[ivHex, authTagHex, cipherHex]`",
+                    "payload": "const [ivHex, authTagHex, cipherHex] = parts",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_decryptNotificationPayload_3_4",
+                    "kind": "step",
+                    "title": "Calls `Buffer.from` and stores result as `iv`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_decryptNotificationPayload_4_5",
+                    "kind": "step",
+                    "title": "Calls `Buffer.from` and stores result as `authTag`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_decryptNotificationPayload_5_6",
+                    "kind": "step",
+                    "title": "Calls `Buffer.from` and stores result as `cipherBytes`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_decryptNotificationPayload_6_7",
+                    "kind": "step",
+                    "title": "Calls `crypto.privateDecrypt` and stores result as `aesKey`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_decryptNotificationPayload_7_8",
+                    "kind": "step",
+                    "title": "Calls `crypto.createDecipheriv` and stores result as `decipher`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_decryptNotificationPayload_8_9",
+                    "kind": "step",
+                    "title": "Calls `decipher.setAuthTag`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_decryptNotificationPayload_9_10",
+                    "kind": "step",
+                    "title": "Calls `Buffer.concat` and stores result as `decrypted`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_decryptNotificationPayload_10_11",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`JSON.parse(decrypted.toString('utf8'))`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-createNotification",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-createNotification",
+                "title": "CarinaNotificationsServ.createNotification(params)",
+                "description": "Helper to create, encrypt, persist, and send a new encrypted notification.",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_createNotification_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `user`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_createNotification_1_2",
+                    "kind": "var_def",
+                    "title": "Define `userPublicKey`",
+                    "payload": "const userPublicKey = user?.publicKey?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_createNotification_2_3",
+                    "kind": "selection",
+                    "title": "`!userPublicKey || !userPublicKey.includes('BEGIN')`",
+                    "selectionMode": "if_else",
+                    "condition": "`!userPublicKey || !userPublicKey.includes('BEGIN')`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_createNotification_2_3_then_0_3_1",
+                        "kind": "var_def",
+                        "title": "Define `msg`",
+                        "payload": "const msg = `User ${params.userId} does not have a valid RSA public key (found: ${userPublicKey ? 'legacy/invalid' : 'none'}).`",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaNotificationsServ_createNotification_2_3_then_1_3_2",
+                        "kind": "warning",
+                        "code": "Warning",
+                        "message": "[CarinaNotifications] ${msg}"
+                      },
+                      {
+                        "id": "m_CarinaNotificationsServ_createNotification_2_3_then_2_3_3",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "msg"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_createNotification_3_4",
+                    "kind": "step",
+                    "title": "Calls `this.encryptNotificationPayload` and stores result as `{ encryptedKey, encryptedData }`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_createNotification_4_5",
+                    "kind": "step",
+                    "title": "Database `create` on `Notification` and stores it as `notification`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_createNotification_5_6",
+                    "kind": "iteration",
+                    "title": "Iterate `const listener` over `sendListeners`",
+                    "loopType": "while",
+                    "condition": "Iterate `const listener` over `sendListeners`",
+                    "children": [
+                      {
+                        "id": "m_CarinaNotificationsServ_createNotification_5_6_loop_0_6_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "m_CarinaNotificationsServ_createNotification_5_6_loop_0_6_1_try_0_6_1_1",
+                            "kind": "step",
+                            "title": "Calls `listener`"
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "m_CarinaNotificationsServ_createNotification_5_6_loop_0_6_1_catch_0_6_2_1",
+                            "kind": "warning",
+                            "code": "Warning",
+                            "message": "Error in notification send listener: ${err}"
+                          }
+                        ],
+                        "finallyBlock": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_createNotification_6_7",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_CarinaNotificationsServ_createNotification_6_7_try_0_7_1",
+                        "kind": "step",
+                        "title": "Calls `wsHub.sendToUser`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_CarinaNotificationsServ_createNotification_6_7_catch_0_8_1",
+                        "kind": "warning",
+                        "code": "Warning",
+                        "message": "Failed to dispatch real-time notification over WebSocket: ${err}"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_createNotification_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`notification`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-listNotifications",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-listNotifications",
+                "title": "CarinaNotificationsServ.listNotifications(userId, query)",
+                "description": "Get notifications for authenticated user (10 per page default).",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`",
+                    "payload": "const skip = page - 1 * limit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_3_4",
+                    "kind": "step",
+                    "title": "Database `query` on `Notification` and stores it as `notifQuery`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_4_5",
+                    "kind": "selection",
+                    "title": "`query?.isRead !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.isRead !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_listNotifications_4_5_then_0_5_1",
+                        "kind": "var_def",
+                        "title": "Define `isReadVal`",
+                        "payload": "const isReadVal = typeof query.isRead === 'string' ? query.isRead === 'true' : Boolean(query.isRead)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaNotificationsServ_listNotifications_4_5_then_1_5_2",
+                        "kind": "step",
+                        "title": "Assign `notifQuery`",
+                        "payload": "notifQuery = notifQuery.where({ isRead: isReadVal })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_5_6",
+                    "kind": "selection",
+                    "title": "`query?.app`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.app`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_listNotifications_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Assign `notifQuery`",
+                        "payload": "notifQuery = notifQuery.where({ app: query.app })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_6_7",
+                    "kind": "selection",
+                    "title": "`query?.category`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.category`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_listNotifications_6_7_then_0_7_1",
+                        "kind": "step",
+                        "title": "Assign `notifQuery`",
+                        "payload": "notifQuery = notifQuery.where({ category: query.category })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_7_8",
+                    "kind": "selection",
+                    "title": "`query?.priority`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.priority`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_listNotifications_7_8_then_0_8_1",
+                        "kind": "step",
+                        "title": "Assign `notifQuery`",
+                        "payload": "notifQuery = notifQuery.where({ priority: query.priority as NotificationPriority })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_8_9",
+                    "kind": "selection",
+                    "title": "`query?.type`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.type`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_listNotifications_8_9_then_0_9_1",
+                        "kind": "step",
+                        "title": "Assign `notifQuery`",
+                        "payload": "notifQuery = notifQuery.where({ type: query.type as NotificationType })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_9_10",
+                    "kind": "step",
+                    "title": "Database `all` on `Notification` and stores it as `[total, unreadCount, rawNotifications]`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_10_11",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `totalPages`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_11_12",
+                    "kind": "var_def",
+                    "title": "Define `hasMore`, `notifications`",
+                    "payload": "const hasMore = page < totalPages\nconst notifications = rawNotifications.map((n) => ({ id: n.id, userId: n.userId, app: n.app, category: n.category, type: n.type, priority: n.priority, ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_listNotifications_12_13",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"total\": \"<total>\",\n  \"unreadCount\": \"<unreadCount>\",\n  \"notifications\": \"<notifications>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<totalPages>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-deleteAllNotifications",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-deleteAllNotifications",
+                "title": "CarinaNotificationsServ.deleteAllNotifications(userId, query)",
+                "description": "Delete all notifications for authenticated user.",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteAllNotifications_0_1",
+                    "kind": "step",
+                    "title": "Database `query` on `Notification` and stores it as `delQuery`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteAllNotifications_1_2",
+                    "kind": "var_def",
+                    "title": "Define `onlyRead`",
+                    "payload": "const onlyRead = typeof query?.onlyRead === 'string' ? query.onlyRead === 'true' : Boolean(query?.onlyRead)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteAllNotifications_2_3",
+                    "kind": "selection",
+                    "title": "`onlyRead`",
+                    "selectionMode": "if_else",
+                    "condition": "`onlyRead`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_deleteAllNotifications_2_3_then_0_3_1",
+                        "kind": "step",
+                        "title": "Assign `delQuery`",
+                        "payload": "delQuery = delQuery.where({ isRead: true })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteAllNotifications_3_4",
+                    "kind": "step",
+                    "title": "Calls `delQuery.deleteAndCount` and stores result as `deletedCount`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteAllNotifications_4_5",
+                    "kind": "step",
+                    "title": "Database `query` on `Notification` and stores it as `unreadCount`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteAllNotifications_5_6",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_CarinaNotificationsServ_deleteAllNotifications_5_6_try_0_6_1",
+                        "kind": "step",
+                        "title": "Calls `wsHub.sendToUser`"
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteAllNotifications_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"deletedCount\": \"<deletedCount>\",\n  \"unreadCount\": \"<unreadCount>\",\n  \"message\": \"Notifications deleted successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-getNotification",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-getNotification",
+                "title": "CarinaNotificationsServ.getNotification(userId, notificationId, secretKey)",
+                "description": "Get single notification details strictly by notification ID. If secretKey is provided, optionally decrypts and returns content.",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_getNotification_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Notification` and stores it as `notification`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_getNotification_1_2",
+                    "kind": "selection",
+                    "title": "`!notification || notification.userId !== userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!notification || notification.userId !== userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_getNotification_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Notification not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_getNotification_2_3",
+                    "kind": "var_def",
+                    "title": "Define `decryptedContent`",
+                    "payload": "let decryptedContent: NotificationContent | undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_getNotification_3_4",
+                    "kind": "selection",
+                    "title": "`secretKey`",
+                    "selectionMode": "if_else",
+                    "condition": "`secretKey`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_getNotification_3_4_then_0_4_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "m_CarinaNotificationsServ_getNotification_3_4_then_0_4_1_try_0_4_1_1",
+                            "kind": "step",
+                            "title": "Assign `decryptedContent`",
+                            "payload": "decryptedContent = this.decryptNotificationPayload( notification.encryptedKey, notification.encryptedData, typeof secretKey === 'string' ? secretKey : Buffer.from(secretKey).toString('utf8') )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "m_CarinaNotificationsServ_getNotification_3_4_then_0_4_1_catch_0_4_2_1",
+                            "kind": "warning",
+                            "code": "Warning",
+                            "message": "Failed to decrypt notification ${notification.id}: ${err}"
+                          }
+                        ],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_getNotification_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"notification\": {\n    \"id\": \"<notification.id>\",\n    \"userId\": \"<notification.userId>\",\n    \"app\": \"<notification.app>\",\n    \"category\": \"<notification.category>\",\n    \"type\": \"<notification.type>\",\n    \"priority\": \"<notification.priority>\",\n    \"isRead\": \"<notification.isRead>\",\n    \"readAt\": \"<notification.readAt ? toDate(notification.readAt).toISOString() : null>\",\n    \"actionStatus\": \"<notification.actionStatus>\",\n    \"actionPayload\": \"<notification.actionPayload>\",\n    \"actionHandler\": \"<notification.actionHandler>\",\n    \"encryptedKey\": \"<notification.encryptedKey>\",\n    \"encryptedData\": \"<notification.encryptedData>\",\n    \"expiresAt\": \"<notification.expiresAt ? toDate(notification.expiresAt).toISOString() : null>\",\n    \"createdAt\": \"<toDate(notification.createdAt).toISOString()>\",\n    \"updatedAt\": \"<toDate(notification.updatedAt).toISOString()>\",\n    \"...decryptedContent ? { content: decryptedContent } : {}\": \"...\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-deleteNotification",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-deleteNotification",
+                "title": "CarinaNotificationsServ.deleteNotification(userId, notificationId)",
+                "description": "Delete single notification strictly by notification ID.",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteNotification_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Notification` and stores it as `notification`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteNotification_1_2",
+                    "kind": "selection",
+                    "title": "`!notification || notification.userId !== userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!notification || notification.userId !== userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_deleteNotification_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Notification not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteNotification_2_3",
+                    "kind": "step",
+                    "title": "Database `delete` on `Notification`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteNotification_3_4",
+                    "kind": "step",
+                    "title": "Database `query` on `Notification` and stores it as `unreadCount`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteNotification_4_5",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_CarinaNotificationsServ_deleteNotification_4_5_try_0_5_1",
+                        "kind": "step",
+                        "title": "Calls `wsHub.sendToUser`"
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_deleteNotification_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"id\": \"<notification.id>\",\n  \"unreadCount\": \"<unreadCount>\",\n  \"message\": \"Notification deleted successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-executeNotificationAction",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-executeNotificationAction",
+                "title": "CarinaNotificationsServ.executeNotificationAction(userId, notificationId, body)",
+                "description": "Execute an interactive action on a notification.",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_executeNotificationAction_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Notification` and stores it as `notification`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_executeNotificationAction_1_2",
+                    "kind": "selection",
+                    "title": "`!notification || notification.userId !== userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!notification || notification.userId !== userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_executeNotificationAction_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Notification not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_executeNotificationAction_2_3",
+                    "kind": "var_def",
+                    "title": "Define `normAction`, `actionStatus`",
+                    "payload": "const normAction = body.action.toUpperCase().trim()\nlet actionStatus: NotificationActionStatus = 'CONFIRMED'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_executeNotificationAction_3_4",
+                    "kind": "selection",
+                    "title": "`normAction === 'REJECT' || normAction === 'DECLINE'`",
+                    "selectionMode": "if_else",
+                    "condition": "`normAction === 'REJECT' || normAction === 'DECLINE'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_executeNotificationAction_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Assign `actionStatus`",
+                        "payload": "actionStatus = 'REJECTED'",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_executeNotificationAction_3_4_else_0_5_1",
+                        "kind": "selection",
+                        "title": "`normAction === 'SUBMIT'`",
+                        "selectionMode": "if_else",
+                        "condition": "`normAction === 'SUBMIT'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaNotificationsServ_executeNotificationAction_3_4_else_0_5_1_then_0_5_1_1",
+                            "kind": "step",
+                            "title": "Assign `actionStatus`",
+                            "payload": "actionStatus = 'SUBMITTED'",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_executeNotificationAction_5_6",
+                    "kind": "step",
+                    "title": "Database `update` on `Notification` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_executeNotificationAction_6_7",
+                    "kind": "selection",
+                    "title": "`!updated`",
+                    "selectionMode": "if_else",
+                    "condition": "`!updated`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_executeNotificationAction_6_7_then_0_7_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Notification not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_executeNotificationAction_7_8",
+                    "kind": "step",
+                    "title": "Database `query` on `Notification` and stores it as `unreadCount`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_executeNotificationAction_8_9",
+                    "kind": "selection",
+                    "title": "`actionStatus === 'CONFIRMED' && notification.actionHandler === 'borealis.other.fork'`",
+                    "selectionMode": "if_else",
+                    "condition": "`actionStatus === 'CONFIRMED' && notification.actionHandler === 'borealis.other.fork'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_executeNotificationAction_8_9_then_0_9_1",
+                        "kind": "var_def",
+                        "title": "Define `otherId`",
+                        "payload": "const otherId = (notification.actionPayload as any)?.otherId",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaNotificationsServ_executeNotificationAction_8_9_then_1_9_2",
+                        "kind": "selection",
+                        "title": "`otherId`",
+                        "selectionMode": "if_else",
+                        "condition": "`otherId`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaNotificationsServ_executeNotificationAction_8_9_then_1_9_2_then_0_9_2_1",
+                            "kind": "try_catch_finally",
+                            "title": "Try block",
+                            "catchVar": "forkErr",
+                            "tryBlock": [
+                              {
+                                "id": "m_CarinaNotificationsServ_executeNotificationAction_8_9_then_1_9_2_then_0_9_2_1_try_0_9_2_1_1",
+                                "kind": "step",
+                                "title": "Database `first` on `User` and stores it as `userRecord`"
+                              },
+                              {
+                                "id": "m_CarinaNotificationsServ_executeNotificationAction_8_9_then_1_9_2_then_0_9_2_1_try_1_9_2_1_2",
+                                "kind": "step",
+                                "title": "Calls `import` and stores result as `{ hasPermission, IRISFlags }`"
+                              },
+                              {
+                                "id": "m_CarinaNotificationsServ_executeNotificationAction_8_9_then_1_9_2_then_0_9_2_1_try_2_9_2_1_3",
+                                "kind": "step",
+                                "title": "Calls `hasPermission` and stores result as `isAdmin`"
+                              },
+                              {
+                                "id": "m_CarinaNotificationsServ_executeNotificationAction_8_9_then_1_9_2_then_0_9_2_1_try_3_9_2_1_4",
+                                "kind": "step",
+                                "title": "Calls `import` and stores result as `{ BorealisOtherServ }`"
+                              },
+                              {
+                                "id": "m_CarinaNotificationsServ_executeNotificationAction_8_9_then_1_9_2_then_0_9_2_1_try_4_9_2_1_5",
+                                "kind": "step",
+                                "title": "Calls `BorealisOtherServ.forkItem`"
+                              }
+                            ],
+                            "catchBlock": [
+                              {
+                                "id": "m_CarinaNotificationsServ_executeNotificationAction_8_9_then_1_9_2_then_0_9_2_1_catch_0_9_2_2_1",
+                                "kind": "warning",
+                                "code": "Warning",
+                                "message": "Failed to fork item on notification action: ${forkErr}"
+                              }
+                            ],
+                            "finallyBlock": []
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_executeNotificationAction_9_10",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_CarinaNotificationsServ_executeNotificationAction_9_10_try_0_10_1",
+                        "kind": "step",
+                        "title": "Calls `wsHub.sendToUser`"
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_executeNotificationAction_11_12",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"id\": \"<updated.id>\",\n  \"actionStatus\": \"<updated.actionStatus || actionStatus>\",\n  \"actionPayload\": \"<updated.actionPayload>\",\n  \"isRead\": true,\n  \"unreadCount\": \"<unreadCount>\",\n  \"message\": \"Notification action executed successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-markNotificationRead",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-markNotificationRead",
+                "title": "CarinaNotificationsServ.markNotificationRead(userId, notificationId)",
+                "description": "Mark single notification as read strictly by notification ID.",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_markNotificationRead_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Notification` and stores it as `notification`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_markNotificationRead_1_2",
+                    "kind": "selection",
+                    "title": "`!notification || notification.userId !== userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!notification || notification.userId !== userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_markNotificationRead_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Notification not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_markNotificationRead_2_3",
+                    "kind": "var_def",
+                    "title": "Define `now`, `readAtDate`",
+                    "payload": "const now = new Date()\nlet readAtDate = notification.readAt ? toDate(notification.readAt) : now",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_markNotificationRead_3_4",
+                    "kind": "selection",
+                    "title": "`!notification.isRead`",
+                    "selectionMode": "if_else",
+                    "condition": "`!notification.isRead`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaNotificationsServ_markNotificationRead_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Database `update` on `Notification` and stores it as `updated`"
+                      },
+                      {
+                        "id": "m_CarinaNotificationsServ_markNotificationRead_3_4_then_1_4_2",
+                        "kind": "step",
+                        "title": "Assign `readAtDate`",
+                        "payload": "readAtDate = updated?.readAt ? toDate(updated.readAt) : now",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_markNotificationRead_4_5",
+                    "kind": "step",
+                    "title": "Database `query` on `Notification` and stores it as `unreadCount`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_markNotificationRead_5_6",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_CarinaNotificationsServ_markNotificationRead_5_6_try_0_6_1",
+                        "kind": "step",
+                        "title": "Calls `wsHub.sendToUser`"
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_markNotificationRead_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"id\": \"<notification.id>\",\n  \"isRead\": true,\n  \"readAt\": \"<readAtDate.toISOString()>\",\n  \"unreadCount\": \"<unreadCount>\",\n  \"message\": \"Notification marked as read\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-markAllRead",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-markAllRead",
+                "title": "CarinaNotificationsServ.markAllRead(userId)",
+                "description": "Mark all notifications as read for authenticated user.",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_markAllRead_0_1",
+                    "kind": "step",
+                    "title": "Database `query` on `Notification` and stores it as `markedCount`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_markAllRead_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_CarinaNotificationsServ_markAllRead_1_2_try_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `wsHub.sendToUser`"
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_markAllRead_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"markedCount\": \"<markedCount>\",\n  \"unreadCount\": \"<0 as const>\",\n  \"message\": \"All notifications marked as read\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-countUnread",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-countUnread",
+                "title": "CarinaNotificationsServ.countUnread(userId)",
+                "description": "Count unread notifications for a user.",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_countUnread_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await countOf(prisma.orm.public.Notification.where({ userId, isRead: false, }))`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaNotificationsServ-onSend",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/notifications/notifications.serv.ts-CarinaNotificationsServ-onSend",
+                "title": "CarinaNotificationsServ.onSend(listener)",
+                "description": "Subscribe to new notification send events.",
+                "steps": [
+                  {
+                    "id": "m_CarinaNotificationsServ_onSend_0_1",
+                    "kind": "step",
+                    "title": "Calls `sendListeners.add`"
+                  },
+                  {
+                    "id": "m_CarinaNotificationsServ_onSend_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`() => sendListeners.delete(listener)`"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "8 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid encrypted notification format (expected iv:authTag:cipher)"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[CarinaNotifications] ${msg}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "msg"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Error in notification send listener: ${err}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to dispatch real-time notification over WebSocket: ${err}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Notification not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to decrypt notification ${notification.id}: ${err}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to fork item on notification action: ${forkErr}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

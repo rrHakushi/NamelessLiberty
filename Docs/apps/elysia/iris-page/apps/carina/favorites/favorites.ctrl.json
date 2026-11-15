@@ -1,0 +1,1785 @@
+{
+  "id": "apps/carina/favorites/favorites.ctrl",
+  "title": "Get all user favorites in all categories at once",
+  "description": "",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/carina/favorites/all",
+    "relPath": "apps/carina/favorites/favorites.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/favorites/all",
+      "/carina/favorites/",
+      "/carina/favorites/:category/:targetId",
+      "/carina/favorites/:category/:targetId"
+    ],
+    "errorCount": 2
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Get all user favorites in all categories at once"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/favorites/all"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/favorites/"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/favorites/:category/:targetId"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30"
+                            },
+                            "text": "DELETE"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/favorites/:category/:targetId"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_24)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "19 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/favorites/all · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaUsersModel.allFavoritesQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/favorites/all · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaUsersModel.allFavoritesResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/favorites/all · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/favorites/ · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.addFavoriteBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/favorites/ · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.addFavoriteResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/favorites/ · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/favorites/ · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/favorites/ · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/favorites/:category/:targetId · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.favoriteParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/favorites/:category/:targetId · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.checkFavoriteResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/favorites/:category/:targetId · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/favorites/:category/:targetId · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/favorites/:category/:targetId · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/favorites/:category/:targetId · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.favoriteParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/favorites/:category/:targetId · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.removeFavoriteResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/favorites/:category/:targetId · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/favorites/:category/:targetId · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/favorites/:category/:targetId · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/favorites/:category/:targetId · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaFavoritesModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/favorites/favorites.ctrl.ts-route-0",
+                "title": "GET /carina/favorites/all",
+                "description": "Get all user favorites in all categories at once",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `CarinaUsersModel.allFavoritesQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_0_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaUsersServ.getAllUserFavorites(user.id, query)`"
+                  },
+                  {
+                    "id": "call_0_CarinaUsersServ_getAllUserFavorites",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaUsersServ.getAllUserFavorites",
+                    "isAsync": true,
+                    "targetAlg": "CarinaUsersServ.getAllUserFavorites"
+                  },
+                  {
+                    "id": "svc_0_CarinaUsersServ_getAllUserFavorites",
+                    "kind": "sequence",
+                    "title": "CarinaUsersServ.getAllUserFavorites Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_0_1",
+                        "kind": "step",
+                        "title": "Calls `this.resolveUser` and stores result as `target`"
+                      },
+                      {
+                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limitPerCategory`"
+                      },
+                      {
+                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_2_3",
+                        "kind": "var_def",
+                        "title": "Define `allowedTypes`",
+                        "payload": "const allowedTypes: FavoriteType[] = [ 'ANIME', 'MANGA', 'MOVIE', 'TV', 'GAME', 'BOOK', ...",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_3_4",
+                        "kind": "step",
+                        "title": "Database `all` on `Favorite` and stores it as `rawFavorites`"
+                      },
+                      {
+                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_4_5",
+                        "kind": "step",
+                        "title": "Calls `this.enrichFavoritesWithEntities` and stores result as `enriched`"
+                      },
+                      {
+                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_5_6",
+                        "kind": "var_def",
+                        "title": "Define `categories`, `counts`",
+                        "payload": "const categories: Record<string, any[]> = { anime: [], manga: [], movie: [], tv: [], game: [], book: [], ...\nconst counts: Record<string, number> = { anime: 0, manga: 0, movie: 0, tv: 0, game: 0, book: 0, ...",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7",
+                        "kind": "iteration",
+                        "title": "Iterate `const fav` over `enriched`",
+                        "loopType": "while",
+                        "condition": "Iterate `const fav` over `enriched`",
+                        "children": [
+                          {
+                            "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_0_7_1",
+                            "kind": "var_def",
+                            "title": "Define `cat`",
+                            "payload": "let cat = 'other'",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2",
+                            "kind": "selection",
+                            "title": "`fav.type === 'ANIME'`",
+                            "selectionMode": "if_else",
+                            "condition": "`fav.type === 'ANIME'`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_then_0_7_2_1",
+                                "kind": "step",
+                                "title": "Assign `cat`",
+                                "payload": "cat = 'anime'",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1",
+                                "kind": "selection",
+                                "title": "`fav.type === 'MANGA'`",
+                                "selectionMode": "if_else",
+                                "condition": "`fav.type === 'MANGA'`",
+                                "thenBranch": [
+                                  {
+                                    "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_then_0_7_3_1_1",
+                                    "kind": "step",
+                                    "title": "Assign `cat`",
+                                    "payload": "cat = 'manga'",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1",
+                                    "kind": "selection",
+                                    "title": "`fav.type === 'MOVIE'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`fav.type === 'MOVIE'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_then_0_7_3_2_1_1",
+                                        "kind": "step",
+                                        "title": "Assign `cat`",
+                                        "payload": "cat = 'movie'",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ],
+                                    "elseBranch": [
+                                      {
+                                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1",
+                                        "kind": "selection",
+                                        "title": "`fav.type === 'TV'`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`fav.type === 'TV'`",
+                                        "thenBranch": [
+                                          {
+                                            "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_then_0_7_3_2_2_1_1",
+                                            "kind": "step",
+                                            "title": "Assign `cat`",
+                                            "payload": "cat = 'tv'",
+                                            "payloadLanguage": "typescript"
+                                          }
+                                        ],
+                                        "elseBranch": [
+                                          {
+                                            "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1",
+                                            "kind": "selection",
+                                            "title": "`fav.type === 'GAME'`",
+                                            "selectionMode": "if_else",
+                                            "condition": "`fav.type === 'GAME'`",
+                                            "thenBranch": [
+                                              {
+                                                "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1_then_0_7_3_2_2_2_1_1",
+                                                "kind": "step",
+                                                "title": "Assign `cat`",
+                                                "payload": "cat = 'game'",
+                                                "payloadLanguage": "typescript"
+                                              }
+                                            ],
+                                            "elseBranch": [
+                                              {
+                                                "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1_else_0_7_3_2_2_2_2_1",
+                                                "kind": "selection",
+                                                "title": "`fav.type === 'BOOK'`",
+                                                "selectionMode": "if_else",
+                                                "condition": "`fav.type === 'BOOK'`",
+                                                "thenBranch": [
+                                                  {
+                                                    "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1_else_0_7_3_2_2_2_2_1_then_0_7_3_2_2_2_2_1_1",
+                                                    "kind": "step",
+                                                    "title": "Assign `cat`",
+                                                    "payload": "cat = 'book'",
+                                                    "payloadLanguage": "typescript"
+                                                  }
+                                                ],
+                                                "elseBranch": [
+                                                  {
+                                                    "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1_else_0_7_3_2_2_2_2_1_else_0_7_3_2_2_2_2_2_1",
+                                                    "kind": "selection",
+                                                    "title": "`fav.type === 'CHARACTER'`",
+                                                    "selectionMode": "if_else",
+                                                    "condition": "`fav.type === 'CHARACTER'`",
+                                                    "thenBranch": [
+                                                      {
+                                                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1_else_0_7_3_2_2_2_2_1_else_0_7_3_2_2_2_2_2_1_then_0_7_3_2_2_2_2_2_1_1",
+                                                        "kind": "step",
+                                                        "title": "Assign `cat`",
+                                                        "payload": "cat = 'character'",
+                                                        "payloadLanguage": "typescript"
+                                                      }
+                                                    ],
+                                                    "elseBranch": [
+                                                      {
+                                                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1_else_0_7_3_2_2_2_2_1_else_0_7_3_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_1",
+                                                        "kind": "selection",
+                                                        "title": "`fav.type === 'PERSON'`",
+                                                        "selectionMode": "if_else",
+                                                        "condition": "`fav.type === 'PERSON'`",
+                                                        "thenBranch": [
+                                                          {
+                                                            "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1_else_0_7_3_2_2_2_2_1_else_0_7_3_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_1_then_0_7_3_2_2_2_2_2_2_1_1",
+                                                            "kind": "step",
+                                                            "title": "Assign `cat`",
+                                                            "payload": "cat = 'person'",
+                                                            "payloadLanguage": "typescript"
+                                                          }
+                                                        ],
+                                                        "elseBranch": [
+                                                          {
+                                                            "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1_else_0_7_3_2_2_2_2_1_else_0_7_3_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_2_1",
+                                                            "kind": "selection",
+                                                            "title": "`fav.type === 'STUDIO'`",
+                                                            "selectionMode": "if_else",
+                                                            "condition": "`fav.type === 'STUDIO'`",
+                                                            "thenBranch": [
+                                                              {
+                                                                "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1_else_0_7_3_2_2_2_2_1_else_0_7_3_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_2_1_then_0_7_3_2_2_2_2_2_2_2_1_1",
+                                                                "kind": "step",
+                                                                "title": "Assign `cat`",
+                                                                "payload": "cat = 'studio'",
+                                                                "payloadLanguage": "typescript"
+                                                              }
+                                                            ],
+                                                            "elseBranch": [
+                                                              {
+                                                                "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1_else_0_7_3_2_2_2_2_1_else_0_7_3_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_2_2_1",
+                                                                "kind": "selection",
+                                                                "title": "`fav.type === 'OTHER'`",
+                                                                "selectionMode": "if_else",
+                                                                "condition": "`fav.type === 'OTHER'`",
+                                                                "thenBranch": [
+                                                                  {
+                                                                    "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_1_7_2_else_0_7_3_1_else_0_7_3_2_1_else_0_7_3_2_2_1_else_0_7_3_2_2_2_1_else_0_7_3_2_2_2_2_1_else_0_7_3_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_2_1_else_0_7_3_2_2_2_2_2_2_2_2_1_then_0_7_3_2_2_2_2_2_2_2_2_1_1",
+                                                                    "kind": "step",
+                                                                    "title": "Assign `cat`",
+                                                                    "payload": "cat = 'other'",
+                                                                    "payloadLanguage": "typescript"
+                                                                  }
+                                                                ],
+                                                                "elseBranch": []
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_3_7_4",
+                            "kind": "step",
+                            "title": "Assign `counts[cat]`",
+                            "payload": "counts[cat] = (counts[cat] || 0) + 1",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_4_7_5",
+                            "kind": "var_def",
+                            "title": "Define `targetCategoryList`",
+                            "payload": "const targetCategoryList = categories[cat]",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_0_CarinaUsersServ_getAllUserFavorites_6_7_loop_5_7_6",
+                            "kind": "selection",
+                            "title": "`targetCategoryList && targetCategoryList.length < limitPerCategory`",
+                            "selectionMode": "if_else",
+                            "condition": "`targetCategoryList && targetCategoryList.length < limitPerCategory`",
+                            "thenBranch": [],
+                            "elseBranch": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_0_CarinaUsersServ_getAllUserFavorites_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"favorites\": \"<categories>\",\n  \"counts\": \"<counts as { anime: number manga: number movie: number tv: number game: number book: number ...>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/favorites/favorites.ctrl.ts-route-1",
+                "title": "POST /carina/favorites/",
+                "description": "Add media or entity to user favorites strictly by IDs",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaFavoritesModel.addFavoriteBody`"
+                  },
+                  {
+                    "id": "route_1_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_1_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaFavoritesServ.addFavorite(user.id, body)`"
+                  },
+                  {
+                    "id": "call_1_CarinaFavoritesServ_addFavorite",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaFavoritesServ.addFavorite",
+                    "isAsync": true,
+                    "targetAlg": "CarinaFavoritesServ.addFavorite"
+                  },
+                  {
+                    "id": "svc_1_CarinaFavoritesServ_addFavorite",
+                    "kind": "sequence",
+                    "title": "CarinaFavoritesServ.addFavorite Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_CarinaFavoritesServ_addFavorite_0_1",
+                        "kind": "var_def",
+                        "title": "Define `rawCategory`",
+                        "payload": "const rawCategory = body.category || body.type",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_CarinaFavoritesServ_addFavorite_1_2",
+                        "kind": "selection",
+                        "title": "`!rawCategory || typeofrawCategory !== 'string' || !rawCategory.trim()`",
+                        "selectionMode": "if_else",
+                        "condition": "`!rawCategory || typeofrawCategory !== 'string' || !rawCategory.trim()`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_CarinaFavoritesServ_addFavorite_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Category or type is required."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_CarinaFavoritesServ_addFavorite_2_3",
+                        "kind": "step",
+                        "title": "Calls `this.parseFavoriteType` and stores result as `normType`"
+                      },
+                      {
+                        "id": "svc_1_CarinaFavoritesServ_addFavorite_3_4",
+                        "kind": "step",
+                        "title": "Database `first` on `Favorite` and stores it as `favorite`"
+                      },
+                      {
+                        "id": "svc_1_CarinaFavoritesServ_addFavorite_4_5",
+                        "kind": "selection",
+                        "title": "`!favorite`",
+                        "selectionMode": "if_else",
+                        "condition": "`!favorite`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_CarinaFavoritesServ_addFavorite_4_5_then_0_5_1",
+                            "kind": "step",
+                            "title": "Assign `favorite`",
+                            "payload": "favorite = await prisma.orm.public.Favorite.create({ userId, type: normType, targetId: body.targetId, })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_CarinaFavoritesServ_addFavorite_5_6",
+                        "kind": "step",
+                        "title": "Calls `MediaStatsServ.recalculateFavoritesCount`"
+                      },
+                      {
+                        "id": "svc_1_CarinaFavoritesServ_addFavorite_6_7",
+                        "kind": "step",
+                        "title": "Calls `ActivityServ.recordFavoriteActivity`"
+                      },
+                      {
+                        "id": "svc_1_CarinaFavoritesServ_addFavorite_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"favorite\": {\n    \"id\": \"<favorite.id>\",\n    \"userId\": \"<favorite.userId>\",\n    \"type\": \"<favorite.type>\",\n    \"targetId\": \"<favorite.targetId>\",\n    \"createdAt\": \"<toDate(favorite.createdAt).toISOString()>\"\n  },\n  \"message\": \"Added to favorites successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/favorites/favorites.ctrl.ts-route-2",
+                "title": "GET /carina/favorites/:category/:targetId",
+                "description": "Check if target is in user favorites strictly by category and target ID",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaFavoritesModel.favoriteParam`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_2_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaFavoritesServ.checkFavorite(user.id, params.category, params.targetId)`"
+                  },
+                  {
+                    "id": "call_2_CarinaFavoritesServ_checkFavorite",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaFavoritesServ.checkFavorite",
+                    "isAsync": true,
+                    "targetAlg": "CarinaFavoritesServ.checkFavorite"
+                  },
+                  {
+                    "id": "svc_2_CarinaFavoritesServ_checkFavorite",
+                    "kind": "sequence",
+                    "title": "CarinaFavoritesServ.checkFavorite Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_CarinaFavoritesServ_checkFavorite_0_1",
+                        "kind": "step",
+                        "title": "Calls `this.parseFavoriteType` and stores result as `normType`"
+                      },
+                      {
+                        "id": "svc_2_CarinaFavoritesServ_checkFavorite_1_2",
+                        "kind": "step",
+                        "title": "Database `first` on `Favorite` and stores it as `favorite`"
+                      },
+                      {
+                        "id": "svc_2_CarinaFavoritesServ_checkFavorite_2_3",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"isFavorite\": \"<Boolean(favorite)>\",\n  \"favorite\": \"<favorite ? { id: favorite.id, userId: favorite.userId, type: favorite.type, targetId: favorite.targetId, createdAt: toDate(favorite.createdAt).toISOString(), ...>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/favorites/favorites.ctrl.ts-route-3",
+                "title": "DELETE /carina/favorites/:category/:targetId",
+                "description": "Remove target from user favorites strictly by category and target ID",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaFavoritesModel.favoriteParam`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_3_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaFavoritesServ.removeFavorite(user.id, params.category, params.targetId)`"
+                  },
+                  {
+                    "id": "call_3_CarinaFavoritesServ_removeFavorite",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaFavoritesServ.removeFavorite",
+                    "isAsync": true,
+                    "targetAlg": "CarinaFavoritesServ.removeFavorite"
+                  },
+                  {
+                    "id": "svc_3_CarinaFavoritesServ_removeFavorite",
+                    "kind": "sequence",
+                    "title": "CarinaFavoritesServ.removeFavorite Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_CarinaFavoritesServ_removeFavorite_0_1",
+                        "kind": "step",
+                        "title": "Calls `this.parseFavoriteType` and stores result as `normType`"
+                      },
+                      {
+                        "id": "svc_3_CarinaFavoritesServ_removeFavorite_1_2",
+                        "kind": "step",
+                        "title": "Database `first` on `Favorite` and stores it as `favorite`"
+                      },
+                      {
+                        "id": "svc_3_CarinaFavoritesServ_removeFavorite_2_3",
+                        "kind": "selection",
+                        "title": "`!favorite`",
+                        "selectionMode": "if_else",
+                        "condition": "`!favorite`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaFavoritesServ_removeFavorite_2_3_then_0_3_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Favorite not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaFavoritesServ_removeFavorite_3_4",
+                        "kind": "step",
+                        "title": "Database `delete` on `Favorite`"
+                      },
+                      {
+                        "id": "svc_3_CarinaFavoritesServ_removeFavorite_4_5",
+                        "kind": "step",
+                        "title": "Calls `MediaStatsServ.recalculateFavoritesCount`"
+                      },
+                      {
+                        "id": "svc_3_CarinaFavoritesServ_removeFavorite_5_6",
+                        "kind": "step",
+                        "title": "Calls `ActivityServ.recordFavoriteActivity`"
+                      },
+                      {
+                        "id": "svc_3_CarinaFavoritesServ_removeFavorite_6_7",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"targetId\": \"<targetId>\",\n  \"category\": \"<normType>\",\n  \"message\": \"Removed from favorites successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "2 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Category or type is required."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Favorite not found"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

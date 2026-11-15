@@ -123,7 +123,16 @@
         "name": "Tesseract",
         "description": "Local-network-only peer-to-peer file, folder, and text sharing.",
         "descriptionShort": "Local Network Share"
+      },
+      "irisReliquary": {
+        "name": "Reliquary",
+        "description": "Knowledge base, books, guides, and documentation.",
+        "descriptionShort": "Docs & guides"
       }
+    },
+    "reliquarySidebar": {
+      "home": "Home",
+      "browse": "Browse"
     },
     "listSidebar": {
       "home": "Home",
@@ -1135,6 +1144,136 @@
       "autoAcceptedOwnDevice": "Auto-accepting transfer from {peer}",
       "pastedToShelf": "Added clipboard content to Shared by You",
       "copiedToClipboard": "Copied to clipboard"
+    }
+  },
+  "reliquary": {
+    "title": "Reliquary",
+    "subtitle": "Structured knowledge base, books, and documentation.",
+    "signInTitle": "Welcome to Reliquary",
+    "signInDescription": "Sign in to view your recently visited guides, manage bookmarks, and author structured documentation books.",
+    "signInButton": "Sign In",
+    "browsePublic": "Browse Public Docs",
+    "newDocument": "New Document",
+    "recentlyVisited": "Recently Visited",
+    "emptyRecent": "Documents and pages you open will appear here.",
+    "bookmarked": "Bookmarked",
+    "emptyBookmarks": "Bookmark any documentation book for quick access.",
+    "myDocuments": "My Documents",
+    "emptyMyDocs": "Create your first documentation book or collaborate on one.",
+    "bookmark": "Bookmark",
+    "bookmarkedLabel": "Bookmarked",
+    "addPage": "Add Page",
+    "bookStructure": "Book Structure",
+    "docSettings": "Document Settings",
+    "overview": "Overview",
+    "categories": {
+      "all": "All",
+      "API_DOCS": "API Docs",
+      "WIKI": "Wiki",
+      "GUIDES": "Guides",
+      "TUTORIALS": "Tutorials",
+      "REFERENCE": "Reference",
+      "OTHER": "Other"
+    },
+    "visibility": {
+      "PUBLIC": "Public",
+      "UNLISTED": "Unlisted",
+      "PRIVATE": "Private"
+    },
+    "roles": {
+      "CREATOR": "Owner",
+      "EDITOR": "Editor",
+      "VIEWER": "Viewer"
+    },
+    "browsePage": {
+      "title": "Browse Documentation",
+      "subtitle": "Search document and sub-page titles across accessible books.",
+      "searchPlaceholder": "Search document or page titles...",
+      "allTags": "All tags",
+      "emptyTitle": "No matching books found",
+      "emptyHint": "Try a different title keyword or category.",
+      "matchingPages": "Matching pages",
+      "pagesCount": "{count} pages",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "lock": {
+      "lockedBy": "Locked for editing by @{username}",
+      "editingLockedTooltip": "Locked by @{username}",
+      "forceUnlock": "Force Unlock",
+      "forceUnlockSuccess": "Edit lock released.",
+      "acquireError": "Could not acquire edit lock."
+    },
+    "createDocDialog": {
+      "title": "New Documentation Book",
+      "docTitle": "Title",
+      "docTitlePlaceholder": "e.g. IRIS API Guide",
+      "description": "Description",
+      "descriptionPlaceholder": "Short summary of this documentation book",
+      "icon": "Tabler Icon",
+      "category": "Category",
+      "visibility": "Visibility",
+      "tags": "Tags (comma-separated)",
+      "tagsPlaceholder": "e.g. api, onboarding, backend",
+      "cancel": "Cancel",
+      "create": "Create Book",
+      "createdToast": "Documentation book created."
+    },
+    "addPageDialog": {
+      "title": "Add Sub-Page",
+      "pageTitle": "Page Title",
+      "pageTitlePlaceholder": "e.g. Authentication",
+      "icon": "Tabler Icon",
+      "parentNode": "Parent Location",
+      "rootLevel": "Top level of book",
+      "cancel": "Cancel",
+      "create": "Add Page",
+      "createdToast": "Sub-page created."
+    },
+    "structureDialog": {
+      "title": "Book Structure",
+      "description": "Organize pages and folders up to 5 levels deep.",
+      "addFolder": "Add Folder",
+      "folderPlaceholder": "Folder name...",
+      "rename": "Rename",
+      "indent": "Indent",
+      "outdent": "Outdent",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "deletePage": "Delete page",
+      "deleteFolder": "Remove folder",
+      "confirmDelete": "Delete \"{label}\"? Child items will be promoted up one level.",
+      "confirm": "Delete",
+      "cancel": "Cancel",
+      "save": "Save Structure",
+      "savedToast": "Book structure saved.",
+      "maxDepthNotice": "Maximum nesting depth is 5 levels."
+    },
+    "settingsDialog": {
+      "title": "Document Settings",
+      "generalTab": "General",
+      "collaboratorsTab": "Collaborators",
+      "dangerTab": "Danger Zone",
+      "saveMeta": "Save Settings",
+      "savedToast": "Document settings updated.",
+      "inviteLabel": "Invite Collaborator",
+      "searchUsersPlaceholder": "Search by username...",
+      "roleEditor": "Editor",
+      "roleViewer": "Viewer",
+      "remove": "Remove",
+      "noCollaborators": "No collaborators added yet.",
+      "deleteWarning": "Deleting a book permanently removes its landing page and all sub-pages.",
+      "deleteButton": "Delete Book",
+      "confirmDeleteButton": "Confirm Delete"
+    },
+    "errors": {
+      "notFound": "Document or page not found.",
+      "forbidden": "You do not have permission to view this document.",
+      "signInRequired": "Sign in if you have access to this private document.",
+      "backToBrowse": "Back to Browse",
+      "backToHome": "Back to Home",
+      "backToDoc": "Back to Book Overview",
+      "saveFailed": "Could not save changes."
     }
   }
 }

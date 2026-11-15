@@ -41,7 +41,11 @@ import {
 } from "@tabler/icons-react"
 import { useUser } from "@/context/user-context"
 import { useAllAppSidebarConfigs } from "@/config/sidebars"
-import { applySidebarCustomization, isRouteActive } from "@/lib/navigation"
+import {
+  applySidebarCustomization,
+  hasActiveDescendant,
+  isRouteActive,
+} from "@/lib/navigation"
 import {
   getAppSidebarCustomization,
   type AppSidebarCustomization,
@@ -70,6 +74,228 @@ function formatBadge(badge: string | number | undefined): string | null {
     return formatBadgeNumber(numeric, 2)
   }
   return String(badge)
+}
+
+const MAX_NAV_DEPTH = 5
+
+function renderHorizontalSubDropdowns(
+  children: SidebarItemChild[],
+  pathname: string,
+  searchParams: ReturnType<typeof useSearchParams>,
+  onNavigate: (child: SidebarItemChild) => void,
+  depth = 2
+): React.ReactNode {
+  return children.map((child, cIdx) => {
+    const isSubActive =
+      child.isActive !== undefined
+        ? child.isActive
+        : isRouteActive(pathname, child.href, searchParams)
+    const nested =
+      depth < MAX_NAV_DEPTH && child.children && child.children.length > 0
+        ? child.children
+        : undefined
+    const isDescActive =
+      !!nested && hasActiveDescendant(child, pathname, searchParams, MAX_NAV_DEPTH, depth + 1)
+
+    if (nested) {
+      return (
+        <DropdownMenuSub key={cIdx}>
+          <DropdownMenuSubTrigger
+            textValue={child.label}
+            className={cn(
+              "flex cursor-pointer items-center justify-between rounded-xl px-2.5 py-1.5 text-xs",
+              (isSubActive || isDescActive) && "bg-primary/10 font-bold text-primary"
+            )}
+          >
+            <span className="flex items-center gap-2">
+              {child.icon && <span className="size-3.5 shrink-0">{child.icon}</span>}
+              <span>{child.label}</span>
+            </span>
+          </DropdownMenuSubTrigger>
+          <DropdownMenuSubContent
+            placement="end top"
+            offset={6}
+            className="min-w-44 rounded-2xl p-1.5 shadow-xl"
+          >
+            {child.href && (
+              <DropdownMenuItem
+                textValue={child.label}
+                className={cn(
+                  "flex cursor-pointer items-center justify-between rounded-xl px-2.5 py-1.5 text-xs",
+                  isSubActive && "bg-primary/10 font-bold text-primary"
+                )}
+                onAction={() => onNavigate(child)}
+              >
+                <span className="flex items-center gap-2">
+                  {child.icon && <span className="size-3.5 shrink-0">{child.icon}</span>}
+                  <span>{child.label}</span>
+                </span>
+              </DropdownMenuItem>
+            )}
+            {renderHorizontalSubDropdowns(nested, pathname, searchParams, onNavigate, depth + 1)}
+          </DropdownMenuSubContent>
+        </DropdownMenuSub>
+      )
+    }
+
+    return (
+      <DropdownMenuItem
+        key={cIdx}
+        textValue={child.label}
+        className={cn(
+          "flex cursor-pointer items-center justify-between rounded-xl px-2.5 py-1.5 text-xs",
+          isSubActive && "bg-primary/10 font-bold text-primary"
+        )}
+        onAction={() => onNavigate(child)}
+      >
+        <span className="flex items-center gap-2">
+          {child.icon && <span className="size-3.5 shrink-0">{child.icon}</span>}
+          <span>{child.label}</span>
+        </span>
+        {child.badge && (
+          <Badge variant="secondary" className="h-4 px-1.5 text-[9px]">
+            {formatBadge(child.badge)}
+          </Badge>
+        )}
+      </DropdownMenuItem>
+    )
+  })
+}
+
+function renderVerticalSubMenu(
+  children: SidebarItemChild[],
+  parentKey: string,
+  pathname: string,
+  searchParams: ReturnType<typeof useSearchParams>,
+  openItems: Record<string, boolean>,
+  toggleItem: (key: string) => void,
+  handleNavClick: (
+    e: React.MouseEvent,
+    href?: string,
+    customOnClick?: (e: React.MouseEvent) => void
+  ) => void,
+  depth = 2
+): React.ReactNode {
+  return (
+    <SidebarMenuSub className="ms-3.5 me-0 mt-1 border-s border-sidebar-border/60 ps-2 pe-0">
+      {children.map((child, childIdx) => {
+        if (child.component) {
+          return <SidebarMenuSubItem key={childIdx}>{child.component}</SidebarMenuSubItem>
+        }
+
+        const subKey = `${parentKey}:${child.dataKey || child.label || childIdx}`
+        const isSubDirectActive =
+          child.isActive !== undefined
+            ? child.isActive
+            : isRouteActive(pathname, child.href, searchParams)
+        const nested =
+          depth < MAX_NAV_DEPTH && child.children && child.children.length > 0
+            ? child.children
+            : undefined
+        const isNestedActive =
+          !!nested && hasActiveDescendant(child, pathname, searchParams, MAX_NAV_DEPTH, depth + 1)
+        const isSubOpen =
+          openItems[subKey] !== undefined ? openItems[subKey] : isNestedActive
+
+        if (nested) {
+          return (
+            <SidebarMenuSubItem key={childIdx}>
+              <div className="flex items-center gap-0.5">
+                {child.href && !child.preventRedirect ? (
+                  <SidebarMenuSubButton
+                    href={child.href}
+                    isActive={isSubDirectActive}
+                    className={cn(
+                      "min-w-0 flex-1 justify-between gap-2",
+                      isSubDirectActive
+                        ? "bg-primary/10 font-semibold text-primary hover:bg-primary/15 hover:text-primary"
+                        : isNestedActive
+                          ? "font-medium text-foreground"
+                          : ""
+                    )}
+                    onClick={(e) => handleNavClick(e, child.href, child.onClick)}
+                  >
+                    <span className="flex min-w-0 flex-1 items-center gap-2">
+                      {child.icon && <span className="shrink-0">{child.icon}</span>}
+                      <span className="truncate">{child.label}</span>
+                    </span>
+                  </SidebarMenuSubButton>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => toggleItem(subKey)}
+                    className={cn(
+                      "flex h-7 min-w-0 flex-1 cursor-pointer items-center gap-2 rounded-md px-2 text-start text-xs transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+                      isSubDirectActive || isNestedActive
+                        ? "font-medium text-foreground"
+                        : "text-sidebar-foreground/80"
+                    )}
+                  >
+                    {child.icon && <span className="shrink-0">{child.icon}</span>}
+                    <span className="truncate">{child.label}</span>
+                  </button>
+                )}
+                <button
+                  type="button"
+                  aria-label="Toggle submenu"
+                  onClick={() => toggleItem(subKey)}
+                  className="flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-md text-muted-foreground hover:bg-sidebar-accent hover:text-foreground"
+                >
+                  <IconChevronDown
+                    className={cn(
+                      "size-3.5 transition-transform duration-200",
+                      isSubOpen && "rotate-180"
+                    )}
+                  />
+                </button>
+              </div>
+              {isSubOpen &&
+                renderVerticalSubMenu(
+                  nested,
+                  subKey,
+                  pathname,
+                  searchParams,
+                  openItems,
+                  toggleItem,
+                  handleNavClick,
+                  depth + 1
+                )}
+            </SidebarMenuSubItem>
+          )
+        }
+
+        return (
+          <SidebarMenuSubItem key={childIdx}>
+            <SidebarMenuSubButton
+              href={child.href || "#"}
+              isActive={isSubDirectActive}
+              className={cn(
+                "w-full justify-between gap-2",
+                isSubDirectActive &&
+                  "bg-primary/10 font-semibold text-primary hover:bg-primary/15 hover:text-primary"
+              )}
+              onClick={(e) => {
+                handleNavClick(e, child.href, child.onClick)
+              }}
+            >
+              <span className="flex min-w-0 flex-1 items-center gap-2">
+                {child.icon && <span className="shrink-0">{child.icon}</span>}
+                <span className="truncate">{child.label}</span>
+              </span>
+              {child.badge && (
+                <Badge
+                  variant="secondary"
+                  className="ms-auto h-4 shrink-0 px-1.5 text-[10px]"
+                >
+                  {formatBadge(child.badge)}
+                </Badge>
+              )}
+            </SidebarMenuSubButton>
+          </SidebarMenuSubItem>
+        )
+      })}
+    </SidebarMenuSub>
+  )
 }
 
 export interface IrisSidebarProps extends Omit<
@@ -157,18 +383,22 @@ export function IrisSidebar({
           })
           .map((item: SidebarItem) => {
             if (!item.children) return item
-            const filteredChildren = item.children.filter(
-              (child: SidebarItemChild) => {
-                if (
-                  child.permissions &&
-                  !hasPermission(userPermissions, child.permissions, "any")
-                ) {
-                  return false
-                }
-                return true
-              }
-            )
-            return { ...item, children: filteredChildren }
+            const filterChildPerms = (
+              children: SidebarItemChild[],
+              depth = 2
+            ): SidebarItemChild[] =>
+              children
+                .filter(
+                  (ch) =>
+                    !ch.permissions ||
+                    hasPermission(userPermissions, ch.permissions, "any")
+                )
+                .map((ch) =>
+                  ch.children && depth < MAX_NAV_DEPTH
+                    ? { ...ch, children: filterChildPerms(ch.children, depth + 1) }
+                    : ch
+                )
+            return { ...item, children: filterChildPerms(item.children, 2) }
           })
 
         // Sort positive at top (1, 2, ...), undefined in middle (0), negative in footer (-1, -2, ...)
@@ -212,6 +442,8 @@ export function IrisSidebar({
       ? "kiroshi"
       : pathname.startsWith("/tesseract")
       ? "tesseract"
+      : pathname.startsWith("/reliquary")
+      ? "reliquary"
       : "borealis")
 
   // Real-time synchronization of per-app sidebar layout customization
@@ -313,8 +545,11 @@ export function IrisSidebar({
     customizedConfig.forEach((section) => {
       section.items.forEach((item) => {
         if (item.children && item.children.length > 0) {
-          const hasActiveChild = item.children.some((child) =>
-            isRouteActive(pathname, child.href, searchParams)
+          const hasActiveChild = hasActiveDescendant(
+            item,
+            pathname,
+            searchParams,
+            5
           )
           if (hasActiveChild) {
             const key = item.dataKey || item.label
@@ -376,9 +611,7 @@ export function IrisSidebar({
                   if (item.isActive) return true
                   if (isRouteActive(pathname, item.href, searchParams)) return true
                   if (
-                    item.children?.some((c) =>
-                      isRouteActive(pathname, c.href, searchParams)
-                    )
+                    hasActiveDescendant(item, pathname, searchParams, 5)
                   )
                     return true
                   return false
@@ -410,9 +643,7 @@ export function IrisSidebar({
                       )
                       const isChildActive =
                         hasChildren &&
-                        item.children!.some((c) =>
-                          isRouteActive(pathname, c.href, searchParams)
-                        )
+                        hasActiveDescendant(item, pathname, searchParams, MAX_NAV_DEPTH)
                       const isActive = isDirectActive || isChildActive
 
                       if (item.component) {
@@ -448,44 +679,16 @@ export function IrisSidebar({
                               offset={6}
                               className="min-w-44 rounded-2xl p-1.5 shadow-xl"
                             >
-                              {item.children!.map((child, cIdx) => {
-                                const isSubActive =
-                                  child.isActive !== undefined
-                                    ? child.isActive
-                                    : isRouteActive(pathname, child.href, searchParams)
-                                return (
-                                  <DropdownMenuItem
-                                    key={cIdx}
-                                    textValue={child.label}
-                                    className={cn(
-                                      "flex cursor-pointer items-center justify-between rounded-xl px-2.5 py-1.5 text-xs",
-                                      isSubActive &&
-                                        "bg-primary/10 font-bold text-primary"
-                                    )}
-                                    onAction={() => {
-                                      if (child.href) router.push(child.href)
-                                      else child.onClick?.()
-                                    }}
-                                  >
-                                    <span className="flex items-center gap-2">
-                                      {child.icon && (
-                                        <span className="size-3.5 shrink-0">
-                                          {child.icon}
-                                        </span>
-                                      )}
-                                      <span>{child.label}</span>
-                                    </span>
-                                    {child.badge && (
-                                      <Badge
-                                        variant="secondary"
-                                        className="h-4 px-1.5 text-[9px]"
-                                      >
-                                        {formatBadge(child.badge)}
-                                      </Badge>
-                                    )}
-                                  </DropdownMenuItem>
-                                )
-                              })}
+                              {renderHorizontalSubDropdowns(
+                                item.children!,
+                                pathname,
+                                searchParams,
+                                (child) => {
+                                  if (child.href) router.push(child.href)
+                                  else child.onClick?.()
+                                },
+                                2
+                              )}
                             </DropdownMenuSubContent>
                           </DropdownMenuSub>
                         )
@@ -602,9 +805,7 @@ export function IrisSidebar({
                 )
                 const isChildActive =
                   hasChildren &&
-                  item.children!.some((c) =>
-                    isRouteActive(pathname, c.href, searchParams)
-                  )
+                  hasActiveDescendant(item, pathname, searchParams, MAX_NAV_DEPTH)
                 const isDirectActive =
                   item.isActive !== undefined
                     ? item.isActive
@@ -627,44 +828,16 @@ export function IrisSidebar({
                       offset={8}
                       className="min-w-44 rounded-2xl p-1.5 shadow-xl"
                     >
-                      {item.children!.map((child, cIdx) => {
-                        const isSubActive =
-                          child.isActive !== undefined
-                            ? child.isActive
-                            : isRouteActive(pathname, child.href, searchParams)
-                        return (
-                          <DropdownMenuItem
-                            key={cIdx}
-                            textValue={child.label}
-                            className={cn(
-                              "flex cursor-pointer items-center justify-between rounded-xl px-2.5 py-1.5 text-xs",
-                              isSubActive &&
-                                "bg-primary/10 font-bold text-primary"
-                            )}
-                            onAction={() => {
-                              if (child.href) router.push(child.href)
-                              else child.onClick?.()
-                            }}
-                          >
-                            <span className="flex items-center gap-2">
-                              {child.icon && (
-                                <span className="size-3.5 shrink-0">
-                                  {child.icon}
-                                </span>
-                              )}
-                              <span>{child.label}</span>
-                            </span>
-                            {child.badge && (
-                              <Badge
-                                variant="secondary"
-                                className="h-4 px-1.5 text-[9px]"
-                              >
-                                {formatBadge(child.badge)}
-                              </Badge>
-                            )}
-                          </DropdownMenuItem>
-                        )
-                      })}
+                      {renderHorizontalSubDropdowns(
+                        item.children!,
+                        pathname,
+                        searchParams,
+                        (child) => {
+                          if (child.href) router.push(child.href)
+                          else child.onClick?.()
+                        },
+                        2
+                      )}
                     </DropdownMenu>
                   )
 
@@ -895,6 +1068,14 @@ export function IrisSidebar({
                       )}
                     </div>
                     <div className="flex items-center gap-1">
+                      {section.sectionActions && (
+                        <div
+                          className="flex items-center gap-0.5"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {section.sectionActions}
+                        </div>
+                      )}
                       <button
                         type="button"
                         onClick={(e) => {
@@ -926,11 +1107,7 @@ export function IrisSidebar({
                       )
                       const isChildActive =
                         hasChildren &&
-                        item.children!.some((child: SidebarItemChild) =>
-                          child.isActive !== undefined
-                            ? child.isActive
-                            : isRouteActive(pathname, child.href, searchParams)
-                        )
+                        hasActiveDescendant(item, pathname, searchParams, MAX_NAV_DEPTH)
                       const isDirectActive =
                         item.isActive !== undefined
                           ? item.isActive
@@ -1022,69 +1199,17 @@ export function IrisSidebar({
                                 </SidebarMenuAction>
                               </div>
 
-                              {isOpen && (
-                                <SidebarMenuSub className="ms-3.5 me-0 mt-1 border-s border-sidebar-border/60 ps-2 pe-0">
-                                  {item.children!.map(
-                                    (
-                                      child: SidebarItemChild,
-                                      childIdx: number
-                                    ) => {
-                                      const isSubActive =
-                                        child.isActive !== undefined
-                                          ? child.isActive
-                                          : isRouteActive(
-                                              pathname,
-                                              child.href,
-                                              searchParams
-                                            )
-
-                                      if (child.component) {
-                                        return (
-                                          <SidebarMenuSubItem key={childIdx}>
-                                            {child.component}
-                                          </SidebarMenuSubItem>
-                                        )
-                                      }
-
-                                      return (
-                                        <SidebarMenuSubItem key={childIdx}>
-                                          <SidebarMenuSubButton
-                                            href={child.href || "#"}
-                                            isActive={isSubActive}
-                                            className={cn(
-                                              "w-full justify-between gap-2",
-                                              isSubActive &&
-                                                "bg-primary/10 font-semibold text-primary hover:bg-primary/15 hover:text-primary"
-                                            )}
-                                            onClick={(e) => {
-                                              handleNavClick(e, child.href)
-                                            }}
-                                          >
-                                            <span className="flex min-w-0 flex-1 items-center gap-2">
-                                              {child.icon && (
-                                                <span className="shrink-0">
-                                                  {child.icon}
-                                                </span>
-                                              )}
-                                              <span className="truncate">
-                                                {child.label}
-                                              </span>
-                                            </span>
-                                            {child.badge && (
-                                              <Badge
-                                                variant="secondary"
-                                                className="ml-auto h-4 shrink-0 px-1.5 text-[10px]"
-                                              >
-                                                {formatBadge(child.badge)}
-                                              </Badge>
-                                            )}
-                                          </SidebarMenuSubButton>
-                                        </SidebarMenuSubItem>
-                                      )
-                                    }
-                                  )}
-                                </SidebarMenuSub>
-                              )}
+                              {isOpen &&
+                                renderVerticalSubMenu(
+                                  item.children!,
+                                  itemKey,
+                                  pathname,
+                                  searchParams,
+                                  openItems,
+                                  toggleItem,
+                                  handleNavClick,
+                                  2
+                                )}
                             </div>
                           ) : (
                             <SidebarMenuButton

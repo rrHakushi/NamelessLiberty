@@ -1,11 +1,11 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia } from 'elysia'
-import { carinaEmail2fa } from '../../src/api/controllers/carina/email-2fa.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt, hashPassword } from '../../src/utils/auth-crypto'
-import { cache } from '../../src/utils/cache'
-import { EmailService } from '../../src/services/email/email.serv'
-import { maskEmail } from '../../src/services/carina/email-2fa.serv'
+import { carinaEmail2fa } from '../../src/apps/carina/email-2fa/email-2fa.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt, hashPassword } from '../../src/core/utils/auth-crypto'
+import { cache } from '../../src/core/utils/cache'
+import { EmailService } from '../../src/core/email/email.serv'
+import { maskEmail } from '../../src/apps/carina/email-2fa/email-2fa.serv'
 import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------

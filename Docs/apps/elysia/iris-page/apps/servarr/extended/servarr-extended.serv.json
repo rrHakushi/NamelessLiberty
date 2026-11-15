@@ -1,0 +1,4337 @@
+{
+  "id": "apps/servarr/extended/servarr-extended.serv",
+  "title": "servarr-extended.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/servarr/extended/servarr-extended.serv.ts",
+    "relPath": "apps/servarr/extended/servarr-extended.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "servarr-extended.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/servarr/extended/servarr-extended.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/servarr/extended/servarr-extended.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/servarr/extended/servarr-extended.ctrl.ts (ServarrExtendedServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "66 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.withConnection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, fallbackMsg, fn)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.connectRealtime"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.resolveBorealisHref"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(params)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<{ href: string | null }>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getConfigSection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, section)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.updateConfigSection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, section, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getNamingExamples"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.listProviderResources"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getProviderSchema"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.createProviderResource"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.updateProviderResource"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource, id, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.deleteProviderResource"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource, id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.bulkUpdateProviderResources"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.bulkDeleteProviderResources"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource, ids)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.testProviderResource"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource, body, forceTest = false)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.testAllProviderResources"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.runProviderAction"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource, actionName, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.listGeneric"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getSchemaGeneric"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.createGeneric"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.updateGeneric"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource, id, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.deleteGeneric"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, resource, id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.bulkUpdateQualityDefinitions"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, definitions)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getQualityDefinitionLimits"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-23",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.reorderDelayProfile"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, id, moveTo)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-24",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.listExclusions"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-25",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.createExclusion"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-26",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.deleteExclusion"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-27",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.bulkDeleteExclusions"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, ids)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-28",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getTagsDetail"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-29",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getDictionaries"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-30",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.importMedia"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, items)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-31",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getCredits"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, movieId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-32",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getExtraFiles"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, movieId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-33",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getAltTitles"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, movieId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-34",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getCollections"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, tmdbId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-35",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.updateCollection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, id, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-36",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getDiscoverMovies"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, params)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-37",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.addDiscoverMovies"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, movies)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-38",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.updateSeriesSeason"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, seriesId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-39",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.runSeasonPass"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-40",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.updateMediaFile"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, id, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-41",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.bulkDeleteMediaFiles"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, fileIds)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-42",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.parseRelease"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, params)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-43",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getQueueDetails"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, params)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-44",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.grabQueueItem"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-45",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.grabQueueBulk"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, ids)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-46",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.deleteQueueBulk"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, ids, options)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-47",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.markHistoryFailed"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-48",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getScopedHistory"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, params)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-49",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.pushRelease"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, release)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-50",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getSystemOverview"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-51",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getCommands"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-52",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.cancelCommand"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-53",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getBackups"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-54",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.restoreBackup"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-55",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.deleteBackup"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-56",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.uploadBackupRestore"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, file)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-57",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.downloadBackup"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<Response>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-58",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.restartSystem"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-59",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.shutdownSystem"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-60",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getLogs"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, params)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-61",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getLogFiles"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, update = false)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-62",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.downloadLogFile"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, filename, update = false)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<Response>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-63",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.browseFilesystem"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, params)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-64",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.getFilesystemMediaFiles"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, path)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-65",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ServarrExtendedServ.proxyMediaCover"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(app, userId, mediaId, filename)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<Response>"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-withConnection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-withConnection",
+                "title": "ServarrExtendedServ.withConnection(app, userId, fallbackMsg, fn)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_withConnection_0_1",
+                    "kind": "step",
+                    "title": "Calls `ServarrServ.getConnectionContext` and stores result as `ctx`"
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_withConnection_1_2",
+                    "kind": "selection",
+                    "title": "`!ctx.connected || !ctx.adapter || !ctx.credentials`",
+                    "selectionMode": "if_else",
+                    "condition": "`!ctx.connected || !ctx.adapter || !ctx.credentials`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ServarrExtendedServ_withConnection_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": false,\n  \"connected\": false,\n  \"provider\": \"<ctx.provider>\",\n  \"message\": \"<ctx.error || `No active ${ctx.provider} connection found`>\",\n  \"data\": \"<null as T | null>\",\n  \"validationErrors\": \"<[] as Array<{ propertyName: string errorMessage: string severity?: string }>>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_withConnection_2_3",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_ServarrExtendedServ_withConnection_2_3_try_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `fn` and stores result as `data`"
+                      },
+                      {
+                        "id": "m_ServarrExtendedServ_withConnection_2_3_try_1_3_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"connected\": true,\n  \"provider\": \"<ctx.provider>\",\n  \"data\": \"<data>\",\n  \"validationErrors\": \"<[] as Array<{ propertyName: string errorMessage: string severity?: string }>>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_ServarrExtendedServ_withConnection_2_3_catch_0_4_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": false,\n  \"connected\": true,\n  \"provider\": \"<ctx.provider>\",\n  \"message\": \"<formatServarrError(err, fallbackMsg)>\",\n  \"data\": \"<null as T | null>\",\n  \"validationErrors\": \"<extractServarrValidationErrors(err)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-connectRealtime",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-connectRealtime",
+                "title": "ServarrExtendedServ.connectRealtime(app, userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_connectRealtime_0_1",
+                    "kind": "step",
+                    "title": "Calls `ServarrServ.getConnectionContext` and stores result as `ctx`"
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_connectRealtime_1_2",
+                    "kind": "selection",
+                    "title": "`!ctx.connected || !ctx.credentials?.hostUrl || !ctx.credentials?.apiKey`",
+                    "selectionMode": "if_else",
+                    "condition": "`!ctx.connected || !ctx.credentials?.hostUrl || !ctx.credentials?.apiKey`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ServarrExtendedServ_connectRealtime_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"connected\": false,\n  \"provider\": \"<ctx.provider>\",\n  \"realtimeStatus\": \"<'disconnected' as const>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_connectRealtime_2_3",
+                    "kind": "step",
+                    "title": "Calls `ServarrRealtimeServ.ensureConnected` and stores result as `realtimeStatus`"
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_connectRealtime_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"connected\": true,\n  \"provider\": \"<ctx.provider>\",\n  \"realtimeStatus\": \"<realtimeStatus>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-resolveBorealisHref",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-resolveBorealisHref",
+                "title": "ServarrExtendedServ.resolveBorealisHref(params)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_0_1_1",
+                        "kind": "selection",
+                        "title": "`params.mediaType === 'movie' && params.tmdbId`",
+                        "selectionMode": "if_else",
+                        "condition": "`params.mediaType === 'movie' && params.tmdbId`",
+                        "thenBranch": [
+                          {
+                            "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_0_1_1_then_0_1_1_1",
+                            "kind": "step",
+                            "title": "Database `first` on `Movie` and stores it as `movie`"
+                          },
+                          {
+                            "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_0_1_1_then_1_1_1_2",
+                            "kind": "selection",
+                            "title": "`movie?.id`",
+                            "selectionMode": "if_else",
+                            "condition": "`movie?.id`",
+                            "thenBranch": [
+                              {
+                                "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_0_1_1_then_1_1_1_2_then_0_1_1_2_1",
+                                "kind": "return",
+                                "title": "",
+                                "payload": "{\n  \"href\": \"<`/borealis/movie/${movie.id}`>\"\n}",
+                                "payloadLanguage": "json"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_1_1_2",
+                        "kind": "selection",
+                        "title": "`params.mediaType === 'tv'`",
+                        "selectionMode": "if_else",
+                        "condition": "`params.mediaType === 'tv'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_1_1_2_then_0_1_2_1",
+                            "kind": "selection",
+                            "title": "`params.tvdbId`",
+                            "selectionMode": "if_else",
+                            "condition": "`params.tvdbId`",
+                            "thenBranch": [
+                              {
+                                "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_1_1_2_then_0_1_2_1_then_0_1_2_1_1",
+                                "kind": "step",
+                                "title": "Database `first` on `Tv` and stores it as `tv`"
+                              },
+                              {
+                                "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_1_1_2_then_0_1_2_1_then_1_1_2_1_2",
+                                "kind": "selection",
+                                "title": "`tv?.id`",
+                                "selectionMode": "if_else",
+                                "condition": "`tv?.id`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_1_1_2_then_0_1_2_1_then_1_1_2_1_2_then_0_1_2_1_2_1",
+                                    "kind": "return",
+                                    "title": "",
+                                    "payload": "{\n  \"href\": \"<`/borealis/tv/${tv.id}`>\"\n}",
+                                    "payloadLanguage": "json"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_1_1_2_then_1_1_2_2",
+                            "kind": "selection",
+                            "title": "`params.tmdbId`",
+                            "selectionMode": "if_else",
+                            "condition": "`params.tmdbId`",
+                            "thenBranch": [
+                              {
+                                "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_1_1_2_then_1_1_2_2_then_0_1_2_2_1",
+                                "kind": "step",
+                                "title": "Database `first` on `Tv` and stores it as `tv`"
+                              },
+                              {
+                                "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_1_1_2_then_1_1_2_2_then_1_1_2_2_2",
+                                "kind": "selection",
+                                "title": "`tv?.id`",
+                                "selectionMode": "if_else",
+                                "condition": "`tv?.id`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_ServarrExtendedServ_resolveBorealisHref_0_1_try_1_1_2_then_1_1_2_2_then_1_1_2_2_2_then_0_1_2_2_2_1",
+                                    "kind": "return",
+                                    "title": "",
+                                    "payload": "{\n  \"href\": \"<`/borealis/tv/${tv.id}`>\"\n}",
+                                    "payloadLanguage": "json"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_resolveBorealisHref_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"href\": null\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getConfigSection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getConfigSection",
+                "title": "ServarrExtendedServ.getConfigSection(app, userId, section)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getConfigSection_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to fetch ${section} settings`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-updateConfigSection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-updateConfigSection",
+                "title": "ServarrExtendedServ.updateConfigSection(app, userId, section, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_updateConfigSection_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to update ${section} settings`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getNamingExamples",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getNamingExamples",
+                "title": "ServarrExtendedServ.getNamingExamples(app, userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getNamingExamples_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch naming examples', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-listProviderResources",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-listProviderResources",
+                "title": "ServarrExtendedServ.listProviderResources(app, userId, resource)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_listProviderResources_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to list ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getProviderSchema",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getProviderSchema",
+                "title": "ServarrExtendedServ.getProviderSchema(app, userId, resource)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getProviderSchema_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to fetch ${resource} schema`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-createProviderResource",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-createProviderResource",
+                "title": "ServarrExtendedServ.createProviderResource(app, userId, resource, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_createProviderResource_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to create ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-updateProviderResource",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-updateProviderResource",
+                "title": "ServarrExtendedServ.updateProviderResource(app, userId, resource, id, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_updateProviderResource_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to update ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-deleteProviderResource",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-deleteProviderResource",
+                "title": "ServarrExtendedServ.deleteProviderResource(app, userId, resource, id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_deleteProviderResource_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to delete ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-bulkUpdateProviderResources",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-bulkUpdateProviderResources",
+                "title": "ServarrExtendedServ.bulkUpdateProviderResources(app, userId, resource, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_bulkUpdateProviderResources_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to bulk update ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-bulkDeleteProviderResources",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-bulkDeleteProviderResources",
+                "title": "ServarrExtendedServ.bulkDeleteProviderResources(app, userId, resource, ids)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_bulkDeleteProviderResources_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to bulk delete ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-testProviderResource",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-testProviderResource",
+                "title": "ServarrExtendedServ.testProviderResource(app, userId, resource, body, forceTest = false)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_testProviderResource_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to test ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-testAllProviderResources",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-testAllProviderResources",
+                "title": "ServarrExtendedServ.testAllProviderResources(app, userId, resource)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_testAllProviderResources_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to test all ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-runProviderAction",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-runProviderAction",
+                "title": "ServarrExtendedServ.runProviderAction(app, userId, resource, actionName, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_runProviderAction_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to run ${resource} action`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-listGeneric",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-listGeneric",
+                "title": "ServarrExtendedServ.listGeneric(app, userId, resource, query)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_listGeneric_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to list ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getSchemaGeneric",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getSchemaGeneric",
+                "title": "ServarrExtendedServ.getSchemaGeneric(app, userId, resource)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getSchemaGeneric_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to fetch ${resource} schema`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-createGeneric",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-createGeneric",
+                "title": "ServarrExtendedServ.createGeneric(app, userId, resource, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_createGeneric_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to create ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-updateGeneric",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-updateGeneric",
+                "title": "ServarrExtendedServ.updateGeneric(app, userId, resource, id, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_updateGeneric_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to update ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-deleteGeneric",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-deleteGeneric",
+                "title": "ServarrExtendedServ.deleteGeneric(app, userId, resource, id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_deleteGeneric_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, `Failed to delete ${resource}`, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-bulkUpdateQualityDefinitions",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-bulkUpdateQualityDefinitions",
+                "title": "ServarrExtendedServ.bulkUpdateQualityDefinitions(app, userId, definitions)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_bulkUpdateQualityDefinitions_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to update quality definitions', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getQualityDefinitionLimits",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getQualityDefinitionLimits",
+                "title": "ServarrExtendedServ.getQualityDefinitionLimits(app, userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getQualityDefinitionLimits_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch quality definition limits', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-reorderDelayProfile",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-reorderDelayProfile",
+                "title": "ServarrExtendedServ.reorderDelayProfile(app, userId, id, moveTo)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_reorderDelayProfile_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to reorder delay profile', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-listExclusions",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-listExclusions",
+                "title": "ServarrExtendedServ.listExclusions(app, userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_listExclusions_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch import list exclusions', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-createExclusion",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-createExclusion",
+                "title": "ServarrExtendedServ.createExclusion(app, userId, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_createExclusion_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to create exclusion', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-deleteExclusion",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-deleteExclusion",
+                "title": "ServarrExtendedServ.deleteExclusion(app, userId, id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_deleteExclusion_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to delete exclusion', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-bulkDeleteExclusions",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-bulkDeleteExclusions",
+                "title": "ServarrExtendedServ.bulkDeleteExclusions(app, userId, ids)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_bulkDeleteExclusions_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to bulk delete exclusions', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getTagsDetail",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getTagsDetail",
+                "title": "ServarrExtendedServ.getTagsDetail(app, userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getTagsDetail_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch tag details', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getDictionaries",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getDictionaries",
+                "title": "ServarrExtendedServ.getDictionaries(app, userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getDictionaries_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch dictionaries', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-importMedia",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-importMedia",
+                "title": "ServarrExtendedServ.importMedia(app, userId, items)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_importMedia_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to import media', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getCredits",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getCredits",
+                "title": "ServarrExtendedServ.getCredits(userId, movieId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getCredits_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection('radarr', userId, 'Failed to fetch credits', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getExtraFiles",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getExtraFiles",
+                "title": "ServarrExtendedServ.getExtraFiles(userId, movieId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getExtraFiles_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection('radarr', userId, 'Failed to fetch extra files', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getAltTitles",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getAltTitles",
+                "title": "ServarrExtendedServ.getAltTitles(userId, movieId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getAltTitles_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection('radarr', userId, 'Failed to fetch alternate titles', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getCollections",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getCollections",
+                "title": "ServarrExtendedServ.getCollections(userId, tmdbId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getCollections_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection('radarr', userId, 'Failed to fetch collections', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-updateCollection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-updateCollection",
+                "title": "ServarrExtendedServ.updateCollection(userId, id, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_updateCollection_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection('radarr', userId, 'Failed to update collection', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getDiscoverMovies",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getDiscoverMovies",
+                "title": "ServarrExtendedServ.getDiscoverMovies(userId, params)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getDiscoverMovies_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection('radarr', userId, 'Failed to fetch discover movies', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-addDiscoverMovies",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-addDiscoverMovies",
+                "title": "ServarrExtendedServ.addDiscoverMovies(userId, movies)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_addDiscoverMovies_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection('radarr', userId, 'Failed to add discover movies', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-updateSeriesSeason",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-updateSeriesSeason",
+                "title": "ServarrExtendedServ.updateSeriesSeason(userId, seriesId, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_updateSeriesSeason_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection('sonarr', userId, 'Failed to update season', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-runSeasonPass",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-runSeasonPass",
+                "title": "ServarrExtendedServ.runSeasonPass(userId, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_runSeasonPass_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection('sonarr', userId, 'Failed to execute Season Pass', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-updateMediaFile",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-updateMediaFile",
+                "title": "ServarrExtendedServ.updateMediaFile(app, userId, id, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_updateMediaFile_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to update media file', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-bulkDeleteMediaFiles",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-bulkDeleteMediaFiles",
+                "title": "ServarrExtendedServ.bulkDeleteMediaFiles(app, userId, fileIds)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_bulkDeleteMediaFiles_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to delete media files', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-parseRelease",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-parseRelease",
+                "title": "ServarrExtendedServ.parseRelease(app, userId, params)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_parseRelease_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to parse release', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getQueueDetails",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getQueueDetails",
+                "title": "ServarrExtendedServ.getQueueDetails(app, userId, params)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getQueueDetails_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch queue details', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-grabQueueItem",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-grabQueueItem",
+                "title": "ServarrExtendedServ.grabQueueItem(app, userId, id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_grabQueueItem_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to grab queue item', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-grabQueueBulk",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-grabQueueBulk",
+                "title": "ServarrExtendedServ.grabQueueBulk(app, userId, ids)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_grabQueueBulk_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to grab queue items', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-deleteQueueBulk",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-deleteQueueBulk",
+                "title": "ServarrExtendedServ.deleteQueueBulk(app, userId, ids, options)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_deleteQueueBulk_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to remove queue items', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-markHistoryFailed",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-markHistoryFailed",
+                "title": "ServarrExtendedServ.markHistoryFailed(app, userId, id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_markHistoryFailed_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to mark download as failed', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getScopedHistory",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getScopedHistory",
+                "title": "ServarrExtendedServ.getScopedHistory(app, userId, params)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getScopedHistory_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch scoped history', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-pushRelease",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-pushRelease",
+                "title": "ServarrExtendedServ.pushRelease(app, userId, release)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_pushRelease_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to push release', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getSystemOverview",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getSystemOverview",
+                "title": "ServarrExtendedServ.getSystemOverview(app, userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getSystemOverview_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch system overview', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getCommands",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getCommands",
+                "title": "ServarrExtendedServ.getCommands(app, userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getCommands_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch commands', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-cancelCommand",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-cancelCommand",
+                "title": "ServarrExtendedServ.cancelCommand(app, userId, id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_cancelCommand_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to cancel command', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getBackups",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getBackups",
+                "title": "ServarrExtendedServ.getBackups(app, userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getBackups_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch backups', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-restoreBackup",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-restoreBackup",
+                "title": "ServarrExtendedServ.restoreBackup(app, userId, id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_restoreBackup_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to restore backup', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-deleteBackup",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-deleteBackup",
+                "title": "ServarrExtendedServ.deleteBackup(app, userId, id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_deleteBackup_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to delete backup', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-uploadBackupRestore",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-uploadBackupRestore",
+                "title": "ServarrExtendedServ.uploadBackupRestore(app, userId, file)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_uploadBackupRestore_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to upload backup', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-downloadBackup",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-downloadBackup",
+                "title": "ServarrExtendedServ.downloadBackup(app, userId, id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_downloadBackup_0_1",
+                    "kind": "step",
+                    "title": "Calls `ServarrServ.getConnectionContext` and stores result as `ctx`"
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_downloadBackup_1_2",
+                    "kind": "selection",
+                    "title": "`!ctx.connected || !ctx.adapter || !ctx.credentials`",
+                    "selectionMode": "if_else",
+                    "condition": "`!ctx.connected || !ctx.adapter || !ctx.credentials`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ServarrExtendedServ_downloadBackup_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`new Response('Connection not found', { status: 404 })`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_downloadBackup_2_3",
+                    "kind": "step",
+                    "title": "Calls `ctx.adapter.getBackups` and stores result as `backups`"
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_downloadBackup_3_4",
+                    "kind": "var_def",
+                    "title": "Define `target`",
+                    "payload": "const target = Array.isArray(backups) ? backups.find((b: any) => Number(b.id) === Number(id)) : null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_downloadBackup_4_5",
+                    "kind": "selection",
+                    "title": "`!target?.path`",
+                    "selectionMode": "if_else",
+                    "condition": "`!target?.path`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ServarrExtendedServ_downloadBackup_4_5_then_0_5_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`new Response('Backup not found', { status: 404 })`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_downloadBackup_5_6",
+                    "kind": "step",
+                    "title": "Calls `ctx.adapter.servarrFetchRaw` and stores result as `upstream`"
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_downloadBackup_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`new Response(upstream.body, { status: 200, headers: { 'Content-Type': upstream.headers.get('content-type') || 'application/zip', 'Content-Disposition': `attachment; filename=\"${encodeURIComponent(target.name || `backup-${id}.zip`)}\"`, }, ...`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-restartSystem",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-restartSystem",
+                "title": "ServarrExtendedServ.restartSystem(app, userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_restartSystem_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to restart system', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-shutdownSystem",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-shutdownSystem",
+                "title": "ServarrExtendedServ.shutdownSystem(app, userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_shutdownSystem_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to shutdown system', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getLogs",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getLogs",
+                "title": "ServarrExtendedServ.getLogs(app, userId, params)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getLogs_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch logs', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getLogFiles",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getLogFiles",
+                "title": "ServarrExtendedServ.getLogFiles(app, userId, update = false)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getLogFiles_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to fetch log files', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-downloadLogFile",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-downloadLogFile",
+                "title": "ServarrExtendedServ.downloadLogFile(app, userId, filename, update = false)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_downloadLogFile_0_1",
+                    "kind": "step",
+                    "title": "Calls `ServarrServ.getConnectionContext` and stores result as `ctx`"
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_downloadLogFile_1_2",
+                    "kind": "selection",
+                    "title": "`!ctx.connected || !ctx.adapter || !ctx.credentials`",
+                    "selectionMode": "if_else",
+                    "condition": "`!ctx.connected || !ctx.adapter || !ctx.credentials`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ServarrExtendedServ_downloadLogFile_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`new Response('Connection not found', { status: 404 })`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_downloadLogFile_2_3",
+                    "kind": "step",
+                    "title": "Calls `ctx.adapter.downloadLogFile` and stores result as `upstream`"
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_downloadLogFile_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`new Response(upstream.body, { status: 200, headers: { 'Content-Type': upstream.headers.get('content-type') || 'text/plain; charset=utf-8', 'Content-Disposition': `inline; filename=\"${encodeURIComponent(filename)}\"`, }, ...`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-browseFilesystem",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-browseFilesystem",
+                "title": "ServarrExtendedServ.browseFilesystem(app, userId, params)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_browseFilesystem_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to browse filesystem', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-getFilesystemMediaFiles",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-getFilesystemMediaFiles",
+                "title": "ServarrExtendedServ.getFilesystemMediaFiles(app, userId, path)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_getFilesystemMediaFiles_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.withConnection(app, userId, 'Failed to list media files', ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ServarrExtendedServ-proxyMediaCover",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/servarr/extended/servarr-extended.serv.ts-ServarrExtendedServ-proxyMediaCover",
+                "title": "ServarrExtendedServ.proxyMediaCover(app, userId, mediaId, filename)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ServarrExtendedServ_proxyMediaCover_0_1",
+                    "kind": "step",
+                    "title": "Calls `ServarrServ.getConnectionContext` and stores result as `ctx`"
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_proxyMediaCover_1_2",
+                    "kind": "selection",
+                    "title": "`!ctx.connected || !ctx.adapter || !ctx.credentials`",
+                    "selectionMode": "if_else",
+                    "condition": "`!ctx.connected || !ctx.adapter || !ctx.credentials`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ServarrExtendedServ_proxyMediaCover_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`new Response('Connection not found', { status: 404 })`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ServarrExtendedServ_proxyMediaCover_2_3",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_ServarrExtendedServ_proxyMediaCover_2_3_try_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `ctx.adapter.getMediaCover` and stores result as `upstream`"
+                      },
+                      {
+                        "id": "m_ServarrExtendedServ_proxyMediaCover_2_3_try_1_3_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`new Response(upstream.body, { status: 200, headers: { 'Content-Type': upstream.headers.get('content-type') || 'image/jpeg', 'Cache-Control': 'private, max-age=86400', }, ...`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_ServarrExtendedServ_proxyMediaCover_2_3_catch_0_4_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`new Response('Image not found', { status: 404 })`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

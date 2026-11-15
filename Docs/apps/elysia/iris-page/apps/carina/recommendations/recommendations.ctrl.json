@@ -1,0 +1,1985 @@
+{
+  "id": "apps/carina/recommendations/recommendations.ctrl",
+  "title": "Submit media recommendation strictly by media IDs",
+  "description": "",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/carina/recommendations/",
+    "relPath": "apps/carina/recommendations/recommendations.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "POST",
+      "GET",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/recommendations/",
+      "/carina/recommendations/:type/:id",
+      "/carina/recommendations/:id",
+      "/carina/recommendations/:id/vote"
+    ],
+    "errorCount": 4
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Submit media recommendation strictly by media IDs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/recommendations/"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/recommendations/:type/:id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30"
+                            },
+                            "text": "DELETE"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/recommendations/:id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/recommendations/:id/vote"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_32)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "23 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/ · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.submitBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/ · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.submitResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/ · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/ · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/ · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/recommendations/:type/:id · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.mediaParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/recommendations/:type/:id · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.listRecommendationsQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/recommendations/:type/:id · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.listRecommendationsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/recommendations/:type/:id · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/recommendations/:type/:id · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/recommendations/:id · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.recommendationParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/recommendations/:id · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.deleteResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/recommendations/:id · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/recommendations/:id · Response 403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.forbiddenError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/recommendations/:id · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/recommendations/:id · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/:id/vote · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.recommendationParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/:id/vote · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.voteBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/:id/vote · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.voteResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/:id/vote · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/:id/vote · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/:id/vote · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/recommendations/:id/vote · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaRecommendationsModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/recommendations/recommendations.ctrl.ts-route-0",
+                "title": "POST /carina/recommendations/",
+                "description": "Submit media recommendation strictly by media IDs",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaRecommendationsModel.submitBody`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_0_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaRecommendationsServ.submitRecommendation(user.id, body)`"
+                  },
+                  {
+                    "id": "call_0_CarinaRecommendationsServ_submitRecommendation",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaRecommendationsServ.submitRecommendation",
+                    "isAsync": true,
+                    "targetAlg": "CarinaRecommendationsServ.submitRecommendation"
+                  },
+                  {
+                    "id": "svc_0_CarinaRecommendationsServ_submitRecommendation",
+                    "kind": "sequence",
+                    "title": "CarinaRecommendationsServ.submitRecommendation Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_0_1",
+                        "kind": "step",
+                        "title": "Calls `this.parseMediaType` and stores result as `normSourceType`"
+                      },
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_1_2",
+                        "kind": "step",
+                        "title": "Calls `this.parseMediaType` and stores result as `normTargetType`"
+                      },
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_2_3",
+                        "kind": "selection",
+                        "title": "`normSourceType === normTargetType && body.sourceId === body.targetId`",
+                        "selectionMode": "if_else",
+                        "condition": "`normSourceType === normTargetType && body.sourceId === body.targetId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_2_3_then_0_3_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Cannot recommend a media item to itself"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_3_4",
+                        "kind": "var_def",
+                        "title": "Define `trimmedBody`",
+                        "payload": "const trimmedBody = body.body?.trim() || null",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_4_5",
+                        "kind": "step",
+                        "title": "Database `first` on `MediaRecommendation` and stores it as `rec`"
+                      },
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_5_6",
+                        "kind": "var_def",
+                        "title": "Define `isNewRecommendation`",
+                        "payload": "const isNewRecommendation = !rec",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_6_7",
+                        "kind": "selection",
+                        "title": "`rec`",
+                        "selectionMode": "if_else",
+                        "condition": "`rec`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_6_7_then_0_7_1",
+                            "kind": "step",
+                            "title": "Assign `rec`",
+                            "payload": "rec = await prisma.orm.public.MediaRecommendation.where({ id: rec.id }) .update({ body: trimmedBody })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_6_7_else_0_8_1",
+                            "kind": "step",
+                            "title": "Assign `rec`",
+                            "payload": "rec = await prisma.orm.public.MediaRecommendation.create({ userId, sourceType: normSourceType, sourceId: body.sourceId, targetType: normTargetType, targetId: body.targetId, body: trimmedBody, ...",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_8_9",
+                        "kind": "selection",
+                        "title": "`!rec`",
+                        "selectionMode": "if_else",
+                        "condition": "`!rec`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_8_9_then_0_9_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Failed to save recommendation"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_9_10",
+                        "kind": "selection",
+                        "title": "`isNewRecommendation`",
+                        "selectionMode": "if_else",
+                        "condition": "`isNewRecommendation`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_9_10_then_0_10_1",
+                            "kind": "step",
+                            "title": "Calls `ActivityServ.recordRecommendationActivity`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_10_11",
+                        "kind": "step",
+                        "title": "Database `first` on `MediaRecommendation` and stores it as `recWithUser`"
+                      },
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_11_12",
+                        "kind": "selection",
+                        "title": "`!recWithUser`",
+                        "selectionMode": "if_else",
+                        "condition": "`!recWithUser`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_11_12_then_0_12_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Recommendation not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaRecommendationsServ_submitRecommendation_12_13",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"recommendation\": \"<this.formatRecommendation(recWithUser)>\",\n  \"message\": \"Recommendation submitted successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/recommendations/recommendations.ctrl.ts-route-1",
+                "title": "GET /carina/recommendations/:type/:id",
+                "description": "Get recommendations for media strictly by media domain and ID (10 per page default)",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaRecommendationsModel.mediaParam`, query: `CarinaRecommendationsModel.listRecommendationsQuery`"
+                  },
+                  {
+                    "id": "route_1_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.getUser` and stores result as `currentUser`"
+                  },
+                  {
+                    "id": "route_1_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaRecommendationsServ.getMediaRecommendations(params.type, params.id, query, ...)`"
+                  },
+                  {
+                    "id": "call_1_CarinaRecommendationsServ_getMediaRecommendations",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaRecommendationsServ.getMediaRecommendations",
+                    "isAsync": true,
+                    "targetAlg": "CarinaRecommendationsServ.getMediaRecommendations"
+                  },
+                  {
+                    "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations",
+                    "kind": "sequence",
+                    "title": "CarinaRecommendationsServ.getMediaRecommendations Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_0_1",
+                        "kind": "step",
+                        "title": "Calls `this.parseMediaType` and stores result as `normType`"
+                      },
+                      {
+                        "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_2_3",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_3_4",
+                        "kind": "var_def",
+                        "title": "Define `skip`",
+                        "payload": "const skip = page - 1 * limit",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_4_5",
+                        "kind": "step",
+                        "title": "Database `query` on `MediaRecommendation` and stores it as `recQuery`"
+                      },
+                      {
+                        "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_5_6",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, rawRecommendations]`"
+                      },
+                      {
+                        "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_6_7",
+                        "kind": "var_def",
+                        "title": "Define `voteMap`",
+                        "payload": "const voteMap = new Map<number, string>()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_7_8",
+                        "kind": "selection",
+                        "title": "`requestingUserId && rawRecommendations.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`requestingUserId && rawRecommendations.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_7_8_then_0_8_1",
+                            "kind": "var_def",
+                            "title": "Define `recIds`",
+                            "payload": "const recIds = rawRecommendations.map((r) => r.id)",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_7_8_then_1_8_2",
+                            "kind": "step",
+                            "title": "Database `all` on `MediaRecommendationVote` and stores it as `votes`"
+                          },
+                          {
+                            "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_7_8_then_2_8_3",
+                            "kind": "iteration",
+                            "title": "Iterate `const v` over `votes`",
+                            "loopType": "while",
+                            "condition": "Iterate `const v` over `votes`",
+                            "children": [
+                              {
+                                "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_7_8_then_2_8_3_loop_0_8_3_1",
+                                "kind": "step",
+                                "title": "Calls `voteMap.set`"
+                              }
+                            ]
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_8_9",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `totalPages`"
+                      },
+                      {
+                        "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_9_10",
+                        "kind": "var_def",
+                        "title": "Define `hasMore`, `recommendations`",
+                        "payload": "const hasMore = page < totalPages\nconst recommendations = rawRecommendations.map((r) => this.formatRecommendation( r, requestingUserId ? (voteMap.get(r.id) ?? null) : null ))",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_CarinaRecommendationsServ_getMediaRecommendations_10_11",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"total\": \"<total>\",\n  \"recommendations\": \"<recommendations>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<totalPages>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/recommendations/recommendations.ctrl.ts-route-2",
+                "title": "DELETE /carina/recommendations/:id",
+                "description": "Delete recommendation strictly by numerical recommendation ID",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaRecommendationsModel.recommendationParam`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_2_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaRecommendationsServ.deleteRecommendation(user, params.id)`"
+                  },
+                  {
+                    "id": "call_2_CarinaRecommendationsServ_deleteRecommendation",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaRecommendationsServ.deleteRecommendation",
+                    "isAsync": true,
+                    "targetAlg": "CarinaRecommendationsServ.deleteRecommendation"
+                  },
+                  {
+                    "id": "svc_2_CarinaRecommendationsServ_deleteRecommendation",
+                    "kind": "sequence",
+                    "title": "CarinaRecommendationsServ.deleteRecommendation Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_CarinaRecommendationsServ_deleteRecommendation_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `MediaRecommendation` and stores it as `recommendation`"
+                      },
+                      {
+                        "id": "svc_2_CarinaRecommendationsServ_deleteRecommendation_1_2",
+                        "kind": "selection",
+                        "title": "`!recommendation`",
+                        "selectionMode": "if_else",
+                        "condition": "`!recommendation`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaRecommendationsServ_deleteRecommendation_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Recommendation not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaRecommendationsServ_deleteRecommendation_2_3",
+                        "kind": "var_def",
+                        "title": "Define `isAuthor`",
+                        "payload": "const isAuthor = recommendation.userId === user.id",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_CarinaRecommendationsServ_deleteRecommendation_3_4",
+                        "kind": "step",
+                        "title": "Calls `new IRISBitField(user.permissions).has` and stores result as `isAdmin`"
+                      },
+                      {
+                        "id": "svc_2_CarinaRecommendationsServ_deleteRecommendation_4_5",
+                        "kind": "selection",
+                        "title": "`!isAuthor && !isAdmin`",
+                        "selectionMode": "if_else",
+                        "condition": "`!isAuthor && !isAdmin`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaRecommendationsServ_deleteRecommendation_4_5_then_0_5_1",
+                            "kind": "error",
+                            "code": "Forbidden",
+                            "httpStatus": 403,
+                            "message": "You do not have permission to delete this recommendation"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaRecommendationsServ_deleteRecommendation_5_6",
+                        "kind": "step",
+                        "title": "Database `delete` on `MediaRecommendation`"
+                      },
+                      {
+                        "id": "svc_2_CarinaRecommendationsServ_deleteRecommendation_6_7",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"id\": \"<id>\",\n  \"message\": \"Recommendation deleted successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/recommendations/recommendations.ctrl.ts-route-3",
+                "title": "POST /carina/recommendations/:id/vote",
+                "description": "Vote on recommendation strictly by recommendation ID",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaRecommendationsModel.recommendationParam`, body: `CarinaRecommendationsModel.voteBody`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_3_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaRecommendationsServ.voteRecommendation(user.id, params.id, body.voteType)`"
+                  },
+                  {
+                    "id": "call_3_CarinaRecommendationsServ_voteRecommendation",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaRecommendationsServ.voteRecommendation",
+                    "isAsync": true,
+                    "targetAlg": "CarinaRecommendationsServ.voteRecommendation"
+                  },
+                  {
+                    "id": "svc_3_CarinaRecommendationsServ_voteRecommendation",
+                    "kind": "sequence",
+                    "title": "CarinaRecommendationsServ.voteRecommendation Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `MediaRecommendation` and stores it as `recommendation`"
+                      },
+                      {
+                        "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_1_2",
+                        "kind": "selection",
+                        "title": "`!recommendation`",
+                        "selectionMode": "if_else",
+                        "condition": "`!recommendation`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Recommendation not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_2_3",
+                        "kind": "selection",
+                        "title": "`voteType === 'NONE'`",
+                        "selectionMode": "if_else",
+                        "condition": "`voteType === 'NONE'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_2_3_then_0_3_1",
+                            "kind": "step",
+                            "title": "Database `deleteAll` on `MediaRecommendationVote`"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_2_3_else_0_4_1",
+                            "kind": "step",
+                            "title": "Database `first` on `MediaRecommendationVote` and stores it as `existingVote`"
+                          },
+                          {
+                            "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_2_3_else_1_4_2",
+                            "kind": "selection",
+                            "title": "`existingVote`",
+                            "selectionMode": "if_else",
+                            "condition": "`existingVote`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_2_3_else_1_4_2_then_0_4_2_1",
+                                "kind": "step",
+                                "title": "Database `update` on `MediaRecommendationVote`"
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_2_3_else_1_4_2_else_0_4_3_1",
+                                "kind": "step",
+                                "title": "Database `create` on `MediaRecommendationVote`"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_4_5",
+                        "kind": "step",
+                        "title": "Database `all` on `MediaRecommendationVote` and stores it as `[upvotes, downvotes]`"
+                      },
+                      {
+                        "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_5_6",
+                        "kind": "var_def",
+                        "title": "Define `score`",
+                        "payload": "const score = upvotes - downvotes",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_6_7",
+                        "kind": "step",
+                        "title": "Database `update` on `MediaRecommendation`"
+                      },
+                      {
+                        "id": "svc_3_CarinaRecommendationsServ_voteRecommendation_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"id\": \"<id>\",\n  \"upvotes\": \"<upvotes>\",\n  \"downvotes\": \"<downvotes>\",\n  \"score\": \"<score>\",\n  \"userVote\": \"<voteType === 'NONE' ? null : voteType>\",\n  \"message\": \"<voteType === 'NONE' ? 'Vote removed successfully' : `Recommendation ${voteType.toLowerCase()}d successfully`>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "4 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Cannot recommend a media item to itself"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to save recommendation"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Recommendation not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to delete this recommendation"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

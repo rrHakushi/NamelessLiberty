@@ -3,6 +3,7 @@
 import * as React from "react"
 import * as TablerIcons from "@tabler/icons-react"
 import { cn } from "@workspace/ui/lib/utils"
+import { AlgoBuilder } from "@/components/algo-builder"
 
 // Import all UI primitives and components from @workspace/ui
 import {
@@ -341,20 +342,25 @@ import { Tooltip, TooltipTrigger } from "@workspace/ui/components/tooltip"
 export const TABLER_ICON_MAP = new Map<string, React.ComponentType<any>>()
 export const ALL_TABLER_ICON_NAMES: string[] = []
 
+function isValidIconComponent(
+  value: unknown
+): value is React.ComponentType<any> {
+  return (
+    typeof value === "function" ||
+    (typeof value === "object" && value !== null && "$$typeof" in value)
+  )
+}
+
 for (const [exportName, Component] of Object.entries(TablerIcons)) {
-  if (
-    typeof Component === "function" ||
-    (typeof Component === "object" && Component !== null)
-  ) {
-    ALL_TABLER_ICON_NAMES.push(exportName)
-    const lowerName = exportName.toLowerCase()
-    TABLER_ICON_MAP.set(lowerName, Component as React.ComponentType<any>)
-    // Map without "Icon" prefix (e.g. "sparkles" -> IconSparkles)
-    if (exportName.startsWith("Icon")) {
-      const stripped = exportName.slice(4).toLowerCase()
-      TABLER_ICON_MAP.set(stripped, Component as React.ComponentType<any>)
-    }
+  if (!exportName.startsWith("Icon") || !isValidIconComponent(Component)) {
+    continue
   }
+  ALL_TABLER_ICON_NAMES.push(exportName)
+  const lowerName = exportName.toLowerCase()
+  TABLER_ICON_MAP.set(lowerName, Component)
+  // Map without "Icon" prefix (e.g. "sparkles" -> IconSparkles)
+  const stripped = exportName.slice(4).toLowerCase()
+  TABLER_ICON_MAP.set(stripped, Component)
 }
 
 /**
@@ -366,17 +372,19 @@ export function resolveTablerIcon(
 ): React.ComponentType<any> | undefined {
   if (!name) return undefined
 
-  // 1. Direct export lookup
-  if ((TablerIcons as Record<string, any>)[name]) {
-    return (TablerIcons as Record<string, any>)[name]
+  const raw = TablerIcons as Record<string, unknown>
+
+  // 1. Direct export lookup (restricted to actual Icon* exports)
+  if (name.startsWith("Icon") && isValidIconComponent(raw[name])) {
+    return raw[name]
   }
 
   // 2. PascalCase with "Icon" prefix
   const pascalWithIcon = name.startsWith("Icon")
     ? name
     : `Icon${name.charAt(0).toUpperCase()}${name.slice(1)}`
-  if ((TablerIcons as Record<string, any>)[pascalWithIcon]) {
-    return (TablerIcons as Record<string, any>)[pascalWithIcon]
+  if (isValidIconComponent(raw[pascalWithIcon])) {
+    return raw[pascalWithIcon]
   }
 
   // 3. Fast normalized lookup (handles kebab-case, snake_case, lowercase)
@@ -426,6 +434,23 @@ export function DynamicIcon({
 // ============================================================================
 // Standard Vanilla HTML Elements Coverage
 // ============================================================================
+
+export const VOID_HTML_TAGS = new Set([
+  "area",
+  "base",
+  "br",
+  "col",
+  "embed",
+  "hr",
+  "img",
+  "input",
+  "link",
+  "meta",
+  "param",
+  "source",
+  "track",
+  "wbr",
+])
 
 export const HTML_TAGS = new Set([
   "a",
@@ -580,10 +605,10 @@ export const Callout: React.FC<CalloutProps> = ({
     note: TablerIcons.IconNote,
   }
 
-  const IconComp =
-    icon && (TablerIcons as any)[icon]
-      ? (TablerIcons as any)[icon]
-      : defaultIcons[variant] || defaultIcons.info
+  const IconComp: React.ComponentType<any> =
+    (icon ? resolveTablerIcon(icon) : undefined) ||
+    defaultIcons[variant] ||
+    TablerIcons.IconInfoCircle
 
   return (
     <div
@@ -616,14 +641,36 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   children,
   ...props
 }) => {
-  const textContent = code || (typeof children === "string" ? children : "")
+  const displayedCode =
+    code !== undefined && code !== "" ? code : (children ?? code)
+  const textContent =
+    typeof displayedCode === "string"
+      ? displayedCode
+      : typeof code === "string"
+        ? code
+        : ""
   const [copied, setCopied] = React.useState(false)
+  const copyTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  React.useEffect(() => {
+    return () => {
+      if (copyTimerRef.current) {
+        clearTimeout(copyTimerRef.current)
+      }
+    }
+  }, [])
 
   const handleCopy = () => {
-    if (textContent) {
-      navigator.clipboard.writeText(textContent)
+    if (!textContent) return
+    try {
+      void navigator.clipboard?.writeText?.(textContent)
       setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      if (copyTimerRef.current) {
+        clearTimeout(copyTimerRef.current)
+      }
+      copyTimerRef.current = setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // Ignore clipboard permission errors in restricted contexts
     }
   }
 
@@ -663,7 +710,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         </div>
       )}
       <pre className="overflow-x-auto p-4 font-mono text-xs leading-relaxed whitespace-pre text-foreground">
-        <code>{children || code}</code>
+        <code>{displayedCode}</code>
       </pre>
     </div>
   )
@@ -773,6 +820,7 @@ export const COMPONENT_REGISTRY: Record<
   // Documentation Specialized Primitives
   Callout,
   CodeBlock,
+  AlgoBuilder,
 
   // Generic Icon Resolver
   Icon: DynamicIcon,
@@ -1213,15 +1261,15 @@ export function resolveComponent(
     return lowerType
   }
 
-  // 4. Check if standard lowercase HTML tag pattern (e.g. custom elements / tags)
-  if (/^[a-z][a-z0-9-]*$/.test(type) && !type.startsWith("icon")) {
-    return type
-  }
-
-  // 5. Universal Tabler Icon lookup
+  // 4. Universal Tabler Icon lookup (before custom elements so "sparkles" / "arrow-right" resolve)
   const icon = resolveTablerIcon(type)
   if (icon) {
     return icon
+  }
+
+  // 5. Check hyphenated custom web component tags (e.g. "my-widget")
+  if (/^[a-z][a-z0-9]*-[a-z0-9-]+$/.test(type) && !type.startsWith("icon-")) {
+    return type
   }
 
   return undefined

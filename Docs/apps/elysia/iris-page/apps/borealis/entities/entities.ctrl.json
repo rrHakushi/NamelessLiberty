@@ -1,0 +1,2522 @@
+{
+  "id": "apps/borealis/entities/entities.ctrl",
+  "title": "Get characters catalog (40 per page)",
+  "description": "Browse paginated characters catalog with keyword searching, gender filters, and sorting.",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/borealis/characters",
+    "relPath": "apps/borealis/entities/entities.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/borealis/characters",
+      "/borealis/characters/filters",
+      "/borealis/characters/:id",
+      "/borealis/people",
+      "/borealis/people/filters",
+      "/borealis/people/:id",
+      "/borealis/studios",
+      "/borealis/studios/filters",
+      "/borealis/studios/:id"
+    ],
+    "errorCount": 3
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Get characters catalog (40 per page)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              },
+              {
+                "type": "CardDescription",
+                "props": {
+                  "className": "text-start pt-1"
+                },
+                "text": "Browse paginated characters catalog with keyword searching, gender filters, and sorting."
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/borealis/characters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/borealis/characters/filters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/borealis/characters/:id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/borealis/people"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-4",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/borealis/people/filters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-5",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/borealis/people/:id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-6",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/borealis/studios"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-7",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/borealis/studios/filters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-8",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/borealis/studios/:id"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_6)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "24 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/characters · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.characterCatalogQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/characters · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.characterCatalogResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/characters · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/characters/filters · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.characterFiltersResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/characters/:id · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.entityDetailParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/characters/:id · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.characterDetailResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/characters/:id · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/characters/:id · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/people · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.personCatalogQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/people · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.personCatalogResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/people · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/people/filters · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.personFiltersResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/people/:id · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.entityDetailParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/people/:id · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.personDetailResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/people/:id · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/people/:id · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/studios · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.studioCatalogQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/studios · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.studioCatalogResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/studios · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/studios/filters · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.studioFiltersResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/studios/:id · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.entityDetailParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/studios/:id · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.studioDetailResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/studios/:id · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-23",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /borealis/studios/:id · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisEntitiesModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/entities/entities.ctrl.ts-route-0",
+                "title": "GET /borealis/characters",
+                "description": "Get characters catalog (40 per page)",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `BorealisEntitiesModel.characterCatalogQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisEntitiesServ.getCharacterCatalog(query)`"
+                  },
+                  {
+                    "id": "call_0_BorealisEntitiesServ_getCharacterCatalog",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisEntitiesServ.getCharacterCatalog",
+                    "isAsync": true,
+                    "targetAlg": "BorealisEntitiesServ.getCharacterCatalog"
+                  },
+                  {
+                    "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog",
+                    "kind": "sequence",
+                    "title": "BorealisEntitiesServ.getCharacterCatalog Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_2_3",
+                        "kind": "var_def",
+                        "title": "Define `skip`, `search`, `gender`, `sortBy`, `sortOrder`",
+                        "payload": "const skip = page - 1 * limit\nconst search = query?.search?.trim()\nconst gender = query?.gender?.trim()\nconst sortBy = query?.sortBy ?? 'popularity'\nconst sortOrder = query?.sortOrder ?? sortBy === 'name' ? 'asc' : 'desc'",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_3_4",
+                        "kind": "step",
+                        "title": "Database `query` on `Character` and stores it as `q`"
+                      },
+                      {
+                        "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_4_5",
+                        "kind": "selection",
+                        "title": "`search`",
+                        "selectionMode": "if_else",
+                        "condition": "`search`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_4_5_then_0_5_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((c) => or( c.namePrimary.ilike(`%${search}%`), c.nameNative.ilike(`%${search}%`) ) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_5_6",
+                        "kind": "selection",
+                        "title": "`gender`",
+                        "selectionMode": "if_else",
+                        "condition": "`gender`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_5_6_then_0_6_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((c) => c.gender.ilike(gender))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_6_7",
+                        "kind": "var_def",
+                        "title": "Define `itemsQ`",
+                        "payload": "let itemsQ = q",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_7_8",
+                        "kind": "selection",
+                        "title": "`sortBy === 'name'`",
+                        "selectionMode": "if_else",
+                        "condition": "`sortBy === 'name'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_7_8_then_0_8_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((c) => sortOrder === 'desc' ? c.namePrimary.desc() : c.namePrimary.asc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_7_8_else_0_9_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((c) => sortOrder === 'asc' ? c.favorites.asc() : c.favorites.desc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_9_10",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, items]`"
+                      },
+                      {
+                        "id": "svc_0_BorealisEntitiesServ_getCharacterCatalog_10_11",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"items\": \"<items.map((c) => ({ id: c.id, namePrimary: c.namePrimary, nameNative: c.nameNative, image: c.image, gender: c.gender, age: c.age, ...)>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n    \"hasMore\": \"<skip + items.length < total>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/entities/entities.ctrl.ts-route-1",
+                "title": "GET /borealis/characters/filters",
+                "description": "Get available character filters",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisEntitiesServ.getCharacterFilters()`"
+                  },
+                  {
+                    "id": "call_1_BorealisEntitiesServ_getCharacterFilters",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisEntitiesServ.getCharacterFilters",
+                    "isAsync": true,
+                    "targetAlg": "BorealisEntitiesServ.getCharacterFilters"
+                  },
+                  {
+                    "id": "svc_1_BorealisEntitiesServ_getCharacterFilters",
+                    "kind": "sequence",
+                    "title": "BorealisEntitiesServ.getCharacterFilters Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_BorealisEntitiesServ_getCharacterFilters_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Character` and stores it as `[allCharacters, total]`"
+                      },
+                      {
+                        "id": "svc_1_BorealisEntitiesServ_getCharacterFilters_1_2",
+                        "kind": "var_def",
+                        "title": "Define `genderCounts`",
+                        "payload": "const genderCounts: Record<string, number> = {}",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_BorealisEntitiesServ_getCharacterFilters_2_3",
+                        "kind": "iteration",
+                        "title": "Iterate `const c` over `allCharacters`",
+                        "loopType": "while",
+                        "condition": "Iterate `const c` over `allCharacters`",
+                        "children": [
+                          {
+                            "id": "svc_1_BorealisEntitiesServ_getCharacterFilters_2_3_loop_0_3_1",
+                            "kind": "selection",
+                            "title": "`c.gender`",
+                            "selectionMode": "if_else",
+                            "condition": "`c.gender`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_BorealisEntitiesServ_getCharacterFilters_2_3_loop_0_3_1_then_0_3_1_1",
+                                "kind": "step",
+                                "title": "Assign `genderCounts[c.gender]`",
+                                "payload": "genderCounts[c.gender] = (genderCounts[c.gender] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_1_BorealisEntitiesServ_getCharacterFilters_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"genders\": \"<Object.entries(genderCounts).map(([value, count]) => ({ value, count })).sort((a, b) => b.count - a.count)>\",\n  \"total\": \"<total>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/entities/entities.ctrl.ts-route-2",
+                "title": "GET /borealis/characters/:id",
+                "description": "Get character details by ID",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisEntitiesModel.entityDetailParam`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisEntitiesServ.getCharacterById(id)`"
+                  },
+                  {
+                    "id": "call_2_BorealisEntitiesServ_getCharacterById",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisEntitiesServ.getCharacterById",
+                    "isAsync": true,
+                    "targetAlg": "BorealisEntitiesServ.getCharacterById"
+                  },
+                  {
+                    "id": "svc_2_BorealisEntitiesServ_getCharacterById",
+                    "kind": "sequence",
+                    "title": "BorealisEntitiesServ.getCharacterById Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_BorealisEntitiesServ_getCharacterById_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Character` and stores it as `character`"
+                      },
+                      {
+                        "id": "svc_2_BorealisEntitiesServ_getCharacterById_1_2",
+                        "kind": "selection",
+                        "title": "`!character`",
+                        "selectionMode": "if_else",
+                        "condition": "`!character`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_BorealisEntitiesServ_getCharacterById_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Character with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_BorealisEntitiesServ_getCharacterById_2_3",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"character\": \"<character>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/entities/entities.ctrl.ts-route-3",
+                "title": "GET /borealis/people",
+                "description": "Get people (staff/voice actors) (40 per page)",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `BorealisEntitiesModel.personCatalogQuery`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisEntitiesServ.getPeopleCatalog(query)`"
+                  },
+                  {
+                    "id": "call_3_BorealisEntitiesServ_getPeopleCatalog",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisEntitiesServ.getPeopleCatalog",
+                    "isAsync": true,
+                    "targetAlg": "BorealisEntitiesServ.getPeopleCatalog"
+                  },
+                  {
+                    "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog",
+                    "kind": "sequence",
+                    "title": "BorealisEntitiesServ.getPeopleCatalog Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_2_3",
+                        "kind": "var_def",
+                        "title": "Define `skip`, `search`, `occupation`, `language`, `gender`, `sortBy`, `sortOrder`",
+                        "payload": "const skip = page - 1 * limit\nconst search = query?.search?.trim()\nconst occupation = query?.occupation?.trim()\nconst language = query?.language?.trim()\nconst gender = query?.gender?.trim()\nconst sortBy = query?.sortBy ?? 'popularity'\nconst sortOrder = query?.sortOrder ?? sortBy === 'name' ? 'asc' : 'desc'",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_3_4",
+                        "kind": "step",
+                        "title": "Database `query` on `Person` and stores it as `q`"
+                      },
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_4_5",
+                        "kind": "selection",
+                        "title": "`search`",
+                        "selectionMode": "if_else",
+                        "condition": "`search`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_4_5_then_0_5_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((p) => or( p.namePrimary.ilike(`%${search}%`), p.nameNative.ilike(`%${search}%`), p.givenName.ilike(`%${search}%`), p.familyName.ilike(`%${search}%`) ) ...",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_5_6",
+                        "kind": "selection",
+                        "title": "`occupation`",
+                        "selectionMode": "if_else",
+                        "condition": "`occupation`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_5_6_then_0_6_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((p) => p.primaryOccupations.ilike(`%${occupation}%`))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_6_7",
+                        "kind": "selection",
+                        "title": "`language`",
+                        "selectionMode": "if_else",
+                        "condition": "`language`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_6_7_then_0_7_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((p) => p.language.ilike(language))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_7_8",
+                        "kind": "selection",
+                        "title": "`gender`",
+                        "selectionMode": "if_else",
+                        "condition": "`gender`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_7_8_then_0_8_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((p) => p.gender.ilike(gender))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_8_9",
+                        "kind": "var_def",
+                        "title": "Define `itemsQ`",
+                        "payload": "let itemsQ = q",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_9_10",
+                        "kind": "selection",
+                        "title": "`sortBy === 'name'`",
+                        "selectionMode": "if_else",
+                        "condition": "`sortBy === 'name'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_9_10_then_0_10_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((p) => sortOrder === 'desc' ? p.namePrimary.desc() : p.namePrimary.asc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_9_10_else_0_11_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((p) => sortOrder === 'asc' ? p.favorites.asc() : p.favorites.desc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_11_12",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, items]`"
+                      },
+                      {
+                        "id": "svc_3_BorealisEntitiesServ_getPeopleCatalog_12_13",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"items\": \"<items.map((p) => ({ id: p.id, namePrimary: p.namePrimary, nameNative: p.nameNative, image: p.image, primaryOccupations: [...p.primaryOccupations], language: p.language, ...)>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n    \"hasMore\": \"<skip + items.length < total>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-4",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/entities/entities.ctrl.ts-route-4",
+                "title": "GET /borealis/people/filters",
+                "description": "Get available people filters",
+                "steps": [
+                  {
+                    "id": "route_4_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisEntitiesServ.getPeopleFilters()`"
+                  },
+                  {
+                    "id": "call_4_BorealisEntitiesServ_getPeopleFilters",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisEntitiesServ.getPeopleFilters",
+                    "isAsync": true,
+                    "targetAlg": "BorealisEntitiesServ.getPeopleFilters"
+                  },
+                  {
+                    "id": "svc_4_BorealisEntitiesServ_getPeopleFilters",
+                    "kind": "sequence",
+                    "title": "BorealisEntitiesServ.getPeopleFilters Flow",
+                    "children": [
+                      {
+                        "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Person` and stores it as `[allPeople, total]`"
+                      },
+                      {
+                        "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_1_2",
+                        "kind": "var_def",
+                        "title": "Define `occupationCounts`, `languageCounts`, `genderCounts`",
+                        "payload": "const occupationCounts: Record<string, number> = {}\nconst languageCounts: Record<string, number> = {}\nconst genderCounts: Record<string, number> = {}",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_2_3",
+                        "kind": "iteration",
+                        "title": "Iterate `const p` over `allPeople`",
+                        "loopType": "while",
+                        "condition": "Iterate `const p` over `allPeople`",
+                        "children": [
+                          {
+                            "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_2_3_loop_0_3_1",
+                            "kind": "selection",
+                            "title": "`Array.isArray(p.primaryOccupations)`",
+                            "selectionMode": "if_else",
+                            "condition": "`Array.isArray(p.primaryOccupations)`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_2_3_loop_0_3_1_then_0_3_1_1",
+                                "kind": "iteration",
+                                "title": "Iterate `const occ` over `p.primaryOccupations`",
+                                "loopType": "while",
+                                "condition": "Iterate `const occ` over `p.primaryOccupations`",
+                                "children": [
+                                  {
+                                    "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_2_3_loop_0_3_1_then_0_3_1_1_loop_0_3_1_1_1",
+                                    "kind": "selection",
+                                    "title": "`occ`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`occ`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_2_3_loop_0_3_1_then_0_3_1_1_loop_0_3_1_1_1_then_0_3_1_1_1_1",
+                                        "kind": "step",
+                                        "title": "Assign `occupationCounts[occ]`",
+                                        "payload": "occupationCounts[occ] = (occupationCounts[occ] || 0) + 1",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ]
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_2_3_loop_1_3_2",
+                            "kind": "selection",
+                            "title": "`p.language`",
+                            "selectionMode": "if_else",
+                            "condition": "`p.language`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_2_3_loop_1_3_2_then_0_3_2_1",
+                                "kind": "step",
+                                "title": "Assign `languageCounts[p.language]`",
+                                "payload": "languageCounts[p.language] = (languageCounts[p.language] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_2_3_loop_2_3_3",
+                            "kind": "selection",
+                            "title": "`p.gender`",
+                            "selectionMode": "if_else",
+                            "condition": "`p.gender`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_2_3_loop_2_3_3_then_0_3_3_1",
+                                "kind": "step",
+                                "title": "Assign `genderCounts[p.gender]`",
+                                "payload": "genderCounts[p.gender] = (genderCounts[p.gender] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_4_BorealisEntitiesServ_getPeopleFilters_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"occupations\": \"<Object.entries(occupationCounts).map(([value, count]) => ({ value, count })).sort((a, b) => b.count - a.count)>\",\n  \"languages\": \"<Object.entries(languageCounts).map(([value, count]) => ({ value, count })).sort((a, b) => b.count - a.count)>\",\n  \"genders\": \"<Object.entries(genderCounts).map(([value, count]) => ({ value, count })).sort((a, b) => b.count - a.count)>\",\n  \"total\": \"<total>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-5",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/entities/entities.ctrl.ts-route-5",
+                "title": "GET /borealis/people/:id",
+                "description": "Get person details by ID",
+                "steps": [
+                  {
+                    "id": "route_5_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisEntitiesModel.entityDetailParam`"
+                  },
+                  {
+                    "id": "route_5_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisEntitiesServ.getPersonById(id)`"
+                  },
+                  {
+                    "id": "call_5_BorealisEntitiesServ_getPersonById",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisEntitiesServ.getPersonById",
+                    "isAsync": true,
+                    "targetAlg": "BorealisEntitiesServ.getPersonById"
+                  },
+                  {
+                    "id": "svc_5_BorealisEntitiesServ_getPersonById",
+                    "kind": "sequence",
+                    "title": "BorealisEntitiesServ.getPersonById Flow",
+                    "children": [
+                      {
+                        "id": "svc_5_BorealisEntitiesServ_getPersonById_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Person` and stores it as `person`"
+                      },
+                      {
+                        "id": "svc_5_BorealisEntitiesServ_getPersonById_1_2",
+                        "kind": "selection",
+                        "title": "`!person`",
+                        "selectionMode": "if_else",
+                        "condition": "`!person`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_5_BorealisEntitiesServ_getPersonById_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Person with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_5_BorealisEntitiesServ_getPersonById_2_3",
+                        "kind": "var_def",
+                        "title": "Define `musicTracks`",
+                        "payload": "let musicTracks = person.musicTracks",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_5_BorealisEntitiesServ_getPersonById_3_4",
+                        "kind": "selection",
+                        "title": "`musicTracks.length === 0 && person.namePrimary`",
+                        "selectionMode": "if_else",
+                        "condition": "`musicTracks.length === 0 && person.namePrimary`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_5_BorealisEntitiesServ_getPersonById_3_4_then_0_4_1",
+                            "kind": "step",
+                            "title": "Assign `musicTracks`",
+                            "payload": "musicTracks = await prisma.orm.public.Music .where((m) => m.artistName.ilike(person.namePrimary!)) .select( 'id', 'titlePrimary', 'titleSecondary', 'type', ...",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_5_BorealisEntitiesServ_getPersonById_4_5",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"person\": {\n    \"...person\": \"...\",\n    \"musicTracks\": \"<musicTracks>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-6",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/entities/entities.ctrl.ts-route-6",
+                "title": "GET /borealis/studios",
+                "description": "Get studios (40 per page)",
+                "steps": [
+                  {
+                    "id": "route_6_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `BorealisEntitiesModel.studioCatalogQuery`"
+                  },
+                  {
+                    "id": "route_6_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisEntitiesServ.getStudioCatalog(query)`"
+                  },
+                  {
+                    "id": "call_6_BorealisEntitiesServ_getStudioCatalog",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisEntitiesServ.getStudioCatalog",
+                    "isAsync": true,
+                    "targetAlg": "BorealisEntitiesServ.getStudioCatalog"
+                  },
+                  {
+                    "id": "svc_6_BorealisEntitiesServ_getStudioCatalog",
+                    "kind": "sequence",
+                    "title": "BorealisEntitiesServ.getStudioCatalog Flow",
+                    "children": [
+                      {
+                        "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_2_3",
+                        "kind": "var_def",
+                        "title": "Define `skip`, `search`, `isAnimationStudio`, `sortBy`, `sortOrder`",
+                        "payload": "const skip = page - 1 * limit\nconst search = query?.search?.trim()\nconst isAnimationStudio = query?.isAnimationStudio\nconst sortBy = query?.sortBy ?? 'popularity'\nconst sortOrder = query?.sortOrder ?? sortBy === 'name' ? 'asc' : 'desc'",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_3_4",
+                        "kind": "step",
+                        "title": "Database `query` on `Studio` and stores it as `q`"
+                      },
+                      {
+                        "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_4_5",
+                        "kind": "selection",
+                        "title": "`search`",
+                        "selectionMode": "if_else",
+                        "condition": "`search`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_4_5_then_0_5_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((s) => s.name.ilike(`%${search}%`))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_5_6",
+                        "kind": "selection",
+                        "title": "`typeofisAnimationStudio === 'boolean'`",
+                        "selectionMode": "if_else",
+                        "condition": "`typeofisAnimationStudio === 'boolean'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_5_6_then_0_6_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where({ isAnimationStudio })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_6_7",
+                        "kind": "var_def",
+                        "title": "Define `itemsQ`",
+                        "payload": "let itemsQ = q",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_7_8",
+                        "kind": "selection",
+                        "title": "`sortBy === 'name'`",
+                        "selectionMode": "if_else",
+                        "condition": "`sortBy === 'name'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_7_8_then_0_8_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((s) => sortOrder === 'desc' ? s.name.desc() : s.name.asc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_7_8_else_0_9_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((s) => sortOrder === 'asc' ? s.favorites.asc() : s.favorites.desc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_9_10",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, items]`"
+                      },
+                      {
+                        "id": "svc_6_BorealisEntitiesServ_getStudioCatalog_10_11",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"items\": \"<items.map((s) => ({ id: s.id, name: s.name, isAnimationStudio: s.isAnimationStudio, siteUrl: s.siteUrl, favorites: s.favorites, }))>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n    \"hasMore\": \"<skip + items.length < total>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-7",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/entities/entities.ctrl.ts-route-7",
+                "title": "GET /borealis/studios/filters",
+                "description": "Get available studio filters",
+                "steps": [
+                  {
+                    "id": "route_7_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisEntitiesServ.getStudioFilters()`"
+                  },
+                  {
+                    "id": "call_7_BorealisEntitiesServ_getStudioFilters",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisEntitiesServ.getStudioFilters",
+                    "isAsync": true,
+                    "targetAlg": "BorealisEntitiesServ.getStudioFilters"
+                  },
+                  {
+                    "id": "svc_7_BorealisEntitiesServ_getStudioFilters",
+                    "kind": "sequence",
+                    "title": "BorealisEntitiesServ.getStudioFilters Flow",
+                    "children": [
+                      {
+                        "id": "svc_7_BorealisEntitiesServ_getStudioFilters_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Studio` and stores it as `[animationCount, total]`"
+                      },
+                      {
+                        "id": "svc_7_BorealisEntitiesServ_getStudioFilters_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `otherCount`"
+                      },
+                      {
+                        "id": "svc_7_BorealisEntitiesServ_getStudioFilters_2_3",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"types\": [\n    {\n      \"value\": \"Animation Studio\",\n      \"count\": \"<animationCount>\"\n    }\n  ],\n  \"total\": \"<total>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-8",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/entities/entities.ctrl.ts-route-8",
+                "title": "GET /borealis/studios/:id",
+                "description": "Get studio details by ID",
+                "steps": [
+                  {
+                    "id": "route_8_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisEntitiesModel.entityDetailParam`"
+                  },
+                  {
+                    "id": "route_8_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisEntitiesServ.getStudioById(id)`"
+                  },
+                  {
+                    "id": "call_8_BorealisEntitiesServ_getStudioById",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisEntitiesServ.getStudioById",
+                    "isAsync": true,
+                    "targetAlg": "BorealisEntitiesServ.getStudioById"
+                  },
+                  {
+                    "id": "svc_8_BorealisEntitiesServ_getStudioById",
+                    "kind": "sequence",
+                    "title": "BorealisEntitiesServ.getStudioById Flow",
+                    "children": [
+                      {
+                        "id": "svc_8_BorealisEntitiesServ_getStudioById_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Studio` and stores it as `studio`"
+                      },
+                      {
+                        "id": "svc_8_BorealisEntitiesServ_getStudioById_1_2",
+                        "kind": "selection",
+                        "title": "`!studio`",
+                        "selectionMode": "if_else",
+                        "condition": "`!studio`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_8_BorealisEntitiesServ_getStudioById_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Studio with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_8_BorealisEntitiesServ_getStudioById_2_3",
+                        "kind": "step",
+                        "title": "Database `all` on `MediaStudio` and stores it as `[mediaStudioRecords, totalCreations]`"
+                      },
+                      {
+                        "id": "svc_8_BorealisEntitiesServ_getStudioById_3_4",
+                        "kind": "var_def",
+                        "title": "Define `creations`",
+                        "payload": "const creations = mediaStudioRecords.map((record) => { if (record.anime) { return { id: record.id, mediaType: 'anime', mediaId: record.anime.id, titlePrimary: record.anime.titlePrimary, ...).filter(Boolean)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_8_BorealisEntitiesServ_getStudioById_4_5",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"studio\": {\n    \"...studio\": \"...\",\n    \"creationsCount\": \"<totalCreations>\",\n    \"creations\": \"<creations>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "3 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Character with ID ${id} not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Person with ID ${id} not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Studio with ID ${id} not found"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

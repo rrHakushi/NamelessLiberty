@@ -5,7 +5,7 @@ import {
   getClientIp,
   rateLimiter,
   resolveRateLimitKey,
-} from '../../src/plugins/rate-limiter'
+} from '../../src/core/plugins/rate-limiter'
 
 describe('Rate Limiter Plugin Test Suite', () => {
   it('extracts real client IP from Cloudflare, forwarded-for, and real-ip headers', () => {

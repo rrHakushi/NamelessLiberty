@@ -1,0 +1,1271 @@
+{
+  "id": "apps/carina/qc/qc.ctrl",
+  "title": "Generate quick connect session/code",
+  "description": "",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/carina/auth/qc/generate",
+    "relPath": "apps/carina/qc/qc.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "POST",
+      "GET"
+    ],
+    "routePaths": [
+      "/carina/auth/qc/generate",
+      "/carina/auth/qc/approve",
+      "/carina/auth/qc/status"
+    ],
+    "errorCount": 2
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Generate quick connect session/code"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/qc/generate"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/qc/approve"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/qc/status"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_31)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "11 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/qc/generate · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaQcModel.generateBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/qc/generate · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaQcModel.generateResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/qc/generate · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaQcModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/qc/approve · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaQcModel.approveBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/qc/approve · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaQcModel.approveResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/qc/approve · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaQcModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/qc/approve · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaQcModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/qc/approve · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaQcModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/auth/qc/status · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaQcModel.statusQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/auth/qc/status · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaQcModel.statusResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/auth/qc/status · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaQcModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/qc/qc.ctrl.ts-route-0",
+                "title": "POST /carina/auth/qc/generate",
+                "description": "Generate quick connect session/code",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaQcModel.generateBody`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaQcServ.generateSession(body)`"
+                  },
+                  {
+                    "id": "call_0_CarinaQcServ_generateSession",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaQcServ.generateSession",
+                    "isAsync": true,
+                    "targetAlg": "CarinaQcServ.generateSession"
+                  },
+                  {
+                    "id": "svc_0_CarinaQcServ_generateSession",
+                    "kind": "sequence",
+                    "title": "CarinaQcServ.generateSession Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_CarinaQcServ_generateSession_0_1",
+                        "kind": "var_def",
+                        "title": "Define `CHARS`",
+                        "payload": "const CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaQcServ_generateSession_1_2",
+                        "kind": "step",
+                        "title": "Calls `randomBytes` and stores result as `bytes`"
+                      },
+                      {
+                        "id": "svc_0_CarinaQcServ_generateSession_2_3",
+                        "kind": "var_def",
+                        "title": "Define `rawCode`",
+                        "payload": "let rawCode = ''",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaQcServ_generateSession_3_4",
+                        "kind": "iteration",
+                        "title": "Loop `i < 8`",
+                        "loopType": "while",
+                        "condition": "Loop `i < 8`",
+                        "children": [
+                          {
+                            "id": "svc_0_CarinaQcServ_generateSession_3_4_loop_0_4_1",
+                            "kind": "step",
+                            "title": "Assign `rawCode`",
+                            "payload": "rawCode += CHARS[bytes[i]! % CHARS.length]",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_0_CarinaQcServ_generateSession_4_5",
+                        "kind": "var_def",
+                        "title": "Define `code`, `sessionToken`, `baseUrl`, `qrPayload`, `sessionData`",
+                        "payload": "const code = `${rawCode.slice(0, 4)}-${rawCode.slice(4, 8)}`\nconst sessionToken = randomBytes(32).toString('hex')\nconst baseUrl = getDomainConfig().url\nconst qrPayload = `${baseUrl.replace(/\\/$/, '')}/qc?code=${code}`\nconst sessionData: QuickConnectSessionData = { status: 'pending', code, deviceName: body?.deviceName ?? 'Device', userId: null, }",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaQcServ_generateSession_5_6",
+                        "kind": "step",
+                        "title": "Cache `set`"
+                      },
+                      {
+                        "id": "svc_0_CarinaQcServ_generateSession_6_7",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"code\": \"<code>\",\n  \"sessionToken\": \"<sessionToken>\",\n  \"qrPayload\": \"<qrPayload>\",\n  \"expiresIn\": 300\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/qc/qc.ctrl.ts-route-1",
+                "title": "POST /carina/auth/qc/approve",
+                "description": "Approve quick connect login",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaQcModel.approveBody`"
+                  },
+                  {
+                    "id": "route_1_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_1_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaQcServ.approveSession(user.id, body)`"
+                  },
+                  {
+                    "id": "call_1_CarinaQcServ_approveSession",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaQcServ.approveSession",
+                    "isAsync": true,
+                    "targetAlg": "CarinaQcServ.approveSession"
+                  },
+                  {
+                    "id": "svc_1_CarinaQcServ_approveSession",
+                    "kind": "sequence",
+                    "title": "CarinaQcServ.approveSession Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_CarinaQcServ_approveSession_0_1",
+                        "kind": "var_def",
+                        "title": "Define `raw`",
+                        "payload": "const raw = body.code || ''.trim().toUpperCase()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_CarinaQcServ_approveSession_1_2",
+                        "kind": "step",
+                        "title": "Calls `raw.replaceAll` and stores result as `cleanNoDash`"
+                      },
+                      {
+                        "id": "svc_1_CarinaQcServ_approveSession_2_3",
+                        "kind": "var_def",
+                        "title": "Define `formattedCode`",
+                        "payload": "const formattedCode = cleanNoDash.length === 8 ? `${cleanNoDash.slice(0, 4)}-${cleanNoDash.slice(4, 8)}` : raw",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_CarinaQcServ_approveSession_3_4",
+                        "kind": "step",
+                        "title": "Cache `get` -> `sessionToken`"
+                      },
+                      {
+                        "id": "svc_1_CarinaQcServ_approveSession_4_5",
+                        "kind": "selection",
+                        "title": "`!sessionToken`",
+                        "selectionMode": "if_else",
+                        "condition": "`!sessionToken`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_CarinaQcServ_approveSession_4_5_then_0_5_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Invalid or expired device pairing code."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_CarinaQcServ_approveSession_5_6",
+                        "kind": "step",
+                        "title": "Cache `get` -> `sessionData`"
+                      },
+                      {
+                        "id": "svc_1_CarinaQcServ_approveSession_6_7",
+                        "kind": "selection",
+                        "title": "`!sessionData`",
+                        "selectionMode": "if_else",
+                        "condition": "`!sessionData`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_CarinaQcServ_approveSession_6_7_then_0_7_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Device pairing session expired."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_CarinaQcServ_approveSession_7_8",
+                        "kind": "step",
+                        "title": "Cache `set`"
+                      },
+                      {
+                        "id": "svc_1_CarinaQcServ_approveSession_8_9",
+                        "kind": "step",
+                        "title": "Cache `del`"
+                      },
+                      {
+                        "id": "svc_1_CarinaQcServ_approveSession_9_10",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"Device approved successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/qc/qc.ctrl.ts-route-2",
+                "title": "GET /carina/auth/qc/status",
+                "description": "Get quick connect session status",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `CarinaQcModel.statusQuery`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "step",
+                    "title": "Calls `CarinaQcServ.checkStatus` and stores result as `res`"
+                  },
+                  {
+                    "id": "route_2_2_3",
+                    "kind": "selection",
+                    "title": "`res.status === 'approved' && res.token && sessionCookie`",
+                    "selectionMode": "if_else",
+                    "condition": "`res.status === 'approved' && res.token && sessionCookie`",
+                    "thenBranch": [
+                      {
+                        "id": "route_2_2_3_then_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `getDomainConfig` and stores result as `{ isSecure, cookieDomain }`"
+                      },
+                      {
+                        "id": "route_2_2_3_then_1_3_2",
+                        "kind": "step",
+                        "title": "Calls `sessionCookie.set`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "route_2_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`res`"
+                  },
+                  {
+                    "id": "call_2_CarinaQcServ_checkStatus",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaQcServ.checkStatus",
+                    "isAsync": true,
+                    "targetAlg": "CarinaQcServ.checkStatus"
+                  },
+                  {
+                    "id": "svc_2_CarinaQcServ_checkStatus",
+                    "kind": "sequence",
+                    "title": "CarinaQcServ.checkStatus Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_CarinaQcServ_checkStatus_0_1",
+                        "kind": "step",
+                        "title": "Cache `get` -> `sessionData`"
+                      },
+                      {
+                        "id": "svc_2_CarinaQcServ_checkStatus_1_2",
+                        "kind": "selection",
+                        "title": "`!sessionData`",
+                        "selectionMode": "if_else",
+                        "condition": "`!sessionData`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaQcServ_checkStatus_1_2_then_0_2_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"status\": \"<'expired' as const>\",\n  \"user\": null,\n  \"token\": null\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaQcServ_checkStatus_2_3",
+                        "kind": "selection",
+                        "title": "`sessionData.status === 'pending' || !sessionData.userId`",
+                        "selectionMode": "if_else",
+                        "condition": "`sessionData.status === 'pending' || !sessionData.userId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaQcServ_checkStatus_2_3_then_0_3_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"status\": \"<'pending' as const>\",\n  \"user\": null,\n  \"token\": null\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaQcServ_checkStatus_3_4",
+                        "kind": "step",
+                        "title": "Database `first` on `User` and stores it as `user`"
+                      },
+                      {
+                        "id": "svc_2_CarinaQcServ_checkStatus_4_5",
+                        "kind": "selection",
+                        "title": "`!user`",
+                        "selectionMode": "if_else",
+                        "condition": "`!user`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaQcServ_checkStatus_4_5_then_0_5_1",
+                            "kind": "step",
+                            "title": "Cache `del`"
+                          },
+                          {
+                            "id": "svc_2_CarinaQcServ_checkStatus_4_5_then_1_5_2",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"status\": \"<'expired' as const>\",\n  \"user\": null,\n  \"token\": null\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaQcServ_checkStatus_5_6",
+                        "kind": "step",
+                        "title": "Cache `set`"
+                      },
+                      {
+                        "id": "svc_2_CarinaQcServ_checkStatus_6_7",
+                        "kind": "var_def",
+                        "title": "Define `passwordChangedDate`",
+                        "payload": "const passwordChangedDate = user.passwordChangedAt ? toDate(user.passwordChangedAt) : null",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_CarinaQcServ_checkStatus_7_8",
+                        "kind": "step",
+                        "title": "Calls `signUserJwt` and stores result as `token`"
+                      },
+                      {
+                        "id": "svc_2_CarinaQcServ_checkStatus_8_9",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"status\": \"<'approved' as const>\",\n  \"user\": {\n    \"id\": \"<user.id>\",\n    \"username\": \"<user.username.trim()>\",\n    \"email\": \"<user.email>\",\n    \"passwordChangedAt\": \"<passwordChangedDate ? Math.floor(passwordChangedDate.getTime() / 1000) : null>\"\n  },\n  \"token\": \"<token>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "2 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid or expired device pairing code."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Device pairing session expired."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

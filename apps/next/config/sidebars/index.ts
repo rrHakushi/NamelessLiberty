@@ -21,6 +21,10 @@ import {
   useTesseractSidebarConfig,
   getTesseractSidebarConfig,
 } from "./tesseractSidebarConfig"
+import {
+  useReliquarySidebarConfig,
+  getReliquarySidebarConfig,
+} from "./reliquarySidebarConfig"
 
 export interface AppSidebarRegistryEntry {
   appId: string
@@ -40,6 +44,7 @@ export function useAllAppSidebarConfigs(
   const kiroshiConfig = useKiroshiSidebarConfig(session)
   const carinaConfig = useCarinaSidebarConfig(session)
   const tesseractConfig = useTesseractSidebarConfig(session)
+  const reliquaryConfig = useReliquarySidebarConfig(session)
 
   return useMemo(
     () => [
@@ -68,8 +73,20 @@ export function useAllAppSidebarConfigs(
         appName: "Tesseract",
         config: tesseractConfig,
       },
+      {
+        appId: "reliquary",
+        appName: "Reliquary",
+        config: reliquaryConfig,
+      },
     ],
-    [borealisConfig, akaromiConfig, kiroshiConfig, carinaConfig, tesseractConfig]
+    [
+      borealisConfig,
+      akaromiConfig,
+      kiroshiConfig,
+      carinaConfig,
+      tesseractConfig,
+      reliquaryConfig,
+    ]
   )
 }
 
@@ -111,6 +128,11 @@ export function getAllAppSidebarConfigs(
       appName: "Tesseract",
       config: getTesseractSidebarConfig(session),
     },
+    {
+      appId: "reliquary",
+      appName: "Reliquary",
+      config: getReliquarySidebarConfig(session),
+    },
   ]
 }
 
@@ -120,3 +142,4 @@ export * from "./kiroshiSidebarConfig"
 export * from "./carinaSidebarConfig"
 export * from "./carinaUserSidebarConfig"
 export * from "./tesseractSidebarConfig"
+export * from "./reliquarySidebarConfig"

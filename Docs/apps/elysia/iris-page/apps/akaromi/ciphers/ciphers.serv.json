@@ -1,0 +1,1350 @@
+{
+  "id": "apps/akaromi/ciphers/ciphers.serv",
+  "title": "ciphers.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/akaromi/ciphers/ciphers.serv.ts",
+    "relPath": "apps/akaromi/ciphers/ciphers.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 5
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "ciphers.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/akaromi/ciphers/ciphers.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "2 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/akaromi/ciphers/ciphers.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/akaromi/ciphers/ciphers.ctrl.ts (AkaromiCiphersServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/akaromi/vault/vault.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/akaromi/vault/vault.serv.ts (AkaromiCiphersServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "9 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AkaromiCiphersServ.constructor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AkaromiCiphersServ.formatCipher"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(cipher)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AkaromiCiphersServ.listCiphers"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, filter)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AkaromiCiphersServ.createCipher"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, data)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AkaromiCiphersServ.getCipher"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, cipherId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AkaromiCiphersServ.updateCipher"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, cipherId, data)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AkaromiCiphersServ.deleteCipher"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, cipherId, permanent = false)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AkaromiCiphersServ.restoreCipher"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, cipherId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AkaromiCiphersServ.emptyTrash"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AkaromiCiphersServ-formatCipher",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/akaromi/ciphers/ciphers.serv.ts-AkaromiCiphersServ-formatCipher",
+                "title": "AkaromiCiphersServ.formatCipher(cipher)",
+                "description": "Formats a PassCipher database entity into a client-safe response payload.",
+                "steps": [
+                  {
+                    "id": "m_AkaromiCiphersServ_formatCipher_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"id\": \"<cipher.id>\",\n  \"type\": \"<cipher.type as 'LOGIN' | 'SSH_KEY'>\",\n  \"favorite\": \"<cipher.favorite>\",\n  \"reprompt\": \"<cipher.reprompt as 'NONE' | 'REQUIRE_MASTER_PASSWORD'>\",\n  \"encryptedTitle\": \"<cipher.encryptedTitle>\",\n  \"encryptedData\": \"<cipher.encryptedData>\",\n  \"deletedAt\": \"<cipher.deletedAt ? toDate(cipher.deletedAt).toISOString() : null>\",\n  \"createdAt\": \"<toDate(cipher.createdAt).toISOString()>\",\n  \"updatedAt\": \"<toDate(cipher.updatedAt).toISOString()>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AkaromiCiphersServ-listCiphers",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/akaromi/ciphers/ciphers.serv.ts-AkaromiCiphersServ-listCiphers",
+                "title": "AkaromiCiphersServ.listCiphers(userId, filter)",
+                "description": "List vault ciphers with optional filtering by type, favorite, and trash status.",
+                "steps": [
+                  {
+                    "id": "m_AkaromiCiphersServ_listCiphers_0_1",
+                    "kind": "step",
+                    "title": "Database `query` on `PassCipher` and stores it as `query`"
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_listCiphers_1_2",
+                    "kind": "selection",
+                    "title": "`typeoffilter?.trash === 'boolean'`",
+                    "selectionMode": "if_else",
+                    "condition": "`typeoffilter?.trash === 'boolean'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_listCiphers_1_2_then_0_2_1",
+                        "kind": "selection",
+                        "title": "`filter.trash`",
+                        "selectionMode": "if_else",
+                        "condition": "`filter.trash`",
+                        "thenBranch": [
+                          {
+                            "id": "m_AkaromiCiphersServ_listCiphers_1_2_then_0_2_1_then_0_2_1_1",
+                            "kind": "step",
+                            "title": "Assign `query`",
+                            "payload": "query = query.where((c) => c.deletedAt.isNotNull())",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "m_AkaromiCiphersServ_listCiphers_1_2_then_0_2_1_else_0_2_2_1",
+                            "kind": "step",
+                            "title": "Assign `query`",
+                            "payload": "query = query.where((c) => c.deletedAt.isNull())",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_listCiphers_2_3",
+                    "kind": "selection",
+                    "title": "`filter?.type`",
+                    "selectionMode": "if_else",
+                    "condition": "`filter?.type`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_listCiphers_2_3_then_0_3_1",
+                        "kind": "step",
+                        "title": "Assign `query`",
+                        "payload": "query = query.where({ type: filter.type })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_listCiphers_3_4",
+                    "kind": "selection",
+                    "title": "`typeoffilter?.favorite === 'boolean'`",
+                    "selectionMode": "if_else",
+                    "condition": "`typeoffilter?.favorite === 'boolean'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_listCiphers_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Assign `query`",
+                        "payload": "query = query.where({ favorite: filter.favorite })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_listCiphers_4_5",
+                    "kind": "step",
+                    "title": "Calls `query.orderBy((c) => c.updatedAt.desc()).all` and stores result as `ciphers`"
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_listCiphers_5_6",
+                    "kind": "var_def",
+                    "title": "Define `sortedCiphers`",
+                    "payload": "const sortedCiphers = ciphers.slice().sort((a, b) => Number(b.favorite) - Number(a.favorite))",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_listCiphers_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"ciphers\": \"<sortedCiphers.map((c) => this.formatCipher(c))>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AkaromiCiphersServ-createCipher",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/akaromi/ciphers/ciphers.serv.ts-AkaromiCiphersServ-createCipher",
+                "title": "AkaromiCiphersServ.createCipher(userId, data)",
+                "description": "Create a new cipher entry (login credentials or ssh key).",
+                "steps": [
+                  {
+                    "id": "m_AkaromiCiphersServ_createCipher_0_1",
+                    "kind": "selection",
+                    "title": "`!data.encryptedTitle || !data.encryptedTitle.trim()`",
+                    "selectionMode": "if_else",
+                    "condition": "`!data.encryptedTitle || !data.encryptedTitle.trim()`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_createCipher_0_1_then_0_1_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Encrypted title is required and cannot be empty."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_createCipher_1_2",
+                    "kind": "selection",
+                    "title": "`!data.encryptedData || !data.encryptedData.trim()`",
+                    "selectionMode": "if_else",
+                    "condition": "`!data.encryptedData || !data.encryptedData.trim()`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_createCipher_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Encrypted data payload is required and cannot be empty."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_createCipher_2_3",
+                    "kind": "step",
+                    "title": "Database `create` on `PassCipher` and stores it as `cipher`"
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_createCipher_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"cipher\": \"<this.formatCipher(cipher)>\",\n  \"message\": \"Cipher created successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AkaromiCiphersServ-getCipher",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/akaromi/ciphers/ciphers.serv.ts-AkaromiCiphersServ-getCipher",
+                "title": "AkaromiCiphersServ.getCipher(userId, cipherId)",
+                "description": "Retrieve a single cipher by ID.",
+                "steps": [
+                  {
+                    "id": "m_AkaromiCiphersServ_getCipher_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `PassCipher` and stores it as `cipher`"
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_getCipher_1_2",
+                    "kind": "selection",
+                    "title": "`!cipher`",
+                    "selectionMode": "if_else",
+                    "condition": "`!cipher`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_getCipher_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Cipher not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_getCipher_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"cipher\": \"<this.formatCipher(cipher)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AkaromiCiphersServ-updateCipher",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/akaromi/ciphers/ciphers.serv.ts-AkaromiCiphersServ-updateCipher",
+                "title": "AkaromiCiphersServ.updateCipher(userId, cipherId, data)",
+                "description": "Update an existing cipher entry. Strictly overwrites ciphertext - NEVER retains password history.",
+                "steps": [
+                  {
+                    "id": "m_AkaromiCiphersServ_updateCipher_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `PassCipher` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_updateCipher_1_2",
+                    "kind": "selection",
+                    "title": "`!existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`!existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_updateCipher_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Cipher not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_updateCipher_2_3",
+                    "kind": "selection",
+                    "title": "`data.encryptedTitle !== undefined && !data.encryptedTitle.trim()`",
+                    "selectionMode": "if_else",
+                    "condition": "`data.encryptedTitle !== undefined && !data.encryptedTitle.trim()`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_updateCipher_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Encrypted title cannot be empty."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_updateCipher_3_4",
+                    "kind": "selection",
+                    "title": "`data.encryptedData !== undefined && !data.encryptedData.trim()`",
+                    "selectionMode": "if_else",
+                    "condition": "`data.encryptedData !== undefined && !data.encryptedData.trim()`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_updateCipher_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Encrypted data payload cannot be empty."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_updateCipher_4_5",
+                    "kind": "step",
+                    "title": "Database `update` on `PassCipher` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_updateCipher_5_6",
+                    "kind": "selection",
+                    "title": "`!updated`",
+                    "selectionMode": "if_else",
+                    "condition": "`!updated`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_updateCipher_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Cipher not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_updateCipher_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"cipher\": \"<this.formatCipher(updated)>\",\n  \"message\": \"Cipher updated successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AkaromiCiphersServ-deleteCipher",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/akaromi/ciphers/ciphers.serv.ts-AkaromiCiphersServ-deleteCipher",
+                "title": "AkaromiCiphersServ.deleteCipher(userId, cipherId, permanent = false)",
+                "description": "Delete a cipher by ID (moves to trash by default, or hard deletes when permanent=true).",
+                "steps": [
+                  {
+                    "id": "m_AkaromiCiphersServ_deleteCipher_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `PassCipher` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_deleteCipher_1_2",
+                    "kind": "selection",
+                    "title": "`!existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`!existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_deleteCipher_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Cipher not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_deleteCipher_2_3",
+                    "kind": "selection",
+                    "title": "`permanent`",
+                    "selectionMode": "if_else",
+                    "condition": "`permanent`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_deleteCipher_2_3_then_0_3_1",
+                        "kind": "step",
+                        "title": "Database `delete` on `PassCipher`"
+                      },
+                      {
+                        "id": "m_AkaromiCiphersServ_deleteCipher_2_3_then_1_3_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"id\": \"<cipherId>\",\n  \"permanent\": true,\n  \"message\": \"Cipher permanently deleted\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_deleteCipher_2_3_else_0_4_1",
+                        "kind": "step",
+                        "title": "Database `update` on `PassCipher`"
+                      },
+                      {
+                        "id": "m_AkaromiCiphersServ_deleteCipher_2_3_else_1_4_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"id\": \"<cipherId>\",\n  \"permanent\": false,\n  \"message\": \"Cipher moved to trash\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AkaromiCiphersServ-restoreCipher",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/akaromi/ciphers/ciphers.serv.ts-AkaromiCiphersServ-restoreCipher",
+                "title": "AkaromiCiphersServ.restoreCipher(userId, cipherId)",
+                "description": "Restore a cipher from trash bin.",
+                "steps": [
+                  {
+                    "id": "m_AkaromiCiphersServ_restoreCipher_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `PassCipher` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_restoreCipher_1_2",
+                    "kind": "selection",
+                    "title": "`!existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`!existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AkaromiCiphersServ_restoreCipher_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Cipher not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_restoreCipher_2_3",
+                    "kind": "step",
+                    "title": "Database `update` on `PassCipher`"
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_restoreCipher_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"id\": \"<cipherId>\",\n  \"message\": \"Cipher restored from trash\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AkaromiCiphersServ-emptyTrash",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/akaromi/ciphers/ciphers.serv.ts-AkaromiCiphersServ-emptyTrash",
+                "title": "AkaromiCiphersServ.emptyTrash(userId)",
+                "description": "Permanently purge all trashed ciphers for the user.",
+                "steps": [
+                  {
+                    "id": "m_AkaromiCiphersServ_emptyTrash_0_1",
+                    "kind": "step",
+                    "title": "Database `query` on `PassCipher` and stores it as `deletedCount`"
+                  },
+                  {
+                    "id": "m_AkaromiCiphersServ_emptyTrash_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"count\": \"<deletedCount>\",\n  \"message\": \"<`Permanently deleted ${deletedCount} ciphers from trash`>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "5 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Encrypted title is required and cannot be empty."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Encrypted data payload is required and cannot be empty."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Cipher not found."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Encrypted title cannot be empty."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Encrypted data payload cannot be empty."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

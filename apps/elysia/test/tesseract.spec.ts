@@ -6,7 +6,7 @@ import {
   normalizeIpAddress,
   resolveLanLobbyId,
   type TesseractPeerTransport,
-} from '../src/services/tesseract/tesseract.serv'
+} from '../src/apps/tesseract/signaling/tesseract.serv'
 import { app } from '../src/server'
 
 function createMockTransport() {

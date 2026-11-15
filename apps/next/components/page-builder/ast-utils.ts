@@ -81,9 +81,12 @@ export function insertChildNode(
 
   const newRoot = updateNodeByPath(root, parentPath, (parent) => {
     const parentClone: IrisNode = { ...parent }
+    if (parentClone.text === "") {
+      delete parentClone.text
+    }
     const currentChildren: IrisChild[] = Array.isArray(parentClone.children)
       ? [...parentClone.children]
-      : parentClone.children != null
+      : parentClone.children != null && parentClone.children !== ""
         ? [parentClone.children]
         : []
 
@@ -150,9 +153,24 @@ export function duplicateNodeByPath(
   const targetNode = getNodeByPath(root, path)
   if (!targetNode) return { newRoot: root, newPath: path }
 
-  // Deep clone target node with new keys
+  // Deep clone target node with fresh unique keys for target and keyed descendants
   const clonedNode = JSON.parse(JSON.stringify(targetNode)) as IrisNode
-  clonedNode.key = `node_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`
+  const uniqueSuffix = `${Date.now()}_${Math.random().toString(36).slice(2, 6)}`
+  const refreshKeys = (node: IrisNode, isRootCopy: boolean) => {
+    if (isRootCopy || node.key !== undefined) {
+      node.key = `node_${uniqueSuffix}_${Math.random().toString(36).slice(2, 5)}`
+    }
+    if (Array.isArray(node.children)) {
+      for (const child of node.children) {
+        if (typeof child === "object" && child !== null) {
+          refreshKeys(child as IrisNode, false)
+        }
+      }
+    } else if (typeof node.children === "object" && node.children !== null) {
+      refreshKeys(node.children as IrisNode, false)
+    }
+  }
+  refreshKeys(clonedNode, true)
 
   const parentPath = path.slice(0, -1)
   const targetIndex = path[path.length - 1]
@@ -228,12 +246,123 @@ export function getNodeBreadcrumbs(
         crumbs.push({ label: String(child), path: [...runningPath] })
         break
       }
+    } else if (
+      idx === 0 &&
+      typeof current.children === "object" &&
+      current.children !== null
+    ) {
+      current = current.children as IrisNode
+      crumbs.push({ label: current.type, path: [...runningPath] })
     } else {
       break
     }
   }
 
   return crumbs
+}
+
+/**
+ * Returns the parent path of a node (or empty path for root).
+ */
+export function getNodeParentPath(path: NodePath): NodePath {
+  return path.length === 0 ? [] : path.slice(0, -1)
+}
+
+/**
+ * Returns sibling index and boundary movement flags for a node path.
+ */
+export function getSiblingInfo(
+  root: IrisNode,
+  path: NodePath
+): {
+  index: number
+  count: number
+  canMoveUp: boolean
+  canMoveDown: boolean
+} {
+  if (path.length === 0) {
+    return { index: 0, count: 1, canMoveUp: false, canMoveDown: false }
+  }
+
+  const parent = getNodeByPath(root, path.slice(0, -1))
+  const index = path[path.length - 1] ?? 0
+  if (!parent || !Array.isArray(parent.children)) {
+    return { index: 0, count: 1, canMoveUp: false, canMoveDown: false }
+  }
+
+  const count = parent.children.length
+  return {
+    index,
+    count,
+    canMoveUp: index > 0,
+    canMoveDown: index < count - 1,
+  }
+}
+
+/**
+ * Returns true if the node contains structured IrisNode child elements.
+ */
+export function hasElementChildren(node: IrisNode | null | undefined): boolean {
+  if (!node || node.children === undefined || node.children === null) {
+    return false
+  }
+  if (Array.isArray(node.children)) {
+    return node.children.some(
+      (child) => typeof child === "object" && child !== null
+    )
+  }
+  return typeof node.children === "object"
+}
+
+/**
+ * Extracts editable string content from either `node.text` or string/number `node.children`.
+ */
+export function getNodeEditableText(node: IrisNode | null | undefined): string {
+  if (!node) return ""
+  if (node.text !== undefined && node.text !== "") {
+    return String(node.text)
+  }
+  if (typeof node.children === "string" || typeof node.children === "number") {
+    return String(node.children)
+  }
+  if (node.text !== undefined) {
+    return String(node.text)
+  }
+  return ""
+}
+
+/**
+ * Updates a node's text cleanly without leaving stale empty `text` fields
+ * or shadowing structured element children.
+ */
+export function updateNodeTextSafely(node: IrisNode, nextText: string): IrisNode {
+  const clone: IrisNode = { ...node }
+  const elementChildrenPresent = hasElementChildren(clone)
+
+  if (nextText === "") {
+    delete clone.text
+    if (
+      typeof clone.children === "string" ||
+      typeof clone.children === "number"
+    ) {
+      delete clone.children
+    }
+    return clone
+  }
+
+  if (elementChildrenPresent) {
+    clone.text = nextText
+    return clone
+  }
+
+  if (clone.text !== undefined && clone.children === undefined) {
+    clone.text = nextText
+    return clone
+  }
+
+  delete clone.text
+  clone.children = nextText
+  return clone
 }
 
 /**

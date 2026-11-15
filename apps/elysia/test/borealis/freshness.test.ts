@@ -4,9 +4,9 @@ import {
   getEntityFreshness,
   isRecordHydrated,
   normalizeToStartOfDay,
-} from '../../src/services/borealis/freshness'
-import { MediaQueueManager } from '../../src/services/borealis/queue'
-import { MediaPreviewSyncer } from '../../src/services/borealis/syncer/media-preview.syncer'
+} from '../../src/apps/borealis/_shared/freshness'
+import { MediaQueueManager } from '../../src/apps/borealis/sync/media.queue'
+import { MediaPreviewSyncer } from '../../src/apps/borealis/sync/media-preview.syncer'
 import { prisma } from '@NamelessLiberty/db'
 
 describe('Borealis: Smart Freshness Evaluation & Calendar Checks', () => {

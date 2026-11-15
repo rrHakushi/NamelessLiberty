@@ -121,17 +121,17 @@ export function getIrisApps(t: (key: string) => string): IrisApp[] {
     //   description: "Music player and audio streaming.",
     //   descriptionShort: "Music player",
     // },
-    // {
-    //   id: "reliquary",
-    //   name: "Reliquary",
-    //   href: "/reliquary",
-    //   color: "#9333ea",
-    //   gradient:
-    //     "linear-gradient(135deg, #e9d5ff 0%, #c084fc 25%, #9333ea 50%, #6b21a8 75%, #2e1065 100%)",
-    //   icon: "/icons/reliquary.png",
-    //   description: "Knowledge base, guides, and documentation.",
-    //   descriptionShort: "Docs & guides",
-    // },
+    {
+      id: "reliquary",
+      name: t("irisReliquary.name"),
+      href: "/reliquary",
+      color: "#9333ea",
+      gradient:
+        "linear-gradient(135deg, #e9d5ff 0%, #c084fc 25%, #9333ea 50%, #6b21a8 75%, #2e1065 100%)",
+      icon: "/icons/reliquary.png",
+      description: t("irisReliquary.description"),
+      descriptionShort: t("irisReliquary.descriptionShort"),
+    },
     // {
     //   id: "spica",
     //   name: "Spica",

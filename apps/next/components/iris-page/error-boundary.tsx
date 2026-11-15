@@ -5,6 +5,7 @@ import * as React from "react"
 interface ErrorBoundaryProps {
   children: React.ReactNode
   fallbackNodeName?: string
+  resetKey?: string | number
 }
 
 interface ErrorBoundaryState {
@@ -23,6 +24,12 @@ export class IrisErrorBoundary extends React.Component<
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { hasError: true, error }
+  }
+
+  componentDidUpdate(prevProps: ErrorBoundaryProps) {
+    if (this.state.hasError && prevProps.resetKey !== this.props.resetKey) {
+      this.setState({ hasError: false, error: undefined })
+    }
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {

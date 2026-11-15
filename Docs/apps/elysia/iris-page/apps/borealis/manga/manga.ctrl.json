@@ -1,0 +1,3907 @@
+{
+  "id": "apps/borealis/manga/manga.ctrl",
+  "title": "Get manga catalog",
+  "description": "Retrieves paginated manga catalog with cursor or page, supporting comprehensive multi-field filtering.",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/",
+    "relPath": "apps/borealis/manga/manga.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/",
+      "/filters",
+      "/:mangaId",
+      "/:mangaId/refresh",
+      "/:mangaId/similar",
+      "/:mangaId/relations",
+      "/:mangaId/characters",
+      "/:mangaId/staff",
+      "/:mangaId/images",
+      "/:mangaId/stats",
+      "/:mangaId/friends",
+      "/:mangaId/people",
+      "/:mangaId/recommendations"
+    ],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Get manga catalog"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              },
+              {
+                "type": "CardDescription",
+                "props": {
+                  "className": "text-start pt-1"
+                },
+                "text": "Retrieves paginated manga catalog with cursor or page, supporting comprehensive multi-field filtering."
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/filters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:mangaId"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:mangaId/refresh"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-4",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:mangaId/similar"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-5",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:mangaId/relations"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-6",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:mangaId/characters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-7",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:mangaId/staff"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-8",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:mangaId/images"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-9",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:mangaId/stats"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-10",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:mangaId/friends"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-11",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:mangaId/people"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-12",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:mangaId/recommendations"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_9)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "51 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET / · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.catalogQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET / · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.catalogResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET / · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /filters · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.filtersResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.detailResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:mangaId/refresh · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:mangaId/refresh · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.refreshResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:mangaId/refresh · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:mangaId/refresh · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:mangaId/refresh · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/similar · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/similar · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.similarQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/similar · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.similarResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/similar · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/similar · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/relations · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/relations · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.relationsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/relations · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/relations · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/characters · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-23",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/characters · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.charactersResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-24",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/characters · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-25",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/characters · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-26",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/staff · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-27",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/staff · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.staffResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-28",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/staff · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-29",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/staff · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-30",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/images · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-31",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/images · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.imagesResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-32",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/images · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-33",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/images · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-34",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/stats · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-35",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/stats · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.statsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-36",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/stats · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-37",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/stats · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-38",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/friends · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-39",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/friends · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.friendsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-40",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/friends · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-41",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/friends · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-42",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/people · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-43",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/people · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.peopleQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-44",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/people · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.peopleResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-45",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/people · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-46",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/people · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-47",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/recommendations · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-48",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/recommendations · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.recommendationsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-49",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/recommendations · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-50",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:mangaId/recommendations · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisMangaModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-0",
+                "title": "GET /",
+                "description": "Get manga catalog",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `BorealisMangaModel.catalogQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getCatalog(query)`"
+                  },
+                  {
+                    "id": "call_0_BorealisMangaServ_getCatalog",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getCatalog",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getCatalog"
+                  },
+                  {
+                    "id": "svc_0_BorealisMangaServ_getCatalog",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getCatalog Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_2_3",
+                        "kind": "var_def",
+                        "title": "Define `skip`, `search`",
+                        "payload": "const skip = query?.cursor ? 0 : (page - 1) * limit\nconst search = query?.search?.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_3_4",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `genres`"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_4_5",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `tags`"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_5_6",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `formats`"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_6_7",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `statuses`"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_7_8",
+                        "kind": "var_def",
+                        "title": "Define `years`, `sortBy`, `sortOrder`",
+                        "payload": "const years = parseList(query?.years).map((y) => Number(y)).filter((y) => !isNaN(y))\nconst sortBy = query?.sortBy ?? 'popularity'\nconst sortOrder = query?.sortOrder ?? sortBy === 'title' ? 'asc' : 'desc'",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_8_9",
+                        "kind": "step",
+                        "title": "Database `query` on `Manga` and stores it as `q`"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_9_10",
+                        "kind": "selection",
+                        "title": "`search`",
+                        "selectionMode": "if_else",
+                        "condition": "`search`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisMangaServ_getCatalog_9_10_then_0_10_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => or( m.titlePrimary.ilike(`%${search}%`), m.titleSecondary.ilike(`%${search}%`), m.titleNative.ilike(`%${search}%`) ) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_10_11",
+                        "kind": "selection",
+                        "title": "`genres.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`genres.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisMangaServ_getCatalog_10_11_then_0_11_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.genres.some((g) => g.genre.some((ge) => ge.name.in(genres))) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_11_12",
+                        "kind": "selection",
+                        "title": "`tags.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`tags.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisMangaServ_getCatalog_11_12_then_0_12_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.tags.some((t) => t.tag.some((te) => te.name.in(tags))) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_12_13",
+                        "kind": "selection",
+                        "title": "`formats.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`formats.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisMangaServ_getCatalog_12_13_then_0_13_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.format.in(formats as any))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_13_14",
+                        "kind": "selection",
+                        "title": "`statuses.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`statuses.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisMangaServ_getCatalog_13_14_then_0_14_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.status.in(statuses as any))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_14_15",
+                        "kind": "selection",
+                        "title": "`years.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`years.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisMangaServ_getCatalog_14_15_then_0_15_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.startDateYear.in(years))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_15_16",
+                        "kind": "selection",
+                        "title": "`query?.cursor`",
+                        "selectionMode": "if_else",
+                        "condition": "`query?.cursor`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisMangaServ_getCatalog_15_16_then_0_16_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => sortOrder === 'asc' ? m.id.gt(query.cursor!) : m.id.lt(query.cursor!) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_16_17",
+                        "kind": "var_def",
+                        "title": "Define `itemsQ`",
+                        "payload": "let itemsQ = q",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_17_18",
+                        "kind": "selection",
+                        "title": "`sortBy === 'score'`",
+                        "selectionMode": "if_else",
+                        "condition": "`sortBy === 'score'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisMangaServ_getCatalog_17_18_then_0_18_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.averageScore.asc() : x.averageScore.desc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "svc_0_BorealisMangaServ_getCatalog_17_18_else_0_19_1",
+                            "kind": "selection",
+                            "title": "`sortBy === 'title'`",
+                            "selectionMode": "if_else",
+                            "condition": "`sortBy === 'title'`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_0_BorealisMangaServ_getCatalog_17_18_else_0_19_1_then_0_19_1_1",
+                                "kind": "step",
+                                "title": "Assign `itemsQ`",
+                                "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.titlePrimary.asc() : x.titlePrimary.desc() )",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "svc_0_BorealisMangaServ_getCatalog_17_18_else_0_19_1_else_0_19_2_1",
+                                "kind": "selection",
+                                "title": "`sortBy === 'releaseDate'`",
+                                "selectionMode": "if_else",
+                                "condition": "`sortBy === 'releaseDate'`",
+                                "thenBranch": [
+                                  {
+                                    "id": "svc_0_BorealisMangaServ_getCatalog_17_18_else_0_19_1_else_0_19_2_1_then_0_19_2_1_1",
+                                    "kind": "step",
+                                    "title": "Assign `itemsQ`",
+                                    "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.startDateYear.asc() : x.startDateYear.desc() )",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "svc_0_BorealisMangaServ_getCatalog_17_18_else_0_19_1_else_0_19_2_1_else_0_19_2_2_1",
+                                    "kind": "selection",
+                                    "title": "`sortBy === 'trending' || sortBy === 'favorites'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`sortBy === 'trending' || sortBy === 'favorites'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "svc_0_BorealisMangaServ_getCatalog_17_18_else_0_19_1_else_0_19_2_1_else_0_19_2_2_1_then_0_19_2_2_1_1",
+                                        "kind": "step",
+                                        "title": "Assign `itemsQ`",
+                                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.favorites.asc() : x.favorites.desc() )",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ],
+                                    "elseBranch": [
+                                      {
+                                        "id": "svc_0_BorealisMangaServ_getCatalog_17_18_else_0_19_1_else_0_19_2_1_else_0_19_2_2_1_else_0_19_2_2_2_1",
+                                        "kind": "selection",
+                                        "title": "`sortBy === 'updatedAt'`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`sortBy === 'updatedAt'`",
+                                        "thenBranch": [
+                                          {
+                                            "id": "svc_0_BorealisMangaServ_getCatalog_17_18_else_0_19_1_else_0_19_2_1_else_0_19_2_2_1_else_0_19_2_2_2_1_then_0_19_2_2_2_1_1",
+                                            "kind": "step",
+                                            "title": "Assign `itemsQ`",
+                                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.updatedAt.asc() : x.updatedAt.desc() )",
+                                            "payloadLanguage": "typescript"
+                                          }
+                                        ],
+                                        "elseBranch": [
+                                          {
+                                            "id": "svc_0_BorealisMangaServ_getCatalog_17_18_else_0_19_1_else_0_19_2_1_else_0_19_2_2_1_else_0_19_2_2_2_1_else_0_19_2_2_2_2_1",
+                                            "kind": "step",
+                                            "title": "Assign `itemsQ`",
+                                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.popularity.asc() : x.popularity.desc() )",
+                                            "payloadLanguage": "typescript"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_19_20",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, rawItems]`"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_20_21",
+                        "kind": "var_def",
+                        "title": "Define `items`, `hasMore`",
+                        "payload": "const items = rawItems.map((x) => ({ id: x.id, titlePrimary: x.titlePrimary, titleSecondary: x.titleSecondary ?? null, titleNative: x.titleNative ?? null, coverImage: x.coverImage ?? null, bannerImage: x.bannerImage ?? null, ...)\nconst hasMore = skip + items.length < total",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisMangaServ_getCatalog_21_22",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"items\": \"<items>\",\n  \"nextCursor\": \"<hasMore ? (items[items.length - 1]?.id ?? null) : null>\",\n  \"hasMore\": \"<hasMore>\",\n  \"total\": \"<total>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-1",
+                "title": "GET /filters",
+                "description": "Get manga catalog filters",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getFilters()`"
+                  },
+                  {
+                    "id": "call_1_BorealisMangaServ_getFilters",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getFilters",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getFilters"
+                  },
+                  {
+                    "id": "svc_1_BorealisMangaServ_getFilters",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getFilters Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_BorealisMangaServ_getFilters_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Manga` and stores it as `[allManga, allGenres]`"
+                      },
+                      {
+                        "id": "svc_1_BorealisMangaServ_getFilters_1_2",
+                        "kind": "var_def",
+                        "title": "Define `statusCounts`, `formatCounts`, `yearCounts`",
+                        "payload": "const statusCounts: Record<string, number> = {}\nconst formatCounts: Record<string, number> = {}\nconst yearCounts: Record<number, number> = {}",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_BorealisMangaServ_getFilters_2_3",
+                        "kind": "iteration",
+                        "title": "Iterate `const m` over `allManga`",
+                        "loopType": "while",
+                        "condition": "Iterate `const m` over `allManga`",
+                        "children": [
+                          {
+                            "id": "svc_1_BorealisMangaServ_getFilters_2_3_loop_0_3_1",
+                            "kind": "selection",
+                            "title": "`m.status`",
+                            "selectionMode": "if_else",
+                            "condition": "`m.status`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_BorealisMangaServ_getFilters_2_3_loop_0_3_1_then_0_3_1_1",
+                                "kind": "step",
+                                "title": "Assign `statusCounts[m.status]`",
+                                "payload": "statusCounts[m.status] = (statusCounts[m.status] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_BorealisMangaServ_getFilters_2_3_loop_1_3_2",
+                            "kind": "selection",
+                            "title": "`m.format`",
+                            "selectionMode": "if_else",
+                            "condition": "`m.format`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_BorealisMangaServ_getFilters_2_3_loop_1_3_2_then_0_3_2_1",
+                                "kind": "step",
+                                "title": "Assign `formatCounts[m.format]`",
+                                "payload": "formatCounts[m.format] = (formatCounts[m.format] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_BorealisMangaServ_getFilters_2_3_loop_2_3_3",
+                            "kind": "selection",
+                            "title": "`m.startDateYear`",
+                            "selectionMode": "if_else",
+                            "condition": "`m.startDateYear`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_BorealisMangaServ_getFilters_2_3_loop_2_3_3_then_0_3_3_1",
+                                "kind": "step",
+                                "title": "Assign `yearCounts[m.startDateYear]`",
+                                "payload": "yearCounts[m.startDateYear] = (yearCounts[m.startDateYear] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_1_BorealisMangaServ_getFilters_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"statuses\": \"<Object.entries(statusCounts).map(([value, count]) => ({ value, count }))>\",\n  \"formats\": \"<Object.entries(formatCounts).map(([value, count]) => ({ value, count }))>\",\n  \"genres\": \"<allGenres.map((g: any) => ({ value: g.name, count: g.manga ?? 0 }))>\",\n  \"tags\": [],\n  \"years\": \"<Object.entries(yearCounts).map(([value, count]) => ({ value: Number(value), count })).sort((a, b) => b.value - a.value)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-2",
+                "title": "GET /:mangaId",
+                "description": "Get manga overview",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisMangaModel.param`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getById(mangaId)`"
+                  },
+                  {
+                    "id": "call_2_BorealisMangaServ_getById",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getById",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getById"
+                  },
+                  {
+                    "id": "svc_2_BorealisMangaServ_getById",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getById Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_BorealisMangaServ_getById_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Manga` and stores it as `load`"
+                      },
+                      {
+                        "id": "svc_2_BorealisMangaServ_getById_1_2",
+                        "kind": "step",
+                        "title": "Calls `load` and stores result as `manga`"
+                      },
+                      {
+                        "id": "svc_2_BorealisMangaServ_getById_2_3",
+                        "kind": "selection",
+                        "title": "`!manga`",
+                        "selectionMode": "if_else",
+                        "condition": "`!manga`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_BorealisMangaServ_getById_2_3_then_0_3_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Manga with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_BorealisMangaServ_getById_3_4",
+                        "kind": "selection",
+                        "title": "`manga.alUpdatedAt == null && manga.anilistId`",
+                        "selectionMode": "if_else",
+                        "condition": "`manga.alUpdatedAt == null && manga.anilistId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_BorealisMangaServ_getById_3_4_then_0_4_1",
+                            "kind": "step",
+                            "title": "Calls `MediaEntitySyncer.syncManga(id, manga.anilistId).catch`"
+                          },
+                          {
+                            "id": "svc_2_BorealisMangaServ_getById_3_4_then_1_4_2",
+                            "kind": "step",
+                            "title": "Assign `manga`",
+                            "payload": "manga = (await load()) ?? manga",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_BorealisMangaServ_getById_4_5",
+                        "kind": "step",
+                        "title": "Calls `MediaQueueManager.queueIfStale`"
+                      },
+                      {
+                        "id": "svc_2_BorealisMangaServ_getById_5_6",
+                        "kind": "step",
+                        "title": "Calls `fetchTopCharacters` and stores result as `characters`"
+                      },
+                      {
+                        "id": "svc_2_BorealisMangaServ_getById_6_7",
+                        "kind": "var_def",
+                        "title": "Define `m`",
+                        "payload": "const m: any = manga",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_BorealisMangaServ_getById_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"media\": {\n    \"...pick(m, [ 'id', 'titlePrimary', 'titleSecondary', 'titleNative', 'coverImage', 'bannerImage', 'description', 'countryOfOrigin', 'chapterCount', 'volumeCount', 'startDateYear', 'startDateMonth', 'startDateDay', 'endDateYear', 'endDateMonth', 'endDateDay', 'source', 'format', 'status', 'averageScore', 'favorites', 'popularity', 'isAdult', 'ageRating', 'ageRatingGuide', 'updatedAt', 'anilistId', 'bangumiId', 'kitsuId', 'malId', 'mangaUpdatesId', 'externalLinks', 'sources', ...)\": \"...\",\n    \"synonyms\": \"<m.synonyms ?? []>\",\n    \"genres\": \"<flattenGenres(m.genres)>\",\n    \"tags\": \"<flattenTags(m.tags)>\",\n    \"characters\": \"<characters>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-3",
+                "title": "POST /:mangaId/refresh",
+                "description": "Refresh manga metadata",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisMangaModel.param`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser`"
+                  },
+                  {
+                    "id": "route_3_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.refresh(mangaId)`"
+                  },
+                  {
+                    "id": "call_3_BorealisMangaServ_refresh",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.refresh",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.refresh"
+                  },
+                  {
+                    "id": "svc_3_BorealisMangaServ_refresh",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.refresh Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_BorealisMangaServ_refresh_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Manga` and stores it as `manga`"
+                      },
+                      {
+                        "id": "svc_3_BorealisMangaServ_refresh_1_2",
+                        "kind": "selection",
+                        "title": "`!manga`",
+                        "selectionMode": "if_else",
+                        "condition": "`!manga`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_BorealisMangaServ_refresh_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Manga with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_BorealisMangaServ_refresh_2_3",
+                        "kind": "step",
+                        "title": "Database `update` on `Manga`"
+                      },
+                      {
+                        "id": "svc_3_BorealisMangaServ_refresh_3_4",
+                        "kind": "step",
+                        "title": "Calls `MediaQueueManager.enqueueMediaUpdate('MANGA', id, { externalId: manga.anilistId, priority: 1, depth: 0, maxDepth: 0, triggeredBy: 'manual', forceRefresh: true, ...).catch`"
+                      },
+                      {
+                        "id": "svc_3_BorealisMangaServ_refresh_4_5",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"<`Metadata refresh requested for \\\"${manga.titlePrimary}\\\"`>\",\n  \"timestamp\": \"<new Date().toISOString()>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-4",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-4",
+                "title": "GET /:mangaId/similar",
+                "description": "Get similar manga",
+                "steps": [
+                  {
+                    "id": "route_4_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisMangaModel.param`, query: `BorealisMangaModel.similarQuery`"
+                  },
+                  {
+                    "id": "route_4_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getSimilar(mangaId, query?.limit)`"
+                  },
+                  {
+                    "id": "call_4_BorealisMangaServ_getSimilar",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getSimilar",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getSimilar"
+                  },
+                  {
+                    "id": "svc_4_BorealisMangaServ_getSimilar",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getSimilar Flow",
+                    "children": [
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Manga` and stores it as `source`"
+                      },
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_1_2",
+                        "kind": "selection",
+                        "title": "`!source`",
+                        "selectionMode": "if_else",
+                        "condition": "`!source`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_BorealisMangaServ_getSimilar_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Manga with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_2_3",
+                        "kind": "var_def",
+                        "title": "Define `sourceGenres`, `sourceTags`, `sourceGenreIds`, `sourceTagIds`",
+                        "payload": "const sourceGenres = source.genres || [].filter((g: any) => Boolean(g.genre)).map((g: any) => g.genre!)\nconst sourceTags = source.tags || [].filter((t: any) => Boolean(t.tag)).map((t: any) => t.tag!)\nconst sourceGenreIds = new Set(sourceGenres.map((g: any) => g.id))\nconst sourceTagIds = new Set(sourceTags.map((t: any) => t.id))",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_3_4",
+                        "kind": "step",
+                        "title": "Database `query` on `Manga` and stores it as `candidatesQ`"
+                      },
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_4_5",
+                        "kind": "var_def",
+                        "title": "Define `conds`",
+                        "payload": "const conds: any[] = []",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_5_6",
+                        "kind": "selection",
+                        "title": "`sourceGenreIds.size > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`sourceGenreIds.size > 0`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_6_7",
+                        "kind": "selection",
+                        "title": "`sourceTagIds.size > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`sourceTagIds.size > 0`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_7_8",
+                        "kind": "selection",
+                        "title": "`source.format`",
+                        "selectionMode": "if_else",
+                        "condition": "`source.format`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_8_9",
+                        "kind": "selection",
+                        "title": "`conds.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`conds.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_BorealisMangaServ_getSimilar_8_9_then_0_9_1",
+                            "kind": "step",
+                            "title": "Assign `candidatesQ`",
+                            "payload": "candidatesQ = candidatesQ.where((m) => or(...conds.map((c) => c(m))))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_9_10",
+                        "kind": "step",
+                        "title": "Calls `candidatesQ.limit(120).include('genres', (g) => g.include('genre', (ge) => ge.select('id', 'name'))).include('tags', (t) => t.include('tag', (te) => te.select('id', 'name'))).all` and stores result as `rawCandidates`"
+                      },
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_10_11",
+                        "kind": "var_def",
+                        "title": "Define `candidates`, `scored`, `items`",
+                        "payload": "const candidates = rawCandidates.map((candidate: any) => ({ ...candidate, genres: (candidate.genres || []).filter((g: any) => Boolean(g.genre)).map((g: any) => g.genre!), tags: (candidate.tags || []).filter((t: any) => Boolean(t.tag)).map((t: any) => t.tag!), }))\nconst scored = candidates.map((candidate) => { let similarityScore = 0 const candGenreIds = new Set(candidate.genres.map((g) => g.id)) const genreIntersection = Array.from(sourceGenreIds).filter((gid) => candGenreIds.has(gid)) const genreUnion = new Set([...sourceGenreIds, ...candGenreIds]) if (genreUnion.size > 0 && genreIntersection.length > 0) { similarityScore += Math.round((genreIntersection.length / genreUnion.size) * 40) ...)\nconst items = scored.filter((s) => s.similarityScore > 0).sort((a, b) => b.similarityScore - a.similarityScore).slice(0, limit).map(({ similarityScore, ...rest }) => rest)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_BorealisMangaServ_getSimilar_11_12",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"sourceId\": \"<id>\",\n  \"items\": \"<items>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-5",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-5",
+                "title": "GET /:mangaId/relations",
+                "description": "Get manga relations",
+                "steps": [
+                  {
+                    "id": "route_5_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisMangaModel.param`"
+                  },
+                  {
+                    "id": "route_5_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getRelations(mangaId)`"
+                  },
+                  {
+                    "id": "call_5_BorealisMangaServ_getRelations",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getRelations",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getRelations"
+                  },
+                  {
+                    "id": "svc_5_BorealisMangaServ_getRelations",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getRelations Flow",
+                    "children": [
+                      {
+                        "id": "svc_5_BorealisMangaServ_getRelations_0_1",
+                        "kind": "step",
+                        "title": "Calls `fetchMediaRelations` and stores result as `hydrated`"
+                      },
+                      {
+                        "id": "svc_5_BorealisMangaServ_getRelations_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"relations\": \"<hydrated.map((r) => ({ id: r.id, sourceType: r.sourceType, sourceId: r.sourceId, targetType: r.targetType, targetId: r.targetId, type: r.type, ...)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-6",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-6",
+                "title": "GET /:mangaId/characters",
+                "description": "Get manga characters",
+                "steps": [
+                  {
+                    "id": "route_6_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisMangaModel.param`"
+                  },
+                  {
+                    "id": "route_6_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getCharacters(mangaId)`"
+                  },
+                  {
+                    "id": "call_6_BorealisMangaServ_getCharacters",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getCharacters",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getCharacters"
+                  },
+                  {
+                    "id": "svc_6_BorealisMangaServ_getCharacters",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getCharacters Flow",
+                    "children": [
+                      {
+                        "id": "svc_6_BorealisMangaServ_getCharacters_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `MediaCharacter` and stores it as `raw`"
+                      },
+                      {
+                        "id": "svc_6_BorealisMangaServ_getCharacters_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"characters\": \"<raw.map((c: any) => ({ id: c.id, mediaId: c.mediaId, mediaType: c.mediaType, characterId: c.characterId, actorId: c.actorId ?? null, role: c.role, ...)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-7",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-7",
+                "title": "GET /:mangaId/staff",
+                "description": "Get manga staff",
+                "steps": [
+                  {
+                    "id": "route_7_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisMangaModel.param`"
+                  },
+                  {
+                    "id": "route_7_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getStaff(mangaId)`"
+                  },
+                  {
+                    "id": "call_7_BorealisMangaServ_getStaff",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getStaff",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getStaff"
+                  },
+                  {
+                    "id": "svc_7_BorealisMangaServ_getStaff",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getStaff Flow",
+                    "children": [
+                      {
+                        "id": "svc_7_BorealisMangaServ_getStaff_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `MediaStaff` and stores it as `raw`"
+                      },
+                      {
+                        "id": "svc_7_BorealisMangaServ_getStaff_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"staff\": \"<raw.map((s: any) => ({ id: s.id, mediaId: s.mediaId, mediaType: s.mediaType, personId: s.personId, role: s.role, customRole: s.customRole ?? null, ...)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-8",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-8",
+                "title": "GET /:mangaId/images",
+                "description": "Get manga images",
+                "steps": [
+                  {
+                    "id": "route_8_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisMangaModel.param`"
+                  },
+                  {
+                    "id": "route_8_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getImages(mangaId)`"
+                  },
+                  {
+                    "id": "call_8_BorealisMangaServ_getImages",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getImages",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getImages"
+                  },
+                  {
+                    "id": "svc_8_BorealisMangaServ_getImages",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getImages Flow",
+                    "children": [
+                      {
+                        "id": "svc_8_BorealisMangaServ_getImages_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Manga` and stores it as `manga`"
+                      },
+                      {
+                        "id": "svc_8_BorealisMangaServ_getImages_1_2",
+                        "kind": "selection",
+                        "title": "`!manga`",
+                        "selectionMode": "if_else",
+                        "condition": "`!manga`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_8_BorealisMangaServ_getImages_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Manga with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_8_BorealisMangaServ_getImages_2_3",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"images\": {\n    \"mal\": \"<imageSource(manga.images, 'mal')>\",\n    \"anilist\": \"<imageSource(manga.images, 'anilist')>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-9",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-9",
+                "title": "GET /:mangaId/stats",
+                "description": "Get manga statistics",
+                "steps": [
+                  {
+                    "id": "route_9_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisMangaModel.param`"
+                  },
+                  {
+                    "id": "route_9_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getStats(mangaId)`"
+                  },
+                  {
+                    "id": "call_9_BorealisMangaServ_getStats",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getStats",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getStats"
+                  },
+                  {
+                    "id": "svc_9_BorealisMangaServ_getStats",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getStats Flow",
+                    "children": [
+                      {
+                        "id": "svc_9_BorealisMangaServ_getStats_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Manga` and stores it as `manga`"
+                      },
+                      {
+                        "id": "svc_9_BorealisMangaServ_getStats_1_2",
+                        "kind": "selection",
+                        "title": "`!manga`",
+                        "selectionMode": "if_else",
+                        "condition": "`!manga`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_9_BorealisMangaServ_getStats_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Manga with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_9_BorealisMangaServ_getStats_2_3",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"stats\": {\n    \"...pick(manga, ['averageScore', 'alAverageScore', 'alPopularity', 'alFavorites', 'malPopularity', 'malFavorites', 'malAverageScore'])\": \"...\",\n    \"scoreDistribution\": \"<manga.scoreDistribution ?? {}>\",\n    \"statusDistribution\": \"<manga.statusDistribution ?? {}>\",\n    \"favorites\": \"<manga.favorites ?? 0>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-10",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-10",
+                "title": "GET /:mangaId/friends",
+                "description": "Get friends tracking manga",
+                "steps": [
+                  {
+                    "id": "route_10_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisMangaModel.param`"
+                  },
+                  {
+                    "id": "route_10_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.getUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_10_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getFriends(mangaId, user?.id)`"
+                  },
+                  {
+                    "id": "call_10_BorealisMangaServ_getFriends",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getFriends",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getFriends"
+                  },
+                  {
+                    "id": "svc_10_BorealisMangaServ_getFriends",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getFriends Flow",
+                    "children": [
+                      {
+                        "id": "svc_10_BorealisMangaServ_getFriends_0_1",
+                        "kind": "selection",
+                        "title": "`!currentUserId`",
+                        "selectionMode": "if_else",
+                        "condition": "`!currentUserId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_10_BorealisMangaServ_getFriends_0_1_then_0_1_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_10_BorealisMangaServ_getFriends_1_2",
+                        "kind": "step",
+                        "title": "Database `all` on `Friend` and stores it as `userFriends`"
+                      },
+                      {
+                        "id": "svc_10_BorealisMangaServ_getFriends_2_3",
+                        "kind": "var_def",
+                        "title": "Define `friendIds`",
+                        "payload": "const friendIds = userFriends.map((f) => f.friendId)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_10_BorealisMangaServ_getFriends_3_4",
+                        "kind": "selection",
+                        "title": "`friendIds.length === 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`friendIds.length === 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_10_BorealisMangaServ_getFriends_3_4_then_0_4_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_10_BorealisMangaServ_getFriends_4_5",
+                        "kind": "step",
+                        "title": "Database `all` on `MangaList` and stores it as `rawEntries`"
+                      },
+                      {
+                        "id": "svc_10_BorealisMangaServ_getFriends_5_6",
+                        "kind": "var_def",
+                        "title": "Define `friends`",
+                        "payload": "const friends = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) return { id: raw.id, userId: raw.userId, status: raw.status, score: raw.score, ...)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_10_BorealisMangaServ_getFriends_6_7",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"friends\": \"<friends>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-11",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-11",
+                "title": "GET /:mangaId/people",
+                "description": "Get public people tracking manga",
+                "steps": [
+                  {
+                    "id": "route_11_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisMangaModel.param`, query: `BorealisMangaModel.peopleQuery`"
+                  },
+                  {
+                    "id": "route_11_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getPeople(mangaId, query)`"
+                  },
+                  {
+                    "id": "call_11_BorealisMangaServ_getPeople",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getPeople",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getPeople"
+                  },
+                  {
+                    "id": "svc_11_BorealisMangaServ_getPeople",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getPeople Flow",
+                    "children": [
+                      {
+                        "id": "svc_11_BorealisMangaServ_getPeople_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_11_BorealisMangaServ_getPeople_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_11_BorealisMangaServ_getPeople_2_3",
+                        "kind": "var_def",
+                        "title": "Define `skip`, `filterStatus`",
+                        "payload": "const skip = page - 1 * limit\nconst filterStatus = query?.status?.toUpperCase()?.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_11_BorealisMangaServ_getPeople_3_4",
+                        "kind": "step",
+                        "title": "Database `query` on `MangaList` and stores it as `q`"
+                      },
+                      {
+                        "id": "svc_11_BorealisMangaServ_getPeople_4_5",
+                        "kind": "selection",
+                        "title": "`filterStatus`",
+                        "selectionMode": "if_else",
+                        "condition": "`filterStatus`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_11_BorealisMangaServ_getPeople_4_5_then_0_5_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where({ status: filterStatus as any })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_11_BorealisMangaServ_getPeople_5_6",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, rawEntries]`"
+                      },
+                      {
+                        "id": "svc_11_BorealisMangaServ_getPeople_6_7",
+                        "kind": "var_def",
+                        "title": "Define `people`",
+                        "payload": "const people = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) return { id: raw.id, userId: raw.userId, status: raw.status, score: raw.score, ...)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_11_BorealisMangaServ_getPeople_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"mediaType\": \"manga\",\n  \"mediaId\": \"<id>\",\n  \"total\": \"<total>\",\n  \"page\": \"<page>\",\n  \"limit\": \"<limit>\",\n  \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n  \"hasMore\": \"<page * limit < total>\",\n  \"people\": \"<people>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-12",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/manga/manga.ctrl.ts-route-12",
+                "title": "GET /:mangaId/recommendations",
+                "description": "Get manga recommendations",
+                "steps": [
+                  {
+                    "id": "route_12_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisMangaModel.param`"
+                  },
+                  {
+                    "id": "route_12_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisMangaServ.getRecommendations(mangaId)`"
+                  },
+                  {
+                    "id": "call_12_BorealisMangaServ_getRecommendations",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisMangaServ.getRecommendations",
+                    "isAsync": true,
+                    "targetAlg": "BorealisMangaServ.getRecommendations"
+                  },
+                  {
+                    "id": "svc_12_BorealisMangaServ_getRecommendations",
+                    "kind": "sequence",
+                    "title": "BorealisMangaServ.getRecommendations Flow",
+                    "children": [
+                      {
+                        "id": "svc_12_BorealisMangaServ_getRecommendations_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `MediaRecommendation` and stores it as `recs`"
+                      },
+                      {
+                        "id": "svc_12_BorealisMangaServ_getRecommendations_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"recommendations\": \"<recs.map((r: any) => { const profile = getProfileCustomization(r.user?.customization) return { id: r.id, sourceType: r.sourceType, sourceId: r.sourceId, targetType: r.targetType, ...)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Manga with ID ${id} not found"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

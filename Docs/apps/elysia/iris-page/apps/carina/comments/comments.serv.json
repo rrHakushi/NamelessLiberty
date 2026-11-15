@@ -1,0 +1,2358 @@
+{
+  "id": "apps/carina/comments/comments.serv",
+  "title": "comments.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/carina/comments/comments.serv.ts",
+    "relPath": "apps/carina/comments/comments.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 17
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "comments.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/carina/comments/comments.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/carina/comments/comments.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/comments/comments.ctrl.ts (CarinaCommentsServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "11 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaCommentsServ.formatAuthor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(user)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaCommentsServ.formatComment"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(item)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaCommentsServ.formatReply"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(reply)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaCommentsServ.getProfileComments"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(targetUserId, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaCommentsServ.createProfileComment"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(authorId, targetUserId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaCommentsServ.getListComments"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(targetUserId, mediaType, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaCommentsServ.createListComment"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(authorId, targetUserId, mediaType, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaCommentsServ.deleteComment"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(user, commentId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaCommentsServ.createReply"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(authorId, commentId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaCommentsServ.deleteReply"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(user, commentId, replyId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaCommentsServ.updateReply"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(user, commentId, replyId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaCommentsServ-formatAuthor",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/comments/comments.serv.ts-CarinaCommentsServ-formatAuthor",
+                "title": "CarinaCommentsServ.formatAuthor(user)",
+                "description": "Helper to format an author profile summary.",
+                "steps": [
+                  {
+                    "id": "m_CarinaCommentsServ_formatAuthor_0_1",
+                    "kind": "step",
+                    "title": "Calls `getProfileCustomization` and stores result as `profile`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_formatAuthor_1_2",
+                    "kind": "var_def",
+                    "title": "Define `trimmedDisplayName`",
+                    "payload": "const trimmedDisplayName = typeof profile.displayName === 'string' ? profile.displayName.trim() : ''",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_formatAuthor_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"id\": \"<user.id>\",\n  \"username\": \"<user.username>\",\n  \"displayName\": \"<trimmedDisplayName !== '' ? trimmedDisplayName : null>\",\n  \"avatarUrl\": \"<profile.avatarUrl ?? null>\",\n  \"avatarFrame\": \"<profile.avatarFrame ?? null>\",\n  \"bannerUrl\": \"<profile.bannerUrl ?? null>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaCommentsServ-formatComment",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/comments/comments.serv.ts-CarinaCommentsServ-formatComment",
+                "title": "CarinaCommentsServ.formatComment(item)",
+                "description": "Helper to format a comment and its nested reply for API responses.",
+                "steps": [
+                  {
+                    "id": "m_CarinaCommentsServ_formatComment_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"id\": \"<item.id>\",\n  \"listOwnerId\": \"<item.listOwnerId>\",\n  \"mediaType\": \"<item.mediaType>\",\n  \"authorId\": \"<item.authorId>\",\n  \"content\": \"<item.content>\",\n  \"isSpoiler\": \"<item.isSpoiler>\",\n  \"createdAt\": \"<toDate(item.createdAt).toISOString()>\",\n  \"updatedAt\": \"<toDate(item.updatedAt).toISOString()>\",\n  \"author\": \"<this.formatAuthor(item.author)>\",\n  \"reply\": \"<item.reply ? { id: item.reply.id, commentId: item.reply.commentId, authorId: item.reply.authorId, content: item.reply.content, createdAt: toDate(item.reply.createdAt).toISOString(), ...>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaCommentsServ-formatReply",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/comments/comments.serv.ts-CarinaCommentsServ-formatReply",
+                "title": "CarinaCommentsServ.formatReply(reply)",
+                "description": "Helper to format a single reply.",
+                "steps": [
+                  {
+                    "id": "m_CarinaCommentsServ_formatReply_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"id\": \"<reply.id>\",\n  \"commentId\": \"<reply.commentId>\",\n  \"authorId\": \"<reply.authorId>\",\n  \"content\": \"<reply.content>\",\n  \"createdAt\": \"<toDate(reply.createdAt).toISOString()>\",\n  \"updatedAt\": \"<toDate(reply.updatedAt).toISOString()>\",\n  \"author\": \"<this.formatAuthor(reply.author)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaCommentsServ-getProfileComments",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/comments/comments.serv.ts-CarinaCommentsServ-getProfileComments",
+                "title": "CarinaCommentsServ.getProfileComments(targetUserId, query)",
+                "description": "Get comments on a user's profile (10 per page default).",
+                "steps": [
+                  {
+                    "id": "m_CarinaCommentsServ_getProfileComments_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getProfileComments_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getProfileComments_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`",
+                    "payload": "const skip = page - 1 * limit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getProfileComments_3_4",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `profileOwner`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getProfileComments_4_5",
+                    "kind": "selection",
+                    "title": "`!profileOwner`",
+                    "selectionMode": "if_else",
+                    "condition": "`!profileOwner`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_getProfileComments_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getProfileComments_5_6",
+                    "kind": "step",
+                    "title": "Database `query` on `ListComment` and stores it as `commentQuery`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getProfileComments_6_7",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawComments]`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getProfileComments_7_8",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `totalPages`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getProfileComments_8_9",
+                    "kind": "var_def",
+                    "title": "Define `hasMore`, `comments`",
+                    "payload": "const hasMore = page < totalPages\nconst comments = rawComments.map((c) => this.formatComment(c))",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getProfileComments_9_10",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"comments\": \"<comments>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<totalPages>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaCommentsServ-createProfileComment",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/comments/comments.serv.ts-CarinaCommentsServ-createProfileComment",
+                "title": "CarinaCommentsServ.createProfileComment(authorId, targetUserId, body)",
+                "description": "Post a comment on a user's profile.",
+                "steps": [
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_0_1",
+                    "kind": "var_def",
+                    "title": "Define `trimmed`",
+                    "payload": "const trimmed = body.content.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_1_2",
+                    "kind": "selection",
+                    "title": "`!trimmed`",
+                    "selectionMode": "if_else",
+                    "condition": "`!trimmed`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createProfileComment_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Comment content cannot be empty."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `profileOwner`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_3_4",
+                    "kind": "selection",
+                    "title": "`!profileOwner`",
+                    "selectionMode": "if_else",
+                    "condition": "`!profileOwner`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createProfileComment_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_4_5",
+                    "kind": "step",
+                    "title": "Database `first` on `UserBlock` and stores it as `isBlocked`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_5_6",
+                    "kind": "selection",
+                    "title": "`isBlocked`",
+                    "selectionMode": "if_else",
+                    "condition": "`isBlocked`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createProfileComment_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Cannot comment on profile due to user block."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_6_7",
+                    "kind": "step",
+                    "title": "Calls `getProfileCustomization` and stores result as `ownerCustom`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_7_8",
+                    "kind": "var_def",
+                    "title": "Define `allowComments`",
+                    "payload": "const allowComments = ownerCustom.privacy?.allowComments || (profileOwner.customization as any)?.privacy?.allowComments || 'public'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_8_9",
+                    "kind": "selection",
+                    "title": "`allowComments === 'disabled'`",
+                    "selectionMode": "if_else",
+                    "condition": "`allowComments === 'disabled'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createProfileComment_8_9_then_0_9_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "This user has disabled comments on their profile."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_9_10",
+                    "kind": "selection",
+                    "title": "`allowComments === 'friends' && authorId !== profileOwner.id`",
+                    "selectionMode": "if_else",
+                    "condition": "`allowComments === 'friends' && authorId !== profileOwner.id`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createProfileComment_9_10_then_0_10_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Friend` and stores it as `areFriends`"
+                      },
+                      {
+                        "id": "m_CarinaCommentsServ_createProfileComment_9_10_then_1_10_2",
+                        "kind": "selection",
+                        "title": "`!areFriends`",
+                        "selectionMode": "if_else",
+                        "condition": "`!areFriends`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaCommentsServ_createProfileComment_9_10_then_1_10_2_then_0_10_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Only friends can comment on this user profile."
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_10_11",
+                    "kind": "step",
+                    "title": "Database `create` on `ListComment` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_11_12",
+                    "kind": "step",
+                    "title": "Database `first` on `ListComment` and stores it as `rawComment`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_12_13",
+                    "kind": "selection",
+                    "title": "`!rawComment`",
+                    "selectionMode": "if_else",
+                    "condition": "`!rawComment`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createProfileComment_12_13_then_0_13_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Failed to create comment"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createProfileComment_13_14",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"comment\": \"<this.formatComment(rawComment)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaCommentsServ-getListComments",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/comments/comments.serv.ts-CarinaCommentsServ-getListComments",
+                "title": "CarinaCommentsServ.getListComments(targetUserId, mediaType, query)",
+                "description": "Get comments on a user's media list (10 per page default).",
+                "steps": [
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_0_1",
+                    "kind": "var_def",
+                    "title": "Define `normMediaType`",
+                    "payload": "const normMediaType = mediaType.trim().toLowerCase()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_1_2",
+                    "kind": "selection",
+                    "title": "`!VALID_MEDIA_TYPES.includes(normMediaType as ValidMediaType)`",
+                    "selectionMode": "if_else",
+                    "condition": "`!VALID_MEDIA_TYPES.includes(normMediaType as ValidMediaType)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_getListComments_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Invalid mediaType. Must be one of: ${VALID_MEDIA_TYPES.join(', ')}"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_2_3",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_3_4",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_4_5",
+                    "kind": "var_def",
+                    "title": "Define `skip`",
+                    "payload": "const skip = page - 1 * limit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_5_6",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `listOwner`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_6_7",
+                    "kind": "selection",
+                    "title": "`!listOwner`",
+                    "selectionMode": "if_else",
+                    "condition": "`!listOwner`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_getListComments_6_7_then_0_7_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_7_8",
+                    "kind": "step",
+                    "title": "Database `query` on `ListComment` and stores it as `commentQuery`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_8_9",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawComments]`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_9_10",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `totalPages`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_10_11",
+                    "kind": "var_def",
+                    "title": "Define `hasMore`, `comments`",
+                    "payload": "const hasMore = page < totalPages\nconst comments = rawComments.map((c) => this.formatComment(c))",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_getListComments_11_12",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"comments\": \"<comments>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<totalPages>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaCommentsServ-createListComment",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/comments/comments.serv.ts-CarinaCommentsServ-createListComment",
+                "title": "CarinaCommentsServ.createListComment(authorId, targetUserId, mediaType, body)",
+                "description": "Post a comment on a user's media list.",
+                "steps": [
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_0_1",
+                    "kind": "var_def",
+                    "title": "Define `normMediaType`",
+                    "payload": "const normMediaType = mediaType.trim().toLowerCase()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_1_2",
+                    "kind": "selection",
+                    "title": "`!VALID_MEDIA_TYPES.includes(normMediaType as ValidMediaType)`",
+                    "selectionMode": "if_else",
+                    "condition": "`!VALID_MEDIA_TYPES.includes(normMediaType as ValidMediaType)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createListComment_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Invalid mediaType. Must be one of: ${VALID_MEDIA_TYPES.join(', ')}"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_2_3",
+                    "kind": "var_def",
+                    "title": "Define `trimmed`",
+                    "payload": "const trimmed = body.content.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_3_4",
+                    "kind": "selection",
+                    "title": "`!trimmed`",
+                    "selectionMode": "if_else",
+                    "condition": "`!trimmed`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createListComment_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Comment content cannot be empty."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_4_5",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `listOwner`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_5_6",
+                    "kind": "selection",
+                    "title": "`!listOwner`",
+                    "selectionMode": "if_else",
+                    "condition": "`!listOwner`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createListComment_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_6_7",
+                    "kind": "step",
+                    "title": "Database `first` on `UserBlock` and stores it as `isBlocked`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_7_8",
+                    "kind": "selection",
+                    "title": "`isBlocked`",
+                    "selectionMode": "if_else",
+                    "condition": "`isBlocked`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createListComment_7_8_then_0_8_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Cannot comment on list due to user block."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_8_9",
+                    "kind": "step",
+                    "title": "Database `create` on `ListComment` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_9_10",
+                    "kind": "step",
+                    "title": "Database `first` on `ListComment` and stores it as `rawComment`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_10_11",
+                    "kind": "selection",
+                    "title": "`!rawComment`",
+                    "selectionMode": "if_else",
+                    "condition": "`!rawComment`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createListComment_10_11_then_0_11_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Failed to create comment"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createListComment_11_12",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"comment\": \"<this.formatComment(rawComment)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaCommentsServ-deleteComment",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/comments/comments.serv.ts-CarinaCommentsServ-deleteComment",
+                "title": "CarinaCommentsServ.deleteComment(user, commentId)",
+                "description": "Delete a comment strictly by comment ID. Allowed for comment author, list/profile owner, or administrator.",
+                "steps": [
+                  {
+                    "id": "m_CarinaCommentsServ_deleteComment_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `ListComment` and stores it as `comment`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteComment_1_2",
+                    "kind": "selection",
+                    "title": "`!comment`",
+                    "selectionMode": "if_else",
+                    "condition": "`!comment`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_deleteComment_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Comment not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteComment_2_3",
+                    "kind": "var_def",
+                    "title": "Define `isAuthor`, `isOwner`",
+                    "payload": "const isAuthor = comment.authorId === user.id\nconst isOwner = comment.listOwnerId === user.id",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteComment_3_4",
+                    "kind": "step",
+                    "title": "Calls `new IRISBitField(user.permissions).has` and stores result as `isAdmin`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteComment_4_5",
+                    "kind": "selection",
+                    "title": "`!isAuthor && !isOwner && !isAdmin`",
+                    "selectionMode": "if_else",
+                    "condition": "`!isAuthor && !isOwner && !isAdmin`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_deleteComment_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "You do not have permission to delete this comment"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteComment_5_6",
+                    "kind": "step",
+                    "title": "Database `delete` on `ListComment`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteComment_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"id\": \"<comment.id>\",\n  \"message\": \"Comment deleted successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaCommentsServ-createReply",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/comments/comments.serv.ts-CarinaCommentsServ-createReply",
+                "title": "CarinaCommentsServ.createReply(authorId, commentId, body)",
+                "description": "Post a reply to a comment (only owner can reply, max 1 reply per comment).",
+                "steps": [
+                  {
+                    "id": "m_CarinaCommentsServ_createReply_0_1",
+                    "kind": "var_def",
+                    "title": "Define `trimmed`",
+                    "payload": "const trimmed = body.content.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createReply_1_2",
+                    "kind": "selection",
+                    "title": "`!trimmed`",
+                    "selectionMode": "if_else",
+                    "condition": "`!trimmed`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createReply_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Reply content cannot be empty."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createReply_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `ListComment` and stores it as `comment`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createReply_3_4",
+                    "kind": "selection",
+                    "title": "`!comment`",
+                    "selectionMode": "if_else",
+                    "condition": "`!comment`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createReply_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Comment not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createReply_4_5",
+                    "kind": "selection",
+                    "title": "`comment.listOwnerId !== authorId`",
+                    "selectionMode": "if_else",
+                    "condition": "`comment.listOwnerId !== authorId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createReply_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "Only the list or profile owner can reply to comments on their profile or list."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createReply_5_6",
+                    "kind": "selection",
+                    "title": "`comment.reply`",
+                    "selectionMode": "if_else",
+                    "condition": "`comment.reply`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createReply_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "A reply already exists for this comment."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createReply_6_7",
+                    "kind": "step",
+                    "title": "Database `create` on `ListCommentReply` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createReply_7_8",
+                    "kind": "step",
+                    "title": "Database `first` on `ListCommentReply` and stores it as `rawReply`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createReply_8_9",
+                    "kind": "selection",
+                    "title": "`!rawReply`",
+                    "selectionMode": "if_else",
+                    "condition": "`!rawReply`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_createReply_8_9_then_0_9_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Failed to create reply"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_createReply_9_10",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"reply\": \"<this.formatReply(rawReply)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaCommentsServ-deleteReply",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/comments/comments.serv.ts-CarinaCommentsServ-deleteReply",
+                "title": "CarinaCommentsServ.deleteReply(user, commentId, replyId)",
+                "description": "Delete a reply to a comment strictly by reply ID. Allowed for reply author, list/profile owner, or administrator.",
+                "steps": [
+                  {
+                    "id": "m_CarinaCommentsServ_deleteReply_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `ListCommentReply` and stores it as `reply`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteReply_1_2",
+                    "kind": "selection",
+                    "title": "`!reply || reply.commentId !== commentId.trim()`",
+                    "selectionMode": "if_else",
+                    "condition": "`!reply || reply.commentId !== commentId.trim()`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_deleteReply_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Reply not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteReply_2_3",
+                    "kind": "var_def",
+                    "title": "Define `isAuthor`, `isOwner`",
+                    "payload": "const isAuthor = reply.authorId === user.id\nconst isOwner = reply.comment.listOwnerId === user.id",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteReply_3_4",
+                    "kind": "step",
+                    "title": "Calls `new IRISBitField(user.permissions).has` and stores result as `isAdmin`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteReply_4_5",
+                    "kind": "selection",
+                    "title": "`!isAuthor && !isOwner && !isAdmin`",
+                    "selectionMode": "if_else",
+                    "condition": "`!isAuthor && !isOwner && !isAdmin`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_deleteReply_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "You do not have permission to delete this reply"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteReply_5_6",
+                    "kind": "step",
+                    "title": "Database `delete` on `ListCommentReply`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_deleteReply_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"id\": \"<reply.id>\",\n  \"message\": \"Reply deleted successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaCommentsServ-updateReply",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/comments/comments.serv.ts-CarinaCommentsServ-updateReply",
+                "title": "CarinaCommentsServ.updateReply(user, commentId, replyId, body)",
+                "description": "Update a reply to a comment strictly by reply ID. Allowed for reply author or administrator.",
+                "steps": [
+                  {
+                    "id": "m_CarinaCommentsServ_updateReply_0_1",
+                    "kind": "var_def",
+                    "title": "Define `trimmed`",
+                    "payload": "const trimmed = body.content.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_updateReply_1_2",
+                    "kind": "selection",
+                    "title": "`!trimmed`",
+                    "selectionMode": "if_else",
+                    "condition": "`!trimmed`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_updateReply_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Reply content cannot be empty."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_updateReply_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `ListCommentReply` and stores it as `reply`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_updateReply_3_4",
+                    "kind": "selection",
+                    "title": "`!reply || reply.commentId !== commentId.trim()`",
+                    "selectionMode": "if_else",
+                    "condition": "`!reply || reply.commentId !== commentId.trim()`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_updateReply_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Reply not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_updateReply_4_5",
+                    "kind": "var_def",
+                    "title": "Define `isAuthor`",
+                    "payload": "const isAuthor = reply.authorId === user.id",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_updateReply_5_6",
+                    "kind": "step",
+                    "title": "Calls `new IRISBitField(user.permissions).has` and stores result as `isAdmin`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_updateReply_6_7",
+                    "kind": "selection",
+                    "title": "`!isAuthor && !isAdmin`",
+                    "selectionMode": "if_else",
+                    "condition": "`!isAuthor && !isAdmin`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_updateReply_6_7_then_0_7_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "You do not have permission to update this reply"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_updateReply_7_8",
+                    "kind": "step",
+                    "title": "Database `update` on `ListCommentReply`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_updateReply_8_9",
+                    "kind": "step",
+                    "title": "Database `first` on `ListCommentReply` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_updateReply_9_10",
+                    "kind": "selection",
+                    "title": "`!updated`",
+                    "selectionMode": "if_else",
+                    "condition": "`!updated`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaCommentsServ_updateReply_9_10_then_0_10_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Reply not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaCommentsServ_updateReply_10_11",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"reply\": \"<this.formatReply(updated)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "17 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Comment content cannot be empty."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Cannot comment on profile due to user block."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "This user has disabled comments on their profile."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Only friends can comment on this user profile."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to create comment"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid mediaType. Must be one of: ${VALID_MEDIA_TYPES.join(', ')}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Cannot comment on list due to user block."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Comment not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to delete this comment"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Reply content cannot be empty."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Only the list or profile owner can reply to comments on their profile or list."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "A reply already exists for this comment."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to create reply"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Reply not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to delete this reply"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to update this reply"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

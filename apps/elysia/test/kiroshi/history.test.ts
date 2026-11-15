@@ -1,8 +1,8 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia, ValidationError } from 'elysia'
-import { kiroshiHistory } from '../../src/api/controllers/kiroshi/history.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt } from '../../src/utils/auth-crypto'
+import { kiroshiHistory } from '../../src/apps/kiroshi/history/history.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
 import { encryptConnectionData } from '@NamelessLiberty/connections'
 import { prisma } from '@NamelessLiberty/db'
 

@@ -1,0 +1,830 @@
+{
+  "id": "apps/carina/favorites/favorites.serv",
+  "title": "favorites.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/carina/favorites/favorites.serv.ts",
+    "relPath": "apps/carina/favorites/favorites.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 3
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "favorites.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/carina/favorites/favorites.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/carina/favorites/favorites.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/favorites/favorites.ctrl.ts (CarinaFavoritesServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "4 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFavoritesServ.parseFavoriteType"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(raw)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "FavoriteType"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFavoritesServ.addFavorite"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFavoritesServ.checkFavorite"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, category, targetId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFavoritesServ.removeFavorite"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, category, targetId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFavoritesServ-parseFavoriteType",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/favorites/favorites.serv.ts-CarinaFavoritesServ-parseFavoriteType",
+                "title": "CarinaFavoritesServ.parseFavoriteType(raw)",
+                "description": "Helper to normalize and validate favorite category / type string into FavoriteType enum.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFavoritesServ_parseFavoriteType_0_1",
+                    "kind": "var_def",
+                    "title": "Define `normalized`",
+                    "payload": "const normalized = raw.trim().replace(/-/g, '_').toUpperCase()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_parseFavoriteType_1_2",
+                    "kind": "selection",
+                    "title": "`!VALID_FAVORITE_TYPES.includes(normalized as ValidFavoriteType)`",
+                    "selectionMode": "if_else",
+                    "condition": "`!VALID_FAVORITE_TYPES.includes(normalized as ValidFavoriteType)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFavoritesServ_parseFavoriteType_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Invalid favorite category: '${raw}'. Must be one of: ${VALID_FAVORITE_TYPES.map((t) => t.toLowerCase()).join(', ')}"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_parseFavoriteType_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`normalized as FavoriteType`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFavoritesServ-addFavorite",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/favorites/favorites.serv.ts-CarinaFavoritesServ-addFavorite",
+                "title": "CarinaFavoritesServ.addFavorite(userId, body)",
+                "description": "Add media or entity to user favorites (strictly by IDs).",
+                "steps": [
+                  {
+                    "id": "m_CarinaFavoritesServ_addFavorite_0_1",
+                    "kind": "var_def",
+                    "title": "Define `rawCategory`",
+                    "payload": "const rawCategory = body.category || body.type",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_addFavorite_1_2",
+                    "kind": "selection",
+                    "title": "`!rawCategory || typeofrawCategory !== 'string' || !rawCategory.trim()`",
+                    "selectionMode": "if_else",
+                    "condition": "`!rawCategory || typeofrawCategory !== 'string' || !rawCategory.trim()`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFavoritesServ_addFavorite_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Category or type is required."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_addFavorite_2_3",
+                    "kind": "step",
+                    "title": "Calls `this.parseFavoriteType` and stores result as `normType`"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_addFavorite_3_4",
+                    "kind": "step",
+                    "title": "Database `first` on `Favorite` and stores it as `favorite`"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_addFavorite_4_5",
+                    "kind": "selection",
+                    "title": "`!favorite`",
+                    "selectionMode": "if_else",
+                    "condition": "`!favorite`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFavoritesServ_addFavorite_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Assign `favorite`",
+                        "payload": "favorite = await prisma.orm.public.Favorite.create({ userId, type: normType, targetId: body.targetId, })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_addFavorite_5_6",
+                    "kind": "step",
+                    "title": "Calls `MediaStatsServ.recalculateFavoritesCount`"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_addFavorite_6_7",
+                    "kind": "step",
+                    "title": "Calls `ActivityServ.recordFavoriteActivity`"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_addFavorite_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"favorite\": {\n    \"id\": \"<favorite.id>\",\n    \"userId\": \"<favorite.userId>\",\n    \"type\": \"<favorite.type>\",\n    \"targetId\": \"<favorite.targetId>\",\n    \"createdAt\": \"<toDate(favorite.createdAt).toISOString()>\"\n  },\n  \"message\": \"Added to favorites successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFavoritesServ-checkFavorite",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/favorites/favorites.serv.ts-CarinaFavoritesServ-checkFavorite",
+                "title": "CarinaFavoritesServ.checkFavorite(userId, category, targetId)",
+                "description": "Check if target entity is in user favorites strictly by category and target ID.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFavoritesServ_checkFavorite_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.parseFavoriteType` and stores result as `normType`"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_checkFavorite_1_2",
+                    "kind": "step",
+                    "title": "Database `first` on `Favorite` and stores it as `favorite`"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_checkFavorite_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"isFavorite\": \"<Boolean(favorite)>\",\n  \"favorite\": \"<favorite ? { id: favorite.id, userId: favorite.userId, type: favorite.type, targetId: favorite.targetId, createdAt: toDate(favorite.createdAt).toISOString(), ...>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFavoritesServ-removeFavorite",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/favorites/favorites.serv.ts-CarinaFavoritesServ-removeFavorite",
+                "title": "CarinaFavoritesServ.removeFavorite(userId, category, targetId)",
+                "description": "Remove target from favorites strictly by category and target ID.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFavoritesServ_removeFavorite_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.parseFavoriteType` and stores result as `normType`"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_removeFavorite_1_2",
+                    "kind": "step",
+                    "title": "Database `first` on `Favorite` and stores it as `favorite`"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_removeFavorite_2_3",
+                    "kind": "selection",
+                    "title": "`!favorite`",
+                    "selectionMode": "if_else",
+                    "condition": "`!favorite`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFavoritesServ_removeFavorite_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Favorite not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_removeFavorite_3_4",
+                    "kind": "step",
+                    "title": "Database `delete` on `Favorite`"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_removeFavorite_4_5",
+                    "kind": "step",
+                    "title": "Calls `MediaStatsServ.recalculateFavoritesCount`"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_removeFavorite_5_6",
+                    "kind": "step",
+                    "title": "Calls `ActivityServ.recordFavoriteActivity`"
+                  },
+                  {
+                    "id": "m_CarinaFavoritesServ_removeFavorite_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"targetId\": \"<targetId>\",\n  \"category\": \"<normType>\",\n  \"message\": \"Removed from favorites successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "3 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid favorite category: '${raw}'. Must be one of: ${VALID_FAVORITE_TYPES.map((t) => t.toLowerCase()).join(', ')}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Category or type is required."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Favorite not found"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

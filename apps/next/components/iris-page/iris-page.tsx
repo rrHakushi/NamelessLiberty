@@ -9,7 +9,7 @@ import { IconPencil } from "@tabler/icons-react"
 import { cn } from "@workspace/ui/lib/utils"
 
 import type { IrisChild, IrisNode, IrisPageSchema } from "./types"
-import { resolveComponent } from "./registry"
+import { resolveComponent, VOID_HTML_TAGS } from "./registry"
 import { resolveProps } from "./resolve-props"
 import { IrisErrorBoundary } from "./error-boundary"
 
@@ -38,8 +38,20 @@ export interface IrisPageProps {
   onEdit?: () => void
   /** Custom href for Edit button navigation */
   editHref?: string
-  /** Callback when schema is saved in in-place editor */
-  onSaveSchema?: (updatedSchema: IrisPageSchema) => void
+  /** Callback when schema is saved in in-place editor. Returning false keeps the editor open. */
+  onSaveSchema?: (
+    updatedSchema: IrisPageSchema
+  ) => void | boolean | Promise<void | boolean>
+  /** Optional async guard awaited before opening the in-place editor */
+  beforeEdit?: () => Promise<boolean> | boolean
+  /** Callback invoked when exiting the in-place editor without saving */
+  onCancelEdit?: () => void
+  /** Disables the Edit Document button (e.g. while locked by another editor) */
+  editDisabled?: boolean
+  /** Helper caption shown beside disabled edit button */
+  editDisabledReason?: string
+  /** Optional extra actions rendered inline in the document footer */
+  footerExtra?: React.ReactNode
 }
 
 export function IrisPage({
@@ -50,6 +62,11 @@ export function IrisPage({
   onEdit,
   editHref,
   onSaveSchema,
+  beforeEdit,
+  onCancelEdit,
+  editDisabled = false,
+  editDisabledReason,
+  footerExtra,
 }: IrisPageProps) {
   // 1. Parse JSON Schema if passed as a string
   const schema: IrisPageSchema = React.useMemo(() => {
@@ -83,9 +100,14 @@ export function IrisPage({
   // Reactive in-place schema state
   const [activeSchema, setActiveSchema] = React.useState<IrisPageSchema>(schema)
   const [isEditing, setIsEditing] = React.useState(false)
+  const [isAcquiringEdit, setIsAcquiringEdit] = React.useState(false)
+  const isEditingRef = React.useRef(isEditing)
+  isEditingRef.current = isEditing
 
   React.useEffect(() => {
-    setActiveSchema(schema)
+    if (!isEditingRef.current) {
+      setActiveSchema(schema)
+    }
   }, [schema])
 
   const { user } = useUser()
@@ -134,9 +156,17 @@ export function IrisPage({
           : renderNode(slotNode)
       )
 
-      // Resolve Children or Text
+      const isVoidElement =
+        typeof Component === "string" &&
+        VOID_HTML_TAGS.has(Component.toLowerCase())
+
+      if (isVoidElement) {
+        return <Component key={key} {...resolvedProps} />
+      }
+
+      // Resolve Children or Text (empty text does not shadow child nodes)
       let renderedChildren: React.ReactNode = null
-      if (node.text !== undefined) {
+      if (node.text !== undefined && node.text !== "") {
         renderedChildren = node.text
       } else if (node.children !== undefined && node.children !== null) {
         if (Array.isArray(node.children)) {
@@ -146,6 +176,8 @@ export function IrisPage({
         } else {
           renderedChildren = renderNode(node.children)
         }
+      } else if (node.text !== undefined) {
+        renderedChildren = node.text
       }
 
       return (
@@ -157,20 +189,41 @@ export function IrisPage({
     []
   )
 
+  const schemaResetKey = React.useMemo(() => {
+    try {
+      return JSON.stringify(activeSchema)
+    } catch {
+      return undefined
+    }
+  }, [activeSchema])
+
   // 1. In-Place Visual Builder Mode
   if (isEditing) {
     return (
-      <div className="flex min-h-[600px] w-full flex-1 flex-col overflow-hidden">
+      <div
+        data-iris-editing="true"
+        className="flex h-full min-h-[540px] w-full flex-1 flex-col overflow-hidden"
+      >
         <PageBuilder
           initialSchema={activeSchema}
           embedded={true}
-          onExit={() => setIsEditing(false)}
-          onSave={(updated) => {
+          onExit={() => {
+            setIsEditing(false)
+            onCancelEdit?.()
+          }}
+          onSave={async (updated) => {
+            if (onSaveSchema) {
+              try {
+                const result = await onSaveSchema(updated)
+                if (result === false) return false
+              } catch (err) {
+                console.error("[IrisPage] Failed to save schema:", err)
+                return false
+              }
+            }
             setActiveSchema(updated)
             setIsEditing(false)
-            if (onSaveSchema) {
-              onSaveSchema(updated)
-            }
+            return true
           }}
         />
       </div>
@@ -179,7 +232,10 @@ export function IrisPage({
 
   // 2. Pure AST Component Tree Mode with footer at bottom
   return (
-    <IrisErrorBoundary>
+    <IrisErrorBoundary
+      fallbackNodeName={activeSchema.root?.type || "Page"}
+      resetKey={schemaResetKey}
+    >
       <div
         className={cn("relative flex min-h-full w-full flex-col", className)}
       >
@@ -189,8 +245,8 @@ export function IrisPage({
         </div>
 
         {/* Footer always at the bottom of the page */}
-        {showEditButton && canEditPage && (
-          <footer className="mt-auto flex w-full shrink-0 items-center justify-between border-t border-border/40 px-4 pt-10 pb-8 md:px-8">
+        {((showEditButton && canEditPage) || footerExtra) && (
+          <footer className="mt-auto flex w-full shrink-0 flex-wrap items-center justify-between gap-3 border-t border-border/40 px-4 pt-10 pb-8 md:px-8">
             <div className="text-xs text-muted-foreground">
               {activeSchema.title && (
                 <span className="font-semibold text-foreground/80">
@@ -205,19 +261,47 @@ export function IrisPage({
               )}
             </div>
 
-            <Button
-              size="xs"
-              variant="outline"
-              className="ms-auto gap-1.5 text-xs text-muted-foreground shadow-xs hover:text-foreground"
-              onPress={() => {
-                if (onEdit) onEdit()
-                else if (editHref) window.location.href = editHref
-                else setIsEditing(true)
-              }}
-            >
-              <IconPencil className="size-3.5" />
-              <span>Edit Document</span>
-            </Button>
+            <div className="ms-auto flex items-center gap-2">
+              {footerExtra}
+              {showEditButton && canEditPage && (
+                <span title={editDisabled ? editDisabledReason : undefined}>
+                  <Button
+                    size="xs"
+                    variant="outline"
+                    isDisabled={editDisabled || isAcquiringEdit}
+                    aria-label={editDisabled ? editDisabledReason : undefined}
+                    className="gap-1.5 text-xs text-muted-foreground shadow-xs hover:text-foreground"
+                  onPress={async () => {
+                    if (onEdit) {
+                      onEdit()
+                      return
+                    }
+                    if (editHref) {
+                      window.location.href = editHref
+                      return
+                    }
+                    if (beforeEdit) {
+                      setIsAcquiringEdit(true)
+                      try {
+                        const allowed = await beforeEdit()
+                        if (!allowed) return
+                      } finally {
+                        setIsAcquiringEdit(false)
+                      }
+                    }
+                    setIsEditing(true)
+                  }}
+                >
+                  <IconPencil className="size-3.5" />
+                  <span>
+                    {editDisabled && editDisabledReason
+                      ? editDisabledReason
+                      : "Edit Document"}
+                  </span>
+                </Button>
+                </span>
+              )}
+            </div>
           </footer>
         )}
       </div>

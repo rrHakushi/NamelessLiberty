@@ -1,8 +1,8 @@
 import { describe, expect, it, beforeEach, afterEach, afterAll } from 'bun:test'
 import { Elysia, ValidationError } from 'elysia'
-import { carinaPublic } from '../../src/api/controllers/carina/public.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { s3Client } from '../../src/utils/s3'
+import { carinaPublic } from '../../src/apps/carina/public/public.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { s3Client } from '../../src/core/utils/s3'
 import path from 'node:path'
 import fs from 'node:fs'
 

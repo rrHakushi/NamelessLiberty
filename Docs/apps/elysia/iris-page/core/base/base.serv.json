@@ -1,0 +1,1289 @@
+{
+  "id": "core/base/base.serv",
+  "title": "base.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/core/base/base.serv.ts",
+    "relPath": "core/base/base.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "base.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/core/base/base.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "34 caller(s), 34 subclass(es)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/akaromi/ciphers/ciphers.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/akaromi/ciphers/ciphers.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/akaromi/encryption/encryption.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/akaromi/encryption/encryption.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/akaromi/vault/vault.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/akaromi/vault/vault.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-3",
+                        "props": {
+                          "href": "/docs/apps/borealis/_shared/base-media.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/_shared/base-media.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-4",
+                        "props": {
+                          "href": "/docs/apps/borealis/_shared/media-stats.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/_shared/media-stats.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-5",
+                        "props": {
+                          "href": "/docs/apps/borealis/calendar/calendar.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/calendar/calendar.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-6",
+                        "props": {
+                          "href": "/docs/apps/borealis/entities/entities.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/entities/entities.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-7",
+                        "props": {
+                          "href": "/docs/apps/borealis/lists/_base/base-list.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/lists/_base/base-list.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-8",
+                        "props": {
+                          "href": "/docs/apps/borealis/lists/_base/base-stats.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/lists/_base/base-stats.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-9",
+                        "props": {
+                          "href": "/docs/apps/borealis/playlists/playlists.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/playlists/playlists.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-10",
+                        "props": {
+                          "href": "/docs/apps/borealis/search/external-search.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/search/external-search.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-11",
+                        "props": {
+                          "href": "/docs/apps/borealis/search/search.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/search/search.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-12",
+                        "props": {
+                          "href": "/docs/apps/carina/_shared/base-mfa.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/_shared/base-mfa.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-13",
+                        "props": {
+                          "href": "/docs/apps/carina/activity/activity.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/activity/activity.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-14",
+                        "props": {
+                          "href": "/docs/apps/carina/apikeys/apikeys.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/apikeys/apikeys.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-15",
+                        "props": {
+                          "href": "/docs/apps/carina/auth/auth.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/auth/auth.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-16",
+                        "props": {
+                          "href": "/docs/apps/carina/bookmarks/bookmarks.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/bookmarks/bookmarks.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-17",
+                        "props": {
+                          "href": "/docs/apps/carina/comments/comments.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/comments/comments.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-18",
+                        "props": {
+                          "href": "/docs/apps/carina/connections/connections.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/connections/connections.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-19",
+                        "props": {
+                          "href": "/docs/apps/carina/favorites/favorites.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/favorites/favorites.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-20",
+                        "props": {
+                          "href": "/docs/apps/carina/friends/friends.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/friends/friends.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-21",
+                        "props": {
+                          "href": "/docs/apps/carina/notifications/notifications.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/notifications/notifications.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-22",
+                        "props": {
+                          "href": "/docs/apps/carina/oauth/oauth.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/oauth/oauth.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-23",
+                        "props": {
+                          "href": "/docs/apps/carina/public/public.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/public/public.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-24",
+                        "props": {
+                          "href": "/docs/apps/carina/qc/qc.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/qc/qc.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-25",
+                        "props": {
+                          "href": "/docs/apps/carina/recommendations/recommendations.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/recommendations/recommendations.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-26",
+                        "props": {
+                          "href": "/docs/apps/carina/users/users.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/users/users.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-27",
+                        "props": {
+                          "href": "/docs/apps/kiroshi/history/history.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/kiroshi/history/history.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-28",
+                        "props": {
+                          "href": "/docs/apps/kiroshi/search/search.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/kiroshi/search/search.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-29",
+                        "props": {
+                          "href": "/docs/apps/kiroshi/settings/settings.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/kiroshi/settings/settings.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-30",
+                        "props": {
+                          "href": "/docs/apps/servarr/core/servarr.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/servarr/core/servarr.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-31",
+                        "props": {
+                          "href": "/docs/apps/servarr/extended/servarr-extended.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/servarr/extended/servarr-extended.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-32",
+                        "props": {
+                          "href": "/docs/apps/servarr/realtime/servarr-realtime.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/servarr/realtime/servarr-realtime.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-33",
+                        "props": {
+                          "href": "/docs/core/email/email.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "core/email/email.serv.ts (BaseService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-0",
+                        "props": {
+                          "href": "/docs/apps/akaromi/ciphers/ciphers.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "AkaromiCiphersServ (apps/akaromi/ciphers/ciphers.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-1",
+                        "props": {
+                          "href": "/docs/apps/akaromi/encryption/encryption.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "AkaromiEncryptionService (apps/akaromi/encryption/encryption.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-2",
+                        "props": {
+                          "href": "/docs/apps/akaromi/vault/vault.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "AkaromiVaultService (apps/akaromi/vault/vault.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-3",
+                        "props": {
+                          "href": "/docs/apps/borealis/_shared/base-media.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BaseBorealisMediaService (apps/borealis/_shared/base-media.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-4",
+                        "props": {
+                          "href": "/docs/apps/borealis/_shared/media-stats.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "MediaStatsServ (apps/borealis/_shared/media-stats.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-5",
+                        "props": {
+                          "href": "/docs/apps/borealis/calendar/calendar.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisCalendarServ (apps/borealis/calendar/calendar.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-6",
+                        "props": {
+                          "href": "/docs/apps/borealis/entities/entities.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisEntitiesServ (apps/borealis/entities/entities.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-7",
+                        "props": {
+                          "href": "/docs/apps/borealis/lists/_base/base-list.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BaseBorealisListService (apps/borealis/lists/_base/base-list.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-8",
+                        "props": {
+                          "href": "/docs/apps/borealis/lists/_base/base-stats.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BaseMediaStatsService (apps/borealis/lists/_base/base-stats.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-9",
+                        "props": {
+                          "href": "/docs/apps/borealis/playlists/playlists.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisPlaylistsServ (apps/borealis/playlists/playlists.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-10",
+                        "props": {
+                          "href": "/docs/apps/borealis/search/external-search.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisExternalSearchServ (apps/borealis/search/external-search.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-11",
+                        "props": {
+                          "href": "/docs/apps/borealis/search/search.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisSearchServ (apps/borealis/search/search.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-12",
+                        "props": {
+                          "href": "/docs/apps/carina/_shared/base-mfa.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BaseMfaService (apps/carina/_shared/base-mfa.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-13",
+                        "props": {
+                          "href": "/docs/apps/carina/activity/activity.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "ActivityServ (apps/carina/activity/activity.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-14",
+                        "props": {
+                          "href": "/docs/apps/carina/apikeys/apikeys.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaApiKeysServ (apps/carina/apikeys/apikeys.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-15",
+                        "props": {
+                          "href": "/docs/apps/carina/auth/auth.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaAuthServ (apps/carina/auth/auth.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-16",
+                        "props": {
+                          "href": "/docs/apps/carina/bookmarks/bookmarks.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaBookmarksServ (apps/carina/bookmarks/bookmarks.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-17",
+                        "props": {
+                          "href": "/docs/apps/carina/comments/comments.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaCommentsServ (apps/carina/comments/comments.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-18",
+                        "props": {
+                          "href": "/docs/apps/carina/connections/connections.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaConnectionsServ (apps/carina/connections/connections.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-19",
+                        "props": {
+                          "href": "/docs/apps/carina/favorites/favorites.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaFavoritesServ (apps/carina/favorites/favorites.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-20",
+                        "props": {
+                          "href": "/docs/apps/carina/friends/friends.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaFriendsServ (apps/carina/friends/friends.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-21",
+                        "props": {
+                          "href": "/docs/apps/carina/notifications/notifications.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaNotificationsServ (apps/carina/notifications/notifications.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-22",
+                        "props": {
+                          "href": "/docs/apps/carina/oauth/oauth.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaOAuthServ (apps/carina/oauth/oauth.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-23",
+                        "props": {
+                          "href": "/docs/apps/carina/public/public.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "PublicAssetsServ (apps/carina/public/public.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-24",
+                        "props": {
+                          "href": "/docs/apps/carina/qc/qc.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaQcServ (apps/carina/qc/qc.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-25",
+                        "props": {
+                          "href": "/docs/apps/carina/recommendations/recommendations.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaRecommendationsServ (apps/carina/recommendations/recommendations.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-26",
+                        "props": {
+                          "href": "/docs/apps/carina/users/users.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaUsersServ (apps/carina/users/users.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-27",
+                        "props": {
+                          "href": "/docs/apps/kiroshi/history/history.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "KiroshiHistoryServ (apps/kiroshi/history/history.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-28",
+                        "props": {
+                          "href": "/docs/apps/kiroshi/search/search.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "KiroshiSearchServ (apps/kiroshi/search/search.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-29",
+                        "props": {
+                          "href": "/docs/apps/kiroshi/settings/settings.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "KiroshiSettingsService (apps/kiroshi/settings/settings.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-30",
+                        "props": {
+                          "href": "/docs/apps/servarr/core/servarr.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "ServarrServ (apps/servarr/core/servarr.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-31",
+                        "props": {
+                          "href": "/docs/apps/servarr/extended/servarr-extended.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "ServarrExtendedServ (apps/servarr/extended/servarr-extended.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-32",
+                        "props": {
+                          "href": "/docs/apps/servarr/realtime/servarr-realtime.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "ServarrRealtimeServ (apps/servarr/realtime/servarr-realtime.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-33",
+                        "props": {
+                          "href": "/docs/core/email/email.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "EmailServiceImpl (core/email/email.serv.ts)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "4 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseService.constructor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(loggerName)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseService.clampPagination"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(pageRaw, limitRaw, defaultLimit = 20, maxLimit = 100)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "{ page: number; limit: number; skip: number }"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseService.isAdmin"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(permissions)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "boolean"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseService.assertOwnerOrAdmin"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(ownerId, callerId, permissions, resourceLabel = 'resource')"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseService-constructor",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/base/base.serv.ts-BaseService-constructor",
+                "title": "BaseService.constructor(loggerName)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BaseService_constructor_0_1",
+                    "kind": "step",
+                    "title": "Assign `this.logger`",
+                    "payload": "this.logger = new LogFactory(loggerName)",
+                    "payloadLanguage": "typescript"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseService-clampPagination",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/base/base.serv.ts-BaseService-clampPagination",
+                "title": "BaseService.clampPagination(pageRaw, limitRaw, defaultLimit = 20, maxLimit = 100)",
+                "description": "Clamps pagination query parameters into safe bounded integers.",
+                "steps": [
+                  {
+                    "id": "m_BaseService_clampPagination_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_BaseService_clampPagination_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_BaseService_clampPagination_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`",
+                    "payload": "const skip = page - 1 * limit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BaseService_clampPagination_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"page\": \"<page>\",\n  \"limit\": \"<limit>\",\n  \"skip\": \"<skip>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseService-isAdmin",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/base/base.serv.ts-BaseService-isAdmin",
+                "title": "BaseService.isAdmin(permissions)",
+                "description": "Checks whether a user's permission bitfield includes ADMINISTRATOR privileges.",
+                "steps": [
+                  {
+                    "id": "m_BaseService_isAdmin_0_1",
+                    "kind": "selection",
+                    "title": "`!permissions || permissions.length === 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`!permissions || permissions.length === 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BaseService_isAdmin_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BaseService_isAdmin_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`new IRISBitField(permissions).has(IRISFlags.ADMINISTRATOR)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseService-assertOwnerOrAdmin",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/base/base.serv.ts-BaseService-assertOwnerOrAdmin",
+                "title": "BaseService.assertOwnerOrAdmin(ownerId, callerId, permissions, resourceLabel = 'resource')",
+                "description": "Verifies that the authenticated caller owns a resource or holds ADMINISTRATOR privileges.",
+                "steps": [
+                  {
+                    "id": "m_BaseService_assertOwnerOrAdmin_0_1",
+                    "kind": "selection",
+                    "title": "`ownerId === callerId`",
+                    "selectionMode": "if_else",
+                    "condition": "`ownerId === callerId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BaseService_assertOwnerOrAdmin_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BaseService_assertOwnerOrAdmin_1_2",
+                    "kind": "selection",
+                    "title": "`this.isAdmin(permissions)`",
+                    "selectionMode": "if_else",
+                    "condition": "`this.isAdmin(permissions)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BaseService_assertOwnerOrAdmin_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BaseService_assertOwnerOrAdmin_2_3",
+                    "kind": "error",
+                    "code": "Forbidden",
+                    "httpStatus": 403,
+                    "message": "You do not have permission to modify this ${resourceLabel}."
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to modify this ${resourceLabel}."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

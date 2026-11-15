@@ -1,8 +1,8 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia } from 'elysia'
-import { carinaUsers } from '../../src/api/controllers/carina/users.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt } from '../../src/utils/auth-crypto'
+import { carinaUsers } from '../../src/apps/carina/users/users.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
 import { prisma } from '@NamelessLiberty/db'
 import { IRISFlags } from '@NamelessLiberty/permissions'
 

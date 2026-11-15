@@ -1,0 +1,2024 @@
+{
+  "id": "apps/borealis/providers/anilist.provider",
+  "title": "anilist.provider",
+  "description": "",
+  "icon": "IconBox",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/providers/anilist.provider.ts",
+    "relPath": "apps/borealis/providers/anilist.provider.ts",
+    "role": "Class",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 5
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconBox",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "anilist.provider"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Class"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/providers/anilist.provider.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "2 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/providers/index",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/providers/index.ts (AniListProvider)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/borealis/sync/media-preview.syncer",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/sync/media-preview.syncer.ts (AniListAnimeSearchPreview, AniListMangaSearchPreview)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "13 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.constructor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.getAppToken"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<string | null>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.waitForRateLimit"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<void>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.executeGraphQL"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query, variables)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<T>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.performGraphQLRequest"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query, variables)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<T>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.searchAnime"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query, limit = 25)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<AniListAnimeSearchPreview[]>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.searchManga"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query, limit = 25)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<AniListMangaSearchPreview[]>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.fetchAnime"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(anilistId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<AniListAnimePayload>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.fetchManga"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(anilistId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<AniListMangaPayload>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.fetchCharacter"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(anilistId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<AniListCharacterPayload | null>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.searchCharacters"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query, limit = 25)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<AniListCharacterPayload[]>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.fetchStaff"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(anilistId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<AniListStaffPayload | null>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "AniListProvider.searchStaff"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query, limit = 25)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<AniListStaffPayload[]>"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-getAppToken",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-getAppToken",
+                "title": "AniListProvider.getAppToken()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_getAppToken_0_1",
+                    "kind": "var_def",
+                    "title": "Define `clientId`, `clientSecret`",
+                    "payload": "const clientId = Bun.env.ANILIST_CLIENT_ID\nconst clientSecret = Bun.env.ANILIST_CLIENT_SECRET",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_getAppToken_1_2",
+                    "kind": "selection",
+                    "title": "`!clientId || !clientSecret`",
+                    "selectionMode": "if_else",
+                    "condition": "`!clientId || !clientSecret`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_getAppToken_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_getAppToken_2_3",
+                    "kind": "step",
+                    "title": "Calls `Date.now` and stores result as `now`"
+                  },
+                  {
+                    "id": "m_AniListProvider_getAppToken_3_4",
+                    "kind": "selection",
+                    "title": "`this.appToken && this.tokenExpiresAt > now + 60000`",
+                    "selectionMode": "if_else",
+                    "condition": "`this.appToken && this.tokenExpiresAt > now + 60000`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_getAppToken_3_4_then_0_4_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`this.appToken`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_getAppToken_4_5",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_AniListProvider_getAppToken_4_5_try_0_5_1",
+                        "kind": "step",
+                        "title": "Calls `fetch` and stores result as `res`"
+                      },
+                      {
+                        "id": "m_AniListProvider_getAppToken_4_5_try_1_5_2",
+                        "kind": "selection",
+                        "title": "`res.ok`",
+                        "selectionMode": "if_else",
+                        "condition": "`res.ok`",
+                        "thenBranch": [
+                          {
+                            "id": "m_AniListProvider_getAppToken_4_5_try_1_5_2_then_0_5_2_1",
+                            "kind": "var_def",
+                            "title": "Define `data`",
+                            "payload": "const data = (await res.json()) as { access_token: string; expires_in: number }",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_AniListProvider_getAppToken_4_5_try_1_5_2_then_1_5_2_2",
+                            "kind": "selection",
+                            "title": "`data.access_token`",
+                            "selectionMode": "if_else",
+                            "condition": "`data.access_token`",
+                            "thenBranch": [
+                              {
+                                "id": "m_AniListProvider_getAppToken_4_5_try_1_5_2_then_1_5_2_2_then_0_5_2_2_1",
+                                "kind": "step",
+                                "title": "Assign `this.appToken`",
+                                "payload": "this.appToken = data.access_token",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "m_AniListProvider_getAppToken_4_5_try_1_5_2_then_1_5_2_2_then_1_5_2_2_2",
+                                "kind": "step",
+                                "title": "Assign `this.tokenExpiresAt`",
+                                "payload": "this.tokenExpiresAt = now + (data.expires_in || 31536000) * 1000",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "m_AniListProvider_getAppToken_4_5_try_1_5_2_then_1_5_2_2_then_2_5_2_2_3",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`this.appToken`"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_AniListProvider_getAppToken_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`null`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-waitForRateLimit",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-waitForRateLimit",
+                "title": "AniListProvider.waitForRateLimit()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_waitForRateLimit_0_1",
+                    "kind": "step",
+                    "title": "Calls `Date.now` and stores result as `now`"
+                  },
+                  {
+                    "id": "m_AniListProvider_waitForRateLimit_1_2",
+                    "kind": "selection",
+                    "title": "`this.pauseUntil > now`",
+                    "selectionMode": "if_else",
+                    "condition": "`this.pauseUntil > now`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_waitForRateLimit_1_2_then_0_2_1",
+                        "kind": "var_def",
+                        "title": "Define `waitMs`",
+                        "payload": "const waitMs = this.pauseUntil - now",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_AniListProvider_waitForRateLimit_1_2_then_1_2_2",
+                        "kind": "selection",
+                        "title": "`waitMs > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`waitMs > 0`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_waitForRateLimit_2_3",
+                    "kind": "step",
+                    "title": "Calls `Date.now` and stores result as `currentNow`"
+                  },
+                  {
+                    "id": "m_AniListProvider_waitForRateLimit_3_4",
+                    "kind": "selection",
+                    "title": "`this.rateLimitRemaining <= 2 && this.rateLimitResetTimestamp > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`this.rateLimitRemaining <= 2 && this.rateLimitResetTimestamp > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_waitForRateLimit_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `waitMs`"
+                      },
+                      {
+                        "id": "m_AniListProvider_waitForRateLimit_3_4_then_1_4_2",
+                        "kind": "selection",
+                        "title": "`waitMs > 0 && waitMs < 120000`",
+                        "selectionMode": "if_else",
+                        "condition": "`waitMs > 0 && waitMs < 120000`",
+                        "thenBranch": [
+                          {
+                            "id": "m_AniListProvider_waitForRateLimit_3_4_then_1_4_2_then_0_4_2_1",
+                            "kind": "step",
+                            "title": "Calls `waitMs / 1000.toFixed` and stores result as `sec`"
+                          },
+                          {
+                            "id": "m_AniListProvider_waitForRateLimit_3_4_then_1_4_2_then_1_4_2_2",
+                            "kind": "step",
+                            "title": "Calls `Date.now` and stores result as `now2`"
+                          },
+                          {
+                            "id": "m_AniListProvider_waitForRateLimit_3_4_then_1_4_2_then_2_4_2_3",
+                            "kind": "selection",
+                            "title": "`now2 - this.last429LogTime > 4000`",
+                            "selectionMode": "if_else",
+                            "condition": "`now2 - this.last429LogTime > 4000`",
+                            "thenBranch": [
+                              {
+                                "id": "m_AniListProvider_waitForRateLimit_3_4_then_1_4_2_then_2_4_2_3_then_0_4_2_3_1",
+                                "kind": "step",
+                                "title": "Assign `this.last429LogTime`",
+                                "payload": "this.last429LogTime = now2",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "m_AniListProvider_waitForRateLimit_3_4_then_1_4_2_then_2_4_2_3_then_1_4_2_3_2",
+                                "kind": "warning",
+                                "code": "Warning",
+                                "message": "AniList threshold reached (remaining: ${this.rateLimitRemaining}). Pausing for ${sec}s..."
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_waitForRateLimit_4_5",
+                    "kind": "var_def",
+                    "title": "Define `elapsed`",
+                    "payload": "const elapsed = Date.now() - this.lastRequestTime",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_waitForRateLimit_5_6",
+                    "kind": "selection",
+                    "title": "`elapsed < this.minDelayMs`",
+                    "selectionMode": "if_else",
+                    "condition": "`elapsed < this.minDelayMs`",
+                    "thenBranch": [],
+                    "elseBranch": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-executeGraphQL",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-executeGraphQL",
+                "title": "AniListProvider.executeGraphQL(query, variables)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_executeGraphQL_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.requestQueue.then` and stores result as `queuePromise`"
+                  },
+                  {
+                    "id": "m_AniListProvider_executeGraphQL_1_2",
+                    "kind": "step",
+                    "title": "Assign `this.requestQueue`",
+                    "payload": "this.requestQueue = queuePromise.then(() => {}).catch(() => {})",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_executeGraphQL_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`queuePromise`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-performGraphQLRequest",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-performGraphQLRequest",
+                "title": "AniListProvider.performGraphQLRequest(query, variables)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.waitForRateLimit`"
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_1_2",
+                    "kind": "var_def",
+                    "title": "Define `headers`",
+                    "payload": "const headers: Record<string, string> = { 'Content-Type': 'application/json', Accept: 'application/json', 'User-Agent': 'IRIS-Platform/1.0 (https://iris.app)', }",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_2_3",
+                    "kind": "step",
+                    "title": "Calls `this.getAppToken` and stores result as `token`"
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_3_4",
+                    "kind": "selection",
+                    "title": "`token`",
+                    "selectionMode": "if_else",
+                    "condition": "`token`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Assign `headers['Authorization']`",
+                        "payload": "headers['Authorization'] = `Bearer ${token}`",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_4_5",
+                    "kind": "step",
+                    "title": "Calls `fetch` and stores result as `res`"
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_5_6",
+                    "kind": "step",
+                    "title": "Assign `this.lastRequestTime`",
+                    "payload": "this.lastRequestTime = Date.now()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_6_7",
+                    "kind": "step",
+                    "title": "Calls `res.headers.get` and stores result as `remainingHeader`"
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_7_8",
+                    "kind": "step",
+                    "title": "Calls `res.headers.get` and stores result as `resetHeader`"
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_8_9",
+                    "kind": "selection",
+                    "title": "`remainingHeader !== null`",
+                    "selectionMode": "if_else",
+                    "condition": "`remainingHeader !== null`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_8_9_then_0_9_1",
+                        "kind": "step",
+                        "title": "Calls `parseInt` and stores result as `parsedRemaining`"
+                      },
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_8_9_then_1_9_2",
+                        "kind": "selection",
+                        "title": "`!isNaN(parsedRemaining)`",
+                        "selectionMode": "if_else",
+                        "condition": "`!isNaN(parsedRemaining)`",
+                        "thenBranch": [
+                          {
+                            "id": "m_AniListProvider_performGraphQLRequest_8_9_then_1_9_2_then_0_9_2_1",
+                            "kind": "step",
+                            "title": "Assign `this.rateLimitRemaining`",
+                            "payload": "this.rateLimitRemaining = parsedRemaining",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_9_10",
+                    "kind": "selection",
+                    "title": "`resetHeader !== null`",
+                    "selectionMode": "if_else",
+                    "condition": "`resetHeader !== null`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_9_10_then_0_10_1",
+                        "kind": "step",
+                        "title": "Calls `parseInt` and stores result as `parsedReset`"
+                      },
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_9_10_then_1_10_2",
+                        "kind": "selection",
+                        "title": "`!isNaN(parsedReset)`",
+                        "selectionMode": "if_else",
+                        "condition": "`!isNaN(parsedReset)`",
+                        "thenBranch": [
+                          {
+                            "id": "m_AniListProvider_performGraphQLRequest_9_10_then_1_10_2_then_0_10_2_1",
+                            "kind": "step",
+                            "title": "Assign `this.rateLimitResetTimestamp`",
+                            "payload": "this.rateLimitResetTimestamp = parsedReset",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_10_11",
+                    "kind": "selection",
+                    "title": "`res.status === 429`",
+                    "selectionMode": "if_else",
+                    "condition": "`res.status === 429`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_10_11_then_0_11_1",
+                        "kind": "var_def",
+                        "title": "Define `retryAfter`",
+                        "payload": "const retryAfter = Number(res.headers.get('Retry-After')) || 60",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_10_11_then_1_11_2",
+                        "kind": "step",
+                        "title": "Assign `this.pauseUntil`",
+                        "payload": "this.pauseUntil = Date.now() + retryAfter * 1000",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_10_11_then_2_11_3",
+                        "kind": "warning",
+                        "code": "Warning",
+                        "message": "AniList HTTP 429. Pausing for ${retryAfter}s..."
+                      },
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_10_11_then_3_11_4",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`this.performGraphQLRequest(query, variables)`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_11_12",
+                    "kind": "selection",
+                    "title": "`!res.ok`",
+                    "selectionMode": "if_else",
+                    "condition": "`!res.ok`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_11_12_then_0_12_1",
+                        "kind": "step",
+                        "title": "Calls `res.text` and stores result as `text`"
+                      },
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_11_12_then_1_12_2",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "AniList GraphQL failed HTTP ${res.status}: ${text}"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_12_13",
+                    "kind": "var_def",
+                    "title": "Define `json`",
+                    "payload": "const json = (await res.json()) as { data?: T; errors?: Array<{ message: string }> }",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_13_14",
+                    "kind": "selection",
+                    "title": "`json.errors && json.errors.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`json.errors && json.errors.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_13_14_then_0_14_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "AniList GraphQL Error: ${json.errors[0]?.message || 'Unknown error'}"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_14_15",
+                    "kind": "selection",
+                    "title": "`!json.data`",
+                    "selectionMode": "if_else",
+                    "condition": "`!json.data`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_performGraphQLRequest_14_15_then_0_15_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "AniList GraphQL response contained no data payload"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_performGraphQLRequest_15_16",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`json.data`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-searchAnime",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-searchAnime",
+                "title": "AniListProvider.searchAnime(query, limit = 25)",
+                "description": "Searches AniList for anime by title/query and returns minimal search preview items.",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_searchAnime_0_1",
+                    "kind": "var_def",
+                    "title": "Define `clean`",
+                    "payload": "const clean = query.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_searchAnime_1_2",
+                    "kind": "selection",
+                    "title": "`!clean`",
+                    "selectionMode": "if_else",
+                    "condition": "`!clean`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_searchAnime_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_searchAnime_2_3",
+                    "kind": "var_def",
+                    "title": "Define `gqlQuery`",
+                    "payload": "const gqlQuery = ` query SearchAnime($search: String, $perPage: Int) { Page(page: 1, perPage: $perPage) { media(search: $search, type: ANIME, sort: SEARCH_MATCH) { id title { userPreferred ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_searchAnime_3_4",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_AniListProvider_searchAnime_3_4_try_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `this.executeGraphQL` and stores result as `data`"
+                      },
+                      {
+                        "id": "m_AniListProvider_searchAnime_3_4_try_1_4_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`data.Page?.media || []`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_AniListProvider_searchAnime_3_4_catch_0_5_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      },
+                      {
+                        "id": "m_AniListProvider_searchAnime_3_4_catch_1_5_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-searchManga",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-searchManga",
+                "title": "AniListProvider.searchManga(query, limit = 25)",
+                "description": "Searches AniList for manga by title/query and returns minimal search preview items.",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_searchManga_0_1",
+                    "kind": "var_def",
+                    "title": "Define `clean`",
+                    "payload": "const clean = query.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_searchManga_1_2",
+                    "kind": "selection",
+                    "title": "`!clean`",
+                    "selectionMode": "if_else",
+                    "condition": "`!clean`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_searchManga_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_searchManga_2_3",
+                    "kind": "var_def",
+                    "title": "Define `gqlQuery`",
+                    "payload": "const gqlQuery = ` query SearchManga($search: String, $perPage: Int) { Page(page: 1, perPage: $perPage) { media(search: $search, type: MANGA, sort: SEARCH_MATCH) { id title { userPreferred ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_searchManga_3_4",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_AniListProvider_searchManga_3_4_try_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `this.executeGraphQL` and stores result as `data`"
+                      },
+                      {
+                        "id": "m_AniListProvider_searchManga_3_4_try_1_4_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`data.Page?.media || []`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_AniListProvider_searchManga_3_4_catch_0_5_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      },
+                      {
+                        "id": "m_AniListProvider_searchManga_3_4_catch_1_5_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-fetchAnime",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-fetchAnime",
+                "title": "AniListProvider.fetchAnime(anilistId)",
+                "description": "Fetches rich anime details from AniList by ID.",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_fetchAnime_0_1",
+                    "kind": "var_def",
+                    "title": "Define `query`",
+                    "payload": "const query = ` query GetAnimeDetails($id: Int) { Media(id: $id, type: ANIME) { id idMal updatedAt title { ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_fetchAnime_1_2",
+                    "kind": "step",
+                    "title": "Calls `this.executeGraphQL` and stores result as `data`"
+                  },
+                  {
+                    "id": "m_AniListProvider_fetchAnime_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`data.Media`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-fetchManga",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-fetchManga",
+                "title": "AniListProvider.fetchManga(anilistId)",
+                "description": "Fetches rich manga details from AniList by ID.",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_fetchManga_0_1",
+                    "kind": "var_def",
+                    "title": "Define `query`",
+                    "payload": "const query = ` query GetMangaDetails($id: Int) { Media(id: $id, type: MANGA) { id idMal updatedAt title { ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_fetchManga_1_2",
+                    "kind": "step",
+                    "title": "Calls `this.executeGraphQL` and stores result as `data`"
+                  },
+                  {
+                    "id": "m_AniListProvider_fetchManga_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`data.Media`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-fetchCharacter",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-fetchCharacter",
+                "title": "AniListProvider.fetchCharacter(anilistId)",
+                "description": "Fetches character details from AniList by ID with medium & large images.",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_fetchCharacter_0_1",
+                    "kind": "var_def",
+                    "title": "Define `query`",
+                    "payload": "const query = ` query GetCharacterDetails($id: Int) { Character(id: $id) { id name { full native ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_fetchCharacter_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_AniListProvider_fetchCharacter_1_2_try_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `this.executeGraphQL` and stores result as `data`"
+                      },
+                      {
+                        "id": "m_AniListProvider_fetchCharacter_1_2_try_1_2_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`data.Character || null`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_AniListProvider_fetchCharacter_1_2_catch_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      },
+                      {
+                        "id": "m_AniListProvider_fetchCharacter_1_2_catch_1_3_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-searchCharacters",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-searchCharacters",
+                "title": "AniListProvider.searchCharacters(query, limit = 25)",
+                "description": "Searches AniList for characters by name/query with medium & large images.",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_searchCharacters_0_1",
+                    "kind": "var_def",
+                    "title": "Define `clean`",
+                    "payload": "const clean = query.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_searchCharacters_1_2",
+                    "kind": "selection",
+                    "title": "`!clean`",
+                    "selectionMode": "if_else",
+                    "condition": "`!clean`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_searchCharacters_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_searchCharacters_2_3",
+                    "kind": "var_def",
+                    "title": "Define `gqlQuery`",
+                    "payload": "const gqlQuery = ` query SearchCharacters($search: String, $perPage: Int) { Page(page: 1, perPage: $perPage) { characters(search: $search, sort: SEARCH_MATCH) { id name { full ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_searchCharacters_3_4",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_AniListProvider_searchCharacters_3_4_try_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `this.executeGraphQL` and stores result as `data`"
+                      },
+                      {
+                        "id": "m_AniListProvider_searchCharacters_3_4_try_1_4_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`data.Page?.characters || []`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_AniListProvider_searchCharacters_3_4_catch_0_5_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      },
+                      {
+                        "id": "m_AniListProvider_searchCharacters_3_4_catch_1_5_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-fetchStaff",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-fetchStaff",
+                "title": "AniListProvider.fetchStaff(anilistId)",
+                "description": "Fetches staff details from AniList by ID with medium & large images.",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_fetchStaff_0_1",
+                    "kind": "var_def",
+                    "title": "Define `query`",
+                    "payload": "const query = ` query GetStaffDetails($id: Int) { Staff(id: $id) { id name { full native ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_fetchStaff_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_AniListProvider_fetchStaff_1_2_try_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `this.executeGraphQL` and stores result as `data`"
+                      },
+                      {
+                        "id": "m_AniListProvider_fetchStaff_1_2_try_1_2_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`data.Staff || null`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_AniListProvider_fetchStaff_1_2_catch_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      },
+                      {
+                        "id": "m_AniListProvider_fetchStaff_1_2_catch_1_3_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-AniListProvider-searchStaff",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/anilist.provider.ts-AniListProvider-searchStaff",
+                "title": "AniListProvider.searchStaff(query, limit = 25)",
+                "description": "Searches AniList for staff/people by name/query with medium & large images.",
+                "steps": [
+                  {
+                    "id": "m_AniListProvider_searchStaff_0_1",
+                    "kind": "var_def",
+                    "title": "Define `clean`",
+                    "payload": "const clean = query.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_searchStaff_1_2",
+                    "kind": "selection",
+                    "title": "`!clean`",
+                    "selectionMode": "if_else",
+                    "condition": "`!clean`",
+                    "thenBranch": [
+                      {
+                        "id": "m_AniListProvider_searchStaff_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_AniListProvider_searchStaff_2_3",
+                    "kind": "var_def",
+                    "title": "Define `gqlQuery`",
+                    "payload": "const gqlQuery = ` query SearchStaff($search: String, $perPage: Int) { Page(page: 1, perPage: $perPage) { staff(search: $search, sort: SEARCH_MATCH) { id name { full ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_AniListProvider_searchStaff_3_4",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_AniListProvider_searchStaff_3_4_try_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `this.executeGraphQL` and stores result as `data`"
+                      },
+                      {
+                        "id": "m_AniListProvider_searchStaff_3_4_try_1_4_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`data.Page?.staff || []`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_AniListProvider_searchStaff_3_4_catch_0_5_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      },
+                      {
+                        "id": "m_AniListProvider_searchStaff_3_4_catch_1_5_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "5 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "AniList threshold reached (remaining: ${this.rateLimitRemaining}). Pausing for ${sec}s..."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "AniList HTTP 429. Pausing for ${retryAfter}s..."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "AniList GraphQL failed HTTP ${res.status}: ${text}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "AniList GraphQL Error: ${json.errors[0]?.message || 'Unknown error'}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "AniList GraphQL response contained no data payload"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

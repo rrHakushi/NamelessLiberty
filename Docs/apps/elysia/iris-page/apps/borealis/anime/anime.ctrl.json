@@ -1,0 +1,4172 @@
+{
+  "id": "apps/borealis/anime/anime.ctrl",
+  "title": "Get anime catalog",
+  "description": "Retrieves paginated anime catalog with cursor or page, supporting comprehensive multi-field filtering.",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/",
+    "relPath": "apps/borealis/anime/anime.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/",
+      "/filters",
+      "/:animeId",
+      "/:animeId/refresh",
+      "/:animeId/similar",
+      "/:animeId/relations",
+      "/:animeId/characters",
+      "/:animeId/staff",
+      "/:animeId/episodes",
+      "/:animeId/images",
+      "/:animeId/stats",
+      "/:animeId/friends",
+      "/:animeId/people",
+      "/:animeId/recommendations"
+    ],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Get anime catalog"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              },
+              {
+                "type": "CardDescription",
+                "props": {
+                  "className": "text-start pt-1"
+                },
+                "text": "Retrieves paginated anime catalog with cursor or page, supporting comprehensive multi-field filtering."
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/filters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId/refresh"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-4",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId/similar"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-5",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId/relations"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-6",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId/characters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-7",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId/staff"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-8",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId/episodes"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-9",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId/images"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-10",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId/stats"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-11",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId/friends"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-12",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId/people"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-13",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:animeId/recommendations"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_3)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "55 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET / · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.catalogQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET / · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.catalogResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET / · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /filters · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.filtersResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.detailResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:animeId/refresh · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:animeId/refresh · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.refreshResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:animeId/refresh · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:animeId/refresh · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:animeId/refresh · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/similar · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/similar · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.similarQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/similar · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.similarResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/similar · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/similar · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/relations · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/relations · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.relationsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/relations · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/relations · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/characters · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-23",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/characters · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.charactersResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-24",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/characters · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-25",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/characters · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-26",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/staff · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-27",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/staff · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.staffResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-28",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/staff · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-29",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/staff · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-30",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/episodes · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-31",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/episodes · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.episodesResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-32",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/episodes · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-33",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/episodes · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-34",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/images · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-35",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/images · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.imagesResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-36",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/images · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-37",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/images · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-38",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/stats · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-39",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/stats · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.statsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-40",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/stats · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-41",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/stats · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-42",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/friends · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-43",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/friends · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.friendsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-44",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/friends · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-45",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/friends · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-46",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/people · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-47",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/people · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.peopleQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-48",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/people · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.peopleResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-49",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/people · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-50",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/people · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-51",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/recommendations · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-52",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/recommendations · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.recommendationsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-53",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/recommendations · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-54",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:animeId/recommendations · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisAnimeModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-0",
+                "title": "GET /",
+                "description": "Get anime catalog",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `BorealisAnimeModel.catalogQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getCatalog(query)`"
+                  },
+                  {
+                    "id": "call_0_BorealisAnimeServ_getCatalog",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getCatalog",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getCatalog"
+                  },
+                  {
+                    "id": "svc_0_BorealisAnimeServ_getCatalog",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getCatalog Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_2_3",
+                        "kind": "var_def",
+                        "title": "Define `skip`, `search`",
+                        "payload": "const skip = query?.cursor ? 0 : (page - 1) * limit\nconst search = query?.search?.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_3_4",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `genres`"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_4_5",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `tags`"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_5_6",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `formats`"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_6_7",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `statuses`"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_7_8",
+                        "kind": "var_def",
+                        "title": "Define `years`, `season`, `sortBy`, `sortOrder`",
+                        "payload": "const years = parseList(query?.years).map((y) => Number(y)).filter((y) => !isNaN(y))\nconst season = query?.season?.trim()\nconst sortBy = query?.sortBy ?? 'popularity'\nconst sortOrder = query?.sortOrder ?? sortBy === 'title' ? 'asc' : 'desc'",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_8_9",
+                        "kind": "step",
+                        "title": "Database `query` on `Anime` and stores it as `q`"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_9_10",
+                        "kind": "selection",
+                        "title": "`search`",
+                        "selectionMode": "if_else",
+                        "condition": "`search`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisAnimeServ_getCatalog_9_10_then_0_10_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => or( m.titlePrimary.ilike(`%${search}%`), m.titleSecondary.ilike(`%${search}%`), m.titleNative.ilike(`%${search}%`) ) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_10_11",
+                        "kind": "selection",
+                        "title": "`genres.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`genres.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisAnimeServ_getCatalog_10_11_then_0_11_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.genres.some((g) => g.genre.some((ge) => ge.name.in(genres))) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_11_12",
+                        "kind": "selection",
+                        "title": "`tags.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`tags.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisAnimeServ_getCatalog_11_12_then_0_12_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.tags.some((t) => t.tag.some((te) => te.name.in(tags))) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_12_13",
+                        "kind": "selection",
+                        "title": "`formats.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`formats.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisAnimeServ_getCatalog_12_13_then_0_13_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.format.in(formats as any))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_13_14",
+                        "kind": "selection",
+                        "title": "`statuses.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`statuses.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisAnimeServ_getCatalog_13_14_then_0_14_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.status.in(statuses as any))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_14_15",
+                        "kind": "selection",
+                        "title": "`years.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`years.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisAnimeServ_getCatalog_14_15_then_0_15_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.seasonYear.in(years))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_15_16",
+                        "kind": "selection",
+                        "title": "`season`",
+                        "selectionMode": "if_else",
+                        "condition": "`season`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisAnimeServ_getCatalog_15_16_then_0_16_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where({ seasonSeason: season as any })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_16_17",
+                        "kind": "selection",
+                        "title": "`query?.cursor`",
+                        "selectionMode": "if_else",
+                        "condition": "`query?.cursor`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisAnimeServ_getCatalog_16_17_then_0_17_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => sortOrder === 'asc' ? m.id.gt(query.cursor!) : m.id.lt(query.cursor!) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_17_18",
+                        "kind": "var_def",
+                        "title": "Define `itemsQ`",
+                        "payload": "let itemsQ = q",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_18_19",
+                        "kind": "selection",
+                        "title": "`sortBy === 'score'`",
+                        "selectionMode": "if_else",
+                        "condition": "`sortBy === 'score'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisAnimeServ_getCatalog_18_19_then_0_19_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.averageScore.asc() : x.averageScore.desc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "svc_0_BorealisAnimeServ_getCatalog_18_19_else_0_20_1",
+                            "kind": "selection",
+                            "title": "`sortBy === 'title'`",
+                            "selectionMode": "if_else",
+                            "condition": "`sortBy === 'title'`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_0_BorealisAnimeServ_getCatalog_18_19_else_0_20_1_then_0_20_1_1",
+                                "kind": "step",
+                                "title": "Assign `itemsQ`",
+                                "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.titlePrimary.asc() : x.titlePrimary.desc() )",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "svc_0_BorealisAnimeServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1",
+                                "kind": "selection",
+                                "title": "`sortBy === 'releaseDate'`",
+                                "selectionMode": "if_else",
+                                "condition": "`sortBy === 'releaseDate'`",
+                                "thenBranch": [
+                                  {
+                                    "id": "svc_0_BorealisAnimeServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_then_0_20_2_1_1",
+                                    "kind": "step",
+                                    "title": "Assign `itemsQ`",
+                                    "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.seasonYear.asc() : x.seasonYear.desc() )",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "svc_0_BorealisAnimeServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_else_0_20_2_2_1",
+                                    "kind": "selection",
+                                    "title": "`sortBy === 'trending' || sortBy === 'favorites'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`sortBy === 'trending' || sortBy === 'favorites'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "svc_0_BorealisAnimeServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_else_0_20_2_2_1_then_0_20_2_2_1_1",
+                                        "kind": "step",
+                                        "title": "Assign `itemsQ`",
+                                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.favorites.asc() : x.favorites.desc() )",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ],
+                                    "elseBranch": [
+                                      {
+                                        "id": "svc_0_BorealisAnimeServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_else_0_20_2_2_1_else_0_20_2_2_2_1",
+                                        "kind": "selection",
+                                        "title": "`sortBy === 'updatedAt'`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`sortBy === 'updatedAt'`",
+                                        "thenBranch": [
+                                          {
+                                            "id": "svc_0_BorealisAnimeServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_else_0_20_2_2_1_else_0_20_2_2_2_1_then_0_20_2_2_2_1_1",
+                                            "kind": "step",
+                                            "title": "Assign `itemsQ`",
+                                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.updatedAt.asc() : x.updatedAt.desc() )",
+                                            "payloadLanguage": "typescript"
+                                          }
+                                        ],
+                                        "elseBranch": [
+                                          {
+                                            "id": "svc_0_BorealisAnimeServ_getCatalog_18_19_else_0_20_1_else_0_20_2_1_else_0_20_2_2_1_else_0_20_2_2_2_1_else_0_20_2_2_2_2_1",
+                                            "kind": "step",
+                                            "title": "Assign `itemsQ`",
+                                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.popularity.asc() : x.popularity.desc() )",
+                                            "payloadLanguage": "typescript"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_20_21",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, rawItems]`"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_21_22",
+                        "kind": "var_def",
+                        "title": "Define `items`, `hasMore`",
+                        "payload": "const items = rawItems.map((x) => ({ id: x.id, titlePrimary: x.titlePrimary, titleSecondary: x.titleSecondary ?? null, titleNative: x.titleNative ?? null, coverImage: x.coverImage ?? null, bannerImage: x.bannerImage ?? null, ...)\nconst hasMore = skip + items.length < total",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisAnimeServ_getCatalog_22_23",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"items\": \"<items>\",\n  \"nextCursor\": \"<hasMore ? (items[items.length - 1]?.id ?? null) : null>\",\n  \"hasMore\": \"<hasMore>\",\n  \"total\": \"<total>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-1",
+                "title": "GET /filters",
+                "description": "Get anime catalog filters",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getFilters()`"
+                  },
+                  {
+                    "id": "call_1_BorealisAnimeServ_getFilters",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getFilters",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getFilters"
+                  },
+                  {
+                    "id": "svc_1_BorealisAnimeServ_getFilters",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getFilters Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_BorealisAnimeServ_getFilters_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Anime` and stores it as `[allAnime, allGenres]`"
+                      },
+                      {
+                        "id": "svc_1_BorealisAnimeServ_getFilters_1_2",
+                        "kind": "var_def",
+                        "title": "Define `statusCounts`, `formatCounts`, `yearCounts`, `seasonCounts`",
+                        "payload": "const statusCounts: Record<string, number> = {}\nconst formatCounts: Record<string, number> = {}\nconst yearCounts: Record<number, number> = {}\nconst seasonCounts: Record<string, number> = {}",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_BorealisAnimeServ_getFilters_2_3",
+                        "kind": "iteration",
+                        "title": "Iterate `const a` over `allAnime`",
+                        "loopType": "while",
+                        "condition": "Iterate `const a` over `allAnime`",
+                        "children": [
+                          {
+                            "id": "svc_1_BorealisAnimeServ_getFilters_2_3_loop_0_3_1",
+                            "kind": "selection",
+                            "title": "`a.status`",
+                            "selectionMode": "if_else",
+                            "condition": "`a.status`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_BorealisAnimeServ_getFilters_2_3_loop_0_3_1_then_0_3_1_1",
+                                "kind": "step",
+                                "title": "Assign `statusCounts[a.status]`",
+                                "payload": "statusCounts[a.status] = (statusCounts[a.status] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_BorealisAnimeServ_getFilters_2_3_loop_1_3_2",
+                            "kind": "selection",
+                            "title": "`a.format`",
+                            "selectionMode": "if_else",
+                            "condition": "`a.format`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_BorealisAnimeServ_getFilters_2_3_loop_1_3_2_then_0_3_2_1",
+                                "kind": "step",
+                                "title": "Assign `formatCounts[a.format]`",
+                                "payload": "formatCounts[a.format] = (formatCounts[a.format] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_BorealisAnimeServ_getFilters_2_3_loop_2_3_3",
+                            "kind": "selection",
+                            "title": "`a.seasonYear`",
+                            "selectionMode": "if_else",
+                            "condition": "`a.seasonYear`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_BorealisAnimeServ_getFilters_2_3_loop_2_3_3_then_0_3_3_1",
+                                "kind": "step",
+                                "title": "Assign `yearCounts[a.seasonYear]`",
+                                "payload": "yearCounts[a.seasonYear] = (yearCounts[a.seasonYear] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_BorealisAnimeServ_getFilters_2_3_loop_3_3_4",
+                            "kind": "selection",
+                            "title": "`a.seasonSeason`",
+                            "selectionMode": "if_else",
+                            "condition": "`a.seasonSeason`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_BorealisAnimeServ_getFilters_2_3_loop_3_3_4_then_0_3_4_1",
+                                "kind": "step",
+                                "title": "Assign `seasonCounts[a.seasonSeason]`",
+                                "payload": "seasonCounts[a.seasonSeason] = (seasonCounts[a.seasonSeason] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_1_BorealisAnimeServ_getFilters_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"statuses\": \"<Object.entries(statusCounts).map(([value, count]) => ({ value, count }))>\",\n  \"formats\": \"<Object.entries(formatCounts).map(([value, count]) => ({ value, count }))>\",\n  \"genres\": \"<allGenres.map((g: any) => ({ value: g.name, count: g.anime ?? 0 }))>\",\n  \"tags\": [],\n  \"years\": \"<Object.entries(yearCounts).map(([value, count]) => ({ value: Number(value), count })).sort((a, b) => b.value - a.value)>\",\n  \"seasons\": \"<Object.entries(seasonCounts).map(([value, count]) => ({ value, count }))>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-2",
+                "title": "GET /:animeId",
+                "description": "Get anime overview",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getById(animeId)`"
+                  },
+                  {
+                    "id": "call_2_BorealisAnimeServ_getById",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getById",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getById"
+                  },
+                  {
+                    "id": "svc_2_BorealisAnimeServ_getById",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getById Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_BorealisAnimeServ_getById_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Anime` and stores it as `load`"
+                      },
+                      {
+                        "id": "svc_2_BorealisAnimeServ_getById_1_2",
+                        "kind": "step",
+                        "title": "Calls `load` and stores result as `anime`"
+                      },
+                      {
+                        "id": "svc_2_BorealisAnimeServ_getById_2_3",
+                        "kind": "selection",
+                        "title": "`!anime`",
+                        "selectionMode": "if_else",
+                        "condition": "`!anime`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_BorealisAnimeServ_getById_2_3_then_0_3_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Anime with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_BorealisAnimeServ_getById_3_4",
+                        "kind": "selection",
+                        "title": "`anime.alUpdatedAt == null && anime.anilistId`",
+                        "selectionMode": "if_else",
+                        "condition": "`anime.alUpdatedAt == null && anime.anilistId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_BorealisAnimeServ_getById_3_4_then_0_4_1",
+                            "kind": "step",
+                            "title": "Calls `MediaEntitySyncer.syncAnime(id, anime.anilistId).catch`"
+                          },
+                          {
+                            "id": "svc_2_BorealisAnimeServ_getById_3_4_then_1_4_2",
+                            "kind": "step",
+                            "title": "Assign `anime`",
+                            "payload": "anime = (await load()) ?? anime",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_BorealisAnimeServ_getById_4_5",
+                        "kind": "step",
+                        "title": "Calls `MediaQueueManager.queueIfStale`"
+                      },
+                      {
+                        "id": "svc_2_BorealisAnimeServ_getById_5_6",
+                        "kind": "step",
+                        "title": "Calls `fetchTopCharacters` and stores result as `characters`"
+                      },
+                      {
+                        "id": "svc_2_BorealisAnimeServ_getById_6_7",
+                        "kind": "var_def",
+                        "title": "Define `a`",
+                        "payload": "const a: any = anime",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_BorealisAnimeServ_getById_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"media\": {\n    \"id\": \"<a.id>\",\n    \"anilistId\": \"<a.anilistId ?? null>\",\n    \"malId\": \"<a.malId ?? null>\",\n    \"aniDBId\": \"<a.aniDBId ?? null>\",\n    \"tvDBId\": \"<a.tvDBId ?? null>\",\n    \"bangumiId\": \"<a.bangumiId ?? null>\",\n    \"kitsuId\": \"<a.kitsuId ?? null>\",\n    \"titlePrimary\": \"<a.titlePrimary>\",\n    \"titleSecondary\": \"<a.titleSecondary ?? null>\",\n    \"titleNative\": \"<a.titleNative ?? null>\",\n    \"coverImage\": \"<a.coverImage ?? null>\",\n    \"bannerImage\": \"<a.bannerImage ?? null>\",\n    \"description\": \"<a.description ?? null>\",\n    \"hashtag\": \"<a.hashtag ?? null>\",\n    \"countryOfOrigin\": \"<a.countryOfOrigin ?? null>\",\n    \"episodeCount\": \"<a.episodeCount ?? null>\",\n    \"episodeDuration\": \"<a.episodeDuration ?? null>\",\n    \"startDateYear\": \"<a.startDateYear ?? null>\",\n    \"startDateMonth\": \"<a.startDateMonth ?? null>\",\n    \"startDateDay\": \"<a.startDateDay ?? null>\",\n    \"endDateYear\": \"<a.endDateYear ?? null>\",\n    \"endDateMonth\": \"<a.endDateMonth ?? null>\",\n    \"endDateDay\": \"<a.endDateDay ?? null>\",\n    \"genres\": \"<a.genres || [].filter((g: any) => Boolean(g.genre)).map((g: any) => g.genre!)>\",\n    \"tags\": \"<a.tags || [].filter((t: any) => Boolean(t.tag)).map((t: any) => t.tag!)>\",\n    \"source\": \"<a.source>\",\n    \"format\": \"<a.format>\",\n    \"status\": \"<a.status>\",\n    \"seasonSeason\": \"<a.seasonSeason>\",\n    \"seasonYear\": \"<a.seasonYear ?? null>\",\n    \"averageScore\": \"<a.averageScore ?? null>\",\n    \"favorites\": \"<a.favorites>\",\n    \"popularity\": \"<a.popularity>\",\n    \"isAdult\": \"<a.isAdult>\",\n    \"synonyms\": \"<a.synonyms ?? []>\",\n    \"themeSongs\": \"<a.themeSongs ?? null>\",\n    \"ageRating\": \"<a.ageRating ?? null>\",\n    \"ageRatingGuide\": \"<a.ageRatingGuide ?? null>\",\n    \"nextAiringEpisodeNumber\": \"<a.nextAiringEpisodeNumber ?? null>\",\n    \"nextAiringAt\": \"<a.nextAiringAt ?? null>\",\n    \"updatedAt\": \"<a.updatedAt>\",\n    \"studios\": \"<a.studios || [].filter((s: any) => Boolean(s.studio)).map((s: any) => ({ id: s.id ?? s.studio!.id, isMain: Boolean(s.isMain), studio: s.studio!, }))>\",\n    \"trailers\": \"<a.trailers ?? null>\",\n    \"externalLinks\": \"<a.externalLinks ?? null>\",\n    \"sources\": \"<a.sources ?? null>\",\n    \"characters\": \"<characters>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-3",
+                "title": "POST /:animeId/refresh",
+                "description": "Refresh anime metadata",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser`"
+                  },
+                  {
+                    "id": "route_3_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.refresh(animeId)`"
+                  },
+                  {
+                    "id": "call_3_BorealisAnimeServ_refresh",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.refresh",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.refresh"
+                  },
+                  {
+                    "id": "svc_3_BorealisAnimeServ_refresh",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.refresh Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_BorealisAnimeServ_refresh_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Anime` and stores it as `anime`"
+                      },
+                      {
+                        "id": "svc_3_BorealisAnimeServ_refresh_1_2",
+                        "kind": "selection",
+                        "title": "`!anime`",
+                        "selectionMode": "if_else",
+                        "condition": "`!anime`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_BorealisAnimeServ_refresh_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Anime with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_BorealisAnimeServ_refresh_2_3",
+                        "kind": "step",
+                        "title": "Database `update` on `Anime`"
+                      },
+                      {
+                        "id": "svc_3_BorealisAnimeServ_refresh_3_4",
+                        "kind": "step",
+                        "title": "Calls `MediaQueueManager.enqueueMediaUpdate('ANIME', id, { externalId: anime.anilistId, priority: 1, depth: 0, maxDepth: 0, triggeredBy: 'manual', forceRefresh: true, ...).catch`"
+                      },
+                      {
+                        "id": "svc_3_BorealisAnimeServ_refresh_4_5",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"<`Metadata refresh requested for \\\"${anime.titlePrimary}\\\"`>\",\n  \"timestamp\": \"<new Date().toISOString()>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-4",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-4",
+                "title": "GET /:animeId/similar",
+                "description": "Get similar anime",
+                "steps": [
+                  {
+                    "id": "route_4_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`, query: `BorealisAnimeModel.similarQuery`"
+                  },
+                  {
+                    "id": "route_4_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getSimilar(animeId, query?.limit)`"
+                  },
+                  {
+                    "id": "call_4_BorealisAnimeServ_getSimilar",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getSimilar",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getSimilar"
+                  },
+                  {
+                    "id": "svc_4_BorealisAnimeServ_getSimilar",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getSimilar Flow",
+                    "children": [
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Anime` and stores it as `source`"
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_1_2",
+                        "kind": "selection",
+                        "title": "`!source`",
+                        "selectionMode": "if_else",
+                        "condition": "`!source`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_BorealisAnimeServ_getSimilar_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Anime with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_2_3",
+                        "kind": "var_def",
+                        "title": "Define `sourceGenres`, `sourceTags`, `sourceGenreIds`, `sourceTagIds`, `sourceStudioIds`",
+                        "payload": "const sourceGenres = source.genres || [].filter((g: any) => Boolean(g.genre)).map((g: any) => g.genre!)\nconst sourceTags = source.tags || [].filter((t: any) => Boolean(t.tag)).map((t: any) => t.tag!)\nconst sourceGenreIds = new Set(sourceGenres.map((g: any) => g.id))\nconst sourceTagIds = new Set(sourceTags.map((t: any) => t.id))\nconst sourceStudioIds = new Set(source.studios.map((s) => s.studioId))",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_3_4",
+                        "kind": "step",
+                        "title": "Database `query` on `Anime` and stores it as `candidatesQ`"
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_4_5",
+                        "kind": "var_def",
+                        "title": "Define `conds`",
+                        "payload": "const conds: any[] = []",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_5_6",
+                        "kind": "selection",
+                        "title": "`sourceGenreIds.size > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`sourceGenreIds.size > 0`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_6_7",
+                        "kind": "selection",
+                        "title": "`sourceTagIds.size > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`sourceTagIds.size > 0`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_7_8",
+                        "kind": "selection",
+                        "title": "`sourceStudioIds.size > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`sourceStudioIds.size > 0`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_8_9",
+                        "kind": "selection",
+                        "title": "`source.format`",
+                        "selectionMode": "if_else",
+                        "condition": "`source.format`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_9_10",
+                        "kind": "selection",
+                        "title": "`conds.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`conds.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_BorealisAnimeServ_getSimilar_9_10_then_0_10_1",
+                            "kind": "step",
+                            "title": "Assign `candidatesQ`",
+                            "payload": "candidatesQ = candidatesQ.where((a) => or(...conds.map((c) => c(a))))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_10_11",
+                        "kind": "step",
+                        "title": "Calls `candidatesQ.limit(120).include('genres', (g) => g.include('genre', (ge) => ge.select('id', 'name'))).include('tags', (t) => t.include('tag', (te) => te.select('id', 'name'))).include('studios', (st) => st.include('studio', (s) => s.select('id', 'name'))).all` and stores result as `rawCandidates`"
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_11_12",
+                        "kind": "var_def",
+                        "title": "Define `candidates`, `scored`, `items`",
+                        "payload": "const candidates = rawCandidates.map((candidate: any) => ({ ...candidate, genres: (candidate.genres || []).filter((g: any) => Boolean(g.genre)).map((g: any) => g.genre!), tags: (candidate.tags || []).filter((t: any) => Boolean(t.tag)).map((t: any) => t.tag!), }))\nconst scored = candidates.map((candidate) => { let similarityScore = 0 const candGenreIds = new Set(candidate.genres.map((g) => g.id)) const genreIntersection = Array.from(sourceGenreIds).filter((gid) => candGenreIds.has(gid)) const genreUnion = new Set([...sourceGenreIds, ...candGenreIds]) if (genreUnion.size > 0 && genreIntersection.length > 0) { similarityScore += Math.round((genreIntersection.length / genreUnion.size) * 40) ...)\nconst items = scored.filter((s) => s.similarityScore > 0).sort((a, b) => b.similarityScore - a.similarityScore).slice(0, limit).map((s: any) => ({ id: s.id, titlePrimary: s.titlePrimary, titleSecondary: s.titleSecondary ?? null, titleNative: s.titleNative ?? null, coverImage: s.coverImage ?? null, bannerImage: s.bannerImage ?? null, ...)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_BorealisAnimeServ_getSimilar_12_13",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"sourceId\": \"<id>\",\n  \"items\": \"<items>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-5",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-5",
+                "title": "GET /:animeId/relations",
+                "description": "Get anime relations",
+                "steps": [
+                  {
+                    "id": "route_5_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`"
+                  },
+                  {
+                    "id": "route_5_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getRelations(animeId)`"
+                  },
+                  {
+                    "id": "call_5_BorealisAnimeServ_getRelations",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getRelations",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getRelations"
+                  },
+                  {
+                    "id": "svc_5_BorealisAnimeServ_getRelations",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getRelations Flow",
+                    "children": [
+                      {
+                        "id": "svc_5_BorealisAnimeServ_getRelations_0_1",
+                        "kind": "step",
+                        "title": "Calls `fetchMediaRelations` and stores result as `hydrated`"
+                      },
+                      {
+                        "id": "svc_5_BorealisAnimeServ_getRelations_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"relations\": \"<hydrated.map((r) => ({ id: r.id, sourceType: r.sourceType, sourceId: r.sourceId, targetType: r.targetType, targetId: r.targetId, type: r.type, ...)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-6",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-6",
+                "title": "GET /:animeId/characters",
+                "description": "Get anime characters",
+                "steps": [
+                  {
+                    "id": "route_6_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`"
+                  },
+                  {
+                    "id": "route_6_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getCharacters(animeId)`"
+                  },
+                  {
+                    "id": "call_6_BorealisAnimeServ_getCharacters",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getCharacters",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getCharacters"
+                  },
+                  {
+                    "id": "svc_6_BorealisAnimeServ_getCharacters",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getCharacters Flow",
+                    "children": [
+                      {
+                        "id": "svc_6_BorealisAnimeServ_getCharacters_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `MediaCharacter` and stores it as `raw`"
+                      },
+                      {
+                        "id": "svc_6_BorealisAnimeServ_getCharacters_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"characters\": \"<raw.map((c: any) => ({ id: c.id, mediaId: c.mediaId, mediaType: c.mediaType, characterId: c.characterId, actorId: c.actorId ?? null, role: c.role, ...)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-7",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-7",
+                "title": "GET /:animeId/staff",
+                "description": "Get anime staff",
+                "steps": [
+                  {
+                    "id": "route_7_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`"
+                  },
+                  {
+                    "id": "route_7_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getStaff(animeId)`"
+                  },
+                  {
+                    "id": "call_7_BorealisAnimeServ_getStaff",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getStaff",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getStaff"
+                  },
+                  {
+                    "id": "svc_7_BorealisAnimeServ_getStaff",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getStaff Flow",
+                    "children": [
+                      {
+                        "id": "svc_7_BorealisAnimeServ_getStaff_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `MediaStaff` and stores it as `raw`"
+                      },
+                      {
+                        "id": "svc_7_BorealisAnimeServ_getStaff_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"staff\": \"<raw.map((s: any) => ({ id: s.id, mediaId: s.mediaId, mediaType: s.mediaType, personId: s.personId, role: s.role, customRole: s.customRole ?? null, ...)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-8",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-8",
+                "title": "GET /:animeId/episodes",
+                "description": "Get anime episodes",
+                "steps": [
+                  {
+                    "id": "route_8_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`"
+                  },
+                  {
+                    "id": "route_8_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getEpisodes(animeId)`"
+                  },
+                  {
+                    "id": "call_8_BorealisAnimeServ_getEpisodes",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getEpisodes",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getEpisodes"
+                  },
+                  {
+                    "id": "svc_8_BorealisAnimeServ_getEpisodes",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getEpisodes Flow",
+                    "children": [
+                      {
+                        "id": "svc_8_BorealisAnimeServ_getEpisodes_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `AnimeEpisode` and stores it as `episodes`"
+                      },
+                      {
+                        "id": "svc_8_BorealisAnimeServ_getEpisodes_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"episodes\": \"<episodes>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-9",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-9",
+                "title": "GET /:animeId/images",
+                "description": "Get anime images",
+                "steps": [
+                  {
+                    "id": "route_9_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`"
+                  },
+                  {
+                    "id": "route_9_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getImages(animeId)`"
+                  },
+                  {
+                    "id": "call_9_BorealisAnimeServ_getImages",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getImages",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getImages"
+                  },
+                  {
+                    "id": "svc_9_BorealisAnimeServ_getImages",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getImages Flow",
+                    "children": [
+                      {
+                        "id": "svc_9_BorealisAnimeServ_getImages_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Anime` and stores it as `anime`"
+                      },
+                      {
+                        "id": "svc_9_BorealisAnimeServ_getImages_1_2",
+                        "kind": "selection",
+                        "title": "`!anime`",
+                        "selectionMode": "if_else",
+                        "condition": "`!anime`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_9_BorealisAnimeServ_getImages_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Anime with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_9_BorealisAnimeServ_getImages_2_3",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"images\": {\n    \"mal\": \"<imageSource(anime.images, 'mal')>\",\n    \"anilist\": \"<imageSource(anime.images, 'anilist')>\",\n    \"thetvdb\": \"<imageSource(anime.images, 'thetvdb')>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-10",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-10",
+                "title": "GET /:animeId/stats",
+                "description": "Get anime statistics",
+                "steps": [
+                  {
+                    "id": "route_10_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`"
+                  },
+                  {
+                    "id": "route_10_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getStats(animeId)`"
+                  },
+                  {
+                    "id": "call_10_BorealisAnimeServ_getStats",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getStats",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getStats"
+                  },
+                  {
+                    "id": "svc_10_BorealisAnimeServ_getStats",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getStats Flow",
+                    "children": [
+                      {
+                        "id": "svc_10_BorealisAnimeServ_getStats_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Anime` and stores it as `anime`"
+                      },
+                      {
+                        "id": "svc_10_BorealisAnimeServ_getStats_1_2",
+                        "kind": "selection",
+                        "title": "`!anime`",
+                        "selectionMode": "if_else",
+                        "condition": "`!anime`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_10_BorealisAnimeServ_getStats_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Anime with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_10_BorealisAnimeServ_getStats_2_3",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"stats\": {\n    \"averageScore\": \"<anime.averageScore ?? null>\",\n    \"alAverageScore\": \"<anime.alAverageScore ?? null>\",\n    \"alPopularity\": \"<anime.alPopularity ?? null>\",\n    \"alFavorites\": \"<anime.alFavorites ?? null>\",\n    \"malPopularity\": \"<anime.malPopularity ?? null>\",\n    \"malFavorites\": \"<anime.malFavorites ?? null>\",\n    \"malAverageScore\": \"<anime.malAverageScore ?? null>\",\n    \"scoreDistribution\": \"<anime.scoreDistribution ?? {}>\",\n    \"statusDistribution\": \"<anime.statusDistribution ?? {}>\",\n    \"favorites\": \"<anime.favorites ?? 0>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-11",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-11",
+                "title": "GET /:animeId/friends",
+                "description": "Get friends tracking anime",
+                "steps": [
+                  {
+                    "id": "route_11_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`"
+                  },
+                  {
+                    "id": "route_11_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.getUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_11_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getFriends(animeId, user?.id)`"
+                  },
+                  {
+                    "id": "call_11_BorealisAnimeServ_getFriends",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getFriends",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getFriends"
+                  },
+                  {
+                    "id": "svc_11_BorealisAnimeServ_getFriends",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getFriends Flow",
+                    "children": [
+                      {
+                        "id": "svc_11_BorealisAnimeServ_getFriends_0_1",
+                        "kind": "selection",
+                        "title": "`!currentUserId`",
+                        "selectionMode": "if_else",
+                        "condition": "`!currentUserId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_11_BorealisAnimeServ_getFriends_0_1_then_0_1_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_11_BorealisAnimeServ_getFriends_1_2",
+                        "kind": "step",
+                        "title": "Database `all` on `Friend` and stores it as `userFriends`"
+                      },
+                      {
+                        "id": "svc_11_BorealisAnimeServ_getFriends_2_3",
+                        "kind": "var_def",
+                        "title": "Define `friendIds`",
+                        "payload": "const friendIds = userFriends.map((f) => f.friendId)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_11_BorealisAnimeServ_getFriends_3_4",
+                        "kind": "selection",
+                        "title": "`friendIds.length === 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`friendIds.length === 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_11_BorealisAnimeServ_getFriends_3_4_then_0_4_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_11_BorealisAnimeServ_getFriends_4_5",
+                        "kind": "step",
+                        "title": "Database `all` on `AnimeList` and stores it as `rawEntries`"
+                      },
+                      {
+                        "id": "svc_11_BorealisAnimeServ_getFriends_5_6",
+                        "kind": "var_def",
+                        "title": "Define `friends`",
+                        "payload": "const friends = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) return { id: raw.id, userId: raw.userId, status: raw.status, score: raw.score, ...)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_11_BorealisAnimeServ_getFriends_6_7",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"friends\": \"<friends>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-12",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-12",
+                "title": "GET /:animeId/people",
+                "description": "Get public people tracking anime",
+                "steps": [
+                  {
+                    "id": "route_12_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`, query: `BorealisAnimeModel.peopleQuery`"
+                  },
+                  {
+                    "id": "route_12_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getPeople(animeId, query)`"
+                  },
+                  {
+                    "id": "call_12_BorealisAnimeServ_getPeople",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getPeople",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getPeople"
+                  },
+                  {
+                    "id": "svc_12_BorealisAnimeServ_getPeople",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getPeople Flow",
+                    "children": [
+                      {
+                        "id": "svc_12_BorealisAnimeServ_getPeople_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_12_BorealisAnimeServ_getPeople_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_12_BorealisAnimeServ_getPeople_2_3",
+                        "kind": "var_def",
+                        "title": "Define `skip`, `filterStatus`",
+                        "payload": "const skip = page - 1 * limit\nconst filterStatus = query?.status?.toUpperCase()?.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_12_BorealisAnimeServ_getPeople_3_4",
+                        "kind": "step",
+                        "title": "Database `query` on `AnimeList` and stores it as `q`"
+                      },
+                      {
+                        "id": "svc_12_BorealisAnimeServ_getPeople_4_5",
+                        "kind": "selection",
+                        "title": "`filterStatus`",
+                        "selectionMode": "if_else",
+                        "condition": "`filterStatus`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_12_BorealisAnimeServ_getPeople_4_5_then_0_5_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where({ status: filterStatus as any })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_12_BorealisAnimeServ_getPeople_5_6",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, rawEntries]`"
+                      },
+                      {
+                        "id": "svc_12_BorealisAnimeServ_getPeople_6_7",
+                        "kind": "var_def",
+                        "title": "Define `people`",
+                        "payload": "const people = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) return { id: raw.id, userId: raw.userId, status: raw.status, score: raw.score, ...)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_12_BorealisAnimeServ_getPeople_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"mediaType\": \"anime\",\n  \"mediaId\": \"<id>\",\n  \"total\": \"<total>\",\n  \"page\": \"<page>\",\n  \"limit\": \"<limit>\",\n  \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n  \"hasMore\": \"<page * limit < total>\",\n  \"people\": \"<people>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-13",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/anime/anime.ctrl.ts-route-13",
+                "title": "GET /:animeId/recommendations",
+                "description": "Get anime recommendations",
+                "steps": [
+                  {
+                    "id": "route_13_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisAnimeModel.param`"
+                  },
+                  {
+                    "id": "route_13_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisAnimeServ.getRecommendations(animeId)`"
+                  },
+                  {
+                    "id": "call_13_BorealisAnimeServ_getRecommendations",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisAnimeServ.getRecommendations",
+                    "isAsync": true,
+                    "targetAlg": "BorealisAnimeServ.getRecommendations"
+                  },
+                  {
+                    "id": "svc_13_BorealisAnimeServ_getRecommendations",
+                    "kind": "sequence",
+                    "title": "BorealisAnimeServ.getRecommendations Flow",
+                    "children": [
+                      {
+                        "id": "svc_13_BorealisAnimeServ_getRecommendations_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `MediaRecommendation` and stores it as `recs`"
+                      },
+                      {
+                        "id": "svc_13_BorealisAnimeServ_getRecommendations_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"recommendations\": \"<recs.map((r: any) => { const profile = getProfileCustomization(r.user?.customization) return { id: r.id, sourceType: r.sourceType, sourceId: r.sourceId, targetType: r.targetType, ...)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Anime with ID ${id} not found"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

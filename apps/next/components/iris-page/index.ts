@@ -8,6 +8,7 @@ export {
   CodeBlock,
   ALL_TABLER_ICON_NAMES,
   HTML_TAGS,
+  VOID_HTML_TAGS,
   type CalloutProps,
   type CodeBlockProps,
 } from "./registry"

@@ -1,0 +1,926 @@
+{
+  "id": "apps/borealis/_shared/media-stats.serv",
+  "title": "media-stats.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/_shared/media-stats.serv.ts",
+    "relPath": "apps/borealis/_shared/media-stats.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "media-stats.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/_shared/media-stats.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "2 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/lists/lists.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/lists/lists.serv.ts (MediaStatsServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/carina/favorites/favorites.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/favorites/favorites.serv.ts (MediaStatsServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "2 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "MediaStatsServ.recalculateMediaStats"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(mediaType, mediaId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<void>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "MediaStatsServ.recalculateFavoritesCount"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(favoriteType, targetId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<void>"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-initScoreDistribution",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/media-stats.serv.ts-initScoreDistribution",
+                "title": "function initScoreDistribution",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_initScoreDistribution_0_1",
+                    "kind": "var_def",
+                    "title": "Define `dist`",
+                    "payload": "const dist: Record<string, number> = {}",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_initScoreDistribution_1_2",
+                    "kind": "iteration",
+                    "title": "Loop `i <= 10`",
+                    "loopType": "while",
+                    "condition": "Loop `i <= 10`",
+                    "children": [
+                      {
+                        "id": "exp_initScoreDistribution_1_2_loop_0_2_1",
+                        "kind": "step",
+                        "title": "Assign `dist[String(i)]`",
+                        "payload": "dist[String(i)] = 0",
+                        "payloadLanguage": "typescript"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_initScoreDistribution_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`dist`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-computeMediaStats",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/media-stats.serv.ts-computeMediaStats",
+                "title": "function computeMediaStats",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_computeMediaStats_0_1",
+                    "kind": "var_def",
+                    "title": "Define `popularity`, `statusDistribution`",
+                    "payload": "const popularity = entries.length\nconst statusDistribution: Record<string, number> = {}",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_computeMediaStats_1_2",
+                    "kind": "step",
+                    "title": "Calls `initScoreDistribution` and stores result as `scoreDistribution`"
+                  },
+                  {
+                    "id": "exp_computeMediaStats_2_3",
+                    "kind": "var_def",
+                    "title": "Define `scoredCount`, `rawScoreSum`",
+                    "payload": "let scoredCount = 0\nlet rawScoreSum = 0",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_computeMediaStats_3_4",
+                    "kind": "iteration",
+                    "title": "Iterate `const item` over `entries`",
+                    "loopType": "while",
+                    "condition": "Iterate `const item` over `entries`",
+                    "children": [
+                      {
+                        "id": "exp_computeMediaStats_3_4_loop_0_4_1",
+                        "kind": "var_def",
+                        "title": "Define `status`",
+                        "payload": "const status = item.status || 'PLANNED'",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_computeMediaStats_3_4_loop_1_4_2",
+                        "kind": "step",
+                        "title": "Assign `statusDistribution[status]`",
+                        "payload": "statusDistribution[status] = (statusDistribution[status] || 0) + 1",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_computeMediaStats_3_4_loop_2_4_3",
+                        "kind": "selection",
+                        "title": "`item.score !== null && item.score !== undefined && item.score > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`item.score !== null && item.score !== undefined && item.score > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_computeMediaStats_3_4_loop_2_4_3_then_0_4_3_1",
+                            "kind": "step",
+                            "title": "Calls `Number` and stores result as `normalized`"
+                          },
+                          {
+                            "id": "exp_computeMediaStats_3_4_loop_2_4_3_then_1_4_3_2",
+                            "kind": "selection",
+                            "title": "`normalized > 10`",
+                            "selectionMode": "if_else",
+                            "condition": "`normalized > 10`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_computeMediaStats_3_4_loop_2_4_3_then_1_4_3_2_then_0_4_3_2_1",
+                                "kind": "step",
+                                "title": "Assign `normalized`",
+                                "payload": "normalized = normalized / 10",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "exp_computeMediaStats_3_4_loop_2_4_3_then_2_4_3_3",
+                            "kind": "step",
+                            "title": "Assign `normalized`",
+                            "payload": "normalized = Math.min(10, Math.max(0, normalized))",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "exp_computeMediaStats_3_4_loop_2_4_3_then_3_4_3_4",
+                            "kind": "step",
+                            "title": "Assign `rawScoreSum`",
+                            "payload": "rawScoreSum += normalized",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "exp_computeMediaStats_3_4_loop_2_4_3_then_4_4_3_5",
+                            "kind": "step",
+                            "title": "Calls `Math.min` and stores result as `bucket`"
+                          },
+                          {
+                            "id": "exp_computeMediaStats_3_4_loop_2_4_3_then_5_4_3_6",
+                            "kind": "step",
+                            "title": "Assign `scoreDistribution[String(bucket)]`",
+                            "payload": "scoreDistribution[String(bucket)] = (scoreDistribution[String(bucket)] || 0) + 1",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_computeMediaStats_4_5",
+                    "kind": "var_def",
+                    "title": "Define `totalScoreSum`, `averageScore`",
+                    "payload": "const totalScoreSum = scoredCount > 0 ? Math.round(rawScoreSum) : null\nconst averageScore = scoredCount > 0 ? Math.round((rawScoreSum / scoredCount) * 10) / 10 : null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_computeMediaStats_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"popularity\": \"<popularity>\",\n  \"statusDistribution\": \"<statusDistribution>\",\n  \"scoreDistribution\": \"<scoreDistribution>\",\n  \"scoredCount\": \"<scoredCount > 0 ? scoredCount : null>\",\n  \"totalScoreSum\": \"<totalScoreSum>\",\n  \"averageScore\": \"<averageScore>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-MediaStatsServ-recalculateMediaStats",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/media-stats.serv.ts-MediaStatsServ-recalculateMediaStats",
+                "title": "MediaStatsServ.recalculateMediaStats(mediaType, mediaId)",
+                "description": "Recalculates community statistics (averageScore, popularity, totalScoreSum, scoredCount, statusDistribution, scoreDistribution) for a single media item.",
+                "steps": [
+                  {
+                    "id": "m_MediaStatsServ_recalculateMediaStats_0_1",
+                    "kind": "var_def",
+                    "title": "Define `normType`",
+                    "payload": "const normType = String(mediaType).toUpperCase()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaStatsServ_recalculateMediaStats_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_MediaStatsServ_recalculateMediaStats_1_2_try_0_2_1",
+                        "kind": "selection",
+                        "title": "Branch on `normType`",
+                        "selectionMode": "switch",
+                        "condition": "Branch on `normType`",
+                        "cases": [
+                          {
+                            "id": "m_MediaStatsServ_recalculateMediaStats_1_2_try_0_2_1_case_0",
+                            "label": "Case `'ANIME'`",
+                            "children": []
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateMediaStats_1_2_try_0_2_1_case_1",
+                            "label": "Case `'MANGA'`",
+                            "children": []
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateMediaStats_1_2_try_0_2_1_case_2",
+                            "label": "Case `'MOVIE'`",
+                            "children": []
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateMediaStats_1_2_try_0_2_1_case_3",
+                            "label": "Case `'TV'`",
+                            "children": []
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateMediaStats_1_2_try_0_2_1_case_4",
+                            "label": "Case `'GAME'`",
+                            "children": []
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateMediaStats_1_2_try_0_2_1_case_5",
+                            "label": "Case `'BOOK'`",
+                            "children": []
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateMediaStats_1_2_try_0_2_1_case_6",
+                            "label": "Case `'MUSIC'`",
+                            "children": []
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateMediaStats_1_2_try_0_2_1_case_7",
+                            "label": "Case `'OTHER'`",
+                            "children": []
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateMediaStats_1_2_try_0_2_1_case_8",
+                            "label": "Default",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateMediaStats_1_2_try_0_2_1_c8_0_2_1_9_1",
+                                "kind": "warning",
+                                "code": "Warning",
+                                "message": "Unknown media type for stats recalculation: ${mediaType}"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_MediaStatsServ_recalculateMediaStats_1_2_catch_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-MediaStatsServ-recalculateFavoritesCount",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/media-stats.serv.ts-MediaStatsServ-recalculateFavoritesCount",
+                "title": "MediaStatsServ.recalculateFavoritesCount(favoriteType, targetId)",
+                "description": "Recalculates the exact favorite count for a target entity from the Favorite table.",
+                "steps": [
+                  {
+                    "id": "m_MediaStatsServ_recalculateFavoritesCount_0_1",
+                    "kind": "var_def",
+                    "title": "Define `normType`",
+                    "payload": "const normType = String(favoriteType).toUpperCase() as FavoriteType",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_0_2_1",
+                        "kind": "step",
+                        "title": "Database `query` on `Favorite` and stores it as `count`"
+                      },
+                      {
+                        "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2",
+                        "kind": "selection",
+                        "title": "Branch on `normType`",
+                        "selectionMode": "switch",
+                        "condition": "Branch on `normType`",
+                        "cases": [
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_0",
+                            "label": "Case `'ANIME'`",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_c0_0_2_2_1_1",
+                                "kind": "step",
+                                "title": "Database `update` on `Anime`"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_1",
+                            "label": "Case `'MANGA'`",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_c1_0_2_2_2_1",
+                                "kind": "step",
+                                "title": "Database `update` on `Manga`"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_2",
+                            "label": "Case `'MOVIE'`",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_c2_0_2_2_3_1",
+                                "kind": "step",
+                                "title": "Database `update` on `Movie`"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_3",
+                            "label": "Case `'TV'`",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_c3_0_2_2_4_1",
+                                "kind": "step",
+                                "title": "Database `update` on `Tv`"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_4",
+                            "label": "Case `'GAME'`",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_c4_0_2_2_5_1",
+                                "kind": "step",
+                                "title": "Database `update` on `Game`"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_5",
+                            "label": "Case `'BOOK'`",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_c5_0_2_2_6_1",
+                                "kind": "step",
+                                "title": "Database `update` on `Book`"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_6",
+                            "label": "Case `'MUSIC_ALBUM'`",
+                            "children": []
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_7",
+                            "label": "Case `'MUSIC_TRACK'`",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_c7_0_2_2_8_1",
+                                "kind": "step",
+                                "title": "Database `update` on `Music`"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_8",
+                            "label": "Case `'CHARACTER'`",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_c8_0_2_2_9_1",
+                                "kind": "step",
+                                "title": "Database `update` on `Character`"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_9",
+                            "label": "Case `'PERSON'`",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_c9_0_2_2_10_1",
+                                "kind": "step",
+                                "title": "Database `update` on `Person`"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_10",
+                            "label": "Case `'STUDIO'`",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_c10_0_2_2_11_1",
+                                "kind": "step",
+                                "title": "Database `update` on `Studio`"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_11",
+                            "label": "Case `'OTHER'`",
+                            "children": [
+                              {
+                                "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_c11_0_2_2_12_1",
+                                "kind": "step",
+                                "title": "Database `update` on `Other`"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_try_1_2_2_case_12",
+                            "label": "Default",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_MediaStatsServ_recalculateFavoritesCount_1_2_catch_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Unknown media type for stats recalculation: ${mediaType}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

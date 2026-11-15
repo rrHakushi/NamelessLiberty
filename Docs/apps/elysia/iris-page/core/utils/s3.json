@@ -1,0 +1,642 @@
+{
+  "id": "core/utils/s3",
+  "title": "s3",
+  "description": "",
+  "icon": "IconTools",
+  "metadata": {
+    "pathname": "apps/elysia/src/core/utils/s3.ts",
+    "relPath": "core/utils/s3.ts",
+    "role": "Utils",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconTools",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "s3"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Utils"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/core/utils/s3.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "3 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/other/other.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/other/other.serv.ts (uploadPublicAsset)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/carina/public/public.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/public/public.serv.ts (getPublicAsset)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/carina/users/users.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/users/users.serv.ts (uploadPublicAsset, deletePublicAsset, extractS3Key)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-ensurePublicBucketExists",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/s3.ts-ensurePublicBucketExists",
+                "title": "function ensurePublicBucketExists",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_ensurePublicBucketExists_0_1",
+                    "kind": "selection",
+                    "title": "`bucketChecked`",
+                    "selectionMode": "if_else",
+                    "condition": "`bucketChecked`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_ensurePublicBucketExists_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_ensurePublicBucketExists_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_ensurePublicBucketExists_1_2_try_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `s3Client.send`"
+                      },
+                      {
+                        "id": "exp_ensurePublicBucketExists_1_2_try_1_2_2",
+                        "kind": "step",
+                        "title": "Assign `bucketChecked`",
+                        "payload": "bucketChecked = true",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_ensurePublicBucketExists_1_2_catch_0_3_1",
+                        "kind": "selection",
+                        "title": "`err?.name === 'NotFound' || err?.$metadata?.httpStatusCode === 404`",
+                        "selectionMode": "if_else",
+                        "condition": "`err?.name === 'NotFound' || err?.$metadata?.httpStatusCode === 404`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_ensurePublicBucketExists_1_2_catch_0_3_1_then_0_3_1_1",
+                            "kind": "try_catch_finally",
+                            "title": "Try block",
+                            "catchVar": "createErr",
+                            "tryBlock": [
+                              {
+                                "id": "exp_ensurePublicBucketExists_1_2_catch_0_3_1_then_0_3_1_1_try_0_3_1_1_1",
+                                "kind": "step",
+                                "title": "Calls `s3Client.send`"
+                              },
+                              {
+                                "id": "exp_ensurePublicBucketExists_1_2_catch_0_3_1_then_0_3_1_1_try_1_3_1_1_2",
+                                "kind": "step",
+                                "title": "Assign `bucketChecked`",
+                                "payload": "bucketChecked = true",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "catchBlock": [
+                              {
+                                "id": "exp_ensurePublicBucketExists_1_2_catch_0_3_1_then_0_3_1_1_catch_0_3_1_2_1",
+                                "kind": "warning",
+                                "code": "Warning",
+                                "message": "[RustFS] Warning creating bucket ${PUBLIC_BUCKET}:`, createErr"
+                              }
+                            ],
+                            "finallyBlock": []
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "exp_ensurePublicBucketExists_1_2_catch_0_3_1_else_0_3_2_1",
+                            "kind": "warning",
+                            "code": "Warning",
+                            "message": "[RustFS] S3 HeadBucket info for ${PUBLIC_BUCKET}:`, err?.message || err"
+                          }
+                        ]
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-uploadPublicAsset",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/s3.ts-uploadPublicAsset",
+                "title": "function uploadPublicAsset",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_uploadPublicAsset_0_1",
+                    "kind": "step",
+                    "title": "Calls `ensurePublicBucketExists`"
+                  },
+                  {
+                    "id": "exp_uploadPublicAsset_1_2",
+                    "kind": "step",
+                    "title": "Calls `s3Client.send`"
+                  },
+                  {
+                    "id": "exp_uploadPublicAsset_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"key\": \"<params.key>\",\n  \"publicUrl\": \"<`/public/${params.key}`>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-getPublicAsset",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/s3.ts-getPublicAsset",
+                "title": "function getPublicAsset",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_getPublicAsset_0_1",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_getPublicAsset_0_1_try_0_1_1",
+                        "kind": "step",
+                        "title": "Calls `s3Client.send` and stores result as `response`"
+                      },
+                      {
+                        "id": "exp_getPublicAsset_0_1_try_1_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"body\": \"<response.Body>\",\n  \"contentType\": \"<response.ContentType || 'application/octet-stream'>\",\n  \"contentLength\": \"<response.ContentLength>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_getPublicAsset_0_1_catch_0_2_1",
+                        "kind": "selection",
+                        "title": "`err?.name === 'NoSuchKey' || err?.$metadata?.httpStatusCode === 404`",
+                        "selectionMode": "if_else",
+                        "condition": "`err?.name === 'NoSuchKey' || err?.$metadata?.httpStatusCode === 404`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_getPublicAsset_0_1_catch_0_2_1_then_0_2_1_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`null`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_getPublicAsset_0_1_catch_1_2_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-extractS3Key",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/s3.ts-extractS3Key",
+                "title": "function extractS3Key",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_extractS3Key_0_1",
+                    "kind": "selection",
+                    "title": "`!urlOrKey || typeofurlOrKey !== 'string'`",
+                    "selectionMode": "if_else",
+                    "condition": "`!urlOrKey || typeofurlOrKey !== 'string'`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_extractS3Key_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_extractS3Key_1_2",
+                    "kind": "var_def",
+                    "title": "Define `clean`",
+                    "payload": "const clean = urlOrKey.replace(/^(?:https?:\\/\\/[^/]+)?\\/public\\//, '').replace(/^\\/+/, '')",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_extractS3Key_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`clean.startsWith(\"users/\") ? clean : null`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-deletePublicAsset",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/s3.ts-deletePublicAsset",
+                "title": "function deletePublicAsset",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_deletePublicAsset_0_1",
+                    "kind": "var_def",
+                    "title": "Define `key`",
+                    "payload": "const key = extractS3Key(urlOrKey) || urlOrKey",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_deletePublicAsset_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_deletePublicAsset_1_2_try_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `s3Client.send`"
+                      },
+                      {
+                        "id": "exp_deletePublicAsset_1_2_try_1_2_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`true`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_deletePublicAsset_1_2_catch_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `console.error`"
+                      },
+                      {
+                        "id": "exp_deletePublicAsset_1_2_catch_1_3_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "2 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[RustFS] Warning creating bucket ${PUBLIC_BUCKET}:`, createErr"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[RustFS] S3 HeadBucket info for ${PUBLIC_BUCKET}:`, err?.message || err"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

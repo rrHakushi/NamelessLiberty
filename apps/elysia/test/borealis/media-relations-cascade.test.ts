@@ -1,9 +1,9 @@
 import { describe, expect, it, beforeEach, mock } from 'bun:test'
 import { prisma } from '@NamelessLiberty/db'
-import { anilistProvider, deezerProvider } from '../../src/services/borealis/providers'
-import { MediaEntitySyncer } from '../../src/services/borealis/syncer/media-entity.syncer'
-import { MediaQueueManager } from '../../src/services/borealis/queue'
-import { executeMediaUpdate } from '../../src/workers/media.wrk'
+import { anilistProvider, deezerProvider } from '../../src/apps/borealis/providers'
+import { MediaEntitySyncer } from '../../src/apps/borealis/sync/media-entity.syncer'
+import { MediaQueueManager } from '../../src/apps/borealis/sync/media.queue'
+import { executeMediaUpdate } from '../../src/apps/borealis/sync/media.wrk'
 
 describe('Borealis: Media Relations Cascade & Deezer Queueing', () => {
   let createdAnimeStubs: any[] = []

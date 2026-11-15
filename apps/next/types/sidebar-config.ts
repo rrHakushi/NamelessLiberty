@@ -23,6 +23,11 @@ export interface SidebarSection {
   dataKey?: string
 
   /**
+   * Optional trailing action elements rendered alongside the section header.
+   */
+  sectionActions?: ReactNode
+
+  /**
    * Items contained within this section.
    */
   items: SidebarItem[]
@@ -55,12 +60,15 @@ export type SidebarItem = {
    */
   permissions?: Permissions
 
-  children?: SidebarItemChild[]
   onClick?: () => void
   component?: ReactNode
   href?: string
   preventRedirect?: boolean
   isActive?: boolean
+  /**
+   * Nested child items (supported up to 5 levels deep).
+   */
+  children?: SidebarItemChild[]
 }
 
 export type SidebarItemChild = {
@@ -81,6 +89,10 @@ export type SidebarItemChild = {
   href?: string
   preventRedirect?: boolean
   isActive?: boolean
+  /**
+   * Nested child items (supported up to 5 levels deep).
+   */
+  children?: SidebarItemChild[]
 }
 
 export type SidebarConfig = SidebarSection[]

@@ -1,0 +1,1176 @@
+{
+  "id": "core/utils/auth-crypto",
+  "title": "auth-crypto",
+  "description": "",
+  "icon": "IconTools",
+  "metadata": {
+    "pathname": "apps/elysia/src/core/utils/auth-crypto.ts",
+    "relPath": "core/utils/auth-crypto.ts",
+    "role": "Utils",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 4
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconTools",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "auth-crypto"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Utils"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/core/utils/auth-crypto.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "10 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/lists/lists.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/lists/lists.serv.ts (hashPassword)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/carina/_shared/base-mfa.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/_shared/base-mfa.serv.ts (signUserJwt)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/carina/apikeys/apikeys.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/apikeys/apikeys.serv.ts (hashApiKey)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-3",
+                        "props": {
+                          "href": "/docs/apps/carina/auth/auth.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/auth/auth.serv.ts (hashPassword, verifyPassword, signUserJwt, generateUserKeypair, encryptPrivateKey, decryptPrivateKey)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-4",
+                        "props": {
+                          "href": "/docs/apps/carina/backupcodes/backupcodes.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/backupcodes/backupcodes.serv.ts (generateBackupCodes, verifyBackupCode)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-5",
+                        "props": {
+                          "href": "/docs/apps/carina/email-2fa/email-2fa.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/email-2fa/email-2fa.serv.ts (verifyPassword, generateBackupCodes, decryptSecret, verifyBackupCode)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-6",
+                        "props": {
+                          "href": "/docs/apps/carina/passkeys/passkeys.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/passkeys/passkeys.serv.ts (generateBackupCodes)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-7",
+                        "props": {
+                          "href": "/docs/apps/carina/qc/qc.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/qc/qc.serv.ts (signUserJwt)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-8",
+                        "props": {
+                          "href": "/docs/apps/carina/totp/totp.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/totp/totp.serv.ts (encryptSecret, decryptSecret, verifyPassword, generateBackupCodes)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-9",
+                        "props": {
+                          "href": "/docs/core/plugins/session",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "core/plugins/session.ts (hashApiKey)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-hashPassword",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/auth-crypto.ts-hashPassword",
+                "title": "function hashPassword",
+                "description": "Standard password hashing utilizing native Bun Argon2id.",
+                "steps": [
+                  {
+                    "id": "exp_hashPassword_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await Bun.password.hash(password, { algorithm: \"argon2id\", memoryCost: 65536, timeCost: 2, })`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-hashApiKey",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/auth-crypto.ts-hashApiKey",
+                "title": "function hashApiKey",
+                "description": "Hashes an API key using SHA-256 for secure database persistence and lookup.",
+                "steps": [
+                  {
+                    "id": "exp_hashApiKey_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`createHash('sha256').update(apiKey.trim()).digest('hex')`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-generateBackupCodes",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/auth-crypto.ts-generateBackupCodes",
+                "title": "function generateBackupCodes",
+                "description": "Generates an array of 10 cryptographic backup recovery codes and their hashes.",
+                "steps": [
+                  {
+                    "id": "exp_generateBackupCodes_0_1",
+                    "kind": "var_def",
+                    "title": "Define `plain`, `hashed`, `CHARS`",
+                    "payload": "const plain: string[] = []\nconst hashed: string[] = []\nconst CHARS = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_generateBackupCodes_1_2",
+                    "kind": "iteration",
+                    "title": "Loop `i < 10`",
+                    "loopType": "while",
+                    "condition": "Loop `i < 10`",
+                    "children": [
+                      {
+                        "id": "exp_generateBackupCodes_1_2_loop_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `randomBytes` and stores result as `bytes`"
+                      },
+                      {
+                        "id": "exp_generateBackupCodes_1_2_loop_1_2_2",
+                        "kind": "var_def",
+                        "title": "Define `code`",
+                        "payload": "let code = ''",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_generateBackupCodes_1_2_loop_2_2_3",
+                        "kind": "iteration",
+                        "title": "Loop `b < 16`",
+                        "loopType": "while",
+                        "condition": "Loop `b < 16`",
+                        "children": [
+                          {
+                            "id": "exp_generateBackupCodes_1_2_loop_2_2_3_loop_0_2_3_1",
+                            "kind": "step",
+                            "title": "Assign `code`",
+                            "payload": "code += CHARS[bytes[b]! % CHARS.length]",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "exp_generateBackupCodes_1_2_loop_3_2_4",
+                        "kind": "var_def",
+                        "title": "Define `formatted`",
+                        "payload": "const formatted = `${code.slice(0, 4)}-${code.slice(4, 8)}-${code.slice(8, 12)}-${code.slice(12, 16)}`",
+                        "payloadLanguage": "typescript"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_generateBackupCodes_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"plain\": \"<plain>\",\n  \"hashed\": \"<hashed>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-verifyBackupCode",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/auth-crypto.ts-verifyBackupCode",
+                "title": "function verifyBackupCode",
+                "description": "Verifies an entered backup code against an array of hashed backup codes. Returns the index of the matched code in `storedHashes`, or -1 if invalid.",
+                "steps": [
+                  {
+                    "id": "exp_verifyBackupCode_0_1",
+                    "kind": "var_def",
+                    "title": "Define `cleanCode`",
+                    "payload": "const cleanCode = inputCode.trim().toUpperCase()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_verifyBackupCode_1_2",
+                    "kind": "step",
+                    "title": "Calls `cleanCode.replaceAll` and stores result as `cleanNoDash`"
+                  },
+                  {
+                    "id": "exp_verifyBackupCode_2_3",
+                    "kind": "var_def",
+                    "title": "Define `reconstructedDash`",
+                    "payload": "const reconstructedDash = cleanNoDash.length === 16 ? `${cleanNoDash.slice(0, 4)}-${cleanNoDash.slice(4, 8)}-${cleanNoDash.slice(8, 12)}-${cleanNoDash.slice(12, 16)}` : cleanCode",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_verifyBackupCode_3_4",
+                    "kind": "iteration",
+                    "title": "Loop `i < storedHashes.length`",
+                    "loopType": "while",
+                    "condition": "Loop `i < storedHashes.length`",
+                    "children": [
+                      {
+                        "id": "exp_verifyBackupCode_3_4_loop_0_4_1",
+                        "kind": "var_def",
+                        "title": "Define `storedHash`",
+                        "payload": "const storedHash = storedHashes[i]",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_verifyBackupCode_3_4_loop_1_4_2",
+                        "kind": "selection",
+                        "title": "`!storedHash`",
+                        "selectionMode": "if_else",
+                        "condition": "`!storedHash`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_verifyBackupCode_3_4_loop_2_4_3",
+                        "kind": "selection",
+                        "title": "`await verifyPassword(cleanCode, storedHash) || await verifyPassword(cleanNoDash, storedHash) || await verifyPassword(reconstructedDash, storedHash)`",
+                        "selectionMode": "if_else",
+                        "condition": "`await verifyPassword(cleanCode, storedHash) || await verifyPassword(cleanNoDash, storedHash) || await verifyPassword(reconstructedDash, storedHash)`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_verifyBackupCode_3_4_loop_2_4_3_then_0_4_3_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`i`"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_verifyBackupCode_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`-1`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-encryptSecret",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/auth-crypto.ts-encryptSecret",
+                "title": "function encryptSecret",
+                "description": "Encrypts sensitive credentials (such as TOTP base32 secrets) using AES-256-GCM with HKDF key separation (`enc:v2:`).",
+                "steps": [
+                  {
+                    "id": "exp_encryptSecret_0_1",
+                    "kind": "step",
+                    "title": "Calls `getHkdfEncryptionKey` and stores result as `key`"
+                  },
+                  {
+                    "id": "exp_encryptSecret_1_2",
+                    "kind": "step",
+                    "title": "Calls `randomBytes` and stores result as `iv`"
+                  },
+                  {
+                    "id": "exp_encryptSecret_2_3",
+                    "kind": "step",
+                    "title": "Calls `createCipheriv` and stores result as `cipher`"
+                  },
+                  {
+                    "id": "exp_encryptSecret_3_4",
+                    "kind": "step",
+                    "title": "Calls `Buffer.concat` and stores result as `encrypted`"
+                  },
+                  {
+                    "id": "exp_encryptSecret_4_5",
+                    "kind": "step",
+                    "title": "Calls `cipher.getAuthTag` and stores result as `authTag`"
+                  },
+                  {
+                    "id": "exp_encryptSecret_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "``enc:v2:${iv.toString(\"hex\")}:${authTag.toString(\"hex\")}:${encrypted.toString(\"hex\")}``"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-decryptSecret",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/auth-crypto.ts-decryptSecret",
+                "title": "function decryptSecret",
+                "description": "Decrypts data encrypted with `encryptSecret` (supports both `enc:v2:` HKDF and legacy v1 `iv:tag:ct`).",
+                "steps": [
+                  {
+                    "id": "exp_decryptSecret_0_1",
+                    "kind": "selection",
+                    "title": "`serialized.startsWith('enc:v2:')`",
+                    "selectionMode": "if_else",
+                    "condition": "`serialized.startsWith('enc:v2:')`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_decryptSecret_0_1_then_0_1_1",
+                        "kind": "var_def",
+                        "title": "Define `parts`",
+                        "payload": "const parts = serialized.slice(7).split(':')",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_decryptSecret_0_1_then_1_1_2",
+                        "kind": "selection",
+                        "title": "`parts.length !== 3 || !parts[0] || !parts[1] || !parts[2]`",
+                        "selectionMode": "if_else",
+                        "condition": "`parts.length !== 3 || !parts[0] || !parts[1] || !parts[2]`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_decryptSecret_0_1_then_1_1_2_then_0_1_2_1",
+                            "kind": "error",
+                            "code": "Error",
+                            "httpStatus": 500,
+                            "message": "Malformed encrypted v2 secret payload"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_decryptSecret_0_1_then_2_1_3",
+                        "kind": "var_def",
+                        "title": "Define `[ivHex, authTagHex, encryptedHex]`",
+                        "payload": "const [ivHex, authTagHex, encryptedHex] = parts as [string, string, string]",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_decryptSecret_0_1_then_3_1_4",
+                        "kind": "step",
+                        "title": "Calls `createDecipheriv` and stores result as `decipher`"
+                      },
+                      {
+                        "id": "exp_decryptSecret_0_1_then_4_1_5",
+                        "kind": "step",
+                        "title": "Calls `decipher.setAuthTag`"
+                      },
+                      {
+                        "id": "exp_decryptSecret_0_1_then_5_1_6",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`Buffer.concat([ decipher.update(Buffer.from(encryptedHex, \"hex\")), decipher.final(), ]).toString('utf8')`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_decryptSecret_1_2",
+                    "kind": "selection",
+                    "title": "`!serialized.includes(':')`",
+                    "selectionMode": "if_else",
+                    "condition": "`!serialized.includes(':')`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_decryptSecret_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`serialized`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_decryptSecret_2_3",
+                    "kind": "var_def",
+                    "title": "Define `[ivHex, authTagHex, encryptedHex]`",
+                    "payload": "const [ivHex, authTagHex, encryptedHex] = serialized.split(':')",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_decryptSecret_3_4",
+                    "kind": "selection",
+                    "title": "`!ivHex || !authTagHex || !encryptedHex`",
+                    "selectionMode": "if_else",
+                    "condition": "`!ivHex || !authTagHex || !encryptedHex`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_decryptSecret_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "Malformed legacy encrypted secret payload"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_decryptSecret_4_5",
+                    "kind": "step",
+                    "title": "Calls `getLegacyEncryptionKey` and stores result as `key`"
+                  },
+                  {
+                    "id": "exp_decryptSecret_5_6",
+                    "kind": "step",
+                    "title": "Calls `Buffer.from` and stores result as `iv`"
+                  },
+                  {
+                    "id": "exp_decryptSecret_6_7",
+                    "kind": "step",
+                    "title": "Calls `Buffer.from` and stores result as `authTag`"
+                  },
+                  {
+                    "id": "exp_decryptSecret_7_8",
+                    "kind": "step",
+                    "title": "Calls `Buffer.from` and stores result as `encrypted`"
+                  },
+                  {
+                    "id": "exp_decryptSecret_8_9",
+                    "kind": "step",
+                    "title": "Calls `createDecipheriv` and stores result as `decipher`"
+                  },
+                  {
+                    "id": "exp_decryptSecret_9_10",
+                    "kind": "step",
+                    "title": "Calls `decipher.setAuthTag`"
+                  },
+                  {
+                    "id": "exp_decryptSecret_10_11",
+                    "kind": "step",
+                    "title": "Calls `Buffer.concat` and stores result as `decrypted`"
+                  },
+                  {
+                    "id": "exp_decryptSecret_11_12",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`decrypted.toString('utf8')`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-verifyPassword",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/auth-crypto.ts-verifyPassword",
+                "title": "function verifyPassword",
+                "description": "Password verification utilizing native Bun.password.",
+                "steps": [
+                  {
+                    "id": "exp_verifyPassword_0_1",
+                    "kind": "selection",
+                    "title": "`!password || !storedHash`",
+                    "selectionMode": "if_else",
+                    "condition": "`!password || !storedHash`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_verifyPassword_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_verifyPassword_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_verifyPassword_1_2_try_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`await Bun.password.verify(password, storedHash)`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_verifyPassword_1_2_catch_0_3_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-signUserJwt",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/auth-crypto.ts-signUserJwt",
+                "title": "function signUserJwt",
+                "description": "Signs a standard JWT session token using HS256.",
+                "steps": [
+                  {
+                    "id": "exp_signUserJwt_0_1",
+                    "kind": "var_def",
+                    "title": "Define `secret`",
+                    "payload": "const secret = Bun.env.JWT_SECRET",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_signUserJwt_1_2",
+                    "kind": "selection",
+                    "title": "`!secret`",
+                    "selectionMode": "if_else",
+                    "condition": "`!secret`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_signUserJwt_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "JWT_SECRET environment variable is required"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_signUserJwt_2_3",
+                    "kind": "var_def",
+                    "title": "Define `pwdChangedSeconds`",
+                    "payload": "const pwdChangedSeconds = user.passwordChangedAt ? Math.floor(user.passwordChangedAt.getTime() / 1000) : null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_signUserJwt_3_4",
+                    "kind": "step",
+                    "title": "Calls `new TextEncoder().encode` and stores result as `secretKey`"
+                  },
+                  {
+                    "id": "exp_signUserJwt_4_5",
+                    "kind": "step",
+                    "title": "Calls `Math.floor` and stores result as `now`"
+                  },
+                  {
+                    "id": "exp_signUserJwt_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await new SignJWT({ id: user.id, username: user.username, email: user.email ?? \"\", passwordChangedAt: pwdChangedSeconds, permissions: user.permissions ?? [], }).setProtectedHeader({ alg: \"HS256\" }).setIssuedAt(now).setExpirationTime('365d').sign(secretKey)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-encryptPrivateKey",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/auth-crypto.ts-encryptPrivateKey",
+                "title": "function encryptPrivateKey",
+                "description": "Encrypts a private key using AES-256-GCM with a key derived from the user's password via scrypt.",
+                "steps": [
+                  {
+                    "id": "exp_encryptPrivateKey_0_1",
+                    "kind": "step",
+                    "title": "Calls `randomBytes` and stores result as `salt`"
+                  },
+                  {
+                    "id": "exp_encryptPrivateKey_1_2",
+                    "kind": "var_def",
+                    "title": "Define `key`",
+                    "payload": "const key = (await scryptAsync(password, salt, 32)) as Buffer",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_encryptPrivateKey_2_3",
+                    "kind": "step",
+                    "title": "Calls `randomBytes` and stores result as `iv`"
+                  },
+                  {
+                    "id": "exp_encryptPrivateKey_3_4",
+                    "kind": "step",
+                    "title": "Calls `createCipheriv` and stores result as `cipher`"
+                  },
+                  {
+                    "id": "exp_encryptPrivateKey_4_5",
+                    "kind": "var_def",
+                    "title": "Define `secretBuffer`",
+                    "payload": "const secretBuffer = typeof secretKey === \"string\" ? Buffer.from(secretKey, \"utf8\") : Buffer.from(secretKey)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_encryptPrivateKey_5_6",
+                    "kind": "step",
+                    "title": "Calls `Buffer.concat` and stores result as `encrypted`"
+                  },
+                  {
+                    "id": "exp_encryptPrivateKey_6_7",
+                    "kind": "step",
+                    "title": "Calls `cipher.getAuthTag` and stores result as `authTag`"
+                  },
+                  {
+                    "id": "exp_encryptPrivateKey_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "``${salt.toString(\"hex\")}:${iv.toString(\"hex\")}:${authTag.toString(\"hex\")}:${encrypted.toString(\"hex\")}``"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-decryptPrivateKey",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/auth-crypto.ts-decryptPrivateKey",
+                "title": "function decryptPrivateKey",
+                "description": "Decrypts a private key previously encrypted with `encryptPrivateKey`.",
+                "steps": [
+                  {
+                    "id": "exp_decryptPrivateKey_0_1",
+                    "kind": "var_def",
+                    "title": "Define `[saltHex, ivHex, authTagHex, encryptedHex]`",
+                    "payload": "const [saltHex, ivHex, authTagHex, encryptedHex] = encryptedPayload.split(':')",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_decryptPrivateKey_1_2",
+                    "kind": "selection",
+                    "title": "`!saltHex || !ivHex || !authTagHex || !encryptedHex`",
+                    "selectionMode": "if_else",
+                    "condition": "`!saltHex || !ivHex || !authTagHex || !encryptedHex`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_decryptPrivateKey_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "Invalid encrypted private key format."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_decryptPrivateKey_2_3",
+                    "kind": "step",
+                    "title": "Calls `Buffer.from` and stores result as `salt`"
+                  },
+                  {
+                    "id": "exp_decryptPrivateKey_3_4",
+                    "kind": "step",
+                    "title": "Calls `Buffer.from` and stores result as `iv`"
+                  },
+                  {
+                    "id": "exp_decryptPrivateKey_4_5",
+                    "kind": "step",
+                    "title": "Calls `Buffer.from` and stores result as `authTag`"
+                  },
+                  {
+                    "id": "exp_decryptPrivateKey_5_6",
+                    "kind": "step",
+                    "title": "Calls `Buffer.from` and stores result as `encrypted`"
+                  },
+                  {
+                    "id": "exp_decryptPrivateKey_6_7",
+                    "kind": "var_def",
+                    "title": "Define `key`",
+                    "payload": "const key = (await scryptAsync(password, salt, 32)) as Buffer",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_decryptPrivateKey_7_8",
+                    "kind": "step",
+                    "title": "Calls `createDecipheriv` and stores result as `decipher`"
+                  },
+                  {
+                    "id": "exp_decryptPrivateKey_8_9",
+                    "kind": "step",
+                    "title": "Calls `decipher.setAuthTag`"
+                  },
+                  {
+                    "id": "exp_decryptPrivateKey_9_10",
+                    "kind": "step",
+                    "title": "Calls `Buffer.concat` and stores result as `decrypted`"
+                  },
+                  {
+                    "id": "exp_decryptPrivateKey_10_11",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`decrypted.toString('utf8')`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-generateUserKeypair",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/auth-crypto.ts-generateUserKeypair",
+                "title": "function generateUserKeypair",
+                "description": "Generates a standard RSA-OAEP 2048-bit keypair and encrypts the private key with the user's password using AES-256-GCM.",
+                "steps": [
+                  {
+                    "id": "exp_generateUserKeypair_0_1",
+                    "kind": "step",
+                    "title": "Calls `generateKeyPairSync` and stores result as `{ publicKey, privateKey }`"
+                  },
+                  {
+                    "id": "exp_generateUserKeypair_1_2",
+                    "kind": "step",
+                    "title": "Calls `encryptPrivateKey` and stores result as `encryptedPrivateKey`"
+                  },
+                  {
+                    "id": "exp_generateUserKeypair_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"publicKey\": \"<publicKey>\",\n  \"encryptedPrivateKey\": \"<encryptedPrivateKey>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "4 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Malformed encrypted v2 secret payload"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Malformed legacy encrypted secret payload"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "JWT_SECRET environment variable is required"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid encrypted private key format."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

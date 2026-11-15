@@ -26,13 +26,7 @@
     - 
 
 # Reliquary [Docs, guides etc]  !! Priority
-    - Pages saved as json in db and rendered using iris-page
-    - Pages editable only by admins and its owner/creator
-    - Allow other logged in users to suggest edits (which should be approved by admin/document owner/creator)
-    - structure:  /reliquary - homepage: list last visited docs, bookmarked docs, list all owned docs
-                  /reliquary/browse - search all docs, separated by categories [Api docs, Wiki, guides...]   
-                  /reluquary/documents/:id - Edit/view doc
-    - sidebar config:  Section: "", items: ["home", "browse"], Section: "{doc title}", items: ["{subdoc name}": (children)]
+    - 
 
 
 # Spica [Chatting]

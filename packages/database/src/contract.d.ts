@@ -23,9 +23,9 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'171540bbf35293d8c6b6c5fded904a71ed3d4b7a557259c61aa92582da621f85'>;
+  StorageHashBase<'b119fa79f2c33c50af65dc010cb5c42df04547a67ce1fb1840e80645e3555052'>;
 export type ExecutionHash =
-  ExecutionHashBase<'badedc9bf9c9e244076dcf05953b220b0f6de5a376999c55f32d4164bd8124ba'>;
+  ExecutionHashBase<'f5ecc1a037a7ef0f97905c773436b2ba5e8c339591992caf20c64334f3226678'>;
 export type ProfileHash =
   ProfileHashBase<'3916f444a8a17ad749191acf9e08dad97d1a327b88c2f1d45d12f240296aa8b2'>;
 
@@ -981,6 +981,22 @@ type FieldTypeOverrides = {
           readonly input: 'LOGIN' | 'SSH_KEY';
         };
       };
+      readonly ReliquaryCollaborator: {
+        readonly role: {
+          readonly output: 'EDITOR' | 'VIEWER';
+          readonly input: 'EDITOR' | 'VIEWER';
+        };
+      };
+      readonly ReliquaryDoc: {
+        readonly category: {
+          readonly output: 'API_DOCS' | 'WIKI' | 'GUIDES' | 'TUTORIALS' | 'REFERENCE' | 'OTHER';
+          readonly input: 'API_DOCS' | 'WIKI' | 'GUIDES' | 'TUTORIALS' | 'REFERENCE' | 'OTHER';
+        };
+        readonly visibility: {
+          readonly output: 'PUBLIC' | 'UNLISTED' | 'PRIVATE';
+          readonly input: 'PUBLIC' | 'UNLISTED' | 'PRIVATE';
+        };
+      };
       readonly ReviewVote: {
         readonly reviewType: {
           readonly output:
@@ -1768,6 +1784,19 @@ type ColumnTypeOverrides = {
         readonly input: 'NONE' | 'REQUIRE_MASTER_PASSWORD';
       };
       readonly type: { readonly output: 'LOGIN' | 'SSH_KEY'; readonly input: 'LOGIN' | 'SSH_KEY' };
+    };
+    readonly ReliquaryCollaborator: {
+      readonly role: { readonly output: 'EDITOR' | 'VIEWER'; readonly input: 'EDITOR' | 'VIEWER' };
+    };
+    readonly ReliquaryDoc: {
+      readonly category: {
+        readonly output: 'API_DOCS' | 'WIKI' | 'GUIDES' | 'TUTORIALS' | 'REFERENCE' | 'OTHER';
+        readonly input: 'API_DOCS' | 'WIKI' | 'GUIDES' | 'TUTORIALS' | 'REFERENCE' | 'OTHER';
+      };
+      readonly visibility: {
+        readonly output: 'PUBLIC' | 'UNLISTED' | 'PRIVATE';
+        readonly input: 'PUBLIC' | 'UNLISTED' | 'PRIVATE';
+      };
     };
     readonly ReviewVote: {
       readonly reviewType: {
@@ -3218,6 +3247,82 @@ export namespace Models {
     voicedCharacters: public_MediaCharacter[];
     readonly [RelationKeys]?: 'mediaStaff' | 'musicTracks' | 'voicedCharacters';
   };
+  export type public_ReliquaryBookmark = {
+    createdAt: FieldOutputTypes['public']['ReliquaryBookmark']['createdAt'];
+    docId: FieldOutputTypes['public']['ReliquaryBookmark']['docId'];
+    id: FieldOutputTypes['public']['ReliquaryBookmark']['id'];
+    userId: FieldOutputTypes['public']['ReliquaryBookmark']['userId'];
+    doc: public_ReliquaryDoc;
+    user: public_User;
+    readonly [RelationKeys]?: 'doc' | 'user';
+  };
+  export type public_ReliquaryCollaborator = {
+    createdAt: FieldOutputTypes['public']['ReliquaryCollaborator']['createdAt'];
+    docId: FieldOutputTypes['public']['ReliquaryCollaborator']['docId'];
+    id: FieldOutputTypes['public']['ReliquaryCollaborator']['id'];
+    role: FieldOutputTypes['public']['ReliquaryCollaborator']['role'];
+    userId: FieldOutputTypes['public']['ReliquaryCollaborator']['userId'];
+    doc: public_ReliquaryDoc;
+    user: public_User;
+    readonly [RelationKeys]?: 'doc' | 'user';
+  };
+  export type public_ReliquaryDoc = {
+    category: FieldOutputTypes['public']['ReliquaryDoc']['category'];
+    createdAt: FieldOutputTypes['public']['ReliquaryDoc']['createdAt'];
+    creatorId: FieldOutputTypes['public']['ReliquaryDoc']['creatorId'];
+    description: FieldOutputTypes['public']['ReliquaryDoc']['description'];
+    icon: FieldOutputTypes['public']['ReliquaryDoc']['icon'];
+    id: FieldOutputTypes['public']['ReliquaryDoc']['id'];
+    lockExpiresAt: FieldOutputTypes['public']['ReliquaryDoc']['lockExpiresAt'];
+    lockedAt: FieldOutputTypes['public']['ReliquaryDoc']['lockedAt'];
+    lockedById: FieldOutputTypes['public']['ReliquaryDoc']['lockedById'];
+    pageIds: FieldOutputTypes['public']['ReliquaryDoc']['pageIds'];
+    schema: FieldOutputTypes['public']['ReliquaryDoc']['schema'];
+    sidebarConfig: FieldOutputTypes['public']['ReliquaryDoc']['sidebarConfig'];
+    tags: FieldOutputTypes['public']['ReliquaryDoc']['tags'];
+    title: FieldOutputTypes['public']['ReliquaryDoc']['title'];
+    updatedAt: FieldOutputTypes['public']['ReliquaryDoc']['updatedAt'];
+    visibility: FieldOutputTypes['public']['ReliquaryDoc']['visibility'];
+    bookmarks: public_ReliquaryBookmark[];
+    collaborators: public_ReliquaryCollaborator[];
+    creator: public_User;
+    lockedBy: public_User | null;
+    pages: public_ReliquaryPage[];
+    recentVisits: public_ReliquaryRecentVisit[];
+    readonly [RelationKeys]?:
+      'bookmarks' | 'collaborators' | 'creator' | 'lockedBy' | 'pages' | 'recentVisits';
+  };
+  export type public_ReliquaryPage = {
+    createdAt: FieldOutputTypes['public']['ReliquaryPage']['createdAt'];
+    creatorId: FieldOutputTypes['public']['ReliquaryPage']['creatorId'];
+    docId: FieldOutputTypes['public']['ReliquaryPage']['docId'];
+    icon: FieldOutputTypes['public']['ReliquaryPage']['icon'];
+    id: FieldOutputTypes['public']['ReliquaryPage']['id'];
+    lastEditedById: FieldOutputTypes['public']['ReliquaryPage']['lastEditedById'];
+    lockExpiresAt: FieldOutputTypes['public']['ReliquaryPage']['lockExpiresAt'];
+    lockedAt: FieldOutputTypes['public']['ReliquaryPage']['lockedAt'];
+    lockedById: FieldOutputTypes['public']['ReliquaryPage']['lockedById'];
+    schema: FieldOutputTypes['public']['ReliquaryPage']['schema'];
+    title: FieldOutputTypes['public']['ReliquaryPage']['title'];
+    updatedAt: FieldOutputTypes['public']['ReliquaryPage']['updatedAt'];
+    creator: public_User;
+    doc: public_ReliquaryDoc;
+    lastEditedBy: public_User | null;
+    lockedBy: public_User | null;
+    recentVisits: public_ReliquaryRecentVisit[];
+    readonly [RelationKeys]?: 'creator' | 'doc' | 'lastEditedBy' | 'lockedBy' | 'recentVisits';
+  };
+  export type public_ReliquaryRecentVisit = {
+    docId: FieldOutputTypes['public']['ReliquaryRecentVisit']['docId'];
+    id: FieldOutputTypes['public']['ReliquaryRecentVisit']['id'];
+    pageId: FieldOutputTypes['public']['ReliquaryRecentVisit']['pageId'];
+    userId: FieldOutputTypes['public']['ReliquaryRecentVisit']['userId'];
+    visitedAt: FieldOutputTypes['public']['ReliquaryRecentVisit']['visitedAt'];
+    doc: public_ReliquaryDoc;
+    page: public_ReliquaryPage | null;
+    user: public_User;
+    readonly [RelationKeys]?: 'doc' | 'page' | 'user';
+  };
   export type public_ReviewVote = {
     createdAt: FieldOutputTypes['public']['ReviewVote']['createdAt'];
     id: FieldOutputTypes['public']['ReviewVote']['id'];
@@ -3557,6 +3662,14 @@ export namespace Models {
     receivedFriendRequests: public_FriendRequest[];
     recommendationVotes: public_MediaRecommendationVote[];
     recommendations: public_MediaRecommendation[];
+    reliquaryBookmarks: public_ReliquaryBookmark[];
+    reliquaryCollaborations: public_ReliquaryCollaborator[];
+    reliquaryDocLocks: public_ReliquaryDoc[];
+    reliquaryDocs: public_ReliquaryDoc[];
+    reliquaryEditedPages: public_ReliquaryPage[];
+    reliquaryPageLocks: public_ReliquaryPage[];
+    reliquaryPages: public_ReliquaryPage[];
+    reliquaryRecentVisits: public_ReliquaryRecentVisit[];
     reviewVotes: public_ReviewVote[];
     searchHistory: public_SearchHistory[];
     sentFriendRequests: public_FriendRequest[];
@@ -3606,6 +3719,14 @@ export namespace Models {
       | 'receivedFriendRequests'
       | 'recommendationVotes'
       | 'recommendations'
+      | 'reliquaryBookmarks'
+      | 'reliquaryCollaborations'
+      | 'reliquaryDocLocks'
+      | 'reliquaryDocs'
+      | 'reliquaryEditedPages'
+      | 'reliquaryPageLocks'
+      | 'reliquaryPages'
+      | 'reliquaryRecentVisits'
       | 'reviewVotes'
       | 'searchHistory'
       | 'sentFriendRequests'
@@ -3722,6 +3843,11 @@ export declare const models: {
     PassCipher: Models.public_PassCipher;
     Passkey: Models.public_Passkey;
     Person: Models.public_Person;
+    ReliquaryBookmark: Models.public_ReliquaryBookmark;
+    ReliquaryCollaborator: Models.public_ReliquaryCollaborator;
+    ReliquaryDoc: Models.public_ReliquaryDoc;
+    ReliquaryPage: Models.public_ReliquaryPage;
+    ReliquaryRecentVisit: Models.public_ReliquaryRecentVisit;
     ReviewVote: Models.public_ReviewVote;
     SearchHistory: Models.public_SearchHistory;
     Studio: Models.public_Studio;
@@ -13710,6 +13836,603 @@ type ContractBase = Omit<
               ];
               foreignKeys: readonly [];
             };
+            readonly ReliquaryBookmark: {
+              columns: {
+                readonly createdAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: false;
+                  readonly default: { readonly kind: 'function'; readonly expression: 'now()' };
+                  readonly many: false;
+                };
+                readonly docId: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly id: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly userId: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [{ readonly columns: readonly ['userId', 'docId'] }];
+              indexes: readonly [
+                {
+                  readonly name: 'ReliquaryBookmark_docId_idx_7f6226f1';
+                  readonly prefix: 'ReliquaryBookmark_docId_idx';
+                  readonly columns: readonly ['docId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryBookmark_userId_createdAt_idx_f726f04a';
+                  readonly prefix: 'ReliquaryBookmark_userId_createdAt_idx';
+                  readonly columns: readonly ['userId', 'createdAt'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryBookmark_userId_idx_a489d58a';
+                  readonly prefix: 'ReliquaryBookmark_userId_idx';
+                  readonly columns: readonly ['userId'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryBookmark';
+                    readonly columns: readonly ['userId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'User';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryBookmark';
+                    readonly columns: readonly ['docId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryDoc';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly ReliquaryCollaborator: {
+              columns: {
+                readonly createdAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: false;
+                  readonly default: { readonly kind: 'function'; readonly expression: 'now()' };
+                  readonly many: false;
+                };
+                readonly docId: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly id: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly role: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', 'EDITOR'>;
+                  };
+                  readonly many: false;
+                };
+                readonly userId: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [{ readonly columns: readonly ['docId', 'userId'] }];
+              indexes: readonly [
+                {
+                  readonly name: 'ReliquaryCollaborator_docId_idx_7f6226f1';
+                  readonly prefix: 'ReliquaryCollaborator_docId_idx';
+                  readonly columns: readonly ['docId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryCollaborator_userId_idx_a489d58a';
+                  readonly prefix: 'ReliquaryCollaborator_userId_idx';
+                  readonly columns: readonly ['userId'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryCollaborator';
+                    readonly columns: readonly ['docId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryDoc';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryCollaborator';
+                    readonly columns: readonly ['userId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'User';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly ReliquaryDoc: {
+              columns: {
+                readonly category: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', 'GUIDES'>;
+                  };
+                  readonly many: false;
+                };
+                readonly createdAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: false;
+                  readonly default: { readonly kind: 'function'; readonly expression: 'now()' };
+                  readonly many: false;
+                };
+                readonly creatorId: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly description: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly icon: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly id: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly lockExpiresAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly lockedAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly lockedById: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly pageIds: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly schema: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/jsonb@1', {}>;
+                  };
+                  readonly many: false;
+                };
+                readonly sidebarConfig: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/jsonb@1', readonly []>;
+                  };
+                  readonly many: false;
+                };
+                readonly tags: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly title: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly updatedAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly visibility: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', 'PUBLIC'>;
+                  };
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [];
+              indexes: readonly [
+                {
+                  readonly name: 'ReliquaryDoc_creatorId_idx_3a77d800';
+                  readonly prefix: 'ReliquaryDoc_creatorId_idx';
+                  readonly columns: readonly ['creatorId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryDoc_lockedById_idx_fcf19899';
+                  readonly prefix: 'ReliquaryDoc_lockedById_idx';
+                  readonly columns: readonly ['lockedById'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryDoc_updatedAt_idx_8c508b31';
+                  readonly prefix: 'ReliquaryDoc_updatedAt_idx';
+                  readonly columns: readonly ['updatedAt'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryDoc_visibility_category_idx_a2c673b3';
+                  readonly prefix: 'ReliquaryDoc_visibility_category_idx';
+                  readonly columns: readonly ['visibility', 'category'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryDoc';
+                    readonly columns: readonly ['creatorId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'User';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryDoc';
+                    readonly columns: readonly ['lockedById'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'User';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly ReliquaryPage: {
+              columns: {
+                readonly createdAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: false;
+                  readonly default: { readonly kind: 'function'; readonly expression: 'now()' };
+                  readonly many: false;
+                };
+                readonly creatorId: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly docId: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly icon: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly id: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly lastEditedById: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly lockExpiresAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly lockedAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly lockedById: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly schema: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/jsonb@1', {}>;
+                  };
+                  readonly many: false;
+                };
+                readonly title: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly updatedAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [];
+              indexes: readonly [
+                {
+                  readonly name: 'ReliquaryPage_creatorId_idx_3a77d800';
+                  readonly prefix: 'ReliquaryPage_creatorId_idx';
+                  readonly columns: readonly ['creatorId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryPage_docId_idx_7f6226f1';
+                  readonly prefix: 'ReliquaryPage_docId_idx';
+                  readonly columns: readonly ['docId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryPage_lastEditedById_idx_4799040a';
+                  readonly prefix: 'ReliquaryPage_lastEditedById_idx';
+                  readonly columns: readonly ['lastEditedById'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryPage_lockedById_idx_fcf19899';
+                  readonly prefix: 'ReliquaryPage_lockedById_idx';
+                  readonly columns: readonly ['lockedById'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryPage';
+                    readonly columns: readonly ['docId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryDoc';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryPage';
+                    readonly columns: readonly ['creatorId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'User';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryPage';
+                    readonly columns: readonly ['lastEditedById'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'User';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryPage';
+                    readonly columns: readonly ['lockedById'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'User';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly ReliquaryRecentVisit: {
+              columns: {
+                readonly docId: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly id: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly pageId: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly userId: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly visitedAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: false;
+                  readonly default: { readonly kind: 'function'; readonly expression: 'now()' };
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [{ readonly columns: readonly ['userId', 'docId'] }];
+              indexes: readonly [
+                {
+                  readonly name: 'ReliquaryRecentVisit_docId_idx_7f6226f1';
+                  readonly prefix: 'ReliquaryRecentVisit_docId_idx';
+                  readonly columns: readonly ['docId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryRecentVisit_pageId_idx_8caaba4f';
+                  readonly prefix: 'ReliquaryRecentVisit_pageId_idx';
+                  readonly columns: readonly ['pageId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryRecentVisit_userId_idx_a489d58a';
+                  readonly prefix: 'ReliquaryRecentVisit_userId_idx';
+                  readonly columns: readonly ['userId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'ReliquaryRecentVisit_userId_visitedAt_idx_13537e5e';
+                  readonly prefix: 'ReliquaryRecentVisit_userId_visitedAt_idx';
+                  readonly columns: readonly ['userId', 'visitedAt'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryRecentVisit';
+                    readonly columns: readonly ['userId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'User';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryRecentVisit';
+                    readonly columns: readonly ['docId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryDoc';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryRecentVisit';
+                    readonly columns: readonly ['pageId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'ReliquaryPage';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
             readonly ReviewVote: {
               columns: {
                 readonly createdAt: {
@@ -16097,6 +16820,21 @@ type ContractBase = Omit<
                 'UNKNOWN',
               ];
             };
+            readonly ReliquaryCategory: {
+              readonly kind: 'valueSet';
+              readonly values: readonly [
+                'API_DOCS',
+                'WIKI',
+                'GUIDES',
+                'TUTORIALS',
+                'REFERENCE',
+                'OTHER',
+              ];
+            };
+            readonly ReliquaryVisibility: {
+              readonly kind: 'valueSet';
+              readonly values: readonly ['PUBLIC', 'UNLISTED', 'PRIVATE'];
+            };
             readonly ReviewVoteType: {
               readonly kind: 'valueSet';
               readonly values: readonly ['UPVOTE', 'DOWNVOTE'];
@@ -16292,6 +17030,26 @@ type ContractBase = Omit<
     };
     readonly Passkey: { readonly namespace: 'public' & NamespaceId; readonly model: 'Passkey' };
     readonly Person: { readonly namespace: 'public' & NamespaceId; readonly model: 'Person' };
+    readonly ReliquaryBookmark: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'ReliquaryBookmark';
+    };
+    readonly ReliquaryCollaborator: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'ReliquaryCollaborator';
+    };
+    readonly ReliquaryDoc: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'ReliquaryDoc';
+    };
+    readonly ReliquaryPage: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'ReliquaryPage';
+    };
+    readonly ReliquaryRecentVisit: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'ReliquaryRecentVisit';
+    };
     readonly ReviewVote: {
       readonly namespace: 'public' & NamespaceId;
       readonly model: 'ReviewVote';
@@ -24221,6 +24979,498 @@ type ContractBase = Omit<
               };
             };
           };
+          readonly ReliquaryBookmark: {
+            readonly fields: {
+              readonly createdAt: {
+                readonly nullable: false;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly docId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly userId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+            };
+            readonly relations: {
+              readonly doc: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryDoc';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['docId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly user: {
+                readonly to: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['userId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'ReliquaryBookmark';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly createdAt: { readonly column: 'createdAt' };
+                readonly docId: { readonly column: 'docId' };
+                readonly id: { readonly column: 'id' };
+                readonly userId: { readonly column: 'userId' };
+              };
+            };
+          };
+          readonly ReliquaryCollaborator: {
+            readonly fields: {
+              readonly createdAt: {
+                readonly nullable: false;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly docId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly role: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly userId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+            };
+            readonly relations: {
+              readonly doc: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryDoc';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['docId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly user: {
+                readonly to: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['userId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'ReliquaryCollaborator';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly createdAt: { readonly column: 'createdAt' };
+                readonly docId: { readonly column: 'docId' };
+                readonly id: { readonly column: 'id' };
+                readonly role: { readonly column: 'role' };
+                readonly userId: { readonly column: 'userId' };
+              };
+            };
+          };
+          readonly ReliquaryDoc: {
+            readonly fields: {
+              readonly category: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly createdAt: {
+                readonly nullable: false;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly creatorId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly description: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly icon: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly lockExpiresAt: {
+                readonly nullable: true;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly lockedAt: {
+                readonly nullable: true;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly lockedById: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly pageIds: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly schema: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
+              readonly sidebarConfig: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
+              readonly tags: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly title: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly updatedAt: {
+                readonly nullable: false;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly visibility: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+            };
+            readonly relations: {
+              readonly bookmarks: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryBookmark';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['docId'];
+                };
+              };
+              readonly collaborators: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryCollaborator';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['docId'];
+                };
+              };
+              readonly creator: {
+                readonly to: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['creatorId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly lockedBy: {
+                readonly to: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
+                readonly cardinality: 'N:1';
+                readonly nullable: true;
+                readonly on: {
+                  readonly localFields: readonly ['lockedById'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly pages: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryPage';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['docId'];
+                };
+              };
+              readonly recentVisits: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryRecentVisit';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['docId'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'ReliquaryDoc';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly category: { readonly column: 'category' };
+                readonly createdAt: { readonly column: 'createdAt' };
+                readonly creatorId: { readonly column: 'creatorId' };
+                readonly description: { readonly column: 'description' };
+                readonly icon: { readonly column: 'icon' };
+                readonly id: { readonly column: 'id' };
+                readonly lockExpiresAt: { readonly column: 'lockExpiresAt' };
+                readonly lockedAt: { readonly column: 'lockedAt' };
+                readonly lockedById: { readonly column: 'lockedById' };
+                readonly pageIds: { readonly column: 'pageIds' };
+                readonly schema: { readonly column: 'schema' };
+                readonly sidebarConfig: { readonly column: 'sidebarConfig' };
+                readonly tags: { readonly column: 'tags' };
+                readonly title: { readonly column: 'title' };
+                readonly updatedAt: { readonly column: 'updatedAt' };
+                readonly visibility: { readonly column: 'visibility' };
+              };
+            };
+          };
+          readonly ReliquaryPage: {
+            readonly fields: {
+              readonly createdAt: {
+                readonly nullable: false;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly creatorId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly docId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly icon: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly lastEditedById: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly lockExpiresAt: {
+                readonly nullable: true;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly lockedAt: {
+                readonly nullable: true;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly lockedById: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly schema: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
+              readonly title: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly updatedAt: {
+                readonly nullable: false;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+            };
+            readonly relations: {
+              readonly creator: {
+                readonly to: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['creatorId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly doc: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryDoc';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['docId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly lastEditedBy: {
+                readonly to: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
+                readonly cardinality: 'N:1';
+                readonly nullable: true;
+                readonly on: {
+                  readonly localFields: readonly ['lastEditedById'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly lockedBy: {
+                readonly to: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
+                readonly cardinality: 'N:1';
+                readonly nullable: true;
+                readonly on: {
+                  readonly localFields: readonly ['lockedById'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly recentVisits: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryRecentVisit';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['pageId'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'ReliquaryPage';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly createdAt: { readonly column: 'createdAt' };
+                readonly creatorId: { readonly column: 'creatorId' };
+                readonly docId: { readonly column: 'docId' };
+                readonly icon: { readonly column: 'icon' };
+                readonly id: { readonly column: 'id' };
+                readonly lastEditedById: { readonly column: 'lastEditedById' };
+                readonly lockExpiresAt: { readonly column: 'lockExpiresAt' };
+                readonly lockedAt: { readonly column: 'lockedAt' };
+                readonly lockedById: { readonly column: 'lockedById' };
+                readonly schema: { readonly column: 'schema' };
+                readonly title: { readonly column: 'title' };
+                readonly updatedAt: { readonly column: 'updatedAt' };
+              };
+            };
+          };
+          readonly ReliquaryRecentVisit: {
+            readonly fields: {
+              readonly docId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly pageId: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly userId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly visitedAt: {
+                readonly nullable: false;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+            };
+            readonly relations: {
+              readonly doc: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryDoc';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['docId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly page: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryPage';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: true;
+                readonly on: {
+                  readonly localFields: readonly ['pageId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly user: {
+                readonly to: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['userId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'ReliquaryRecentVisit';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly docId: { readonly column: 'docId' };
+                readonly id: { readonly column: 'id' };
+                readonly pageId: { readonly column: 'pageId' };
+                readonly userId: { readonly column: 'userId' };
+                readonly visitedAt: { readonly column: 'visitedAt' };
+              };
+            };
+          };
           readonly ReviewVote: {
             readonly fields: {
               readonly createdAt: {
@@ -26388,6 +27638,94 @@ type ContractBase = Omit<
                   readonly targetFields: readonly ['userId'];
                 };
               };
+              readonly reliquaryBookmarks: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryBookmark';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['userId'];
+                };
+              };
+              readonly reliquaryCollaborations: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryCollaborator';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['userId'];
+                };
+              };
+              readonly reliquaryDocLocks: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryDoc';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['lockedById'];
+                };
+              };
+              readonly reliquaryDocs: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryDoc';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['creatorId'];
+                };
+              };
+              readonly reliquaryEditedPages: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryPage';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['lastEditedById'];
+                };
+              };
+              readonly reliquaryPageLocks: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryPage';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['lockedById'];
+                };
+              };
+              readonly reliquaryPages: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryPage';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['creatorId'];
+                };
+              };
+              readonly reliquaryRecentVisits: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'ReliquaryRecentVisit';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['userId'];
+                };
+              };
               readonly reviewVotes: {
                 readonly to: {
                   readonly namespace: 'public' & NamespaceId;
@@ -26987,6 +28325,25 @@ type ContractBase = Omit<
               { readonly name: 'UNKNOWN'; readonly value: 'UNKNOWN' },
             ];
           };
+          readonly ReliquaryCategory: {
+            readonly codecId: 'pg/text@1';
+            readonly members: readonly [
+              { readonly name: 'API_DOCS'; readonly value: 'API_DOCS' },
+              { readonly name: 'WIKI'; readonly value: 'WIKI' },
+              { readonly name: 'GUIDES'; readonly value: 'GUIDES' },
+              { readonly name: 'TUTORIALS'; readonly value: 'TUTORIALS' },
+              { readonly name: 'REFERENCE'; readonly value: 'REFERENCE' },
+              { readonly name: 'OTHER'; readonly value: 'OTHER' },
+            ];
+          };
+          readonly ReliquaryVisibility: {
+            readonly codecId: 'pg/text@1';
+            readonly members: readonly [
+              { readonly name: 'PUBLIC'; readonly value: 'PUBLIC' },
+              { readonly name: 'UNLISTED'; readonly value: 'UNLISTED' },
+              { readonly name: 'PRIVATE'; readonly value: 'PRIVATE' },
+            ];
+          };
           readonly ReviewVoteType: {
             readonly codecId: 'pg/text@1';
             readonly members: readonly [
@@ -27250,6 +28607,19 @@ type ContractBase = Omit<
             { readonly name: 'CHARACTER'; readonly value: 'CHARACTER' },
             { readonly name: 'OTHER'; readonly value: 'OTHER' },
             { readonly name: 'UNKNOWN'; readonly value: 'UNKNOWN' },
+          ];
+          readonly ReliquaryCategory: readonly [
+            { readonly name: 'API_DOCS'; readonly value: 'API_DOCS' },
+            { readonly name: 'WIKI'; readonly value: 'WIKI' },
+            { readonly name: 'GUIDES'; readonly value: 'GUIDES' },
+            { readonly name: 'TUTORIALS'; readonly value: 'TUTORIALS' },
+            { readonly name: 'REFERENCE'; readonly value: 'REFERENCE' },
+            { readonly name: 'OTHER'; readonly value: 'OTHER' },
+          ];
+          readonly ReliquaryVisibility: readonly [
+            { readonly name: 'PUBLIC'; readonly value: 'PUBLIC' },
+            { readonly name: 'UNLISTED'; readonly value: 'UNLISTED' },
+            { readonly name: 'PRIVATE'; readonly value: 'PRIVATE' },
           ];
           readonly ReviewVoteType: readonly [
             { readonly name: 'UPVOTE'; readonly value: 'UPVOTE' },
@@ -27881,6 +29251,64 @@ type ContractBase = Omit<
           readonly ref: {
             readonly entry: 'Person';
             readonly field: 'updatedAt';
+            readonly namespace: 'public';
+          };
+        },
+        {
+          readonly onCreate: { readonly id: 'uuidv4'; readonly kind: 'generator' };
+          readonly ref: {
+            readonly entry: 'ReliquaryBookmark';
+            readonly field: 'id';
+            readonly namespace: 'public';
+          };
+        },
+        {
+          readonly onCreate: { readonly id: 'uuidv4'; readonly kind: 'generator' };
+          readonly ref: {
+            readonly entry: 'ReliquaryCollaborator';
+            readonly field: 'id';
+            readonly namespace: 'public';
+          };
+        },
+        {
+          readonly onCreate: { readonly id: 'uuidv4'; readonly kind: 'generator' };
+          readonly ref: {
+            readonly entry: 'ReliquaryDoc';
+            readonly field: 'id';
+            readonly namespace: 'public';
+          };
+        },
+        {
+          readonly onCreate: { readonly id: 'timestampNow'; readonly kind: 'generator' };
+          readonly onUpdate: { readonly id: 'timestampNow'; readonly kind: 'generator' };
+          readonly ref: {
+            readonly entry: 'ReliquaryDoc';
+            readonly field: 'updatedAt';
+            readonly namespace: 'public';
+          };
+        },
+        {
+          readonly onCreate: { readonly id: 'uuidv4'; readonly kind: 'generator' };
+          readonly ref: {
+            readonly entry: 'ReliquaryPage';
+            readonly field: 'id';
+            readonly namespace: 'public';
+          };
+        },
+        {
+          readonly onCreate: { readonly id: 'timestampNow'; readonly kind: 'generator' };
+          readonly onUpdate: { readonly id: 'timestampNow'; readonly kind: 'generator' };
+          readonly ref: {
+            readonly entry: 'ReliquaryPage';
+            readonly field: 'updatedAt';
+            readonly namespace: 'public';
+          };
+        },
+        {
+          readonly onCreate: { readonly id: 'uuidv4'; readonly kind: 'generator' };
+          readonly ref: {
+            readonly entry: 'ReliquaryRecentVisit';
+            readonly field: 'id';
             readonly namespace: 'public';
           };
         },

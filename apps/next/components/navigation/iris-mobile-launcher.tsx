@@ -12,8 +12,130 @@ import type {
   SidebarSection,
 } from "@/types/sidebar-config"
 import { formatBadgeNumber } from "@/lib/numbers"
-import { isRouteActive } from "@/lib/navigation"
+import { hasActiveDescendant, isRouteActive } from "@/lib/navigation"
 import { IrisUserMenu } from "./iris-user-menu"
+
+const MAX_MOBILE_NAV_DEPTH = 5
+
+function renderMobileSubItems(
+  children: SidebarItemChild[],
+  parentKey: string,
+  pathname: string,
+  searchParams: ReturnType<typeof useSearchParams>,
+  openItems: Record<string, boolean>,
+  toggleItem: (key: string) => void,
+  handleNavigate: (href?: string, customOnClick?: () => void) => void,
+  depth = 2
+): React.ReactNode {
+  return (
+    <div className="my-1 ms-4 space-y-0.5 border-s border-border/50 py-1 ps-3 pe-1">
+      {children.map((child, cIdx) => {
+        if (child.component) {
+          return (
+            <div key={cIdx} className="w-full">
+              {child.component}
+            </div>
+          )
+        }
+
+        const subKey = `${parentKey}:${child.dataKey || child.label || cIdx}`
+        const isSubActive =
+          child.isActive !== undefined
+            ? child.isActive
+            : isRouteActive(pathname, child.href, searchParams)
+        const nested =
+          depth < MAX_MOBILE_NAV_DEPTH && child.children && child.children.length > 0
+            ? child.children
+            : undefined
+        const isNestedActive =
+          !!nested &&
+          hasActiveDescendant(child, pathname, searchParams, MAX_MOBILE_NAV_DEPTH, depth + 1)
+        const isSubOpen =
+          openItems[subKey] !== undefined ? openItems[subKey] : isNestedActive
+
+        if (nested) {
+          return (
+            <div key={cIdx} className="flex flex-col">
+              <div className="flex items-center justify-between gap-1">
+                <button
+                  type="button"
+                  onClick={() =>
+                    child.href ? handleNavigate(child.href, child.onClick) : toggleItem(subKey)
+                  }
+                  className={cn(
+                    "flex min-w-0 flex-1 cursor-pointer items-center gap-2 rounded-xl px-2.5 py-2 text-start text-xs font-medium transition-colors",
+                    isSubActive
+                      ? "bg-primary/15 font-semibold text-primary"
+                      : isNestedActive
+                        ? "font-semibold text-foreground"
+                        : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                  )}
+                >
+                  {child.icon && (
+                    <span className="shrink-0 [&>svg]:size-3.5">{child.icon}</span>
+                  )}
+                  <span className="truncate">{child.label}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => toggleItem(subKey)}
+                  className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                >
+                  <IconChevronDown
+                    className={cn(
+                      "size-3.5 transition-transform duration-200",
+                      isSubOpen && "rotate-180"
+                    )}
+                  />
+                </button>
+              </div>
+              {isSubOpen &&
+                renderMobileSubItems(
+                  nested,
+                  subKey,
+                  pathname,
+                  searchParams,
+                  openItems,
+                  toggleItem,
+                  handleNavigate,
+                  depth + 1
+                )}
+            </div>
+          )
+        }
+
+        return (
+          <button
+            key={cIdx}
+            type="button"
+            onClick={() => handleNavigate(child.href, child.onClick)}
+            className={cn(
+              "flex w-full cursor-pointer items-center justify-between rounded-xl px-2.5 py-2 text-start text-xs font-medium transition-colors",
+              isSubActive
+                ? "bg-primary/15 font-semibold text-primary"
+                : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+            )}
+          >
+            <span className="flex min-w-0 flex-1 items-center gap-2">
+              {child.icon && (
+                <span className="shrink-0 [&>svg]:size-3.5">{child.icon}</span>
+              )}
+              <span className="truncate">{child.label}</span>
+            </span>
+            {child.badge && (
+              <Badge
+                variant="secondary"
+                className="ms-auto h-4 shrink-0 px-1.5 text-[10px]"
+              >
+                {formatBadgeNumber(Number(child.badge) || 0, 2)}
+              </Badge>
+            )}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
 
 
 export interface IrisMobileLauncherProps {
@@ -75,10 +197,11 @@ export function IrisMobileLauncher({
     launcherSections.forEach((section) => {
       section.items.forEach((item, iIdx) => {
         if (item.children && item.children.length > 0) {
-          const hasActiveChild = item.children.some((child) =>
-            child.isActive !== undefined
-              ? child.isActive
-              : isRouteActive(pathname, child.href, searchParams)
+          const hasActiveChild = hasActiveDescendant(
+            item,
+            pathname,
+            searchParams,
+            MAX_MOBILE_NAV_DEPTH
           )
           if (hasActiveChild) {
             const key = item.dataKey || item.label || `item-${iIdx}`
@@ -89,7 +212,10 @@ export function IrisMobileLauncher({
     })
   }, [pathname, searchParams, launcherSections])
 
-  const handleNavigate = (href?: string) => {
+  const handleNavigate = (href?: string, customOnClick?: () => void) => {
+    if (customOnClick) {
+      customOnClick()
+    }
     if (href) {
       onOpenChange(false)
       router.push(href)
@@ -148,10 +274,11 @@ export function IrisMobileLauncher({
                     )
                     const isChildActive =
                       hasChildren &&
-                      item.children!.some((child) =>
-                        child.isActive !== undefined
-                          ? child.isActive
-                          : isRouteActive(pathname, child.href, searchParams)
+                      hasActiveDescendant(
+                        item,
+                        pathname,
+                        searchParams,
+                        MAX_MOBILE_NAV_DEPTH
                       )
                     const isDirectActive =
                       item.isActive !== undefined
@@ -262,69 +389,18 @@ export function IrisMobileLauncher({
                             </button>
                           </div>
 
-                          {/* Submenu children: closed by default */}
-                          {isOpen && (
-                            <div className="my-1 ms-5 space-y-0.5 border-s border-border/50 py-1 ps-4 pe-1">
-                              {item.children!.map(
-                                (child: SidebarItemChild, cIdx: number) => {
-                                  const isSubActive =
-                                    child.isActive !== undefined
-                                      ? child.isActive
-                                      : isRouteActive(
-                                          pathname,
-                                          child.href,
-                                          searchParams
-                                        )
-
-                                  if (child.component) {
-                                    return (
-                                      <div key={cIdx} className="w-full">
-                                        {child.component}
-                                      </div>
-                                    )
-                                  }
-
-                                  return (
-                                    <button
-                                      key={cIdx}
-                                      type="button"
-                                      onClick={() =>
-                                        handleNavigate(child.href)
-                                      }
-                                      className={cn(
-                                        "flex w-full cursor-pointer items-center justify-between rounded-xl px-2.5 py-2 text-start text-xs font-medium transition-colors",
-                                        isSubActive
-                                          ? "bg-primary/15 font-semibold text-primary"
-                                          : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
-                                      )}
-                                    >
-                                      <span className="flex min-w-0 flex-1 items-center gap-2">
-                                        {child.icon && (
-                                          <span className="shrink-0 [&>svg]:size-3.5">
-                                            {child.icon}
-                                          </span>
-                                        )}
-                                        <span className="truncate">
-                                          {child.label}
-                                        </span>
-                                      </span>
-                                      {child.badge && (
-                                        <Badge
-                                          variant="secondary"
-                                          className="ml-auto h-4 shrink-0 px-1.5 text-[10px]"
-                                        >
-                                          {formatBadgeNumber(
-                                            Number(child.badge) || 0,
-                                            2
-                                          )}
-                                        </Badge>
-                                      )}
-                                    </button>
-                                  )
-                                }
-                              )}
-                            </div>
-                          )}
+                          {/* Submenu children: recursive up to 5 levels */}
+                          {isOpen &&
+                            renderMobileSubItems(
+                              item.children!,
+                              itemKey,
+                              pathname,
+                              searchParams,
+                              openItems,
+                              toggleItem,
+                              handleNavigate,
+                              2
+                            )}
                         </div>
                       )
                     }

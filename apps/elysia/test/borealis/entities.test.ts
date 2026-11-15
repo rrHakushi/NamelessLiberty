@@ -1,7 +1,7 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia, ValidationError } from 'elysia'
-import { borealisEntities } from '../../src/api/controllers/borealis/entities.ctrl'
-import { isHttpError } from '../../src/lib/errors'
+import { borealisEntities } from '../../src/apps/borealis/entities/entities.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
 import { prisma } from '@NamelessLiberty/db'
 
 // Mock Data

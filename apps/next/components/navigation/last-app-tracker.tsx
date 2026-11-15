@@ -18,13 +18,14 @@ export function LastAppTracker(): null {
     // Do not record authentication flows as last used apps
     if (pathname.includes("/auth/")) return
 
-    // Detect if we are inside a known app (e.g. /borealis, /carina, /kiroshi, /akaromi, /tesseract)
+    // Detect if we are inside a known app (e.g. /borealis, /carina, /kiroshi, /akaromi, /tesseract, /reliquary)
     if (
       pathname.startsWith("/borealis") ||
       pathname.startsWith("/carina") ||
       pathname.startsWith("/kiroshi") ||
       pathname.startsWith("/akaromi") ||
       pathname.startsWith("/tesseract") ||
+      pathname.startsWith("/reliquary") ||
       pathname.startsWith("/IRIS-") ||
       pathname.startsWith("/list")
     ) {

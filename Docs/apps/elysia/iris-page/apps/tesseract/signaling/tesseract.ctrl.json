@@ -1,0 +1,2313 @@
+{
+  "id": "apps/tesseract/signaling/tesseract.ctrl",
+  "title": "Get Tesseract LAN lobby scope and optional authenticated user profile",
+  "description": "",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/tesseract/identity",
+    "relPath": "apps/tesseract/signaling/tesseract.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/tesseract/identity",
+      "/tesseract/events",
+      "/tesseract/signal"
+    ],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Get Tesseract LAN lobby scope and optional authenticated user profile"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/tesseract/identity"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/tesseract/events"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/tesseract/signal"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_40)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "26 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /tesseract/identity · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "isAuthenticated"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Boolean()"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /tesseract/identity · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "user"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Nullable( t.Object({ id: t.String(), username: t.String(), displayName: t.String(), avatarUrl: t.Nullable(t.String()), }) ..."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /tesseract/identity · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "lanRoomId"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.String()"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /tesseract/identity · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "lanScope"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Union([t.Literal('lan'), t.Literal('nat')])"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /tesseract/events · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "deviceId"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Optional(t.String())"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /tesseract/events · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "tabId"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Optional(t.String())"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /tesseract/events · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "alias"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Optional(t.String())"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /tesseract/events · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "deviceType"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Optional(t.String())"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /tesseract/events · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "os"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Optional(t.String())"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /tesseract/events · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "browser"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Optional(t.String())"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /tesseract/events · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "approval"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Optional(t.String())"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "peerId"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.String({ minLength: 1 })"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "sseSecret"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.String({ minLength: 1 })"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "payload"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Record(t.String(), t.Any())"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "ok"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Boolean()"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "type"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.String()"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "title"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.String()"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "status"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Literal(401)"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "detail"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.String()"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "code"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.String()"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "instance"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Optional(t.String())"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "type"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.String()"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "title"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.String()"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-23",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "status"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.Literal(422)"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-24",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "detail"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.String()"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-25",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /tesseract/signal · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "code"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "t.String()"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/tesseract/signaling/tesseract.ctrl.ts-route-0",
+                "title": "GET /tesseract/identity",
+                "description": "Get Tesseract LAN lobby scope and optional authenticated user profile",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "var_def",
+                    "title": "Define `remoteAddr`",
+                    "payload": "const remoteAddr = (server as any)?.requestIP?.(request)?.address ?? null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await tesseractServ.getIdentity(request, remoteAddr)`"
+                  },
+                  {
+                    "id": "call_0_tesseractServ_getIdentity",
+                    "kind": "alg_call",
+                    "title": "Invoke TesseractServ.getIdentity",
+                    "isAsync": true,
+                    "targetAlg": "TesseractServ.getIdentity"
+                  },
+                  {
+                    "id": "svc_0_tesseractServ_getIdentity",
+                    "kind": "sequence",
+                    "title": "TesseractServ.getIdentity Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_tesseractServ_getIdentity_0_1",
+                        "kind": "step",
+                        "title": "Calls `extractClientIp` and stores result as `clientIp`"
+                      },
+                      {
+                        "id": "svc_0_tesseractServ_getIdentity_1_2",
+                        "kind": "step",
+                        "title": "Calls `resolveLanLobbyId` and stores result as `{ roomId, lanScope }`"
+                      },
+                      {
+                        "id": "svc_0_tesseractServ_getIdentity_2_3",
+                        "kind": "step",
+                        "title": "Calls `this.resolveAuthenticatedPeerUser` and stores result as `user`"
+                      },
+                      {
+                        "id": "svc_0_tesseractServ_getIdentity_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"isAuthenticated\": \"<user !== null>\",\n  \"user\": \"<user>\",\n  \"lanRoomId\": \"<roomId>\",\n  \"lanScope\": \"<lanScope>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/tesseract/signaling/tesseract.ctrl.ts-route-1",
+                "title": "GET /tesseract/events",
+                "description": "Server-Sent Events signaling fallback stream for Tesseract",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `TesseractModel.eventsQuery`"
+                  },
+                  {
+                    "id": "route_1_1_2",
+                    "kind": "var_def",
+                    "title": "Define `remoteAddr`, `encoder`, `peerId`, `closed`, `keepAliveTimer`, `stream`",
+                    "payload": "const remoteAddr = (server as any)?.requestIP?.(request)?.address ?? null\nconst encoder = new TextEncoder()\nlet peerId: string | null = null\nlet closed = false\nlet keepAliveTimer: ReturnType<typeof setInterval> | null = null\nconst stream = new ReadableStream<Uint8Array>({ async start(controller) { const cleanup = async () => { if (closed) return closed = true if (keepAliveTimer) { clearInterval(keepAliveTimer) ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "route_1_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`new Response(stream, { headers: { 'Content-Type': 'text/event-stream; charset=utf-8', 'Cache-Control': 'no-cache, no-transform', Connection: 'keep-alive', }, })`"
+                  },
+                  {
+                    "id": "call_1_tesseractServ_disconnectPeer",
+                    "kind": "alg_call",
+                    "title": "Invoke TesseractServ.disconnectPeer",
+                    "isAsync": true,
+                    "targetAlg": "TesseractServ.disconnectPeer"
+                  },
+                  {
+                    "id": "svc_1_tesseractServ_disconnectPeer",
+                    "kind": "sequence",
+                    "title": "TesseractServ.disconnectPeer Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_0_1",
+                        "kind": "var_def",
+                        "title": "Define `peerId`",
+                        "payload": "let peerId: string | undefined",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_1_2",
+                        "kind": "selection",
+                        "title": "`typeofpeerIdOrTransportKey === 'string'`",
+                        "selectionMode": "if_else",
+                        "condition": "`typeofpeerIdOrTransportKey === 'string'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_disconnectPeer_1_2_then_0_2_1",
+                            "kind": "step",
+                            "title": "Assign `peerId`",
+                            "payload": "peerId = peerIdOrTransportKey",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_disconnectPeer_1_2_else_0_3_1",
+                            "kind": "step",
+                            "title": "Calls `this.closedTransportKeys.add`"
+                          },
+                          {
+                            "id": "svc_1_tesseractServ_disconnectPeer_1_2_else_1_3_2",
+                            "kind": "step",
+                            "title": "Assign `peerId`",
+                            "payload": "peerId = this.socketKeyToPeerId.get(peerIdOrTransportKey)",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_1_tesseractServ_disconnectPeer_1_2_else_2_3_3",
+                            "kind": "step",
+                            "title": "Calls `this.socketKeyToPeerId.delete`"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_3_4",
+                        "kind": "selection",
+                        "title": "`!peerId`",
+                        "selectionMode": "if_else",
+                        "condition": "`!peerId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_disconnectPeer_3_4_then_0_4_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`void`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_4_5",
+                        "kind": "step",
+                        "title": "Calls `this.peerIdToTabId.get` and stores result as `tabId`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_5_6",
+                        "kind": "selection",
+                        "title": "`tabId`",
+                        "selectionMode": "if_else",
+                        "condition": "`tabId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_disconnectPeer_5_6_then_0_6_1",
+                            "kind": "step",
+                            "title": "Calls `this.peerIdToTabId.delete`"
+                          },
+                          {
+                            "id": "svc_1_tesseractServ_disconnectPeer_5_6_then_1_6_2",
+                            "kind": "selection",
+                            "title": "`this.tabIdToPeerId.get(tabId) === peerId`",
+                            "selectionMode": "if_else",
+                            "condition": "`this.tabIdToPeerId.get(tabId) === peerId`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_tesseractServ_disconnectPeer_5_6_then_1_6_2_then_0_6_2_1",
+                                "kind": "step",
+                                "title": "Calls `this.tabIdToPeerId.delete`"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_6_7",
+                        "kind": "step",
+                        "title": "Calls `this.getStore` and stores result as `store`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_7_8",
+                        "kind": "step",
+                        "title": "Calls `this.localPeers.get` and stores result as `session`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_8_9",
+                        "kind": "var_def",
+                        "title": "Define `roomId`",
+                        "payload": "let roomId = session?.roomId ?? null",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_9_10",
+                        "kind": "selection",
+                        "title": "`!roomId`",
+                        "selectionMode": "if_else",
+                        "condition": "`!roomId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_disconnectPeer_9_10_then_0_10_1",
+                            "kind": "step",
+                            "title": "Assign `roomId`",
+                            "payload": "roomId = await store.getPeerRoomId(peerId)",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_10_11",
+                        "kind": "selection",
+                        "title": "`!roomId`",
+                        "selectionMode": "if_else",
+                        "condition": "`!roomId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_disconnectPeer_10_11_then_0_11_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`void`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_11_12",
+                        "kind": "step",
+                        "title": "Calls `this.localPeers.delete`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_12_13",
+                        "kind": "step",
+                        "title": "Calls `store.removePeer`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_disconnectPeer_13_14",
+                        "kind": "step",
+                        "title": "Calls `store.publishBus`"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "call_1_tesseractServ_connectPeer",
+                    "kind": "alg_call",
+                    "title": "Invoke TesseractServ.connectPeer",
+                    "isAsync": true,
+                    "targetAlg": "TesseractServ.connectPeer"
+                  },
+                  {
+                    "id": "svc_1_tesseractServ_connectPeer",
+                    "kind": "sequence",
+                    "title": "TesseractServ.connectPeer Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_0_1",
+                        "kind": "var_def",
+                        "title": "Define `isCancelled`",
+                        "payload": "const isCancelled = () => Boolean( params.isAborted?.() || (params.transportKey && this.closedTransportKeys.has(params.transportKey)) )",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_1_2",
+                        "kind": "selection",
+                        "title": "`isCancelled()`",
+                        "selectionMode": "if_else",
+                        "condition": "`isCancelled()`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_1_2_then_0_2_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`null`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_2_3",
+                        "kind": "step",
+                        "title": "Calls `this.getStore` and stores result as `store`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_3_4",
+                        "kind": "step",
+                        "title": "Calls `this.resolveAuthenticatedPeerUser` and stores result as `verifiedUser`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_4_5",
+                        "kind": "selection",
+                        "title": "`isCancelled()`",
+                        "selectionMode": "if_else",
+                        "condition": "`isCancelled()`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_4_5_then_0_5_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`null`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_5_6",
+                        "kind": "step",
+                        "title": "Calls `extractClientIp` and stores result as `clientIp`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_6_7",
+                        "kind": "step",
+                        "title": "Calls `resolveLanLobbyId` and stores result as `{ roomId, lanScope }`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_7_8",
+                        "kind": "var_def",
+                        "title": "Define `roomInfo`",
+                        "payload": "const roomInfo: TesseractRoomInfo = { roomId, lanScope, }",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_8_9",
+                        "kind": "step",
+                        "title": "Calls `sanitizeClientId` and stores result as `tabId`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_9_10",
+                        "kind": "selection",
+                        "title": "`tabId`",
+                        "selectionMode": "if_else",
+                        "condition": "`tabId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_9_10_then_0_10_1",
+                            "kind": "step",
+                            "title": "Calls `this.tabIdToPeerId.get` and stores result as `previousPeerId`"
+                          },
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_9_10_then_1_10_2",
+                            "kind": "selection",
+                            "title": "`previousPeerId`",
+                            "selectionMode": "if_else",
+                            "condition": "`previousPeerId`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_tesseractServ_connectPeer_9_10_then_1_10_2_then_0_10_2_1",
+                                "kind": "step",
+                                "title": "Calls `this.disconnectPeer`"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_10_11",
+                        "kind": "selection",
+                        "title": "`isCancelled()`",
+                        "selectionMode": "if_else",
+                        "condition": "`isCancelled()`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_10_11_then_0_11_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`null`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_11_12",
+                        "kind": "step",
+                        "title": "Calls `crypto.randomUUID` and stores result as `peerId`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_12_13",
+                        "kind": "step",
+                        "title": "Calls `sanitizeClientId` and stores result as `deviceId`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_13_14",
+                        "kind": "var_def",
+                        "title": "Define `defaultAlias`, `peer`",
+                        "payload": "const defaultAlias = verifiedUser?.displayName ? `${verifiedUser.displayName}'s ${params.os || 'Device'}` : `${params.os || 'Local'} ${params.browser || 'Browser'}`\nconst peer: TesseractPeer = { peerId, deviceId, alias: sanitizeAlias(params.alias, defaultAlias), deviceType: normalizeDeviceType(params.deviceType), os: (params.os || 'Unknown OS').slice(0, 32), browser: (params.browser || 'Browser').slice(0, 32), ...",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_14_15",
+                        "kind": "step",
+                        "title": "Calls `store.putPeer`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_15_16",
+                        "kind": "var_def",
+                        "title": "Define `sseSecret`",
+                        "payload": "let sseSecret: string | undefined",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_16_17",
+                        "kind": "selection",
+                        "title": "`params.issueSseSecret`",
+                        "selectionMode": "if_else",
+                        "condition": "`params.issueSseSecret`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_16_17_then_0_17_1",
+                            "kind": "step",
+                            "title": "Assign `sseSecret`",
+                            "payload": "sseSecret = randomBytes(24).toString('hex')",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_16_17_then_1_17_2",
+                            "kind": "step",
+                            "title": "Calls `store.setSseSecret`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_17_18",
+                        "kind": "selection",
+                        "title": "`isCancelled()`",
+                        "selectionMode": "if_else",
+                        "condition": "`isCancelled()`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_17_18_then_0_18_1",
+                            "kind": "step",
+                            "title": "Calls `store.removePeer`"
+                          },
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_17_18_then_1_18_2",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`null`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_18_19",
+                        "kind": "step",
+                        "title": "Calls `this.localPeers.set`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_19_20",
+                        "kind": "selection",
+                        "title": "`params.transportKey`",
+                        "selectionMode": "if_else",
+                        "condition": "`params.transportKey`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_19_20_then_0_20_1",
+                            "kind": "step",
+                            "title": "Calls `this.socketKeyToPeerId.set`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_20_21",
+                        "kind": "selection",
+                        "title": "`tabId`",
+                        "selectionMode": "if_else",
+                        "condition": "`tabId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_20_21_then_0_21_1",
+                            "kind": "step",
+                            "title": "Calls `this.tabIdToPeerId.set`"
+                          },
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_20_21_then_1_21_2",
+                            "kind": "step",
+                            "title": "Calls `this.peerIdToTabId.set`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_21_22",
+                        "kind": "step",
+                        "title": "Calls `store.listAlivePeers` and stores result as `{ alive, prunedPeerIds }`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_22_23",
+                        "kind": "iteration",
+                        "title": "Iterate `const prunedId` over `prunedPeerIds`",
+                        "loopType": "while",
+                        "condition": "Iterate `const prunedId` over `prunedPeerIds`",
+                        "children": [
+                          {
+                            "id": "svc_1_tesseractServ_connectPeer_22_23_loop_0_23_1",
+                            "kind": "step",
+                            "title": "Calls `store.publishBus`"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_23_24",
+                        "kind": "var_def",
+                        "title": "Define `existingPeers`, `joinedEvent`",
+                        "payload": "const existingPeers = alive.filter((p) => p.peerId !== peerId)\nconst joinedEvent: TesseractServerEvent = { event: 'room:joined', data: { selfPeerId: peerId, selfPeer: peer, room: roomInfo, peers: existingPeers, ...",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_24_25",
+                        "kind": "step",
+                        "title": "Calls `params.transport.send`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_25_26",
+                        "kind": "step",
+                        "title": "Calls `store.publishBus`"
+                      },
+                      {
+                        "id": "svc_1_tesseractServ_connectPeer_26_27",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"peerId\": \"<peerId>\",\n  \"sseSecret\": \"<sseSecret>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/tesseract/signaling/tesseract.ctrl.ts-route-2",
+                "title": "POST /tesseract/signal",
+                "description": "Send a Tesseract signaling frame when using SSE fallback transport",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `TesseractModel.signalBody`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "step",
+                    "title": "Calls `tesseractServ.verifySseSignalAccess` and stores result as `allowed`"
+                  },
+                  {
+                    "id": "route_2_2_3",
+                    "kind": "selection",
+                    "title": "`!allowed`",
+                    "selectionMode": "if_else",
+                    "condition": "`!allowed`",
+                    "thenBranch": [
+                      {
+                        "id": "route_2_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Unauthorized",
+                        "httpStatus": 401,
+                        "message": "Invalid Tesseract peer credentials"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "route_2_3_4",
+                    "kind": "step",
+                    "title": "Calls `tesseractServ.handleClientSignal`"
+                  },
+                  {
+                    "id": "route_2_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"ok\": true\n}",
+                    "payloadLanguage": "json"
+                  },
+                  {
+                    "id": "call_2_tesseractServ_verifySseSignalAccess",
+                    "kind": "alg_call",
+                    "title": "Invoke TesseractServ.verifySseSignalAccess",
+                    "isAsync": true,
+                    "targetAlg": "TesseractServ.verifySseSignalAccess"
+                  },
+                  {
+                    "id": "svc_2_tesseractServ_verifySseSignalAccess",
+                    "kind": "sequence",
+                    "title": "TesseractServ.verifySseSignalAccess Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_tesseractServ_verifySseSignalAccess_0_1",
+                        "kind": "selection",
+                        "title": "`!peerId || !secret`",
+                        "selectionMode": "if_else",
+                        "condition": "`!peerId || !secret`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_tesseractServ_verifySseSignalAccess_0_1_then_0_1_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`false`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_verifySseSignalAccess_1_2",
+                        "kind": "step",
+                        "title": "Calls `this.getStore` and stores result as `store`"
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_verifySseSignalAccess_2_3",
+                        "kind": "step",
+                        "title": "Calls `store.getSseSecret` and stores result as `expected`"
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_verifySseSignalAccess_3_4",
+                        "kind": "selection",
+                        "title": "`!expected`",
+                        "selectionMode": "if_else",
+                        "condition": "`!expected`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_tesseractServ_verifySseSignalAccess_3_4_then_0_4_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`false`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_verifySseSignalAccess_4_5",
+                        "kind": "step",
+                        "title": "Calls `Buffer.from` and stores result as `a`"
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_verifySseSignalAccess_5_6",
+                        "kind": "step",
+                        "title": "Calls `Buffer.from` and stores result as `b`"
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_verifySseSignalAccess_6_7",
+                        "kind": "selection",
+                        "title": "`a.length !== b.length`",
+                        "selectionMode": "if_else",
+                        "condition": "`a.length !== b.length`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_tesseractServ_verifySseSignalAccess_6_7_then_0_7_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`false`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_verifySseSignalAccess_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`timingSafeEqual(a, b)`"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "call_2_tesseractServ_handleClientSignal",
+                    "kind": "alg_call",
+                    "title": "Invoke TesseractServ.handleClientSignal",
+                    "isAsync": true,
+                    "targetAlg": "TesseractServ.handleClientSignal"
+                  },
+                  {
+                    "id": "svc_2_tesseractServ_handleClientSignal",
+                    "kind": "sequence",
+                    "title": "TesseractServ.handleClientSignal Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_tesseractServ_handleClientSignal_0_1",
+                        "kind": "step",
+                        "title": "Calls `this.getStore` and stores result as `store`"
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_handleClientSignal_1_2",
+                        "kind": "step",
+                        "title": "Calls `this.localPeers.get` and stores result as `session`"
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_handleClientSignal_2_3",
+                        "kind": "var_def",
+                        "title": "Define `peer`, `roomId`",
+                        "payload": "let peer: TesseractPeer | null = session?.peer ?? null\nlet roomId: string | null = session?.roomId ?? null",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_handleClientSignal_3_4",
+                        "kind": "selection",
+                        "title": "`!session`",
+                        "selectionMode": "if_else",
+                        "condition": "`!session`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_3_4_then_0_4_1",
+                            "kind": "step",
+                            "title": "Assign `roomId`",
+                            "payload": "roomId = await store.getPeerRoomId(peerId)",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_3_4_then_1_4_2",
+                            "kind": "selection",
+                            "title": "`!roomId`",
+                            "selectionMode": "if_else",
+                            "condition": "`!roomId`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_tesseractServ_handleClientSignal_3_4_then_1_4_2_then_0_4_2_1",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`void`"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_3_4_then_2_4_3",
+                            "kind": "step",
+                            "title": "Assign `peer`",
+                            "payload": "peer = await store.getPeer(roomId, peerId)",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_3_4_then_3_4_4",
+                            "kind": "selection",
+                            "title": "`!peer`",
+                            "selectionMode": "if_else",
+                            "condition": "`!peer`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_tesseractServ_handleClientSignal_3_4_then_3_4_4_then_0_4_4_1",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`void`"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_handleClientSignal_4_5",
+                        "kind": "selection",
+                        "title": "`!peer || !roomId`",
+                        "selectionMode": "if_else",
+                        "condition": "`!peer || !roomId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_4_5_then_0_5_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`void`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_handleClientSignal_5_6",
+                        "kind": "var_def",
+                        "title": "Define `parsed`",
+                        "payload": "let parsed: unknown = rawMessage",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_handleClientSignal_6_7",
+                        "kind": "selection",
+                        "title": "`typeofrawMessage === 'string'`",
+                        "selectionMode": "if_else",
+                        "condition": "`typeofrawMessage === 'string'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_6_7_then_0_7_1",
+                            "kind": "try_catch_finally",
+                            "title": "Try block",
+                            "catchVar": "err",
+                            "tryBlock": [
+                              {
+                                "id": "svc_2_tesseractServ_handleClientSignal_6_7_then_0_7_1_try_0_7_1_1",
+                                "kind": "step",
+                                "title": "Assign `parsed`",
+                                "payload": "parsed = JSON.parse(rawMessage)",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "catchBlock": [
+                              {
+                                "id": "svc_2_tesseractServ_handleClientSignal_6_7_then_0_7_1_catch_0_7_2_1",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`void`"
+                              }
+                            ],
+                            "finallyBlock": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_handleClientSignal_7_8",
+                        "kind": "selection",
+                        "title": "`!parsed || typeofparsed !== 'object'`",
+                        "selectionMode": "if_else",
+                        "condition": "`!parsed || typeofparsed !== 'object'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_7_8_then_0_8_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`void`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_handleClientSignal_8_9",
+                        "kind": "var_def",
+                        "title": "Define `msg`, `sendToSelf`",
+                        "payload": "const msg = parsed as TesseractClientSignal\nconst sendToSelf = async (event: TesseractServerEvent) => { if (session) { session.transport.send(JSON.stringify(event)) } else { await store.publishBus({ targetPeerId: peerId, event }) } }",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_tesseractServ_handleClientSignal_9_10",
+                        "kind": "selection",
+                        "title": "Branch on `msg.type`",
+                        "selectionMode": "switch",
+                        "condition": "Branch on `msg.type`",
+                        "cases": [
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_9_10_case_0",
+                            "label": "Case `'ping'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_9_10_case_1",
+                            "label": "Case `'leave'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_9_10_case_2",
+                            "label": "Case `'peer:update'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_9_10_case_3",
+                            "label": "Case `'rtc:offer'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_9_10_case_4",
+                            "label": "Case `'rtc:answer'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_9_10_case_5",
+                            "label": "Case `'rtc:ice'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_9_10_case_6",
+                            "label": "Case `'direct:offer'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_2_tesseractServ_handleClientSignal_9_10_case_7",
+                            "label": "Case `'direct:response'`",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid Tesseract peer credentials"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

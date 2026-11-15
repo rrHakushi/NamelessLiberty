@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'bun:test'
 import { AniListAdapter } from '@NamelessLiberty/connections'
-import { anilistProvider } from '../../src/services/borealis/providers'
+import { anilistProvider } from '../../src/apps/borealis/providers'
 
 describe('AniList Image Resolution & Fallback Policy', () => {
   describe('Resolution Priority Rules', () => {

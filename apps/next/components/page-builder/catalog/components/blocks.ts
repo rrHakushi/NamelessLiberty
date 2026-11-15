@@ -54,4 +54,42 @@ export const blockPresets: ComponentPresetItem[] = [
       children: [],
     }),
   },
+  {
+    id: "block-stack",
+    name: "Vertical Stack",
+    category: "blocks",
+    icon: "IconLayoutList",
+    description: "Vertical container with consistent spacing between blocks",
+    getNode: () => ({
+      type: "div",
+      props: { className: "flex flex-col gap-3 w-full" },
+      children: [],
+    }),
+  },
+  {
+    id: "block-badge-row",
+    name: "Horizontal Tag Row",
+    category: "blocks",
+    icon: "IconLayoutDistributeHorizontal",
+    description: "Wrapping row for badges, buttons, and inline actions",
+    getNode: () => ({
+      type: "div",
+      props: { className: "flex flex-wrap items-center gap-2" },
+      children: [
+        { type: "Badge", props: { variant: "secondary" }, children: "Tag One" },
+        { type: "Badge", props: { variant: "outline" }, children: "Tag Two" },
+      ],
+    }),
+  },
+  {
+    id: "block-separator",
+    name: "Separator Line",
+    category: "blocks",
+    icon: "IconMinus",
+    description: "Clean horizontal divider between content groups",
+    getNode: () => ({
+      type: "Separator",
+      props: { className: "my-4" },
+    }),
+  },
 ]

@@ -1,0 +1,2468 @@
+{
+  "id": "apps/carina/auth/auth.ctrl",
+  "title": "User login (JWT / session)",
+  "description": "",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/carina/auth/login",
+    "relPath": "apps/carina/auth/auth.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "POST"
+    ],
+    "routePaths": [
+      "/carina/auth/login",
+      "/carina/auth/logout",
+      "/carina/auth/register",
+      "/carina/auth/password/change",
+      "/carina/auth/password/forgot",
+      "/carina/auth/password/reset"
+    ],
+    "errorCount": 10
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "User login (JWT / session)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/login"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/logout"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/register"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/password/change"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-4",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/password/forgot"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-5",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/password/reset"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_18)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "23 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/login · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.loginBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/login · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.loginResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/login · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/login · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/logout · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.logoutResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/register · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.registerBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/register · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.registerResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/register · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/register · Response 409"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.conflictError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/register · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/change · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.changePasswordBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/change · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.changePasswordResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/change · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/change · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/change · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/change · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/forgot · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.forgotPasswordBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/forgot · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.forgotPasswordResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/forgot · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/reset · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.resetPasswordBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/reset · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.resetPasswordResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/reset · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/password/reset · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaAuthModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/auth/auth.ctrl.ts-route-0",
+                "title": "POST /carina/auth/login",
+                "description": "User login (JWT / session)",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaAuthModel.loginBody`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "step",
+                    "title": "Calls `CarinaAuthServ.login` and stores result as `response`"
+                  },
+                  {
+                    "id": "route_0_2_3",
+                    "kind": "selection",
+                    "title": "`response.token && sessionCookie`",
+                    "selectionMode": "if_else",
+                    "condition": "`response.token && sessionCookie`",
+                    "thenBranch": [
+                      {
+                        "id": "route_0_2_3_then_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `getDomainConfig` and stores result as `{ isSecure, cookieDomain }`"
+                      },
+                      {
+                        "id": "route_0_2_3_then_1_3_2",
+                        "kind": "step",
+                        "title": "Calls `sessionCookie.set`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "route_0_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`response`"
+                  },
+                  {
+                    "id": "call_0_CarinaAuthServ_login",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaAuthServ.login",
+                    "isAsync": true,
+                    "targetAlg": "CarinaAuthServ.login"
+                  },
+                  {
+                    "id": "svc_0_CarinaAuthServ_login",
+                    "kind": "sequence",
+                    "title": "CarinaAuthServ.login Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_CarinaAuthServ_login_0_1",
+                        "kind": "var_def",
+                        "title": "Define `rawIdentifier`, `lowerIdentifier`",
+                        "payload": "const rawIdentifier = body.identifier.trim()\nconst lowerIdentifier = rawIdentifier.toLowerCase()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaAuthServ_login_1_2",
+                        "kind": "step",
+                        "title": "Database `first` on `User` and stores it as `user`"
+                      },
+                      {
+                        "id": "svc_0_CarinaAuthServ_login_2_3",
+                        "kind": "selection",
+                        "title": "`!user`",
+                        "selectionMode": "if_else",
+                        "condition": "`!user`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaAuthServ_login_2_3_then_0_3_1",
+                            "kind": "error",
+                            "code": "Unauthorized",
+                            "httpStatus": 401,
+                            "message": "No account was found with the provided identifier."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaAuthServ_login_3_4",
+                        "kind": "step",
+                        "title": "Calls `verifyPassword` and stores result as `isPasswordValid`"
+                      },
+                      {
+                        "id": "svc_0_CarinaAuthServ_login_4_5",
+                        "kind": "selection",
+                        "title": "`!isPasswordValid`",
+                        "selectionMode": "if_else",
+                        "condition": "`!isPasswordValid`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaAuthServ_login_4_5_then_0_5_1",
+                            "kind": "error",
+                            "code": "Unauthorized",
+                            "httpStatus": 401,
+                            "message": "The password provided is incorrect for this account."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaAuthServ_login_5_6",
+                        "kind": "var_def",
+                        "title": "Define `hasTotp`, `hasEmail`, `hasPasskeys`, `isMfaActive`",
+                        "payload": "const hasTotp = user.TOTPEnabled && Boolean(user.TOTPSecret)\nconst hasEmail = user.emailMfaEnabled\nconst hasPasskeys = user.passkeys.length > 0\nconst isMfaActive = hasTotp || hasEmail || hasPasskeys",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaAuthServ_login_6_7",
+                        "kind": "selection",
+                        "title": "`isMfaActive`",
+                        "selectionMode": "if_else",
+                        "condition": "`isMfaActive`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaAuthServ_login_6_7_then_0_7_1",
+                            "kind": "var_def",
+                            "title": "Define `mfaTicket`",
+                            "payload": "const mfaTicket = `mfa_${randomBytes(24).toString('hex')}`",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_0_CarinaAuthServ_login_6_7_then_1_7_2",
+                            "kind": "step",
+                            "title": "Cache `set`"
+                          },
+                          {
+                            "id": "svc_0_CarinaAuthServ_login_6_7_then_2_7_3",
+                            "kind": "var_def",
+                            "title": "Define `allowedMfaTypes`",
+                            "payload": "const allowedMfaTypes: ('totp' | 'email' | 'passkey')[] = []",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_0_CarinaAuthServ_login_6_7_then_3_7_4",
+                            "kind": "selection",
+                            "title": "`hasTotp`",
+                            "selectionMode": "if_else",
+                            "condition": "`hasTotp`",
+                            "thenBranch": [],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_0_CarinaAuthServ_login_6_7_then_4_7_5",
+                            "kind": "selection",
+                            "title": "`hasEmail`",
+                            "selectionMode": "if_else",
+                            "condition": "`hasEmail`",
+                            "thenBranch": [],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_0_CarinaAuthServ_login_6_7_then_5_7_6",
+                            "kind": "selection",
+                            "title": "`hasPasskeys`",
+                            "selectionMode": "if_else",
+                            "condition": "`hasPasskeys`",
+                            "thenBranch": [],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_0_CarinaAuthServ_login_6_7_then_6_7_7",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"mfaRequired\": true,\n  \"mfaTicket\": \"<mfaTicket>\",\n  \"allowedMfaTypes\": \"<allowedMfaTypes>\",\n  \"user\": null,\n  \"token\": null\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaAuthServ_login_7_8",
+                        "kind": "selection",
+                        "title": "`!user.publicKey || !user.publicKey.startsWith('-----BEGIN PUBLIC KEY-----') || !user.encryptedPrivateKey`",
+                        "selectionMode": "if_else",
+                        "condition": "`!user.publicKey || !user.publicKey.startsWith('-----BEGIN PUBLIC KEY-----') || !user.encryptedPrivateKey`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaAuthServ_login_7_8_then_0_8_1",
+                            "kind": "step",
+                            "title": "Database `first` on `PassCipher` and stores it as `hasCiphers`"
+                          },
+                          {
+                            "id": "svc_0_CarinaAuthServ_login_7_8_then_1_8_2",
+                            "kind": "selection",
+                            "title": "`!hasCiphers`",
+                            "selectionMode": "if_else",
+                            "condition": "`!hasCiphers`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_0_CarinaAuthServ_login_7_8_then_1_8_2_then_0_8_2_1",
+                                "kind": "try_catch_finally",
+                                "title": "Try block",
+                                "catchVar": "keyErr",
+                                "tryBlock": [
+                                  {
+                                    "id": "svc_0_CarinaAuthServ_login_7_8_then_1_8_2_then_0_8_2_1_try_0_8_2_1_1",
+                                    "kind": "step",
+                                    "title": "Calls `generateUserKeypair` and stores result as `{ publicKey, encryptedPrivateKey }`"
+                                  },
+                                  {
+                                    "id": "svc_0_CarinaAuthServ_login_7_8_then_1_8_2_then_0_8_2_1_try_1_8_2_1_2",
+                                    "kind": "step",
+                                    "title": "Database `update` on `User`"
+                                  },
+                                  {
+                                    "id": "svc_0_CarinaAuthServ_login_7_8_then_1_8_2_then_0_8_2_1_try_2_8_2_1_3",
+                                    "kind": "step",
+                                    "title": "Calls `CarinaAuthServ.instance.logger.info`"
+                                  }
+                                ],
+                                "catchBlock": [
+                                  {
+                                    "id": "svc_0_CarinaAuthServ_login_7_8_then_1_8_2_then_0_8_2_1_catch_0_8_2_2_1",
+                                    "kind": "warning",
+                                    "code": "Warning",
+                                    "message": "Failed to auto-upgrade keys for ${user.username}: ${keyErr}"
+                                  }
+                                ],
+                                "finallyBlock": []
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaAuthServ_login_8_9",
+                        "kind": "step",
+                        "title": "Calls `signUserJwt` and stores result as `token`"
+                      },
+                      {
+                        "id": "svc_0_CarinaAuthServ_login_9_10",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"mfaRequired\": false,\n  \"mfaTicket\": null,\n  \"allowedMfaTypes\": null,\n  \"user\": {\n    \"id\": \"<user.id>\",\n    \"username\": \"<user.username.trim()>\",\n    \"email\": \"<user.email>\",\n    \"passwordChangedAt\": \"<user.passwordChangedAt ? Math.floor(toDate(user.passwordChangedAt).getTime() / 1000) : null>\"\n  },\n  \"token\": \"<token>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/auth/auth.ctrl.ts-route-1",
+                "title": "POST /carina/auth/logout",
+                "description": "User logout (clears session cookie)",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Logged out successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/auth/auth.ctrl.ts-route-2",
+                "title": "POST /carina/auth/register",
+                "description": "User registration",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaAuthModel.registerBody`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaAuthServ.register(body)`"
+                  },
+                  {
+                    "id": "call_2_CarinaAuthServ_register",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaAuthServ.register",
+                    "isAsync": true,
+                    "targetAlg": "CarinaAuthServ.register"
+                  },
+                  {
+                    "id": "svc_2_CarinaAuthServ_register",
+                    "kind": "sequence",
+                    "title": "CarinaAuthServ.register Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_CarinaAuthServ_register_0_1",
+                        "kind": "var_def",
+                        "title": "Define `cleanUsername`, `sanitizedUsername`, `lowerUsername`, `lowerEmail`",
+                        "payload": "const cleanUsername = body.username.trim()\nconst sanitizedUsername = cleanUsername.replace(/[^a-zA-Z0-9_]/g, '')\nconst lowerUsername = sanitizedUsername.toLowerCase()\nconst lowerEmail = body.email.trim().toLowerCase()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_CarinaAuthServ_register_1_2",
+                        "kind": "selection",
+                        "title": "`sanitizedUsername.length < 3`",
+                        "selectionMode": "if_else",
+                        "condition": "`sanitizedUsername.length < 3`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaAuthServ_register_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Username must contain at least 3 characters and only consist of alphanumeric characters or underscores."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaAuthServ_register_2_3",
+                        "kind": "selection",
+                        "title": "`isReservedKeyword(lowerUsername)`",
+                        "selectionMode": "if_else",
+                        "condition": "`isReservedKeyword(lowerUsername)`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaAuthServ_register_2_3_then_0_3_1",
+                            "kind": "error",
+                            "code": "Conflict",
+                            "httpStatus": 409,
+                            "message": "The username '${sanitizedUsername}' is a reserved system or language keyword and cannot be registered."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaAuthServ_register_3_4",
+                        "kind": "step",
+                        "title": "Database `all` on `User` and stores it as `conflicts`"
+                      },
+                      {
+                        "id": "svc_2_CarinaAuthServ_register_4_5",
+                        "kind": "selection",
+                        "title": "`conflicts.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`conflicts.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaAuthServ_register_4_5_then_0_5_1",
+                            "kind": "error",
+                            "code": "Conflict",
+                            "httpStatus": 409,
+                            "message": "An account with the provided username or email address already exists. Please choose another username or sign in."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaAuthServ_register_5_6",
+                        "kind": "step",
+                        "title": "Calls `hashPassword` and stores result as `passwordHash`"
+                      },
+                      {
+                        "id": "svc_2_CarinaAuthServ_register_6_7",
+                        "kind": "step",
+                        "title": "Calls `generateUserKeypair` and stores result as `{ publicKey, encryptedPrivateKey }`"
+                      },
+                      {
+                        "id": "svc_2_CarinaAuthServ_register_7_8",
+                        "kind": "var_def",
+                        "title": "Define `createUserWithAdminCheck`, `txFn`, `user`",
+                        "payload": "const createUserWithAdminCheck = async (dbClient: typeof prisma) => { const userCount = await countOf(dbClient.orm.public.User) const permissions: number[] = [] if (userCount === 0) { permissions.push(Number(IRISFlags.ADMINISTRATOR)) } ...\nconst txFn = prisma as unknown as { $transaction?: <T>(fn: (tx: any) => Promise<T>, opts?: unknown) => Promise<T> }.$transaction\nconst user = (typeof txFn === 'function' ? await txFn.call( prisma, async (tx: any) => createUserWithAdminCheck(tx?.orm ? tx : prisma), { isolationLevel: 'Serializable' } ) : await createUserWithAdminCheck(prisma)) as Awaited<ReturnType<typeof createUserWithAdminCheck>>",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_CarinaAuthServ_register_8_9",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"user\": {\n    \"id\": \"<user.id>\",\n    \"username\": \"<user.username>\",\n    \"email\": \"<user.email>\",\n    \"passwordChangedAt\": null,\n    \"publicKey\": \"<user.publicKey ?? null>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/auth/auth.ctrl.ts-route-3",
+                "title": "POST /carina/auth/password/change",
+                "description": "Change user password",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaAuthModel.changePasswordBody`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_3_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaAuthServ.changePassword(user.id, body)`"
+                  },
+                  {
+                    "id": "call_3_CarinaAuthServ_changePassword",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaAuthServ.changePassword",
+                    "isAsync": true,
+                    "targetAlg": "CarinaAuthServ.changePassword"
+                  },
+                  {
+                    "id": "svc_3_CarinaAuthServ_changePassword",
+                    "kind": "sequence",
+                    "title": "CarinaAuthServ.changePassword Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_CarinaAuthServ_changePassword_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `User` and stores it as `user`"
+                      },
+                      {
+                        "id": "svc_3_CarinaAuthServ_changePassword_1_2",
+                        "kind": "selection",
+                        "title": "`!user`",
+                        "selectionMode": "if_else",
+                        "condition": "`!user`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaAuthServ_changePassword_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "User account with ID '${userId}' could not be found."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaAuthServ_changePassword_2_3",
+                        "kind": "step",
+                        "title": "Calls `verifyPassword` and stores result as `isCurrentValid`"
+                      },
+                      {
+                        "id": "svc_3_CarinaAuthServ_changePassword_3_4",
+                        "kind": "selection",
+                        "title": "`!isCurrentValid`",
+                        "selectionMode": "if_else",
+                        "condition": "`!isCurrentValid`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaAuthServ_changePassword_3_4_then_0_4_1",
+                            "kind": "error",
+                            "code": "Unauthorized",
+                            "httpStatus": 401,
+                            "message": "The current password entered is incorrect. Please verify and try again."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaAuthServ_changePassword_4_5",
+                        "kind": "selection",
+                        "title": "`body.currentPassword === body.newPassword`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.currentPassword === body.newPassword`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaAuthServ_changePassword_4_5_then_0_5_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "The new password cannot be identical to the current password."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaAuthServ_changePassword_5_6",
+                        "kind": "var_def",
+                        "title": "Define `updatedEncryptedPrivateKey`, `updatedPublicKey`",
+                        "payload": "let updatedEncryptedPrivateKey = user.encryptedPrivateKey\nlet updatedPublicKey = user.publicKey",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_3_CarinaAuthServ_changePassword_6_7",
+                        "kind": "selection",
+                        "title": "`user.encryptedPrivateKey`",
+                        "selectionMode": "if_else",
+                        "condition": "`user.encryptedPrivateKey`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaAuthServ_changePassword_6_7_then_0_7_1",
+                            "kind": "try_catch_finally",
+                            "title": "Try block",
+                            "catchVar": "err",
+                            "tryBlock": [
+                              {
+                                "id": "svc_3_CarinaAuthServ_changePassword_6_7_then_0_7_1_try_0_7_1_1",
+                                "kind": "step",
+                                "title": "Calls `decryptPrivateKey` and stores result as `decryptedSecret`"
+                              },
+                              {
+                                "id": "svc_3_CarinaAuthServ_changePassword_6_7_then_0_7_1_try_1_7_1_2",
+                                "kind": "step",
+                                "title": "Assign `updatedEncryptedPrivateKey`",
+                                "payload": "updatedEncryptedPrivateKey = await encryptPrivateKey( decryptedSecret, body.newPassword )",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "catchBlock": [],
+                            "finallyBlock": []
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "svc_3_CarinaAuthServ_changePassword_6_7_else_0_8_1",
+                            "kind": "step",
+                            "title": "Calls `generateUserKeypair` and stores result as `keypair`"
+                          },
+                          {
+                            "id": "svc_3_CarinaAuthServ_changePassword_6_7_else_1_8_2",
+                            "kind": "step",
+                            "title": "Assign `updatedPublicKey`",
+                            "payload": "updatedPublicKey = keypair.publicKey",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_3_CarinaAuthServ_changePassword_6_7_else_2_8_3",
+                            "kind": "step",
+                            "title": "Assign `updatedEncryptedPrivateKey`",
+                            "payload": "updatedEncryptedPrivateKey = keypair.encryptedPrivateKey",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_3_CarinaAuthServ_changePassword_8_9",
+                        "kind": "step",
+                        "title": "Calls `hashPassword` and stores result as `newHash`"
+                      },
+                      {
+                        "id": "svc_3_CarinaAuthServ_changePassword_9_10",
+                        "kind": "var_def",
+                        "title": "Define `now`",
+                        "payload": "const now = new Date()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_3_CarinaAuthServ_changePassword_10_11",
+                        "kind": "step",
+                        "title": "Database `update` on `User`"
+                      },
+                      {
+                        "id": "svc_3_CarinaAuthServ_changePassword_11_12",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"Password changed successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-4",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/auth/auth.ctrl.ts-route-4",
+                "title": "POST /carina/auth/password/forgot",
+                "description": "Request password reset email",
+                "steps": [
+                  {
+                    "id": "route_4_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaAuthModel.forgotPasswordBody`"
+                  },
+                  {
+                    "id": "route_4_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaAuthServ.forgotPassword(body)`"
+                  },
+                  {
+                    "id": "call_4_CarinaAuthServ_forgotPassword",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaAuthServ.forgotPassword",
+                    "isAsync": true,
+                    "targetAlg": "CarinaAuthServ.forgotPassword"
+                  },
+                  {
+                    "id": "svc_4_CarinaAuthServ_forgotPassword",
+                    "kind": "sequence",
+                    "title": "CarinaAuthServ.forgotPassword Flow",
+                    "children": [
+                      {
+                        "id": "svc_4_CarinaAuthServ_forgotPassword_0_1",
+                        "kind": "var_def",
+                        "title": "Define `lowerEmail`",
+                        "payload": "const lowerEmail = body.email.trim().toLowerCase()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_CarinaAuthServ_forgotPassword_1_2",
+                        "kind": "step",
+                        "title": "Database `first` on `User` and stores it as `user`"
+                      },
+                      {
+                        "id": "svc_4_CarinaAuthServ_forgotPassword_2_3",
+                        "kind": "selection",
+                        "title": "`user && user.email`",
+                        "selectionMode": "if_else",
+                        "condition": "`user && user.email`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_CarinaAuthServ_forgotPassword_2_3_then_0_3_1",
+                            "kind": "var_def",
+                            "title": "Define `resetToken`",
+                            "payload": "const resetToken = randomBytes(32).toString('hex')",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_4_CarinaAuthServ_forgotPassword_2_3_then_1_3_2",
+                            "kind": "step",
+                            "title": "Cache `set`"
+                          },
+                          {
+                            "id": "svc_4_CarinaAuthServ_forgotPassword_2_3_then_2_3_3",
+                            "kind": "step",
+                            "title": "Calls `this.sendPasswordResetEmail`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_CarinaAuthServ_forgotPassword_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"Password recovery instructions sent to email\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-5",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/auth/auth.ctrl.ts-route-5",
+                "title": "POST /carina/auth/password/reset",
+                "description": "Reset password with token",
+                "steps": [
+                  {
+                    "id": "route_5_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaAuthModel.resetPasswordBody`"
+                  },
+                  {
+                    "id": "route_5_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaAuthServ.resetPassword(body)`"
+                  },
+                  {
+                    "id": "call_5_CarinaAuthServ_resetPassword",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaAuthServ.resetPassword",
+                    "isAsync": true,
+                    "targetAlg": "CarinaAuthServ.resetPassword"
+                  },
+                  {
+                    "id": "svc_5_CarinaAuthServ_resetPassword",
+                    "kind": "sequence",
+                    "title": "CarinaAuthServ.resetPassword Flow",
+                    "children": [
+                      {
+                        "id": "svc_5_CarinaAuthServ_resetPassword_0_1",
+                        "kind": "step",
+                        "title": "Cache `get` -> `userId`"
+                      },
+                      {
+                        "id": "svc_5_CarinaAuthServ_resetPassword_1_2",
+                        "kind": "selection",
+                        "title": "`!userId`",
+                        "selectionMode": "if_else",
+                        "condition": "`!userId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_5_CarinaAuthServ_resetPassword_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "The password reset token is either invalid, has expired, or has already been used. Please request a new reset link."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_5_CarinaAuthServ_resetPassword_2_3",
+                        "kind": "step",
+                        "title": "Calls `hashPassword` and stores result as `newHash`"
+                      },
+                      {
+                        "id": "svc_5_CarinaAuthServ_resetPassword_3_4",
+                        "kind": "step",
+                        "title": "Calls `generateUserKeypair` and stores result as `{ publicKey, encryptedPrivateKey }`"
+                      },
+                      {
+                        "id": "svc_5_CarinaAuthServ_resetPassword_4_5",
+                        "kind": "var_def",
+                        "title": "Define `now`",
+                        "payload": "const now = new Date()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_5_CarinaAuthServ_resetPassword_5_6",
+                        "kind": "step",
+                        "title": "Database `update` on `User`"
+                      },
+                      {
+                        "id": "svc_5_CarinaAuthServ_resetPassword_6_7",
+                        "kind": "step",
+                        "title": "Cache `del`"
+                      },
+                      {
+                        "id": "svc_5_CarinaAuthServ_resetPassword_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"Password reset successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "10 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "No account was found with the provided identifier."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "The password provided is incorrect for this account."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to auto-upgrade keys for ${user.username}: ${keyErr}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Username must contain at least 3 characters and only consist of alphanumeric characters or underscores."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "409"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Conflict"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "The username '${sanitizedUsername}' is a reserved system or language keyword and cannot be registered."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "409"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Conflict"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "An account with the provided username or email address already exists. Please choose another username or sign in."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User account with ID '${userId}' could not be found."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "The current password entered is incorrect. Please verify and try again."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "The new password cannot be identical to the current password."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "The password reset token is either invalid, has expired, or has already been used. Please request a new reset link."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

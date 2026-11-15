@@ -22,6 +22,30 @@ function hasAccess(
   return hasPermission(userPermissions, required, "any")
 }
 
+const MAX_SIDEBAR_DEPTH = 5
+
+function filterChildrenRecursive(
+  children: SidebarItemChild[],
+  userPermissions?: number[] | readonly number[] | null | undefined,
+  depth = 2
+): SidebarItemChild[] {
+  return children
+    .filter((child) => hasAccess(userPermissions, child.permissions))
+    .map((child) => {
+      if (child.children && child.children.length > 0 && depth < MAX_SIDEBAR_DEPTH) {
+        return {
+          ...child,
+          children: filterChildrenRecursive(child.children, userPermissions, depth + 1),
+        }
+      }
+      if (child.children && depth >= MAX_SIDEBAR_DEPTH) {
+        const { children: _ignored, ...rest } = child
+        return rest
+      }
+      return child
+    })
+}
+
 /**
  * Filters a SidebarConfig recursively based on user permissions.
  * Sections and items automatically inherit visibility from their children.
@@ -49,13 +73,12 @@ export function filterSidebarConfig(
             return { ...item, children: [] } as any
           }
 
-          // Filter children if present
+          // Filter children recursively if present
           if (item.children && item.children.length > 0) {
-            const filteredChildren = item.children.filter((child) => {
-              const childPerm = child.permissions
-              return hasAccess(userPermissions, childPerm)
-            })
-            return { ...item, children: filteredChildren }
+            return {
+              ...item,
+              children: filterChildrenRecursive(item.children, userPermissions, 2),
+            }
           }
 
           return item
@@ -119,6 +142,85 @@ export function getSectionKey(
   return section.dataKey || section.section
 }
 
+function registerChildShortcutsRecursive(
+  children: SidebarItemChild[] | undefined,
+  shortcutMap: Map<string, SidebarItem>
+) {
+  if (!children) return
+  children.forEach((ch) => {
+    const chKey = getItemKey(ch)
+    if (chKey && !shortcutMap.has(chKey)) {
+      shortcutMap.set(chKey, {
+        label: ch.label,
+        href: ch.href,
+        icon: ch.icon,
+        dataKey: ch.dataKey,
+        onClick: ch.onClick,
+        component: ch.component,
+        isActive: ch.isActive,
+        badge: ch.badge,
+        permissions: ch.permissions,
+        subtitle: ch.subtitle,
+        children: ch.children,
+      })
+    }
+    if (ch.children && ch.children.length > 0) {
+      registerChildShortcutsRecursive(ch.children, shortcutMap)
+    }
+  })
+}
+
+function filterAndOrderChildrenRecursive(
+  children: SidebarItemChild[],
+  parentKey: string,
+  hiddenChildren: string[],
+  childrenOrder: Record<string, string[]>,
+  depth = 2
+): SidebarItemChild[] {
+  const visible = children
+    .filter((ch) => !hiddenChildren.includes(getItemKey(ch)))
+    .map((ch) => {
+      if (ch.children && ch.children.length > 0 && depth < MAX_SIDEBAR_DEPTH) {
+        return {
+          ...ch,
+          children: filterAndOrderChildrenRecursive(
+            ch.children,
+            getItemKey(ch),
+            hiddenChildren,
+            childrenOrder,
+            depth + 1
+          ),
+        }
+      }
+      if (ch.children && depth >= MAX_SIDEBAR_DEPTH) {
+        const { children: _trimmed, ...rest } = ch
+        return rest
+      }
+      return ch
+    })
+
+  const customOrder = childrenOrder[parentKey]
+  if (!customOrder || customOrder.length === 0) return visible
+
+  const byKey = new Map<string, SidebarItemChild>()
+  visible.forEach((ch) => byKey.set(getItemKey(ch), ch))
+  const ordered: SidebarItemChild[] = []
+  const seen = new Set<string>()
+  customOrder.forEach((ck) => {
+    const ch = byKey.get(ck)
+    if (ch) {
+      ordered.push(ch)
+      seen.add(ck)
+    }
+  })
+  visible.forEach((ch) => {
+    if (!seen.has(getItemKey(ch))) {
+      ordered.push(ch)
+    }
+  })
+  return ordered
+}
+
 export interface ApplySidebarCustomizationOptions {
   includeHidden?: boolean
   preserveEmptySections?: boolean
@@ -155,22 +257,7 @@ export function applySidebarCustomization(
       app.config.forEach((sec) => {
         sec.items.forEach((it) => {
           registerItem(it)
-          if (it.children) {
-            it.children.forEach((ch) => {
-              const chKey = getItemKey(ch)
-              if (chKey && !shortcutMap.has(chKey)) {
-                shortcutMap.set(chKey, {
-                  label: ch.label,
-                  href: ch.href,
-                  icon: ch.icon,
-                  badge: ch.badge,
-                  dataKey: chKey,
-                  onClick: ch.onClick,
-                  component: ch.component,
-                })
-              }
-            })
-          }
+          registerChildShortcutsRecursive(it.children, shortcutMap)
         })
       })
     })
@@ -179,22 +266,7 @@ export function applySidebarCustomization(
   baseConfig.forEach((sec) => {
     sec.items.forEach((it) => {
       registerItem(it)
-      if (it.children) {
-        it.children.forEach((ch) => {
-          const chKey = getItemKey(ch)
-          if (chKey && !shortcutMap.has(chKey)) {
-            shortcutMap.set(chKey, {
-              label: ch.label,
-              href: ch.href,
-              icon: ch.icon,
-              badge: ch.badge,
-              dataKey: chKey,
-              onClick: ch.onClick,
-              component: ch.component,
-            })
-          }
-        })
-      }
+      registerChildShortcutsRecursive(it.children, shortcutMap)
     })
   })
 
@@ -412,12 +484,15 @@ export function applySidebarCustomization(
         const itKey = getItemKey(it)
         if (hiddenItems.includes(itKey)) return false
 
-        // Filter hidden children
+        // Filter hidden children recursively
         if (it.children) {
-          it.children = it.children.filter((ch) => {
-            const chKey = getItemKey(ch)
-            return !hiddenChildren.includes(chKey)
-          })
+          it.children = filterAndOrderChildrenRecursive(
+            it.children,
+            itKey,
+            hiddenChildren,
+            {},
+            2
+          )
         }
         return true
       })
@@ -509,36 +584,17 @@ export function applySidebarCustomization(
       sec.items = orderedItems
     }
 
-    // Order children for each item
+    // Order children recursively for each item
     sec.items.forEach((it) => {
       if (it.children && it.children.length > 0) {
         const itKey = getItemKey(it)
-        const customChildKeys = childrenOrder[itKey]
-
-        if (customChildKeys && customChildKeys.length > 0) {
-          const chMap = new Map<string, SidebarItemChild>()
-          it.children.forEach((ch) => chMap.set(getItemKey(ch), ch))
-
-          const orderedChildren: SidebarItemChild[] = []
-          const seenChildKeys = new Set<string>()
-
-          customChildKeys.forEach((ck: string) => {
-            const ch = chMap.get(ck)
-            if (ch) {
-              orderedChildren.push(ch)
-              seenChildKeys.add(ck)
-            }
-          })
-
-          it.children.forEach((ch) => {
-            const ck = getItemKey(ch)
-            if (!seenChildKeys.has(ck)) {
-              orderedChildren.push(ch)
-            }
-          })
-
-          it.children = orderedChildren
-        }
+        it.children = filterAndOrderChildrenRecursive(
+          it.children,
+          itKey,
+          includeHidden ? [] : hiddenChildren,
+          childrenOrder,
+          2
+        )
       }
     })
   })
@@ -670,5 +726,39 @@ export function isRouteActive(
   }
 
   return true
+}
+
+/**
+ * Recursively determines whether an item or any descendant up to maxDepth matches the active route.
+ */
+export function hasActiveDescendant(
+  item: {
+    href?: string
+    isActive?: boolean
+    children?: SidebarItemChild[]
+  },
+  pathname: string,
+  searchParams?:
+    | URLSearchParams
+    | { get: (name: string) => string | null; toString: () => string }
+    | string
+    | null,
+  maxDepth = MAX_SIDEBAR_DEPTH,
+  depth = 1
+): boolean {
+  if (depth > maxDepth) return false
+  if (item.children && item.children.length > 0) {
+    for (const child of item.children) {
+      const childSelfActive =
+        child.isActive !== undefined
+          ? child.isActive
+          : isRouteActive(pathname, child.href, searchParams)
+      if (childSelfActive) return true
+      if (hasActiveDescendant(child, pathname, searchParams, maxDepth, depth + 1)) {
+        return true
+      }
+    }
+  }
+  return false
 }
 

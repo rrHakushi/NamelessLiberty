@@ -1,0 +1,1956 @@
+{
+  "id": "core/ws/ws.serv",
+  "title": "ws.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/core/ws/ws.serv.ts",
+    "relPath": "core/ws/ws.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "ws.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/core/ws/ws.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "3 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/carina/notifications/notifications.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/notifications/notifications.serv.ts (wsHub)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/servarr/realtime/servarr-realtime.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/servarr/realtime/servarr-realtime.serv.ts (wsHub)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/server",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "server.ts (wsHub)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "14 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.getInstance"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "WsServ"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.hasConnection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(ws)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "boolean"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.getUserId"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(ws)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "string | undefined"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.hasUserConnections"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "boolean"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.onUserDisconnected"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(listener)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "() => void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.register"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(ws, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.unregister"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(ws)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.subscribe"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(ws, channel)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.unsubscribe"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(ws, channel)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.send"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(ws, event, data, channel)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.sendToUser"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, event, data)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.broadcastChannel"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(channel, event, data, excludeWs)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.broadcast"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(event, data)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "WsServ.handleMessage"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(ws, rawMessage)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<void>"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-getInstance",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-getInstance",
+                "title": "WsServ.getInstance()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_WsServ_getInstance_0_1",
+                    "kind": "selection",
+                    "title": "`!WsServ.instance`",
+                    "selectionMode": "if_else",
+                    "condition": "`!WsServ.instance`",
+                    "thenBranch": [
+                      {
+                        "id": "m_WsServ_getInstance_0_1_then_0_1_1",
+                        "kind": "step",
+                        "title": "Assign `WsServ.instance`",
+                        "payload": "WsServ.instance = new WsServ()",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_WsServ_getInstance_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`WsServ.instance`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-hasConnection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-hasConnection",
+                "title": "WsServ.hasConnection(ws)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_WsServ_hasConnection_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.connectionUsers.has(ws)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-getUserId",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-getUserId",
+                "title": "WsServ.getUserId(ws)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_WsServ_getUserId_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.connectionUsers.get(ws)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-hasUserConnections",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-hasUserConnections",
+                "title": "WsServ.hasUserConnections(userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_WsServ_hasUserConnections_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.userConnections.get` and stores result as `sockets`"
+                  },
+                  {
+                    "id": "m_WsServ_hasUserConnections_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`Boolean(sockets && sockets.size > 0)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-onUserDisconnected",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-onUserDisconnected",
+                "title": "WsServ.onUserDisconnected(listener)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_WsServ_onUserDisconnected_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.userDisconnectListeners.add`"
+                  },
+                  {
+                    "id": "m_WsServ_onUserDisconnected_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`() => { this.userDisconnectListeners.delete(listener) }`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-register",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-register",
+                "title": "WsServ.register(ws, userId)",
+                "description": "Registers a newly opened WebSocket connection.",
+                "steps": [
+                  {
+                    "id": "m_WsServ_register_0_1",
+                    "kind": "selection",
+                    "title": "`userId && typeofuserId === 'string' && userId.trim().length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`userId && typeofuserId === 'string' && userId.trim().length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_WsServ_register_0_1_then_0_1_1",
+                        "kind": "var_def",
+                        "title": "Define `uid`",
+                        "payload": "const uid = userId.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_WsServ_register_0_1_then_1_1_2",
+                        "kind": "step",
+                        "title": "Calls `this.connectionUsers.set`"
+                      },
+                      {
+                        "id": "m_WsServ_register_0_1_then_2_1_3",
+                        "kind": "step",
+                        "title": "Calls `this.userConnections.get` and stores result as `sockets`"
+                      },
+                      {
+                        "id": "m_WsServ_register_0_1_then_3_1_4",
+                        "kind": "selection",
+                        "title": "`!sockets`",
+                        "selectionMode": "if_else",
+                        "condition": "`!sockets`",
+                        "thenBranch": [
+                          {
+                            "id": "m_WsServ_register_0_1_then_3_1_4_then_0_1_4_1",
+                            "kind": "step",
+                            "title": "Assign `sockets`",
+                            "payload": "sockets = new Set()",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_WsServ_register_0_1_then_3_1_4_then_1_1_4_2",
+                            "kind": "step",
+                            "title": "Calls `this.userConnections.set`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_WsServ_register_0_1_then_4_1_5",
+                        "kind": "step",
+                        "title": "Calls `sockets.add`"
+                      },
+                      {
+                        "id": "m_WsServ_register_0_1_then_5_1_6",
+                        "kind": "step",
+                        "title": "Calls `this.subscribe`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_WsServ_register_1_2",
+                    "kind": "selection",
+                    "title": "`!this.connectionChannels.has(ws)`",
+                    "selectionMode": "if_else",
+                    "condition": "`!this.connectionChannels.has(ws)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_WsServ_register_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `this.connectionChannels.set`"
+                      }
+                    ],
+                    "elseBranch": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-unregister",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-unregister",
+                "title": "WsServ.unregister(ws)",
+                "description": "Unregisters and cleans up a closed WebSocket connection.",
+                "steps": [
+                  {
+                    "id": "m_WsServ_unregister_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.connectionUsers.get` and stores result as `userId`"
+                  },
+                  {
+                    "id": "m_WsServ_unregister_1_2",
+                    "kind": "selection",
+                    "title": "`userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_WsServ_unregister_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `this.userConnections.get` and stores result as `sockets`"
+                      },
+                      {
+                        "id": "m_WsServ_unregister_1_2_then_1_2_2",
+                        "kind": "selection",
+                        "title": "`sockets`",
+                        "selectionMode": "if_else",
+                        "condition": "`sockets`",
+                        "thenBranch": [
+                          {
+                            "id": "m_WsServ_unregister_1_2_then_1_2_2_then_0_2_2_1",
+                            "kind": "step",
+                            "title": "Calls `sockets.delete`"
+                          },
+                          {
+                            "id": "m_WsServ_unregister_1_2_then_1_2_2_then_1_2_2_2",
+                            "kind": "selection",
+                            "title": "`sockets.size === 0`",
+                            "selectionMode": "if_else",
+                            "condition": "`sockets.size === 0`",
+                            "thenBranch": [
+                              {
+                                "id": "m_WsServ_unregister_1_2_then_1_2_2_then_1_2_2_2_then_0_2_2_2_1",
+                                "kind": "step",
+                                "title": "Calls `this.userConnections.delete`"
+                              },
+                              {
+                                "id": "m_WsServ_unregister_1_2_then_1_2_2_then_1_2_2_2_then_1_2_2_2_2",
+                                "kind": "iteration",
+                                "title": "Iterate `const listener` over `this.userDisconnectListeners`",
+                                "loopType": "while",
+                                "condition": "Iterate `const listener` over `this.userDisconnectListeners`",
+                                "children": [
+                                  {
+                                    "id": "m_WsServ_unregister_1_2_then_1_2_2_then_1_2_2_2_then_1_2_2_2_2_loop_0_2_2_2_2_1",
+                                    "kind": "try_catch_finally",
+                                    "title": "Try block",
+                                    "catchVar": "err",
+                                    "tryBlock": [
+                                      {
+                                        "id": "m_WsServ_unregister_1_2_then_1_2_2_then_1_2_2_2_then_1_2_2_2_2_loop_0_2_2_2_2_1_try_0_2_2_2_2_1_1",
+                                        "kind": "step",
+                                        "title": "Calls `listener`"
+                                      }
+                                    ],
+                                    "catchBlock": [],
+                                    "finallyBlock": []
+                                  }
+                                ]
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_WsServ_unregister_1_2_then_2_2_3",
+                        "kind": "step",
+                        "title": "Calls `this.connectionUsers.delete`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_WsServ_unregister_2_3",
+                    "kind": "step",
+                    "title": "Calls `this.connectionChannels.get` and stores result as `channels`"
+                  },
+                  {
+                    "id": "m_WsServ_unregister_3_4",
+                    "kind": "selection",
+                    "title": "`channels`",
+                    "selectionMode": "if_else",
+                    "condition": "`channels`",
+                    "thenBranch": [
+                      {
+                        "id": "m_WsServ_unregister_3_4_then_0_4_1",
+                        "kind": "iteration",
+                        "title": "Iterate `const channel` over `channels`",
+                        "loopType": "while",
+                        "condition": "Iterate `const channel` over `channels`",
+                        "children": [
+                          {
+                            "id": "m_WsServ_unregister_3_4_then_0_4_1_loop_0_4_1_1",
+                            "kind": "step",
+                            "title": "Calls `this.channelSubscriptions.get` and stores result as `subscribers`"
+                          },
+                          {
+                            "id": "m_WsServ_unregister_3_4_then_0_4_1_loop_1_4_1_2",
+                            "kind": "selection",
+                            "title": "`subscribers`",
+                            "selectionMode": "if_else",
+                            "condition": "`subscribers`",
+                            "thenBranch": [
+                              {
+                                "id": "m_WsServ_unregister_3_4_then_0_4_1_loop_1_4_1_2_then_0_4_1_2_1",
+                                "kind": "step",
+                                "title": "Calls `subscribers.delete`"
+                              },
+                              {
+                                "id": "m_WsServ_unregister_3_4_then_0_4_1_loop_1_4_1_2_then_1_4_1_2_2",
+                                "kind": "selection",
+                                "title": "`subscribers.size === 0`",
+                                "selectionMode": "if_else",
+                                "condition": "`subscribers.size === 0`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_WsServ_unregister_3_4_then_0_4_1_loop_1_4_1_2_then_1_4_1_2_2_then_0_4_1_2_2_1",
+                                    "kind": "step",
+                                    "title": "Calls `this.channelSubscriptions.delete`"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "m_WsServ_unregister_3_4_then_1_4_2",
+                        "kind": "step",
+                        "title": "Calls `this.connectionChannels.delete`"
+                      }
+                    ],
+                    "elseBranch": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-subscribe",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-subscribe",
+                "title": "WsServ.subscribe(ws, channel)",
+                "description": "Subscribes a WebSocket connection to a specific channel/topic.",
+                "steps": [
+                  {
+                    "id": "m_WsServ_subscribe_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.channelSubscriptions.get` and stores result as `subscribers`"
+                  },
+                  {
+                    "id": "m_WsServ_subscribe_1_2",
+                    "kind": "selection",
+                    "title": "`!subscribers`",
+                    "selectionMode": "if_else",
+                    "condition": "`!subscribers`",
+                    "thenBranch": [
+                      {
+                        "id": "m_WsServ_subscribe_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Assign `subscribers`",
+                        "payload": "subscribers = new Set()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_WsServ_subscribe_1_2_then_1_2_2",
+                        "kind": "step",
+                        "title": "Calls `this.channelSubscriptions.set`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_WsServ_subscribe_2_3",
+                    "kind": "step",
+                    "title": "Calls `subscribers.add`"
+                  },
+                  {
+                    "id": "m_WsServ_subscribe_3_4",
+                    "kind": "step",
+                    "title": "Calls `this.connectionChannels.get` and stores result as `userChans`"
+                  },
+                  {
+                    "id": "m_WsServ_subscribe_4_5",
+                    "kind": "selection",
+                    "title": "`!userChans`",
+                    "selectionMode": "if_else",
+                    "condition": "`!userChans`",
+                    "thenBranch": [
+                      {
+                        "id": "m_WsServ_subscribe_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Assign `userChans`",
+                        "payload": "userChans = new Set()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_WsServ_subscribe_4_5_then_1_5_2",
+                        "kind": "step",
+                        "title": "Calls `this.connectionChannels.set`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_WsServ_subscribe_5_6",
+                    "kind": "step",
+                    "title": "Calls `userChans.add`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-unsubscribe",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-unsubscribe",
+                "title": "WsServ.unsubscribe(ws, channel)",
+                "description": "Unsubscribes a WebSocket connection from a channel.",
+                "steps": [
+                  {
+                    "id": "m_WsServ_unsubscribe_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.channelSubscriptions.get` and stores result as `subscribers`"
+                  },
+                  {
+                    "id": "m_WsServ_unsubscribe_1_2",
+                    "kind": "selection",
+                    "title": "`subscribers`",
+                    "selectionMode": "if_else",
+                    "condition": "`subscribers`",
+                    "thenBranch": [
+                      {
+                        "id": "m_WsServ_unsubscribe_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `subscribers.delete`"
+                      },
+                      {
+                        "id": "m_WsServ_unsubscribe_1_2_then_1_2_2",
+                        "kind": "selection",
+                        "title": "`subscribers.size === 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`subscribers.size === 0`",
+                        "thenBranch": [
+                          {
+                            "id": "m_WsServ_unsubscribe_1_2_then_1_2_2_then_0_2_2_1",
+                            "kind": "step",
+                            "title": "Calls `this.channelSubscriptions.delete`"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_WsServ_unsubscribe_2_3",
+                    "kind": "step",
+                    "title": "Calls `this.connectionChannels.get` and stores result as `userChans`"
+                  },
+                  {
+                    "id": "m_WsServ_unsubscribe_3_4",
+                    "kind": "selection",
+                    "title": "`userChans`",
+                    "selectionMode": "if_else",
+                    "condition": "`userChans`",
+                    "thenBranch": [
+                      {
+                        "id": "m_WsServ_unsubscribe_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `userChans.delete`"
+                      }
+                    ],
+                    "elseBranch": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-send",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-send",
+                "title": "WsServ.send(ws, event, data, channel)",
+                "description": "Sends an event payload to a single specific WebSocket connection.",
+                "steps": [
+                  {
+                    "id": "m_WsServ_send_0_1",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_WsServ_send_0_1_try_0_1_1",
+                        "kind": "var_def",
+                        "title": "Define `payload`",
+                        "payload": "const payload: WsMessagePayload = { event, data, channel, timestamp: Date.now(), }",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_WsServ_send_0_1_try_1_1_2",
+                        "kind": "step",
+                        "title": "Calls `ws.send`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_WsServ_send_0_1_catch_0_2_1",
+                        "kind": "warning",
+                        "code": "Warning",
+                        "message": "Error sending message over WebSocket: ${err}"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-sendToUser",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-sendToUser",
+                "title": "WsServ.sendToUser(userId, event, data)",
+                "description": "Sends a targeted real-time event to all active sessions of a given user.",
+                "steps": [
+                  {
+                    "id": "m_WsServ_sendToUser_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.userConnections.get` and stores result as `sockets`"
+                  },
+                  {
+                    "id": "m_WsServ_sendToUser_1_2",
+                    "kind": "selection",
+                    "title": "`!sockets || sockets.size === 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`!sockets || sockets.size === 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_WsServ_sendToUser_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_WsServ_sendToUser_2_3",
+                    "kind": "iteration",
+                    "title": "Iterate `const ws` over `sockets`",
+                    "loopType": "while",
+                    "condition": "Iterate `const ws` over `sockets`",
+                    "children": [
+                      {
+                        "id": "m_WsServ_sendToUser_2_3_loop_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `this.send`"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-broadcastChannel",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-broadcastChannel",
+                "title": "WsServ.broadcastChannel(channel, event, data, excludeWs)",
+                "description": "Broadcasts an event to all subscribers of a channel.",
+                "steps": [
+                  {
+                    "id": "m_WsServ_broadcastChannel_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.channelSubscriptions.get` and stores result as `subscribers`"
+                  },
+                  {
+                    "id": "m_WsServ_broadcastChannel_1_2",
+                    "kind": "selection",
+                    "title": "`!subscribers || subscribers.size === 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`!subscribers || subscribers.size === 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_WsServ_broadcastChannel_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_WsServ_broadcastChannel_2_3",
+                    "kind": "iteration",
+                    "title": "Iterate `const ws` over `subscribers`",
+                    "loopType": "while",
+                    "condition": "Iterate `const ws` over `subscribers`",
+                    "children": [
+                      {
+                        "id": "m_WsServ_broadcastChannel_2_3_loop_0_3_1",
+                        "kind": "selection",
+                        "title": "`excludeWs && ws === excludeWs`",
+                        "selectionMode": "if_else",
+                        "condition": "`excludeWs && ws === excludeWs`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_WsServ_broadcastChannel_2_3_loop_1_3_2",
+                        "kind": "step",
+                        "title": "Calls `this.send`"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-broadcast",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-broadcast",
+                "title": "WsServ.broadcast(event, data)",
+                "description": "Broadcasts an event to all active WebSocket connections across all channels.",
+                "steps": [
+                  {
+                    "id": "m_WsServ_broadcast_0_1",
+                    "kind": "iteration",
+                    "title": "Iterate `const ws` over `this.connectionUsers.keys()`",
+                    "loopType": "while",
+                    "condition": "Iterate `const ws` over `this.connectionUsers.keys()`",
+                    "children": [
+                      {
+                        "id": "m_WsServ_broadcast_0_1_loop_0_1_1",
+                        "kind": "step",
+                        "title": "Calls `this.send`"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_WsServ_broadcast_1_2",
+                    "kind": "step",
+                    "title": "Calls `this.broadcastChannel`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-WsServ-handleMessage",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/ws/ws.serv.ts-WsServ-handleMessage",
+                "title": "WsServ.handleMessage(ws, rawMessage)",
+                "description": "Handles incoming message frames from clients.",
+                "steps": [
+                  {
+                    "id": "m_WsServ_handleMessage_0_1",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_WsServ_handleMessage_0_1_try_0_1_1",
+                        "kind": "var_def",
+                        "title": "Define `parsed`",
+                        "payload": "let parsed: unknown = rawMessage",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_WsServ_handleMessage_0_1_try_1_1_2",
+                        "kind": "selection",
+                        "title": "`typeofrawMessage === 'string'`",
+                        "selectionMode": "if_else",
+                        "condition": "`typeofrawMessage === 'string'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_1_1_2_then_0_1_2_1",
+                            "kind": "step",
+                            "title": "Assign `parsed`",
+                            "payload": "parsed = JSON.parse(rawMessage)",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_WsServ_handleMessage_0_1_try_2_1_3",
+                        "kind": "selection",
+                        "title": "`!parsed || typeofparsed !== 'object'`",
+                        "selectionMode": "if_else",
+                        "condition": "`!parsed || typeofparsed !== 'object'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_2_1_3_then_0_1_3_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`void`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_WsServ_handleMessage_0_1_try_3_1_4",
+                        "kind": "var_def",
+                        "title": "Define `msg`",
+                        "payload": "const msg = parsed as Record<string, unknown>",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_WsServ_handleMessage_0_1_try_4_1_5",
+                        "kind": "selection",
+                        "title": "`msg.type === 'auth' && typeofmsg.userId === 'string' && Bun.env.BUN_ENV === 'test'`",
+                        "selectionMode": "if_else",
+                        "condition": "`msg.type === 'auth' && typeofmsg.userId === 'string' && Bun.env.BUN_ENV === 'test'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_4_1_5_then_0_1_5_1",
+                            "kind": "var_def",
+                            "title": "Define `uid`, `conn`",
+                            "payload": "const uid = msg.userId.trim()\nconst conn = ws as any.raw ?? ws",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_4_1_5_then_1_1_5_2",
+                            "kind": "step",
+                            "title": "Calls `this.register`"
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_4_1_5_then_2_1_5_3",
+                            "kind": "step",
+                            "title": "Calls `this.send`"
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_4_1_5_then_3_1_5_4",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`void`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_WsServ_handleMessage_0_1_try_5_1_6",
+                        "kind": "selection",
+                        "title": "`msg.type === 'auth' && typeofmsg.token === 'string' && msg.token.trim().length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`msg.type === 'auth' && typeofmsg.token === 'string' && msg.token.trim().length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_0_1_6_1",
+                            "kind": "var_def",
+                            "title": "Define `secret`",
+                            "payload": "const secret = Bun.env.JWT_SECRET",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2",
+                            "kind": "selection",
+                            "title": "`secret`",
+                            "selectionMode": "if_else",
+                            "condition": "`secret`",
+                            "thenBranch": [
+                              {
+                                "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2_then_0_1_6_2_1",
+                                "kind": "try_catch_finally",
+                                "title": "Try block",
+                                "catchVar": "err",
+                                "tryBlock": [
+                                  {
+                                    "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2_then_0_1_6_2_1_try_0_1_6_2_1_1",
+                                    "kind": "step",
+                                    "title": "Calls `new TextEncoder().encode` and stores result as `secretKey`"
+                                  },
+                                  {
+                                    "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2_then_0_1_6_2_1_try_1_1_6_2_1_2",
+                                    "kind": "step",
+                                    "title": "Calls `jwtVerify` and stores result as `{ payload }`"
+                                  },
+                                  {
+                                    "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2_then_0_1_6_2_1_try_2_1_6_2_1_3",
+                                    "kind": "selection",
+                                    "title": "`payload && payload.id && typeofpayload.id === 'string'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`payload && payload.id && typeofpayload.id === 'string'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2_then_0_1_6_2_1_try_2_1_6_2_1_3_then_0_1_6_2_1_3_1",
+                                        "kind": "var_def",
+                                        "title": "Define `uid`, `conn`, `alreadyRegistered`",
+                                        "payload": "const uid = payload.id.trim()\nconst conn = ws as any.raw ?? ws\nconst alreadyRegistered = this.connectionUsers.get(conn) === uid",
+                                        "payloadLanguage": "typescript"
+                                      },
+                                      {
+                                        "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2_then_0_1_6_2_1_try_2_1_6_2_1_3_then_1_1_6_2_1_3_2",
+                                        "kind": "step",
+                                        "title": "Calls `this.register`"
+                                      },
+                                      {
+                                        "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2_then_0_1_6_2_1_try_2_1_6_2_1_3_then_2_1_6_2_1_3_3",
+                                        "kind": "step",
+                                        "title": "Calls `this.send`"
+                                      },
+                                      {
+                                        "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2_then_0_1_6_2_1_try_2_1_6_2_1_3_then_3_1_6_2_1_3_4",
+                                        "kind": "selection",
+                                        "title": "`!alreadyRegistered`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`!alreadyRegistered`",
+                                        "thenBranch": [],
+                                        "elseBranch": []
+                                      },
+                                      {
+                                        "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2_then_0_1_6_2_1_try_2_1_6_2_1_3_then_4_1_6_2_1_3_5",
+                                        "kind": "return",
+                                        "title": "",
+                                        "returnValue": "`void`"
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ],
+                                "catchBlock": [
+                                  {
+                                    "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2_then_0_1_6_2_1_catch_0_1_6_2_2_1",
+                                    "kind": "step",
+                                    "title": "Calls `this.send`"
+                                  },
+                                  {
+                                    "id": "m_WsServ_handleMessage_0_1_try_5_1_6_then_1_1_6_2_then_0_1_6_2_1_catch_1_1_6_2_2_2",
+                                    "kind": "return",
+                                    "title": "",
+                                    "returnValue": "`void`"
+                                  }
+                                ],
+                                "finallyBlock": []
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_WsServ_handleMessage_0_1_try_6_1_7",
+                        "kind": "selection",
+                        "title": "`msg.type === 'ping'`",
+                        "selectionMode": "if_else",
+                        "condition": "`msg.type === 'ping'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_6_1_7_then_0_1_7_1",
+                            "kind": "step",
+                            "title": "Calls `this.send`"
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_6_1_7_then_1_1_7_2",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`void`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_WsServ_handleMessage_0_1_try_7_1_8",
+                        "kind": "selection",
+                        "title": "`msg.type === 'subscribe' && typeofmsg.channel === 'string'`",
+                        "selectionMode": "if_else",
+                        "condition": "`msg.type === 'subscribe' && typeofmsg.channel === 'string'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_7_1_8_then_0_1_8_1",
+                            "kind": "var_def",
+                            "title": "Define `channel`",
+                            "payload": "const channel = msg.channel.trim()",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_7_1_8_then_1_1_8_2",
+                            "kind": "step",
+                            "title": "Calls `this.getUserId` and stores result as `currentUid`"
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_7_1_8_then_2_1_8_3",
+                            "kind": "selection",
+                            "title": "`channel.startsWith('user:')`",
+                            "selectionMode": "if_else",
+                            "condition": "`channel.startsWith('user:')`",
+                            "thenBranch": [
+                              {
+                                "id": "m_WsServ_handleMessage_0_1_try_7_1_8_then_2_1_8_3_then_0_1_8_3_1",
+                                "kind": "var_def",
+                                "title": "Define `targetUid`",
+                                "payload": "const targetUid = channel.slice(5)",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "m_WsServ_handleMessage_0_1_try_7_1_8_then_2_1_8_3_then_1_1_8_3_2",
+                                "kind": "selection",
+                                "title": "`!currentUid || currentUid !== targetUid`",
+                                "selectionMode": "if_else",
+                                "condition": "`!currentUid || currentUid !== targetUid`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_WsServ_handleMessage_0_1_try_7_1_8_then_2_1_8_3_then_1_1_8_3_2_then_0_1_8_3_2_1",
+                                    "kind": "step",
+                                    "title": "Calls `this.send`"
+                                  },
+                                  {
+                                    "id": "m_WsServ_handleMessage_0_1_try_7_1_8_then_2_1_8_3_then_1_1_8_3_2_then_1_1_8_3_2_2",
+                                    "kind": "return",
+                                    "title": "",
+                                    "returnValue": "`void`"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_7_1_8_then_3_1_8_4",
+                            "kind": "step",
+                            "title": "Calls `this.subscribe`"
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_7_1_8_then_4_1_8_5",
+                            "kind": "step",
+                            "title": "Calls `this.send`"
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_7_1_8_then_5_1_8_6",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`void`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_WsServ_handleMessage_0_1_try_8_1_9",
+                        "kind": "selection",
+                        "title": "`msg.type === 'unsubscribe' && typeofmsg.channel === 'string'`",
+                        "selectionMode": "if_else",
+                        "condition": "`msg.type === 'unsubscribe' && typeofmsg.channel === 'string'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_8_1_9_then_0_1_9_1",
+                            "kind": "step",
+                            "title": "Calls `this.unsubscribe`"
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_8_1_9_then_1_1_9_2",
+                            "kind": "step",
+                            "title": "Calls `this.send`"
+                          },
+                          {
+                            "id": "m_WsServ_handleMessage_0_1_try_8_1_9_then_2_1_9_3",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`void`"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Error sending message over WebSocket: ${err}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
