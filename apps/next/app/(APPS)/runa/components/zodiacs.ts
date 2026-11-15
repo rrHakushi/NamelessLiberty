@@ -1,22 +1,29 @@
 import type { ComponentType } from "react"
 import {
   AquariusBackground,
+  AquariusFullBackground,
   AriesBackground,
   AriesFullBackground,
   CancerBackground,
   CancerFullBackground,
   CapricornBackground,
+  CapricornFullBackground,
   GeminiBackground,
   GeminiFullBackground,
   LeoBackground,
   LeoFullBackground,
   LibraBackground,
+  LibraFullBackground,
   PiscesBackground,
+  PiscesFullBackground,
   SagittariusBackground,
+  SagittariusFullBackground,
   ScorpioBackground,
+  ScorpioFullBackground,
   TaurusBackground,
   TaurusFullBackground,
   VirgoBackground,
+  VirgoFullBackground,
   type ImageFilterPreset,
   type ReactiveBackgroundVariantProps,
 } from "../../../../components/reactive-backgrounds"
@@ -50,13 +57,9 @@ export type ZodiacId =
   | "aquarius"
   | "pisces"
 
-export type BackgroundId =
-  | ZodiacId
-  | "aries-full"
-  | "taurus-full"
-  | "gemini-full"
-  | "cancer-full"
-  | "leo-full"
+export type FullZodiacBackgroundId = `${ZodiacId}-full`
+
+export type BackgroundId = ZodiacId | FullZodiacBackgroundId
 export type BackgroundSelection = BackgroundId | "none"
 export type IconSelection = ZodiacId | "none"
 
@@ -192,6 +195,48 @@ const FULL_BODY_BY_ZODIAC: Partial<Record<ZodiacId, BackgroundEntry>> = {
     name: "Leo Full",
     zhName: "狮子座 · 全身",
     Background: LeoFullBackground,
+  },
+  virgo: {
+    id: "virgo-full",
+    name: "Virgo Full",
+    zhName: "处女座 · 全身",
+    Background: VirgoFullBackground,
+  },
+  libra: {
+    id: "libra-full",
+    name: "Libra Full",
+    zhName: "天秤座 · 全身",
+    Background: LibraFullBackground,
+  },
+  scorpio: {
+    id: "scorpio-full",
+    name: "Scorpio Full",
+    zhName: "天蝎座 · 全身",
+    Background: ScorpioFullBackground,
+  },
+  sagittarius: {
+    id: "sagittarius-full",
+    name: "Sagittarius Full",
+    zhName: "射手座 · 全身",
+    Background: SagittariusFullBackground,
+  },
+  capricorn: {
+    id: "capricorn-full",
+    name: "Capricorn Full",
+    zhName: "摩羯座 · 全身",
+    Background: CapricornFullBackground,
+  },
+  aquarius: {
+    id: "aquarius-full",
+    name: "Aquarius Full",
+    zhName: "水瓶座 · 全身",
+    Background: AquariusFullBackground,
+  },
+  pisces: {
+    id: "pisces-full",
+    name: "Pisces Full",
+    zhName: "双鱼座 · 全身",
+    Background: PiscesFullBackground,
   },
 }
 
