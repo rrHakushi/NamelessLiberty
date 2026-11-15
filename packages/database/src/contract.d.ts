@@ -80,7 +80,6 @@ export type AggregateTypes = {
   };
   readonly max: {
     readonly byCodec: {
-      readonly 'pg/char@1': { readonly output: 'pg/char@1'; readonly nullable: true };
       readonly 'pg/date-string@1': { readonly output: 'pg/date-string@1'; readonly nullable: true };
       readonly 'pg/date-temporal@1': {
         readonly output: 'pg/date-temporal@1';
@@ -90,6 +89,7 @@ export type AggregateTypes = {
       readonly 'pg/float@1': { readonly output: 'pg/float@1'; readonly nullable: true };
       readonly 'pg/float4@1': { readonly output: 'pg/float4@1'; readonly nullable: true };
       readonly 'pg/float8@1': { readonly output: 'pg/float8@1'; readonly nullable: true };
+      readonly 'pg/char@1': { readonly output: 'pg/char@1'; readonly nullable: true };
       readonly 'pg/inet@1': { readonly output: 'pg/inet@1'; readonly nullable: true };
       readonly 'pg/int@1': { readonly output: 'pg/int@1'; readonly nullable: true };
       readonly 'pg/int2@1': { readonly output: 'pg/int2@1'; readonly nullable: true };
@@ -143,8 +143,8 @@ export type AggregateTypes = {
         readonly nullable: true;
       };
       readonly 'pg/varchar@1': { readonly output: 'pg/text@1'; readonly nullable: true };
-      readonly 'sql/char@1': { readonly output: 'sql/char@1'; readonly nullable: true };
       readonly 'sql/float@1': { readonly output: 'sql/float@1'; readonly nullable: true };
+      readonly 'sql/char@1': { readonly output: 'sql/char@1'; readonly nullable: true };
       readonly 'sql/int@1': { readonly output: 'sql/int@1'; readonly nullable: true };
       readonly 'sql/text@1': { readonly output: 'sql/text@1'; readonly nullable: true };
       readonly 'sql/varchar@1': { readonly output: 'pg/text@1'; readonly nullable: true };
@@ -152,7 +152,6 @@ export type AggregateTypes = {
   };
   readonly min: {
     readonly byCodec: {
-      readonly 'pg/char@1': { readonly output: 'pg/char@1'; readonly nullable: true };
       readonly 'pg/date-string@1': { readonly output: 'pg/date-string@1'; readonly nullable: true };
       readonly 'pg/date-temporal@1': {
         readonly output: 'pg/date-temporal@1';
@@ -162,6 +161,7 @@ export type AggregateTypes = {
       readonly 'pg/float@1': { readonly output: 'pg/float@1'; readonly nullable: true };
       readonly 'pg/float4@1': { readonly output: 'pg/float4@1'; readonly nullable: true };
       readonly 'pg/float8@1': { readonly output: 'pg/float8@1'; readonly nullable: true };
+      readonly 'pg/char@1': { readonly output: 'pg/char@1'; readonly nullable: true };
       readonly 'pg/inet@1': { readonly output: 'pg/inet@1'; readonly nullable: true };
       readonly 'pg/int@1': { readonly output: 'pg/int@1'; readonly nullable: true };
       readonly 'pg/int2@1': { readonly output: 'pg/int2@1'; readonly nullable: true };
@@ -215,8 +215,8 @@ export type AggregateTypes = {
         readonly nullable: true;
       };
       readonly 'pg/varchar@1': { readonly output: 'pg/text@1'; readonly nullable: true };
-      readonly 'sql/char@1': { readonly output: 'sql/char@1'; readonly nullable: true };
       readonly 'sql/float@1': { readonly output: 'sql/float@1'; readonly nullable: true };
+      readonly 'sql/char@1': { readonly output: 'sql/char@1'; readonly nullable: true };
       readonly 'sql/int@1': { readonly output: 'sql/int@1'; readonly nullable: true };
       readonly 'sql/text@1': { readonly output: 'sql/text@1'; readonly nullable: true };
       readonly 'sql/varchar@1': { readonly output: 'pg/text@1'; readonly nullable: true };
@@ -7078,162 +7078,6 @@ type ContractBase = Omit<
                 },
               ];
             };
-            readonly Character: {
-              columns: {
-                readonly age: {
-                  readonly dataType: 'pg/text';
-                  readonly codecId: 'pg/text@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly aniDBId: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly anilistId: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly bangumiId: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly createdAt: {
-                  readonly dataType: 'pg/timestamptz';
-                  readonly codecId: 'pg/timestamptz-date@1';
-                  readonly nullable: false;
-                  readonly default: { readonly kind: 'function'; readonly expression: 'now()' };
-                  readonly many: false;
-                };
-                readonly dateOfBirthDay: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly dateOfBirthMonth: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly dateOfBirthYear: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly description: {
-                  readonly dataType: 'pg/text';
-                  readonly codecId: 'pg/text@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly favorites: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
-                  readonly nullable: true;
-                  readonly default: {
-                    readonly kind: 'literal';
-                    readonly value: DefaultLiteralValue<'pg/int4@1', 0>;
-                  };
-                  readonly many: false;
-                };
-                readonly gender: {
-                  readonly dataType: 'pg/text';
-                  readonly codecId: 'pg/text@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
-                  readonly nullable: false;
-                  readonly default: {
-                    readonly kind: 'function';
-                    readonly expression: 'autoincrement()';
-                  };
-                  readonly many: false;
-                };
-                readonly image: {
-                  readonly dataType: 'pg/text';
-                  readonly codecId: 'pg/text@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly images: {
-                  readonly dataType: 'pg/jsonb';
-                  readonly codecId: 'pg/jsonb@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly malId: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly nameAlternative: {
-                  readonly dataType: 'pg/text';
-                  readonly codecId: 'pg/text@1';
-                  readonly nullable: false;
-                  readonly many: { readonly elementNullable: false };
-                };
-                readonly nameAlternativeSpoiler: {
-                  readonly dataType: 'pg/text';
-                  readonly codecId: 'pg/text@1';
-                  readonly nullable: false;
-                  readonly many: { readonly elementNullable: false };
-                };
-                readonly nameNative: {
-                  readonly dataType: 'pg/text';
-                  readonly codecId: 'pg/text@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly namePrimary: {
-                  readonly dataType: 'pg/text';
-                  readonly codecId: 'pg/text@1';
-                  readonly nullable: false;
-                  readonly many: false;
-                };
-                readonly tvDBId: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
-                  readonly nullable: true;
-                  readonly many: false;
-                };
-                readonly updatedAt: {
-                  readonly dataType: 'pg/timestamptz';
-                  readonly codecId: 'pg/timestamptz-date@1';
-                  readonly nullable: false;
-                  readonly many: false;
-                };
-              };
-              primaryKey: { readonly columns: readonly ['id'] };
-              uniques: readonly [
-                { readonly columns: readonly ['anilistId'] },
-                { readonly columns: readonly ['malId'] },
-                { readonly columns: readonly ['aniDBId'] },
-                { readonly columns: readonly ['tvDBId'] },
-                { readonly columns: readonly ['bangumiId'] },
-              ];
-              indexes: readonly [
-                {
-                  readonly name: 'Character_namePrimary_idx_ecfedb8f';
-                  readonly prefix: 'Character_namePrimary_idx';
-                  readonly columns: readonly ['namePrimary'];
-                  readonly unique: false;
-                },
-              ];
-              foreignKeys: readonly [];
-            };
             readonly Connection: {
               columns: {
                 readonly authType: {
@@ -8904,6 +8748,162 @@ type ContractBase = Omit<
                 { readonly columns: readonly ['slug'] },
               ];
               indexes: readonly [];
+              foreignKeys: readonly [];
+            };
+            readonly Character: {
+              columns: {
+                readonly age: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly aniDBId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly anilistId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly bangumiId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly createdAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: false;
+                  readonly default: { readonly kind: 'function'; readonly expression: 'now()' };
+                  readonly many: false;
+                };
+                readonly dateOfBirthDay: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly dateOfBirthMonth: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly dateOfBirthYear: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly description: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly favorites: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/int4@1', 0>;
+                  };
+                  readonly many: false;
+                };
+                readonly gender: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly id: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'function';
+                    readonly expression: 'autoincrement()';
+                  };
+                  readonly many: false;
+                };
+                readonly image: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly images: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly malId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly nameAlternative: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly nameAlternativeSpoiler: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly nameNative: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly namePrimary: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly tvDBId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly updatedAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [
+                { readonly columns: readonly ['anilistId'] },
+                { readonly columns: readonly ['malId'] },
+                { readonly columns: readonly ['aniDBId'] },
+                { readonly columns: readonly ['tvDBId'] },
+                { readonly columns: readonly ['bangumiId'] },
+              ];
+              indexes: readonly [
+                {
+                  readonly name: 'Character_namePrimary_idx_ecfedb8f';
+                  readonly prefix: 'Character_namePrimary_idx';
+                  readonly columns: readonly ['namePrimary'];
+                  readonly unique: false;
+                },
+              ];
               foreignKeys: readonly [];
             };
             readonly ListComment: {
@@ -16644,10 +16644,6 @@ type ContractBase = Omit<
                 'UNKNOWN',
               ];
             };
-            readonly CharacterRole: {
-              readonly kind: 'valueSet';
-              readonly values: readonly ['MAIN', 'SUPPORTING', 'BACKGROUND'];
-            };
             readonly CollaboratorRole: {
               readonly kind: 'valueSet';
               readonly values: readonly ['EDITOR', 'VIEWER'];
@@ -16720,6 +16716,10 @@ type ContractBase = Omit<
             readonly FriendRequestStatus: {
               readonly kind: 'valueSet';
               readonly values: readonly ['PENDING', 'ACCEPTED', 'DECLINED', 'BLOCKED'];
+            };
+            readonly CharacterRole: {
+              readonly kind: 'valueSet';
+              readonly values: readonly ['MAIN', 'SUPPORTING', 'BACKGROUND'];
             };
             readonly ListStatus: {
               readonly kind: 'valueSet';
@@ -19224,142 +19224,6 @@ type ContractBase = Omit<
               };
             };
           };
-          readonly Character: {
-            readonly fields: {
-              readonly age: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
-              };
-              readonly aniDBId: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
-              };
-              readonly anilistId: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
-              };
-              readonly bangumiId: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
-              };
-              readonly createdAt: {
-                readonly nullable: false;
-                readonly type: {
-                  readonly kind: 'scalar';
-                  readonly codecId: 'pg/timestamptz-date@1';
-                };
-              };
-              readonly dateOfBirthDay: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
-              };
-              readonly dateOfBirthMonth: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
-              };
-              readonly dateOfBirthYear: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
-              };
-              readonly description: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
-              };
-              readonly favorites: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
-              };
-              readonly gender: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
-              };
-              readonly id: {
-                readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
-              };
-              readonly image: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
-              };
-              readonly images: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
-              };
-              readonly malId: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
-              };
-              readonly nameAlternative: {
-                readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
-                readonly many: { readonly elementNullable: false };
-              };
-              readonly nameAlternativeSpoiler: {
-                readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
-                readonly many: { readonly elementNullable: false };
-              };
-              readonly nameNative: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
-              };
-              readonly namePrimary: {
-                readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
-              };
-              readonly tvDBId: {
-                readonly nullable: true;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
-              };
-              readonly updatedAt: {
-                readonly nullable: false;
-                readonly type: {
-                  readonly kind: 'scalar';
-                  readonly codecId: 'pg/timestamptz-date@1';
-                };
-              };
-            };
-            readonly relations: {
-              readonly mediaCharacters: {
-                readonly to: {
-                  readonly namespace: 'public' & NamespaceId;
-                  readonly model: 'MediaCharacter';
-                };
-                readonly cardinality: '1:N';
-                readonly on: {
-                  readonly localFields: readonly ['id'];
-                  readonly targetFields: readonly ['characterId'];
-                };
-              };
-            };
-            readonly storage: {
-              readonly table: 'Character';
-              readonly namespaceId: 'public';
-              readonly fields: {
-                readonly age: { readonly column: 'age' };
-                readonly aniDBId: { readonly column: 'aniDBId' };
-                readonly anilistId: { readonly column: 'anilistId' };
-                readonly bangumiId: { readonly column: 'bangumiId' };
-                readonly createdAt: { readonly column: 'createdAt' };
-                readonly dateOfBirthDay: { readonly column: 'dateOfBirthDay' };
-                readonly dateOfBirthMonth: { readonly column: 'dateOfBirthMonth' };
-                readonly dateOfBirthYear: { readonly column: 'dateOfBirthYear' };
-                readonly description: { readonly column: 'description' };
-                readonly favorites: { readonly column: 'favorites' };
-                readonly gender: { readonly column: 'gender' };
-                readonly id: { readonly column: 'id' };
-                readonly image: { readonly column: 'image' };
-                readonly images: { readonly column: 'images' };
-                readonly malId: { readonly column: 'malId' };
-                readonly nameAlternative: { readonly column: 'nameAlternative' };
-                readonly nameAlternativeSpoiler: { readonly column: 'nameAlternativeSpoiler' };
-                readonly nameNative: { readonly column: 'nameNative' };
-                readonly namePrimary: { readonly column: 'namePrimary' };
-                readonly tvDBId: { readonly column: 'tvDBId' };
-                readonly updatedAt: { readonly column: 'updatedAt' };
-              };
-            };
-          };
           readonly Connection: {
             readonly fields: {
               readonly authType: {
@@ -20839,6 +20703,142 @@ type ContractBase = Omit<
                 readonly id: { readonly column: 'id' };
                 readonly name: { readonly column: 'name' };
                 readonly slug: { readonly column: 'slug' };
+                readonly updatedAt: { readonly column: 'updatedAt' };
+              };
+            };
+          };
+          readonly Character: {
+            readonly fields: {
+              readonly age: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly aniDBId: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly anilistId: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly bangumiId: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly createdAt: {
+                readonly nullable: false;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly dateOfBirthDay: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly dateOfBirthMonth: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly dateOfBirthYear: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly description: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly favorites: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly gender: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly image: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly images: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
+              readonly malId: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly nameAlternative: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly nameAlternativeSpoiler: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly nameNative: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly namePrimary: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly tvDBId: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly updatedAt: {
+                readonly nullable: false;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+            };
+            readonly relations: {
+              readonly mediaCharacters: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'MediaCharacter';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['characterId'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'Character';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly age: { readonly column: 'age' };
+                readonly aniDBId: { readonly column: 'aniDBId' };
+                readonly anilistId: { readonly column: 'anilistId' };
+                readonly bangumiId: { readonly column: 'bangumiId' };
+                readonly createdAt: { readonly column: 'createdAt' };
+                readonly dateOfBirthDay: { readonly column: 'dateOfBirthDay' };
+                readonly dateOfBirthMonth: { readonly column: 'dateOfBirthMonth' };
+                readonly dateOfBirthYear: { readonly column: 'dateOfBirthYear' };
+                readonly description: { readonly column: 'description' };
+                readonly favorites: { readonly column: 'favorites' };
+                readonly gender: { readonly column: 'gender' };
+                readonly id: { readonly column: 'id' };
+                readonly image: { readonly column: 'image' };
+                readonly images: { readonly column: 'images' };
+                readonly malId: { readonly column: 'malId' };
+                readonly nameAlternative: { readonly column: 'nameAlternative' };
+                readonly nameAlternativeSpoiler: { readonly column: 'nameAlternativeSpoiler' };
+                readonly nameNative: { readonly column: 'nameNative' };
+                readonly namePrimary: { readonly column: 'namePrimary' };
+                readonly tvDBId: { readonly column: 'tvDBId' };
                 readonly updatedAt: { readonly column: 'updatedAt' };
               };
             };
