@@ -180,6 +180,7 @@ export function CharactersTab({ characters }: CharactersTabProps) {
               title={group.title}
               rowCount={1}
               dragFree
+              expandable
               variant="none"
             >
               {group.items.map((char) => {

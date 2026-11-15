@@ -185,6 +185,7 @@ export function StaffTab({ staff }: StaffTabProps) {
           title={group.title}
           rowCount={1}
           dragFree
+          expandable
           variant="none"
         >
           {group.items.map((member) => (

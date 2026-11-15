@@ -871,6 +871,7 @@ export function OverviewTab({
               title="Characters"
               rowCount={1}
               dragFree
+              expandable
               variant="none"
             >
               {featuredCharacters.map((item) => (
@@ -957,6 +958,7 @@ export function OverviewTab({
               title="Similar Titles"
               rowCount={1}
               dragFree
+              expandable
               variant="none"
             >
               {similarListItems.map((item) => (

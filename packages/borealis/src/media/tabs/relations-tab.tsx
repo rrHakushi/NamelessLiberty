@@ -208,6 +208,7 @@ export function RelationsTab({
                   title={relLabel}
                   rowCount={1}
                   dragFree
+                  expandable
                   variant="none"
                 >
                   {items.map((rel) => {
