@@ -2,17 +2,151 @@
  * Akaromi for Firefox — Background Message Dispatcher & Lifecycle Coordinator
  */
 
-// PIN brute-force defense state (also persisted in akaromi_pin_lockout across MV3 restarts)
+// PIN & Master Password brute-force defense state (persisted across MV3 restarts)
 let pinFailedAttempts = 0
 let pinLockoutUntil = 0
+let masterFailedAttempts = 0
+let masterLockoutUntil = 0
+let pinUnlockQueue = Promise.resolve()
 
-// Tracks last autofilled cipher per tab so floating 2FA widget can request short-lived OTP codes without holding totpSecret
+// Tracks last autofilled cipher per tab { cipherId, origin, expiresAt } so floating 2FA widget can request short-lived OTP codes without holding totpSecret
 const lastAutofilledCipherByTab = new Map()
+const TOTP_TAB_AUTH_TTL_MS = 5 * 60 * 1000
+
+// Tracks active inline-fill global search authorizations per tab { origin, cipherIds, expiresAt }
+const inlineSearchAuthorizedByTab = new Map()
+const INLINE_SEARCH_TTL_MS = 2 * 60 * 1000
 
 // Tracks active popup-initiated QR capture session { tabId, expiresAt }
 let activeQrCaptureSession = null
 
 const LOOPBACK_HOSTS = new Set(["localhost", "127.0.0.1", "[::1]", "::1"])
+
+function getCallerScopeKey(urlStr) {
+  if (!urlStr || typeof urlStr !== "string") return ""
+  try {
+    const parsed = new URL(urlStr)
+    if (parsed.origin && parsed.origin !== "null") return parsed.origin
+    if (parsed.protocol === "file:") return parsed.href.split("#")[0].split("?")[0]
+  } catch {}
+  return ""
+}
+
+function isLoginCipher(c) {
+  return Boolean(
+    c &&
+      !c.deletedAt &&
+      c.type !== "SSH_KEY" &&
+      c.type !== 2 &&
+      (!c.data?.itemType || c.data.itemType === "login") &&
+      (c.type === "LOGIN" || c.type === 1 || c.data?.itemType === "login")
+  )
+}
+
+function matchesSearchPattern(haystack, pattern) {
+  if (!pattern) return true
+  if (!pattern.includes("*")) return haystack.includes(pattern)
+  const parts = pattern.split("*")
+  let pos = 0
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i]
+    if (!part) continue
+    const idx = haystack.indexOf(part, pos)
+    if (idx === -1) return false
+    pos = idx + part.length
+  }
+  return true
+}
+
+function filterLoginCiphersByQuery(ciphers, rawQuery) {
+  if (!rawQuery || !rawQuery.trim()) return ciphers
+  const tokens = (rawQuery.trim().match(/(?:[^\s"]+|"[^"]*")+/g) || [])
+    .map((t) => t.replace(/^"(.*)"$/, "$1").toLowerCase())
+    .filter(Boolean)
+  if (tokens.length === 0) return ciphers
+
+  return ciphers.filter((c) => {
+    const title = (c.title || "").toLowerCase()
+    const username = (c.login?.username || c.data?.username || "").toLowerCase()
+    const email = (c.data?.email || "").toLowerCase()
+    const urisList = (c.data?.uris || c.login?.uris || c.data?.websites || [])
+      .map((u) => (typeof u === "string" ? u : u?.uri || "").toLowerCase())
+      .filter(Boolean)
+    if (c.data?.passkey?.rpId) urisList.push(String(c.data.passkey.rpId).toLowerCase())
+    const notes = (c.data?.notes || c.data?.noteBody || "").toLowerCase()
+
+    return tokens.every((tok) => {
+      if (tok.startsWith("user:") || tok.startsWith("username:")) {
+        const val = tok.replace(/^user(name)?:/, "")
+        return matchesSearchPattern(username, val)
+      }
+      if (tok.startsWith("email:")) {
+        const val = tok.replace(/^email:/, "")
+        return matchesSearchPattern(email, val) || matchesSearchPattern(username, val)
+      }
+      if (tok.startsWith("domain:") || tok.startsWith("url:") || tok.startsWith("host:")) {
+        const val = tok.replace(/^(domain|url|host):/, "")
+        return !val || urisList.some((u) => matchesSearchPattern(u, val))
+      }
+      if (tok.startsWith("title:")) {
+        const val = tok.replace(/^title:/, "")
+        return matchesSearchPattern(title, val)
+      }
+      if (tok.startsWith("note:") || tok.startsWith("notes:")) {
+        const val = tok.replace(/^notes?:/, "")
+        return matchesSearchPattern(notes, val)
+      }
+      return (
+        matchesSearchPattern(title, tok) ||
+        matchesSearchPattern(username, tok) ||
+        matchesSearchPattern(email, tok) ||
+        urisList.some((u) => matchesSearchPattern(u, tok)) ||
+        matchesSearchPattern(notes, tok)
+      )
+    })
+  })
+}
+
+function getCipherDomainHint(c) {
+  const uris = c.data?.uris || c.login?.uris || c.data?.websites || []
+  for (const u of uris) {
+    const raw = typeof u === "string" ? u : u?.uri
+    if (raw && raw.trim()) {
+      const host = IrisMatching.extractHost(raw.trim())
+      if (host) return host
+    }
+  }
+  if (c.data?.passkey?.rpId) return String(c.data.passkey.rpId)
+  return ""
+}
+
+async function getPinUnlockState() {
+  const localPin = await storage.get(["pinUnlockEnabled", "pinUnlockData"])
+  if (localPin?.pinUnlockEnabled && localPin?.pinUnlockData) {
+    return {
+      pinUnlockEnabled: true,
+      pinUnlockData: localPin.pinUnlockData,
+      pinRequireMasterOnRestart: false,
+    }
+  }
+  if (ext.storage?.session) {
+    try {
+      const sessionPin = await ext.storage.session.get(["pinUnlockEnabled", "pinUnlockData"])
+      if (sessionPin?.pinUnlockEnabled && sessionPin?.pinUnlockData) {
+        return {
+          pinUnlockEnabled: true,
+          pinUnlockData: sessionPin.pinUnlockData,
+          pinRequireMasterOnRestart: false,
+        }
+      }
+    } catch {}
+  }
+  return {
+    pinUnlockEnabled: false,
+    pinUnlockData: null,
+    pinRequireMasterOnRestart: false,
+  }
+}
 
 function validateWebAuthnCaller(senderUrl, requestedRpId) {
   if (!senderUrl || typeof senderUrl !== "string") {
@@ -46,7 +180,12 @@ function validateWebAuthnCaller(senderUrl, requestedRpId) {
       if (!rpId.includes(".")) {
         return { ok: false, error: "Invalid RP ID: bare domain label is not permitted" }
       }
-      if (Array.isArray(IrisMatching.PUBLIC_SUFFIXES) && IrisMatching.PUBLIC_SUFFIXES.includes(rpId)) {
+      const isPublicSuffix =
+        (typeof IrisMatching.isPublicSuffix === "function" && IrisMatching.isPublicSuffix(rpId)) ||
+        (Array.isArray(IrisMatching.PUBLIC_SUFFIXES) && IrisMatching.PUBLIC_SUFFIXES.includes(rpId)) ||
+        (typeof IrisMatching.extractBaseDomain === "function" &&
+          IrisMatching.extractBaseDomain("sub." + rpId) !== IrisMatching.extractBaseDomain(rpId))
+      if (isPublicSuffix) {
         return { ok: false, error: "Invalid RP ID: public suffix is not permitted" }
       }
     }
@@ -69,7 +208,7 @@ function isPasskeyRpIdAuthorized(effectiveRpId, validatedRpId) {
   if (!effectiveRpId || !validatedRpId) return false
   const e = String(effectiveRpId).toLowerCase().trim()
   const v = String(validatedRpId).toLowerCase().trim()
-  return e === v || v.endsWith("." + e)
+  return e === v
 }
 
 async function persistPasskeyCipherUpdate(cipher) {
@@ -104,76 +243,47 @@ async function persistPasskeyCipherUpdate(cipher) {
 }
 
 /**
- * Schedules wiping sensitive text from system clipboard after specified seconds
- */
-// Step 1: Sensitive Clipboard Auto-Wipe Timer
-// Step 1.1: System Clipboard Sanitation Timer & Tab Message Dispatch
-function scheduleClipboardWipe(text, seconds = 30) {
-  if (!text || !seconds || seconds <= 0) return
-  if (clipboardClearTimer) clearTimeout(clipboardClearTimer)
-  clipboardClearTimer = setTimeout(async () => {
-    try {
-      let cleared = false
-      try {
-        if (typeof document !== "undefined" && document.createElement) {
-          const ta = document.createElement("textarea")
-          ta.value = ""
-          ta.style.position = "fixed"
-          ta.style.opacity = "0"
-          document.body.appendChild(ta)
-          ta.focus()
-          ta.select()
-          cleared = document.execCommand("copy")
-          ta.remove()
-        }
-      } catch (e) {}
-
-      if (!cleared && navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText("").catch(() => {})
-      }
-
-      try {
-        const tabs = await ext.tabs.query({ active: true, lastFocusedWindow: true })
-        const activeTab = tabs[0] || (await ext.tabs.query({ active: true }))[0]
-        if (activeTab?.id) {
-          ext.tabs.sendMessage(
-            activeTab.id,
-            {
-              action: "CLEAR_CLIPBOARD_IF_MATCHES",
-              payload: { text },
-            },
-            { frameId: 0 }
-          ).catch(() => {})
-        }
-      } catch (e) {}
-    } catch (e) {
-      console.warn("[Akaromi] Clipboard clear timer error:", e)
-    }
-  }, seconds * 1000)
-}
-
-/**
  * Message Handler
  */
 // Step 2: Runtime Message Dispatcher & Action Router
 // Step 2.1: Vault Status, Auth, Unlock & Cipher CRUD Dispatchers
 ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (!message || typeof message !== "object") return false
   const { action, payload } = message
 
   // 1. Vault & Auth Status
   if (action === "GET_STATUS") {
     ;(async () => {
+      const isPrivileged = isPrivilegedSender(sender)
+      if (!sender || sender.id !== ext.runtime.id || (!isPrivileged && sender.frameId !== 0)) {
+        sendResponse({
+          isAuthenticated: false,
+          isUnlocked: false,
+          pinUnlockEnabled: false,
+          error: "Unauthorized sender context",
+        })
+        return
+      }
       await ensureVaultActive()
       const { authToken, apiKey } = await IrisApi.getToken()
-      const serverUrl = await IrisApi.getServerUrl()
+      const pinState = await getPinUnlockState()
       const sData = await storage.get([
         "user",
-        "pinUnlockEnabled",
         "lastSyncTimestamp",
-        "clipboardClearSeconds",
         "isDefaultPasswordManager",
         "autoLockMinutes",
       ])
+
+      if (!isPrivileged) {
+        sendResponse({
+          isAuthenticated: Boolean(authToken || apiKey),
+          isUnlocked: Boolean(inMemoryVaultKey),
+          pinUnlockEnabled: Boolean(pinState.pinUnlockEnabled),
+        })
+        return
+      }
+
+      const serverUrl = await IrisApi.getServerUrl()
       let user = sData.user || null
 
       if (!authToken && !apiKey) {
@@ -183,9 +293,9 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
           serverUrl,
           user: null,
           cipherCount: 0,
-          pinUnlockEnabled: Boolean(sData.pinUnlockEnabled),
+          pinUnlockEnabled: Boolean(pinState.pinUnlockEnabled),
+          pinRequireMasterOnRestart: Boolean(pinState.pinRequireMasterOnRestart),
           lastSyncTimestamp: sData.lastSyncTimestamp || 0,
-          clipboardClearSeconds: sData.clipboardClearSeconds ?? 30,
           isDefaultPasswordManager: Boolean(sData.isDefaultPasswordManager),
           autoLockMinutes: sData.autoLockMinutes !== undefined ? sData.autoLockMinutes : 15,
         })
@@ -213,8 +323,8 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
               user: null,
               cipherCount: 0,
               pinUnlockEnabled: false,
+              pinRequireMasterOnRestart: false,
               lastSyncTimestamp: 0,
-              clipboardClearSeconds: 30,
               isDefaultPasswordManager: false,
               autoLockMinutes: 15,
             })
@@ -231,9 +341,9 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
         user,
         serverUrl,
         cipherCount: inMemoryCiphers.length,
-        pinUnlockEnabled: Boolean(sData.pinUnlockEnabled),
+        pinUnlockEnabled: Boolean(pinState.pinUnlockEnabled),
+        pinRequireMasterOnRestart: Boolean(pinState.pinRequireMasterOnRestart),
         lastSyncTimestamp: sData.lastSyncTimestamp || 0,
-        clipboardClearSeconds: sData.clipboardClearSeconds ?? 30,
         isDefaultPasswordManager: Boolean(sData.isDefaultPasswordManager),
         autoLockMinutes: sData.autoLockMinutes !== undefined ? sData.autoLockMinutes : 15,
       })
@@ -281,6 +391,7 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
           await unlockWithPassword(password)
           pinFailedAttempts = 0
           pinLockoutUntil = 0
+          await storage.remove(["akaromi_pin_lockout"]).catch(() => {})
         } catch (vaultErr) {
           console.warn("[Akaromi] Account logged in, but vault requires setup or unlock:", vaultErr)
         }
@@ -321,6 +432,9 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
         if (password) {
           try {
             await unlockWithPassword(password)
+            pinFailedAttempts = 0
+            pinLockoutUntil = 0
+            await storage.remove(["akaromi_pin_lockout"]).catch(() => {})
           } catch (vaultErr) {
             console.warn("[Akaromi] MFA verified, but vault requires separate password:", vaultErr)
           }
@@ -406,18 +520,42 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   // 3. Unlock Vault with Master Password
   if (action === "UNLOCK_VAULT") {
-    ;(async () => {
+    pinUnlockQueue = pinUnlockQueue.then(async () => {
       try {
-        if (!sender || sender.id !== ext.runtime.id || (!isPrivilegedSender(sender) && sender.frameId !== 0)) {
+        if (!isPrivilegedSender(sender)) {
           throw new Error("Unauthorized sender context")
         }
-        const { password } = payload
+        const sLock = await storage.get(["akaromi_master_lockout"]).catch(() => ({}))
+        const storedLockout = sLock?.akaromi_master_lockout || {}
+        masterFailedAttempts = Math.max(masterFailedAttempts, Number(storedLockout.failedAttempts) || 0)
+        masterLockoutUntil = Math.max(masterLockoutUntil, Number(storedLockout.lockoutUntil) || 0)
+
+        if (masterLockoutUntil > Date.now()) {
+          const remainingSec = Math.ceil((masterLockoutUntil - Date.now()) / 1000)
+          throw new Error(`Too many failed attempts. Please wait ${remainingSec}s.`)
+        }
+        const { password } = payload || {}
         if (!password) throw new Error("Password required")
 
-        await unlockWithPassword(password)
+        try {
+          await unlockWithPassword(password)
+        } catch (unlockErr) {
+          masterFailedAttempts++
+          if (masterFailedAttempts >= 3) {
+            const delayMs = Math.min(15 * 60 * 1000, 5000 * Math.pow(2, masterFailedAttempts - 3))
+            masterLockoutUntil = Date.now() + delayMs
+          }
+          await storage.set({
+            akaromi_master_lockout: { failedAttempts: masterFailedAttempts, lockoutUntil: masterLockoutUntil },
+          }).catch(() => {})
+          throw unlockErr
+        }
+
+        masterFailedAttempts = 0
+        masterLockoutUntil = 0
         pinFailedAttempts = 0
         pinLockoutUntil = 0
-        await storage.remove(["akaromi_pin_lockout"]).catch(() => {})
+        await storage.remove(["akaromi_pin_lockout", "akaromi_master_lockout"]).catch(() => {})
         sendResponse({ success: true })
       } catch (err) {
         console.error("[Akaromi] Unlock error:", err)
@@ -426,7 +564,7 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
           error: err.message || "Incorrect password",
         })
       }
-    })()
+    })
     return true
   }
 
@@ -448,13 +586,18 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
         const pinData = IrisCrypto.setupPinUnlock(pin, inMemoryVaultKey)
         pinFailedAttempts = 0
         pinLockoutUntil = 0
+
+        if (ext.storage?.session) {
+          await ext.storage.session.remove(["pinUnlockData", "pinUnlockEnabled"]).catch(() => {})
+        }
         await storage.set({
           pinUnlockData: pinData,
           pinUnlockEnabled: true,
+          pinRequireMasterOnRestart: false,
         })
         await storage.remove(["akaromi_pin_lockout"]).catch(() => {})
 
-        sendResponse({ success: true })
+        sendResponse({ success: true, pinRequireMasterOnRestart: false })
       } catch (err) {
         console.error("[Akaromi] Setup PIN error:", err)
         sendResponse({ success: false, error: err.message || "Failed to set up PIN" })
@@ -465,20 +608,16 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   // 3c. Unlock Vault with PIN
   if (action === "UNLOCK_WITH_PIN") {
-    ;(async () => {
+    pinUnlockQueue = pinUnlockQueue.then(async () => {
       try {
-        if (!sender || sender.id !== ext.runtime.id || (!isPrivilegedSender(sender) && sender.frameId !== 0)) {
+        if (!isPrivilegedSender(sender)) {
           throw new Error("Unauthorized sender context")
         }
         const { pin } = payload || {}
         if (!pin) throw new Error("PIN is required")
 
-        const sData = await storage.get([
-          "pinUnlockData",
-          "pinUnlockEnabled",
-          "user",
-          "akaromi_pin_lockout",
-        ])
+        const pinState = await getPinUnlockState()
+        const sData = await storage.get(["user", "akaromi_pin_lockout"])
         const storedLockout = sData?.akaromi_pin_lockout || {}
         pinFailedAttempts = Math.max(pinFailedAttempts, Number(storedLockout.failedAttempts) || 0)
         pinLockoutUntil = Math.max(pinLockoutUntil, Number(storedLockout.lockoutUntil) || 0)
@@ -488,17 +627,20 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
           throw new Error(`PIN unlock temporarily locked. Please wait ${remainingSec}s.`)
         }
 
-        if (!sData.pinUnlockEnabled || !sData.pinUnlockData) {
+        if (!pinState.pinUnlockEnabled || !pinState.pinUnlockData) {
           throw new Error("PIN unlock is not enabled on this device")
         }
 
         // Decrypt vault key using PIN with persistent rate-limiting & brute-force lockout
         let vaultKey
         try {
-          vaultKey = IrisCrypto.unlockWithPin(pin, sData.pinUnlockData)
+          vaultKey = IrisCrypto.unlockWithPin(pin, pinState.pinUnlockData)
         } catch (pinErr) {
           pinFailedAttempts++
           if (pinFailedAttempts >= 5) {
+            if (ext.storage?.session) {
+              await ext.storage.session.remove(["pinUnlockData", "pinUnlockEnabled"]).catch(() => {})
+            }
             await storage.set({ pinUnlockEnabled: false })
             await storage.remove(["pinUnlockData", "pinEncryptedMasterKey", "akaromi_pin_lockout"])
             pinFailedAttempts = 0
@@ -532,12 +674,15 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
         checkHourlySyncDue()
         updateBadge()
 
-        sendResponse({ success: true, user: sData.user })
+        sendResponse({
+          success: true,
+          user: isPrivilegedSender(sender) ? sData.user : undefined,
+        })
       } catch (err) {
         console.error("[Akaromi] PIN unlock error:", err)
         sendResponse({ success: false, error: err.message || "Incorrect PIN" })
       }
-    })()
+    })
     return true
   }
 
@@ -547,6 +692,9 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
       try {
         if (!isPrivilegedSender(sender)) {
           throw new Error("Unauthorized sender context")
+        }
+        if (ext.storage?.session) {
+          await ext.storage.session.remove(["pinUnlockData", "pinUnlockEnabled"]).catch(() => {})
         }
         await storage.remove(["pinUnlockData"])
         await storage.set({ pinUnlockEnabled: false })
@@ -573,46 +721,6 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
       } catch (err) {
         console.error("[Akaromi] Manual sync error:", err)
         sendResponse({ success: false, error: err.message || "Failed to sync vault" })
-      }
-    })()
-    return true
-  }
-
-  // 3i. Schedule Clipboard Clear
-  if (action === "SCHEDULE_CLIPBOARD_CLEAR") {
-    ;(async () => {
-      try {
-        const { text, seconds } = payload || {}
-        let sec = seconds
-        if (!sec) {
-          const s = await storage.get(["clipboardClearSeconds"])
-          sec = s.clipboardClearSeconds !== undefined ? Number(s.clipboardClearSeconds) : 30
-        }
-        if (sec > 0 && text) {
-          scheduleClipboardWipe(text, sec)
-        }
-        sendResponse({ success: true, scheduled: sec > 0, seconds: sec })
-      } catch (err) {
-        sendResponse({ success: false, error: err.message })
-      }
-    })()
-    return true
-  }
-
-  // 3i2. Set Clipboard Clear Timeout Setting
-  if (action === "SET_CLIPBOARD_CLEAR_TIMEOUT") {
-    ;(async () => {
-      try {
-        if (!isPrivilegedSender(sender)) {
-          throw new Error("Unauthorized sender context")
-        }
-        const { seconds } = payload || {}
-        const parsed = typeof seconds === "number" ? seconds : parseInt(seconds, 10)
-        const sec = isNaN(parsed) ? 30 : parsed
-        await storage.set({ clipboardClearSeconds: sec })
-        sendResponse({ success: true, clipboardClearSeconds: sec })
-      } catch (err) {
-        sendResponse({ success: false, error: err.message })
       }
     })()
     return true
@@ -677,7 +785,9 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   // 3l. Reset Auto Lock / Activity Ping
   if (action === "RESET_AUTO_LOCK" || action === "PING_ACTIVITY") {
-    resetAutoLock().catch(() => {})
+    if (isPrivilegedSender(sender)) {
+      resetAutoLock().catch(() => {})
+    }
     sendResponse({ success: true })
     return true
   }
@@ -690,21 +800,11 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
         return
       }
       lockVault()
-      if (clipboardClearTimer) {
-        clearTimeout(clipboardClearTimer)
-        clipboardClearTimer = null
-      }
       try {
         ext.action.setBadgeText({ text: "" })
       } catch (e) {}
 
-      await storage.clear()
-      if (ext.storage?.local) {
-        await ext.storage.local.clear().catch(() => {})
-      }
-      if (ext.storage?.session) {
-        await ext.storage.session.clear().catch(() => {})
-      }
+      await IrisApi.logout()
       sendResponse({ success: true })
     })()
     return true
@@ -724,11 +824,17 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
   // 6. Get Matching Logins for a URL
   if (action === "GET_MATCHING_LOGINS") {
     ;(async () => {
-      await ensureVaultActive()
-      resetAutoLock()
       const isPrivileged = isPrivilegedSender(sender)
-      let targetUrl = isPrivileged && payload?.url ? payload.url : (sender.url || sender.tab?.url || "")
-      if (!targetUrl || targetUrl.startsWith("moz-extension:")) {
+      if (!sender || sender.id !== ext.runtime.id || (!isPrivileged && sender.frameId !== 0)) {
+        sendResponse({ matches: [], url: "", isUnlocked: false, error: "Unauthorized sender context" })
+        return
+      }
+      await ensureVaultActive()
+      if (isPrivileged) {
+        resetAutoLock()
+      }
+      let targetUrl = isPrivileged && payload?.url ? payload.url : (sender.url || "")
+      if (isPrivileged && (!targetUrl || targetUrl.startsWith("moz-extension:"))) {
         try {
           let tabs = await ext.tabs.query({ active: true, lastFocusedWindow: true }).catch(() => [])
           if (!tabs || tabs.length === 0) {
@@ -772,47 +878,70 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return true
   }
 
-  // 6a2. Get All Decrypted Logins for Inline Fill Global Search
-  if (action === "GET_ALL_LOGINS_FOR_INLINE_FILL") {
+  // 6a2. Search Logins in Background for Inline Fill (preserves non-matching search & fill without dumping full URIs)
+  if (action === "SEARCH_LOGINS_FOR_INLINE_FILL") {
     ;(async () => {
-      if (!sender || sender.id !== ext.runtime.id || (!isPrivilegedSender(sender) && sender.frameId !== 0)) {
+      const isPrivileged = isPrivilegedSender(sender)
+      if (!sender || sender.id !== ext.runtime.id || (!isPrivileged && sender.frameId !== 0)) {
         sendResponse({ ciphers: [], isUnlocked: false, error: "Unauthorized sender context" })
         return
       }
       await ensureVaultActive()
-      resetAutoLock()
+      if (isPrivileged) {
+        resetAutoLock()
+      }
       if (!inMemoryVaultKey || !inMemoryCiphers) {
         sendResponse({ ciphers: [], isUnlocked: Boolean(inMemoryVaultKey) })
         return
       }
-      const logins = inMemoryCiphers
-        .filter(
-          (c) =>
-            !c.deletedAt &&
-            c.type !== "SSH_KEY" &&
-            c.type !== 2 &&
-            (!c.data?.itemType || c.data.itemType === "login") &&
-            (c.type === "LOGIN" || c.type === 1 || c.data?.itemType === "login")
-        )
-        .map((c) => ({
-          id: c.id,
-          title: c.title,
-          _matchTier: "all",
-          data: {
-            username: c.login?.username || c.data?.username || c.data?.email || "",
-            email: c.data?.email || "",
-            uris: c.data?.uris || c.login?.uris || c.data?.websites || [],
-            additionalPasswords: (c.data?.additionalPasswords || []).map((ap, idx) => ({
-              id: ap.id || String(idx),
-              name: ap.name || ap.title || `Password ${idx + 1}`,
-            })),
-          },
-          hasPassword: Boolean(c.login?.password || c.data?.password),
-          hasTotp: Boolean(c.login?.totp || c.data?.totp || c.data?.totpSecret),
-          hasPasskey: Boolean(c.data?.passkey || c.passkey),
-        }))
-      sendResponse({ ciphers: logins, isUnlocked: true })
+
+      const query = typeof payload?.query === "string" ? payload.query : ""
+      if (!query.trim()) {
+        sendResponse({ ciphers: [], isUnlocked: true })
+        return
+      }
+
+      const allLogins = inMemoryCiphers.filter(isLoginCipher)
+      const matched = filterLoginCiphersByQuery(allLogins, query)
+
+      if (!isPrivileged && sender.tab?.id) {
+        const scopeKey = getCallerScopeKey(sender.url || sender.tab?.url || "")
+        if (scopeKey) {
+          inlineSearchAuthorizedByTab.set(sender.tab.id, {
+            origin: scopeKey,
+            cipherIds: new Set(matched.map((c) => c.id)),
+            expiresAt: Date.now() + INLINE_SEARCH_TTL_MS,
+          })
+        }
+      }
+
+      const sanitized = matched.map((c) => ({
+        id: c.id,
+        title: c.title,
+        _matchTier: "all",
+        data: {
+          username: c.login?.username || c.data?.username || c.data?.email || "",
+          domainHint: getCipherDomainHint(c),
+          additionalPasswords: (c.data?.additionalPasswords || []).map((ap, idx) => ({
+            id: ap.id || String(idx),
+            name: ap.name || ap.title || `Password ${idx + 1}`,
+          })),
+        },
+        hasPassword: Boolean(c.login?.password || c.data?.password),
+        hasTotp: Boolean(c.login?.totp || c.data?.totp || c.data?.totpSecret),
+        hasPasskey: Boolean(c.data?.passkey || c.passkey),
+      }))
+      sendResponse({ ciphers: sanitized, isUnlocked: true })
     })()
+    return true
+  }
+
+  // 6a3. Clear Inline Search Authorization on dropdown close
+  if (action === "CLEAR_INLINE_SEARCH_AUTH") {
+    if (sender?.id === ext.runtime.id && sender.tab?.id) {
+      inlineSearchAuthorizedByTab.delete(sender.tab.id)
+    }
+    sendResponse({ success: true })
     return true
   }
 
@@ -824,7 +953,9 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
           throw new Error("Unauthorized sender context")
         }
         await ensureVaultActive()
-        resetAutoLock()
+        if (isPrivilegedSender(sender)) {
+          resetAutoLock()
+        }
         if (!inMemoryVaultKey) throw new Error("Vault is locked")
 
         const { cipherId, subPasswordId, userSelected } = payload || {}
@@ -836,13 +967,36 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
         }
 
         if (!isPrivilegedSender(sender)) {
+          if (!isLoginCipher(cipher)) {
+            throw new Error("Cipher type cannot be autofilled from webpage context")
+          }
           const callerUrl = sender.url || sender.tab?.url || ""
           const uriMatched = callerUrl && getMatchingLogins(callerUrl).some((m) => m.id === cipher.id)
-          if (!uriMatched && !userSelected) {
+          let searchAuthorized = false
+          if (!uriMatched && userSelected && sender.tab?.id) {
+            const scopeKey = getCallerScopeKey(callerUrl)
+            const searchAuth = inlineSearchAuthorizedByTab.get(sender.tab.id)
+            searchAuthorized = Boolean(
+              searchAuth &&
+                scopeKey &&
+                searchAuth.origin === scopeKey &&
+                Date.now() < searchAuth.expiresAt &&
+                searchAuth.cipherIds.has(cipher.id)
+            )
+          }
+          if (!uriMatched && !searchAuthorized) {
             throw new Error("Credential URI does not match sender origin")
           }
           if (sender.tab?.id) {
-            lastAutofilledCipherByTab.set(sender.tab.id, cipher.id)
+            inlineSearchAuthorizedByTab.delete(sender.tab.id)
+          }
+          if (sender.tab?.id) {
+            const callerOrigin = getCallerScopeKey(callerUrl)
+            lastAutofilledCipherByTab.set(sender.tab.id, {
+              cipherId: cipher.id,
+              origin: callerOrigin,
+              expiresAt: Date.now() + TOTP_TAB_AUTH_TTL_MS,
+            })
           }
         }
 
@@ -895,7 +1049,9 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
           throw new Error("Unauthorized sender context")
         }
         await ensureVaultActive()
-        resetAutoLock()
+        if (isPrivilegedSender(sender)) {
+          resetAutoLock()
+        }
         if (!inMemoryVaultKey) throw new Error("Vault is locked")
 
         const { cipherId } = payload || {}
@@ -906,8 +1062,16 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
         if (!isPrivilegedSender(sender) && sender.tab) {
           const callerUrl = sender.url || sender.tab?.url || ""
+          const callerOrigin = getCallerScopeKey(callerUrl)
           const uriMatched = callerUrl && getMatchingLogins(callerUrl).some((m) => m.id === cipher.id)
-          const wasAutofilledInTab = lastAutofilledCipherByTab.get(sender.tab.id) === cipher.id
+          const tabAuth = lastAutofilledCipherByTab.get(sender.tab.id)
+          const wasAutofilledInTab = Boolean(
+            tabAuth &&
+            tabAuth.cipherId === cipher.id &&
+            tabAuth.origin &&
+            tabAuth.origin === callerOrigin &&
+            Date.now() < tabAuth.expiresAt
+          )
           if (!uriMatched && !wasAutofilledInTab) {
             throw new Error("Cipher not authorized for this tab")
           }
@@ -985,7 +1149,16 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
           totpCode = await IrisTotp.generateTotp(rawTotp.trim())
         }
 
-        lastAutofilledCipherByTab.set(targetTabId, cipher.id)
+        let targetTabOrigin = ""
+        try {
+          const tabInfo = await ext.tabs.get(targetTabId)
+          if (tabInfo?.url) targetTabOrigin = new URL(tabInfo.url).origin
+        } catch {}
+        lastAutofilledCipherByTab.set(targetTabId, {
+          cipherId: cipher.id,
+          origin: targetTabOrigin,
+          expiresAt: Date.now() + TOTP_TAB_AUTH_TTL_MS,
+        })
 
         await ext.tabs.sendMessage(
           targetTabId,
@@ -1011,10 +1184,46 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return true
   }
 
+  // 8.5 Authorize tab for short-lived floating TOTP refresh (privileged popup only)
+  if (action === "AUTHORIZE_TAB_TOTP") {
+    ;(async () => {
+      try {
+        if (!isPrivilegedSender(sender)) {
+          throw new Error("Unauthorized sender context")
+        }
+        const { tabId, cipherId, url } = payload || {}
+        if (tabId && cipherId) {
+          let origin = ""
+          try {
+            if (url) origin = new URL(url).origin
+            else {
+              const tabInfo = await ext.tabs.get(tabId)
+              if (tabInfo?.url) origin = new URL(tabInfo.url).origin
+            }
+          } catch {}
+          if (origin) {
+            lastAutofilledCipherByTab.set(tabId, {
+              cipherId,
+              origin,
+              expiresAt: Date.now() + TOTP_TAB_AUTH_TTL_MS,
+            })
+          }
+        }
+        sendResponse({ success: true })
+      } catch (err) {
+        sendResponse({ success: false, error: err.message })
+      }
+    })()
+    return true
+  }
+
   // 8a1. Copy Text to Clipboard (with clipboardWrite permission)
   if (action === "COPY_TO_CLIPBOARD") {
     ;(async () => {
       try {
+        if (!sender || sender.id !== ext.runtime.id || (!isPrivilegedSender(sender) && sender.frameId !== 0)) {
+          throw new Error("Unauthorized sender context")
+        }
         const { text } = payload || {}
         if (text) {
           let written = false
@@ -1032,15 +1241,8 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
             }
           } catch {}
 
-          if (!written && navigator.clipboard?.writeText) {
+          if (!written && typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
             await navigator.clipboard.writeText(text).catch(() => {})
-          }
-
-          // Automatically schedule clipboard wiping using user's setting (default 30s)
-          const s = await storage.get(["clipboardClearSeconds"])
-          const sec = s.clipboardClearSeconds !== undefined ? Number(s.clipboardClearSeconds) : 30
-          if (sec > 0) {
-            scheduleClipboardWipe(text, sec)
           }
         }
         sendResponse({ success: true })
@@ -1057,10 +1259,13 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return true
   }
 
-  // 8a3. Generate TOTP code on demand
+  // 8a3. Generate TOTP code on demand (privileged extension pages only)
   if (action === "GENERATE_TOTP") {
     ;(async () => {
       try {
+        if (!isPrivilegedSender(sender)) {
+          throw new Error("Unauthorized sender context")
+        }
         const { secret } = payload || {}
         if (!secret) throw new Error("No secret provided")
         const code = await IrisTotp.generateTotp(secret)
@@ -1077,15 +1282,8 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (action === "OPEN_UNLOCK_WINDOW") {
     ;(async () => {
       try {
-        const targetTabId = sender.tab?.id
-        if (targetTabId) {
-          try {
-            await ext.tabs.sendMessage(targetTabId, { action: "SHOW_IN_PAGE_UNLOCK_MODAL" }, { frameId: 0 })
-            sendResponse({ success: true, method: "in_page_modal" })
-            return
-          } catch (e) {
-            // In-page message failed, fall through to extension window / popup
-          }
+        if (!sender || sender.id !== ext.runtime.id || (!isPrivilegedSender(sender) && sender.frameId !== 0)) {
+          throw new Error("Unauthorized sender context")
         }
         if (ext.action?.openPopup) {
           try {
@@ -1200,7 +1398,7 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
           throw new Error(`Scanned QR code is not a valid 2FA authenticator key: ${decodedText.slice(0, 40)}`)
         }
 
-        await storage.set({ pendingScannedTotp: parsedOtp })
+        pendingScannedTotpMemory = parsedOtp
         if (ext.storage?.session) {
           await ext.storage.session.set({ pendingScannedTotp: parsedOtp }).catch(() => {})
         }
@@ -1227,6 +1425,31 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
       } catch (err) {
         console.warn("[Akaromi] QR Screen Capture error:", err)
         sendResponse({ success: false, error: err.message || "Failed to decode QR code" })
+      }
+    })()
+    return true
+  }
+
+  // 8c-2. Retrieve and atomically clear pending scanned TOTP secret (privileged popup only)
+  if (action === "GET_PENDING_SCANNED_TOTP") {
+    ;(async () => {
+      try {
+        if (!isPrivilegedSender(sender)) {
+          throw new Error("Unauthorized sender context")
+        }
+        let pending = pendingScannedTotpMemory
+        pendingScannedTotpMemory = null
+        if (!pending && ext.storage?.session) {
+          const s = await ext.storage.session.get(["pendingScannedTotp"]).catch(() => ({}))
+          pending = s?.pendingScannedTotp || null
+        }
+        if (ext.storage?.session) {
+          await ext.storage.session.remove(["pendingScannedTotp"]).catch(() => {})
+        }
+        await storage.remove(["pendingScannedTotp"]).catch(() => {})
+        sendResponse({ success: true, pendingScannedTotp: pending || null })
+      } catch (err) {
+        sendResponse({ success: false, error: err.message })
       }
     })()
     return true
@@ -1390,31 +1613,6 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
           })
         }
 
-        // If allowCredentials was specified but strict ID match didn't find them, return all strictly RP-authorized passkeys for selection
-        if (matched.length === 0 && allowedIds) {
-          for (const cipher of inMemoryCiphers) {
-            if (cipher.deletedAt || cipher.type !== "LOGIN") continue
-            const passkey = cipher.data?.passkey
-            if (!passkey) continue
-
-            const effectiveRpId = (passkey.rpId || "").toLowerCase()
-            if (!isPasskeyRpIdAuthorized(effectiveRpId, validatedRpId)) continue
-
-            matched.push({
-              id: passkey.credentialId,
-              credentialId: passkey.credentialId,
-              rawId: passkey.credentialId,
-              type: "public-key",
-              userName: passkey.userName || cipher.data?.username || "Account",
-              userDisplayName: passkey.userDisplayName || cipher.title || cipher.data?.username || "Account",
-              userHandle: passkey.userHandle || "",
-              cipherId: cipher.id,
-              cipherTitle: cipher.title || "Passkey",
-              title: cipher.title || passkey.userName || "Passkey",
-            })
-          }
-        }
-
         sendResponse({
           success: true,
           isUnlocked: true,
@@ -1455,6 +1653,9 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
           challenge,
           targetCipherId,
         } = payload || {}
+        if (typeof challenge !== "string" || !challenge) {
+          throw new Error("Missing WebAuthn challenge")
+        }
 
         const rpCheck = validateWebAuthnCaller(callerUrl, rpId)
         if (!rpCheck.ok) {
@@ -1530,18 +1731,10 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
         let targetCipher = null
         if (targetCipherId && targetCipherId !== "new") {
-          targetCipher = inMemoryCiphers.find((c) => !c.deletedAt && c.id === targetCipherId)
-        } else if (!targetCipherId) {
-          targetCipher = inMemoryCiphers.find(
-            (c) =>
-              !c.deletedAt &&
-              c.type === "LOGIN" &&
-              c.data?.username === userName &&
-              c.data?.uris?.some((u) => {
-                const uStr = typeof u === "string" ? u : u.uri
-                return IrisMatching.isUriMatch(callerUrl, uStr, 0)
-              })
-          )
+          const allowedMatches = getMatchingLogins(callerUrl)
+          if (allowedMatches.some((m) => m.id === targetCipherId)) {
+            targetCipher = inMemoryCiphers.find((c) => !c.deletedAt && c.id === targetCipherId)
+          }
         }
 
         if (targetCipher) {
@@ -1613,6 +1806,7 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
         const { credentialId, challenge } = payload || {}
         if (!credentialId) throw new Error("Missing credential ID")
+        if (typeof challenge !== "string" || !challenge) throw new Error("Missing WebAuthn challenge")
 
         function normalizeB64(id) {
           if (!id || typeof id !== "string") return ""
@@ -1632,13 +1826,11 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
           }
         }
 
-        if (!matchedPasskey) throw new Error("Passkey not found in vault")
+        if (!matchedPasskey) throw new Error("Passkey not found or not authorized for this origin")
 
         const effectiveRpId = (matchedPasskey.rpId || "").toLowerCase()
         if (!isPasskeyRpIdAuthorized(effectiveRpId, validatedRpId)) {
-          throw new Error(
-            `Relying party mismatch: Passkey is registered to ${effectiveRpId}, but assertion was requested by ${callerHost}`
-          )
+          throw new Error("Passkey not found or not authorized for this origin")
         }
 
         const enc = new TextEncoder()
@@ -1709,12 +1901,27 @@ ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 })
 
-// Listen to tab events to update action badge
+// Listen to tab events to update action badge and invalidate cross-origin TOTP / inline search tab authorizations
 ext.tabs.onActivated.addListener(updateBadge)
 ext.tabs.onUpdated.addListener((tabId, changeInfo) => {
+  if (changeInfo.url) {
+    const newScope = getCallerScopeKey(changeInfo.url)
+    const existing = lastAutofilledCipherByTab.get(tabId)
+    if (existing && (!newScope || newScope !== existing.origin)) {
+      lastAutofilledCipherByTab.delete(tabId)
+    }
+    const existingSearch = inlineSearchAuthorizedByTab.get(tabId)
+    if (existingSearch && (!newScope || newScope !== existingSearch.origin)) {
+      inlineSearchAuthorizedByTab.delete(tabId)
+    }
+  }
   if (changeInfo.url || changeInfo.status === "complete") {
     updateBadge()
   }
+})
+ext.tabs.onRemoved?.addListener((tabId) => {
+  lastAutofilledCipherByTab.delete(tabId)
+  inlineSearchAuthorizedByTab.delete(tabId)
 })
 updateBadge()
 
@@ -1723,6 +1930,7 @@ updateBadge()
 // Step 5.1: Browser Startup Event Handler & Tab Script Reinjection
 ext.runtime.onStartup?.addListener(async () => {
   try {
+    await storage.remove(["pendingScannedTotp"]).catch(() => {})
     await ensureVaultActive()
     updateBadge()
   } catch (err) {
@@ -1739,7 +1947,7 @@ ext.runtime.onInstalled?.addListener(async () => {
       try {
         if (ext.scripting?.insertCSS) {
           await ext.scripting.insertCSS({
-            target: { tabId: tab.id, allFrames: true },
+            target: { tabId: tab.id, allFrames: false },
             files: [
               "content/badge.css",
               "content/menu.css",
@@ -1750,12 +1958,16 @@ ext.runtime.onInstalled?.addListener(async () => {
         }
         if (ext.scripting?.executeScript) {
           await ext.scripting.executeScript({
-            target: { tabId: tab.id, allFrames: true },
+            target: { tabId: tab.id, allFrames: false },
+            files: ["content/event-shield.js"],
+          })
+          await ext.scripting.executeScript({
+            target: { tabId: tab.id, allFrames: false },
             files: ["content/passkey-injected.js"],
             world: "MAIN",
           })
           await ext.scripting.executeScript({
-            target: { tabId: tab.id, allFrames: true },
+            target: { tabId: tab.id, allFrames: false },
             files: [
               "lib/icons.js",
               "lib/totp.js",

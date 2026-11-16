@@ -1,5 +1,5 @@
 /**
- * IRIS Pass — Resilient Multi-Tier Storage Engine
+ * Akaromi — Resilient Multi-Tier Storage Engine
  * Stores sensitive credentials, encrypted ciphers, PIN unlock metadata, and session tokens
  * in browser.storage.local under the extension's privileged origin.
  *
@@ -23,7 +23,7 @@
 
     if (typeof indexedDB === "undefined") return
     try {
-      const DB_NAME = "iris_pass_db"
+      const DB_NAME = "akaromi_db"
       const STORE_NAME = "vault_store"
 
       await new Promise((resolve) => {
@@ -52,7 +52,14 @@
               if (rows.length > 0 && ext?.storage?.local) {
                 const migrated = {}
                 for (const row of rows) {
-                  if (row && row.key && row.value !== undefined) {
+                  if (
+                    row &&
+                    typeof row.key === "string" &&
+                    row.key !== "__proto__" &&
+                    row.key !== "constructor" &&
+                    row.key !== "prototype" &&
+                    row.value !== undefined
+                  ) {
                     migrated[row.key] = row.value
                   }
                 }
@@ -64,6 +71,9 @@
                 }
               }
               db.close()
+              try {
+                indexedDB.deleteDatabase(DB_NAME)
+              } catch {}
               resolve()
             }
             getAllReq.onerror = () => {
@@ -175,6 +185,11 @@
      */
     async clear() {
       memoryCache.clear()
+      if (typeof indexedDB !== "undefined") {
+        try {
+          indexedDB.deleteDatabase("akaromi_db")
+        } catch {}
+      }
       if (ext?.storage?.local) {
         try {
           await ext.storage.local.clear()

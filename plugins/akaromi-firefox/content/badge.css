@@ -1,9 +1,7 @@
 /* Akaromi for Firefox — Inline Autofill Badge Styles */
 
 #akaromi-portal,
-#iris-pass-portal,
-.akaromi-portal-root,
-.iris-pass-portal-root {
+.akaromi-portal-root {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
@@ -14,15 +12,12 @@
 }
 
 #akaromi-portal > *,
-#iris-pass-portal > *,
-.akaromi-portal-root > *,
-.iris-pass-portal-root > * {
+.akaromi-portal-root > * {
   pointer-events: auto !important;
 }
 
 /* Badge icon is HIDDEN by default — only visible when active/focused */
-.akaromi-field-icon,
-.iris-pass-field-icon {
+.akaromi-field-icon {
   position: fixed !important;
   z-index: 2147483640 !important;
   width: 20px !important;
@@ -31,10 +26,10 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background: #09090b !important;
-  border: 1px solid #27272a !important;
+  background: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
   border-radius: 6px !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.65) !important;
   box-sizing: border-box !important;
   padding: 0 !important;
   margin: 0 !important;
@@ -49,25 +44,21 @@
 }
 
 /* Shown strictly on the focused/active credential input */
-.akaromi-field-icon.visible,
-.iris-pass-field-icon.visible {
-  opacity: 0.9 !important;
+.akaromi-field-icon.visible {
+  opacity: 0.92 !important;
   visibility: visible !important;
   pointer-events: auto !important;
 }
 
 .akaromi-field-icon:hover,
-.akaromi-field-icon.active,
-.iris-pass-field-icon:hover,
-.iris-pass-field-icon.active {
+.akaromi-field-icon.active {
   opacity: 1 !important;
   transform: scale(1.1) !important;
-  border-color: #fafafa !important;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25) !important;
+  border-color: oklch(60.145% 0.25696 299.856) !important;
+  box-shadow: 0 0 10px rgba(162, 89, 255, 0.35) !important;
 }
 
-.akaromi-field-icon svg,
-.iris-pass-field-icon svg {
+.akaromi-field-icon svg {
   width: 14px !important;
   height: 14px !important;
   fill: none !important;
@@ -78,8 +69,7 @@
   pointer-events: none !important;
 }
 
-.akaromi-badge-img,
-.iris-pass-badge-img {
+.akaromi-badge-img {
   width: 14px !important;
   height: 14px !important;
   object-fit: contain !important;

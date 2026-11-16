@@ -91,6 +91,7 @@
   // Screen Transition Helpers
   // ----------------------------------------------------
   function showLoginView() {
+    global.AkaromiVault?.clearDecryptedState?.()
     if (appHeader) appHeader.style.display = "none"
     if (viewLogin) viewLogin.style.display = "flex"
     if (viewMfa) viewMfa.style.display = "none"
@@ -143,6 +144,7 @@
   }
 
   function showLockedView(user, status) {
+    global.AkaromiVault?.clearDecryptedState?.()
     if (appHeader) appHeader.style.display = "none"
     if (viewLogin) viewLogin.style.display = "none"
     if (viewMfa) viewMfa.style.display = "none"
@@ -159,12 +161,21 @@
     }
 
     const pinEnabled = status?.pinUnlockEnabled ?? true
+    const focusLockedInput = (el) => {
+      if (!el) return
+      requestAnimationFrame(() => el.focus({ preventScroll: true }))
+      setTimeout(() => {
+        if (viewLocked && viewLocked.style.display !== "none" && document.activeElement !== el) {
+          el.focus({ preventScroll: true })
+        }
+      }, 60)
+    }
     if (pinEnabled) {
       if (formUnlockPin) formUnlockPin.style.display = "flex"
       if (formUnlockPassword) formUnlockPassword.style.display = "none"
       if (unlockPin) {
         unlockPin.value = ""
-        requestAnimationFrame(() => unlockPin.focus({ preventScroll: true }))
+        focusLockedInput(unlockPin)
       }
     } else {
       if (formUnlockPin) formUnlockPin.style.display = "none"
@@ -172,10 +183,20 @@
       if (btnUsePin) btnUsePin.style.display = "none"
       if (unlockPassword) {
         unlockPassword.value = ""
-        requestAnimationFrame(() => unlockPassword.focus({ preventScroll: true }))
+        focusLockedInput(unlockPassword)
       }
     }
   }
+
+  window.addEventListener("focus", () => {
+    if (viewLocked && viewLocked.style.display !== "none") {
+      if (formUnlockPin && formUnlockPin.style.display !== "none") {
+        unlockPin?.focus({ preventScroll: true })
+      } else if (formUnlockPassword && formUnlockPassword.style.display !== "none") {
+        unlockPassword?.focus({ preventScroll: true })
+      }
+    }
+  })
 
   function showUnlockedView(user) {
     pendingMfa = null
@@ -217,8 +238,6 @@
       const isMfaVisible = viewMfa && viewMfa.style.display !== "none"
       if (!isLoginVisible && !isMfaVisible) return
 
-      const otpValues = otpBoxes.map((b) => b.value || "")
-      const backupVal = mfaBackupCode?.value || ""
       const safePendingMfa = pendingMfa
         ? {
             mfaTicket: pendingMfa.mfaTicket,
@@ -231,8 +250,8 @@
         identifier: loginIdentifier?.value || "",
         isMfaActive: Boolean(isMfaVisible && safePendingMfa?.mfaTicket),
         pendingMfa: safePendingMfa,
-        otpValues,
-        backupCode: backupVal,
+        otpValues: [],
+        backupCode: "",
         isBackupMode: isBackupModeActive,
       }
 

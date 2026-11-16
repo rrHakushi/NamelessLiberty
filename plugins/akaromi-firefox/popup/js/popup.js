@@ -157,6 +157,41 @@
       global.AkaromiAuth?.saveAuthDraft()
       global.AkaromiEditor?.saveEditDraftNow()
       global.AkaromiGenerator?.saveGeneratorDraftNow()
+    } else if (document.visibilityState === "visible") {
+      syncVaultStatus()
+    }
+  })
+
+  window.addEventListener("focus", syncVaultStatus)
+
+  let isSyncingStatus = false
+  function applyLockedTransition(status) {
+    global.AkaromiVault?.clearDecryptedState?.()
+    if (!status || !status.isAuthenticated) {
+      global.AkaromiAuth?.showLoginView?.()
+    } else {
+      global.AkaromiAuth?.showLockedView?.(status.user, status)
+    }
+  }
+
+  function syncVaultStatus() {
+    if (isSyncingStatus) return
+    const viewUnlockedEl = document.getElementById("view-unlocked")
+    if (!viewUnlockedEl || viewUnlockedEl.style.display === "none") return
+    isSyncingStatus = true
+    ext.runtime.sendMessage({ action: "GET_STATUS" }, (response) => {
+      isSyncingStatus = false
+      if (!response || !response.isAuthenticated || !response.isUnlocked) {
+        applyLockedTransition(response)
+      }
+    })
+  }
+
+  ext.runtime.onMessage?.addListener((msg) => {
+    if (msg?.action === "VAULT_LOCKED") {
+      ext.runtime.sendMessage({ action: "GET_STATUS" }, (response) => {
+        applyLockedTransition(response)
+      })
     }
   })
 

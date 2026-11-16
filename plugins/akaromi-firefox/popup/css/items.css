@@ -60,7 +60,7 @@
   left: auto !important;
   right: 0 !important;
   min-width: 195px;
-  background: #18181b;
+  background: var(--popover);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
@@ -99,7 +99,7 @@
 }
 
 .sort-dropdown-item.active {
-  background: #27272a;
+  background: var(--secondary);
   font-weight: 600;
 }
 
@@ -197,7 +197,7 @@
 
 .cipher-item-card.active .card-icon-wrap,
 .cipher-item-card.active .cipher-card-icon {
-  background: #141418;
+  background: var(--card);
   color: var(--foreground);
 }
 
@@ -244,7 +244,7 @@
 .vault-empty-state .empty-icon {
   width: 26px;
   height: 26px;
-  color: #52525b;
+  color: var(--muted-foreground);
 }
 
 .vault-empty-state .empty-title {
@@ -256,7 +256,7 @@
 
 .vault-empty-state .empty-desc {
   font-size: 11px;
-  color: #71717a;
+  color: var(--muted-foreground);
 }
 
 /* Card Badges (Passkey & TOTP 2FA Indicator Icons - Pure Monochrome Icons) */
@@ -281,7 +281,7 @@
   margin: 0 !important;
   width: auto !important;
   height: auto !important;
-  color: #71717a !important;
+  color: var(--muted-foreground) !important;
   transition: color 0.12s ease;
   line-height: 1;
 }
@@ -294,7 +294,7 @@
 
 .card-badge-icon.badge-totp,
 .card-badge-icon.badge-passkey {
-  color: #71717a !important;
+  color: var(--muted-foreground) !important;
   background: transparent !important;
   border: none !important;
 }
@@ -302,7 +302,7 @@
 .cipher-item-card:hover .card-badge-icon,
 .cipher-item-card:hover .card-badge-icon.badge-totp,
 .cipher-item-card:hover .card-badge-icon.badge-passkey {
-  color: #a1a1aa !important;
+  color: var(--muted-foreground) !important;
 }
 
 .cipher-item-card.active .card-badge-icon,

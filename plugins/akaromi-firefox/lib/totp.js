@@ -1,5 +1,5 @@
 /**
- * IRIS Pass — RFC 6238 TOTP Generator (WebCrypto HMAC-SHA1)
+ * Akaromi — RFC 6238 TOTP Generator (WebCrypto HMAC-SHA1)
  */
 ;(function (root) {
   const IrisTotp = {}

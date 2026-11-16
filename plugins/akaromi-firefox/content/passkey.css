@@ -1,12 +1,12 @@
-/* Akaromi for Firefox — Passkey Dialog & Notification Styles (Zinc Monochrome) */
+/* Akaromi for Firefox — Passkey Dialog & Notification Styles (IRIS AMOLED) */
 
-.iris-passkey-dialog-overlay {
+.akaromi-passkey-dialog-overlay {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: rgba(9, 9, 11, 0.75) !important;
+  background: rgba(0, 0, 0, 0.82) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   z-index: 2147483647 !important;
@@ -15,7 +15,7 @@
   justify-content: center !important;
   padding: 16px !important;
   box-sizing: border-box !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
   animation: irisFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
@@ -30,9 +30,9 @@
   }
 }
 
-.iris-passkey-dialog {
-  background: #09090b !important;
-  border: 1px solid #27272a !important;
+.akaromi-passkey-dialog {
+  background: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 16px !important;
   width: 100% !important;
   max-width: 380px !important;
@@ -48,12 +48,12 @@
   box-sizing: border-box !important;
 }
 
-.iris-passkey-icon {
+.akaromi-passkey-icon {
   width: 48px !important;
   height: 48px !important;
   border-radius: 12px !important;
-  background: #18181b !important;
-  border: 1px solid #27272a !important;
+  background: oklch(0.09 0.003 285.885) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -61,7 +61,7 @@
   box-sizing: border-box !important;
 }
 
-.iris-passkey-icon svg {
+.akaromi-passkey-icon svg {
   width: 22px !important;
   height: 22px !important;
   stroke: #fafafa !important;
@@ -69,7 +69,7 @@
   stroke-width: 2 !important;
 }
 
-.iris-passkey-dialog-logo {
+.akaromi-passkey-dialog-logo {
   width: 32px !important;
   height: 32px !important;
   object-fit: contain !important;
@@ -77,7 +77,7 @@
   display: block !important;
 }
 
-.iris-passkey-title {
+.akaromi-passkey-title {
   font-size: 16px !important;
   font-weight: 700 !important;
   margin: 0 0 4px 0 !important;
@@ -85,17 +85,17 @@
   line-height: 1.3 !important;
 }
 
-.iris-passkey-subtitle {
+.akaromi-passkey-subtitle {
   font-size: 12px !important;
-  color: #a1a1aa !important;
+  color: oklch(0.65 0.012 286.067) !important;
   margin: 0 0 16px 0 !important;
   line-height: 1.4 !important;
 }
 
-.iris-passkey-details {
+.akaromi-passkey-details {
   width: 100% !important;
-  background: #18181b !important;
-  border: 1px solid #27272a !important;
+  background: oklch(0.09 0.003 285.885) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 10px !important;
   padding: 12px 14px !important;
   display: flex !important;
@@ -105,7 +105,7 @@
   box-sizing: border-box !important;
 }
 
-.iris-passkey-row {
+.akaromi-passkey-row {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
@@ -113,7 +113,7 @@
   gap: 10px !important;
 }
 
-.iris-passkey-row-col {
+.akaromi-passkey-row-col {
   display: flex !important;
   flex-direction: column !important;
   align-items: stretch !important;
@@ -123,16 +123,16 @@
   font-size: 12px !important;
 }
 
-.iris-passkey-row .label,
-.iris-passkey-row-col .label {
-  color: #a1a1aa !important;
+.akaromi-passkey-row .label,
+.akaromi-passkey-row-col .label {
+  color: oklch(0.65 0.012 286.067) !important;
   font-size: 11px !important;
   font-weight: 500 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
 }
 
-.iris-passkey-row .value {
+.akaromi-passkey-row .value {
   color: #fafafa !important;
   font-weight: 500 !important;
   max-width: 220px !important;
@@ -141,11 +141,11 @@
   white-space: nowrap !important;
 }
 
-.iris-passkey-select {
+.akaromi-passkey-select {
   width: 100% !important;
   padding: 9px 12px !important;
   background: #121215 !important;
-  border: 1px solid #27272a !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 8px !important;
   color: #fafafa !important;
   font-size: 12px !important;
@@ -156,19 +156,19 @@
   transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
 }
 
-.iris-passkey-select:focus {
-  border-color: #71717a !important;
-  box-shadow: 0 0 0 1px #71717a !important;
+.akaromi-passkey-select:focus {
+  border-color: oklch(0.65 0.012 286.067) !important;
+  box-shadow: 0 0 0 1px oklch(0.65 0.012 286.067) !important;
 }
 
-.iris-passkey-actions {
+.akaromi-passkey-actions {
   width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 8px !important;
 }
 
-.iris-passkey-btn {
+.akaromi-passkey-btn {
   width: 100% !important;
   padding: 10px 14px !important;
   border-radius: 10px !important;
@@ -183,38 +183,37 @@
   box-sizing: border-box !important;
 }
 
-.iris-passkey-btn:disabled {
+.akaromi-passkey-btn:disabled {
   opacity: 0.65 !important;
   cursor: not-allowed !important;
 }
 
-.iris-passkey-btn.primary {
-  background: #fafafa !important;
-  color: #09090b !important;
+.akaromi-passkey-btn.primary {
+  background: oklch(60.145% 0.25696 299.856) !important;`n  color: #fafafa !important;
 }
 
-.iris-passkey-btn.primary:hover:not(:disabled) {
-  background: #e4e4e7 !important;
+.akaromi-passkey-btn.primary:hover:not(:disabled) {
+  opacity: 0.9 !important;
 }
 
-.iris-passkey-btn.secondary {
-  background: #18181b !important;
-  border: 1px solid #27272a !important;
+.akaromi-passkey-btn.secondary {
+  background: oklch(0.09 0.003 285.885) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   color: #fafafa !important;
 }
 
-.iris-passkey-btn.secondary:hover:not(:disabled) {
-  background: #27272a !important;
-  border-color: #3f3f46 !important;
+.akaromi-passkey-btn.secondary:hover:not(:disabled) {
+  background: oklch(0.15 0.005 285.885) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
   color: #ffffff !important;
 }
 
-.iris-passkey-btn.text {
+.akaromi-passkey-btn.text {
   background: transparent !important;
-  color: #71717a !important;
+  color: oklch(0.65 0.012 286.067) !important;
   padding: 6px !important;
 }
 
-.iris-passkey-btn.text:hover:not(:disabled) {
+.akaromi-passkey-btn.text:hover:not(:disabled) {
   color: #fafafa !important;
 }

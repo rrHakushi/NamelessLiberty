@@ -4,6 +4,8 @@
 ;(function (global) {
   "use strict"
 
+  if (window !== window.top) return
+
   const ext = typeof browser !== "undefined" ? browser : (typeof chrome !== "undefined" ? chrome : global.AkaromiExt || global.browser || global.chrome)
 
   const domParser = new DOMParser()
@@ -16,69 +18,88 @@
   }
 
   function getOrCreatePortal() {
-    let portal = document.getElementById("akaromi-portal") || document.getElementById("iris-pass-portal")
-    if (!portal) {
-      portal = document.createElement("div")
-      portal.id = "akaromi-portal"
-      portal.setAttribute("data-akaromi-portal", "true")
-      portal.className = "akaromi-portal-root iris-pass-portal-root"
+    if (global.AkaromiPortal?.getRoot) {
+      return global.AkaromiPortal.getRoot()
     }
-    const targetParent = document.body || document.documentElement
-    if (portal.parentElement !== targetParent) {
-      targetParent.appendChild(portal)
-    }
-    return portal
+    throw new Error("AkaromiPortal unavailable")
   }
 
   let activeDropdown = null
   let currentTargetInput = null
 
-  function removeDropdown() {
+  function removeDropdown(clearSearchAuth = true) {
+    global.AkaromiEventShield?.setInputHandler?.(null)
     if (activeDropdown) {
       activeDropdown.remove()
       activeDropdown = null
       currentTargetInput = null
       global.AkaromiBadge?.setActiveDropdownTarget(null)
+      if (clearSearchAuth) {
+        ext.runtime?.sendMessage?.({ action: "CLEAR_INLINE_SEARCH_AUTH" }).catch(() => {})
+      }
     }
   }
 
-  // Filter ciphers supporting query prefix syntax (user:, domain:, email:, title:, note:)
-    // Step 1: Query Prefix Syntax Filter Engine
-  // Step 1.1: Prefix Syntax Parsing (user:, domain:, email:, title:, note:)
+  // Filter ciphers supporting multi-term AND, * wildcards, and prefix syntax (user:, domain:, email:, title:, note:)
+  function matchesSearchPattern(haystack, pattern) {
+    if (!pattern) return true
+    if (!pattern.includes("*")) return haystack.includes(pattern)
+    const parts = pattern.split("*")
+    let pos = 0
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i]
+      if (!part) continue
+      const idx = haystack.indexOf(part, pos)
+      if (idx === -1) return false
+      pos = idx + part.length
+    }
+    return true
+  }
+
   function filterCiphersByQuery(ciphers, rawQuery) {
     if (!rawQuery || !rawQuery.trim()) return ciphers
-    const q = rawQuery.trim().toLowerCase()
-
-    if (q.startsWith("user:") || q.startsWith("username:")) {
-      const val = q.replace(/^user(name)?:/, "").trim()
-      return ciphers.filter((c) => (c.data?.username || "").toLowerCase().includes(val))
-    }
-    if (q.startsWith("email:")) {
-      const val = q.replace(/^email:/, "").trim()
-      return ciphers.filter((c) => (c.data?.email || c.data?.username || "").toLowerCase().includes(val))
-    }
-    if (q.startsWith("domain:") || q.startsWith("url:") || q.startsWith("host:")) {
-      const val = q.replace(/^(domain|url|host):/, "").trim()
-      return ciphers.filter((c) => {
-        const uris = c.data?.uris?.map((u) => (typeof u === "string" ? u : u.uri)).join(" ") || ""
-        return uris.toLowerCase().includes(val)
-      })
-    }
-    if (q.startsWith("title:")) {
-      const val = q.replace(/^title:/, "").trim()
-      return ciphers.filter((c) => (c.title || "").toLowerCase().includes(val))
-    }
-    if (q.startsWith("note:") || q.startsWith("notes:")) {
-      const val = q.replace(/^notes?:/, "").trim()
-      return ciphers.filter((c) => (c.data?.notes || c.data?.noteBody || "").toLowerCase().includes(val))
-    }
+    const tokens = (rawQuery.trim().match(/(?:[^\s"]+|"[^"]*")+/g) || [])
+      .map((t) => t.replace(/^"(.*)"$/, "$1").toLowerCase())
+      .filter(Boolean)
+    if (tokens.length === 0) return ciphers
 
     return ciphers.filter((c) => {
       const title = (c.title || "").toLowerCase()
-      const user = (c.data?.username || c.data?.email || "").toLowerCase()
-      const uris = (c.data?.uris?.map((u) => (typeof u === "string" ? u : u.uri)).join(" ") || "").toLowerCase()
+      const username = (c.data?.username || "").toLowerCase()
+      const email = (c.data?.email || "").toLowerCase()
+      const urisList = (c.data?.uris || []).map((u) => (typeof u === "string" ? u : u?.uri || "").toLowerCase()).filter(Boolean)
+      if (c.data?.passkey?.rpId) urisList.push(String(c.data.passkey.rpId).toLowerCase())
       const notes = (c.data?.notes || c.data?.noteBody || "").toLowerCase()
-      return title.includes(q) || user.includes(q) || uris.includes(q) || notes.includes(q)
+
+      return tokens.every((tok) => {
+        if (tok.startsWith("user:") || tok.startsWith("username:")) {
+          const val = tok.replace(/^user(name)?:/, "")
+          return matchesSearchPattern(username, val)
+        }
+        if (tok.startsWith("email:")) {
+          const val = tok.replace(/^email:/, "")
+          return matchesSearchPattern(email, val) || matchesSearchPattern(username, val)
+        }
+        if (tok.startsWith("domain:") || tok.startsWith("url:") || tok.startsWith("host:")) {
+          const val = tok.replace(/^(domain|url|host):/, "")
+          return !val || urisList.some((u) => matchesSearchPattern(u, val))
+        }
+        if (tok.startsWith("title:")) {
+          const val = tok.replace(/^title:/, "")
+          return matchesSearchPattern(title, val)
+        }
+        if (tok.startsWith("note:") || tok.startsWith("notes:")) {
+          const val = tok.replace(/^notes?:/, "")
+          return matchesSearchPattern(notes, val)
+        }
+        return (
+          matchesSearchPattern(title, tok) ||
+          matchesSearchPattern(username, tok) ||
+          matchesSearchPattern(email, tok) ||
+          urisList.some((u) => matchesSearchPattern(u, tok)) ||
+          matchesSearchPattern(notes, tok)
+        )
+      })
     })
   }
 
@@ -94,7 +115,7 @@
 
     const rect = targetInput.getBoundingClientRect()
     const dropdown = document.createElement("div")
-    dropdown.className = "iris-pass-dropdown akaromi-dropdown"
+    dropdown.className = "akaromi-dropdown"
     dropdown.setAttribute("data-akaromi-ignore", "true")
 
     // Position directly beneath or above input using viewport coordinates
@@ -122,7 +143,7 @@
     // Loading State
     safeSetTemplate(
       dropdown,
-      `<div class="iris-pass-dropdown-loading">
+      `<div class="akaromi-dropdown-loading">
         <span>Loading credentials...</span>
       </div>`
     )
@@ -142,103 +163,84 @@
       if (!response?.isUnlocked) {
         safeSetTemplate(
           dropdown,
-          `<div class="iris-pass-dropdown-header">
-            <div class="iris-pass-dropdown-brand">
-              <span class="iris-pass-dropdown-title">Akaromi is Locked</span>
+          `<div class="akaromi-dropdown-header">
+            <div class="akaromi-dropdown-brand">
+              <span class="akaromi-dropdown-title">Akaromi is Locked</span>
             </div>
           </div>
-          <div class="iris-pass-dropdown-empty">
+          <div class="akaromi-dropdown-empty">
             <span>Unlock Akaromi to autofill credentials on this site.</span>
-            <button type="button" class="iris-pass-btn-unlock" id="btn-portal-unlock">
+            <button type="button" class="akaromi-btn-unlock" id="btn-portal-unlock">
               Unlock Vault
             </button>
           </div>`
         )
-        dropdown.querySelector("#btn-portal-unlock")?.addEventListener("click", () => {
+        dropdown.querySelector("#btn-portal-unlock")?.addEventListener("click", (e) => {
+          if (!e.isTrusted) return
           removeDropdown()
-          if (globalThis.AkaromiUnlock?.showInPageUnlockModal) {
-            globalThis.AkaromiUnlock.showInPageUnlockModal(() => {
-              showFieldDropdown(targetInput)
-            })
-          } else {
-            ext.runtime.sendMessage({ action: "OPEN_UNLOCK_WINDOW" }).catch(() => {})
-          }
+          ext.runtime.sendMessage({ action: "OPEN_UNLOCK_WINDOW" }).catch(() => {})
         })
         return
       }
 
+      const isTotpTarget = Boolean(global.AkaromiDetection?.isTotpInput?.(targetInput))
       const siteMatches = response.matches || []
       const siteMatchTierById = new Map(siteMatches.map((m) => [m.id, m._matchTier || "exact"]))
-      let allVaultLogins = null
-      let allLoginsPromise = null
-      let isSearchingAll = false
+      let searchedVaultLogins = null
+      let lastSearchedKey = null
+      let searchSeq = 0
       let currentQuery = ""
 
-      function ensureAllVaultLogins() {
-        if (allVaultLogins) return Promise.resolve(allVaultLogins)
-        if (!allLoginsPromise) {
-          allLoginsPromise = ext.runtime
-            .sendMessage({ action: "GET_ALL_LOGINS_FOR_INLINE_FILL" })
-            .then((res) => {
-              const raw = res?.ciphers || []
-              allVaultLogins = raw.map((c) => ({
-                ...c,
-                _matchTier: siteMatchTierById.get(c.id) || "all",
-              }))
-              return allVaultLogins
-            })
-            .catch(() => {
-              allLoginsPromise = null
-              return null
-            })
+      async function queryVaultLogins(query) {
+        const key = query
+        const seq = ++searchSeq
+        try {
+          const res = await ext.runtime.sendMessage({
+            action: "SEARCH_LOGINS_FOR_INLINE_FILL",
+            payload: { query },
+          })
+          if (seq !== searchSeq || !dropdown.parentElement) return null
+          const raw = res?.ciphers || []
+          lastSearchedKey = key
+          searchedVaultLogins = raw.map((c) => ({
+            ...c,
+            _matchTier: siteMatchTierById.get(c.id) || "all",
+          }))
+          return searchedVaultLogins
+        } catch {
+          return null
         }
-        return allLoginsPromise
       }
 
       dropdown.replaceChildren()
 
-      // 1. Search Container with Toggle
+      // 1. Search Container
       const searchBox = document.createElement("div")
-      searchBox.className = "iris-pass-search-container"
+      searchBox.className = "akaromi-search-container"
       safeSetTemplate(
         searchBox,
-        `<div class="iris-pass-search-input-wrap">
-          <svg class="iris-pass-search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        `<div class="akaromi-search-input-wrap">
+          <svg class="akaromi-search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/>
             <path d="m21 21-4.3-4.3"/>
           </svg>
           <input
             type="text"
-            class="iris-pass-search-field"
-            id="iris-pass-search-input"
-            placeholder="Search logins (e.g. user:, domain:)..."
+            class="akaromi-search-field"
+            id="akaromi-search-input"
+            placeholder="${isTotpTarget ? "Search 2FA accounts (e.g. user:, domain:)..." : "Search logins (e.g. user:, domain:)..."}"
             autocomplete="off"
             spellcheck="false"
           />
-          <button
-            type="button"
-            class="iris-pass-toggle-all-btn"
-            id="iris-pass-toggle-all"
-            title="Toggle: Search Entire Vault"
-            aria-pressed="false"
-          >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-            <span class="toggle-label">All</span>
-          </button>
         </div>`
       )
       dropdown.appendChild(searchBox)
 
-      const searchInput = searchBox.querySelector("#iris-pass-search-input")
-      const toggleAllBtn = searchBox.querySelector("#iris-pass-toggle-all")
+      const searchInput = searchBox.querySelector("#akaromi-search-input")
 
       // List container
       const list = document.createElement("div")
-      list.className = "iris-pass-dropdown-list"
+      list.className = "akaromi-dropdown-list"
       dropdown.appendChild(list)
 
       // Render Items Function
@@ -246,21 +248,30 @@
         list.replaceChildren()
 
         const hasQuery = Boolean(currentQuery && currentQuery.trim())
-        const showAllPool = isSearchingAll || hasQuery
+        const showAllPool = hasQuery
+        const desiredKey = currentQuery
 
-        if (showAllPool && !allVaultLogins) {
-          ensureAllVaultLogins().then((loaded) => {
+        if (showAllPool && lastSearchedKey !== desiredKey) {
+          queryVaultLogins(currentQuery).then((loaded) => {
             if (loaded && dropdown.parentElement) renderList()
           })
         }
 
-        const pool = showAllPool ? (allVaultLogins || siteMatches) : siteMatches
-        const filtered = filterCiphersByQuery(pool, currentQuery)
+        let filtered = showAllPool
+          ? (lastSearchedKey === desiredKey && searchedVaultLogins ? searchedVaultLogins : filterCiphersByQuery(siteMatches, currentQuery))
+          : filterCiphersByQuery(siteMatches, currentQuery)
+
+        if (isTotpTarget) {
+          const totpOnly = filtered.filter((m) => m.hasTotp)
+          if (totpOnly.length > 0 || !showAllPool) {
+            filtered = totpOnly
+          }
+        }
 
         if (filtered.length === 0) {
           safeSetTemplate(
             list,
-            `<div class="iris-pass-dropdown-empty">
+            `<div class="akaromi-dropdown-empty">
               <span>${currentQuery ? "No matching logins found" : "No saved logins for this website"}</span>
             </div>`
           )
@@ -284,7 +295,7 @@
 
         function createSectionHeader(title, count) {
           const sec = document.createElement("div")
-          sec.className = "iris-pass-section-header"
+          sec.className = "akaromi-section-header"
           const titleSpan = document.createElement("span")
           titleSpan.textContent = title
           const countSpan = document.createElement("span")
@@ -317,10 +328,12 @@
 
       function createItemElement(m) {
         const item = document.createElement("div")
-        item.className = "iris-pass-dropdown-item"
+        item.className = "akaromi-dropdown-item"
 
         const title = m.title || "Account"
         const username = m.data?.username || m.data?.email || "No username"
+        const domainHint = m._matchTier === "all" && m.data?.domainHint ? m.data.domainHint : ""
+        const subtitle = domainHint ? `${username} · ${domainHint}` : username
         const additional = m.data?.additionalPasswords || []
 
         const iconHtml = (typeof IrisIcons !== "undefined")
@@ -328,8 +341,8 @@
           : ""
 
         const chevronHtml = additional.length > 0
-          ? `<button type="button" class="iris-pass-sub-toggle-btn" title="Additional Passwords (${additional.length})" aria-label="Toggle additional passwords" aria-expanded="false" style="all: unset !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 24px !important; height: 24px !important; min-width: 24px !important; min-height: 24px !important; max-width: 24px !important; max-height: 24px !important; border-radius: 6px !important; cursor: pointer !important; color: #71717a !important; margin-inline-start: auto !important; flex-shrink: 0 !important; transition: all 0.15s ease !important; box-sizing: border-box !important;">
-              <svg class="tabler-icon iris-pass-sub-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px !important; height: 14px !important; min-width: 14px !important; max-width: 14px !important; flex-shrink: 0 !important; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.12s ease !important; display: block !important;">
+          ? `<button type="button" class="akaromi-sub-toggle-btn" title="Additional Passwords (${additional.length})" aria-label="Toggle additional passwords" aria-expanded="false" style="all: unset !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 24px !important; height: 24px !important; min-width: 24px !important; min-height: 24px !important; max-width: 24px !important; max-height: 24px !important; border-radius: 6px !important; cursor: pointer !important; color: #71717a !important; margin-inline-start: auto !important; flex-shrink: 0 !important; transition: all 0.15s ease !important; box-sizing: border-box !important;">
+              <svg class="tabler-icon akaromi-sub-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px !important; height: 14px !important; min-width: 14px !important; max-width: 14px !important; flex-shrink: 0 !important; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.12s ease !important; display: block !important;">
                 <polyline points="6 9 12 15 18 9"/>
               </svg>
             </button>`
@@ -337,11 +350,11 @@
 
         safeSetTemplate(
           item,
-          `<div class="iris-pass-item-main">
-            <div class="iris-pass-item-icon">${iconHtml}</div>
-            <div class="iris-pass-item-meta">
-              <div class="iris-pass-item-title">${escapeHtml(title)}</div>
-              <div class="iris-pass-item-user">${escapeHtml(username)}</div>
+          `<div class="akaromi-item-main">
+            <div class="akaromi-item-icon">${iconHtml}</div>
+            <div class="akaromi-item-meta">
+              <div class="akaromi-item-title">${escapeHtml(title)}</div>
+              <div class="akaromi-item-user">${escapeHtml(subtitle)}</div>
             </div>
             ${chevronHtml}
           </div>`
@@ -349,7 +362,7 @@
 
         const handleCredentialSelect = async (subPasswordId = null) => {
           const targetEl = targetInput
-          removeDropdown()
+          removeDropdown(false)
           try {
             const res = await ext.runtime.sendMessage({
               action: "GET_CREDENTIAL_FOR_AUTOFILL",
@@ -363,18 +376,6 @@
             if (!res || !res.success) return
             const password = res.password || ""
             const generatedCode = res.totpCode || ""
-
-            if (generatedCode) {
-              try {
-                if (navigator.clipboard?.writeText) {
-                  navigator.clipboard.writeText(generatedCode).catch(() => {})
-                }
-              } catch {}
-              ext.runtime.sendMessage({
-                action: "COPY_TO_CLIPBOARD",
-                payload: { text: generatedCode },
-              }).catch(() => {})
-            }
 
             global.AkaromiFill?.fillCredential(
               {
@@ -395,22 +396,23 @@
           }
         }
 
-        const mainItem = item.querySelector(".iris-pass-item-main")
+        const mainItem = item.querySelector(".akaromi-item-main")
         mainItem.addEventListener("mousedown", (e) => {
-          if (e.target.closest(".iris-pass-sub-toggle-btn")) return
+          if (e.target.closest(".akaromi-sub-toggle-btn")) return
           e.preventDefault()
         })
         mainItem.addEventListener("click", (e) => {
-          if (e.target.closest(".iris-pass-sub-toggle-btn")) return
+          if (!e.isTrusted) return
+          if (e.target.closest(".akaromi-sub-toggle-btn")) return
           e.preventDefault()
           e.stopPropagation()
           handleCredentialSelect(null)
         })
 
         if (additional.length > 0) {
-          const toggleBtn = mainItem.querySelector(".iris-pass-sub-toggle-btn")
+          const toggleBtn = mainItem.querySelector(".akaromi-sub-toggle-btn")
           const subWrapper = document.createElement("div")
-          subWrapper.className = "iris-pass-sub-passwords-wrapper"
+          subWrapper.className = "akaromi-sub-passwords-wrapper"
           subWrapper.style.cssText = "display: none !important; padding: 4px 10px 8px 36px !important; flex-direction: column !important; gap: 4px !important; box-sizing: border-box !important; width: 100% !important;"
 
           let isOpen = false
@@ -421,13 +423,14 @@
               e.stopPropagation()
             })
             toggleBtn.addEventListener("click", (e) => {
+              if (!e.isTrusted) return
               e.preventDefault()
               e.stopPropagation()
               isOpen = !isOpen
               item.classList.toggle("open", isOpen)
               toggleBtn.setAttribute("aria-expanded", String(isOpen))
               subWrapper.style.display = isOpen ? "flex" : "none"
-              const chevron = toggleBtn.querySelector(".iris-pass-sub-chevron")
+              const chevron = toggleBtn.querySelector(".akaromi-sub-chevron")
               if (chevron) {
                 chevron.style.transform = isOpen ? "rotate(180deg)" : "rotate(0deg)"
                 chevron.style.color = isOpen ? "#fafafa" : "#71717a"
@@ -439,7 +442,7 @@
           additional.forEach((ap, idx) => {
             const subItem = document.createElement("button")
             subItem.type = "button"
-            subItem.className = "iris-pass-sub-btn"
+            subItem.className = "akaromi-sub-btn"
             subItem.style.cssText = "all: unset !important; display: flex !important; align-items: center !important; justify-content: space-between !important; padding: 5px 8px !important; border-radius: 6px !important; background: #18181b !important; border: 1px solid #27272a !important; color: #fafafa !important; font-size: 11px !important; cursor: pointer !important; transition: all 0.12s ease !important; width: 100% !important; box-sizing: border-box !important; margin: 0 !important;"
             safeSetTemplate(
               subItem,
@@ -448,6 +451,7 @@
             )
             subItem.addEventListener("mousedown", (e) => e.preventDefault())
             subItem.addEventListener("click", (e) => {
+              if (!e.isTrusted) return
               e.preventDefault()
               e.stopPropagation()
               handleCredentialSelect(ap.id || String(idx))
@@ -462,20 +466,19 @@
       }
 
       // Event Listeners for Search
-      searchInput?.addEventListener("input", (e) => {
-        currentQuery = e.target.value
-        renderList()
-      })
-
-      toggleAllBtn?.addEventListener("click", async () => {
-        isSearchingAll = !isSearchingAll
-        toggleAllBtn.setAttribute("aria-pressed", String(isSearchingAll))
-        toggleAllBtn.classList.toggle("active", isSearchingAll)
-
-        if (isSearchingAll && !allVaultLogins) {
-          await ensureAllVaultLogins()
+      const syncSearchQuery = () => {
+        if (!searchInput) return
+        if (currentQuery !== searchInput.value) {
+          currentQuery = searchInput.value
+          renderList()
         }
-        renderList()
+      }
+
+      global.AkaromiEventShield?.setInputHandler?.(syncSearchQuery)
+
+      searchInput?.addEventListener("input", (e) => {
+        if (!e.isTrusted) return
+        syncSearchQuery()
       })
 
       renderList()
@@ -492,6 +495,7 @@
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;")
   }
 
   // Dismiss dropdown when clicking outside
@@ -504,12 +508,13 @@
     }
   })
 
-  // Auto-refresh if vault gets unlocked
-  document.addEventListener("iris-vault-unlocked", () => {
-    if (currentTargetInput) {
-      showFieldDropdown(currentTargetInput)
+  function refreshOnUnlock() {
+    if (currentTargetInput && currentTargetInput.isConnected) {
+      const target = currentTargetInput
+      currentTargetInput = null
+      showFieldDropdown(target)
     }
-  })
+  }
 
   function updateDropdownPosition() {
     if (!activeDropdown || !currentTargetInput) return
@@ -543,5 +548,6 @@
   global.AkaromiMenu = {
     showFieldDropdown,
     removeDropdown,
+    refreshOnUnlock,
   }
 })(typeof window !== "undefined" ? window : globalThis)

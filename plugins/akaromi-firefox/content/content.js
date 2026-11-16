@@ -4,6 +4,8 @@
 ;(function () {
   "use strict"
 
+  if (window !== window.top) return
+
   const ext = typeof browser !== "undefined" ? browser : chrome
 
   let akaromiPortal = null
@@ -16,22 +18,17 @@
       return akaromiPortal
     }
 
-    let portal = document.getElementById("akaromi-portal") || document.getElementById("iris-pass-portal")
+    const portal = globalThis.AkaromiPortal?.getRoot
+      ? globalThis.AkaromiPortal.getRoot()
+      : null
     if (!portal) {
-      portal = document.createElement("div")
-      portal.id = "akaromi-portal"
-      portal.setAttribute("data-akaromi-portal", "true")
-      portal.className = "akaromi-portal-root iris-pass-portal-root"
+      throw new Error("AkaromiPortal unavailable")
     }
 
-    // Attach to document.body (or document.documentElement fallback)
-    const targetParent = document.body || document.documentElement
-    if (portal.parentElement !== targetParent) {
-      targetParent.appendChild(portal)
-    }
+    const host = globalThis.AkaromiPortal?.getHost ? globalThis.AkaromiPortal.getHost() : null
 
     // Ensure inert or aria-hidden attributes can never disable Akaromi UI
-    if (!inertObserver) {
+    if (!inertObserver && host) {
       inertObserver = new MutationObserver((mutations) => {
         for (const m of mutations) {
           if (m.type === "attributes") {
@@ -48,7 +45,7 @@
           }
         }
       })
-      inertObserver.observe(portal, {
+      inertObserver.observe(host, {
         attributes: true,
         subtree: true,
         attributeFilter: ["inert", "aria-hidden"],
@@ -70,11 +67,7 @@
     ) {
       return false
     }
-    return Boolean(
-      target.closest(
-        "#akaromi-portal, #iris-pass-portal, .akaromi-portal-root, .iris-pass-portal-root, .iris-passkey-dialog-overlay, .iris-passkey-dialog, .akaromi-dropdown, .iris-pass-dropdown, .akaromi-field-icon, .iris-pass-field-icon, .iris-totp-floating-widget, .iris-pass-toast"
-      )
-    )
+    return Boolean(globalThis.AkaromiPortal?.isHost?.(target))
   }
 
   // Prevent host page modal frameworks (React Aria, Radix UI, Base UI, floating-ui)
@@ -95,17 +88,24 @@
           // (such as React Aria useInteractOutside) never receive the event and never close host modals
           e.stopPropagation()
 
-          // Ensure focusable Akaromi elements receive native focus
-          if (
-            (evtName === "pointerdown" || evtName === "mousedown") &&
-            typeof e.target?.focus === "function" &&
-            (e.target.tagName === "INPUT" ||
-              e.target.tagName === "SELECT" ||
-              e.target.tagName === "BUTTON" ||
-              e.target.tagName === "TEXTAREA" ||
-              e.target.getAttribute("tabindex") !== null)
-          ) {
-            e.target.focus()
+          // Ensure focusable Akaromi elements inside the closed shadow root receive native focus
+          if (evtName === "pointerdown" || evtName === "mousedown") {
+            const shadow = globalThis.AkaromiPortal?.getShadowRoot?.()
+            const innerTarget =
+              shadow && typeof e.clientX === "number" && typeof e.clientY === "number"
+                ? shadow.elementFromPoint(e.clientX, e.clientY)
+                : e.target
+            if (
+              innerTarget &&
+              typeof innerTarget.focus === "function" &&
+              (innerTarget.tagName === "INPUT" ||
+                innerTarget.tagName === "SELECT" ||
+                innerTarget.tagName === "BUTTON" ||
+                innerTarget.tagName === "TEXTAREA" ||
+                innerTarget.getAttribute?.("tabindex") !== null)
+            ) {
+              innerTarget.focus()
+            }
           }
         }
       },
@@ -139,7 +139,7 @@
   function showToast(message, duration = 3000) {
     const portal = getOrCreatePortal()
     const toast = document.createElement("div")
-    toast.className = "iris-pass-toast"
+    toast.className = "akaromi-toast"
     toast.textContent = message
     portal.appendChild(toast)
 
@@ -287,7 +287,7 @@
           showToast("Akaromi passkey error: extension background unavailable")
           window.postMessage(
             {
-              source: "IRIS_PASSKEY_CONTENT",
+              source: "AKAROMI_PASSKEY_CONTENT",
               action: "PASSKEY_CREATE_RESPONSE",
               requestId,
               canceled: true,
@@ -302,7 +302,7 @@
           showToast("Akaromi is locked. Click the toolbar icon to unlock.")
           window.postMessage(
             {
-              source: "IRIS_PASSKEY_CONTENT",
+              source: "AKAROMI_PASSKEY_CONTENT",
               action: "PASSKEY_CREATE_RESPONSE",
               requestId,
               canceled: true,
@@ -316,34 +316,34 @@
         const matches = matchesRes?.matches || []
 
         const overlay = document.createElement("div")
-        overlay.className = "iris-passkey-dialog-overlay"
+        overlay.className = "akaromi-passkey-dialog-overlay"
 
         const dialog = document.createElement("div")
-        dialog.className = "iris-passkey-dialog"
+        dialog.className = "akaromi-passkey-dialog"
 
         const iconDiv = document.createElement("div")
-        iconDiv.className = "iris-passkey-icon"
+        iconDiv.className = "akaromi-passkey-icon"
         const iconImg = document.createElement("img")
         iconImg.src = ext.runtime.getURL("icons/icon-48.png")
         iconImg.alt = "Akaromi"
-        iconImg.className = "iris-passkey-dialog-logo"
+        iconImg.className = "akaromi-passkey-dialog-logo"
         iconDiv.appendChild(iconImg)
 
         const title = document.createElement("h3")
-        title.className = "iris-passkey-title"
+        title.className = "akaromi-passkey-title"
         title.textContent = "Save Passkey to Akaromi"
 
         const subtitle = document.createElement("p")
-        subtitle.className = "iris-passkey-subtitle"
+        subtitle.className = "akaromi-passkey-subtitle"
         subtitle.textContent = "Passkeys allow you to sign in safely and quickly without entering a password."
 
         const details = document.createElement("div")
-        details.className = "iris-passkey-details"
+        details.className = "akaromi-passkey-details"
 
         let selectAccount = null
         if (matches.length > 0) {
           const rowCol = document.createElement("div")
-          rowCol.className = "iris-passkey-row-col"
+          rowCol.className = "akaromi-passkey-row-col"
 
           const label = document.createElement("span")
           label.className = "label"
@@ -352,7 +352,7 @@
 
           selectAccount = document.createElement("select")
           selectAccount.id = "iris-pk-select-account"
-          selectAccount.className = "iris-passkey-select"
+          selectAccount.className = "akaromi-passkey-select"
 
           matches.forEach((m) => {
             const isCurrent =
@@ -382,7 +382,7 @@
           details.appendChild(rowCol)
         } else {
           const row = document.createElement("div")
-          row.className = "iris-passkey-row"
+          row.className = "akaromi-passkey-row"
 
           const label = document.createElement("span")
           label.className = "label"
@@ -398,35 +398,36 @@
         }
 
         const rpRow = document.createElement("div")
-        rpRow.className = "iris-passkey-row"
+        rpRow.className = "akaromi-passkey-row"
         const rpLabel = document.createElement("span")
         rpLabel.className = "label"
         rpLabel.textContent = "Relying Party"
         const rpVal = document.createElement("span")
         rpVal.className = "value"
-        rpVal.textContent = rpName || rpId || window.location.hostname
+        const verifiedRp = rpId || window.location.hostname
+        rpVal.textContent = rpName && rpName !== verifiedRp ? `${rpName} (${verifiedRp})` : verifiedRp
         rpRow.appendChild(rpLabel)
         rpRow.appendChild(rpVal)
         details.appendChild(rpRow)
 
         const actions = document.createElement("div")
-        actions.className = "iris-passkey-actions"
+        actions.className = "akaromi-passkey-actions"
 
         const btnSave = document.createElement("button")
         btnSave.type = "button"
-        btnSave.className = "iris-passkey-btn primary"
+        btnSave.className = "akaromi-passkey-btn primary"
         btnSave.id = "btn-pk-save"
         btnSave.textContent = "Save Passkey"
 
         const btnFallback = document.createElement("button")
         btnFallback.type = "button"
-        btnFallback.className = "iris-passkey-btn secondary"
+        btnFallback.className = "akaromi-passkey-btn secondary"
         btnFallback.id = "btn-pk-fallback"
         btnFallback.textContent = "Use Device Passkey / Hello"
 
         const btnCancel = document.createElement("button")
         btnCancel.type = "button"
-        btnCancel.className = "iris-passkey-btn text"
+        btnCancel.className = "akaromi-passkey-btn text"
         btnCancel.id = "btn-pk-cancel"
         btnCancel.textContent = "Cancel"
 
@@ -444,11 +445,12 @@
         getOrCreatePortal().appendChild(overlay)
         activePasskeyModal = overlay
 
-        btnCancel.addEventListener("click", () => {
+        btnCancel.addEventListener("click", (e) => {
+          if (!e.isTrusted) return
           removePasskeyModal()
           window.postMessage(
             {
-              source: "IRIS_PASSKEY_CONTENT",
+              source: "AKAROMI_PASSKEY_CONTENT",
               action: "PASSKEY_CREATE_RESPONSE",
               requestId,
               canceled: true,
@@ -457,11 +459,12 @@
           )
         })
 
-        btnFallback.addEventListener("click", () => {
+        btnFallback.addEventListener("click", (e) => {
+          if (!e.isTrusted) return
           removePasskeyModal()
           window.postMessage(
             {
-              source: "IRIS_PASSKEY_CONTENT",
+              source: "AKAROMI_PASSKEY_CONTENT",
               action: "PASSKEY_CREATE_RESPONSE",
               requestId,
               fallback: true,
@@ -470,7 +473,8 @@
           )
         })
 
-        btnSave.addEventListener("click", () => {
+        btnSave.addEventListener("click", (e) => {
+          if (!e.isTrusted) return
           btnSave.disabled = true
           btnSave.textContent = "Saving Passkey..."
 
@@ -499,7 +503,7 @@
                 showToast(`Passkey error: ${errMsg}`)
                 window.postMessage(
                   {
-                    source: "IRIS_PASSKEY_CONTENT",
+                    source: "AKAROMI_PASSKEY_CONTENT",
                     action: "PASSKEY_CREATE_RESPONSE",
                     requestId,
                     success: false,
@@ -514,7 +518,7 @@
 
               window.postMessage(
                 {
-                  source: "IRIS_PASSKEY_CONTENT",
+                  source: "AKAROMI_PASSKEY_CONTENT",
                   action: "PASSKEY_CREATE_RESPONSE",
                   requestId,
                   success: true,
@@ -545,7 +549,7 @@
           showToast("Akaromi passkey error: extension background unavailable")
           window.postMessage(
             {
-              source: "IRIS_PASSKEY_CONTENT",
+              source: "AKAROMI_PASSKEY_CONTENT",
               action: "PASSKEY_GET_RESPONSE",
               requestId,
               canceled: true,
@@ -560,7 +564,7 @@
           showToast("Akaromi is locked. Click the toolbar icon to unlock.")
           window.postMessage(
             {
-              source: "IRIS_PASSKEY_CONTENT",
+              source: "AKAROMI_PASSKEY_CONTENT",
               action: "PASSKEY_GET_RESPONSE",
               requestId,
               canceled: true,
@@ -578,7 +582,7 @@
           showToast("No passkey found in Akaromi")
           window.postMessage(
             {
-              source: "IRIS_PASSKEY_CONTENT",
+              source: "AKAROMI_PASSKEY_CONTENT",
               action: "PASSKEY_GET_RESPONSE",
               requestId,
               canceled: true,
@@ -590,34 +594,34 @@
         }
 
         const overlay = document.createElement("div")
-        overlay.className = "iris-passkey-dialog-overlay"
+        overlay.className = "akaromi-passkey-dialog-overlay"
 
         const dialog = document.createElement("div")
-        dialog.className = "iris-passkey-dialog"
+        dialog.className = "akaromi-passkey-dialog"
 
         const iconDiv = document.createElement("div")
-        iconDiv.className = "iris-passkey-icon"
+        iconDiv.className = "akaromi-passkey-icon"
         const iconImg = document.createElement("img")
         iconImg.src = ext.runtime.getURL("icons/icon-48.png")
         iconImg.alt = "Akaromi"
-        iconImg.className = "iris-passkey-dialog-logo"
+        iconImg.className = "akaromi-passkey-dialog-logo"
         iconDiv.appendChild(iconImg)
 
         const title = document.createElement("h3")
-        title.className = "iris-passkey-title"
+        title.className = "akaromi-passkey-title"
         title.textContent = "Sign in with Passkey"
 
         const subtitle = document.createElement("p")
-        subtitle.className = "iris-passkey-subtitle"
+        subtitle.className = "akaromi-passkey-subtitle"
         subtitle.textContent = "Use your passkey saved in Akaromi to sign in."
 
         const details = document.createElement("div")
-        details.className = "iris-passkey-details"
+        details.className = "akaromi-passkey-details"
 
         let authSelect = null
         if (passkeys.length > 1) {
           const rowCol = document.createElement("div")
-          rowCol.className = "iris-passkey-row-col"
+          rowCol.className = "akaromi-passkey-row-col"
 
           const label = document.createElement("span")
           label.className = "label"
@@ -626,7 +630,7 @@
 
           authSelect = document.createElement("select")
           authSelect.id = "iris-pk-auth-account"
-          authSelect.className = "iris-passkey-select"
+          authSelect.className = "akaromi-passkey-select"
 
           passkeys.forEach((p) => {
             const opt = document.createElement("option")
@@ -639,7 +643,7 @@
           details.appendChild(rowCol)
         } else {
           const row = document.createElement("div")
-          row.className = "iris-passkey-row"
+          row.className = "akaromi-passkey-row"
 
           const label = document.createElement("span")
           label.className = "label"
@@ -655,7 +659,7 @@
         }
 
         const rpRow = document.createElement("div")
-        rpRow.className = "iris-passkey-row"
+        rpRow.className = "akaromi-passkey-row"
         const rpLabel = document.createElement("span")
         rpLabel.className = "label"
         rpLabel.textContent = "Relying Party"
@@ -667,23 +671,23 @@
         details.appendChild(rpRow)
 
         const actions = document.createElement("div")
-        actions.className = "iris-passkey-actions"
+        actions.className = "akaromi-passkey-actions"
 
         const btnSignin = document.createElement("button")
         btnSignin.type = "button"
-        btnSignin.className = "iris-passkey-btn primary"
+        btnSignin.className = "akaromi-passkey-btn primary"
         btnSignin.id = "btn-pk-signin"
         btnSignin.textContent = "Sign In with Akaromi"
 
         const btnFallback = document.createElement("button")
         btnFallback.type = "button"
-        btnFallback.className = "iris-passkey-btn secondary"
+        btnFallback.className = "akaromi-passkey-btn secondary"
         btnFallback.id = "btn-pk-fallback"
         btnFallback.textContent = "Use Another Method"
 
         const btnCancel = document.createElement("button")
         btnCancel.type = "button"
-        btnCancel.className = "iris-passkey-btn text"
+        btnCancel.className = "akaromi-passkey-btn text"
         btnCancel.id = "btn-pk-cancel"
         btnCancel.textContent = "Cancel"
 
@@ -701,11 +705,12 @@
         getOrCreatePortal().appendChild(overlay)
         activePasskeyModal = overlay
 
-        btnCancel.addEventListener("click", () => {
+        btnCancel.addEventListener("click", (e) => {
+          if (!e.isTrusted) return
           removePasskeyModal()
           window.postMessage(
             {
-              source: "IRIS_PASSKEY_CONTENT",
+              source: "AKAROMI_PASSKEY_CONTENT",
               action: "PASSKEY_GET_RESPONSE",
               requestId,
               canceled: true,
@@ -714,11 +719,12 @@
           )
         })
 
-        btnFallback.addEventListener("click", () => {
+        btnFallback.addEventListener("click", (e) => {
+          if (!e.isTrusted) return
           removePasskeyModal()
           window.postMessage(
             {
-              source: "IRIS_PASSKEY_CONTENT",
+              source: "AKAROMI_PASSKEY_CONTENT",
               action: "PASSKEY_GET_RESPONSE",
               requestId,
               fallback: true,
@@ -727,7 +733,8 @@
           )
         })
 
-        btnSignin.addEventListener("click", () => {
+        btnSignin.addEventListener("click", (e) => {
+          if (!e.isTrusted) return
           btnSignin.disabled = true
           btnSignin.textContent = "Signing In..."
 
@@ -755,7 +762,7 @@
                 showToast(`Passkey error: ${errMsg}`)
                 window.postMessage(
                   {
-                    source: "IRIS_PASSKEY_CONTENT",
+                    source: "AKAROMI_PASSKEY_CONTENT",
                     action: "PASSKEY_GET_RESPONSE",
                     requestId,
                     success: false,
@@ -772,7 +779,7 @@
 
               window.postMessage(
                 {
-                  source: "IRIS_PASSKEY_CONTENT",
+                  source: "AKAROMI_PASSKEY_CONTENT",
                   action: "PASSKEY_GET_RESPONSE",
                   requestId,
                   success: true,
@@ -791,7 +798,7 @@
     if (
       event.source !== window ||
       !event.data ||
-      event.data.source !== "IRIS_PASSKEY_PAGE"
+      event.data.source !== "AKAROMI_PASSKEY_PAGE"
     ) {
       return
     }
@@ -804,176 +811,11 @@
   })
 
   // ----------------------------------------------------
-  // In-Page Unlock Modal (Android & Fallback Support)
-  // ----------------------------------------------------
-  let activeUnlockModal = null
-
-  function removeUnlockModal() {
-    if (activeUnlockModal) {
-      activeUnlockModal.remove()
-      activeUnlockModal = null
-    }
-  }
-
-    // Step 2: Android In-Page Unlock Modal Dialog Overlay
-  // Step 2.1: In-Page Unlock Dialog Construction & Submission
-  async function showInPageUnlockModal(onUnlocked) {
-    removeUnlockModal()
-
-    // Query vault state to see if PIN unlock is enabled
-    const stateRes = await ext.runtime.sendMessage({ action: "GET_STATUS" }).catch(() => ({}))
-    const pinEnabled = Boolean(stateRes?.pinUnlockEnabled)
-
-    const overlay = document.createElement("div")
-    overlay.className = "iris-passkey-dialog-overlay"
-
-    const dialog = document.createElement("div")
-    dialog.className = "iris-passkey-dialog"
-
-    let usePin = pinEnabled
-
-    function renderDialog() {
-      dialog.replaceChildren()
-
-      const iconDiv = document.createElement("div")
-      iconDiv.className = "iris-passkey-icon"
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-      svg.setAttribute("viewBox", "0 0 24 24")
-      svg.setAttribute("fill", "none")
-      svg.setAttribute("stroke", "currentColor")
-      svg.setAttribute("stroke-width", "2")
-      svg.setAttribute("stroke-linecap", "round")
-      svg.setAttribute("stroke-linejoin", "round")
-      const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect")
-      rect.setAttribute("width", "18")
-      rect.setAttribute("height", "11")
-      rect.setAttribute("x", "3")
-      rect.setAttribute("y", "11")
-      rect.setAttribute("rx", "2")
-      rect.setAttribute("ry", "2")
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path")
-      path.setAttribute("d", "M7 11V7a5 5 0 0 1 10 0v4")
-      svg.appendChild(rect)
-      svg.appendChild(path)
-      iconDiv.appendChild(svg)
-      dialog.appendChild(iconDiv)
-
-      const titleDiv = document.createElement("div")
-      titleDiv.className = "iris-passkey-title"
-      titleDiv.textContent = "Unlock Akaromi"
-      dialog.appendChild(titleDiv)
-
-      const subtitleDiv = document.createElement("div")
-      subtitleDiv.className = "iris-passkey-subtitle"
-      subtitleDiv.textContent = `Enter your ${usePin ? "PIN" : "master password"} to access credentials`
-      dialog.appendChild(subtitleDiv)
-
-      const form = document.createElement("form")
-      form.id = "iris-unlock-form"
-      form.style.cssText = "width: 100%; display: flex; flex-direction: column; gap: 12px; margin-top: 4px;"
-
-      const input = document.createElement("input")
-      input.id = "iris-unlock-input"
-      input.type = "password"
-      input.inputMode = usePin ? "numeric" : "text"
-      input.placeholder = usePin ? "Enter 4-8 digit PIN..." : "Master password..."
-      input.autocomplete = "current-password"
-      input.style.cssText = `width: 100%; height: 40px; background: #18181b; border: 1px solid #27272a; border-radius: 10px; color: #fafafa; padding: 0 12px; box-sizing: border-box; outline: none; text-align: ${usePin ? "center" : "left"}; letter-spacing: ${usePin ? "0.2em" : "normal"}; font-size: ${usePin ? "18px" : "13px"};`
-      form.appendChild(input)
-
-      const errorDiv = document.createElement("div")
-      errorDiv.id = "iris-unlock-error"
-      errorDiv.style.cssText = "display: none; color: #ef4444; font-size: 11px; text-align: center;"
-      form.appendChild(errorDiv)
-
-      const btnRow = document.createElement("div")
-      btnRow.style.cssText = "display: flex; gap: 8px; width: 100%;"
-
-      const btnCancel = document.createElement("button")
-      btnCancel.type = "button"
-      btnCancel.id = "iris-unlock-cancel"
-      btnCancel.style.cssText = "flex: 1; height: 38px; border-radius: 8px; background: #27272a; color: #a1a1aa; border: none; font-size: 12px; font-weight: 600; cursor: pointer;"
-      btnCancel.textContent = "Cancel"
-      btnCancel.addEventListener("click", () => removeUnlockModal())
-      btnRow.appendChild(btnCancel)
-
-      const btnSubmit = document.createElement("button")
-      btnSubmit.type = "submit"
-      btnSubmit.id = "iris-unlock-submit"
-      btnSubmit.style.cssText = "flex: 2; height: 38px; border-radius: 8px; background: #fafafa; color: #09090b; border: none; font-size: 12px; font-weight: 600; cursor: pointer;"
-      btnSubmit.textContent = "Unlock"
-      btnRow.appendChild(btnSubmit)
-
-      form.appendChild(btnRow)
-
-      if (pinEnabled) {
-        const btnToggle = document.createElement("button")
-        btnToggle.type = "button"
-        btnToggle.id = "iris-unlock-toggle-mode"
-        btnToggle.style.cssText = "background: transparent; border: none; color: #71717a; font-size: 11px; cursor: pointer; text-decoration: underline; margin-top: 4px;"
-        btnToggle.textContent = usePin ? "Use master password instead" : "Use PIN instead"
-        btnToggle.addEventListener("click", () => {
-          usePin = !usePin
-          renderDialog()
-        })
-        form.appendChild(btnToggle)
-      }
-
-      dialog.appendChild(form)
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault()
-        const val = input.value.trim()
-        if (!val) return
-
-        btnSubmit.disabled = true
-        btnSubmit.textContent = "Unlocking..."
-        errorDiv.style.display = "none"
-
-        const action = usePin ? "UNLOCK_WITH_PIN" : "UNLOCK_VAULT"
-        const payload = usePin ? { pin: val } : { password: val }
-
-        const res = await ext.runtime.sendMessage({ action, payload }).catch((err) => ({ error: err.message }))
-
-        if (res && res.success) {
-          removeUnlockModal()
-          showToast("Akaromi unlocked")
-          if (typeof onUnlocked === "function") {
-            onUnlocked()
-          }
-          document.dispatchEvent(new CustomEvent("iris-vault-unlocked"))
-        } else {
-          btnSubmit.disabled = false
-          btnSubmit.textContent = "Unlock"
-          errorDiv.textContent = res?.error || "Incorrect credentials"
-          errorDiv.style.display = "block"
-          input.select()
-        }
-      })
-
-      setTimeout(() => input?.focus(), 50)
-    }
-
-    renderDialog()
-    overlay.appendChild(dialog)
-    getOrCreatePortal().appendChild(overlay)
-    activeUnlockModal = overlay
-  }
-
-  globalThis.AkaromiUnlock = { showInPageUnlockModal, removeUnlockModal }
-
-  // ----------------------------------------------------
   // Extension Message Handler
   // ----------------------------------------------------
     // Step 4: Global Input Interception & Secure Clipboard Sync
   // Step 4.1: Message Listener & Clipboard Sanitization
   ext.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === "SHOW_IN_PAGE_UNLOCK_MODAL") {
-      if (window !== window.top) return
-      showInPageUnlockModal()
-      sendResponse({ success: true })
-      return true
-    }
     if (message.action === "PING") {
       sendResponse({ pong: true })
       return true
@@ -1023,31 +865,6 @@
       sendResponse({ success: true })
       return true
     }
-
-    if (message.action === "CLEAR_CLIPBOARD_IF_MATCHES") {
-      try {
-        const expected = message.payload?.text
-        if (navigator.clipboard?.readText) {
-          navigator.clipboard.readText().then((current) => {
-            if (!expected || current === expected) {
-              navigator.clipboard.writeText("").then(() => {
-                showToast("Clipboard cleared for security")
-              }).catch(() => {})
-            }
-          }).catch(() => {
-            navigator.clipboard.writeText("").then(() => {
-              showToast("Clipboard cleared for security")
-            }).catch(() => {})
-          })
-        } else if (navigator.clipboard?.writeText) {
-          navigator.clipboard.writeText("").then(() => {
-            showToast("Clipboard cleared for security")
-          }).catch(() => {})
-        }
-      } catch {}
-      sendResponse({ success: true })
-      return true
-    }
   })
 
   const domParser = new DOMParser()
@@ -1066,6 +883,7 @@
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;")
   }
 
   function copyToClipboard(text) {
@@ -1371,9 +1189,6 @@
     }
 
     let currentCode = initialCode || (await getCode())
-    if (currentCode) {
-      copyTotpCode(currentCode, false)
-    }
 
     const widget = document.createElement("div")
     widget.className = "iris-totp-floating-widget"
@@ -1418,13 +1233,13 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
-          <span id="totp-hint-text">Code in clipboard</span>
+          <span id="totp-hint-text">2FA Code ready</span>
         </span>
         <button type="button" class="iris-totp-quick-fill-btn" id="totp-quick-fill-btn" style="display:none;">Autofill 2FA</button>
       </div>`
     )
 
-    const mountRoot = document.documentElement || document.body
+    const mountRoot = getOrCreatePortal()
     mountRoot.appendChild(widget)
     activeTotpWidget = widget
     requestAnimationFrame(() => widget.classList.add("visible"))
@@ -1444,6 +1259,7 @@
     function checkOtpInput() {
       const inputs = Array.from(document.querySelectorAll('input:not([type="hidden"]):not([disabled])'))
       const otpInput = inputs.find((el) => {
+        if (globalThis.AkaromiDetection?.isTotpInput?.(el)) return true
         const auto = (el.getAttribute("autocomplete") || "").toLowerCase()
         if (auto === "one-time-code") return true
         const id = (el.name + " " + el.id + " " + el.placeholder).toLowerCase()
@@ -1452,6 +1268,7 @@
       if (otpInput && quickFillBtn) {
         quickFillBtn.style.display = "inline-flex"
         quickFillBtn.onclick = (e) => {
+          if (!e.isTrusted) return
           e.preventDefault()
           e.stopPropagation()
           if (currentCode) {
@@ -1483,12 +1300,14 @@
     }
 
     closeBtn?.addEventListener("click", (e) => {
+      if (!e.isTrusted) return
       e.preventDefault()
       e.stopPropagation()
       dismissWidget()
     })
 
     copyBtn?.addEventListener("click", (e) => {
+      if (!e.isTrusted) return
       e.preventDefault()
       e.stopPropagation()
       if (currentCode) {
@@ -1562,7 +1381,8 @@
           if (hintText) hintText.textContent = "Auto-refresh paused. Click to renew."
           if (bodyCard) {
             bodyCard.style.cursor = "pointer"
-            bodyCard.onclick = async () => {
+            bodyCard.onclick = async (e) => {
+              if (!e.isTrusted) return
               cycleCount = 0
               bodyCard.style.cursor = ""
               bodyCard.onclick = null
@@ -1578,16 +1398,19 @@
           return
         }
 
-        // GENERATE & COPY NEXT CODE!
+        // Only auto-copy refreshed 2FA codes while this tab is actively visible
+        if (document.visibilityState !== "visible") {
+          return
+        }
+
+        // GENERATE NEXT CODE!
         const nextCode = await getCode()
         if (nextCode) {
           currentCode = nextCode
-          // Copy next code to clipboard immediately
-          copyTotpCode(nextCode, true)
 
           // Update display & flash animation
           if (codeDisplay) codeDisplay.textContent = formatCode(nextCode)
-          if (hintText) hintText.textContent = "Code expired — new code copied!"
+          if (hintText) hintText.textContent = "Code refreshed"
 
           if (bodyCard) {
             bodyCard.classList.remove("flashing")

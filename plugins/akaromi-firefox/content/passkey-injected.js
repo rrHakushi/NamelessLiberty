@@ -1,10 +1,10 @@
 /**
- * IRIS Pass — In-Page WebAuthn Passkey Interceptor
+ * Akaromi — In-Page WebAuthn Passkey Interceptor
  * Runs in page context to mediate navigator.credentials.create and get
  */
 ; (function () {
-  if (window.__IRIS_PASSKEY_INJECTED__) return
-  window.__IRIS_PASSKEY_INJECTED__ = true
+  if (window.__AKAROMI_PASSKEY_INJECTED__) return
+  window.__AKAROMI_PASSKEY_INJECTED__ = true
 
   const originalCreate = navigator.credentials?.create
     ? navigator.credentials.create.bind(navigator.credentials)
@@ -74,6 +74,19 @@
     return bytes.buffer
   }
 
+  function generateRequestId(prefix) {
+    if (window.crypto?.randomUUID) {
+      return `${prefix}_${window.crypto.randomUUID()}`
+    }
+    const bytes = new window.Uint8Array(16)
+    window.crypto.getRandomValues(bytes)
+    let hex = ""
+    for (let i = 0; i < bytes.length; i++) {
+      hex += bytes[i].toString(16).padStart(2, "0")
+    }
+    return `${prefix}_${hex}`
+  }
+
   // Intercept Passkey Registration
   if (navigator.credentials) {
     navigator.credentials.create = async function (options) {
@@ -91,15 +104,14 @@
       const userDisplayName = user.displayName || user.name || "Account"
       const userId = user.id ? bufferToBase64Url(user.id) : ""
       const challenge = pk.challenge ? bufferToBase64Url(pk.challenge) : ""
-      const requestId =
-        "iris_pk_create_" + Math.random().toString(36).slice(2) + Date.now()
+      const requestId = generateRequestId("iris_pk_create")
 
       return new Promise((resolve, reject) => {
         function onMessage(event) {
           if (
             event.source !== window ||
             !event.data ||
-            event.data.source !== "IRIS_PASSKEY_CONTENT" ||
+            event.data.source !== "AKAROMI_PASSKEY_CONTENT" ||
             event.data.requestId !== requestId
           ) {
             return
@@ -216,7 +228,7 @@
 
         window.postMessage(
           {
-            source: "IRIS_PASSKEY_PAGE",
+            source: "AKAROMI_PASSKEY_PAGE",
             action: "PASSKEY_CREATE_REQUEST",
             requestId,
             options: {
@@ -256,15 +268,14 @@
         id: bufferToBase64Url(c.id),
         type: c.type || "public-key",
       }))
-      const requestId =
-        "iris_pk_get_" + Math.random().toString(36).slice(2) + Date.now()
+      const requestId = generateRequestId("iris_pk_get")
 
       return new Promise((resolve, reject) => {
         function onMessage(event) {
           if (
             event.source !== window ||
             !event.data ||
-            event.data.source !== "IRIS_PASSKEY_CONTENT" ||
+            event.data.source !== "AKAROMI_PASSKEY_CONTENT" ||
             event.data.requestId !== requestId
           ) {
             return
@@ -367,7 +378,7 @@
 
         window.postMessage(
           {
-            source: "IRIS_PASSKEY_PAGE",
+            source: "AKAROMI_PASSKEY_PAGE",
             action: "PASSKEY_GET_REQUEST",
             requestId,
             options: {
@@ -383,5 +394,5 @@
     }
   }
 
-  console.log("[IRIS Pass] WebAuthn Passkey interceptor active in page realm")
+  console.log("[Akaromi] WebAuthn Passkey interceptor active in page realm")
 })()

@@ -13,7 +13,6 @@
   const btnNavSettings = document.getElementById("btn-nav-settings")
 
   const selectAutoLock = document.getElementById("select-auto-lock")
-  const selectClipboardTimer = document.getElementById("select-clipboard-timer")
   const toggleDefaultPm = document.getElementById("toggle-default-pm")
   const settingServerUrl = document.getElementById("setting-server-url")
   const btnSaveSettingsServer = document.getElementById("btn-save-settings-server")
@@ -95,7 +94,6 @@
     try {
       const data = await storage.get([
         "autoLockMinutes",
-        "clipboardClearSeconds",
         "isDefaultPasswordManager",
         "serverUrl",
         "pinUnlockEnabled",
@@ -106,11 +104,6 @@
         selectAutoLock.value = val
       }
 
-      if (selectClipboardTimer) {
-        const val = data.clipboardClearSeconds !== undefined ? String(data.clipboardClearSeconds) : "30"
-        selectClipboardTimer.value = val
-      }
-
       if (toggleDefaultPm) {
         toggleDefaultPm.checked = Boolean(data.isDefaultPasswordManager)
       }
@@ -119,11 +112,14 @@
         settingServerUrl.value = data.serverUrl || "http://localhost:4000"
       }
 
+      const status = await ext.runtime.sendMessage({ action: "GET_STATUS" }).catch(() => null)
+      const isPinEnabled = status ? Boolean(status.pinUnlockEnabled) : Boolean(data.pinUnlockEnabled)
+
       if (togglePinUnlock) {
-        togglePinUnlock.checked = Boolean(data.pinUnlockEnabled)
+        togglePinUnlock.checked = isPinEnabled
       }
       if (pinActiveActions) {
-        pinActiveActions.style.display = data.pinUnlockEnabled ? "flex" : "none"
+        pinActiveActions.style.display = isPinEnabled ? "flex" : "none"
       }
     } catch (err) {
       console.warn("[Akaromi] Failed to load settings:", err)
@@ -153,13 +149,6 @@
     showToast("Auto-lock timer updated")
   })
 
-  // Clipboard clear timer option
-  selectClipboardTimer?.addEventListener("change", async (e) => {
-    const seconds = parseInt(e.target.value, 10)
-    await storage.set({ clipboardClearSeconds: seconds })
-    showToast("Clipboard timer updated")
-  })
-
   // Default Password Manager Toggle
   toggleDefaultPm?.addEventListener("change", async (e) => {
     const isDefault = e.target.checked
@@ -176,9 +165,29 @@
     const url = settingServerUrl?.value.trim()
     if (!url) return
     try {
+      const currentServerUrl = await IrisApi.getServerUrl()
       const normalized = await IrisApi.setServerUrl(url)
-      await storage.set({ serverUrl: normalized })
       if (settingServerUrl) settingServerUrl.value = normalized
+
+      if (currentServerUrl !== normalized) {
+        const status = await ext.runtime.sendMessage({ action: "GET_STATUS" }).catch(() => null)
+        if (status?.isAuthenticated) {
+          if (!confirm("Changing the server URL will log out of your current session. Continue?")) {
+            await IrisApi.setServerUrl(currentServerUrl).catch(() => {})
+            if (settingServerUrl) settingServerUrl.value = currentServerUrl
+            return
+          }
+          await ext.runtime.sendMessage({ action: "LOGOUT" }).catch(() => {})
+          await IrisApi.setServerUrl(normalized)
+          closeSettings()
+          closeDrawer()
+          global.AkaromiAuth?.showLoginView?.()
+          showToast("Server URL updated — please sign in")
+          return
+        }
+      }
+
+      await storage.set({ serverUrl: normalized })
       if (drawerUserServer) drawerUserServer.textContent = normalized.replace(/^https?:\/\//, "")
       showToast("Server URL saved")
     } catch (err) {
@@ -246,6 +255,13 @@
     if (pin.length < 4) {
       if (pinSetupError) {
         pinSetupError.textContent = "PIN must be at least 4 digits"
+        pinSetupError.style.display = "block"
+      }
+      return
+    }
+    if (typeof IrisCrypto !== "undefined" && IrisCrypto.isWeakPin?.(pin)) {
+      if (pinSetupError) {
+        pinSetupError.textContent = "PIN is too predictable (avoid repeated or sequential digits)"
         pinSetupError.style.display = "block"
       }
       return

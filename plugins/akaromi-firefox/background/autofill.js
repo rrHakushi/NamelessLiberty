@@ -21,6 +21,7 @@ function getMatchingLogins(targetUrl) {
   for (const cipher of inMemoryCiphers) {
     if (cipher.deletedAt) continue
     if (cipher.type === "SSH_KEY" || cipher.type === 2) continue
+    if (cipher.data?.itemType && cipher.data.itemType !== "login") continue
 
     const candidates = []
 

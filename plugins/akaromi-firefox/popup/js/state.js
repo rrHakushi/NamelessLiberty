@@ -25,6 +25,7 @@
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;")
   }
 
     // Step 2: Ephemeral Popup Toast Notifications

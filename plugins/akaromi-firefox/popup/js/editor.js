@@ -723,7 +723,9 @@
           const v = row.querySelector(".pass-row-value")?.value || ""
           if (n || v) {
             additionalPasswords.push({
-              id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()),
+              id: crypto.randomUUID
+                ? crypto.randomUUID()
+                : Array.from(crypto.getRandomValues(new Uint8Array(16)), (b) => b.toString(16).padStart(2, "0")).join(""),
               name: n || "Password",
               value: v,
             })
@@ -1035,11 +1037,10 @@
         if (modalEditCipher) modalEditCipher.style.display = "flex"
       }
 
-      // Check for pending scanned 2FA QR code
-      const pendingTotp = await storage.get(["pendingScannedTotp"])
-      if (pendingTotp?.pendingScannedTotp?.secret) {
-        const secret = pendingTotp.pendingScannedTotp.secret
-        await storage.remove("pendingScannedTotp").catch(() => {})
+      // Check for pending scanned 2FA QR code from ephemeral background/session store
+      const pendingRes = await ext.runtime.sendMessage({ action: "GET_PENDING_SCANNED_TOTP" }).catch(() => null)
+      if (pendingRes?.pendingScannedTotp?.secret) {
+        const secret = pendingRes.pendingScannedTotp.secret
         if (editTotpSecret) {
           editTotpSecret.value = secret
           editTotpSecret.type = "password"
@@ -1052,6 +1053,24 @@
     } catch (err) {
       console.warn("[Akaromi] Failed to restore editor draft:", err)
     }
+  }
+
+  function clearSensitiveInputs() {
+    clearTimeout(editDraftDebounceTimer)
+    state.editingCipherId = null
+    if (modalEditCipher) modalEditCipher.style.display = "none"
+    if (formEditCipher) formEditCipher.reset()
+    if (editPassword) editPassword.value = ""
+    if (editTotpSecret) editTotpSecret.value = ""
+    if (editGeneralNotes) editGeneralNotes.value = ""
+    if (editNoteBody) editNoteBody.value = ""
+    if (editCardNumber) editCardNumber.value = ""
+    if (editCardCvv) editCardCvv.value = ""
+    if (editCardPin) editCardPin.value = ""
+    if (editSshPrivatekey) editSshPrivatekey.value = ""
+    if (editSshPassphrase) editSshPassphrase.value = ""
+    if (editAdditionalPasswordsList) editAdditionalPasswordsList.replaceChildren()
+    if (customFieldsList) customFieldsList.replaceChildren()
   }
 
   // Live listener in case popup stayed open during QR scan
@@ -1078,5 +1097,6 @@
     clearEditDraft,
     restoreDraftState,
     evaluatePasswordStrength,
+    clearSensitiveInputs,
   }
 })(typeof window !== "undefined" ? window : globalThis)

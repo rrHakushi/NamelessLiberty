@@ -1,28 +1,32 @@
-/* Akaromi for Firefox — Design System Tokens & Base Primitives (shadcn zinc rhea style) */
+/* Akaromi for Firefox — Design System Tokens & Base Primitives (IRIS AMOLED) */
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --card: #18181b;
-  --card-foreground: #fafafa;
-  --popover: #18181b;
-  --popover-foreground: #fafafa;
-  --primary: #fafafa;
-  --primary-foreground: #09090b;
-  --secondary: #27272a;
-  --secondary-foreground: #fafafa;
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
-  --accent: #27272a;
-  --accent-foreground: #fafafa;
-  --destructive: #ef4444;
-  --destructive-foreground: #fafafa;
-  --border: #27272a;
-  --input: #27272a;
-  --ring: #71717a;
-  --radius: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
+  color-scheme: dark;
+  --background: oklch(0 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.09 0.003 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.09 0.003 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(60.145% 0.25696 299.856);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.15 0.005 285.885);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.15 0.005 285.885);
+  --muted-foreground: oklch(0.65 0.012 286.067);
+  --accent: oklch(0.17 0.006 285.885);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(60.145% 0.25696 299.856);
+  --sidebar: oklch(0.05 0.002 285.885);
+  --frost: rgba(9, 9, 11, 0.85);
+  --frost-border: rgba(63, 63, 70, 0.75);
+  --radius: 0.45rem;
+  --radius-lg: 0.65rem;
+  --radius-xl: 0.85rem;
   --success: #10b981;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -34,10 +38,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   user-select: none;
   scrollbar-width: thin;
-  scrollbar-color: #27272a transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.14) transparent;
 }
 
 *::-webkit-scrollbar {
@@ -50,12 +54,12 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: rgba(255, 255, 255, 0.14);
   border-radius: 9999px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 html,
@@ -156,7 +160,7 @@ button:focus-visible {
 }
 
 .btn-secondary:hover {
-  background: #3f3f46;
+  background: var(--accent);
 }
 
 .btn-danger {
@@ -207,7 +211,7 @@ button:focus-visible {
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
-  background: #18181b;
+  background: var(--popover);
   border: 1px solid var(--border);
   color: var(--foreground);
   padding: 8px 14px;
@@ -234,8 +238,8 @@ button:focus-visible {
 .form-select,
 .form-textarea {
   width: 100%;
-  background: #101014;
-  border: 1px solid var(--border);
+  background: var(--background);
+  border: 1px solid var(--input);
   border-radius: var(--radius);
   color: var(--foreground);
   font-size: 13px;
@@ -248,8 +252,8 @@ button:focus-visible {
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
-  border-color: #52525b;
-  box-shadow: 0 0 0 1px #52525b;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 1px var(--ring);
 }
 
 .form-field-group {

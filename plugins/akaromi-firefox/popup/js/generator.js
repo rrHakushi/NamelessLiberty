@@ -124,7 +124,6 @@
     if (!text) return
     navigator.clipboard.writeText(text).then(() => {
       showToast("Generated password copied")
-      ext.runtime.sendMessage({ action: "SCHEDULE_CLIPBOARD_CLEAR", payload: { text } }).catch(() => {})
     })
   })
 
@@ -269,6 +268,13 @@
     }
   }
 
+  function clearSensitiveOutput() {
+    clearTimeout(genDraftDebounceTimer)
+    state.generatorTargetInput = null
+    if (genOutputText) genOutputText.textContent = ""
+    if (modalGenerator) modalGenerator.style.display = "none"
+  }
+
   global.AkaromiGenerator = {
     openGenerator,
     openForInput,
@@ -277,5 +283,6 @@
     saveGeneratorDraftNow,
     clearGeneratorDraft,
     restoreDraftState,
+    clearSensitiveOutput,
   }
 })(typeof window !== "undefined" ? window : globalThis)

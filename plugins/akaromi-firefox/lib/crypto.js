@@ -1,5 +1,5 @@
 /**
- * IRIS Pass — Cryptographic Core
+ * Akaromi — Cryptographic Core
  * Compatible with @IRIS/web and @NamelessLiberty/elysia (@noble/hashes, @noble/ciphers)
  */
 ;(function (root) {
@@ -77,6 +77,9 @@
     const iv = hexToBytes(ivHex)
     const authTag = hexToBytes(authTagHex)
     const cipher = hexToBytes(cipherHex)
+    if (iv.length !== 12 || authTag.length !== 16) {
+      throw new Error("Invalid GCM envelope lengths")
+    }
 
     // Scrypt key derivation (32 bytes AES-256 key, matching Node.js scryptAsync default params)
     const key = noble.scrypt(password.normalize("NFKC"), salt, {
@@ -92,9 +95,11 @@
     ciphertextWithTag.set(authTag, cipher.length)
 
     const aes = noble.gcm(key, iv)
-    const decrypted = aes.decrypt(ciphertextWithTag)
-    IrisCrypto.zeroize(key)
-    return decrypted
+    try {
+      return aes.decrypt(ciphertextWithTag)
+    } finally {
+      IrisCrypto.zeroize(key)
+    }
   }
 
   /**
@@ -156,6 +161,9 @@
     const iv = hexToBytes(ivHex)
     const authTag = hexToBytes(authTagHex)
     const cipher = hexToBytes(cipherHex)
+    if (iv.length !== 12 || authTag.length !== 16) {
+      throw new Error("Invalid GCM envelope lengths")
+    }
 
     const ciphertextWithTag = new Uint8Array(cipher.length + authTag.length)
     ciphertextWithTag.set(cipher, 0)
@@ -832,23 +840,52 @@
    */
     // Step 4: Cryptographic PIN Unlock Envelope
   // Step 4.1: PIN Scrypt Key Derivation & Vault Key Wrapping
+  const PIN_SCRYPT_N = 65536
+  const PIN_SCRYPT_R = 8
+  const PIN_SCRYPT_P = 1
+
+  IrisCrypto.isWeakPin = function (pin) {
+    if (!pin || typeof pin !== "string") return true
+    const clean = pin.trim()
+    if (clean.length < 4) return true
+    if (/^(.)\1+$/.test(clean)) return true
+    if (/^\d+$/.test(clean)) {
+      let asc = true
+      let desc = true
+      for (let i = 1; i < clean.length; i++) {
+        const diff = clean.charCodeAt(i) - clean.charCodeAt(i - 1)
+        if (diff !== 1) asc = false
+        if (diff !== -1) desc = false
+      }
+      if (asc || desc) return true
+    }
+    return false
+  }
+
   IrisCrypto.setupPinUnlock = function (pin, vaultKey) {
     if (!noble) throw new Error("Cryptographic module not loaded")
     if (!pin || pin.length < 4) throw new Error("PIN must be at least 4 characters")
+    if (IrisCrypto.isWeakPin(pin)) {
+      throw new Error("PIN is too predictable (avoid repeated or sequential digits)")
+    }
 
     const salt = crypto.getRandomValues(new Uint8Array(16))
     const iv = crypto.getRandomValues(new Uint8Array(12))
 
     const pinKey = noble.scrypt(pin.normalize("NFKC"), salt, {
-      N: 16384,
-      r: 8,
-      p: 1,
+      N: PIN_SCRYPT_N,
+      r: PIN_SCRYPT_R,
+      p: PIN_SCRYPT_P,
       dkLen: 32,
     })
 
     const aes = noble.gcm(pinKey, iv)
-    const ciphertextWithTag = aes.encrypt(vaultKey)
-    IrisCrypto.zeroize(pinKey)
+    let ciphertextWithTag
+    try {
+      ciphertextWithTag = aes.encrypt(vaultKey)
+    } finally {
+      IrisCrypto.zeroize(pinKey)
+    }
     const cipher = ciphertextWithTag.slice(0, -16)
     const authTag = ciphertextWithTag.slice(-16)
 
@@ -857,6 +894,7 @@
       ivHex: bytesToHex(iv),
       authTagHex: bytesToHex(authTag),
       cipherHex: bytesToHex(cipher),
+      kdf: { N: PIN_SCRYPT_N, r: PIN_SCRYPT_R, p: PIN_SCRYPT_P },
     }
   }
 
@@ -874,11 +912,18 @@
     const iv = hexToBytes(pinData.ivHex)
     const authTag = hexToBytes(pinData.authTagHex)
     const cipher = hexToBytes(pinData.cipherHex)
+    if (iv.length !== 12 || authTag.length !== 16) {
+      throw new Error("Invalid GCM envelope lengths")
+    }
+
+    const kdfN = Number.isInteger(pinData.kdf?.N) && pinData.kdf.N >= 16384 && pinData.kdf.N <= 1048576 ? pinData.kdf.N : 16384
+    const kdfR = Number.isInteger(pinData.kdf?.r) && pinData.kdf.r >= 1 && pinData.kdf.r <= 32 ? pinData.kdf.r : 8
+    const kdfP = Number.isInteger(pinData.kdf?.p) && pinData.kdf.p >= 1 && pinData.kdf.p <= 8 ? pinData.kdf.p : 1
 
     const pinKey = noble.scrypt(pin.normalize("NFKC"), salt, {
-      N: 16384,
-      r: 8,
-      p: 1,
+      N: kdfN,
+      r: kdfR,
+      p: kdfP,
       dkLen: 32,
     })
 
@@ -888,12 +933,11 @@
 
     const aes = noble.gcm(pinKey, iv)
     try {
-      const decrypted = aes.decrypt(ciphertextWithTag)
-      IrisCrypto.zeroize(pinKey)
-      return decrypted
+      return aes.decrypt(ciphertextWithTag)
     } catch (err) {
-      IrisCrypto.zeroize(pinKey)
       throw new Error("Incorrect PIN")
+    } finally {
+      IrisCrypto.zeroize(pinKey)
     }
   }
 

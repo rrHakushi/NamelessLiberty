@@ -1,5 +1,5 @@
 /**
- * IRIS Pass — Lightweight Zero-Dependency Standalone QR Code Decoder
+ * Akaromi — Lightweight Zero-Dependency Standalone QR Code Decoder
  * Compatible with Browser Background Workers, Content Scripts, and Popup.
  * Uses native BarcodeDetector if available, with robust pure JS fallback.
  */

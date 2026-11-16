@@ -4,7 +4,26 @@
 ;(function (global) {
   "use strict"
 
+  if (window !== window.top) return
+
   const ext = typeof browser !== "undefined" ? browser : (typeof chrome !== "undefined" ? chrome : global.AkaromiExt)
+
+  function isElementVisible(el) {
+    if (!el || !el.isConnected || el.disabled || el.readOnly) return false
+    const rects = el.getClientRects()
+    if (rects.length === 0) return false
+    const rect = el.getBoundingClientRect()
+    if (rect.width < 8 || rect.height < 8 || rect.bottom <= 0 || rect.right <= 0) {
+      return false
+    }
+    try {
+      const style = window.getComputedStyle(el)
+      if (style.display === "none" || style.visibility === "hidden" || parseFloat(style.opacity) <= 0.05) {
+        return false
+      }
+    } catch {}
+    return true
+  }
 
     // Step 2: Synthetic Event Dispatching
   // Step 2.1: Full Bubbling Event Chain Dispatch (focus -> input -> change -> blur)
@@ -34,6 +53,12 @@
     }
   }
 
+  function findTotpInput(container = document) {
+    if (!container || typeof container.querySelectorAll !== "function") return null
+    const inputs = Array.from(container.querySelectorAll("input"))
+    return inputs.find((el) => global.AkaromiDetection?.isTotpInput?.(el) && isElementVisible(el)) || null
+  }
+
     // Step 3: Multi-Field Credential Injection
   // Step 3.1: Username, Password & 2FA OTP Automatic Discovery
   function fillCredential(cipher, specificPassword = null, initialCode = "", targetInput = null) {
@@ -43,7 +68,20 @@
     const password = specificPassword !== null ? specificPassword : (data.password || "")
 
     const activeEl = (targetInput && targetInput.isConnected) ? targetInput : document.activeElement
-    const form = (activeEl && activeEl.form) || (activeEl && activeEl.closest("form")) || document
+    const targetIsTotp = Boolean(activeEl && global.AkaromiDetection?.isTotpInput?.(activeEl))
+    const form =
+      (activeEl && activeEl.form) ||
+      (activeEl && activeEl.closest('form, [role="form"], [class*="auth" i], [class*="login" i], [class*="signin" i], main')) ||
+      document
+
+    if (targetIsTotp) {
+      if (initialCode) {
+        setNativeValue(activeEl, initialCode)
+        dispatchInputEvents(activeEl)
+      }
+      ext.runtime.sendMessage({ action: "PING_ACTIVITY" }).catch(() => {})
+      return
+    }
 
     // Fill Username
     if (username) {
@@ -53,7 +91,7 @@
       } else {
         const textInputs = Array.from(
           form.querySelectorAll('input[type="text"], input[type="email"], input:not([type])')
-        ).filter((el) => !global.AkaromiDetection?.isSearchInput(el))
+        ).filter((el) => isElementVisible(el) && !global.AkaromiDetection?.isSearchInput(el) && !global.AkaromiDetection?.isTotpInput?.(el))
 
         userInput =
           textInputs.find((el) => /user|login|email/i.test(el.name + " " + el.id + " " + el.placeholder)) ||
@@ -72,7 +110,8 @@
       if (activeEl && activeEl.tagName === "INPUT" && activeEl.type === "password") {
         passInput = activeEl
       } else {
-        passInput = form.querySelector('input[type="password"]')
+        const passInputs = Array.from(form.querySelectorAll('input[type="password"]')).filter(isElementVisible)
+        passInput = passInputs[0] || null
       }
 
       if (passInput) {
@@ -81,14 +120,25 @@
       }
     }
 
+    // Fill TOTP field automatically if one is already present on the page
+    let totpFilledInline = false
+    if (initialCode) {
+      const otpInput = findTotpInput(form) || (form !== document ? findTotpInput(document) : null)
+      if (otpInput) {
+        setNativeValue(otpInput, initialCode)
+        dispatchInputEvents(otpInput)
+        totpFilledInline = true
+      }
+    }
+
     // Ping background activity
     ext.runtime.sendMessage({ action: "PING_ACTIVITY" }).catch(() => {})
 
-    // Trigger TOTP Auto-Copy & Live Countdown Widget if account has 2FA (by cipherId, never raw totpSecret)
+    // Launch live TOTP widget only when 2FA is configured and wasn't already filled inline
     const hasTotp = Boolean(cipher.hasTotp || initialCode)
     const cipherId = cipher.id || ""
 
-    if (hasTotp && cipherId) {
+    if (hasTotp && cipherId && !totpFilledInline) {
       const accountLabel = cipher.title || username || "2FA"
       let launched = false
       const invokeWidget = () => {
