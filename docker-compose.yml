@@ -198,6 +198,23 @@ services:
     ports:
       - "10009:3000"
 
+  databasus:
+    container_name: NamelessLiberty-Databasus
+    image: databasus/databasus:latest
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - databasus_data:/databasus-data
+    depends_on:
+      postgre:
+        condition: service_healthy
+    networks:
+      NamelessLiberty:
+        ipv4_address: 180.0.0.10
+    ports:
+      - "10010:4005"
+
 secrets:
   app_env:
     file: .env
@@ -227,3 +244,5 @@ volumes:
     name: NamelessLiberty-searxng-cache
   infisical_data:
     name: NamelessLiberty-infisical-data
+  databasus_data:
+    name: NamelessLiberty-databasus-data

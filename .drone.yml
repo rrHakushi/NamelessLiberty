@@ -68,6 +68,16 @@ steps:
     depends_on:
       - Redis
 
+  - name: databasus
+    image: docker:latest
+    volumes:
+      - name: docker_sock
+        path: /var/run/docker.sock
+    commands:
+      - docker compose up -d --no-deps databasus
+    depends_on:
+      - Postgre
+
   - name: infisical
     image: docker:latest
     environment:
@@ -296,7 +306,8 @@ steps:
           NamelessLiberty-Deemix \
           NamelessLiberty-SearXNG \
           NamelessLiberty-Elysia \
-          NamelessLiberty-Next; do
+          NamelessLiberty-Next \
+          NamelessLiberty-Databasus; do
           STATE=$(docker inspect -f '{{.State.Running}}' "$CONTAINER" 2>/dev/null || echo "false")
           if [ "$STATE" != "true" ]; then
             echo "ERROR: $CONTAINER is not running!"
@@ -311,6 +322,7 @@ steps:
         exit $FAILED
     depends_on:
       - BorealisExtra - Release
+      - databasus
 
   - name: Cleanup
     image: docker:latest
