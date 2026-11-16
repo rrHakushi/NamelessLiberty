@@ -69,6 +69,7 @@ export interface KnownModules {
   "Scoped": true
   "Servarr:Realtime": true
   "SubModule": true
+  "Test": true
   "TestMediaService": true
   "TestService": true
   "UserMediaStatsServ": true
