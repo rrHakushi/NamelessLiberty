@@ -239,7 +239,102 @@ export function toMediaListEntry(
   } as MediaListEntryData
 }
 
-export function MediaListGrid({
+interface MemoizedMediaListCardProps {
+  item: ListEntryData
+  mediaType: MediaListType
+  mediaTitlePreference: "primary" | "secondary" | "native"
+  viewMode: "standard" | "compact" | "covers"
+  isOwner: boolean
+  priority: boolean
+  onOpenEditModal: (item: ListEntryData) => void
+  onStatusChange?: (item: ListEntryData, newStatus: ListStatus) => Promise<void>
+  onIncrementProgress?: (item: ListEntryData, count: number) => Promise<void>
+  onIncrementVolume?: (item: ListEntryData, count: number) => Promise<void>
+  onScoreChange?: (item: ListEntryData, newScore: number | null) => Promise<void>
+  onItemUpdated?: (entryId: number, updatedEntry: MediaListEntryData | null) => void
+}
+
+/**
+ * Memoized card wrapper with stable per-item callbacks and content-visibility
+ * so large lists only re-render and paint affected/visible cards.
+ */
+const MemoizedMediaListCard = React.memo(function MemoizedMediaListCard({
+  item,
+  mediaType,
+  mediaTitlePreference,
+  viewMode,
+  isOwner,
+  priority,
+  onOpenEditModal,
+  onStatusChange,
+  onIncrementProgress,
+  onIncrementVolume,
+  onScoreChange,
+  onItemUpdated,
+}: MemoizedMediaListCardProps) {
+  const handleEdit = useCallback(() => {
+    onOpenEditModal(item)
+  }, [onOpenEditModal, item])
+
+  const handleStatusChange = useCallback(
+    (newStatus: ListStatus) => onStatusChange!(item, newStatus),
+    [onStatusChange, item]
+  )
+
+  const handleIncrement = useCallback(
+    (count: number) => onIncrementProgress!(item, count),
+    [onIncrementProgress, item]
+  )
+
+  const handleIncrementVolume = useCallback(
+    (count: number) => onIncrementVolume!(item, count),
+    [onIncrementVolume, item]
+  )
+
+  const handleScoreChange = useCallback(
+    (newScore: number | null) => onScoreChange!(item, newScore),
+    [onScoreChange, item]
+  )
+
+  const handleSaveEntry = useCallback(
+    async (payload: any) => {
+      await saveListEntry(mediaType, item.media.id, payload)
+      onItemUpdated?.(item.entry.id, {
+        ...item.entry,
+        ...payload,
+        private: payload.isPrivate ?? item.entry.private,
+      } as any)
+    },
+    [mediaType, item, onItemUpdated]
+  )
+
+  return (
+    <BorealisCard
+      type={mediaType}
+      data={item}
+      titlePreference={mediaTitlePreference}
+      showSubtitle={false}
+      showHoverSubtitle={false}
+      showTabNav={true}
+      showExtras={true}
+      statusIconOnly={true}
+      size={viewMode === "compact" ? "sm" : "md"}
+      canEdit={isOwner}
+      onEdit={isOwner ? handleEdit : undefined}
+      onStatusChange={isOwner && onStatusChange ? handleStatusChange : undefined}
+      onIncrement={isOwner && onIncrementProgress ? handleIncrement : undefined}
+      onIncrementVolume={
+        isOwner && onIncrementVolume ? handleIncrementVolume : undefined
+      }
+      onScoreChange={isOwner && onScoreChange ? handleScoreChange : undefined}
+      onSaveEntry={isOwner ? handleSaveEntry : undefined}
+      priority={priority}
+      className="w-full [content-visibility:auto] [contain-intrinsic-size:auto_280px]"
+    />
+  )
+})
+
+export const MediaListGrid = React.memo(function MediaListGrid({
   mediaType,
   activeStatus,
   items,
@@ -529,53 +624,20 @@ export function MediaListGrid({
                     className="w-full"
                   >
                     {section.items.map((item, idx) => (
-                      <BorealisCard
+                      <MemoizedMediaListCard
                         key={`${item.entry.id}-${item.media.id}`}
-                        type={mediaType}
-                        data={item}
-                        titlePreference={mediaTitlePreference}
-                        showSubtitle={false}
-                        showHoverSubtitle={false}
-                        showTabNav={true}
-                        showExtras={true}
-                        statusIconOnly={true}
-                        size={viewMode === "compact" ? "sm" : "md"}
-                        canEdit={isOwner}
-                        onEdit={isOwner ? () => handleOpenEditModal(item) : undefined}
-                        onStatusChange={
-                          isOwner && onStatusChange
-                            ? (newStatus) => onStatusChange(item, newStatus)
-                            : undefined
-                        }
-                        onIncrement={
-                          isOwner && onIncrementProgress
-                            ? (count) => onIncrementProgress(item, count)
-                            : undefined
-                        }
-                        onIncrementVolume={
-                          isOwner && onIncrementVolume
-                            ? (count) => onIncrementVolume(item, count)
-                            : undefined
-                        }
-                        onScoreChange={
-                          isOwner && onScoreChange
-                            ? (newScore) => onScoreChange(item, newScore)
-                            : undefined
-                        }
-                        onSaveEntry={
-                          isOwner
-                            ? async (payload) => {
-                                await saveListEntry(mediaType, item.media.id, payload)
-                                onItemUpdated?.(item.entry.id, {
-                                  ...item.entry,
-                                  ...payload,
-                                  private: payload.isPrivate ?? item.entry.private,
-                                } as any)
-                              }
-                            : undefined
-                        }
+                        item={item}
+                        mediaType={mediaType}
+                        mediaTitlePreference={mediaTitlePreference}
+                        viewMode={viewMode}
+                        isOwner={isOwner}
                         priority={sectionIdx === 0 && idx < 6}
-                        className="w-full"
+                        onOpenEditModal={handleOpenEditModal}
+                        onStatusChange={onStatusChange}
+                        onIncrementProgress={onIncrementProgress}
+                        onIncrementVolume={onIncrementVolume}
+                        onScoreChange={onScoreChange}
+                        onItemUpdated={onItemUpdated}
                       />
                     ))}
                   </BorealisCardGroup>
@@ -592,53 +654,20 @@ export function MediaListGrid({
           className="w-full"
         >
           {items.map((item, idx) => (
-            <BorealisCard
+            <MemoizedMediaListCard
               key={`${item.entry.id}-${item.media.id}`}
-              type={mediaType}
-              data={item}
-              titlePreference={mediaTitlePreference}
-              showSubtitle={false}
-              showHoverSubtitle={false}
-              showTabNav={true}
-              showExtras={true}
-              statusIconOnly={true}
-              size={viewMode === "compact" ? "sm" : "md"}
-              canEdit={isOwner}
-              onEdit={isOwner ? () => handleOpenEditModal(item) : undefined}
-              onStatusChange={
-                isOwner && onStatusChange
-                  ? (newStatus) => onStatusChange(item, newStatus)
-                  : undefined
-              }
-              onIncrement={
-                isOwner && onIncrementProgress
-                  ? (count) => onIncrementProgress(item, count)
-                  : undefined
-              }
-              onIncrementVolume={
-                isOwner && onIncrementVolume
-                  ? (count) => onIncrementVolume(item, count)
-                  : undefined
-              }
-              onScoreChange={
-                isOwner && onScoreChange
-                  ? (newScore) => onScoreChange(item, newScore)
-                  : undefined
-              }
-              onSaveEntry={
-                isOwner
-                  ? async (payload) => {
-                      await saveListEntry(mediaType, item.media.id, payload)
-                      onItemUpdated?.(item.entry.id, {
-                        ...item.entry,
-                        ...payload,
-                        private: payload.isPrivate ?? item.entry.private,
-                      } as any)
-                    }
-                  : undefined
-              }
+              item={item}
+              mediaType={mediaType}
+              mediaTitlePreference={mediaTitlePreference}
+              viewMode={viewMode}
+              isOwner={isOwner}
               priority={idx < 8}
-              className="w-full"
+              onOpenEditModal={handleOpenEditModal}
+              onStatusChange={onStatusChange}
+              onIncrementProgress={onIncrementProgress}
+              onIncrementVolume={onIncrementVolume}
+              onScoreChange={onScoreChange}
+              onItemUpdated={onItemUpdated}
             />
           ))}
         </BorealisCardGroup>
@@ -676,4 +705,4 @@ export function MediaListGrid({
       </div>
     </div>
   )
-}
+})

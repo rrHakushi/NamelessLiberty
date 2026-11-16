@@ -291,13 +291,14 @@ export function UserListFilterSheet({
     setLocalFilters(filters)
   }, [filters])
 
-  // 300ms debounce propagate to parent
+  // 300ms debounce propagate to parent (only when localFilters diverges from filters)
   useEffect(() => {
+    if (localFilters === filters) return
     const timer = setTimeout(() => {
       onFiltersChange(localFilters)
     }, 300)
     return () => clearTimeout(timer)
-  }, [localFilters, onFiltersChange])
+  }, [localFilters, filters, onFiltersChange])
 
   const activeCount = useMemo(() => countActiveFilters(localFilters), [localFilters])
 
