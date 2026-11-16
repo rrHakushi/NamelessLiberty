@@ -40,7 +40,7 @@ if (Bun.env.BUN_ENV !== 'production' && Bun.env.BUN_ENV !== 'test') {
 
 const isDev = Bun.env.BUN_ENV !== 'production'
 
-function isWsOrPublicRoute(pathname: string): boolean {
+function isWsRoute(pathname: string): boolean {
   return (
     pathname === '/ws' ||
     pathname.startsWith('/ws?') ||
@@ -48,7 +48,12 @@ function isWsOrPublicRoute(pathname: string): boolean {
     pathname === '/tesseract/ws' ||
     pathname.startsWith('/tesseract/ws?') ||
     pathname === '/tesseract/events' ||
-    pathname.startsWith('/tesseract/events?') ||
+    pathname.startsWith('/tesseract/events?')
+  )
+}
+
+function isPublicRoute(pathname: string): boolean {
+  return (
     pathname === '/public' ||
     pathname.startsWith('/public/') ||
     pathname === '/carina/public' ||
@@ -96,7 +101,7 @@ export const app = new Elysia()
     try {
       pathname = new URL(request.url).pathname
     } catch {}
-    if (!isDev && isWsOrPublicRoute(pathname)) return
+    if (isWsRoute(pathname) || (!isDev && isPublicRoute(pathname))) return
     requestStartTimes.set(request, performance.now())
   })
   .onAfterResponse(({ request, path, set, responseValue }) => {
@@ -107,7 +112,7 @@ export const app = new Elysia()
     } catch { }
 
     const routeOnly = pathname.split('?')[0] || ''
-    if (!isDev && isWsOrPublicRoute(routeOnly)) return
+    if (isWsRoute(routeOnly) || (!isDev && isPublicRoute(routeOnly))) return
 
     const start = requestStartTimes.get(request)
     const duration = start ? (performance.now() - start).toFixed(1) : '?'
