@@ -1,6 +1,8 @@
 # Borealis [Media tracker]
     - Stremio plugin for borealis
     - Link manga list entries to books since its kinda the same
+    - Remove hover effect on banner in lists???
+    - Fix weekly media checkup because its not updating someitme
 
 
     
