@@ -4,9 +4,15 @@ import type { TagColor } from "./types.js"
  * Zero-dependency terminal color formatting using ANSI escape codes.
  * Compatible with Node.js, Bun, Linux, macOS, and Windows terminals.
  */
+const env = Bun.env || process.env || {}
+
 export const isColorSupported =
-  !("NO_COLOR" in (Bun.env || {})) &&
-  Boolean(process.stdout?.isTTY)
+  !("NO_COLOR" in env && env.NO_COLOR !== "") &&
+  (Boolean(env.FORCE_COLOR && env.FORCE_COLOR !== "0") ||
+    process.platform === "win32" ||
+    env.TERM !== "dumb" ||
+    Boolean(env.CI) ||
+    Boolean(process.stdout?.isTTY))
 
 const format = (open: number, close: number) => (str: unknown) =>
   isColorSupported ? `\x1b[${open}m${str}\x1b[${close}m` : String(str)

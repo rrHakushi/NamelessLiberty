@@ -1,10 +1,10 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia } from 'elysia'
-import { carinaQc } from '../../src/api/controllers/carina/qc.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt } from '../../src/utils/auth-crypto'
-import { cache } from '../../src/utils/cache'
-import { prisma } from '@Iris/db'
+import { carinaQc } from '../../src/apps/carina/qc/qc.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
+import { cache } from '../../src/core/utils/cache'
+import { prisma } from '@NamelessLiberty/db'
 import { jwtVerify } from 'jose'
 
 // -----------------------------------------------------------------------------

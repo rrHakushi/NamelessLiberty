@@ -1,0 +1,3675 @@
+{
+  "id": "apps/borealis/games/games.ctrl",
+  "title": "Get game catalog",
+  "description": "Retrieves paginated game catalog with cursor or page, supporting comprehensive multi-field filtering.",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/",
+    "relPath": "apps/borealis/games/games.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/",
+      "/filters",
+      "/:gameId",
+      "/:gameId/refresh",
+      "/:gameId/similar",
+      "/:gameId/characters",
+      "/:gameId/staff",
+      "/:gameId/images",
+      "/:gameId/stats",
+      "/:gameId/friends",
+      "/:gameId/people",
+      "/:gameId/recommendations"
+    ],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Get game catalog"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              },
+              {
+                "type": "CardDescription",
+                "props": {
+                  "className": "text-start pt-1"
+                },
+                "text": "Retrieves paginated game catalog with cursor or page, supporting comprehensive multi-field filtering."
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/filters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:gameId"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:gameId/refresh"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-4",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:gameId/similar"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-5",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:gameId/characters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-6",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:gameId/staff"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-7",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:gameId/images"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-8",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:gameId/stats"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-9",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:gameId/friends"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-10",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:gameId/people"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-11",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/:gameId/recommendations"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_7)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "47 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET / · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.catalogQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET / · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.catalogResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET / · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /filters · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.filtersResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.detailResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:gameId/refresh · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:gameId/refresh · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.refreshResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:gameId/refresh · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:gameId/refresh · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /:gameId/refresh · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/similar · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/similar · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.similarQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/similar · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.similarResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/similar · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/similar · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/characters · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/characters · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.charactersResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/characters · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/characters · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/staff · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-23",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/staff · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.staffResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-24",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/staff · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-25",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/staff · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-26",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/images · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-27",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/images · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.imagesResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-28",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/images · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-29",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/images · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-30",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/stats · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-31",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/stats · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.statsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-32",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/stats · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-33",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/stats · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-34",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/friends · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-35",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/friends · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.friendsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-36",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/friends · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-37",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/friends · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-38",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/people · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-39",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/people · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.peopleQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-40",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/people · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.peopleResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-41",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/people · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-42",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/people · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-43",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/recommendations · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.param"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-44",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/recommendations · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.recommendationsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-45",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/recommendations · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-46",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /:gameId/recommendations · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisGamesModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-0",
+                "title": "GET /",
+                "description": "Get game catalog",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `BorealisGamesModel.catalogQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.getCatalog(query)`"
+                  },
+                  {
+                    "id": "call_0_BorealisGamesServ_getCatalog",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.getCatalog",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.getCatalog"
+                  },
+                  {
+                    "id": "svc_0_BorealisGamesServ_getCatalog",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.getCatalog Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_2_3",
+                        "kind": "var_def",
+                        "title": "Define `skip`, `search`",
+                        "payload": "const skip = query?.cursor ? 0 : (page - 1) * limit\nconst search = query?.search?.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_3_4",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `genres`"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_4_5",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `tags`"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_5_6",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `statuses`"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_6_7",
+                        "kind": "var_def",
+                        "title": "Define `years`",
+                        "payload": "const years = parseList(query?.years).map((y) => Number(y)).filter((y) => !isNaN(y))",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_7_8",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `platforms`"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_8_9",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `developers`"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_9_10",
+                        "kind": "step",
+                        "title": "Calls `parseList` and stores result as `publishers`"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_10_11",
+                        "kind": "var_def",
+                        "title": "Define `sortBy`, `sortOrder`",
+                        "payload": "const sortBy = query?.sortBy ?? 'popularity'\nconst sortOrder = query?.sortOrder ?? sortBy === 'title' ? 'asc' : 'desc'",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_11_12",
+                        "kind": "step",
+                        "title": "Database `query` on `Game` and stores it as `q`"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_12_13",
+                        "kind": "selection",
+                        "title": "`search`",
+                        "selectionMode": "if_else",
+                        "condition": "`search`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisGamesServ_getCatalog_12_13_then_0_13_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => or( m.titlePrimary.ilike(`%${search}%`), m.titleSecondary.ilike(`%${search}%`), m.titleNative.ilike(`%${search}%`) ) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_13_14",
+                        "kind": "selection",
+                        "title": "`genres.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`genres.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisGamesServ_getCatalog_13_14_then_0_14_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.genres.some((g) => g.genre.some((ge) => ge.name.in(genres))) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_14_15",
+                        "kind": "selection",
+                        "title": "`tags.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`tags.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisGamesServ_getCatalog_14_15_then_0_15_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.tags.some((t) => t.tag.some((te) => te.name.in(tags))) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_15_16",
+                        "kind": "selection",
+                        "title": "`statuses.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`statuses.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisGamesServ_getCatalog_15_16_then_0_16_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.status.in(statuses as any))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_16_17",
+                        "kind": "selection",
+                        "title": "`years.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`years.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisGamesServ_getCatalog_16_17_then_0_17_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => m.releaseDateYear.in(years))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_17_18",
+                        "kind": "selection",
+                        "title": "`query?.cursor`",
+                        "selectionMode": "if_else",
+                        "condition": "`query?.cursor`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisGamesServ_getCatalog_17_18_then_0_18_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where((m) => sortOrder === 'asc' ? m.id.gt(query.cursor!) : m.id.lt(query.cursor!) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_18_19",
+                        "kind": "var_def",
+                        "title": "Define `itemsQ`",
+                        "payload": "let itemsQ = q",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_19_20",
+                        "kind": "selection",
+                        "title": "`sortBy === 'score'`",
+                        "selectionMode": "if_else",
+                        "condition": "`sortBy === 'score'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisGamesServ_getCatalog_19_20_then_0_20_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.averageScore.asc() : x.averageScore.desc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "svc_0_BorealisGamesServ_getCatalog_19_20_else_0_21_1",
+                            "kind": "selection",
+                            "title": "`sortBy === 'title'`",
+                            "selectionMode": "if_else",
+                            "condition": "`sortBy === 'title'`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_0_BorealisGamesServ_getCatalog_19_20_else_0_21_1_then_0_21_1_1",
+                                "kind": "step",
+                                "title": "Assign `itemsQ`",
+                                "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.titlePrimary.asc() : x.titlePrimary.desc() )",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "svc_0_BorealisGamesServ_getCatalog_19_20_else_0_21_1_else_0_21_2_1",
+                                "kind": "selection",
+                                "title": "`sortBy === 'releaseDate'`",
+                                "selectionMode": "if_else",
+                                "condition": "`sortBy === 'releaseDate'`",
+                                "thenBranch": [
+                                  {
+                                    "id": "svc_0_BorealisGamesServ_getCatalog_19_20_else_0_21_1_else_0_21_2_1_then_0_21_2_1_1",
+                                    "kind": "step",
+                                    "title": "Assign `itemsQ`",
+                                    "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.releaseDateYear.asc() : x.releaseDateYear.desc() )",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "svc_0_BorealisGamesServ_getCatalog_19_20_else_0_21_1_else_0_21_2_1_else_0_21_2_2_1",
+                                    "kind": "selection",
+                                    "title": "`sortBy === 'trending' || sortBy === 'favorites'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`sortBy === 'trending' || sortBy === 'favorites'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "svc_0_BorealisGamesServ_getCatalog_19_20_else_0_21_1_else_0_21_2_1_else_0_21_2_2_1_then_0_21_2_2_1_1",
+                                        "kind": "step",
+                                        "title": "Assign `itemsQ`",
+                                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.favorites.asc() : x.favorites.desc() )",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ],
+                                    "elseBranch": [
+                                      {
+                                        "id": "svc_0_BorealisGamesServ_getCatalog_19_20_else_0_21_1_else_0_21_2_1_else_0_21_2_2_1_else_0_21_2_2_2_1",
+                                        "kind": "selection",
+                                        "title": "`sortBy === 'updatedAt'`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`sortBy === 'updatedAt'`",
+                                        "thenBranch": [
+                                          {
+                                            "id": "svc_0_BorealisGamesServ_getCatalog_19_20_else_0_21_1_else_0_21_2_1_else_0_21_2_2_1_else_0_21_2_2_2_1_then_0_21_2_2_2_1_1",
+                                            "kind": "step",
+                                            "title": "Assign `itemsQ`",
+                                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.updatedAt.asc() : x.updatedAt.desc() )",
+                                            "payloadLanguage": "typescript"
+                                          }
+                                        ],
+                                        "elseBranch": [
+                                          {
+                                            "id": "svc_0_BorealisGamesServ_getCatalog_19_20_else_0_21_1_else_0_21_2_1_else_0_21_2_2_1_else_0_21_2_2_2_1_else_0_21_2_2_2_2_1",
+                                            "kind": "step",
+                                            "title": "Assign `itemsQ`",
+                                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.popularity.asc() : x.popularity.desc() )",
+                                            "payloadLanguage": "typescript"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_21_22",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, rawItems]`"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_22_23",
+                        "kind": "var_def",
+                        "title": "Define `items`, `hasMore`",
+                        "payload": "const items = rawItems.map((x) => ({ id: x.id, titlePrimary: x.titlePrimary, titleSecondary: x.titleSecondary ?? null, titleNative: x.titleNative ?? null, coverImage: x.coverImage ?? null, bannerImage: x.bannerImage ?? null, ...)\nconst hasMore = skip + items.length < total",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisGamesServ_getCatalog_23_24",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"items\": \"<items>\",\n  \"nextCursor\": \"<hasMore ? (items[items.length - 1]?.id ?? null) : null>\",\n  \"hasMore\": \"<hasMore>\",\n  \"total\": \"<total>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-1",
+                "title": "GET /filters",
+                "description": "Get game catalog filters",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.getFilters()`"
+                  },
+                  {
+                    "id": "call_1_BorealisGamesServ_getFilters",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.getFilters",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.getFilters"
+                  },
+                  {
+                    "id": "svc_1_BorealisGamesServ_getFilters",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.getFilters Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_BorealisGamesServ_getFilters_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Game` and stores it as `[allGames, allGenres]`"
+                      },
+                      {
+                        "id": "svc_1_BorealisGamesServ_getFilters_1_2",
+                        "kind": "var_def",
+                        "title": "Define `statusCounts`, `formatCounts`, `yearCounts`",
+                        "payload": "const statusCounts: Record<string, number> = {}\nconst formatCounts: Record<string, number> = {}\nconst yearCounts: Record<number, number> = {}",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_BorealisGamesServ_getFilters_2_3",
+                        "kind": "iteration",
+                        "title": "Iterate `const g` over `allGames`",
+                        "loopType": "while",
+                        "condition": "Iterate `const g` over `allGames`",
+                        "children": [
+                          {
+                            "id": "svc_1_BorealisGamesServ_getFilters_2_3_loop_0_3_1",
+                            "kind": "selection",
+                            "title": "`g.status`",
+                            "selectionMode": "if_else",
+                            "condition": "`g.status`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_BorealisGamesServ_getFilters_2_3_loop_0_3_1_then_0_3_1_1",
+                                "kind": "step",
+                                "title": "Assign `statusCounts[g.status]`",
+                                "payload": "statusCounts[g.status] = (statusCounts[g.status] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_BorealisGamesServ_getFilters_2_3_loop_1_3_2",
+                            "kind": "selection",
+                            "title": "`g.releaseDateYear`",
+                            "selectionMode": "if_else",
+                            "condition": "`g.releaseDateYear`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_BorealisGamesServ_getFilters_2_3_loop_1_3_2_then_0_3_2_1",
+                                "kind": "step",
+                                "title": "Assign `yearCounts[g.releaseDateYear]`",
+                                "payload": "yearCounts[g.releaseDateYear] = (yearCounts[g.releaseDateYear] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_BorealisGamesServ_getFilters_2_3_loop_2_3_3",
+                            "kind": "iteration",
+                            "title": "Iterate `const p` over `g.platforms || []`",
+                            "loopType": "while",
+                            "condition": "Iterate `const p` over `g.platforms || []`",
+                            "children": [
+                              {
+                                "id": "svc_1_BorealisGamesServ_getFilters_2_3_loop_2_3_3_loop_0_3_3_1",
+                                "kind": "step",
+                                "title": "Assign `formatCounts[p]`",
+                                "payload": "formatCounts[p] = (formatCounts[p] || 0) + 1",
+                                "payloadLanguage": "typescript"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_1_BorealisGamesServ_getFilters_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"statuses\": \"<Object.entries(statusCounts).map(([value, count]) => ({ value, count }))>\",\n  \"formats\": \"<Object.entries(formatCounts).map(([value, count]) => ({ value, count }))>\",\n  \"genres\": \"<allGenres.map((g: any) => ({ value: g.name, count: g.games ?? 0 }))>\",\n  \"tags\": [],\n  \"years\": \"<Object.entries(yearCounts).map(([value, count]) => ({ value: Number(value), count })).sort((a, b) => b.value - a.value)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-2",
+                "title": "GET /:gameId",
+                "description": "Get game overview",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisGamesModel.param`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.getById(gameId)`"
+                  },
+                  {
+                    "id": "call_2_BorealisGamesServ_getById",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.getById",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.getById"
+                  },
+                  {
+                    "id": "svc_2_BorealisGamesServ_getById",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.getById Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_BorealisGamesServ_getById_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Game` and stores it as `load`"
+                      },
+                      {
+                        "id": "svc_2_BorealisGamesServ_getById_1_2",
+                        "kind": "step",
+                        "title": "Calls `load` and stores result as `game`"
+                      },
+                      {
+                        "id": "svc_2_BorealisGamesServ_getById_2_3",
+                        "kind": "selection",
+                        "title": "`!game`",
+                        "selectionMode": "if_else",
+                        "condition": "`!game`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_BorealisGamesServ_getById_2_3_then_0_3_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Game with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_BorealisGamesServ_getById_3_4",
+                        "kind": "selection",
+                        "title": "`game.igdbUpdatedAt == null && game.igdbId`",
+                        "selectionMode": "if_else",
+                        "condition": "`game.igdbUpdatedAt == null && game.igdbId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_BorealisGamesServ_getById_3_4_then_0_4_1",
+                            "kind": "step",
+                            "title": "Calls `MediaEntitySyncer.syncGame(id, game.igdbId).catch`"
+                          },
+                          {
+                            "id": "svc_2_BorealisGamesServ_getById_3_4_then_1_4_2",
+                            "kind": "step",
+                            "title": "Assign `game`",
+                            "payload": "game = (await load()) ?? game",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_BorealisGamesServ_getById_4_5",
+                        "kind": "step",
+                        "title": "Calls `MediaQueueManager.queueIfStale`"
+                      },
+                      {
+                        "id": "svc_2_BorealisGamesServ_getById_5_6",
+                        "kind": "step",
+                        "title": "Calls `fetchTopCharacters` and stores result as `characters`"
+                      },
+                      {
+                        "id": "svc_2_BorealisGamesServ_getById_6_7",
+                        "kind": "var_def",
+                        "title": "Define `g`",
+                        "payload": "const g: any = game",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_BorealisGamesServ_getById_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"media\": {\n    \"...pick(g, [ 'id', 'titlePrimary', 'titleSecondary', 'titleNative', 'coverImage', 'bannerImage', 'description', 'franchise', 'status', 'averageScore', 'favorites', 'popularity', 'isAdult', 'ageRating', 'ageRatingGuide', 'averagePlaytime', 'requirements', 'controllerSupport', 'steamDeckStatus', 'updatedAt', 'igdbId', 'steamAppId', 'rawgId', 'giantbombId', 'vndbId', 'trailers', ])\": \"...\",\n    \"platforms\": \"<g.platforms ?? []>\",\n    \"developers\": \"<g.developers ?? []>\",\n    \"publishers\": \"<g.publishers ?? []>\",\n    \"gameModes\": \"<g.gameModes ?? []>\",\n    \"playerPerspectives\": \"<g.playerPerspectives ?? []>\",\n    \"languages\": \"<g.languages ?? []>\",\n    \"synonyms\": \"<g.synonyms ?? []>\",\n    \"startDateYear\": \"<g.releaseDateYear ?? null>\",\n    \"startDateMonth\": \"<g.releaseDateMonth ?? null>\",\n    \"startDateDay\": \"<g.releaseDateDay ?? null>\",\n    \"format\": \"<g.platforms && g.platforms.length > 0 ? g.platforms[0] : 'GAME'>\",\n    \"externalLinks\": \"<g.sources ?? null>\",\n    \"sources\": \"<g.sources ?? null>\",\n    \"genres\": \"<flattenGenres(g.genres)>\",\n    \"tags\": \"<flattenTags(g.tags)>\",\n    \"studios\": \"<g.studios || [].filter((s: any) => Boolean(s.studio)).map((s: any) => s.studio!)>\",\n    \"characters\": \"<characters>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-3",
+                "title": "POST /:gameId/refresh",
+                "description": "Refresh game metadata",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisGamesModel.param`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser`"
+                  },
+                  {
+                    "id": "route_3_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.refresh(gameId)`"
+                  },
+                  {
+                    "id": "call_3_BorealisGamesServ_refresh",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.refresh",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.refresh"
+                  },
+                  {
+                    "id": "svc_3_BorealisGamesServ_refresh",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.refresh Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_BorealisGamesServ_refresh_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Game` and stores it as `game`"
+                      },
+                      {
+                        "id": "svc_3_BorealisGamesServ_refresh_1_2",
+                        "kind": "selection",
+                        "title": "`!game`",
+                        "selectionMode": "if_else",
+                        "condition": "`!game`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_BorealisGamesServ_refresh_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Game with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_BorealisGamesServ_refresh_2_3",
+                        "kind": "step",
+                        "title": "Database `update` on `Game`"
+                      },
+                      {
+                        "id": "svc_3_BorealisGamesServ_refresh_3_4",
+                        "kind": "step",
+                        "title": "Calls `MediaQueueManager.enqueueMediaUpdate('GAME', id, { externalId: game.igdbId, priority: 1, depth: 0, maxDepth: 0, triggeredBy: 'manual', forceRefresh: true, ...).catch`"
+                      },
+                      {
+                        "id": "svc_3_BorealisGamesServ_refresh_4_5",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"<`Metadata refresh requested for \\\"${game.titlePrimary}\\\"`>\",\n  \"timestamp\": \"<new Date().toISOString()>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-4",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-4",
+                "title": "GET /:gameId/similar",
+                "description": "Get similar games",
+                "steps": [
+                  {
+                    "id": "route_4_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisGamesModel.param`, query: `BorealisGamesModel.similarQuery`"
+                  },
+                  {
+                    "id": "route_4_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.getSimilar(gameId, query?.limit)`"
+                  },
+                  {
+                    "id": "call_4_BorealisGamesServ_getSimilar",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.getSimilar",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.getSimilar"
+                  },
+                  {
+                    "id": "svc_4_BorealisGamesServ_getSimilar",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.getSimilar Flow",
+                    "children": [
+                      {
+                        "id": "svc_4_BorealisGamesServ_getSimilar_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Game` and stores it as `source`"
+                      },
+                      {
+                        "id": "svc_4_BorealisGamesServ_getSimilar_1_2",
+                        "kind": "selection",
+                        "title": "`!source`",
+                        "selectionMode": "if_else",
+                        "condition": "`!source`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_BorealisGamesServ_getSimilar_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Game with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisGamesServ_getSimilar_2_3",
+                        "kind": "var_def",
+                        "title": "Define `sourceGenres`, `sourceTags`, `sourceGenreIds`, `sourceTagIds`",
+                        "payload": "const sourceGenres = source.genres || [].filter((g: any) => Boolean(g.genre)).map((g: any) => g.genre!)\nconst sourceTags = source.tags || [].filter((t: any) => Boolean(t.tag)).map((t: any) => t.tag!)\nconst sourceGenreIds = new Set(sourceGenres.map((g: any) => g.id))\nconst sourceTagIds = new Set(sourceTags.map((t: any) => t.id))",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_BorealisGamesServ_getSimilar_3_4",
+                        "kind": "step",
+                        "title": "Database `query` on `Game` and stores it as `candidatesQ`"
+                      },
+                      {
+                        "id": "svc_4_BorealisGamesServ_getSimilar_4_5",
+                        "kind": "var_def",
+                        "title": "Define `conds`",
+                        "payload": "const conds: any[] = []",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_BorealisGamesServ_getSimilar_5_6",
+                        "kind": "selection",
+                        "title": "`sourceGenreIds.size > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`sourceGenreIds.size > 0`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisGamesServ_getSimilar_6_7",
+                        "kind": "selection",
+                        "title": "`sourceTagIds.size > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`sourceTagIds.size > 0`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisGamesServ_getSimilar_7_8",
+                        "kind": "selection",
+                        "title": "`conds.length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`conds.length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_BorealisGamesServ_getSimilar_7_8_then_0_8_1",
+                            "kind": "step",
+                            "title": "Assign `candidatesQ`",
+                            "payload": "candidatesQ = candidatesQ.where((m) => or(...conds.map((c) => c(m))))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_BorealisGamesServ_getSimilar_8_9",
+                        "kind": "step",
+                        "title": "Calls `candidatesQ.limit(120).include('genres', (g) => g.include('genre', (ge) => ge.select('id', 'name'))).include('tags', (t) => t.include('tag', (te) => te.select('id', 'name'))).all` and stores result as `rawCandidates`"
+                      },
+                      {
+                        "id": "svc_4_BorealisGamesServ_getSimilar_9_10",
+                        "kind": "var_def",
+                        "title": "Define `candidates`, `scored`, `items`",
+                        "payload": "const candidates = rawCandidates.map((candidate: any) => ({ ...candidate, genres: (candidate.genres || []).filter((g: any) => Boolean(g.genre)).map((g: any) => g.genre!), tags: (candidate.tags || []).filter((t: any) => Boolean(t.tag)).map((t: any) => t.tag!), }))\nconst scored = candidates.map((candidate) => { let similarityScore = 0 const candGenreIds = new Set(candidate.genres.map((g) => g.id)) const genreIntersection = Array.from(sourceGenreIds).filter((gid) => candGenreIds.has(gid)) const genreUnion = new Set([...sourceGenreIds, ...candGenreIds]) if (genreUnion.size > 0 && genreIntersection.length > 0) { similarityScore += Math.round((genreIntersection.length / genreUnion.size) * 40) ...)\nconst items = scored.filter((s) => s.similarityScore > 0).sort((a, b) => b.similarityScore - a.similarityScore).slice(0, limit).map(({ similarityScore, ...rest }) => rest)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_BorealisGamesServ_getSimilar_10_11",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"sourceId\": \"<id>\",\n  \"items\": \"<items>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-5",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-5",
+                "title": "GET /:gameId/characters",
+                "description": "Get game characters",
+                "steps": [
+                  {
+                    "id": "route_5_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisGamesModel.param`"
+                  },
+                  {
+                    "id": "route_5_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.getCharacters(gameId)`"
+                  },
+                  {
+                    "id": "call_5_BorealisGamesServ_getCharacters",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.getCharacters",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.getCharacters"
+                  },
+                  {
+                    "id": "svc_5_BorealisGamesServ_getCharacters",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.getCharacters Flow",
+                    "children": [
+                      {
+                        "id": "svc_5_BorealisGamesServ_getCharacters_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `MediaCharacter` and stores it as `raw`"
+                      },
+                      {
+                        "id": "svc_5_BorealisGamesServ_getCharacters_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"characters\": \"<raw.map((c: any) => ({ id: c.id, mediaId: c.mediaId, mediaType: c.mediaType, characterId: c.characterId, actorId: c.actorId ?? null, role: c.role, ...)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-6",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-6",
+                "title": "GET /:gameId/staff",
+                "description": "Get game staff",
+                "steps": [
+                  {
+                    "id": "route_6_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisGamesModel.param`"
+                  },
+                  {
+                    "id": "route_6_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.getStaff(gameId)`"
+                  },
+                  {
+                    "id": "call_6_BorealisGamesServ_getStaff",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.getStaff",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.getStaff"
+                  },
+                  {
+                    "id": "svc_6_BorealisGamesServ_getStaff",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.getStaff Flow",
+                    "children": [
+                      {
+                        "id": "svc_6_BorealisGamesServ_getStaff_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `MediaStaff` and stores it as `raw`"
+                      },
+                      {
+                        "id": "svc_6_BorealisGamesServ_getStaff_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"staff\": \"<raw.map((s: any) => ({ id: s.id, mediaId: s.mediaId, mediaType: s.mediaType, personId: s.personId, role: s.role, customRole: s.customRole ?? null, ...)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-7",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-7",
+                "title": "GET /:gameId/images",
+                "description": "Get game images",
+                "steps": [
+                  {
+                    "id": "route_7_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisGamesModel.param`"
+                  },
+                  {
+                    "id": "route_7_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.getImages(gameId)`"
+                  },
+                  {
+                    "id": "call_7_BorealisGamesServ_getImages",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.getImages",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.getImages"
+                  },
+                  {
+                    "id": "svc_7_BorealisGamesServ_getImages",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.getImages Flow",
+                    "children": [
+                      {
+                        "id": "svc_7_BorealisGamesServ_getImages_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Game` and stores it as `game`"
+                      },
+                      {
+                        "id": "svc_7_BorealisGamesServ_getImages_1_2",
+                        "kind": "selection",
+                        "title": "`!game`",
+                        "selectionMode": "if_else",
+                        "condition": "`!game`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_7_BorealisGamesServ_getImages_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Game with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_7_BorealisGamesServ_getImages_2_3",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"images\": {\n    \"igdb\": \"<imageSource(game.images, 'igdb')>\",\n    \"steam\": \"<imageSource(game.images, 'steam')>\",\n    \"rawg\": \"<imageSource(game.images, 'rawg')>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-8",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-8",
+                "title": "GET /:gameId/stats",
+                "description": "Get game statistics",
+                "steps": [
+                  {
+                    "id": "route_8_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisGamesModel.param`"
+                  },
+                  {
+                    "id": "route_8_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.getStats(gameId)`"
+                  },
+                  {
+                    "id": "call_8_BorealisGamesServ_getStats",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.getStats",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.getStats"
+                  },
+                  {
+                    "id": "svc_8_BorealisGamesServ_getStats",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.getStats Flow",
+                    "children": [
+                      {
+                        "id": "svc_8_BorealisGamesServ_getStats_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Game` and stores it as `game`"
+                      },
+                      {
+                        "id": "svc_8_BorealisGamesServ_getStats_1_2",
+                        "kind": "selection",
+                        "title": "`!game`",
+                        "selectionMode": "if_else",
+                        "condition": "`!game`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_8_BorealisGamesServ_getStats_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Game with ID ${id} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_8_BorealisGamesServ_getStats_2_3",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"stats\": {\n    \"averageScore\": \"<game.averageScore ?? null>\",\n    \"favorites\": \"<game.favorites ?? 0>\",\n    \"popularity\": \"<game.popularity ?? 0>\",\n    \"scoreDistribution\": \"<game.scoreDistribution ?? {}>\",\n    \"statusDistribution\": \"<game.statusDistribution ?? {}>\",\n    \"igdbRating\": \"<game.igdbRating ?? null>\",\n    \"igdbRatingCount\": \"<game.igdbRatingCount ?? null>\",\n    \"averagePlaytime\": \"<game.averagePlaytime ?? null>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-9",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-9",
+                "title": "GET /:gameId/friends",
+                "description": "Get friends tracking game",
+                "steps": [
+                  {
+                    "id": "route_9_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisGamesModel.param`"
+                  },
+                  {
+                    "id": "route_9_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.getUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_9_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.getFriends(gameId, user?.id)`"
+                  },
+                  {
+                    "id": "call_9_BorealisGamesServ_getFriends",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.getFriends",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.getFriends"
+                  },
+                  {
+                    "id": "svc_9_BorealisGamesServ_getFriends",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.getFriends Flow",
+                    "children": [
+                      {
+                        "id": "svc_9_BorealisGamesServ_getFriends_0_1",
+                        "kind": "selection",
+                        "title": "`!currentUserId`",
+                        "selectionMode": "if_else",
+                        "condition": "`!currentUserId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_9_BorealisGamesServ_getFriends_0_1_then_0_1_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_9_BorealisGamesServ_getFriends_1_2",
+                        "kind": "step",
+                        "title": "Database `all` on `Friend` and stores it as `userFriends`"
+                      },
+                      {
+                        "id": "svc_9_BorealisGamesServ_getFriends_2_3",
+                        "kind": "var_def",
+                        "title": "Define `friendIds`",
+                        "payload": "const friendIds = userFriends.map((f) => f.friendId)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_9_BorealisGamesServ_getFriends_3_4",
+                        "kind": "selection",
+                        "title": "`friendIds.length === 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`friendIds.length === 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_9_BorealisGamesServ_getFriends_3_4_then_0_4_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_9_BorealisGamesServ_getFriends_4_5",
+                        "kind": "step",
+                        "title": "Database `all` on `GameList` and stores it as `rawEntries`"
+                      },
+                      {
+                        "id": "svc_9_BorealisGamesServ_getFriends_5_6",
+                        "kind": "var_def",
+                        "title": "Define `friends`",
+                        "payload": "const friends = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) return { id: raw.id, userId: raw.userId, status: raw.status, score: raw.score, ...)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_9_BorealisGamesServ_getFriends_6_7",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"friends\": \"<friends>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-10",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-10",
+                "title": "GET /:gameId/people",
+                "description": "Get public people tracking game",
+                "steps": [
+                  {
+                    "id": "route_10_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisGamesModel.param`, query: `BorealisGamesModel.peopleQuery`"
+                  },
+                  {
+                    "id": "route_10_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.getPeople(gameId, query)`"
+                  },
+                  {
+                    "id": "call_10_BorealisGamesServ_getPeople",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.getPeople",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.getPeople"
+                  },
+                  {
+                    "id": "svc_10_BorealisGamesServ_getPeople",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.getPeople Flow",
+                    "children": [
+                      {
+                        "id": "svc_10_BorealisGamesServ_getPeople_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_10_BorealisGamesServ_getPeople_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_10_BorealisGamesServ_getPeople_2_3",
+                        "kind": "var_def",
+                        "title": "Define `skip`, `filterStatus`",
+                        "payload": "const skip = page - 1 * limit\nconst filterStatus = query?.status?.toUpperCase()?.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_10_BorealisGamesServ_getPeople_3_4",
+                        "kind": "step",
+                        "title": "Database `query` on `GameList` and stores it as `q`"
+                      },
+                      {
+                        "id": "svc_10_BorealisGamesServ_getPeople_4_5",
+                        "kind": "selection",
+                        "title": "`filterStatus`",
+                        "selectionMode": "if_else",
+                        "condition": "`filterStatus`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_10_BorealisGamesServ_getPeople_4_5_then_0_5_1",
+                            "kind": "step",
+                            "title": "Assign `q`",
+                            "payload": "q = q.where({ status: filterStatus as any })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_10_BorealisGamesServ_getPeople_5_6",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, rawEntries]`"
+                      },
+                      {
+                        "id": "svc_10_BorealisGamesServ_getPeople_6_7",
+                        "kind": "var_def",
+                        "title": "Define `people`",
+                        "payload": "const people = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) return { id: raw.id, userId: raw.userId, status: raw.status, score: raw.score, ...)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_10_BorealisGamesServ_getPeople_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"mediaId\": \"<id>\",\n  \"total\": \"<total>\",\n  \"page\": \"<page>\",\n  \"limit\": \"<limit>\",\n  \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n  \"hasMore\": \"<page * limit < total>\",\n  \"people\": \"<people>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-11",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/games/games.ctrl.ts-route-11",
+                "title": "GET /:gameId/recommendations",
+                "description": "Get game recommendations",
+                "steps": [
+                  {
+                    "id": "route_11_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `BorealisGamesModel.param`"
+                  },
+                  {
+                    "id": "route_11_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisGamesServ.getRecommendations(gameId)`"
+                  },
+                  {
+                    "id": "call_11_BorealisGamesServ_getRecommendations",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisGamesServ.getRecommendations",
+                    "isAsync": true,
+                    "targetAlg": "BorealisGamesServ.getRecommendations"
+                  },
+                  {
+                    "id": "svc_11_BorealisGamesServ_getRecommendations",
+                    "kind": "sequence",
+                    "title": "BorealisGamesServ.getRecommendations Flow",
+                    "children": [
+                      {
+                        "id": "svc_11_BorealisGamesServ_getRecommendations_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `MediaRecommendation` and stores it as `recs`"
+                      },
+                      {
+                        "id": "svc_11_BorealisGamesServ_getRecommendations_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"recommendations\": \"<recs.map((r: any) => { const profile = getProfileCustomization(r.user?.customization) return { id: r.id, sourceType: r.sourceType, sourceId: r.sourceId, targetType: r.targetType, ...)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Game with ID ${id} not found"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,9 +1,9 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia, ValidationError } from 'elysia'
-import { borealisPlaylists } from '../../src/api/controllers/borealis/playlists.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt } from '../../src/utils/auth-crypto'
-import { prisma } from '@Iris/db'
+import { borealisPlaylists } from '../../src/apps/borealis/playlists/playlists.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
+import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------
 // In-Memory Database Mock for Playlists and Entries

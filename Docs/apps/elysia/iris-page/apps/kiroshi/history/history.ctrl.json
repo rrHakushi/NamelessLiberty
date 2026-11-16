@@ -1,0 +1,1697 @@
+{
+  "id": "apps/kiroshi/history/history.ctrl",
+  "title": "Get decrypted web search history for the authenticated user",
+  "description": "",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/kiroshi/history/",
+    "relPath": "apps/kiroshi/history/history.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/kiroshi/history/",
+      "/kiroshi/history/track",
+      "/kiroshi/history/",
+      "/kiroshi/history/:id"
+    ],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Get decrypted web search history for the authenticated user"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/kiroshi/history/"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/kiroshi/history/track"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30"
+                            },
+                            "text": "DELETE"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/kiroshi/history/"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30"
+                            },
+                            "text": "DELETE"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/kiroshi/history/:id"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_35)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "18 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/history/ · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.historyQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/history/ · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.historyResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/history/ · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/history/ · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /kiroshi/history/track · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.trackClickBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /kiroshi/history/track · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.trackClickResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /kiroshi/history/track · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /kiroshi/history/track · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /kiroshi/history/ · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.historyDeleteQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /kiroshi/history/ · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.deleteHistoryResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /kiroshi/history/ · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /kiroshi/history/ · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /kiroshi/history/ · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /kiroshi/history/:id · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.historyParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /kiroshi/history/:id · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.deleteHistoryResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /kiroshi/history/:id · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /kiroshi/history/:id · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /kiroshi/history/:id · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiHistoryModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/kiroshi/history/history.ctrl.ts-route-0",
+                "title": "GET /kiroshi/history/",
+                "description": "Get decrypted web search history for the authenticated user",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `KiroshiHistoryModel.historyQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_0_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await KiroshiHistoryServ.getHistory(user.id, query)`"
+                  },
+                  {
+                    "id": "call_0_KiroshiHistoryServ_getHistory",
+                    "kind": "alg_call",
+                    "title": "Invoke KiroshiHistoryServ.getHistory",
+                    "isAsync": true,
+                    "targetAlg": "KiroshiHistoryServ.getHistory"
+                  },
+                  {
+                    "id": "svc_0_KiroshiHistoryServ_getHistory",
+                    "kind": "sequence",
+                    "title": "KiroshiHistoryServ.getHistory Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_KiroshiHistoryServ_getHistory_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.min` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_0_KiroshiHistoryServ_getHistory_1_2",
+                        "kind": "var_def",
+                        "title": "Define `thirtyDaysAgo`, `typeFilter`, `categoryFilter`",
+                        "payload": "const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)\nconst typeFilter = options?.type\nconst categoryFilter = options?.category",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_KiroshiHistoryServ_getHistory_2_3",
+                        "kind": "step",
+                        "title": "Database `query` on `SearchHistory` and stores it as `query`"
+                      },
+                      {
+                        "id": "svc_0_KiroshiHistoryServ_getHistory_3_4",
+                        "kind": "selection",
+                        "title": "`typeFilter && typeFilter !== 'all'`",
+                        "selectionMode": "if_else",
+                        "condition": "`typeFilter && typeFilter !== 'all'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiHistoryServ_getHistory_3_4_then_0_4_1",
+                            "kind": "step",
+                            "title": "Assign `query`",
+                            "payload": "query = query.where({ type: typeFilter })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiHistoryServ_getHistory_4_5",
+                        "kind": "selection",
+                        "title": "`categoryFilter && categoryFilter !== 'all'`",
+                        "selectionMode": "if_else",
+                        "condition": "`categoryFilter && categoryFilter !== 'all'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiHistoryServ_getHistory_4_5_then_0_5_1",
+                            "kind": "step",
+                            "title": "Assign `query`",
+                            "payload": "query = query.where({ category: categoryFilter })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiHistoryServ_getHistory_5_6",
+                        "kind": "step",
+                        "title": "Calls `query.orderBy((s) => s.createdAt.desc()).limit(limit * 2).all` and stores result as `records`"
+                      },
+                      {
+                        "id": "svc_0_KiroshiHistoryServ_getHistory_6_7",
+                        "kind": "var_def",
+                        "title": "Define `seenQueries`, `history`",
+                        "payload": "const seenQueries = new Set<string>()\nconst history: Array<{ id: string type: string query: string category: string url?: string title?: string ... = []",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_KiroshiHistoryServ_getHistory_7_8",
+                        "kind": "iteration",
+                        "title": "Iterate `const rec` over `records`",
+                        "loopType": "while",
+                        "condition": "Iterate `const rec` over `records`",
+                        "children": [
+                          {
+                            "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1",
+                            "kind": "try_catch_finally",
+                            "title": "Try block",
+                            "catchVar": "err",
+                            "tryBlock": [
+                              {
+                                "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_0_8_1_1",
+                                "kind": "var_def",
+                                "title": "Define `itemType`",
+                                "payload": "const itemType = rec.type || 'query'",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2",
+                                "kind": "selection",
+                                "title": "`itemType === 'site'`",
+                                "selectionMode": "if_else",
+                                "condition": "`itemType === 'site'`",
+                                "thenBranch": [
+                                  {
+                                    "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2_then_0_8_1_2_1",
+                                    "kind": "var_def",
+                                    "title": "Define `plainQuery`",
+                                    "payload": "let plainQuery = ''",
+                                    "payloadLanguage": "typescript"
+                                  },
+                                  {
+                                    "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2_then_1_8_1_2_2",
+                                    "kind": "selection",
+                                    "title": "`rec.encryptedQuery`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`rec.encryptedQuery`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2_then_1_8_1_2_2_then_0_8_1_2_2_1",
+                                        "kind": "try_catch_finally",
+                                        "title": "Try block",
+                                        "catchVar": "err",
+                                        "tryBlock": [
+                                          {
+                                            "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2_then_1_8_1_2_2_then_0_8_1_2_2_1_try_0_8_1_2_2_1_1",
+                                            "kind": "step",
+                                            "title": "Assign `plainQuery`",
+                                            "payload": "plainQuery = decryptConnectionData<string>(rec.encryptedQuery, userId)",
+                                            "payloadLanguage": "typescript"
+                                          }
+                                        ],
+                                        "catchBlock": [],
+                                        "finallyBlock": []
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  },
+                                  {
+                                    "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2_then_2_8_1_2_3",
+                                    "kind": "selection",
+                                    "title": "`history.length >= limit`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`history.length >= limit`",
+                                    "thenBranch": [],
+                                    "elseBranch": []
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2_else_0_8_1_3_1",
+                                    "kind": "selection",
+                                    "title": "`!rec.encryptedQuery`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`!rec.encryptedQuery`",
+                                    "thenBranch": [],
+                                    "elseBranch": []
+                                  },
+                                  {
+                                    "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2_else_1_8_1_3_2",
+                                    "kind": "step",
+                                    "title": "Calls `decryptConnectionData` and stores result as `plainQuery`"
+                                  },
+                                  {
+                                    "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2_else_2_8_1_3_3",
+                                    "kind": "var_def",
+                                    "title": "Define `normalized`",
+                                    "payload": "const normalized = plainQuery.trim().toLowerCase()",
+                                    "payloadLanguage": "typescript"
+                                  },
+                                  {
+                                    "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2_else_3_8_1_3_4",
+                                    "kind": "selection",
+                                    "title": "`!seenQueries.has(normalized)`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`!seenQueries.has(normalized)`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2_else_3_8_1_3_4_then_0_8_1_3_4_1",
+                                        "kind": "step",
+                                        "title": "Calls `seenQueries.add`"
+                                      },
+                                      {
+                                        "id": "svc_0_KiroshiHistoryServ_getHistory_7_8_loop_0_8_1_try_1_8_1_2_else_3_8_1_3_4_then_1_8_1_3_4_2",
+                                        "kind": "selection",
+                                        "title": "`history.length >= limit`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`history.length >= limit`",
+                                        "thenBranch": [],
+                                        "elseBranch": []
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ]
+                              }
+                            ],
+                            "catchBlock": [],
+                            "finallyBlock": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_0_KiroshiHistoryServ_getHistory_8_9",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"history\": \"<history>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/kiroshi/history/history.ctrl.ts-route-1",
+                "title": "POST /kiroshi/history/track",
+                "description": "Track clicked site or media link in search history",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `KiroshiHistoryModel.trackClickBody`"
+                  },
+                  {
+                    "id": "route_1_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_1_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await KiroshiHistoryServ.recordClick(user.id, body)`"
+                  },
+                  {
+                    "id": "call_1_KiroshiHistoryServ_recordClick",
+                    "kind": "alg_call",
+                    "title": "Invoke KiroshiHistoryServ.recordClick",
+                    "isAsync": true,
+                    "targetAlg": "KiroshiHistoryServ.recordClick"
+                  },
+                  {
+                    "id": "svc_1_KiroshiHistoryServ_recordClick",
+                    "kind": "sequence",
+                    "title": "KiroshiHistoryServ.recordClick Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_KiroshiHistoryServ_recordClick_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `User` and stores it as `dbUser`"
+                      },
+                      {
+                        "id": "svc_1_KiroshiHistoryServ_recordClick_1_2",
+                        "kind": "var_def",
+                        "title": "Define `userSettings`, `historyEnabled`",
+                        "payload": "const userSettings = dbUser?.settings as any || {}\nconst historyEnabled = userSettings?.search?.historyEnabled !== false",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_KiroshiHistoryServ_recordClick_2_3",
+                        "kind": "selection",
+                        "title": "`!historyEnabled`",
+                        "selectionMode": "if_else",
+                        "condition": "`!historyEnabled`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_KiroshiHistoryServ_recordClick_2_3_then_0_3_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"id\": \"\"\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_KiroshiHistoryServ_recordClick_3_4",
+                        "kind": "var_def",
+                        "title": "Define `encryptedQuery`",
+                        "payload": "const encryptedQuery = data.query ? encryptConnectionData(data.query, userId) : null",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_KiroshiHistoryServ_recordClick_4_5",
+                        "kind": "step",
+                        "title": "Database `create` on `SearchHistory` and stores it as `record`"
+                      },
+                      {
+                        "id": "svc_1_KiroshiHistoryServ_recordClick_5_6",
+                        "kind": "var_def",
+                        "title": "Define `thirtyDaysAgo`",
+                        "payload": "const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_KiroshiHistoryServ_recordClick_6_7",
+                        "kind": "step",
+                        "title": "Database `deleteAll` on `SearchHistory`"
+                      },
+                      {
+                        "id": "svc_1_KiroshiHistoryServ_recordClick_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"id\": \"<record.id>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/kiroshi/history/history.ctrl.ts-route-2",
+                "title": "DELETE /kiroshi/history/",
+                "description": "Clear all user search history or delete specific entry if query ?id is provided",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `KiroshiHistoryModel.historyDeleteQuery`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_2_2_3",
+                    "kind": "selection",
+                    "title": "`query?.id`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.id`",
+                    "thenBranch": [
+                      {
+                        "id": "route_2_2_3_then_0_3_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`await KiroshiHistoryServ.deleteHistoryItem(user.id, query.id)`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "route_2_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await KiroshiHistoryServ.clearHistory(user.id)`"
+                  },
+                  {
+                    "id": "call_2_KiroshiHistoryServ_deleteHistoryItem",
+                    "kind": "alg_call",
+                    "title": "Invoke KiroshiHistoryServ.deleteHistoryItem",
+                    "isAsync": true,
+                    "targetAlg": "KiroshiHistoryServ.deleteHistoryItem"
+                  },
+                  {
+                    "id": "svc_2_KiroshiHistoryServ_deleteHistoryItem",
+                    "kind": "sequence",
+                    "title": "KiroshiHistoryServ.deleteHistoryItem Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_KiroshiHistoryServ_deleteHistoryItem_0_1",
+                        "kind": "step",
+                        "title": "Database `query` on `SearchHistory` and stores it as `deletedCount`"
+                      },
+                      {
+                        "id": "svc_2_KiroshiHistoryServ_deleteHistoryItem_1_2",
+                        "kind": "selection",
+                        "title": "`deletedCount === 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`deletedCount === 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_KiroshiHistoryServ_deleteHistoryItem_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "History record not found."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_KiroshiHistoryServ_deleteHistoryItem_2_3",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"History item removed\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "call_2_KiroshiHistoryServ_clearHistory",
+                    "kind": "alg_call",
+                    "title": "Invoke KiroshiHistoryServ.clearHistory",
+                    "isAsync": true,
+                    "targetAlg": "KiroshiHistoryServ.clearHistory"
+                  },
+                  {
+                    "id": "svc_2_KiroshiHistoryServ_clearHistory",
+                    "kind": "sequence",
+                    "title": "KiroshiHistoryServ.clearHistory Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_KiroshiHistoryServ_clearHistory_0_1",
+                        "kind": "step",
+                        "title": "Database `query` on `SearchHistory` and stores it as `query`"
+                      },
+                      {
+                        "id": "svc_2_KiroshiHistoryServ_clearHistory_1_2",
+                        "kind": "selection",
+                        "title": "`type && type !== 'all'`",
+                        "selectionMode": "if_else",
+                        "condition": "`type && type !== 'all'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_KiroshiHistoryServ_clearHistory_1_2_then_0_2_1",
+                            "kind": "step",
+                            "title": "Assign `query`",
+                            "payload": "query = query.where({ type })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_KiroshiHistoryServ_clearHistory_2_3",
+                        "kind": "step",
+                        "title": "Calls `query.deleteAll`"
+                      },
+                      {
+                        "id": "svc_2_KiroshiHistoryServ_clearHistory_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"History cleared successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/kiroshi/history/history.ctrl.ts-route-3",
+                "title": "DELETE /kiroshi/history/:id",
+                "description": "Delete individual search history item by ID",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `KiroshiHistoryModel.historyParam`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_3_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await KiroshiHistoryServ.deleteHistoryItem(user.id, params.id)`"
+                  },
+                  {
+                    "id": "call_3_KiroshiHistoryServ_deleteHistoryItem",
+                    "kind": "alg_call",
+                    "title": "Invoke KiroshiHistoryServ.deleteHistoryItem",
+                    "isAsync": true,
+                    "targetAlg": "KiroshiHistoryServ.deleteHistoryItem"
+                  },
+                  {
+                    "id": "svc_3_KiroshiHistoryServ_deleteHistoryItem",
+                    "kind": "sequence",
+                    "title": "KiroshiHistoryServ.deleteHistoryItem Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_KiroshiHistoryServ_deleteHistoryItem_0_1",
+                        "kind": "step",
+                        "title": "Database `query` on `SearchHistory` and stores it as `deletedCount`"
+                      },
+                      {
+                        "id": "svc_3_KiroshiHistoryServ_deleteHistoryItem_1_2",
+                        "kind": "selection",
+                        "title": "`deletedCount === 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`deletedCount === 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_KiroshiHistoryServ_deleteHistoryItem_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "History record not found."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_KiroshiHistoryServ_deleteHistoryItem_2_3",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"History item removed\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "History record not found."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

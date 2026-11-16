@@ -291,13 +291,14 @@ export function UserListFilterSheet({
     setLocalFilters(filters)
   }, [filters])
 
-  // 300ms debounce propagate to parent
+  // 300ms debounce propagate to parent (only when localFilters diverges from filters)
   useEffect(() => {
+    if (localFilters === filters) return
     const timer = setTimeout(() => {
       onFiltersChange(localFilters)
     }, 300)
     return () => clearTimeout(timer)
-  }, [localFilters, onFiltersChange])
+  }, [localFilters, filters, onFiltersChange])
 
   const activeCount = useMemo(() => countActiveFilters(localFilters), [localFilters])
 
@@ -483,7 +484,7 @@ export function UserListFilterSheet({
             size="icon-sm"
             className="size-7 rounded-lg border border-zinc-700/60 bg-zinc-900/80 text-zinc-200 hover:text-white hover:bg-zinc-800 cursor-pointer"
           >
-            <IconX className="size-4 text-white stroke-[2.5]" style={{ color: "#ffffff", stroke: "#ffffff" }} />
+            <IconX className="size-4 text-white stroke-[2.5]" />
             <span className="sr-only">Close</span>
           </SheetClose>
         </div>

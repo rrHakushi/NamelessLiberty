@@ -21,6 +21,7 @@ import { dedupGet, invalidateDedup } from "@/lib/request-dedup"
 import { toast } from "sonner"
 import { cn } from "@workspace/ui/lib/utils"
 import { ServarrInteractiveSearchDialog } from "./servarr-interactive-search-dialog"
+import { useServarrRealtime } from "./use-servarr-realtime"
 
 export interface ServarrWantedViewProps {
   provider: "SONARR" | "RADARR"
@@ -129,6 +130,16 @@ export function ServarrWantedView({ provider }: ServarrWantedViewProps) {
     setSelectedIds(new Set())
     fetchWanted()
   }, [provider, activeTab, page, fetchWanted])
+
+  useServarrRealtime({
+    app: provider === "RADARR" ? "radarr" : "sonarr",
+    topics: ["movie", "series", "episode", "moviefile", "episodefile", "command"],
+    onSync: () => {
+      invalidateDedup(`servarr:${provider}:wanted`)
+      void fetchWanted(true)
+    },
+    fallbackPollMs: 45_000,
+  })
 
   const handleToggleSelect = (id: number) => {
     const next = new Set(selectedIds)

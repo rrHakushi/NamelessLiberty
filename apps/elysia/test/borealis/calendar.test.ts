@@ -1,10 +1,10 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia, ValidationError } from 'elysia'
-import { borealisCalendar } from '../../src/api/controllers/borealis/calendar.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt } from '../../src/utils/auth-crypto'
-import { cache } from '../../src/utils/cache'
-import { prisma } from '@Iris/db'
+import { borealisCalendar } from '../../src/apps/borealis/calendar/calendar.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
+import { cache } from '../../src/core/utils/cache'
+import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------
 // Test App Setup

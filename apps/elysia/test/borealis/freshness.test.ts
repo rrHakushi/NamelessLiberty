@@ -4,10 +4,10 @@ import {
   getEntityFreshness,
   isRecordHydrated,
   normalizeToStartOfDay,
-} from '../../src/services/borealis/freshness'
-import { MediaQueueManager } from '../../src/services/borealis/queue'
-import { MediaPreviewSyncer } from '../../src/services/borealis/syncer/media-preview.syncer'
-import { prisma } from '@Iris/db'
+} from '../../src/apps/borealis/_shared/freshness'
+import { MediaQueueManager } from '../../src/apps/borealis/sync/media.queue'
+import { MediaPreviewSyncer } from '../../src/apps/borealis/sync/media-preview.syncer'
+import { prisma } from '@NamelessLiberty/db'
 
 describe('Borealis: Smart Freshness Evaluation & Calendar Checks', () => {
   describe('normalizeToStartOfDay', () => {
@@ -271,6 +271,55 @@ describe('Borealis: Smart Freshness Evaluation & Calendar Checks', () => {
 
       expect(preview.id).toBe(603)
       expect(preview.queuedForFetch).toBe(true)
+    })
+
+    it('queueIfStale enqueues when record is stale and has externalId', async () => {
+      MediaQueueManager.queueIfStale(
+        'ANIME',
+        701,
+        {
+          status: 'RELEASING',
+          updatedAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000), // 10 days ago (stale for RELEASING)
+          alUpdatedAt: 1720000000,
+        },
+        154587
+      )
+
+      await new Promise((resolve) => setTimeout(resolve, 10))
+      expect(enqueuedJobs.length).toBe(1)
+      expect(enqueuedJobs[0].data.mediaType).toBe('ANIME')
+      expect(enqueuedJobs[0].data.mediaId).toBe(701)
+      expect(enqueuedJobs[0].data.externalId).toBe(154587)
+      expect(enqueuedJobs[0].opts.jobId).toBe(
+        `media-update-ANIME-701-${new Date().toISOString().slice(0, 10)}`
+      )
+    })
+
+    it('queueIfStale skips when record is fresh or externalId is missing', async () => {
+      MediaQueueManager.queueIfStale(
+        'ANIME',
+        702,
+        {
+          status: 'RELEASED',
+          updatedAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000), // 10 days ago (fresh for RELEASED)
+          alUpdatedAt: 1720000000,
+        },
+        154587
+      )
+
+      MediaQueueManager.queueIfStale(
+        'ANIME',
+        703,
+        {
+          status: 'RELEASING',
+          updatedAt: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000), // stale, but no externalId
+          alUpdatedAt: 1720000000,
+        },
+        null
+      )
+
+      await new Promise((resolve) => setTimeout(resolve, 10))
+      expect(enqueuedJobs.length).toBe(0)
     })
   })
 })

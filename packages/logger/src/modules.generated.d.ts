@@ -1,6 +1,9 @@
-// This file is auto-generated at runtime by @Iris/logger. Do not edit manually.
+// This file is auto-generated at runtime by @NamelessLiberty/logger. Do not edit manually.
 export interface KnownModules {
   "ActivityServ": true
+  "Akaromi:Ciphers": true
+  "Akaromi:Encryption": true
+  "Akaromi:Vault": true
   "AniList": true
   "Api": true
   "Auth": true
@@ -17,25 +20,59 @@ export interface KnownModules {
   "BullMQ:ConnectionSync": true
   "BullMQ:Emails": true
   "BullMQ:MediaQueue": true
+  "BullMQ:Queue:email-queue": true
+  "BullMQ:Redis": true
+  "BullMQ:Registry": true
+  "BullMQ:Worker:connection-sync-anilist": true
+  "BullMQ:Worker:connection-sync-bangumi": true
+  "BullMQ:Worker:connection-sync-hikka": true
+  "BullMQ:Worker:connection-sync-mal": true
+  "BullMQ:Worker:connection-sync-mangabaka": true
+  "BullMQ:Worker:connection-sync-mangaupdates": true
+  "BullMQ:Worker:connection-sync-simkl": true
+  "BullMQ:Worker:connection-sync-trakt": true
+  "BullMQ:Worker:email-queue": true
+  "BullMQ:Worker:media-updates": true
   "CarinaAuth": true
+  "CarinaBackupCodesServ": true
+  "CarinaEmail2faServ": true
   "CarinaNotifications": true
+  "CarinaPasskeysServ": true
+  "CarinaTotpServ": true
+  "CarinaUsersServ": true
   "Controller": true
   "Database": true
   "DevModule": true
   "Elysia": true
   "Elysia:Cluster": true
   "Elysia:Server": true
+  "Elysia:Tesseract": true
   "Elysia:WebSocket": true
   "ElysiaMain": true
   "EmailService": true
+  "Kiroshi:History": true
+  "Kiroshi:Search": true
+  "Kiroshi:Settings": true
   "Mailer": true
   "MediaQueue": true
   "MediaStatsServ": true
   "NotificationService": true
   "ProdModule": true
+  "Provider:AniList": true
+  "Provider:AnimeMapping": true
+  "Provider:Deezer": true
+  "Provider:GoogleBooks": true
+  "Provider:IGDB": true
+  "Provider:TheTVDB": true
+  "PublicAssetsServ": true
+  "Reliquary": true
   "Scoped": true
+  "Servarr:Realtime": true
   "SubModule": true
   "Test": true
+  "TestMediaService": true
+  "TestService": true
+  "UserMediaStatsServ": true
   "Worker:ConnectionSync": true
   "Worker:Email": true
   "Worker:Media": true

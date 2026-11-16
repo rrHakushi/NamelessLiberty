@@ -1,0 +1,2147 @@
+{
+  "id": "apps/borealis/providers/tvdb.provider",
+  "title": "tvdb.provider",
+  "description": "",
+  "icon": "IconBox",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/providers/tvdb.provider.ts",
+    "relPath": "apps/borealis/providers/tvdb.provider.ts",
+    "role": "Class",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 4
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconBox",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "tvdb.provider"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Class"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/providers/tvdb.provider.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "2 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/providers/index",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/providers/index.ts (TheTVDBProvider)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/borealis/sync/media-preview.syncer",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/sync/media-preview.syncer.ts (normalizeTvdbImageUrl, TvdbSearchItem)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "14 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.constructor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.getApiKey"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "string"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.waitForRateLimit"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<void>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.getValidToken"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<string>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.fetchJson"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(endpoint)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<T | null>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.searchTvSeries"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query, limit = 25)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<TvdbSearchItem[]>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.searchMovies"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query, limit = 25)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<TvdbSearchItem[]>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.fetchMovieTranslation"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(tvdbId, language = 'eng')"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<{ name?: string overview?: string language?: string aliases?: string[] } | null>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.fetchTvSeriesTranslation"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(tvdbId, language = 'eng')"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<{ name?: string overview?: string language?: string aliases?: string[] } | null>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.fetchTvCharacters"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(tvdbId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<TvdbCharacter[]>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.fetchTvEpisodes"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(tvdbId, language = 'eng')"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<TvdbEpisode[]>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.fetchTvSeries"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(tvdbId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<TvdbSeriesPayload | null>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.fetchMovie"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(tvdbId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<TvdbMoviePayload | null>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "TheTVDBProvider.fetchTvSeriesArtworks"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(tvdbId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<string[]>"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-normalizeTvdbImageUrl",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-normalizeTvdbImageUrl",
+                "title": "function normalizeTvdbImageUrl",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_normalizeTvdbImageUrl_0_1",
+                    "kind": "selection",
+                    "title": "`!url`",
+                    "selectionMode": "if_else",
+                    "condition": "`!url`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_normalizeTvdbImageUrl_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_normalizeTvdbImageUrl_1_2",
+                    "kind": "var_def",
+                    "title": "Define `trimmed`",
+                    "payload": "const trimmed = url.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_normalizeTvdbImageUrl_2_3",
+                    "kind": "selection",
+                    "title": "`!trimmed`",
+                    "selectionMode": "if_else",
+                    "condition": "`!trimmed`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_normalizeTvdbImageUrl_2_3_then_0_3_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_normalizeTvdbImageUrl_3_4",
+                    "kind": "selection",
+                    "title": "`trimmed.startsWith('http://') || trimmed.startsWith('https://')`",
+                    "selectionMode": "if_else",
+                    "condition": "`trimmed.startsWith('http://') || trimmed.startsWith('https://')`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_normalizeTvdbImageUrl_3_4_then_0_4_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`trimmed`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_normalizeTvdbImageUrl_4_5",
+                    "kind": "selection",
+                    "title": "`trimmed.startsWith('/')`",
+                    "selectionMode": "if_else",
+                    "condition": "`trimmed.startsWith('/')`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_normalizeTvdbImageUrl_4_5_then_0_5_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "``https://artworks.thetvdb.com${trimmed}``"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_normalizeTvdbImageUrl_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "``https://artworks.thetvdb.com/${trimmed}``"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-getApiKey",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-getApiKey",
+                "title": "TheTVDBProvider.getApiKey()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_getApiKey_0_1",
+                    "kind": "var_def",
+                    "title": "Define `key`",
+                    "payload": "const key = Bun.env.TVDB_API_KEY",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getApiKey_1_2",
+                    "kind": "selection",
+                    "title": "`!key`",
+                    "selectionMode": "if_else",
+                    "condition": "`!key`",
+                    "thenBranch": [
+                      {
+                        "id": "m_TheTVDBProvider_getApiKey_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "[TheTVDBProvider] Missing required environment variable: TVDB_API_KEY"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getApiKey_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`key`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-waitForRateLimit",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-waitForRateLimit",
+                "title": "TheTVDBProvider.waitForRateLimit()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_waitForRateLimit_0_1",
+                    "kind": "step",
+                    "title": "Calls `Date.now` and stores result as `now`"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_waitForRateLimit_1_2",
+                    "kind": "var_def",
+                    "title": "Define `elapsed`",
+                    "payload": "const elapsed = now - this.lastRequestTime",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_waitForRateLimit_2_3",
+                    "kind": "selection",
+                    "title": "`elapsed < this.minDelayMs`",
+                    "selectionMode": "if_else",
+                    "condition": "`elapsed < this.minDelayMs`",
+                    "thenBranch": [],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_waitForRateLimit_3_4",
+                    "kind": "step",
+                    "title": "Assign `this.lastRequestTime`",
+                    "payload": "this.lastRequestTime = Date.now()",
+                    "payloadLanguage": "typescript"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-getValidToken",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-getValidToken",
+                "title": "TheTVDBProvider.getValidToken()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_getValidToken_0_1",
+                    "kind": "step",
+                    "title": "Calls `Date.now` and stores result as `now`"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getValidToken_1_2",
+                    "kind": "selection",
+                    "title": "`this.token && this.tokenExpiresAt > now + 60000`",
+                    "selectionMode": "if_else",
+                    "condition": "`this.token && this.tokenExpiresAt > now + 60000`",
+                    "thenBranch": [
+                      {
+                        "id": "m_TheTVDBProvider_getValidToken_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`this.token`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getValidToken_2_3",
+                    "kind": "step",
+                    "title": "Calls `this.getApiKey` and stores result as `apiKey`"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getValidToken_3_4",
+                    "kind": "var_def",
+                    "title": "Define `body`",
+                    "payload": "const body: Record<string, string> = { apikey: apiKey }",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getValidToken_4_5",
+                    "kind": "step",
+                    "title": "Calls `fetch` and stores result as `res`"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getValidToken_5_6",
+                    "kind": "selection",
+                    "title": "`!res.ok`",
+                    "selectionMode": "if_else",
+                    "condition": "`!res.ok`",
+                    "thenBranch": [
+                      {
+                        "id": "m_TheTVDBProvider_getValidToken_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Calls `res.text().catch` and stores result as `errText`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_getValidToken_5_6_then_1_6_2",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "[TheTVDBProvider] Login failed HTTP ${res.status}: ${errText}"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getValidToken_6_7",
+                    "kind": "var_def",
+                    "title": "Define `json`",
+                    "payload": "const json = (await res.json()) as { data?: { token?: string } }",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getValidToken_7_8",
+                    "kind": "selection",
+                    "title": "`!json.data?.token`",
+                    "selectionMode": "if_else",
+                    "condition": "`!json.data?.token`",
+                    "thenBranch": [
+                      {
+                        "id": "m_TheTVDBProvider_getValidToken_7_8_then_0_8_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "[TheTVDBProvider] No token received from login"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getValidToken_8_9",
+                    "kind": "step",
+                    "title": "Assign `this.token`",
+                    "payload": "this.token = json.data.token",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getValidToken_9_10",
+                    "kind": "step",
+                    "title": "Assign `this.tokenExpiresAt`",
+                    "payload": "this.tokenExpiresAt = now + 28 * 24 * 60 * 60 * 1000",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_getValidToken_10_11",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.token`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-fetchJson",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-fetchJson",
+                "title": "TheTVDBProvider.fetchJson(endpoint)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_fetchJson_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.waitForRateLimit`"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchJson_1_2",
+                    "kind": "step",
+                    "title": "Calls `this.getValidToken` and stores result as `token`"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchJson_2_3",
+                    "kind": "var_def",
+                    "title": "Define `url`",
+                    "payload": "const url = endpoint.startsWith('http') ? endpoint : `${this.baseUrl}${endpoint}`",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchJson_3_4",
+                    "kind": "step",
+                    "title": "Calls `fetch` and stores result as `res`"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchJson_4_5",
+                    "kind": "selection",
+                    "title": "`!res.ok`",
+                    "selectionMode": "if_else",
+                    "condition": "`!res.ok`",
+                    "thenBranch": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchJson_4_5_then_0_5_1",
+                        "kind": "selection",
+                        "title": "`res.status === 404`",
+                        "selectionMode": "if_else",
+                        "condition": "`res.status === 404`",
+                        "thenBranch": [
+                          {
+                            "id": "m_TheTVDBProvider_fetchJson_4_5_then_0_5_1_then_0_5_1_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`null`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_fetchJson_4_5_then_1_5_2",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "[TheTVDBProvider] Request to ${endpoint} failed HTTP ${res.status}"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchJson_5_6",
+                    "kind": "var_def",
+                    "title": "Define `json`",
+                    "payload": "const json = (await res.json()) as { data?: T }",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchJson_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`json.data ?? null`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-searchTvSeries",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-searchTvSeries",
+                "title": "TheTVDBProvider.searchTvSeries(query, limit = 25)",
+                "description": "Searches TVDB specifically for TV Series and returns search preview items.",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_searchTvSeries_0_1",
+                    "kind": "var_def",
+                    "title": "Define `clean`",
+                    "payload": "const clean = query.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_searchTvSeries_1_2",
+                    "kind": "selection",
+                    "title": "`!clean`",
+                    "selectionMode": "if_else",
+                    "condition": "`!clean`",
+                    "thenBranch": [
+                      {
+                        "id": "m_TheTVDBProvider_searchTvSeries_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_searchTvSeries_2_3",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_searchTvSeries_2_3_try_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `Math.min` and stores result as `maxLimit`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_searchTvSeries_2_3_try_1_3_2",
+                        "kind": "var_def",
+                        "title": "Define `url`",
+                        "payload": "const url = `/search?query=${encodeURIComponent(clean)}&type=series&limit=${maxLimit}`",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_searchTvSeries_2_3_try_2_3_3",
+                        "kind": "step",
+                        "title": "Calls `this.fetchJson` and stores result as `results`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_searchTvSeries_2_3_try_3_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`Array.isArray(results) ? results : []`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_searchTvSeries_2_3_catch_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_searchTvSeries_2_3_catch_1_4_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-searchMovies",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-searchMovies",
+                "title": "TheTVDBProvider.searchMovies(query, limit = 25)",
+                "description": "Searches TVDB specifically for Movies and returns search preview items.",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_searchMovies_0_1",
+                    "kind": "var_def",
+                    "title": "Define `clean`",
+                    "payload": "const clean = query.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_searchMovies_1_2",
+                    "kind": "selection",
+                    "title": "`!clean`",
+                    "selectionMode": "if_else",
+                    "condition": "`!clean`",
+                    "thenBranch": [
+                      {
+                        "id": "m_TheTVDBProvider_searchMovies_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_searchMovies_2_3",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_searchMovies_2_3_try_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `Math.min` and stores result as `maxLimit`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_searchMovies_2_3_try_1_3_2",
+                        "kind": "var_def",
+                        "title": "Define `url`",
+                        "payload": "const url = `/search?query=${encodeURIComponent(clean)}&type=movie&limit=${maxLimit}`",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_searchMovies_2_3_try_2_3_3",
+                        "kind": "step",
+                        "title": "Calls `this.fetchJson` and stores result as `results`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_searchMovies_2_3_try_3_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`Array.isArray(results) ? results : []`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_searchMovies_2_3_catch_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_searchMovies_2_3_catch_1_4_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-fetchMovieTranslation",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-fetchMovieTranslation",
+                "title": "TheTVDBProvider.fetchMovieTranslation(tvdbId, language = 'eng')",
+                "description": "Fetches translation for a Movie (e.g. English name & overview).",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_fetchMovieTranslation_0_1",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchMovieTranslation_0_1_try_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`await this.fetchJson(`/movies/${tvdbId}/translations/${language}`)`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchMovieTranslation_0_1_catch_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-fetchTvSeriesTranslation",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-fetchTvSeriesTranslation",
+                "title": "TheTVDBProvider.fetchTvSeriesTranslation(tvdbId, language = 'eng')",
+                "description": "Fetches translation for a TV series (e.g. English name & overview).",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvSeriesTranslation_0_1",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvSeriesTranslation_0_1_try_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`await this.fetchJson(`/series/${tvdbId}/translations/${language}`)`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvSeriesTranslation_0_1_catch_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-fetchTvCharacters",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-fetchTvCharacters",
+                "title": "TheTVDBProvider.fetchTvCharacters(tvdbId)",
+                "description": "Fetches all characters & cast for a TV series.",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvCharacters_0_1",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvCharacters_0_1_try_0_1_1",
+                        "kind": "step",
+                        "title": "Calls `this.fetchJson` and stores result as `chars`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvCharacters_0_1_try_1_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`Array.isArray(chars) ? chars : []`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvCharacters_0_1_catch_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-fetchTvEpisodes",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-fetchTvEpisodes",
+                "title": "TheTVDBProvider.fetchTvEpisodes(tvdbId, language = 'eng')",
+                "description": "Fetches all episodes across all seasons for a TV series (paginated).",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvEpisodes_0_1",
+                    "kind": "var_def",
+                    "title": "Define `allEpisodes`, `page`, `hasMore`",
+                    "payload": "const allEpisodes: TvdbEpisode[] = []\nlet page = 0\nlet hasMore = true",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2",
+                    "kind": "iteration",
+                    "title": "While `hasMore && page < 20`",
+                    "loopType": "while",
+                    "condition": "While `hasMore && page < 20`",
+                    "children": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1_try_0_2_1_1",
+                            "kind": "var_def",
+                            "title": "Define `res`",
+                            "payload": "let res: { episodes?: TvdbEpisode[] } | null = null",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1_try_1_2_1_2",
+                            "kind": "selection",
+                            "title": "`language`",
+                            "selectionMode": "if_else",
+                            "condition": "`language`",
+                            "thenBranch": [
+                              {
+                                "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1_try_1_2_1_2_then_0_2_1_2_1",
+                                "kind": "try_catch_finally",
+                                "title": "Try block",
+                                "catchVar": "err",
+                                "tryBlock": [
+                                  {
+                                    "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1_try_1_2_1_2_then_0_2_1_2_1_try_0_2_1_2_1_1",
+                                    "kind": "step",
+                                    "title": "Assign `res`",
+                                    "payload": "res = await this.fetchJson<{ episodes?: TvdbEpisode[] }>(`/series/${tvdbId}/episodes/default/${language}?page=${page}`)",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "catchBlock": [
+                                  {
+                                    "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1_try_1_2_1_2_then_0_2_1_2_1_catch_0_2_1_2_2_1",
+                                    "kind": "step",
+                                    "title": "Assign `res`",
+                                    "payload": "res = null",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "finallyBlock": []
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1_try_2_2_1_3",
+                            "kind": "selection",
+                            "title": "`!res || !res.episodes || res.episodes.length === 0`",
+                            "selectionMode": "if_else",
+                            "condition": "`!res || !res.episodes || res.episodes.length === 0`",
+                            "thenBranch": [
+                              {
+                                "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1_try_2_2_1_3_then_0_2_1_3_1",
+                                "kind": "step",
+                                "title": "Assign `res`",
+                                "payload": "res = await this.fetchJson<{ episodes?: TvdbEpisode[] }>(`/series/${tvdbId}/episodes/default?page=${page}`)",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1_try_3_2_1_4",
+                            "kind": "var_def",
+                            "title": "Define `episodes`",
+                            "payload": "const episodes = res?.episodes || []",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1_try_4_2_1_5",
+                            "kind": "selection",
+                            "title": "`episodes.length === 0`",
+                            "selectionMode": "if_else",
+                            "condition": "`episodes.length === 0`",
+                            "thenBranch": [
+                              {
+                                "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1_try_4_2_1_5_then_0_2_1_5_1",
+                                "kind": "step",
+                                "title": "Assign `hasMore`",
+                                "payload": "hasMore = false",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvEpisodes_1_2_loop_0_2_1_catch_0_2_2_1",
+                            "kind": "step",
+                            "title": "Assign `hasMore`",
+                            "payload": "hasMore = false",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "finallyBlock": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvEpisodes_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`allEpisodes`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-fetchTvSeries",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-fetchTvSeries",
+                "title": "TheTVDBProvider.fetchTvSeries(tvdbId)",
+                "description": "Fetches full details for a TV Series.",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvSeries_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.fetchJson` and stores result as `series`"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvSeries_1_2",
+                    "kind": "selection",
+                    "title": "`series && series.originalLanguage?.toLowerCase() !== 'eng' || series.nameTranslations?.includes('eng') || series.overviewTranslations?.includes('eng')`",
+                    "selectionMode": "if_else",
+                    "condition": "`series && series.originalLanguage?.toLowerCase() !== 'eng' || series.nameTranslations?.includes('eng') || series.overviewTranslations?.includes('eng')`",
+                    "thenBranch": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvSeries_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `this.fetchTvSeriesTranslation(tvdbId, 'eng').catch` and stores result as `eng`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvSeries_1_2_then_1_2_2",
+                        "kind": "selection",
+                        "title": "`eng`",
+                        "selectionMode": "if_else",
+                        "condition": "`eng`",
+                        "thenBranch": [
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvSeries_1_2_then_1_2_2_then_0_2_2_1",
+                            "kind": "step",
+                            "title": "Assign `series.engTranslation`",
+                            "payload": "series.engTranslation = eng",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvSeries_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`series`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-fetchMovie",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-fetchMovie",
+                "title": "TheTVDBProvider.fetchMovie(tvdbId)",
+                "description": "Fetches full details for a Movie.",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_fetchMovie_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.fetchJson` and stores result as `movie`"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchMovie_1_2",
+                    "kind": "selection",
+                    "title": "`movie && movie.originalLanguage?.toLowerCase() !== 'eng' || movie.nameTranslations?.includes('eng') || movie.overviewTranslations?.includes('eng')`",
+                    "selectionMode": "if_else",
+                    "condition": "`movie && movie.originalLanguage?.toLowerCase() !== 'eng' || movie.nameTranslations?.includes('eng') || movie.overviewTranslations?.includes('eng')`",
+                    "thenBranch": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchMovie_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `this.fetchMovieTranslation(tvdbId, 'eng').catch` and stores result as `eng`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_fetchMovie_1_2_then_1_2_2",
+                        "kind": "selection",
+                        "title": "`eng`",
+                        "selectionMode": "if_else",
+                        "condition": "`eng`",
+                        "thenBranch": [
+                          {
+                            "id": "m_TheTVDBProvider_fetchMovie_1_2_then_1_2_2_then_0_2_2_1",
+                            "kind": "step",
+                            "title": "Assign `movie.engTranslation`",
+                            "payload": "movie.engTranslation = eng",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchMovie_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`movie`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-TheTVDBProvider-fetchTvSeriesArtworks",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/providers/tvdb.provider.ts-TheTVDBProvider-fetchTvSeriesArtworks",
+                "title": "TheTVDBProvider.fetchTvSeriesArtworks(tvdbId)",
+                "description": "Fetches all discovered artwork/image URLs for a series.",
+                "steps": [
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_0_1",
+                    "kind": "var_def",
+                    "title": "Define `urls`",
+                    "payload": "const urls = new Set<string>()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `this.fetchTvSeries` and stores result as `series`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_1_2_2",
+                        "kind": "selection",
+                        "title": "`series?.image`",
+                        "selectionMode": "if_else",
+                        "condition": "`series?.image`",
+                        "thenBranch": [
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_1_2_2_then_0_2_2_1",
+                            "kind": "step",
+                            "title": "Calls `normalizeTvdbImageUrl` and stores result as `img`"
+                          },
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_1_2_2_then_1_2_2_2",
+                            "kind": "selection",
+                            "title": "`img`",
+                            "selectionMode": "if_else",
+                            "condition": "`img`",
+                            "thenBranch": [
+                              {
+                                "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_1_2_2_then_1_2_2_2_then_0_2_2_2_1",
+                                "kind": "step",
+                                "title": "Calls `urls.add`"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_2_2_3",
+                        "kind": "selection",
+                        "title": "`series?.artworks && Array.isArray(series.artworks)`",
+                        "selectionMode": "if_else",
+                        "condition": "`series?.artworks && Array.isArray(series.artworks)`",
+                        "thenBranch": [
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_2_2_3_then_0_2_3_1",
+                            "kind": "iteration",
+                            "title": "Iterate `const art` over `series.artworks`",
+                            "loopType": "while",
+                            "condition": "Iterate `const art` over `series.artworks`",
+                            "children": [
+                              {
+                                "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_2_2_3_then_0_2_3_1_loop_0_2_3_1_1",
+                                "kind": "step",
+                                "title": "Calls `normalizeTvdbImageUrl` and stores result as `img`"
+                              },
+                              {
+                                "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_2_2_3_then_0_2_3_1_loop_1_2_3_1_2",
+                                "kind": "selection",
+                                "title": "`img`",
+                                "selectionMode": "if_else",
+                                "condition": "`img`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_2_2_3_then_0_2_3_1_loop_1_2_3_1_2_then_0_2_3_1_2_1",
+                                    "kind": "step",
+                                    "title": "Calls `urls.add`"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ]
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_3_2_4",
+                        "kind": "selection",
+                        "title": "`series?.seasons && Array.isArray(series.seasons)`",
+                        "selectionMode": "if_else",
+                        "condition": "`series?.seasons && Array.isArray(series.seasons)`",
+                        "thenBranch": [
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_3_2_4_then_0_2_4_1",
+                            "kind": "iteration",
+                            "title": "Iterate `const s` over `series.seasons`",
+                            "loopType": "while",
+                            "condition": "Iterate `const s` over `series.seasons`",
+                            "children": [
+                              {
+                                "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_3_2_4_then_0_2_4_1_loop_0_2_4_1_1",
+                                "kind": "selection",
+                                "title": "`s.image`",
+                                "selectionMode": "if_else",
+                                "condition": "`s.image`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_3_2_4_then_0_2_4_1_loop_0_2_4_1_1_then_0_2_4_1_1_1",
+                                    "kind": "step",
+                                    "title": "Calls `normalizeTvdbImageUrl` and stores result as `img`"
+                                  },
+                                  {
+                                    "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_3_2_4_then_0_2_4_1_loop_0_2_4_1_1_then_1_2_4_1_1_2",
+                                    "kind": "selection",
+                                    "title": "`img`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`img`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_1_2_try_3_2_4_then_0_2_4_1_loop_0_2_4_1_1_then_1_2_4_1_1_2_then_0_2_4_1_1_2_1",
+                                        "kind": "step",
+                                        "title": "Calls `urls.add`"
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ]
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_3_4",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_3_4_try_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `this.fetchJson` and stores result as `res`"
+                      },
+                      {
+                        "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_3_4_try_1_4_2",
+                        "kind": "selection",
+                        "title": "`res?.artworks && Array.isArray(res.artworks)`",
+                        "selectionMode": "if_else",
+                        "condition": "`res?.artworks && Array.isArray(res.artworks)`",
+                        "thenBranch": [
+                          {
+                            "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_3_4_try_1_4_2_then_0_4_2_1",
+                            "kind": "iteration",
+                            "title": "Iterate `const art` over `res.artworks`",
+                            "loopType": "while",
+                            "condition": "Iterate `const art` over `res.artworks`",
+                            "children": [
+                              {
+                                "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_3_4_try_1_4_2_then_0_4_2_1_loop_0_4_2_1_1",
+                                "kind": "step",
+                                "title": "Calls `normalizeTvdbImageUrl` and stores result as `img`"
+                              },
+                              {
+                                "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_3_4_try_1_4_2_then_0_4_2_1_loop_1_4_2_1_2",
+                                "kind": "selection",
+                                "title": "`img`",
+                                "selectionMode": "if_else",
+                                "condition": "`img`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_3_4_try_1_4_2_then_0_4_2_1_loop_1_4_2_1_2_then_0_4_2_1_2_1",
+                                    "kind": "step",
+                                    "title": "Calls `urls.add`"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ]
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_TheTVDBProvider_fetchTvSeriesArtworks_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`Array.from(urls)`"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "4 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[TheTVDBProvider] Missing required environment variable: TVDB_API_KEY"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[TheTVDBProvider] Login failed HTTP ${res.status}: ${errText}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[TheTVDBProvider] No token received from login"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[TheTVDBProvider] Request to ${endpoint} failed HTTP ${res.status}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,2023 @@
+{
+  "id": "apps/borealis/tv/tv.serv",
+  "title": "tv.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/tv/tv.serv.ts",
+    "relPath": "apps/borealis/tv/tv.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "tv.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/tv/tv.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/tv/tv.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/tv/tv.ctrl.ts (BorealisTvServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "15 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getCatalog"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getFilters"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getById"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.refresh"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getSimilar"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id, limit = 24)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getRelations"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getCharacters"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getStaff"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getSeasons"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(tvId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getEpisodes"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(tvId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getImages"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getStats"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getFriends"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id, currentUserId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getPeople"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisTvServ.getRecommendations"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(id)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getCatalog",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getCatalog",
+                "title": "BorealisTvServ.getCatalog(query)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`, `search`",
+                    "payload": "const skip = query?.cursor ? 0 : (page - 1) * limit\nconst search = query?.search?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_3_4",
+                    "kind": "step",
+                    "title": "Calls `parseList` and stores result as `genres`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_4_5",
+                    "kind": "step",
+                    "title": "Calls `parseList` and stores result as `tags`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_5_6",
+                    "kind": "step",
+                    "title": "Calls `parseList` and stores result as `formats`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_6_7",
+                    "kind": "step",
+                    "title": "Calls `parseList` and stores result as `statuses`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_7_8",
+                    "kind": "var_def",
+                    "title": "Define `years`",
+                    "payload": "const years = parseList(query?.years).map((y) => Number(y)).filter((y) => !isNaN(y))",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_8_9",
+                    "kind": "step",
+                    "title": "Calls `parseList` and stores result as `networks`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_9_10",
+                    "kind": "var_def",
+                    "title": "Define `sortBy`, `sortOrder`",
+                    "payload": "const sortBy = query?.sortBy ?? 'popularity'\nconst sortOrder = query?.sortOrder ?? sortBy === 'title' ? 'asc' : 'desc'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_10_11",
+                    "kind": "step",
+                    "title": "Database `query` on `Tv` and stores it as `q`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_11_12",
+                    "kind": "selection",
+                    "title": "`search`",
+                    "selectionMode": "if_else",
+                    "condition": "`search`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getCatalog_11_12_then_0_12_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => or( m.titlePrimary.ilike(`%${search}%`), m.titleSecondary.ilike(`%${search}%`), m.titleNative.ilike(`%${search}%`) ) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_12_13",
+                    "kind": "selection",
+                    "title": "`genres.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`genres.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getCatalog_12_13_then_0_13_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => m.genres.some((g) => g.genre.some((ge) => ge.name.in(genres))) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_13_14",
+                    "kind": "selection",
+                    "title": "`tags.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`tags.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getCatalog_13_14_then_0_14_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => m.tags.some((t) => t.tag.some((te) => te.name.in(tags))) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_14_15",
+                    "kind": "selection",
+                    "title": "`formats.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`formats.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getCatalog_14_15_then_0_15_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => m.showType.in(formats as any))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_15_16",
+                    "kind": "selection",
+                    "title": "`statuses.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`statuses.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getCatalog_15_16_then_0_16_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => m.status.in(statuses as any))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_16_17",
+                    "kind": "selection",
+                    "title": "`years.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`years.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getCatalog_16_17_then_0_17_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => m.firstAiredYear.in(years))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_17_18",
+                    "kind": "selection",
+                    "title": "`networks.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`networks.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getCatalog_17_18_then_0_18_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => m.studios.some((s) => s.studio.some((st) => st.name.in(networks))) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_18_19",
+                    "kind": "selection",
+                    "title": "`query?.cursor`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.cursor`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getCatalog_18_19_then_0_19_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => sortOrder === 'asc' ? m.id.gt(query.cursor!) : m.id.lt(query.cursor!) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_19_20",
+                    "kind": "var_def",
+                    "title": "Define `itemsQ`",
+                    "payload": "let itemsQ = q",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_20_21",
+                    "kind": "selection",
+                    "title": "`sortBy === 'score'`",
+                    "selectionMode": "if_else",
+                    "condition": "`sortBy === 'score'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getCatalog_20_21_then_0_21_1",
+                        "kind": "step",
+                        "title": "Assign `itemsQ`",
+                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.averageScore.asc() : x.averageScore.desc() )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getCatalog_20_21_else_0_22_1",
+                        "kind": "selection",
+                        "title": "`sortBy === 'title'`",
+                        "selectionMode": "if_else",
+                        "condition": "`sortBy === 'title'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisTvServ_getCatalog_20_21_else_0_22_1_then_0_22_1_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.titlePrimary.asc() : x.titlePrimary.desc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "m_BorealisTvServ_getCatalog_20_21_else_0_22_1_else_0_22_2_1",
+                            "kind": "selection",
+                            "title": "`sortBy === 'releaseDate'`",
+                            "selectionMode": "if_else",
+                            "condition": "`sortBy === 'releaseDate'`",
+                            "thenBranch": [
+                              {
+                                "id": "m_BorealisTvServ_getCatalog_20_21_else_0_22_1_else_0_22_2_1_then_0_22_2_1_1",
+                                "kind": "step",
+                                "title": "Assign `itemsQ`",
+                                "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.firstAiredYear.asc() : x.firstAiredYear.desc() )",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "m_BorealisTvServ_getCatalog_20_21_else_0_22_1_else_0_22_2_1_else_0_22_2_2_1",
+                                "kind": "selection",
+                                "title": "`sortBy === 'trending' || sortBy === 'favorites'`",
+                                "selectionMode": "if_else",
+                                "condition": "`sortBy === 'trending' || sortBy === 'favorites'`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_BorealisTvServ_getCatalog_20_21_else_0_22_1_else_0_22_2_1_else_0_22_2_2_1_then_0_22_2_2_1_1",
+                                    "kind": "step",
+                                    "title": "Assign `itemsQ`",
+                                    "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.favorites.asc() : x.favorites.desc() )",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "m_BorealisTvServ_getCatalog_20_21_else_0_22_1_else_0_22_2_1_else_0_22_2_2_1_else_0_22_2_2_2_1",
+                                    "kind": "selection",
+                                    "title": "`sortBy === 'updatedAt'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`sortBy === 'updatedAt'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_BorealisTvServ_getCatalog_20_21_else_0_22_1_else_0_22_2_1_else_0_22_2_2_1_else_0_22_2_2_2_1_then_0_22_2_2_2_1_1",
+                                        "kind": "step",
+                                        "title": "Assign `itemsQ`",
+                                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.updatedAt.asc() : x.updatedAt.desc() )",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ],
+                                    "elseBranch": [
+                                      {
+                                        "id": "m_BorealisTvServ_getCatalog_20_21_else_0_22_1_else_0_22_2_1_else_0_22_2_2_1_else_0_22_2_2_2_1_else_0_22_2_2_2_2_1",
+                                        "kind": "step",
+                                        "title": "Assign `itemsQ`",
+                                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.popularity.asc() : x.popularity.desc() )",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_22_23",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawItems]`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_23_24",
+                    "kind": "var_def",
+                    "title": "Define `items`, `hasMore`",
+                    "payload": "const items = rawItems.map((x) => ({ id: x.id, titlePrimary: x.titlePrimary, titleSecondary: x.titleSecondary ?? null, titleNative: x.titleNative ?? null, coverImage: x.coverImage ?? null, bannerImage: x.bannerImage ?? null, ...)\nconst hasMore = skip + items.length < total",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCatalog_24_25",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"items\": \"<items>\",\n  \"nextCursor\": \"<hasMore ? (items[items.length - 1]?.id ?? null) : null>\",\n  \"hasMore\": \"<hasMore>\",\n  \"total\": \"<total>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getFilters",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getFilters",
+                "title": "BorealisTvServ.getFilters()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getFilters_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `Tv` and stores it as `[allTv, allGenres]`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getFilters_1_2",
+                    "kind": "var_def",
+                    "title": "Define `statusCounts`, `formatCounts`, `yearCounts`",
+                    "payload": "const statusCounts: Record<string, number> = {}\nconst formatCounts: Record<string, number> = {}\nconst yearCounts: Record<number, number> = {}",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getFilters_2_3",
+                    "kind": "iteration",
+                    "title": "Iterate `const t` over `allTv`",
+                    "loopType": "while",
+                    "condition": "Iterate `const t` over `allTv`",
+                    "children": [
+                      {
+                        "id": "m_BorealisTvServ_getFilters_2_3_loop_0_3_1",
+                        "kind": "selection",
+                        "title": "`t.status`",
+                        "selectionMode": "if_else",
+                        "condition": "`t.status`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisTvServ_getFilters_2_3_loop_0_3_1_then_0_3_1_1",
+                            "kind": "step",
+                            "title": "Assign `statusCounts[t.status]`",
+                            "payload": "statusCounts[t.status] = (statusCounts[t.status] || 0) + 1",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_BorealisTvServ_getFilters_2_3_loop_1_3_2",
+                        "kind": "selection",
+                        "title": "`t.showType`",
+                        "selectionMode": "if_else",
+                        "condition": "`t.showType`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisTvServ_getFilters_2_3_loop_1_3_2_then_0_3_2_1",
+                            "kind": "step",
+                            "title": "Assign `formatCounts[t.showType]`",
+                            "payload": "formatCounts[t.showType] = (formatCounts[t.showType] || 0) + 1",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_BorealisTvServ_getFilters_2_3_loop_2_3_3",
+                        "kind": "selection",
+                        "title": "`t.firstAiredYear`",
+                        "selectionMode": "if_else",
+                        "condition": "`t.firstAiredYear`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisTvServ_getFilters_2_3_loop_2_3_3_then_0_3_3_1",
+                            "kind": "step",
+                            "title": "Assign `yearCounts[t.firstAiredYear]`",
+                            "payload": "yearCounts[t.firstAiredYear] = (yearCounts[t.firstAiredYear] || 0) + 1",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getFilters_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"statuses\": \"<Object.entries(statusCounts).map(([value, count]) => ({ value, count }))>\",\n  \"formats\": \"<Object.entries(formatCounts).map(([value, count]) => ({ value, count }))>\",\n  \"genres\": \"<allGenres.map((g: any) => ({ value: g.name, count: g.tv ?? 0 }))>\",\n  \"tags\": [],\n  \"years\": \"<Object.entries(yearCounts).map(([value, count]) => ({ value: Number(value), count })).sort((a, b) => b.value - a.value)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getById",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getById",
+                "title": "BorealisTvServ.getById(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getById_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Tv` and stores it as `load`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getById_1_2",
+                    "kind": "step",
+                    "title": "Calls `load` and stores result as `tv`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getById_2_3",
+                    "kind": "selection",
+                    "title": "`!tv`",
+                    "selectionMode": "if_else",
+                    "condition": "`!tv`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getById_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "TV show with ID ${id} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getById_3_4",
+                    "kind": "selection",
+                    "title": "`tv.tvdbUpdatedAt == null && tv.tvDBId`",
+                    "selectionMode": "if_else",
+                    "condition": "`tv.tvdbUpdatedAt == null && tv.tvDBId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getById_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `MediaEntitySyncer.syncTv(id, tv.tvDBId).catch`"
+                      },
+                      {
+                        "id": "m_BorealisTvServ_getById_3_4_then_1_4_2",
+                        "kind": "step",
+                        "title": "Assign `tv`",
+                        "payload": "tv = (await load()) ?? tv",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getById_4_5",
+                    "kind": "step",
+                    "title": "Calls `MediaQueueManager.queueIfStale`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getById_5_6",
+                    "kind": "step",
+                    "title": "Calls `fetchTopCharacters` and stores result as `characters`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getById_6_7",
+                    "kind": "var_def",
+                    "title": "Define `t`",
+                    "payload": "const t: any = tv",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getById_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"media\": {\n    \"...pick(t, [ 'id', 'titlePrimary', 'titleSecondary', 'titleNative', 'coverImage', 'bannerImage', 'description', 'originalLanguage', 'countryOfOrigin', 'episodeCount', 'seasonCount', 'broadcastTime', 'status', 'averageScore', 'favorites', 'popularity', 'isAdult', 'ageRating', 'ageRatingGuide', 'updatedAt', 'tvDBId', 'tmdbId', 'imdbId', 'simklId', 'tvmazeId', 'trailers', ])\": \"...\",\n    \"episodeDuration\": \"<t.averageRuntime ?? null>\",\n    \"startDateYear\": \"<t.firstAiredYear ?? null>\",\n    \"startDateMonth\": \"<t.firstAiredMonth ?? null>\",\n    \"startDateDay\": \"<t.firstAiredDay ?? null>\",\n    \"endDateYear\": \"<t.lastAiredYear ?? null>\",\n    \"endDateMonth\": \"<t.lastAiredMonth ?? null>\",\n    \"endDateDay\": \"<t.lastAiredDay ?? null>\",\n    \"broadcastDays\": \"<t.broadcastDays ?? []>\",\n    \"format\": \"<t.showType ?? null>\",\n    \"networks\": \"<t.networks ?? []>\",\n    \"synonyms\": \"<t.synonyms ?? []>\",\n    \"nextAiringEpisodeNumber\": null,\n    \"nextAiringAt\": null,\n    \"externalLinks\": \"<t.sources ?? null>\",\n    \"sources\": \"<t.sources ?? null>\",\n    \"genres\": \"<flattenGenres(t.genres)>\",\n    \"tags\": \"<flattenTags(t.tags)>\",\n    \"studios\": \"<t.studios || [].filter((s: any) => Boolean(s.studio)).map((s: any) => s.studio!)>\",\n    \"characters\": \"<characters>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-refresh",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-refresh",
+                "title": "BorealisTvServ.refresh(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_refresh_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Tv` and stores it as `tv`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_refresh_1_2",
+                    "kind": "selection",
+                    "title": "`!tv`",
+                    "selectionMode": "if_else",
+                    "condition": "`!tv`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_refresh_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "TV show with ID ${id} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_refresh_2_3",
+                    "kind": "step",
+                    "title": "Database `update` on `Tv`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_refresh_3_4",
+                    "kind": "step",
+                    "title": "Calls `MediaQueueManager.enqueueMediaUpdate('TV', id, { externalId: tv.tvDBId, priority: 1, depth: 0, maxDepth: 0, triggeredBy: 'manual', forceRefresh: true, ...).catch`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_refresh_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"<`Metadata refresh requested for \\\"${tv.titlePrimary}\\\"`>\",\n  \"timestamp\": \"<new Date().toISOString()>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getSimilar",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getSimilar",
+                "title": "BorealisTvServ.getSimilar(id, limit = 24)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Tv` and stores it as `source`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_1_2",
+                    "kind": "selection",
+                    "title": "`!source`",
+                    "selectionMode": "if_else",
+                    "condition": "`!source`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getSimilar_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "TV show with ID ${id} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_2_3",
+                    "kind": "var_def",
+                    "title": "Define `sourceGenres`, `sourceTags`, `sourceGenreIds`, `sourceTagIds`",
+                    "payload": "const sourceGenres = source.genres || [].filter((g: any) => Boolean(g.genre)).map((g: any) => g.genre!)\nconst sourceTags = source.tags || [].filter((t: any) => Boolean(t.tag)).map((t: any) => t.tag!)\nconst sourceGenreIds = new Set(sourceGenres.map((g: any) => g.id))\nconst sourceTagIds = new Set(sourceTags.map((t: any) => t.id))",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_3_4",
+                    "kind": "step",
+                    "title": "Database `query` on `Tv` and stores it as `candidatesQ`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_4_5",
+                    "kind": "var_def",
+                    "title": "Define `conds`",
+                    "payload": "const conds: any[] = []",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_5_6",
+                    "kind": "selection",
+                    "title": "`sourceGenreIds.size > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`sourceGenreIds.size > 0`",
+                    "thenBranch": [],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_6_7",
+                    "kind": "selection",
+                    "title": "`sourceTagIds.size > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`sourceTagIds.size > 0`",
+                    "thenBranch": [],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_7_8",
+                    "kind": "selection",
+                    "title": "`source.showType`",
+                    "selectionMode": "if_else",
+                    "condition": "`source.showType`",
+                    "thenBranch": [],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_8_9",
+                    "kind": "selection",
+                    "title": "`conds.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`conds.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getSimilar_8_9_then_0_9_1",
+                        "kind": "step",
+                        "title": "Assign `candidatesQ`",
+                        "payload": "candidatesQ = candidatesQ.where((m) => or(...conds.map((c) => c(m))))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_9_10",
+                    "kind": "step",
+                    "title": "Calls `candidatesQ.limit(120).include('genres', (g) => g.include('genre', (ge) => ge.select('id', 'name'))).include('tags', (t) => t.include('tag', (te) => te.select('id', 'name'))).all` and stores result as `rawCandidates`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_10_11",
+                    "kind": "var_def",
+                    "title": "Define `candidates`, `scored`, `items`",
+                    "payload": "const candidates = rawCandidates.map((candidate: any) => ({ ...candidate, genres: (candidate.genres || []).filter((g: any) => Boolean(g.genre)).map((g: any) => g.genre!), tags: (candidate.tags || []).filter((t: any) => Boolean(t.tag)).map((t: any) => t.tag!), }))\nconst scored = candidates.map((candidate) => { let similarityScore = 0 const candGenreIds = new Set(candidate.genres.map((g) => g.id)) const genreIntersection = Array.from(sourceGenreIds).filter((gid) => candGenreIds.has(gid)) const genreUnion = new Set([...sourceGenreIds, ...candGenreIds]) if (genreUnion.size > 0 && genreIntersection.length > 0) { similarityScore += Math.round((genreIntersection.length / genreUnion.size) * 40) ...)\nconst items = scored.filter((s) => s.similarityScore > 0).sort((a, b) => b.similarityScore - a.similarityScore).slice(0, limit).map(({ similarityScore, ...rest }) => rest)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSimilar_11_12",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"sourceId\": \"<id>\",\n  \"items\": \"<items>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getRelations",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getRelations",
+                "title": "BorealisTvServ.getRelations(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getRelations_0_1",
+                    "kind": "step",
+                    "title": "Calls `fetchMediaRelations` and stores result as `hydrated`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getRelations_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"relations\": \"<hydrated.map((r) => ({ id: r.id, sourceType: r.sourceType, sourceId: r.sourceId, targetType: r.targetType, targetId: r.targetId, type: r.type, ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getCharacters",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getCharacters",
+                "title": "BorealisTvServ.getCharacters(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getCharacters_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `MediaCharacter` and stores it as `raw`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getCharacters_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"characters\": \"<raw.map((c: any) => ({ id: c.id, mediaId: c.mediaId, mediaType: c.mediaType, characterId: c.characterId, actorId: c.actorId ?? null, role: c.role, ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getStaff",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getStaff",
+                "title": "BorealisTvServ.getStaff(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getStaff_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `MediaStaff` and stores it as `raw`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getStaff_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"staff\": \"<raw.map((s: any) => ({ id: s.id, mediaId: s.mediaId, mediaType: s.mediaType, personId: s.personId, role: s.role, customRole: s.customRole ?? null, ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getSeasons",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getSeasons",
+                "title": "BorealisTvServ.getSeasons(tvId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getSeasons_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `TvSeason` and stores it as `seasons`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getSeasons_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"seasons\": \"<seasons.map((s: any) => pick(s, [ 'id', 'tvId', 'seasonNumber', 'titlePrimary', 'titleSecondary', 'description', 'posterImage', 'airDateYear', 'airDateMonth', 'airDateDay', 'episodeCount', 'trailers', ]))>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getEpisodes",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getEpisodes",
+                "title": "BorealisTvServ.getEpisodes(tvId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getEpisodes_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `TvEpisode` and stores it as `episodes`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getEpisodes_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"episodes\": \"<[...episodes].sort((a: any, b: any) => a.seasonNumber - b.seasonNumber || a.episodeNumber - b.episodeNumber).map((e: any) => ({ ...pick(e, [ 'id', 'tvId', 'seasonId', 'seasonNumber', 'episodeNumber', 'titlePrimary', 'titleSecondary', 'titleNative', 'description', 'duration', 'airDate', 'rating', 'thumbnail', 'opStart', 'opEnd', 'edStart', 'edEnd', 'recapStart', 'recapEnd', 'skipTimestamps', ]), isFiller: e.isFiller ?? false, ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getImages",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getImages",
+                "title": "BorealisTvServ.getImages(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getImages_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Tv` and stores it as `tv`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getImages_1_2",
+                    "kind": "selection",
+                    "title": "`!tv`",
+                    "selectionMode": "if_else",
+                    "condition": "`!tv`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getImages_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "TV show with ID ${id} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getImages_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"images\": {\n    \"thetvdb\": \"<imageSource(tv.images, 'thetvdb')>\",\n    \"tmdb\": \"<imageSource(tv.images, 'tmdb')>\",\n    \"imdb\": \"<imageSource(tv.images, 'imdb')>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getStats",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getStats",
+                "title": "BorealisTvServ.getStats(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getStats_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Tv` and stores it as `tv`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getStats_1_2",
+                    "kind": "selection",
+                    "title": "`!tv`",
+                    "selectionMode": "if_else",
+                    "condition": "`!tv`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getStats_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "TV show with ID ${id} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getStats_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"stats\": {\n    \"averageScore\": \"<tv.averageScore ?? null>\",\n    \"favorites\": \"<tv.favorites ?? 0>\",\n    \"popularity\": \"<tv.popularity ?? 0>\",\n    \"scoreDistribution\": \"<tv.scoreDistribution ?? {}>\",\n    \"statusDistribution\": \"<tv.statusDistribution ?? {}>\",\n    \"...pick(tv, ['imdbRating', 'imdbVotes', 'tvmazeRating', 'rottenTomatoesScore'])\": \"...\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getFriends",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getFriends",
+                "title": "BorealisTvServ.getFriends(id, currentUserId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getFriends_0_1",
+                    "kind": "selection",
+                    "title": "`!currentUserId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!currentUserId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getFriends_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getFriends_1_2",
+                    "kind": "step",
+                    "title": "Database `all` on `Friend` and stores it as `userFriends`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getFriends_2_3",
+                    "kind": "var_def",
+                    "title": "Define `friendIds`",
+                    "payload": "const friendIds = userFriends.map((f) => f.friendId)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getFriends_3_4",
+                    "kind": "selection",
+                    "title": "`friendIds.length === 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`friendIds.length === 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getFriends_3_4_then_0_4_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getFriends_4_5",
+                    "kind": "step",
+                    "title": "Database `all` on `TvList` and stores it as `rawEntries`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getFriends_5_6",
+                    "kind": "var_def",
+                    "title": "Define `friends`",
+                    "payload": "const friends = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) return { id: raw.id, userId: raw.userId, status: raw.status, score: raw.score, ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getFriends_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"friends\": \"<friends>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getPeople",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getPeople",
+                "title": "BorealisTvServ.getPeople(id, query)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getPeople_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getPeople_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getPeople_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`, `filterStatus`",
+                    "payload": "const skip = page - 1 * limit\nconst filterStatus = query?.status?.toUpperCase()?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getPeople_3_4",
+                    "kind": "step",
+                    "title": "Database `query` on `TvList` and stores it as `q`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getPeople_4_5",
+                    "kind": "selection",
+                    "title": "`filterStatus`",
+                    "selectionMode": "if_else",
+                    "condition": "`filterStatus`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisTvServ_getPeople_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where({ status: filterStatus as any })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getPeople_5_6",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawEntries]`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getPeople_6_7",
+                    "kind": "var_def",
+                    "title": "Define `people`",
+                    "payload": "const people = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) return { id: raw.id, userId: raw.userId, status: raw.status, score: raw.score, ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getPeople_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"mediaType\": \"tv\",\n  \"mediaId\": \"<id>\",\n  \"total\": \"<total>\",\n  \"page\": \"<page>\",\n  \"limit\": \"<limit>\",\n  \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n  \"hasMore\": \"<page * limit < total>\",\n  \"people\": \"<people>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisTvServ-getRecommendations",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/tv/tv.serv.ts-BorealisTvServ-getRecommendations",
+                "title": "BorealisTvServ.getRecommendations(id)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BorealisTvServ_getRecommendations_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `MediaRecommendation` and stores it as `recs`"
+                  },
+                  {
+                    "id": "m_BorealisTvServ_getRecommendations_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"recommendations\": \"<recs.map((r: any) => { const profile = getProfileCustomization(r.user?.customization) return { id: r.id, sourceType: r.sourceType, sourceId: r.sourceId, targetType: r.targetType, ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "TV show with ID ${id} not found"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

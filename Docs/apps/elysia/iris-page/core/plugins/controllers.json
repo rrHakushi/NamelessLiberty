@@ -1,0 +1,973 @@
+{
+  "id": "core/plugins/controllers",
+  "title": "controllers",
+  "description": "",
+  "icon": "IconFunction",
+  "metadata": {
+    "pathname": "apps/elysia/src/core/plugins/controllers.ts",
+    "relPath": "core/plugins/controllers.ts",
+    "role": "Functions",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconFunction",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "controllers"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Functions"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/core/plugins/controllers.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "0 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "font-mono text-xs text-muted-foreground"
+                    },
+                    "text": "None"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-isElysiaInstance",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/controllers.ts-isElysiaInstance",
+                "title": "function isElysiaInstance",
+                "description": "Checks if a value is an Elysia instance. Checks instanceof Elysia as well as duck typing for cross-version/cross-realm compatibility.",
+                "steps": [
+                  {
+                    "id": "exp_isElysiaInstance_0_1",
+                    "kind": "selection",
+                    "title": "`!val || typeofval !== 'object'`",
+                    "selectionMode": "if_else",
+                    "condition": "`!val || typeofval !== 'object'`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isElysiaInstance_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isElysiaInstance_1_2",
+                    "kind": "selection",
+                    "title": "`val instanceof Elysia`",
+                    "selectionMode": "if_else",
+                    "condition": "`val instanceof Elysia`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isElysiaInstance_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`true`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isElysiaInstance_2_3",
+                    "kind": "var_def",
+                    "title": "Define `candidate`",
+                    "payload": "const candidate = val as Record<string, unknown>",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_isElysiaInstance_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`typeofcandidate.handle === 'function' && typeofcandidate.use === 'function' && Array.isArray(candidate.routes)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-resolveControllerDir",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/controllers.ts-resolveControllerDir",
+                "title": "function resolveControllerDir",
+                "description": "Resolves the controller directory path reliably across different execution contexts (e.g., monorepo root, package root, or bun run).",
+                "steps": [
+                  {
+                    "id": "exp_resolveControllerDir_0_1",
+                    "kind": "selection",
+                    "title": "`specifiedDir`",
+                    "selectionMode": "if_else",
+                    "condition": "`specifiedDir`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_resolveControllerDir_0_1_then_0_1_1",
+                        "kind": "selection",
+                        "title": "`path.isAbsolute(specifiedDir)`",
+                        "selectionMode": "if_else",
+                        "condition": "`path.isAbsolute(specifiedDir)`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_resolveControllerDir_0_1_then_0_1_1_then_0_1_1_1",
+                            "kind": "selection",
+                            "title": "`fs.existsSync(specifiedDir)`",
+                            "selectionMode": "if_else",
+                            "condition": "`fs.existsSync(specifiedDir)`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_resolveControllerDir_0_1_then_0_1_1_then_0_1_1_1_then_0_1_1_1_1",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`specifiedDir`"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "exp_resolveControllerDir_0_1_then_0_1_1_else_0_1_2_1",
+                            "kind": "step",
+                            "title": "Calls `path.resolve` and stores result as `fromCwd`"
+                          },
+                          {
+                            "id": "exp_resolveControllerDir_0_1_then_0_1_1_else_1_1_2_2",
+                            "kind": "selection",
+                            "title": "`fs.existsSync(fromCwd)`",
+                            "selectionMode": "if_else",
+                            "condition": "`fs.existsSync(fromCwd)`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_resolveControllerDir_0_1_then_0_1_1_else_1_1_2_2_then_0_1_2_2_1",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`fromCwd`"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "exp_resolveControllerDir_0_1_then_0_1_1_else_2_1_2_3",
+                            "kind": "step",
+                            "title": "Calls `path.resolve` and stores result as `fromFile`"
+                          },
+                          {
+                            "id": "exp_resolveControllerDir_0_1_then_0_1_1_else_3_1_2_4",
+                            "kind": "selection",
+                            "title": "`fs.existsSync(fromFile)`",
+                            "selectionMode": "if_else",
+                            "condition": "`fs.existsSync(fromFile)`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_resolveControllerDir_0_1_then_0_1_1_else_3_1_2_4_then_0_1_2_4_1",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`fromFile`"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "exp_resolveControllerDir_0_1_then_2_1_3",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`path.resolve(process.cwd(), specifiedDir)`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_resolveControllerDir_1_2",
+                    "kind": "var_def",
+                    "title": "Define `candidates`",
+                    "payload": "const candidates = [ path.resolve(process.cwd(), 'src/apps'), path.resolve(process.cwd(), 'apps'), path.resolve(import.meta.dirname, '../../apps'), path.resolve(process.cwd(), 'src/api/controllers'), path.resolve(import.meta.dirname, '../api/controllers'), ]",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_resolveControllerDir_2_3",
+                    "kind": "iteration",
+                    "title": "Iterate `const candidate` over `candidates`",
+                    "loopType": "while",
+                    "condition": "Iterate `const candidate` over `candidates`",
+                    "children": [
+                      {
+                        "id": "exp_resolveControllerDir_2_3_loop_0_3_1",
+                        "kind": "selection",
+                        "title": "`fs.existsSync(candidate) && fs.statSync(candidate).isDirectory()`",
+                        "selectionMode": "if_else",
+                        "condition": "`fs.existsSync(candidate) && fs.statSync(candidate).isDirectory()`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_resolveControllerDir_2_3_loop_0_3_1_then_0_3_1_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`candidate`"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_resolveControllerDir_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`path.resolve(process.cwd(), 'src/api/controllers')`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-scanFiles",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/controllers.ts-scanFiles",
+                "title": "function scanFiles",
+                "description": "Recursively scans a directory for files matching criteria.",
+                "steps": [
+                  {
+                    "id": "exp_scanFiles_0_1",
+                    "kind": "selection",
+                    "title": "`!fs.existsSync(dir)`",
+                    "selectionMode": "if_else",
+                    "condition": "`!fs.existsSync(dir)`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_scanFiles_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_scanFiles_1_2",
+                    "kind": "var_def",
+                    "title": "Define `results`",
+                    "payload": "const results: string[] = []",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_scanFiles_2_3",
+                    "kind": "step",
+                    "title": "Calls `fs.readdirSync` and stores result as `entries`"
+                  },
+                  {
+                    "id": "exp_scanFiles_3_4",
+                    "kind": "iteration",
+                    "title": "Iterate `const entry` over `entries`",
+                    "loopType": "while",
+                    "condition": "Iterate `const entry` over `entries`",
+                    "children": [
+                      {
+                        "id": "exp_scanFiles_3_4_loop_0_4_1",
+                        "kind": "var_def",
+                        "title": "Define `fullPath`",
+                        "payload": "const fullPath = path.join(dir, entry.name)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_scanFiles_3_4_loop_1_4_2",
+                        "kind": "selection",
+                        "title": "`entry.isDirectory()`",
+                        "selectionMode": "if_else",
+                        "condition": "`entry.isDirectory()`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_scanFiles_3_4_loop_1_4_2_then_0_4_2_1",
+                            "kind": "selection",
+                            "title": "`recursive && entry.name !== 'node_modules' && !entry.name.startsWith('.')`",
+                            "selectionMode": "if_else",
+                            "condition": "`recursive && entry.name !== 'node_modules' && !entry.name.startsWith('.')`",
+                            "thenBranch": [],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_scanFiles_3_4_loop_2_4_3",
+                        "kind": "selection",
+                        "title": "`!entry.isFile()`",
+                        "selectionMode": "if_else",
+                        "condition": "`!entry.isFile()`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_scanFiles_3_4_loop_3_4_4",
+                        "kind": "var_def",
+                        "title": "Define `name`",
+                        "payload": "const name = entry.name",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_scanFiles_3_4_loop_4_4_5",
+                        "kind": "selection",
+                        "title": "`name.startsWith('.') || name.startsWith('_') || name.endsWith('.d.ts') || name.includes('.test.') || name.includes('.spec.') || name.includes('.generated.')`",
+                        "selectionMode": "if_else",
+                        "condition": "`name.startsWith('.') || name.startsWith('_') || name.endsWith('.d.ts') || name.includes('.test.') || name.includes('.spec.') || name.includes('.generated.')`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_scanFiles_3_4_loop_5_4_6",
+                        "kind": "selection",
+                        "title": "`ignore`",
+                        "selectionMode": "if_else",
+                        "condition": "`ignore`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_scanFiles_3_4_loop_5_4_6_then_0_4_6_1",
+                            "kind": "selection",
+                            "title": "`typeofignore === 'function' && ignore(name, fullPath)`",
+                            "selectionMode": "if_else",
+                            "condition": "`typeofignore === 'function' && ignore(name, fullPath)`",
+                            "thenBranch": [],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "exp_scanFiles_3_4_loop_5_4_6_then_1_4_6_2",
+                            "kind": "selection",
+                            "title": "`Array.isArray(ignore)`",
+                            "selectionMode": "if_else",
+                            "condition": "`Array.isArray(ignore)`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_scanFiles_3_4_loop_5_4_6_then_1_4_6_2_then_0_4_6_2_1",
+                                "kind": "step",
+                                "title": "Calls `ignore.some` and stores result as `isIgnored`"
+                              },
+                              {
+                                "id": "exp_scanFiles_3_4_loop_5_4_6_then_1_4_6_2_then_1_4_6_2_2",
+                                "kind": "selection",
+                                "title": "`isIgnored`",
+                                "selectionMode": "if_else",
+                                "condition": "`isIgnored`",
+                                "thenBranch": [],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_scanFiles_3_4_loop_6_4_7",
+                        "kind": "selection",
+                        "title": "`pattern`",
+                        "selectionMode": "if_else",
+                        "condition": "`pattern`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_scanFiles_3_4_loop_6_4_7_then_0_4_7_1",
+                            "kind": "selection",
+                            "title": "`typeofpattern === 'function'`",
+                            "selectionMode": "if_else",
+                            "condition": "`typeofpattern === 'function'`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_scanFiles_3_4_loop_6_4_7_then_0_4_7_1_then_0_4_7_1_1",
+                                "kind": "selection",
+                                "title": "`!pattern(name, fullPath)`",
+                                "selectionMode": "if_else",
+                                "condition": "`!pattern(name, fullPath)`",
+                                "thenBranch": [],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "exp_scanFiles_3_4_loop_6_4_7_then_0_4_7_1_else_0_4_7_2_1",
+                                "kind": "selection",
+                                "title": "`pattern instanceof RegExp`",
+                                "selectionMode": "if_else",
+                                "condition": "`pattern instanceof RegExp`",
+                                "thenBranch": [
+                                  {
+                                    "id": "exp_scanFiles_3_4_loop_6_4_7_then_0_4_7_1_else_0_4_7_2_1_then_0_4_7_2_1_1",
+                                    "kind": "selection",
+                                    "title": "`!pattern.test(name) && !pattern.test(fullPath)`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`!pattern.test(name) && !pattern.test(fullPath)`",
+                                    "thenBranch": [],
+                                    "elseBranch": []
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "exp_scanFiles_3_4_loop_6_4_7_then_0_4_7_1_else_0_4_7_2_1_else_0_4_7_2_2_1",
+                                    "kind": "selection",
+                                    "title": "`typeofpattern === 'string'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`typeofpattern === 'string'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "exp_scanFiles_3_4_loop_6_4_7_then_0_4_7_1_else_0_4_7_2_1_else_0_4_7_2_2_1_then_0_4_7_2_2_1_1",
+                                        "kind": "selection",
+                                        "title": "`!name.includes(pattern) && !fullPath.includes(pattern)`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`!name.includes(pattern) && !fullPath.includes(pattern)`",
+                                        "thenBranch": [],
+                                        "elseBranch": []
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "exp_scanFiles_3_4_loop_6_4_7_else_0_4_8_1",
+                            "kind": "step",
+                            "title": "Calls `/\\.(ctrl|controller)\\.[cm]?[jt]sx?$/.test` and stores result as `isControllerFile`"
+                          },
+                          {
+                            "id": "exp_scanFiles_3_4_loop_6_4_7_else_1_4_8_2",
+                            "kind": "selection",
+                            "title": "`!isControllerFile`",
+                            "selectionMode": "if_else",
+                            "condition": "`!isControllerFile`",
+                            "thenBranch": [],
+                            "elseBranch": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_scanFiles_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`results.sort()`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-generateStaticManifest",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/controllers.ts-generateStaticManifest",
+                "title": "function generateStaticManifest",
+                "description": "Generates a static TypeScript manifest file importing and chaining all discovered controllers. Useful for 100% full compile-time Eden Treaty type inference.",
+                "steps": [
+                  {
+                    "id": "exp_generateStaticManifest_0_1",
+                    "kind": "step",
+                    "title": "Calls `path.dirname` and stores result as `outputDir`"
+                  },
+                  {
+                    "id": "exp_generateStaticManifest_1_2",
+                    "kind": "selection",
+                    "title": "`!fs.existsSync(outputDir)`",
+                    "selectionMode": "if_else",
+                    "condition": "`!fs.existsSync(outputDir)`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_generateStaticManifest_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Calls `fs.mkdirSync`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_generateStaticManifest_2_3",
+                    "kind": "var_def",
+                    "title": "Define `importStatements`, `chainCalls`",
+                    "payload": "const importStatements: string[] = [\"import { Elysia } from 'elysia'\"]\nconst chainCalls: string[] = []",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_generateStaticManifest_3_4",
+                    "kind": "step",
+                    "title": "Calls `controllers.forEach`"
+                  },
+                  {
+                    "id": "exp_generateStaticManifest_4_5",
+                    "kind": "var_def",
+                    "title": "Define `BATCH_SIZE`, `batches`",
+                    "payload": "const BATCH_SIZE = 6\nconst batches: string[][] = []",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_generateStaticManifest_5_6",
+                    "kind": "iteration",
+                    "title": "Loop `i < controllers.length`",
+                    "loopType": "while",
+                    "condition": "Loop `i < controllers.length`",
+                    "children": [
+                      {
+                        "id": "exp_generateStaticManifest_5_6_loop_0_6_1",
+                        "kind": "var_def",
+                        "title": "Define `chunk`",
+                        "payload": "const chunk = controllers.slice(i, i + BATCH_SIZE)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_generateStaticManifest_6_7",
+                    "kind": "var_def",
+                    "title": "Define `groupDefinitions`, `groupUses`, `code`",
+                    "payload": "const groupDefinitions = batches.map((batch, bIdx) => { return `const _group_${bIdx} = new Elysia()\\n ${batch.map((name) => `.use(${name})`).join('\\n ')}` })\nconst groupUses = batches.map((_, bIdx) => `.use(_group_${bIdx})`)\nconst code = [ '// [AUTO-GENERATED] DO NOT EDIT MANUALLY', '// Generated by @NamelessLiberty/elysia controllers plugin for Eden Treaty static typing.', ...importStatements, '', ...groupDefinitions, '', ....join('\n')",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_generateStaticManifest_7_8",
+                    "kind": "selection",
+                    "title": "`fs.existsSync(outputFile)`",
+                    "selectionMode": "if_else",
+                    "condition": "`fs.existsSync(outputFile)`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_generateStaticManifest_7_8_then_0_8_1",
+                        "kind": "step",
+                        "title": "Calls `fs.readFileSync` and stores result as `current`"
+                      },
+                      {
+                        "id": "exp_generateStaticManifest_7_8_then_1_8_2",
+                        "kind": "selection",
+                        "title": "`current === code`",
+                        "selectionMode": "if_else",
+                        "condition": "`current === code`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_generateStaticManifest_7_8_then_1_8_2_then_0_8_2_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`void`"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_generateStaticManifest_8_9",
+                    "kind": "step",
+                    "title": "Calls `fs.writeFileSync`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-generateControllersManifest",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/controllers.ts-generateControllersManifest",
+                "title": "function generateControllersManifest",
+                "description": "Scans controller files in specifiedDir and regenerates the static controllers.generated.ts manifest.",
+                "steps": [
+                  {
+                    "id": "exp_generateControllersManifest_0_1",
+                    "kind": "step",
+                    "title": "Calls `resolveControllerDir` and stores result as `targetDir`"
+                  },
+                  {
+                    "id": "exp_generateControllersManifest_1_2",
+                    "kind": "selection",
+                    "title": "`!fs.existsSync(targetDir)`",
+                    "selectionMode": "if_else",
+                    "condition": "`!fs.existsSync(targetDir)`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_generateControllersManifest_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_generateControllersManifest_2_3",
+                    "kind": "step",
+                    "title": "Calls `scanFiles` and stores result as `files`"
+                  },
+                  {
+                    "id": "exp_generateControllersManifest_3_4",
+                    "kind": "var_def",
+                    "title": "Define `items`",
+                    "payload": "const items: { exportName: string; filePath: string }[] = []",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_generateControllersManifest_4_5",
+                    "kind": "iteration",
+                    "title": "Iterate `const filePath` over `files`",
+                    "loopType": "while",
+                    "condition": "Iterate `const filePath` over `files`",
+                    "children": [
+                      {
+                        "id": "exp_generateControllersManifest_4_5_loop_0_5_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "exp_generateControllersManifest_4_5_loop_0_5_1_try_0_5_1_1",
+                            "kind": "step",
+                            "title": "Calls `fs.readFileSync` and stores result as `content`"
+                          },
+                          {
+                            "id": "exp_generateControllersManifest_4_5_loop_0_5_1_try_1_5_1_2",
+                            "kind": "var_def",
+                            "title": "Define `namedRegex`, `match`, `foundNamed`",
+                            "payload": "const namedRegex = /export\\s+const\\s+([a-zA-Z0-9_$]+)\\s*=\\s*(?:new\\s+Elysia|create\\w+(?:Router|Controller)|\\()/g\nlet match: RegExpExecArray | null\nlet foundNamed = false",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "exp_generateControllersManifest_4_5_loop_0_5_1_try_2_5_1_3",
+                            "kind": "iteration",
+                            "title": "While `match = namedRegex.exec(content) !== null`",
+                            "loopType": "while",
+                            "condition": "While `match = namedRegex.exec(content) !== null`",
+                            "children": [
+                              {
+                                "id": "exp_generateControllersManifest_4_5_loop_0_5_1_try_2_5_1_3_loop_0_5_1_3_1",
+                                "kind": "selection",
+                                "title": "`match[1]`",
+                                "selectionMode": "if_else",
+                                "condition": "`match[1]`",
+                                "thenBranch": [
+                                  {
+                                    "id": "exp_generateControllersManifest_4_5_loop_0_5_1_try_2_5_1_3_loop_0_5_1_3_1_then_0_5_1_3_1_1",
+                                    "kind": "step",
+                                    "title": "Assign `foundNamed`",
+                                    "payload": "foundNamed = true",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "exp_generateControllersManifest_4_5_loop_0_5_1_try_3_5_1_4",
+                            "kind": "selection",
+                            "title": "`!foundNamed && /export\\s+default\\s+/.test(content)`",
+                            "selectionMode": "if_else",
+                            "condition": "`!foundNamed && /export\\s+default\\s+/.test(content)`",
+                            "thenBranch": [],
+                            "elseBranch": []
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "exp_generateControllersManifest_4_5_loop_0_5_1_catch_0_5_2_1",
+                            "kind": "warning",
+                            "code": "Warning",
+                            "message": "[ControllersManifest] Skipping ${filePath}:`, err?.message || err"
+                          }
+                        ],
+                        "finallyBlock": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_generateControllersManifest_5_6",
+                    "kind": "var_def",
+                    "title": "Define `outFile`",
+                    "payload": "const outFile = specifiedOutFile ? path.resolve(process.cwd(), specifiedOutFile) : path.basename(targetDir) === 'apps' ? path.join(targetDir, 'controllers.generated.ts') : path.join(path.dirname(targetDir), 'controllers.generated.ts')",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_generateControllersManifest_6_7",
+                    "kind": "step",
+                    "title": "Calls `generateStaticManifest`"
+                  },
+                  {
+                    "id": "exp_generateControllersManifest_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`outFile`"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[ControllersManifest] Skipping ${filePath}:`, err?.message || err"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

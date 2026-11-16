@@ -220,6 +220,26 @@
       "model": "Person",
       "namespace": "public"
     },
+    "ReliquaryBookmark": {
+      "model": "ReliquaryBookmark",
+      "namespace": "public"
+    },
+    "ReliquaryCollaborator": {
+      "model": "ReliquaryCollaborator",
+      "namespace": "public"
+    },
+    "ReliquaryDoc": {
+      "model": "ReliquaryDoc",
+      "namespace": "public"
+    },
+    "ReliquaryPage": {
+      "model": "ReliquaryPage",
+      "namespace": "public"
+    },
+    "ReliquaryRecentVisit": {
+      "model": "ReliquaryRecentVisit",
+      "namespace": "public"
+    },
     "ReviewVote": {
       "model": "ReviewVote",
       "namespace": "public"
@@ -1131,6 +1151,52 @@
               {
                 "name": "UNKNOWN",
                 "value": "UNKNOWN"
+              }
+            ]
+          },
+          "ReliquaryCategory": {
+            "codecId": "pg/text@1",
+            "members": [
+              {
+                "name": "API_DOCS",
+                "value": "API_DOCS"
+              },
+              {
+                "name": "WIKI",
+                "value": "WIKI"
+              },
+              {
+                "name": "GUIDES",
+                "value": "GUIDES"
+              },
+              {
+                "name": "TUTORIALS",
+                "value": "TUTORIALS"
+              },
+              {
+                "name": "REFERENCE",
+                "value": "REFERENCE"
+              },
+              {
+                "name": "OTHER",
+                "value": "OTHER"
+              }
+            ]
+          },
+          "ReliquaryVisibility": {
+            "codecId": "pg/text@1",
+            "members": [
+              {
+                "name": "PUBLIC",
+                "value": "PUBLIC"
+              },
+              {
+                "name": "UNLISTED",
+                "value": "UNLISTED"
+              },
+              {
+                "name": "PRIVATE",
+                "value": "PRIVATE"
               }
             ]
           },
@@ -14652,6 +14718,793 @@
               "table": "Person"
             }
           },
+          "ReliquaryBookmark": {
+            "fields": {
+              "createdAt": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "docId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "userId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "doc": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "docId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryDoc",
+                  "namespace": "public"
+                }
+              },
+              "user": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "userId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "User",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "createdAt": {
+                  "column": "createdAt"
+                },
+                "docId": {
+                  "column": "docId"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "userId": {
+                  "column": "userId"
+                }
+              },
+              "namespaceId": "public",
+              "table": "ReliquaryBookmark"
+            }
+          },
+          "ReliquaryCollaborator": {
+            "fields": {
+              "createdAt": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "docId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "role": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                },
+                "valueSet": {
+                  "entityKind": "enum",
+                  "entityName": "CollaboratorRole",
+                  "namespaceId": "public",
+                  "plane": "domain"
+                }
+              },
+              "userId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "doc": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "docId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryDoc",
+                  "namespace": "public"
+                }
+              },
+              "user": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "userId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "User",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "createdAt": {
+                  "column": "createdAt"
+                },
+                "docId": {
+                  "column": "docId"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "role": {
+                  "column": "role"
+                },
+                "userId": {
+                  "column": "userId"
+                }
+              },
+              "namespaceId": "public",
+              "table": "ReliquaryCollaborator"
+            }
+          },
+          "ReliquaryDoc": {
+            "fields": {
+              "category": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                },
+                "valueSet": {
+                  "entityKind": "enum",
+                  "entityName": "ReliquaryCategory",
+                  "namespaceId": "public",
+                  "plane": "domain"
+                }
+              },
+              "createdAt": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "creatorId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "description": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "icon": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "lockExpiresAt": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "lockedAt": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "lockedById": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "pageIds": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "schema": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
+              "sidebarConfig": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
+              "tags": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "title": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "updatedAt": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "visibility": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                },
+                "valueSet": {
+                  "entityKind": "enum",
+                  "entityName": "ReliquaryVisibility",
+                  "namespaceId": "public",
+                  "plane": "domain"
+                }
+              }
+            },
+            "relations": {
+              "bookmarks": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "docId"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryBookmark",
+                  "namespace": "public"
+                }
+              },
+              "collaborators": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "docId"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryCollaborator",
+                  "namespace": "public"
+                }
+              },
+              "creator": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "creatorId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "User",
+                  "namespace": "public"
+                }
+              },
+              "lockedBy": {
+                "cardinality": "N:1",
+                "nullable": true,
+                "on": {
+                  "localFields": [
+                    "lockedById"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "User",
+                  "namespace": "public"
+                }
+              },
+              "pages": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "docId"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryPage",
+                  "namespace": "public"
+                }
+              },
+              "recentVisits": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "docId"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryRecentVisit",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "category": {
+                  "column": "category"
+                },
+                "createdAt": {
+                  "column": "createdAt"
+                },
+                "creatorId": {
+                  "column": "creatorId"
+                },
+                "description": {
+                  "column": "description"
+                },
+                "icon": {
+                  "column": "icon"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "lockExpiresAt": {
+                  "column": "lockExpiresAt"
+                },
+                "lockedAt": {
+                  "column": "lockedAt"
+                },
+                "lockedById": {
+                  "column": "lockedById"
+                },
+                "pageIds": {
+                  "column": "pageIds"
+                },
+                "schema": {
+                  "column": "schema"
+                },
+                "sidebarConfig": {
+                  "column": "sidebarConfig"
+                },
+                "tags": {
+                  "column": "tags"
+                },
+                "title": {
+                  "column": "title"
+                },
+                "updatedAt": {
+                  "column": "updatedAt"
+                },
+                "visibility": {
+                  "column": "visibility"
+                }
+              },
+              "namespaceId": "public",
+              "table": "ReliquaryDoc"
+            }
+          },
+          "ReliquaryPage": {
+            "fields": {
+              "createdAt": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "creatorId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "docId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "icon": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "lastEditedById": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "lockExpiresAt": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "lockedAt": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "lockedById": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "schema": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
+              "title": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "updatedAt": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "creator": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "creatorId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "User",
+                  "namespace": "public"
+                }
+              },
+              "doc": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "docId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryDoc",
+                  "namespace": "public"
+                }
+              },
+              "lastEditedBy": {
+                "cardinality": "N:1",
+                "nullable": true,
+                "on": {
+                  "localFields": [
+                    "lastEditedById"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "User",
+                  "namespace": "public"
+                }
+              },
+              "lockedBy": {
+                "cardinality": "N:1",
+                "nullable": true,
+                "on": {
+                  "localFields": [
+                    "lockedById"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "User",
+                  "namespace": "public"
+                }
+              },
+              "recentVisits": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "pageId"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryRecentVisit",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "createdAt": {
+                  "column": "createdAt"
+                },
+                "creatorId": {
+                  "column": "creatorId"
+                },
+                "docId": {
+                  "column": "docId"
+                },
+                "icon": {
+                  "column": "icon"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "lastEditedById": {
+                  "column": "lastEditedById"
+                },
+                "lockExpiresAt": {
+                  "column": "lockExpiresAt"
+                },
+                "lockedAt": {
+                  "column": "lockedAt"
+                },
+                "lockedById": {
+                  "column": "lockedById"
+                },
+                "schema": {
+                  "column": "schema"
+                },
+                "title": {
+                  "column": "title"
+                },
+                "updatedAt": {
+                  "column": "updatedAt"
+                }
+              },
+              "namespaceId": "public",
+              "table": "ReliquaryPage"
+            }
+          },
+          "ReliquaryRecentVisit": {
+            "fields": {
+              "docId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "pageId": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "userId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "visitedAt": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "doc": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "docId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryDoc",
+                  "namespace": "public"
+                }
+              },
+              "page": {
+                "cardinality": "N:1",
+                "nullable": true,
+                "on": {
+                  "localFields": [
+                    "pageId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryPage",
+                  "namespace": "public"
+                }
+              },
+              "user": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "userId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "User",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "docId": {
+                  "column": "docId"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "pageId": {
+                  "column": "pageId"
+                },
+                "userId": {
+                  "column": "userId"
+                },
+                "visitedAt": {
+                  "column": "visitedAt"
+                }
+              },
+              "namespaceId": "public",
+              "table": "ReliquaryRecentVisit"
+            }
+          },
           "ReviewVote": {
             "fields": {
               "createdAt": {
@@ -18140,6 +18993,126 @@
                 },
                 "to": {
                   "model": "MediaRecommendation",
+                  "namespace": "public"
+                }
+              },
+              "reliquaryBookmarks": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "userId"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryBookmark",
+                  "namespace": "public"
+                }
+              },
+              "reliquaryCollaborations": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "userId"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryCollaborator",
+                  "namespace": "public"
+                }
+              },
+              "reliquaryDocLocks": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "lockedById"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryDoc",
+                  "namespace": "public"
+                }
+              },
+              "reliquaryDocs": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "creatorId"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryDoc",
+                  "namespace": "public"
+                }
+              },
+              "reliquaryEditedPages": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "lastEditedById"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryPage",
+                  "namespace": "public"
+                }
+              },
+              "reliquaryPageLocks": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "lockedById"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryPage",
+                  "namespace": "public"
+                }
+              },
+              "reliquaryPages": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "creatorId"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryPage",
+                  "namespace": "public"
+                }
+              },
+              "reliquaryRecentVisits": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "userId"
+                  ]
+                },
+                "to": {
+                  "model": "ReliquaryRecentVisit",
                   "namespace": "public"
                 }
               },
@@ -29712,6 +30685,811 @@
                 }
               ]
             },
+            "ReliquaryBookmark": {
+              "columns": {
+                "createdAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "default": {
+                    "expression": "now()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                },
+                "docId": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "id": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "userId": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "ReliquaryBookmark_userId_idx_a489d58a"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "userId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryBookmark"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "User"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "ReliquaryBookmark_docId_idx_7f6226f1"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "docId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryBookmark"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryDoc"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "docId"
+                  ],
+                  "name": "ReliquaryBookmark_docId_idx_7f6226f1",
+                  "prefix": "ReliquaryBookmark_docId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "userId",
+                    "createdAt"
+                  ],
+                  "name": "ReliquaryBookmark_userId_createdAt_idx_f726f04a",
+                  "prefix": "ReliquaryBookmark_userId_createdAt_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "userId"
+                  ],
+                  "name": "ReliquaryBookmark_userId_idx_a489d58a",
+                  "prefix": "ReliquaryBookmark_userId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": [
+                {
+                  "columns": [
+                    "userId",
+                    "docId"
+                  ]
+                }
+              ]
+            },
+            "ReliquaryCollaborator": {
+              "checks": [
+                {
+                  "expression": "\"role\" IN ('EDITOR', 'VIEWER')",
+                  "name": "ReliquaryCollaborator_role_check_6cfd078f",
+                  "prefix": "ReliquaryCollaborator_role_check"
+                }
+              ],
+              "columns": {
+                "createdAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "default": {
+                    "expression": "now()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                },
+                "docId": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "id": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "role": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": "EDITOR"
+                  },
+                  "nullable": false,
+                  "valueSet": {
+                    "entityKind": "valueSet",
+                    "entityName": "CollaboratorRole",
+                    "namespaceId": "public",
+                    "plane": "storage"
+                  }
+                },
+                "userId": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "ReliquaryCollaborator_docId_idx_7f6226f1"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "docId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryCollaborator"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryDoc"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "ReliquaryCollaborator_userId_idx_a489d58a"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "userId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryCollaborator"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "User"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "docId"
+                  ],
+                  "name": "ReliquaryCollaborator_docId_idx_7f6226f1",
+                  "prefix": "ReliquaryCollaborator_docId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "userId"
+                  ],
+                  "name": "ReliquaryCollaborator_userId_idx_a489d58a",
+                  "prefix": "ReliquaryCollaborator_userId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": [
+                {
+                  "columns": [
+                    "docId",
+                    "userId"
+                  ]
+                }
+              ]
+            },
+            "ReliquaryDoc": {
+              "checks": [
+                {
+                  "expression": "\"category\" IN ('API_DOCS', 'WIKI', 'GUIDES', 'TUTORIALS', 'REFERENCE', 'OTHER')",
+                  "name": "ReliquaryDoc_category_check_e25a9412",
+                  "prefix": "ReliquaryDoc_category_check"
+                },
+                {
+                  "expression": "array_position(\"pageIds\", NULL) IS NULL",
+                  "name": "ReliquaryDoc_pageIds_elem_not_null_01f63a60",
+                  "prefix": "ReliquaryDoc_pageIds_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"tags\", NULL) IS NULL",
+                  "name": "ReliquaryDoc_tags_elem_not_null_aecbe9e2",
+                  "prefix": "ReliquaryDoc_tags_elem_not_null"
+                },
+                {
+                  "expression": "\"visibility\" IN ('PUBLIC', 'UNLISTED', 'PRIVATE')",
+                  "name": "ReliquaryDoc_visibility_check_c4fe2f3d",
+                  "prefix": "ReliquaryDoc_visibility_check"
+                }
+              ],
+              "columns": {
+                "category": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": "GUIDES"
+                  },
+                  "nullable": false,
+                  "valueSet": {
+                    "entityKind": "valueSet",
+                    "entityName": "ReliquaryCategory",
+                    "namespaceId": "public",
+                    "plane": "storage"
+                  }
+                },
+                "createdAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "default": {
+                    "expression": "now()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                },
+                "creatorId": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "description": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "icon": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "id": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "lockExpiresAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "nullable": true
+                },
+                "lockedAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "nullable": true
+                },
+                "lockedById": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "pageIds": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "schema": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
+                  "default": {
+                    "kind": "literal",
+                    "value": {}
+                  },
+                  "nullable": false
+                },
+                "sidebarConfig": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "nullable": false
+                },
+                "tags": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "title": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "updatedAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "nullable": false
+                },
+                "visibility": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": "PUBLIC"
+                  },
+                  "nullable": false,
+                  "valueSet": {
+                    "entityKind": "valueSet",
+                    "entityName": "ReliquaryVisibility",
+                    "namespaceId": "public",
+                    "plane": "storage"
+                  }
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "ReliquaryDoc_creatorId_idx_3a77d800"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "creatorId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryDoc"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "User"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "ReliquaryDoc_lockedById_idx_fcf19899"
+                  },
+                  "onDelete": "setNull",
+                  "source": {
+                    "columns": [
+                      "lockedById"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryDoc"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "User"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "creatorId"
+                  ],
+                  "name": "ReliquaryDoc_creatorId_idx_3a77d800",
+                  "prefix": "ReliquaryDoc_creatorId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "lockedById"
+                  ],
+                  "name": "ReliquaryDoc_lockedById_idx_fcf19899",
+                  "prefix": "ReliquaryDoc_lockedById_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "updatedAt"
+                  ],
+                  "name": "ReliquaryDoc_updatedAt_idx_8c508b31",
+                  "prefix": "ReliquaryDoc_updatedAt_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "visibility",
+                    "category"
+                  ],
+                  "name": "ReliquaryDoc_visibility_category_idx_a2c673b3",
+                  "prefix": "ReliquaryDoc_visibility_category_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": []
+            },
+            "ReliquaryPage": {
+              "columns": {
+                "createdAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "default": {
+                    "expression": "now()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                },
+                "creatorId": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "docId": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "icon": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "id": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "lastEditedById": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "lockExpiresAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "nullable": true
+                },
+                "lockedAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "nullable": true
+                },
+                "lockedById": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "schema": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
+                  "default": {
+                    "kind": "literal",
+                    "value": {}
+                  },
+                  "nullable": false
+                },
+                "title": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "updatedAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "ReliquaryPage_docId_idx_7f6226f1"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "docId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryPage"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryDoc"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "ReliquaryPage_creatorId_idx_3a77d800"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "creatorId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryPage"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "User"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "ReliquaryPage_lastEditedById_idx_4799040a"
+                  },
+                  "onDelete": "setNull",
+                  "source": {
+                    "columns": [
+                      "lastEditedById"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryPage"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "User"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "ReliquaryPage_lockedById_idx_fcf19899"
+                  },
+                  "onDelete": "setNull",
+                  "source": {
+                    "columns": [
+                      "lockedById"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryPage"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "User"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "creatorId"
+                  ],
+                  "name": "ReliquaryPage_creatorId_idx_3a77d800",
+                  "prefix": "ReliquaryPage_creatorId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "docId"
+                  ],
+                  "name": "ReliquaryPage_docId_idx_7f6226f1",
+                  "prefix": "ReliquaryPage_docId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "lastEditedById"
+                  ],
+                  "name": "ReliquaryPage_lastEditedById_idx_4799040a",
+                  "prefix": "ReliquaryPage_lastEditedById_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "lockedById"
+                  ],
+                  "name": "ReliquaryPage_lockedById_idx_fcf19899",
+                  "prefix": "ReliquaryPage_lockedById_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": []
+            },
+            "ReliquaryRecentVisit": {
+              "columns": {
+                "docId": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "id": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "pageId": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "userId": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "visitedAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "default": {
+                    "expression": "now()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "ReliquaryRecentVisit_userId_idx_a489d58a"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "userId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryRecentVisit"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "User"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "ReliquaryRecentVisit_docId_idx_7f6226f1"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "docId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryRecentVisit"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryDoc"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "ReliquaryRecentVisit_pageId_idx_8caaba4f"
+                  },
+                  "onDelete": "setNull",
+                  "source": {
+                    "columns": [
+                      "pageId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryRecentVisit"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "ReliquaryPage"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "docId"
+                  ],
+                  "name": "ReliquaryRecentVisit_docId_idx_7f6226f1",
+                  "prefix": "ReliquaryRecentVisit_docId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "pageId"
+                  ],
+                  "name": "ReliquaryRecentVisit_pageId_idx_8caaba4f",
+                  "prefix": "ReliquaryRecentVisit_pageId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "userId"
+                  ],
+                  "name": "ReliquaryRecentVisit_userId_idx_a489d58a",
+                  "prefix": "ReliquaryRecentVisit_userId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "userId",
+                    "visitedAt"
+                  ],
+                  "name": "ReliquaryRecentVisit_userId_visitedAt_idx_13537e5e",
+                  "prefix": "ReliquaryRecentVisit_userId_visitedAt_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": [
+                {
+                  "columns": [
+                    "userId",
+                    "docId"
+                  ]
+                }
+              ]
+            },
             "ReviewVote": {
               "checks": [
                 {
@@ -33596,6 +35374,25 @@
                 "UNKNOWN"
               ]
             },
+            "ReliquaryCategory": {
+              "kind": "valueSet",
+              "values": [
+                "API_DOCS",
+                "WIKI",
+                "GUIDES",
+                "TUTORIALS",
+                "REFERENCE",
+                "OTHER"
+              ]
+            },
+            "ReliquaryVisibility": {
+              "kind": "valueSet",
+              "values": [
+                "PUBLIC",
+                "UNLISTED",
+                "PRIVATE"
+              ]
+            },
             "ReviewVoteType": {
               "kind": "valueSet",
               "values": [
@@ -33643,10 +35440,10 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "171540bbf35293d8c6b6c5fded904a71ed3d4b7a557259c61aa92582da621f85"
+    "storageHash": "b119fa79f2c33c50af65dc010cb5c42df04547a67ce1fb1840e80645e3555052"
   },
   "execution": {
-    "executionHash": "badedc9bf9c9e244076dcf05953b220b0f6de5a376999c55f32d4164bd8124ba",
+    "executionHash": "f5ecc1a037a7ef0f97905c773436b2ba5e8c339591992caf20c64334f3226678",
     "mutations": {
       "defaults": [
         {
@@ -34529,6 +36326,91 @@
           "ref": {
             "entry": "Person",
             "field": "updatedAt",
+            "namespace": "public"
+          }
+        },
+        {
+          "onCreate": {
+            "id": "uuidv4",
+            "kind": "generator"
+          },
+          "ref": {
+            "entry": "ReliquaryBookmark",
+            "field": "id",
+            "namespace": "public"
+          }
+        },
+        {
+          "onCreate": {
+            "id": "uuidv4",
+            "kind": "generator"
+          },
+          "ref": {
+            "entry": "ReliquaryCollaborator",
+            "field": "id",
+            "namespace": "public"
+          }
+        },
+        {
+          "onCreate": {
+            "id": "uuidv4",
+            "kind": "generator"
+          },
+          "ref": {
+            "entry": "ReliquaryDoc",
+            "field": "id",
+            "namespace": "public"
+          }
+        },
+        {
+          "onCreate": {
+            "id": "timestampNow",
+            "kind": "generator"
+          },
+          "onUpdate": {
+            "id": "timestampNow",
+            "kind": "generator"
+          },
+          "ref": {
+            "entry": "ReliquaryDoc",
+            "field": "updatedAt",
+            "namespace": "public"
+          }
+        },
+        {
+          "onCreate": {
+            "id": "uuidv4",
+            "kind": "generator"
+          },
+          "ref": {
+            "entry": "ReliquaryPage",
+            "field": "id",
+            "namespace": "public"
+          }
+        },
+        {
+          "onCreate": {
+            "id": "timestampNow",
+            "kind": "generator"
+          },
+          "onUpdate": {
+            "id": "timestampNow",
+            "kind": "generator"
+          },
+          "ref": {
+            "entry": "ReliquaryPage",
+            "field": "updatedAt",
+            "namespace": "public"
+          }
+        },
+        {
+          "onCreate": {
+            "id": "uuidv4",
+            "kind": "generator"
+          },
+          "ref": {
+            "entry": "ReliquaryRecentVisit",
+            "field": "id",
             "namespace": "public"
           }
         },

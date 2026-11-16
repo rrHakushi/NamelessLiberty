@@ -1,0 +1,975 @@
+{
+  "id": "apps/akaromi/vault/vault.ctrl",
+  "title": "Full or incremental vault synchronization state",
+  "description": "",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/akaromi/sync",
+    "relPath": "apps/akaromi/vault/vault.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/akaromi/sync",
+      "/akaromi/export",
+      "/akaromi/import"
+    ],
+    "errorCount": 0
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Full or incremental vault synchronization state"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/akaromi/sync"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/akaromi/export"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/akaromi/import"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_2)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "12 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /akaromi/sync · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.syncQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /akaromi/sync · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.syncResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /akaromi/sync · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /akaromi/sync · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /akaromi/sync · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /akaromi/export · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.exportResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /akaromi/export · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /akaromi/import · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.importBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /akaromi/import · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.importResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /akaromi/import · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /akaromi/import · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /akaromi/import · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "AkaromiVaultModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/akaromi/vault/vault.ctrl.ts-route-0",
+                "title": "GET /akaromi/sync",
+                "description": "Full or incremental vault synchronization state",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `AkaromiVaultModel.syncQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_0_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await AkaromiVaultServ.syncVault(user.id, query?.since)`"
+                  },
+                  {
+                    "id": "call_0_AkaromiVaultServ_syncVault",
+                    "kind": "alg_call",
+                    "title": "Invoke AkaromiVaultServ.syncVault",
+                    "isAsync": true,
+                    "targetAlg": "AkaromiVaultServ.syncVault"
+                  },
+                  {
+                    "id": "svc_0_AkaromiVaultServ_syncVault",
+                    "kind": "sequence",
+                    "title": "AkaromiVaultServ.syncVault Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_AkaromiVaultServ_syncVault_0_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`await akaromiVaultServ.syncVault(userId, since)`"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/akaromi/vault/vault.ctrl.ts-route-1",
+                "title": "GET /akaromi/export",
+                "description": "Export complete non-deleted vault data for backup",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_1_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await AkaromiVaultServ.exportVault(user.id)`"
+                  },
+                  {
+                    "id": "call_1_AkaromiVaultServ_exportVault",
+                    "kind": "alg_call",
+                    "title": "Invoke AkaromiVaultServ.exportVault",
+                    "isAsync": true,
+                    "targetAlg": "AkaromiVaultServ.exportVault"
+                  },
+                  {
+                    "id": "svc_1_AkaromiVaultServ_exportVault",
+                    "kind": "sequence",
+                    "title": "AkaromiVaultServ.exportVault Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_AkaromiVaultServ_exportVault_0_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`await akaromiVaultServ.exportVault(userId)`"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/akaromi/vault/vault.ctrl.ts-route-2",
+                "title": "POST /akaromi/import",
+                "description": "Import vault folders and ciphers with tempId remapping",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `AkaromiVaultModel.importBody`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_2_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await AkaromiVaultServ.importVault(user.id, body)`"
+                  },
+                  {
+                    "id": "call_2_AkaromiVaultServ_importVault",
+                    "kind": "alg_call",
+                    "title": "Invoke AkaromiVaultServ.importVault",
+                    "isAsync": true,
+                    "targetAlg": "AkaromiVaultServ.importVault"
+                  },
+                  {
+                    "id": "svc_2_AkaromiVaultServ_importVault",
+                    "kind": "sequence",
+                    "title": "AkaromiVaultServ.importVault Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_AkaromiVaultServ_importVault_0_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`await akaromiVaultServ.importVault(userId, body)`"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertCircle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "0 errors"
+                  }
+                ]
+              },
+              {
+                "type": "Callout",
+                "props": {
+                  "variant": "info",
+                  "title": "No explicit error throws detected"
+                },
+                "children": "This module does not throw explicit HTTP or domain errors in its analyzed AST paths."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

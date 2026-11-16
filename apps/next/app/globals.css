@@ -1,0 +1,64 @@
+@source "../../../packages/borealis/src/**/*.{ts,tsx}";
+
+:root {
+  color-scheme: dark;
+  --frost: rgba(9, 9, 11, 0.85);
+  --frost-border: rgba(63, 63, 70, 0.75);
+}
+
+@theme inline {
+  --color-frost: var(--frost);
+  --color-frost-border: var(--frost-border);
+}
+
+@utility bg-frost {
+  background-color: var(--frost);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@utility border-frost {
+  border-color: var(--frost-border);
+}
+
+@utility aspect-2/3 {
+  aspect-ratio: 2 / 3;
+}
+
+@utility aspect-poster {
+  aspect-ratio: 2 / 3;
+}
+
+/* Hide scrollbars everywhere globally while preserving scroll functionality */
+*,
+*::before,
+*::after {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.no-scrollbar {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Off-screen rendering containment for large media card grids */
+.media-card-contain {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 280px;
+}
+

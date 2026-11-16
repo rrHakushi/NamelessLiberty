@@ -623,7 +623,8 @@
           }
         }
 
-        await ext.tabs.sendMessage(tabId, { action: "START_QR_CAPTURE" })
+        await ext.runtime.sendMessage({ action: "BEGIN_QR_CAPTURE", payload: { tabId } }).catch(() => {})
+        await ext.tabs.sendMessage(tabId, { action: "START_QR_CAPTURE" }, { frameId: 0 })
         setTimeout(() => {
           try {
             window.close()
@@ -722,7 +723,9 @@
           const v = row.querySelector(".pass-row-value")?.value || ""
           if (n || v) {
             additionalPasswords.push({
-              id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()),
+              id: crypto.randomUUID
+                ? crypto.randomUUID()
+                : Array.from(crypto.getRandomValues(new Uint8Array(16)), (b) => b.toString(16).padStart(2, "0")).join(""),
               name: n || "Password",
               value: v,
             })
@@ -803,9 +806,14 @@
         }
       }
 
+      const existingItem = state.editingCipherId
+        ? state.allCiphers.find((c) => c.id === state.editingCipherId)
+        : null
+
       const payload = {
         title,
         type: state.currentEditType === "ssh" ? "SSH_KEY" : "LOGIN",
+        favorite: existingItem ? Boolean(existingItem.favorite) : false,
         data: dataPayload,
       }
 
@@ -869,19 +877,19 @@
     const additionalPasswords = []
     document.querySelectorAll(".additional-pass-row-item").forEach((row) => {
       const n = row.querySelector(".pass-row-name")?.value || ""
-      const v = row.querySelector(".pass-row-value")?.value || ""
-      if (n || v) additionalPasswords.push({ name: n, value: v })
+      if (n) additionalPasswords.push({ name: n, value: "" })
     })
 
     const customFields = []
     document.querySelectorAll(".custom-field-row-item").forEach((row) => {
       const n = row.querySelector(".custom-field-name")?.value || ""
       const valInput = row.querySelector(".custom-field-value")
-      const v = valInput?.value || ""
       const isHidden = valInput?.type === "password"
+      const v = isHidden ? "" : (valInput?.value || "")
       if (n || v) customFields.push({ name: n, value: v, isHidden })
     })
 
+    // Security: never persist cleartext secrets (passwords, TOTP seeds, card numbers/CVVs/PINs, SSH keys, notes) to local disk drafts
     return {
       type: state.currentEditType || "login",
       title: editTitle?.value || "",
@@ -890,22 +898,22 @@
       emailOrUsername: editEmailOrUsername?.value || "",
       email: editEmail?.value || "",
       username: editUsername?.value || "",
-      password: editPassword?.value || "",
+      password: "",
       totpActive: wrapEditTotpActive?.style.display === "flex",
-      totpSecret: editTotpSecret?.value || "",
+      totpSecret: "",
       websites: uris.length > 0 ? uris : [{ uri: "", match: 0 }],
       additionalPasswords,
-      notes: editGeneralNotes?.value || "",
-      noteBody: editNoteBody?.value || "",
+      notes: "",
+      noteBody: "",
       cardHolder: editCardHolder?.value || "",
-      cardNumber: editCardNumber?.value || "",
+      cardNumber: "",
       cardExp: editCardExp?.value || "",
-      cardCvv: editCardCvv?.value || "",
-      cardPin: editCardPin?.value || "",
+      cardCvv: "",
+      cardPin: "",
       sshKeytype: editSshKeytype?.value || "ED25519",
       sshPublickey: editSshPublickey?.value || "",
-      sshPrivatekey: editSshPrivatekey?.value || "",
-      sshPassphrase: editSshPassphrase?.value || "",
+      sshPrivatekey: "",
+      sshPassphrase: "",
       idFullname: editIdFullname?.value || "",
       idEmail: editIdEmail?.value || "",
       idPhone: editIdPhone?.value || "",
@@ -1029,11 +1037,10 @@
         if (modalEditCipher) modalEditCipher.style.display = "flex"
       }
 
-      // Check for pending scanned 2FA QR code
-      const pendingTotp = await storage.get(["pendingScannedTotp"])
-      if (pendingTotp?.pendingScannedTotp?.secret) {
-        const secret = pendingTotp.pendingScannedTotp.secret
-        await storage.remove("pendingScannedTotp").catch(() => {})
+      // Check for pending scanned 2FA QR code from ephemeral background/session store
+      const pendingRes = await ext.runtime.sendMessage({ action: "GET_PENDING_SCANNED_TOTP" }).catch(() => null)
+      if (pendingRes?.pendingScannedTotp?.secret) {
+        const secret = pendingRes.pendingScannedTotp.secret
         if (editTotpSecret) {
           editTotpSecret.value = secret
           editTotpSecret.type = "password"
@@ -1046,6 +1053,24 @@
     } catch (err) {
       console.warn("[Akaromi] Failed to restore editor draft:", err)
     }
+  }
+
+  function clearSensitiveInputs() {
+    clearTimeout(editDraftDebounceTimer)
+    state.editingCipherId = null
+    if (modalEditCipher) modalEditCipher.style.display = "none"
+    if (formEditCipher) formEditCipher.reset()
+    if (editPassword) editPassword.value = ""
+    if (editTotpSecret) editTotpSecret.value = ""
+    if (editGeneralNotes) editGeneralNotes.value = ""
+    if (editNoteBody) editNoteBody.value = ""
+    if (editCardNumber) editCardNumber.value = ""
+    if (editCardCvv) editCardCvv.value = ""
+    if (editCardPin) editCardPin.value = ""
+    if (editSshPrivatekey) editSshPrivatekey.value = ""
+    if (editSshPassphrase) editSshPassphrase.value = ""
+    if (editAdditionalPasswordsList) editAdditionalPasswordsList.replaceChildren()
+    if (customFieldsList) customFieldsList.replaceChildren()
   }
 
   // Live listener in case popup stayed open during QR scan
@@ -1072,5 +1097,6 @@
     clearEditDraft,
     restoreDraftState,
     evaluatePasswordStrength,
+    clearSensitiveInputs,
   }
 })(typeof window !== "undefined" ? window : globalThis)

@@ -1,0 +1,351 @@
+{
+  "id": "load-env",
+  "title": "load-env",
+  "description": "",
+  "icon": "IconFunction",
+  "metadata": {
+    "pathname": "apps/elysia/src/load-env.ts",
+    "relPath": "load-env.ts",
+    "role": "Functions",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconFunction",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "load-env"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Functions"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/load-env.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "3 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/core/plugins/session",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "core/plugins/session.ts"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/index",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "index.ts"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/server",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "server.ts"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-ensureEnvLoaded",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "load-env.ts-ensureEnvLoaded",
+                "title": "function ensureEnvLoaded",
+                "description": "Ensures monorepo root `.env` is loaded into `Bun.env` if not already present. Bun natively supports `--env-file=../../.env`, but this programmatic fallback guarantees environment variables are present even when invoked without CLI flags.",
+                "steps": [
+                  {
+                    "id": "exp_ensureEnvLoaded_0_1",
+                    "kind": "selection",
+                    "title": "`Bun.env.JWT_SECRET`",
+                    "selectionMode": "if_else",
+                    "condition": "`Bun.env.JWT_SECRET`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_ensureEnvLoaded_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_ensureEnvLoaded_1_2",
+                    "kind": "var_def",
+                    "title": "Define `candidatePaths`",
+                    "payload": "const candidatePaths = [ resolve(import.meta.dir, '../../../.env'), resolve(import.meta.dir, '../../.env'), resolve(process.cwd(), '../.env'), resolve(process.cwd(), '../../.env'), resolve(process.cwd(), '.env'), ]",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_ensureEnvLoaded_2_3",
+                    "kind": "iteration",
+                    "title": "Iterate `const envPath` over `candidatePaths`",
+                    "loopType": "while",
+                    "condition": "Iterate `const envPath` over `candidatePaths`",
+                    "children": [
+                      {
+                        "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1",
+                        "kind": "selection",
+                        "title": "`existsSync(envPath)`",
+                        "selectionMode": "if_else",
+                        "condition": "`existsSync(envPath)`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1",
+                            "kind": "try_catch_finally",
+                            "title": "Try block",
+                            "catchVar": "err",
+                            "tryBlock": [
+                              {
+                                "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_0_3_1_1_1",
+                                "kind": "step",
+                                "title": "Calls `readFileSync` and stores result as `content`"
+                              },
+                              {
+                                "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_1_3_1_1_2",
+                                "kind": "iteration",
+                                "title": "Iterate `const line` over `content.split('\n')`",
+                                "loopType": "while",
+                                "condition": "Iterate `const line` over `content.split('\n')`",
+                                "children": [
+                                  {
+                                    "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_1_3_1_1_2_loop_0_3_1_1_2_1",
+                                    "kind": "var_def",
+                                    "title": "Define `trimmed`",
+                                    "payload": "const trimmed = line.trim()",
+                                    "payloadLanguage": "typescript"
+                                  },
+                                  {
+                                    "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_1_3_1_1_2_loop_1_3_1_1_2_2",
+                                    "kind": "selection",
+                                    "title": "`!trimmed || trimmed.startsWith('#')`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`!trimmed || trimmed.startsWith('#')`",
+                                    "thenBranch": [],
+                                    "elseBranch": []
+                                  },
+                                  {
+                                    "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_1_3_1_1_2_loop_2_3_1_1_2_3",
+                                    "kind": "step",
+                                    "title": "Calls `trimmed.indexOf` and stores result as `eqIdx`"
+                                  },
+                                  {
+                                    "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_1_3_1_1_2_loop_3_3_1_1_2_4",
+                                    "kind": "selection",
+                                    "title": "`eqIdx === -1`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`eqIdx === -1`",
+                                    "thenBranch": [],
+                                    "elseBranch": []
+                                  },
+                                  {
+                                    "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_1_3_1_1_2_loop_4_3_1_1_2_5",
+                                    "kind": "var_def",
+                                    "title": "Define `key`, `val`",
+                                    "payload": "const key = trimmed.slice(0, eqIdx).trim()\nlet val = trimmed.slice(eqIdx + 1).trim()",
+                                    "payloadLanguage": "typescript"
+                                  },
+                                  {
+                                    "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_1_3_1_1_2_loop_5_3_1_1_2_6",
+                                    "kind": "selection",
+                                    "title": "`val.startsWith('\"') && val.endsWith('\"') || val.startsWith(''') && val.endsWith(''')`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`val.startsWith('\"') && val.endsWith('\"') || val.startsWith(''') && val.endsWith(''')`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_1_3_1_1_2_loop_5_3_1_1_2_6_then_0_3_1_1_2_6_1",
+                                        "kind": "step",
+                                        "title": "Assign `val`",
+                                        "payload": "val = val.slice(1, -1)",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  },
+                                  {
+                                    "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_1_3_1_1_2_loop_6_3_1_1_2_7",
+                                    "kind": "step",
+                                    "title": "Assign `val`",
+                                    "payload": "val = val.replace(/\\$\\{([^}]+)\\}/g, (_, varName) => Bun.env[varName] ?? '')",
+                                    "payloadLanguage": "typescript"
+                                  },
+                                  {
+                                    "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_1_3_1_1_2_loop_7_3_1_1_2_8",
+                                    "kind": "selection",
+                                    "title": "`!Bun.env[key]`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`!Bun.env[key]`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_1_3_1_1_2_loop_7_3_1_1_2_8_then_0_3_1_1_2_8_1",
+                                        "kind": "step",
+                                        "title": "Assign `Bun.env[key]`",
+                                        "payload": "Bun.env[key] = val",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "exp_ensureEnvLoaded_2_3_loop_0_3_1_then_0_3_1_1_try_2_3_1_1_3",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`void`"
+                              }
+                            ],
+                            "catchBlock": [],
+                            "finallyBlock": []
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

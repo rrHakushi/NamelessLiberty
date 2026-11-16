@@ -1,0 +1,3044 @@
+{
+  "id": "apps/carina/connections/connections.serv",
+  "title": "connections.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/carina/connections/connections.serv.ts",
+    "relPath": "apps/carina/connections/connections.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 14
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "connections.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/carina/connections/connections.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/carina/connections/connections.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/connections/connections.ctrl.ts (CarinaConnectionsServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "12 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.formatConnection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(conn)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.listConnections"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.listProviders"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.createManualConnection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.getConnection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, connectionId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.updateConnection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, connectionId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.deleteConnection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, connectionId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.getAuthUrl"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, connectionIdOrProvider, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.handleOAuthCallback"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, connectionIdOrProvider, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.syncConnection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, connectionId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.testConnection"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, connectionId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaConnectionsServ.searchProxy"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-formatConnection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-formatConnection",
+                "title": "CarinaConnectionsServ.formatConnection(conn)",
+                "description": "Helper to format a Prisma connection record for API responses (safely omitting raw tokens).",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_formatConnection_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"id\": \"<conn.id>\",\n  \"userId\": \"<conn.userId>\",\n  \"provider\": \"<conn.provider>\",\n  \"authType\": \"<conn.authType>\",\n  \"externalId\": \"<conn.externalId>\",\n  \"displayName\": \"<conn.displayName>\",\n  \"avatarUrl\": \"<conn.avatarUrl>\",\n  \"profileUrl\": \"<conn.profileUrl>\",\n  \"status\": \"<conn.status>\",\n  \"errorMessage\": \"<conn.errorMessage>\",\n  \"settings\": \"<conn.settings>\",\n  \"lastSyncedAt\": \"<conn.lastSyncedAt ? toDate(conn.lastSyncedAt).toISOString() : null>\",\n  \"expiresAt\": \"<conn.expiresAt ? toDate(conn.expiresAt).toISOString() : null>\",\n  \"createdAt\": \"<toDate(conn.createdAt).toISOString()>\",\n  \"updatedAt\": \"<toDate(conn.updatedAt).toISOString()>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-listConnections",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-listConnections",
+                "title": "CarinaConnectionsServ.listConnections(userId, query)",
+                "description": "Lists connected accounts for authenticated user (10 per page default).",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_listConnections_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_listConnections_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_listConnections_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`",
+                    "payload": "const skip = page - 1 * limit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_listConnections_3_4",
+                    "kind": "step",
+                    "title": "Database `query` on `Connection` and stores it as `queryBuilder`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_listConnections_4_5",
+                    "kind": "selection",
+                    "title": "`query?.provider?.trim()`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.provider?.trim()`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_listConnections_4_5_then_0_5_1",
+                        "kind": "var_def",
+                        "title": "Define `p`",
+                        "payload": "const p = query.provider.trim().toUpperCase() as ConnectionProvider",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_listConnections_4_5_then_1_5_2",
+                        "kind": "step",
+                        "title": "Assign `queryBuilder`",
+                        "payload": "queryBuilder = queryBuilder.where((c) => c.provider.eq(p))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_listConnections_5_6",
+                    "kind": "selection",
+                    "title": "`query?.status?.trim()`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.status?.trim()`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_listConnections_5_6_then_0_6_1",
+                        "kind": "var_def",
+                        "title": "Define `s`",
+                        "payload": "const s = query.status.trim().toUpperCase() as ConnectionStatus",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_listConnections_5_6_then_1_6_2",
+                        "kind": "step",
+                        "title": "Assign `queryBuilder`",
+                        "payload": "queryBuilder = queryBuilder.where((c) => c.status.eq(s))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_listConnections_6_7",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawConnections]`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_listConnections_7_8",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `totalPages`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_listConnections_8_9",
+                    "kind": "var_def",
+                    "title": "Define `hasMore`, `connections`",
+                    "payload": "const hasMore = page < totalPages\nconst connections = rawConnections.map((c) => this.formatConnection(c))",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_listConnections_9_10",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"total\": \"<total>\",\n  \"connections\": \"<connections>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<totalPages>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-listProviders",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-listProviders",
+                "title": "CarinaConnectionsServ.listProviders()",
+                "description": "Lists all available third-party providers with capabilities and configuration state.",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_listProviders_0_1",
+                    "kind": "step",
+                    "title": "Calls `getSupportedProviders` and stores result as `providers`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_listProviders_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"total\": \"<providers.length>\",\n  \"providers\": \"<providers>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-createManualConnection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-createManualConnection",
+                "title": "CarinaConnectionsServ.createManualConnection(userId, body)",
+                "description": "Manually creates or updates a connected account with API key or credentials.",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_0_1",
+                    "kind": "var_def",
+                    "title": "Define `provider`, `adapter`",
+                    "payload": "const provider = body.provider.trim().toUpperCase() as ConnectionProvider\nlet adapter",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_CarinaConnectionsServ_createManualConnection_1_2_try_0_2_1",
+                        "kind": "step",
+                        "title": "Assign `adapter`",
+                        "payload": "adapter = getConnectionAdapter(provider)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_CarinaConnectionsServ_createManualConnection_1_2_catch_0_3_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Unsupported provider: ${body.provider}"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_3_4",
+                    "kind": "var_def",
+                    "title": "Define `credentials`",
+                    "payload": "const credentials: ConnectionCredentials = { apiKey: body.apiKey, hostUrl: body.hostUrl, username: body.username, password: body.password, }",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_4_5",
+                    "kind": "step",
+                    "title": "Calls `adapter.testConnection` and stores result as `testResult`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_5_6",
+                    "kind": "selection",
+                    "title": "`!testResult.ok`",
+                    "selectionMode": "if_else",
+                    "condition": "`!testResult.ok`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_createManualConnection_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "testResult.message || 'Failed to authenticate with provider"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_6_7",
+                    "kind": "var_def",
+                    "title": "Define `finalCredentials`",
+                    "payload": "const finalCredentials = testResult.credentials || credentials",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_7_8",
+                    "kind": "step",
+                    "title": "Calls `encryptConnectionData` and stores result as `encryptedData`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_8_9",
+                    "kind": "var_def",
+                    "title": "Define `profile`, `externalId`",
+                    "payload": "const profile = testResult.profile\nconst externalId = profile?.id || body.username || 'default'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_9_10",
+                    "kind": "step",
+                    "title": "Database `first` on `Connection` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_10_11",
+                    "kind": "var_def",
+                    "title": "Define `connection`",
+                    "payload": "let connection",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_11_12",
+                    "kind": "selection",
+                    "title": "`existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_createManualConnection_11_12_then_0_12_1",
+                        "kind": "step",
+                        "title": "Assign `connection`",
+                        "payload": "connection = await prisma.orm.public.Connection.where((c) => c.id.eq(existing.id)).update({ displayName: profile?.displayName || profile?.username || body.username || provider, avatarUrl: profile?.avatarUrl ?? null, ...",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_createManualConnection_11_12_else_0_13_1",
+                        "kind": "step",
+                        "title": "Assign `connection`",
+                        "payload": "connection = await prisma.orm.public.Connection.create({ userId, provider, authType: (body.authType?.toUpperCase() as any) || (adapter.authType as any) || 'API_KEY', ...",
+                        "payloadLanguage": "typescript"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_13_14",
+                    "kind": "selection",
+                    "title": "`!connection`",
+                    "selectionMode": "if_else",
+                    "condition": "`!connection`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_createManualConnection_13_14_then_0_14_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Failed to save connection"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_createManualConnection_14_15",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"connection\": {\n    \"id\": \"<connection.id>\",\n    \"provider\": \"<connection.provider>\",\n    \"displayName\": \"<connection.displayName>\",\n    \"status\": \"<connection.status>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-getConnection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-getConnection",
+                "title": "CarinaConnectionsServ.getConnection(userId, connectionId)",
+                "description": "Retrieves single connected account details strictly by connection ID.",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_getConnection_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Connection` and stores it as `connection`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_getConnection_1_2",
+                    "kind": "selection",
+                    "title": "`!connection || connection.userId !== userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!connection || connection.userId !== userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_getConnection_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Connection not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_getConnection_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"connection\": \"<this.formatConnection(connection)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-updateConnection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-updateConnection",
+                "title": "CarinaConnectionsServ.updateConnection(userId, connectionId, body)",
+                "description": "Updates settings or custom profile fields for a connected account.",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_updateConnection_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Connection` and stores it as `connection`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_updateConnection_1_2",
+                    "kind": "selection",
+                    "title": "`!connection || connection.userId !== userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!connection || connection.userId !== userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_updateConnection_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Connection not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_updateConnection_2_3",
+                    "kind": "var_def",
+                    "title": "Define `mergedSettings`",
+                    "payload": "let mergedSettings = connection.settings",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_updateConnection_3_4",
+                    "kind": "selection",
+                    "title": "`body.settings !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.settings !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_updateConnection_3_4_then_0_4_1",
+                        "kind": "var_def",
+                        "title": "Define `current`",
+                        "payload": "const current = typeof connection.settings === 'object' && connection.settings !== null ? connection.settings : {}",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_updateConnection_3_4_then_1_4_2",
+                        "kind": "step",
+                        "title": "Assign `mergedSettings`",
+                        "payload": "mergedSettings = { ...current, ...body.settings }",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_updateConnection_4_5",
+                    "kind": "step",
+                    "title": "Database `update` on `Connection` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_updateConnection_5_6",
+                    "kind": "selection",
+                    "title": "`!updated`",
+                    "selectionMode": "if_else",
+                    "condition": "`!updated`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_updateConnection_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Connection not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_updateConnection_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"connection\": \"<this.formatConnection(updated)>\",\n  \"message\": \"Connection updated successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-deleteConnection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-deleteConnection",
+                "title": "CarinaConnectionsServ.deleteConnection(userId, connectionId)",
+                "description": "Disconnects / deletes a connected account strictly by connection ID.",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_deleteConnection_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Connection` and stores it as `connection`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_deleteConnection_1_2",
+                    "kind": "selection",
+                    "title": "`!connection || connection.userId !== userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!connection || connection.userId !== userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_deleteConnection_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Connection not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_deleteConnection_2_3",
+                    "kind": "step",
+                    "title": "Database `deleteAll` on `Connection`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_deleteConnection_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"id\": \"<connection.id>\",\n  \"message\": \"Connection disconnected successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-getAuthUrl",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-getAuthUrl",
+                "title": "CarinaConnectionsServ.getAuthUrl(userId, connectionIdOrProvider, query)",
+                "description": "Generates OAuth authorization initiation URL for target connection or provider.",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_getAuthUrl_0_1",
+                    "kind": "var_def",
+                    "title": "Define `normalized`, `provider`, `registeredProviders`",
+                    "payload": "const normalized = connectionIdOrProvider.trim().toUpperCase()\nlet provider: ConnectionProvider | null = null\nconst registeredProviders: readonly string[] = [ 'ANILIST', 'MAL', 'SIMKL', 'BANGUMI', 'RIOT_GAMES', 'RADARR', ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_getAuthUrl_1_2",
+                    "kind": "selection",
+                    "title": "`registeredProviders.includes(normalized)`",
+                    "selectionMode": "if_else",
+                    "condition": "`registeredProviders.includes(normalized)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_getAuthUrl_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Assign `provider`",
+                        "payload": "provider = normalized as ConnectionProvider",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_getAuthUrl_1_2_else_0_3_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Connection` and stores it as `existing`"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_getAuthUrl_1_2_else_1_3_2",
+                        "kind": "selection",
+                        "title": "`existing && existing.userId === userId`",
+                        "selectionMode": "if_else",
+                        "condition": "`existing && existing.userId === userId`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaConnectionsServ_getAuthUrl_1_2_else_1_3_2_then_0_3_2_1",
+                            "kind": "step",
+                            "title": "Assign `provider`",
+                            "payload": "provider = existing.provider",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_getAuthUrl_3_4",
+                    "kind": "selection",
+                    "title": "`!provider`",
+                    "selectionMode": "if_else",
+                    "condition": "`!provider`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_getAuthUrl_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Provider or connection not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_getAuthUrl_4_5",
+                    "kind": "step",
+                    "title": "Calls `getConnectionAdapter` and stores result as `adapter`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_getAuthUrl_5_6",
+                    "kind": "selection",
+                    "title": "`!adapter.capabilities.supportsOAuth`",
+                    "selectionMode": "if_else",
+                    "condition": "`!adapter.capabilities.supportsOAuth`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_getAuthUrl_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Provider ${provider} does not support OAuth authentication"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_getAuthUrl_6_7",
+                    "kind": "selection",
+                    "title": "`!Bun.env.NEXT_PUBLIC_URL`",
+                    "selectionMode": "if_else",
+                    "condition": "`!Bun.env.NEXT_PUBLIC_URL`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_getAuthUrl_6_7_then_0_7_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "Missing required environment variable: NEXT_PUBLIC_URL"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_getAuthUrl_7_8",
+                    "kind": "var_def",
+                    "title": "Define `apiBaseUrl`, `redirectUri`, `codeVerifier`",
+                    "payload": "const apiBaseUrl = `${Bun.env.NEXT_PUBLIC_URL.replace(/\\/+$/, '')}/elysia`\nconst redirectUri = query?.redirectUri?.trim() || `${apiBaseUrl}/carina/connections/${provider.toLowerCase()}/callback`\nconst codeVerifier = crypto.randomBytes(32).toString('base64url')",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_getAuthUrl_8_9",
+                    "kind": "step",
+                    "title": "Calls `createOAuthStateToken` and stores result as `stateToken`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_getAuthUrl_9_10",
+                    "kind": "step",
+                    "title": "Calls `adapter.getAuthUrl` and stores result as `authResult`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_getAuthUrl_10_11",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"url\": \"<authResult.url>\",\n  \"state\": \"<stateToken>\",\n  \"provider\": \"<provider>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-handleOAuthCallback",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-handleOAuthCallback",
+                "title": "CarinaConnectionsServ.handleOAuthCallback(userId, connectionIdOrProvider, query)",
+                "description": "Handles OAuth authorization code exchange callback and securely persists encrypted tokens.",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_0_1",
+                    "kind": "selection",
+                    "title": "`query.error`",
+                    "selectionMode": "if_else",
+                    "condition": "`query.error`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_0_1_then_0_1_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "query.error_description || query.error"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_1_2",
+                    "kind": "var_def",
+                    "title": "Define `authCode`",
+                    "payload": "const authCode = query.code || query.request_reference || query.reference",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_2_3",
+                    "kind": "selection",
+                    "title": "`!authCode`",
+                    "selectionMode": "if_else",
+                    "condition": "`!authCode`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Missing required OAuth code or state parameter"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_3_4",
+                    "kind": "selection",
+                    "title": "`!Bun.env.NEXT_PUBLIC_URL`",
+                    "selectionMode": "if_else",
+                    "condition": "`!Bun.env.NEXT_PUBLIC_URL`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "Missing required environment variable: NEXT_PUBLIC_URL"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_4_5",
+                    "kind": "var_def",
+                    "title": "Define `apiBaseUrl`, `provider`, `redirectUri`, `codeVerifier`, `hostUrl`",
+                    "payload": "const apiBaseUrl = `${Bun.env.NEXT_PUBLIC_URL.replace(/\\/+$/, '')}/elysia`\nlet provider: ConnectionProvider | null = null\nlet redirectUri: string\nlet codeVerifier: string | undefined\nlet hostUrl: string | undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6",
+                    "kind": "selection",
+                    "title": "`query.state`",
+                    "selectionMode": "if_else",
+                    "condition": "`query.state`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Calls `verifyOAuthStateToken` and stores result as `statePayload`"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_then_1_6_2",
+                        "kind": "selection",
+                        "title": "`!statePayload`",
+                        "selectionMode": "if_else",
+                        "condition": "`!statePayload`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_then_1_6_2_then_0_6_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Invalid or expired OAuth state token"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_then_2_6_3",
+                        "kind": "selection",
+                        "title": "`statePayload.userId !== userId`",
+                        "selectionMode": "if_else",
+                        "condition": "`statePayload.userId !== userId`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_then_2_6_3_then_0_6_3_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "OAuth state user mismatch"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_then_3_6_4",
+                        "kind": "step",
+                        "title": "Assign `provider`",
+                        "payload": "provider = statePayload.provider",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_then_4_6_5",
+                        "kind": "step",
+                        "title": "Assign `redirectUri`",
+                        "payload": "redirectUri = statePayload.redirectUri",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_then_5_6_6",
+                        "kind": "step",
+                        "title": "Assign `codeVerifier`",
+                        "payload": "codeVerifier = statePayload.codeVerifier",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_then_6_6_7",
+                        "kind": "step",
+                        "title": "Assign `hostUrl`",
+                        "payload": "hostUrl = statePayload.hostUrl",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_else_0_7_1",
+                        "kind": "var_def",
+                        "title": "Define `normalized`, `registeredProviders`",
+                        "payload": "const normalized = connectionIdOrProvider.trim().toUpperCase()\nconst registeredProviders: readonly string[] = [ 'ANILIST', 'MAL', 'SIMKL', 'BANGUMI', 'RIOT_GAMES', 'RADARR', ...",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_else_1_7_2",
+                        "kind": "selection",
+                        "title": "`registeredProviders.includes(normalized)`",
+                        "selectionMode": "if_else",
+                        "condition": "`registeredProviders.includes(normalized)`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_else_1_7_2_then_0_7_2_1",
+                            "kind": "step",
+                            "title": "Assign `provider`",
+                            "payload": "provider = normalized as ConnectionProvider",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_else_1_7_2_else_0_7_3_1",
+                            "kind": "step",
+                            "title": "Database `first` on `Connection` and stores it as `existing`"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_else_1_7_2_else_1_7_3_2",
+                            "kind": "selection",
+                            "title": "`existing && existing.userId === userId`",
+                            "selectionMode": "if_else",
+                            "condition": "`existing && existing.userId === userId`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_else_1_7_2_else_1_7_3_2_then_0_7_3_2_1",
+                                "kind": "step",
+                                "title": "Assign `provider`",
+                                "payload": "provider = existing.provider",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_else_3_7_4",
+                        "kind": "selection",
+                        "title": "`!provider`",
+                        "selectionMode": "if_else",
+                        "condition": "`!provider`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_else_3_7_4_then_0_7_4_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Missing OAuth state parameter and provider could not be resolved"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_5_6_else_4_7_5",
+                        "kind": "step",
+                        "title": "Assign `redirectUri`",
+                        "payload": "redirectUri = `${apiBaseUrl}/carina/connections/${provider.toLowerCase()}/callback`",
+                        "payloadLanguage": "typescript"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_7_8",
+                    "kind": "selection",
+                    "title": "`!provider`",
+                    "selectionMode": "if_else",
+                    "condition": "`!provider`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_7_8_then_0_8_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Missing OAuth provider"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_8_9",
+                    "kind": "var_def",
+                    "title": "Define `resolvedProvider`",
+                    "payload": "const resolvedProvider: ConnectionProvider = provider",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_9_10",
+                    "kind": "step",
+                    "title": "Calls `getConnectionAdapter` and stores result as `adapter`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_10_11",
+                    "kind": "step",
+                    "title": "Calls `adapter.exchangeAuthCode` and stores result as `tokens`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_11_12",
+                    "kind": "step",
+                    "title": "Calls `adapter.getProfile` and stores result as `profile`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_12_13",
+                    "kind": "step",
+                    "title": "Calls `encryptConnectionData` and stores result as `encryptedData`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_13_14",
+                    "kind": "var_def",
+                    "title": "Define `externalId`, `displayName`, `avatarUrl`, `profileUrl`, `expiresAt`",
+                    "payload": "const externalId = profile.id || profile.username || null\nconst displayName = profile.displayName || profile.username || null\nconst avatarUrl = profile.avatarUrl || null\nconst profileUrl = profile.profileUrl || null\nconst expiresAt = tokens.expiresAt ? new Date(tokens.expiresAt) : null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_14_15",
+                    "kind": "step",
+                    "title": "Database `first` on `Connection` and stores it as `target`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_15_16",
+                    "kind": "selection",
+                    "title": "`target && target.userId === userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`target && target.userId === userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_15_16_then_0_16_1",
+                        "kind": "step",
+                        "title": "Assign `target`",
+                        "payload": "target = await prisma.orm.public.Connection.where((c) => c.id.eq(target!.id)).update({ encryptedData, status: 'CONNECTED', errorMessage: null, externalId, displayName, avatarUrl, ...",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_15_16_else_0_17_1",
+                        "kind": "step",
+                        "title": "Database `query` on `Connection` and stores it as `existingQuery`"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_15_16_else_1_17_2",
+                        "kind": "selection",
+                        "title": "`externalId`",
+                        "selectionMode": "if_else",
+                        "condition": "`externalId`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaConnectionsServ_handleOAuthCallback_15_16_else_1_17_2_then_0_17_2_1",
+                            "kind": "step",
+                            "title": "Assign `existingQuery`",
+                            "payload": "existingQuery = existingQuery.where((c) => c.externalId.eq(externalId))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_15_16_else_2_17_3",
+                        "kind": "step",
+                        "title": "Calls `existingQuery.first` and stores result as `existing`"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_15_16_else_3_17_4",
+                        "kind": "selection",
+                        "title": "`existing`",
+                        "selectionMode": "if_else",
+                        "condition": "`existing`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaConnectionsServ_handleOAuthCallback_15_16_else_3_17_4_then_0_17_4_1",
+                            "kind": "step",
+                            "title": "Assign `target`",
+                            "payload": "target = await prisma.orm.public.Connection.where((c) => c.id.eq(existing.id)).update({ encryptedData, status: 'CONNECTED', errorMessage: null, displayName, avatarUrl, profileUrl, ...",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "m_CarinaConnectionsServ_handleOAuthCallback_15_16_else_3_17_4_else_0_17_5_1",
+                            "kind": "step",
+                            "title": "Assign `target`",
+                            "payload": "target = await prisma.orm.public.Connection.create({ userId, provider, authType: adapter.authType ?? 'OAUTH2', encryptedData, status: 'CONNECTED', externalId, ...",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_17_18",
+                    "kind": "selection",
+                    "title": "`!target`",
+                    "selectionMode": "if_else",
+                    "condition": "`!target`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_handleOAuthCallback_17_18_then_0_18_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Failed to connect account"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_handleOAuthCallback_18_19",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"connection\": \"<this.formatConnection(target)>\",\n  \"message\": \"Account connected successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-syncConnection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-syncConnection",
+                "title": "CarinaConnectionsServ.syncConnection(userId, connectionId)",
+                "description": "Triggers immediate synchronization of library, watchlist, or games from provider.",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_syncConnection_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Connection` and stores it as `connection`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_syncConnection_1_2",
+                    "kind": "selection",
+                    "title": "`!connection || connection.userId !== userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!connection || connection.userId !== userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_syncConnection_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Connection not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_syncConnection_2_3",
+                    "kind": "step",
+                    "title": "Calls `decryptConnectionData` and stores result as `credentials`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_syncConnection_3_4",
+                    "kind": "step",
+                    "title": "Calls `getConnectionAdapter` and stores result as `adapter`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_syncConnection_4_5",
+                    "kind": "var_def",
+                    "title": "Define `syncedItemsCount`, `rawItems`",
+                    "payload": "let syncedItemsCount = 0\nconst rawItems: any[] = []",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_syncConnection_5_6",
+                    "kind": "selection",
+                    "title": "`adapter.getLibrary`",
+                    "selectionMode": "if_else",
+                    "condition": "`adapter.getLibrary`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_syncConnection_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Calls `adapter.getLibrary(credentials).catch` and stores result as `items`"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_syncConnection_5_6_then_1_6_2",
+                        "kind": "selection",
+                        "title": "`Array.isArray(items)`",
+                        "selectionMode": "if_else",
+                        "condition": "`Array.isArray(items)`",
+                        "thenBranch": [],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_syncConnection_5_6_else_0_7_1",
+                        "kind": "selection",
+                        "title": "`adapter.getGames`",
+                        "selectionMode": "if_else",
+                        "condition": "`adapter.getGames`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaConnectionsServ_syncConnection_5_6_else_0_7_1_then_0_7_1_1",
+                            "kind": "step",
+                            "title": "Calls `adapter.getGames(credentials).catch` and stores result as `games`"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_syncConnection_5_6_else_0_7_1_then_1_7_1_2",
+                            "kind": "selection",
+                            "title": "`Array.isArray(games)`",
+                            "selectionMode": "if_else",
+                            "condition": "`Array.isArray(games)`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaConnectionsServ_syncConnection_5_6_else_0_7_1_then_1_7_1_2_then_0_7_1_2_1",
+                                "kind": "iteration",
+                                "title": "Iterate `const game` over `games`",
+                                "loopType": "while",
+                                "condition": "Iterate `const game` over `games`",
+                                "children": []
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_syncConnection_7_8",
+                    "kind": "step",
+                    "title": "Assign `syncedItemsCount`",
+                    "payload": "syncedItemsCount = rawItems.length",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_syncConnection_8_9",
+                    "kind": "selection",
+                    "title": "`rawItems.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`rawItems.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_syncConnection_8_9_then_0_9_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "m_CarinaConnectionsServ_syncConnection_8_9_then_0_9_1_try_0_9_1_1",
+                            "kind": "var_def",
+                            "title": "Define `mappedItems`",
+                            "payload": "const mappedItems = rawItems.map((item: any) => { const prov = (item.provider || connection.provider || '').toUpperCase() const externalIds: Record<string, any> = { ...(item.externalIds || {}), } if (prov.includes('ANILIST')) externalIds.anilistId = item.externalId else if (prov.includes('MAL')) externalIds.malId = item.externalId ...)",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_syncConnection_8_9_then_0_9_1_try_1_9_1_2",
+                            "kind": "step",
+                            "title": "Calls `BorealisListsServ.importUserLists` and stores result as `importSummary`"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_syncConnection_8_9_then_0_9_1_try_2_9_1_3",
+                            "kind": "step",
+                            "title": "Calls `Array.from` and stores result as `touchedTypes`"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_syncConnection_8_9_then_0_9_1_try_3_9_1_4",
+                            "kind": "step",
+                            "title": "Calls `ActivityServ.recordImportOrSyncSummaryActivity`"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_syncConnection_8_9_then_0_9_1_try_4_9_1_5",
+                            "kind": "step",
+                            "title": "Calls `CarinaUsersServ.evaluateBadgesNonBlocking`"
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "m_CarinaConnectionsServ_syncConnection_8_9_then_0_9_1_catch_0_9_2_1",
+                            "kind": "step",
+                            "title": "Calls `console.error`"
+                          }
+                        ],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_syncConnection_9_10",
+                    "kind": "step",
+                    "title": "Database `update` on `Connection` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_syncConnection_10_11",
+                    "kind": "selection",
+                    "title": "`!updated`",
+                    "selectionMode": "if_else",
+                    "condition": "`!updated`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_syncConnection_10_11_then_0_11_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Connection not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_syncConnection_11_12",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"id\": \"<updated.id>\",\n  \"lastSyncedAt\": \"<toDate(updated.lastSyncedAt!).toISOString()>\",\n  \"syncedItemsCount\": \"<syncedItemsCount>\",\n  \"message\": \"Library synced successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-testConnection",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-testConnection",
+                "title": "CarinaConnectionsServ.testConnection(userId, connectionId)",
+                "description": "Tests connection health and validity against external provider API.",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_testConnection_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Connection` and stores it as `connection`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_testConnection_1_2",
+                    "kind": "selection",
+                    "title": "`!connection || connection.userId !== userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!connection || connection.userId !== userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_testConnection_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Connection not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_testConnection_2_3",
+                    "kind": "step",
+                    "title": "Calls `decryptConnectionData` and stores result as `credentials`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_testConnection_3_4",
+                    "kind": "step",
+                    "title": "Calls `getConnectionAdapter` and stores result as `adapter`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_testConnection_4_5",
+                    "kind": "step",
+                    "title": "Calls `adapter.testConnection` and stores result as `testResult`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_testConnection_5_6",
+                    "kind": "var_def",
+                    "title": "Define `newStatus`, `newErrorMessage`",
+                    "payload": "const newStatus: ConnectionStatus = testResult.ok ? 'CONNECTED' : 'ERROR'\nconst newErrorMessage = testResult.ok ? null : (testResult.message || 'Health check failed')",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_testConnection_6_7",
+                    "kind": "step",
+                    "title": "Database `update` on `Connection`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_testConnection_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"ok\": \"<testResult.ok>\",\n  \"status\": \"<newStatus>\",\n  \"message\": \"<testResult.message || testResult.ok ? 'Connection active' : 'Connection failed'>\",\n  \"profile\": \"<testResult.profile ?? null>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaConnectionsServ-searchProxy",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/connections/connections.serv.ts-CarinaConnectionsServ-searchProxy",
+                "title": "CarinaConnectionsServ.searchProxy(userId, query)",
+                "description": "Dispatches media search query or direct ID lookup via third-party provider proxy.",
+                "steps": [
+                  {
+                    "id": "m_CarinaConnectionsServ_searchProxy_0_1",
+                    "kind": "var_def",
+                    "title": "Define `rawProvider`, `provider`",
+                    "payload": "const rawProvider = query.provider.trim().toUpperCase()\nconst provider = rawProvider as ConnectionProvider",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_searchProxy_1_2",
+                    "kind": "selection",
+                    "title": "`rawProvider === 'LASTFM'`",
+                    "selectionMode": "if_else",
+                    "condition": "`rawProvider === 'LASTFM'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_0_2_1",
+                        "kind": "var_def",
+                        "title": "Define `apiKey`, `searchQuery`",
+                        "payload": "const apiKey = Bun.env.LASTFM_API_KEY?.trim()\nconst searchQuery = query.q || query.id || ''.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_1_2_2",
+                        "kind": "selection",
+                        "title": "`!apiKey || !searchQuery`",
+                        "selectionMode": "if_else",
+                        "condition": "`!apiKey || !searchQuery`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_1_2_2_then_0_2_2_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"provider\": \"LASTFM\",\n  \"results\": []\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_0_2_3_1",
+                            "kind": "var_def",
+                            "title": "Define `rawType`, `isAlbum`, `baseUrl`, `idCandidate`",
+                            "payload": "const rawType = query.type?.toUpperCase()\nconst isAlbum = rawType === 'ALBUM' || rawType === 'MUSIC_ALBUM'\nconst baseUrl = 'https://ws.audioscrobbler.com/2.0/'\nconst idCandidate = query.id || searchQuery.trim()",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_1_2_3_2",
+                            "kind": "step",
+                            "title": "Calls `idCandidate.match` and stores result as `mbidMatch`"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_2_2_3_3",
+                            "kind": "selection",
+                            "title": "`mbidMatch && mbidMatch[1]`",
+                            "selectionMode": "if_else",
+                            "condition": "`mbidMatch && mbidMatch[1]`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_2_2_3_3_then_0_2_3_3_1",
+                                "kind": "var_def",
+                                "title": "Define `mbid`, `method`",
+                                "payload": "const mbid = mbidMatch[1]\nconst method = isAlbum ? 'album.getInfo' : 'track.getInfo'",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_2_2_3_3_then_1_2_3_3_2",
+                                "kind": "step",
+                                "title": "Calls `fetch` and stores result as `res`"
+                              },
+                              {
+                                "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_2_2_3_3_then_2_2_3_3_3",
+                                "kind": "selection",
+                                "title": "`res.ok`",
+                                "selectionMode": "if_else",
+                                "condition": "`res.ok`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_2_2_3_3_then_2_2_3_3_3_then_0_2_3_3_3_1",
+                                    "kind": "var_def",
+                                    "title": "Define `data`, `item`",
+                                    "payload": "const data = (await res.json()) as any\nconst item = data?.album || data?.track",
+                                    "payloadLanguage": "typescript"
+                                  },
+                                  {
+                                    "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_2_2_3_3_then_2_2_3_3_3_then_1_2_3_3_3_2",
+                                    "kind": "selection",
+                                    "title": "`item`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`item`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_2_2_3_3_then_2_2_3_3_3_then_1_2_3_3_3_2_then_0_2_3_3_3_2_1",
+                                        "kind": "var_def",
+                                        "title": "Define `img`, `artistName`",
+                                        "payload": "const img = (item.image || item.album?.image) ?.slice() ?.reverse() ?.find((i: any) => i['#text']?.trim())?.['#text'] || null\nconst artistName = typeof item.artist === 'string' ? item.artist : item.artist?.name || ''",
+                                        "payloadLanguage": "typescript"
+                                      },
+                                      {
+                                        "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_2_2_3_3_then_2_2_3_3_3_then_1_2_3_3_3_2_then_1_2_3_3_3_2_2",
+                                        "kind": "return",
+                                        "title": "",
+                                        "payload": "{\n  \"success\": true,\n  \"provider\": \"LASTFM\",\n  \"results\": [\n    {\n      \"id\": \"<item.mbid || item.url || mbid>\",\n      \"externalId\": \"<item.url || item.mbid || mbid>\",\n      \"provider\": \"LASTFM\",\n      \"mediaType\": \"<isAlbum ? 'MUSIC_ALBUM' : 'MUSIC_TRACK'>\",\n      \"format\": \"<isAlbum ? 'ALBUM' : 'TRACK'>\",\n      \"title\": {\n        \"userPreferred\": \"<`${item.name}${artistName ? ` - ${artistName}` : ''}`.trim()>\",\n        \"english\": \"<item.name>\"\n      },\n      \"coverImage\": \"<img ? { large: img, medium: img } : undefined>\",\n      \"url\": \"<item.url>\"\n    }\n  ]\n}",
+                                        "payloadLanguage": "json"
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4",
+                            "kind": "selection",
+                            "title": "`query.id || idCandidate.includes('/music/')`",
+                            "selectionMode": "if_else",
+                            "condition": "`query.id || idCandidate.includes('/music/')`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_0_2_3_4_1",
+                                "kind": "step",
+                                "title": "Calls `idCandidate.match` and stores result as `trackMatch`"
+                              },
+                              {
+                                "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_1_2_3_4_2",
+                                "kind": "step",
+                                "title": "Calls `idCandidate.match` and stores result as `albumMatch`"
+                              },
+                              {
+                                "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3",
+                                "kind": "selection",
+                                "title": "`trackMatch && trackMatch[1] && trackMatch[2]`",
+                                "selectionMode": "if_else",
+                                "condition": "`trackMatch && trackMatch[1] && trackMatch[2]`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_then_0_2_3_4_3_1",
+                                    "kind": "step",
+                                    "title": "Calls `decodeURIComponent` and stores result as `artist`"
+                                  },
+                                  {
+                                    "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_then_1_2_3_4_3_2",
+                                    "kind": "step",
+                                    "title": "Calls `decodeURIComponent` and stores result as `trackTitle`"
+                                  },
+                                  {
+                                    "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_then_2_2_3_4_3_3",
+                                    "kind": "step",
+                                    "title": "Calls `fetch` and stores result as `res`"
+                                  },
+                                  {
+                                    "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_then_3_2_3_4_3_4",
+                                    "kind": "selection",
+                                    "title": "`res.ok`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`res.ok`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_then_3_2_3_4_3_4_then_0_2_3_4_3_4_1",
+                                        "kind": "var_def",
+                                        "title": "Define `data`",
+                                        "payload": "const data = (await res.json()) as any",
+                                        "payloadLanguage": "typescript"
+                                      },
+                                      {
+                                        "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_then_3_2_3_4_3_4_then_1_2_3_4_3_4_2",
+                                        "kind": "selection",
+                                        "title": "`data?.track`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`data?.track`",
+                                        "thenBranch": [
+                                          {
+                                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_then_3_2_3_4_3_4_then_1_2_3_4_3_4_2_then_0_2_3_4_3_4_2_1",
+                                            "kind": "var_def",
+                                            "title": "Define `tr`, `img`",
+                                            "payload": "const tr = data.track\nconst img = tr.album?.image?.reverse()?.find((i: any) => i['#text']?.trim())?.['#text'] || null",
+                                            "payloadLanguage": "typescript"
+                                          },
+                                          {
+                                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_then_3_2_3_4_3_4_then_1_2_3_4_3_4_2_then_1_2_3_4_3_4_2_2",
+                                            "kind": "return",
+                                            "title": "",
+                                            "payload": "{\n  \"success\": true,\n  \"provider\": \"LASTFM\",\n  \"results\": [\n    {\n      \"id\": \"<tr.mbid || tr.url || idCandidate>\",\n      \"externalId\": \"<tr.url || idCandidate>\",\n      \"provider\": \"LASTFM\",\n      \"mediaType\": \"MUSIC_TRACK\",\n      \"format\": \"TRACK\",\n      \"title\": {\n        \"userPreferred\": \"<`${tr.name} - ${tr.artist?.name || ''}`.trim()>\",\n        \"english\": \"<tr.name>\"\n      },\n      \"coverImage\": \"<img ? { large: img, medium: img } : undefined>\",\n      \"url\": \"<tr.url || idCandidate>\"\n    }\n  ]\n}",
+                                            "payloadLanguage": "json"
+                                          }
+                                        ],
+                                        "elseBranch": []
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_else_0_2_3_4_4_1",
+                                    "kind": "selection",
+                                    "title": "`albumMatch && albumMatch[1] && albumMatch[2] && albumMatch[2] !== '_'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`albumMatch && albumMatch[1] && albumMatch[2] && albumMatch[2] !== '_'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_else_0_2_3_4_4_1_then_0_2_3_4_4_1_1",
+                                        "kind": "step",
+                                        "title": "Calls `decodeURIComponent` and stores result as `artist`"
+                                      },
+                                      {
+                                        "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_else_0_2_3_4_4_1_then_1_2_3_4_4_1_2",
+                                        "kind": "step",
+                                        "title": "Calls `decodeURIComponent` and stores result as `albumTitle`"
+                                      },
+                                      {
+                                        "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_else_0_2_3_4_4_1_then_2_2_3_4_4_1_3",
+                                        "kind": "step",
+                                        "title": "Calls `fetch` and stores result as `res`"
+                                      },
+                                      {
+                                        "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_else_0_2_3_4_4_1_then_3_2_3_4_4_1_4",
+                                        "kind": "selection",
+                                        "title": "`res.ok`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`res.ok`",
+                                        "thenBranch": [
+                                          {
+                                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_else_0_2_3_4_4_1_then_3_2_3_4_4_1_4_then_0_2_3_4_4_1_4_1",
+                                            "kind": "var_def",
+                                            "title": "Define `data`",
+                                            "payload": "const data = (await res.json()) as any",
+                                            "payloadLanguage": "typescript"
+                                          },
+                                          {
+                                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_else_0_2_3_4_4_1_then_3_2_3_4_4_1_4_then_1_2_3_4_4_1_4_2",
+                                            "kind": "selection",
+                                            "title": "`data?.album`",
+                                            "selectionMode": "if_else",
+                                            "condition": "`data?.album`",
+                                            "thenBranch": [
+                                              {
+                                                "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_else_0_2_3_4_4_1_then_3_2_3_4_4_1_4_then_1_2_3_4_4_1_4_2_then_0_2_3_4_4_1_4_2_1",
+                                                "kind": "var_def",
+                                                "title": "Define `al`, `img`",
+                                                "payload": "const al = data.album\nconst img = al.image?.reverse()?.find((i: any) => i['#text']?.trim())?.['#text'] || null",
+                                                "payloadLanguage": "typescript"
+                                              },
+                                              {
+                                                "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_3_2_3_4_then_2_2_3_4_3_else_0_2_3_4_4_1_then_3_2_3_4_4_1_4_then_1_2_3_4_4_1_4_2_then_1_2_3_4_4_1_4_2_2",
+                                                "kind": "return",
+                                                "title": "",
+                                                "payload": "{\n  \"success\": true,\n  \"provider\": \"LASTFM\",\n  \"results\": [\n    {\n      \"id\": \"<al.mbid || al.url || idCandidate>\",\n      \"externalId\": \"<al.url || idCandidate>\",\n      \"provider\": \"LASTFM\",\n      \"mediaType\": \"MUSIC_ALBUM\",\n      \"format\": \"ALBUM\",\n      \"title\": {\n        \"userPreferred\": \"<`${al.name} - ${al.artist}`.trim()>\",\n        \"english\": \"<al.name>\"\n      },\n      \"coverImage\": \"<img ? { large: img, medium: img } : undefined>\",\n      \"url\": \"<al.url || idCandidate>\"\n    }\n  ]\n}",
+                                                "payloadLanguage": "json"
+                                              }
+                                            ],
+                                            "elseBranch": []
+                                          }
+                                        ],
+                                        "elseBranch": []
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ]
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_4_2_3_5",
+                            "kind": "var_def",
+                            "title": "Define `method`, `paramKey`",
+                            "payload": "const method = isAlbum ? 'album.search' : 'track.search'\nconst paramKey = isAlbum ? 'album' : 'track'",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_5_2_3_6",
+                            "kind": "step",
+                            "title": "Calls `Math.min` and stores result as `limit`"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_6_2_3_7",
+                            "kind": "step",
+                            "title": "Calls `fetch` and stores result as `res`"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_7_2_3_8",
+                            "kind": "selection",
+                            "title": "`res.ok`",
+                            "selectionMode": "if_else",
+                            "condition": "`res.ok`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_7_2_3_8_then_0_2_3_8_1",
+                                "kind": "var_def",
+                                "title": "Define `data`, `list`, `normalized`, `results`",
+                                "payload": "const data = (await res.json()) as any\nconst list = isAlbum ? data?.results?.albummatches?.album : data?.results?.trackmatches?.track\nconst normalized = Array.isArray(list) ? list : list ? [list] : []\nconst results = normalized.map((item: any) => { const img = item.image?.reverse()?.find((i: any) => i['#text']?.trim())?.['#text'] || null return { id: item.mbid || item.url, externalId: item.url || item.mbid || `${item.artist} - ${item.name}`, provider: 'LASTFM', mediaType: isAlbum ? 'MUSIC_ALBUM' : 'MUSIC_TRACK', ...)",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_try_7_2_3_8_then_1_2_3_8_2",
+                                "kind": "return",
+                                "title": "",
+                                "payload": "{\n  \"success\": true,\n  \"provider\": \"LASTFM\",\n  \"results\": \"<results>\"\n}",
+                                "payloadLanguage": "json"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_1_2_then_2_2_3_catch_0_2_4_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"provider\": \"LASTFM\",\n  \"results\": []\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_searchProxy_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `Connection` and stores it as `userConnRaw`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_searchProxy_3_4",
+                    "kind": "var_def",
+                    "title": "Define `userConnection`, `searchQuery`, `isExplicitIdOnly`, `directItem`",
+                    "payload": "const userConnection = userConnRaw ? { ...userConnRaw, expiresAt: userConnRaw.expiresAt ? toDate(userConnRaw.expiresAt) : null, } : null\nconst searchQuery = query.q || ''.trim()\nconst isExplicitIdOnly = Boolean(query.id) && !searchQuery || /^(?:id:|#|[a-z]+:|https?:\\/\\/|tt\\d+$)/i.test(searchQuery)\nlet directItem: any = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_searchProxy_4_5",
+                    "kind": "selection",
+                    "title": "`query.id`",
+                    "selectionMode": "if_else",
+                    "condition": "`query.id`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_searchProxy_4_5_then_0_5_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_4_5_then_0_5_1_try_0_5_1_1",
+                            "kind": "step",
+                            "title": "Calls `SearchProxyManager.getById` and stores result as `direct`"
+                          },
+                          {
+                            "id": "m_CarinaConnectionsServ_searchProxy_4_5_then_0_5_1_try_1_5_1_2",
+                            "kind": "selection",
+                            "title": "`direct`",
+                            "selectionMode": "if_else",
+                            "condition": "`direct`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaConnectionsServ_searchProxy_4_5_then_0_5_1_try_1_5_1_2_then_0_5_1_2_1",
+                                "kind": "var_def",
+                                "title": "Define `hasValidExt`, `hasValidId`, `finalId`",
+                                "payload": "const hasValidExt = Boolean(direct.externalId) && direct.externalId !== 'undefined' && direct.externalId !== 'null'\nconst hasValidId = Boolean(direct.id) && direct.id !== 'undefined' && direct.id !== 'null'\nconst finalId = hasValidExt ? direct.externalId : hasValidId ? direct.id : query.id",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "m_CarinaConnectionsServ_searchProxy_4_5_then_0_5_1_try_1_5_1_2_then_1_5_1_2_2",
+                                "kind": "step",
+                                "title": "Assign `directItem`",
+                                "payload": "directItem = { ...direct, id: hasValidId ? direct.id : finalId, externalId: finalId, }",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "m_CarinaConnectionsServ_searchProxy_4_5_then_0_5_1_try_1_5_1_2_then_2_5_1_2_3",
+                                "kind": "selection",
+                                "title": "`isExplicitIdOnly`",
+                                "selectionMode": "if_else",
+                                "condition": "`isExplicitIdOnly`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_CarinaConnectionsServ_searchProxy_4_5_then_0_5_1_try_1_5_1_2_then_2_5_1_2_3_then_0_5_1_2_3_1",
+                                    "kind": "return",
+                                    "title": "",
+                                    "payload": "{\n  \"success\": true,\n  \"provider\": \"<provider>\",\n  \"results\": [\n    \"<directItem>\"\n  ]\n}",
+                                    "payloadLanguage": "json"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "catchBlock": [],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_searchProxy_5_6",
+                    "kind": "selection",
+                    "title": "`!searchQuery`",
+                    "selectionMode": "if_else",
+                    "condition": "`!searchQuery`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaConnectionsServ_searchProxy_5_6_then_0_6_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"provider\": \"<provider>\",\n  \"results\": \"<directItem ? [directItem] : []>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_searchProxy_6_7",
+                    "kind": "step",
+                    "title": "Calls `SearchProxyManager.search` and stores result as `results`"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_searchProxy_7_8",
+                    "kind": "var_def",
+                    "title": "Define `buildFallbackUrl`, `combinedRaw`, `cleanedResults`",
+                    "payload": "const buildFallbackUrl = (prov: string, extId: string, mType?: string): string => { const isManga = mType === 'MANGA' || mType === 'BOOK' const isMovie = mType === 'MOVIE' const isTv = mType === 'TV' switch (prov) { case 'ANILIST': return `https://anilist.co/${isManga ? 'manga' : 'anime'}/${extId}` ...\nconst combinedRaw = directItem ? [ directItem, ...(results || []).filter( (r) => String(r.externalId || r.id) !== String(directItem.externalId || directItem.id) ), ] ...\nconst cleanedResults = combinedRaw.map((r, idx: number) => { const hasValidExt = Boolean(r.externalId) && r.externalId !== 'undefined' && r.externalId !== 'null' const hasValidId = Boolean(r.id) && r.id !== 'undefined' && r.id !== 'null' ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaConnectionsServ_searchProxy_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"provider\": \"<provider>\",\n  \"results\": \"<cleanedResults>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "14 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Unsupported provider: ${body.provider}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "testResult.message || 'Failed to authenticate with provider"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to save connection"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Connection not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Provider or connection not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Provider ${provider} does not support OAuth authentication"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Missing required environment variable: NEXT_PUBLIC_URL"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "query.error_description || query.error"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Missing required OAuth code or state parameter"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid or expired OAuth state token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "OAuth state user mismatch"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Missing OAuth state parameter and provider could not be resolved"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Missing OAuth provider"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to connect account"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

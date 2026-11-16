@@ -86,6 +86,16 @@ model User {
     // IRIS SEARCH RELATIONS
     searchHistory SearchHistory[] @relation("UserSearchHistory")
 
+    // RELIQUARY RELATIONS
+    reliquaryDocs           ReliquaryDoc[]          @relation("ReliquaryDocCreator")
+    reliquaryDocLocks       ReliquaryDoc[]          @relation("ReliquaryDocLocker")
+    reliquaryPages          ReliquaryPage[]         @relation("ReliquaryPageCreator")
+    reliquaryEditedPages    ReliquaryPage[]         @relation("ReliquaryPageEditor")
+    reliquaryPageLocks      ReliquaryPage[]         @relation("ReliquaryPageLocker")
+    reliquaryCollaborations ReliquaryCollaborator[] @relation("ReliquaryCollaborations")
+    reliquaryBookmarks      ReliquaryBookmark[]     @relation("ReliquaryBookmarks")
+    reliquaryRecentVisits   ReliquaryRecentVisit[]  @relation("ReliquaryRecentVisits")
+
     createdAt DateTime @default(now())
     updatedAt DateTime @onCreate(now()) @onUpdate(now())
 

@@ -1,0 +1,3102 @@
+{
+  "id": "apps/carina/oauth/oauth.serv",
+  "title": "oauth.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/carina/oauth/oauth.serv.ts",
+    "relPath": "apps/carina/oauth/oauth.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 19
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "oauth.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/carina/oauth/oauth.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "2 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/carina/oauth/oauth-discovery.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/oauth/oauth-discovery.ctrl.ts (CarinaOAuthServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/carina/oauth/oauth.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/oauth/oauth.ctrl.ts (CarinaOAuthServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "17 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.getOpenIdConfiguration"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.getOAuthAuthorizationServerMetadata"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.getAuthorize"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query, sessionUser)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.postAuthorize"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(body, sessionUser)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.postToken"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(body, authHeader)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.getUserinfo"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(sessionUser)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.postRevoke"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.postIntrospect"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.postRegisterClient"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(body, sessionUser)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.listApps"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.createApp"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.getApp"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, idOrClientId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.updateApp"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, idOrClientId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.deleteApp"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, idOrClientId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.regenerateSecret"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, idOrClientId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.listAuthorizations"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaOAuthServ.revokeAuthorization"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, idOrClientId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-getOpenIdConfiguration",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-getOpenIdConfiguration",
+                "title": "CarinaOAuthServ.getOpenIdConfiguration()",
+                "description": "RFC 8414 & OpenID Connect Discovery document.",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_getOpenIdConfiguration_0_1",
+                    "kind": "step",
+                    "title": "Calls `getIssuerUrl` and stores result as `issuer`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getOpenIdConfiguration_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"issuer\": \"<issuer>\",\n  \"authorization_endpoint\": \"<`${issuer}/carina/oauth/authorize`>\",\n  \"token_endpoint\": \"<`${issuer}/carina/oauth/token`>\",\n  \"userinfo_endpoint\": \"<`${issuer}/carina/oauth/userinfo`>\",\n  \"revocation_endpoint\": \"<`${issuer}/carina/oauth/revoke`>\",\n  \"introspection_endpoint\": \"<`${issuer}/carina/oauth/introspect`>\",\n  \"registration_endpoint\": \"<`${issuer}/carina/oauth/register`>\",\n  \"scopes_supported\": [\n    \"<...SUPPORTED_SCOPES>\"\n  ],\n  \"response_types_supported\": [\n    \"code\"\n  ],\n  \"grant_types_supported\": [\n    \"authorization_code\"\n  ],\n  \"token_endpoint_auth_methods_supported\": [\n    \"client_secret_basic\"\n  ],\n  \"code_challenge_methods_supported\": [\n    \"S256\"\n  ]\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-getOAuthAuthorizationServerMetadata",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-getOAuthAuthorizationServerMetadata",
+                "title": "CarinaOAuthServ.getOAuthAuthorizationServerMetadata()",
+                "description": "RFC 8414 OAuth 2.0 Authorization Server Metadata.",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_getOAuthAuthorizationServerMetadata_0_1",
+                    "kind": "step",
+                    "title": "Calls `getIssuerUrl` and stores result as `issuer`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getOAuthAuthorizationServerMetadata_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"issuer\": \"<issuer>\",\n  \"authorization_endpoint\": \"<`${issuer}/carina/oauth/authorize`>\",\n  \"token_endpoint\": \"<`${issuer}/carina/oauth/token`>\",\n  \"revocation_endpoint\": \"<`${issuer}/carina/oauth/revoke`>\",\n  \"introspection_endpoint\": \"<`${issuer}/carina/oauth/introspect`>\",\n  \"registration_endpoint\": \"<`${issuer}/carina/oauth/register`>\",\n  \"scopes_supported\": [\n    \"<...SUPPORTED_SCOPES>\"\n  ],\n  \"response_types_supported\": [\n    \"code\"\n  ],\n  \"grant_types_supported\": [\n    \"authorization_code\"\n  ],\n  \"code_challenge_methods_supported\": [\n    \"S256\"\n  ]\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-getAuthorize",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-getAuthorize",
+                "title": "CarinaOAuthServ.getAuthorize(query, sessionUser)",
+                "description": "Validate and retrieve client details for authorization prompt.",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_getAuthorize_0_1",
+                    "kind": "var_def",
+                    "title": "Define `{ client_id, redirect_uri, scope, state }`",
+                    "payload": "const { client_id, redirect_uri, scope, state } = query",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getAuthorize_1_2",
+                    "kind": "step",
+                    "title": "Calls `assertSafeOAuthRedirectUri`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getAuthorize_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `OAuthClient` and stores it as `client`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getAuthorize_3_4",
+                    "kind": "selection",
+                    "title": "`!client`",
+                    "selectionMode": "if_else",
+                    "condition": "`!client`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_getAuthorize_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "OAuth application '${client_id}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getAuthorize_4_5",
+                    "kind": "selection",
+                    "title": "`client.redirectUris.length > 0 && !client.redirectUris.includes(redirect_uri)`",
+                    "selectionMode": "if_else",
+                    "condition": "`client.redirectUris.length > 0 && !client.redirectUris.includes(redirect_uri)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_getAuthorize_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "The redirect URI '${redirect_uri}' is not registered for this client application."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getAuthorize_5_6",
+                    "kind": "step",
+                    "title": "Calls `parseScopes` and stores result as `requestedScopes`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getAuthorize_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"client\": {\n    \"id\": \"<client.id>\",\n    \"clientId\": \"<client.clientId>\",\n    \"name\": \"<client.name>\",\n    \"description\": \"<client.description>\",\n    \"logoUrl\": \"<client.logoUrl>\",\n    \"websiteUrl\": \"<client.websiteUrl>\",\n    \"isPublic\": \"<client.isPublic>\",\n    \"isTrusted\": \"<client.isTrusted>\"\n  },\n  \"requestedScopes\": \"<requestedScopes>\",\n  \"redirectUri\": \"<redirect_uri>\",\n  \"state\": \"<state || null>\",\n  \"currentUser\": \"<sessionUser ? { id: sessionUser.id, username: sessionUser.username, email: sessionUser.email, } : null>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-postAuthorize",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-postAuthorize",
+                "title": "CarinaOAuthServ.postAuthorize(body, sessionUser)",
+                "description": "Process user consent and issue a single-use authorization code.",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_0_1",
+                    "kind": "var_def",
+                    "title": "Define `{ client_id, redirect_uri, scope, state, code_challenge, code_challenge_method }`",
+                    "payload": "const { client_id, redirect_uri, scope, state, code_challenge, code_challenge_method } = body",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_1_2",
+                    "kind": "step",
+                    "title": "Calls `assertSafeOAuthRedirectUri` and stores result as `parsedUrl`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `OAuthClient` and stores it as `client`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_3_4",
+                    "kind": "selection",
+                    "title": "`!client`",
+                    "selectionMode": "if_else",
+                    "condition": "`!client`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postAuthorize_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "OAuth application '${client_id}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_4_5",
+                    "kind": "selection",
+                    "title": "`client.redirectUris.length > 0 && !client.redirectUris.includes(redirect_uri)`",
+                    "selectionMode": "if_else",
+                    "condition": "`client.redirectUris.length > 0 && !client.redirectUris.includes(redirect_uri)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postAuthorize_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "The redirect URI '${redirect_uri}' is not registered for this client application."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_5_6",
+                    "kind": "step",
+                    "title": "Calls `parseScopes` and stores result as `requestedScopes`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_6_7",
+                    "kind": "step",
+                    "title": "Database `first` on `OAuthConsent` and stores it as `existingConsent`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_7_8",
+                    "kind": "selection",
+                    "title": "`existingConsent`",
+                    "selectionMode": "if_else",
+                    "condition": "`existingConsent`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postAuthorize_7_8_then_0_8_1",
+                        "kind": "step",
+                        "title": "Database `update` on `OAuthConsent`"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postAuthorize_7_8_else_0_9_1",
+                        "kind": "step",
+                        "title": "Database `create` on `OAuthConsent`"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_9_10",
+                    "kind": "step",
+                    "title": "Calls `generateSecureToken` and stores result as `authCode`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_10_11",
+                    "kind": "var_def",
+                    "title": "Define `expiresAt`",
+                    "payload": "const expiresAt = new Date(Date.now() + 10 * 60 * 1000)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_11_12",
+                    "kind": "step",
+                    "title": "Database `create` on `OAuthAuthorizationCode`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_12_13",
+                    "kind": "step",
+                    "title": "Calls `parsedUrl.searchParams.set`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_13_14",
+                    "kind": "selection",
+                    "title": "`state`",
+                    "selectionMode": "if_else",
+                    "condition": "`state`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postAuthorize_13_14_then_0_14_1",
+                        "kind": "step",
+                        "title": "Calls `parsedUrl.searchParams.set`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_14_15",
+                    "kind": "var_def",
+                    "title": "Define `redirectUrl`",
+                    "payload": "const redirectUrl = parsedUrl.toString()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postAuthorize_15_16",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"code\": \"<authCode>\",\n  \"redirectUrl\": \"<redirectUrl>\",\n  \"state\": \"<state || null>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-postToken",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-postToken",
+                "title": "CarinaOAuthServ.postToken(body, authHeader)",
+                "description": "RFC 6749 Token Endpoint: Exchange authorization code or refresh token.",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_postToken_0_1",
+                    "kind": "var_def",
+                    "title": "Define `effectiveClientId`, `effectiveClientSecret`",
+                    "payload": "let effectiveClientId = body.client_id\nlet effectiveClientSecret = body.client_secret",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postToken_1_2",
+                    "kind": "selection",
+                    "title": "`authHeader && authHeader.startsWith('Basic ')`",
+                    "selectionMode": "if_else",
+                    "condition": "`authHeader && authHeader.startsWith('Basic ')`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_1_2_then_0_2_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_1_2_then_0_2_1_try_0_2_1_1",
+                            "kind": "var_def",
+                            "title": "Define `decoded`, `[u, p]`",
+                            "payload": "const decoded = Buffer.from(authHeader.slice(6).trim(), 'base64').toString('utf-8')\nconst [u, p] = decoded.split(':')",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_1_2_then_0_2_1_try_1_2_1_2",
+                            "kind": "selection",
+                            "title": "`u && !effectiveClientId`",
+                            "selectionMode": "if_else",
+                            "condition": "`u && !effectiveClientId`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaOAuthServ_postToken_1_2_then_0_2_1_try_1_2_1_2_then_0_2_1_2_1",
+                                "kind": "step",
+                                "title": "Assign `effectiveClientId`",
+                                "payload": "effectiveClientId = u",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_1_2_then_0_2_1_try_2_2_1_3",
+                            "kind": "selection",
+                            "title": "`p && !effectiveClientSecret`",
+                            "selectionMode": "if_else",
+                            "condition": "`p && !effectiveClientSecret`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaOAuthServ_postToken_1_2_then_0_2_1_try_2_2_1_3_then_0_2_1_3_1",
+                                "kind": "step",
+                                "title": "Assign `effectiveClientSecret`",
+                                "payload": "effectiveClientSecret = p",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "catchBlock": [],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postToken_2_3",
+                    "kind": "var_def",
+                    "title": "Define `{ grant_type }`",
+                    "payload": "const { grant_type } = body",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postToken_3_4",
+                    "kind": "selection",
+                    "title": "`grant_type === 'authorization_code'`",
+                    "selectionMode": "if_else",
+                    "condition": "`grant_type === 'authorization_code'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_0_4_1",
+                        "kind": "var_def",
+                        "title": "Define `{ code, redirect_uri, code_verifier }`",
+                        "payload": "const { code, redirect_uri, code_verifier } = body",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_1_4_2",
+                        "kind": "selection",
+                        "title": "`!code`",
+                        "selectionMode": "if_else",
+                        "condition": "`!code`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_3_4_then_1_4_2_then_0_4_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Missing required 'code' parameter."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_2_4_3",
+                        "kind": "step",
+                        "title": "Database `first` on `OAuthAuthorizationCode` and stores it as `authCode`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_3_4_4",
+                        "kind": "selection",
+                        "title": "`!authCode`",
+                        "selectionMode": "if_else",
+                        "condition": "`!authCode`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_3_4_then_3_4_4_then_0_4_4_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Invalid or expired authorization code."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_4_4_5",
+                        "kind": "selection",
+                        "title": "`authCode.usedAt !== null`",
+                        "selectionMode": "if_else",
+                        "condition": "`authCode.usedAt !== null`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_3_4_then_4_4_5_then_0_4_5_1",
+                            "kind": "step",
+                            "title": "Database `updateAll` on `OAuthAccessToken`"
+                          },
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_3_4_then_4_4_5_then_1_4_5_2",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Authorization code already used. Potential replay detected."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_5_4_6",
+                        "kind": "selection",
+                        "title": "`toDate(authCode.expiresAt).getTime() < Date.now()`",
+                        "selectionMode": "if_else",
+                        "condition": "`toDate(authCode.expiresAt).getTime() < Date.now()`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_3_4_then_5_4_6_then_0_4_6_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Authorization code has expired."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_6_4_7",
+                        "kind": "selection",
+                        "title": "`authCode.redirectUri && authCode.redirectUri !== redirect_uri`",
+                        "selectionMode": "if_else",
+                        "condition": "`authCode.redirectUri && authCode.redirectUri !== redirect_uri`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_3_4_then_6_4_7_then_0_4_7_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "The redirect_uri provided does not match the authorization request."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_7_4_8",
+                        "kind": "selection",
+                        "title": "`authCode.codeChallenge`",
+                        "selectionMode": "if_else",
+                        "condition": "`authCode.codeChallenge`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_3_4_then_7_4_8_then_0_4_8_1",
+                            "kind": "selection",
+                            "title": "`!code_verifier`",
+                            "selectionMode": "if_else",
+                            "condition": "`!code_verifier`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaOAuthServ_postToken_3_4_then_7_4_8_then_0_4_8_1_then_0_4_8_1_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Missing 'code_verifier' required for PKCE verification."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_3_4_then_7_4_8_then_1_4_8_2",
+                            "kind": "var_def",
+                            "title": "Define `method`",
+                            "payload": "const method = authCode.codeChallengeMethod as 'S256' | 'plain' || 'S256'",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_3_4_then_7_4_8_then_2_4_8_3",
+                            "kind": "step",
+                            "title": "Calls `verifyPkceChallenge` and stores result as `isPkceValid`"
+                          },
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_3_4_then_7_4_8_then_3_4_8_4",
+                            "kind": "selection",
+                            "title": "`!isPkceValid`",
+                            "selectionMode": "if_else",
+                            "condition": "`!isPkceValid`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaOAuthServ_postToken_3_4_then_7_4_8_then_3_4_8_4_then_0_4_8_4_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "PKCE verification failed: code_verifier does not match challenge."
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_8_4_9",
+                        "kind": "selection",
+                        "title": "`!authCode.client.isPublic && authCode.client.clientSecret`",
+                        "selectionMode": "if_else",
+                        "condition": "`!authCode.client.isPublic && authCode.client.clientSecret`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_3_4_then_8_4_9_then_0_4_9_1",
+                            "kind": "selection",
+                            "title": "`!effectiveClientSecret || !verifyClientSecret(effectiveClientSecret, authCode.client.clientSecret)`",
+                            "selectionMode": "if_else",
+                            "condition": "`!effectiveClientSecret || !verifyClientSecret(effectiveClientSecret, authCode.client.clientSecret)`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaOAuthServ_postToken_3_4_then_8_4_9_then_0_4_9_1_then_0_4_9_1_1",
+                                "kind": "error",
+                                "code": "Unauthorized",
+                                "httpStatus": 401,
+                                "message": "Client authentication failed."
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_9_4_10",
+                        "kind": "step",
+                        "title": "Database `update` on `OAuthAuthorizationCode`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_10_4_11",
+                        "kind": "step",
+                        "title": "Calls `generateSecureToken` and stores result as `accessToken`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_11_4_12",
+                        "kind": "step",
+                        "title": "Calls `generateSecureToken` and stores result as `refreshToken`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_12_4_13",
+                        "kind": "var_def",
+                        "title": "Define `accessExpiresAt`, `refreshExpiresAt`",
+                        "payload": "const accessExpiresAt = new Date(Date.now() + 30 * 86400 * 1000)\nconst refreshExpiresAt = new Date(Date.now() + 90 * 86400 * 1000)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_13_4_14",
+                        "kind": "step",
+                        "title": "Database `all` on `OAuthAccessToken`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_3_4_then_14_4_15",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"access_token\": \"<accessToken>\",\n  \"token_type\": \"<'Bearer' as const>\",\n  \"expires_in\": \"<30 * 86400>\",\n  \"refresh_token\": \"<refreshToken>\",\n  \"scope\": \"<authCode.scopes.join(' ')>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postToken_4_5",
+                    "kind": "selection",
+                    "title": "`grant_type === 'refresh_token'`",
+                    "selectionMode": "if_else",
+                    "condition": "`grant_type === 'refresh_token'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_4_5_then_0_5_1",
+                        "kind": "var_def",
+                        "title": "Define `{ refresh_token }`",
+                        "payload": "const { refresh_token } = body",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_4_5_then_1_5_2",
+                        "kind": "selection",
+                        "title": "`!refresh_token`",
+                        "selectionMode": "if_else",
+                        "condition": "`!refresh_token`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_4_5_then_1_5_2_then_0_5_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Missing 'refresh_token' parameter."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_4_5_then_2_5_3",
+                        "kind": "step",
+                        "title": "Database `first` on `OAuthRefreshToken` and stores it as `tokenRecord`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_4_5_then_3_5_4",
+                        "kind": "selection",
+                        "title": "`!tokenRecord || tokenRecord.revokedAt || toDate(tokenRecord.expiresAt).getTime() < Date.now()`",
+                        "selectionMode": "if_else",
+                        "condition": "`!tokenRecord || tokenRecord.revokedAt || toDate(tokenRecord.expiresAt).getTime() < Date.now()`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_4_5_then_3_5_4_then_0_5_4_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Invalid, expired, or revoked refresh token."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_4_5_then_4_5_5",
+                        "kind": "step",
+                        "title": "Calls `generateSecureToken` and stores result as `newAccessToken`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_4_5_then_5_5_6",
+                        "kind": "step",
+                        "title": "Calls `generateSecureToken` and stores result as `newRefreshToken`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_4_5_then_6_5_7",
+                        "kind": "var_def",
+                        "title": "Define `accessExpiresAt`, `refreshExpiresAt`",
+                        "payload": "const accessExpiresAt = new Date(Date.now() + 30 * 86400 * 1000)\nconst refreshExpiresAt = new Date(Date.now() + 90 * 86400 * 1000)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_4_5_then_7_5_8",
+                        "kind": "step",
+                        "title": "Database `update` on `OAuthRefreshToken`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_4_5_then_8_5_9",
+                        "kind": "step",
+                        "title": "Database `all` on `OAuthAccessToken`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_4_5_then_9_5_10",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"access_token\": \"<newAccessToken>\",\n  \"token_type\": \"<'Bearer' as const>\",\n  \"expires_in\": \"<30 * 86400>\",\n  \"refresh_token\": \"<newRefreshToken>\",\n  \"scope\": \"<tokenRecord.scopes.join(' ')>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postToken_5_6",
+                    "kind": "selection",
+                    "title": "`grant_type === 'client_credentials'`",
+                    "selectionMode": "if_else",
+                    "condition": "`grant_type === 'client_credentials'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_5_6_then_0_6_1",
+                        "kind": "selection",
+                        "title": "`!effectiveClientId || !effectiveClientSecret`",
+                        "selectionMode": "if_else",
+                        "condition": "`!effectiveClientId || !effectiveClientSecret`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_5_6_then_0_6_1_then_0_6_1_1",
+                            "kind": "error",
+                            "code": "Unauthorized",
+                            "httpStatus": 401,
+                            "message": "Client ID and Client Secret are required."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_5_6_then_1_6_2",
+                        "kind": "step",
+                        "title": "Database `first` on `OAuthClient` and stores it as `client`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_5_6_then_2_6_3",
+                        "kind": "selection",
+                        "title": "`!client || !client.clientSecret || !verifyClientSecret(effectiveClientSecret, client.clientSecret)`",
+                        "selectionMode": "if_else",
+                        "condition": "`!client || !client.clientSecret || !verifyClientSecret(effectiveClientSecret, client.clientSecret)`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaOAuthServ_postToken_5_6_then_2_6_3_then_0_6_3_1",
+                            "kind": "error",
+                            "code": "Unauthorized",
+                            "httpStatus": 401,
+                            "message": "Invalid client credentials."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_5_6_then_3_6_4",
+                        "kind": "step",
+                        "title": "Calls `generateSecureToken` and stores result as `accessToken`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_5_6_then_4_6_5",
+                        "kind": "var_def",
+                        "title": "Define `accessExpiresAt`",
+                        "payload": "const accessExpiresAt = new Date(Date.now() + 30 * 86400 * 1000)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_5_6_then_5_6_6",
+                        "kind": "step",
+                        "title": "Calls `parseScopes` and stores result as `scopes`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_5_6_then_6_6_7",
+                        "kind": "step",
+                        "title": "Database `create` on `OAuthAccessToken`"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postToken_5_6_then_7_6_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"access_token\": \"<accessToken>\",\n  \"token_type\": \"<'Bearer' as const>\",\n  \"expires_in\": \"<30 * 86400>\",\n  \"scope\": \"<scopes.join(' ')>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postToken_6_7",
+                    "kind": "error",
+                    "code": "BadRequest",
+                    "httpStatus": 400,
+                    "message": "Unsupported grant_type '${grant_type}'."
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-getUserinfo",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-getUserinfo",
+                "title": "CarinaOAuthServ.getUserinfo(sessionUser)",
+                "description": "OIDC UserInfo endpoint: returns identity claims for the authenticated subject.",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_getUserinfo_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `user`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getUserinfo_1_2",
+                    "kind": "selection",
+                    "title": "`!user`",
+                    "selectionMode": "if_else",
+                    "condition": "`!user`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_getUserinfo_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User profile not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getUserinfo_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"sub\": \"<user.id>\",\n  \"id\": \"<user.id>\",\n  \"username\": \"<user.username>\",\n  \"name\": \"<user.username>\",\n  \"email\": \"<user.email>\",\n  \"email_verified\": \"<Boolean(user.email)>\",\n  \"permissions\": [\n    \"<...user.permissions>\"\n  ]\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-postRevoke",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-postRevoke",
+                "title": "CarinaOAuthServ.postRevoke(body)",
+                "description": "RFC 7009 Token Revocation endpoint.",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_postRevoke_0_1",
+                    "kind": "var_def",
+                    "title": "Define `{ token }`",
+                    "payload": "const { token } = body",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postRevoke_1_2",
+                    "kind": "selection",
+                    "title": "`token`",
+                    "selectionMode": "if_else",
+                    "condition": "`token`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postRevoke_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Database `all` on `OAuthAccessToken`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postRevoke_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Token has been revoked\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-postIntrospect",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-postIntrospect",
+                "title": "CarinaOAuthServ.postIntrospect(body)",
+                "description": "RFC 7662 Token Introspection endpoint.",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_postIntrospect_0_1",
+                    "kind": "var_def",
+                    "title": "Define `{ token }`",
+                    "payload": "const { token } = body",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postIntrospect_1_2",
+                    "kind": "selection",
+                    "title": "`!token`",
+                    "selectionMode": "if_else",
+                    "condition": "`!token`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postIntrospect_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"active\": false\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postIntrospect_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `OAuthAccessToken` and stores it as `accessToken`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postIntrospect_3_4",
+                    "kind": "selection",
+                    "title": "`accessToken && !accessToken.revokedAt && toDate(accessToken.expiresAt).getTime() > Date.now()`",
+                    "selectionMode": "if_else",
+                    "condition": "`accessToken && !accessToken.revokedAt && toDate(accessToken.expiresAt).getTime() > Date.now()`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postIntrospect_3_4_then_0_4_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"active\": true,\n  \"client_id\": \"<accessToken.client.clientId>\",\n  \"sub\": \"<accessToken.userId>\",\n  \"scope\": \"<accessToken.scopes.join(' ')>\",\n  \"exp\": \"<Math.floor(toDate(accessToken.expiresAt).getTime() / 1000)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postIntrospect_4_5",
+                    "kind": "step",
+                    "title": "Database `first` on `OAuthRefreshToken` and stores it as `refreshToken`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postIntrospect_5_6",
+                    "kind": "selection",
+                    "title": "`refreshToken && !refreshToken.revokedAt && toDate(refreshToken.expiresAt).getTime() > Date.now()`",
+                    "selectionMode": "if_else",
+                    "condition": "`refreshToken && !refreshToken.revokedAt && toDate(refreshToken.expiresAt).getTime() > Date.now()`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postIntrospect_5_6_then_0_6_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"active\": true,\n  \"client_id\": \"<refreshToken.client.clientId>\",\n  \"sub\": \"<refreshToken.userId>\",\n  \"scope\": \"<refreshToken.scopes.join(' ')>\",\n  \"exp\": \"<Math.floor(toDate(refreshToken.expiresAt).getTime() / 1000)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postIntrospect_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"active\": false\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-postRegisterClient",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-postRegisterClient",
+                "title": "CarinaOAuthServ.postRegisterClient(body, sessionUser)",
+                "description": "RFC 7591 Dynamic Client Registration endpoint.",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_postRegisterClient_0_1",
+                    "kind": "selection",
+                    "title": "`!sessionUser?.id`",
+                    "selectionMode": "if_else",
+                    "condition": "`!sessionUser?.id`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postRegisterClient_0_1_then_0_1_1",
+                        "kind": "error",
+                        "code": "Unauthorized",
+                        "httpStatus": 401,
+                        "message": "Authentication required to register an OAuth application."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postRegisterClient_1_2",
+                    "kind": "var_def",
+                    "title": "Define `ownerUserId`",
+                    "payload": "const ownerUserId = sessionUser.id",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postRegisterClient_2_3",
+                    "kind": "step",
+                    "title": "Calls `generateClientId` and stores result as `clientId`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postRegisterClient_3_4",
+                    "kind": "step",
+                    "title": "Calls `Boolean` and stores result as `isPublic`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postRegisterClient_4_5",
+                    "kind": "var_def",
+                    "title": "Define `rawSecret`, `hashedSecret`",
+                    "payload": "let rawSecret: string | undefined = undefined\nlet hashedSecret: string | null = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postRegisterClient_5_6",
+                    "kind": "selection",
+                    "title": "`!isPublic`",
+                    "selectionMode": "if_else",
+                    "condition": "`!isPublic`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_postRegisterClient_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Assign `rawSecret`",
+                        "payload": "rawSecret = generateClientSecret()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_postRegisterClient_5_6_then_1_6_2",
+                        "kind": "step",
+                        "title": "Assign `hashedSecret`",
+                        "payload": "hashedSecret = hashClientSecret(rawSecret)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postRegisterClient_6_7",
+                    "kind": "step",
+                    "title": "Calls `parseScopes` and stores result as `scopes`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postRegisterClient_7_8",
+                    "kind": "step",
+                    "title": "Database `create` on `OAuthClient` and stores it as `client`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_postRegisterClient_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"client_id\": \"<client.clientId>\",\n  \"client_secret\": \"<rawSecret>\",\n  \"client_name\": \"<client.name>\",\n  \"redirect_uris\": [\n    \"<...client.redirectUris>\"\n  ],\n  \"scopes\": [\n    \"<...client.allowedScopes>\"\n  ]\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-listApps",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-listApps",
+                "title": "CarinaOAuthServ.listApps(userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_listApps_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `OAuthClient` and stores it as `clients`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_listApps_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"clients\": \"<clients.map((c) => ({ id: c.id, clientId: c.clientId, name: c.name, description: c.description, logoUrl: c.logoUrl, websiteUrl: c.websiteUrl, ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-createApp",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-createApp",
+                "title": "CarinaOAuthServ.createApp(userId, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_createApp_0_1",
+                    "kind": "step",
+                    "title": "Calls `generateClientId` and stores result as `clientId`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_createApp_1_2",
+                    "kind": "step",
+                    "title": "Calls `Boolean` and stores result as `isPublic`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_createApp_2_3",
+                    "kind": "var_def",
+                    "title": "Define `rawSecret`, `hashedSecret`",
+                    "payload": "let rawSecret: string | undefined = undefined\nlet hashedSecret: string | null = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_createApp_3_4",
+                    "kind": "selection",
+                    "title": "`!isPublic`",
+                    "selectionMode": "if_else",
+                    "condition": "`!isPublic`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_createApp_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Assign `rawSecret`",
+                        "payload": "rawSecret = generateClientSecret()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaOAuthServ_createApp_3_4_then_1_4_2",
+                        "kind": "step",
+                        "title": "Assign `hashedSecret`",
+                        "payload": "hashedSecret = hashClientSecret(rawSecret)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_createApp_4_5",
+                    "kind": "step",
+                    "title": "Database `create` on `OAuthClient` and stores it as `client`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_createApp_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"client\": {\n    \"id\": \"<client.id>\",\n    \"clientId\": \"<client.clientId>\",\n    \"clientSecret\": \"<rawSecret>\",\n    \"name\": \"<client.name>\",\n    \"description\": \"<client.description>\",\n    \"logoUrl\": \"<client.logoUrl>\",\n    \"websiteUrl\": \"<client.websiteUrl>\",\n    \"redirectUris\": [\n      \"<...client.redirectUris>\"\n    ],\n    \"isPublic\": \"<client.isPublic>\",\n    \"isTrusted\": \"<client.isTrusted>\",\n    \"createdAt\": \"<toDate(client.createdAt).toISOString()>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-getApp",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-getApp",
+                "title": "CarinaOAuthServ.getApp(userId, idOrClientId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_getApp_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `OAuthClient` and stores it as `client`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getApp_1_2",
+                    "kind": "selection",
+                    "title": "`!client`",
+                    "selectionMode": "if_else",
+                    "condition": "`!client`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_getApp_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "OAuth application '${idOrClientId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_getApp_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"client\": {\n    \"id\": \"<client.id>\",\n    \"clientId\": \"<client.clientId>\",\n    \"name\": \"<client.name>\",\n    \"description\": \"<client.description>\",\n    \"logoUrl\": \"<client.logoUrl>\",\n    \"websiteUrl\": \"<client.websiteUrl>\",\n    \"redirectUris\": [\n      \"<...client.redirectUris>\"\n    ],\n    \"isPublic\": \"<client.isPublic>\",\n    \"isTrusted\": \"<client.isTrusted>\",\n    \"createdAt\": \"<toDate(client.createdAt).toISOString()>\",\n    \"updatedAt\": \"<toDate(client.updatedAt).toISOString()>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-updateApp",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-updateApp",
+                "title": "CarinaOAuthServ.updateApp(userId, idOrClientId, body)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_updateApp_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `OAuthClient` and stores it as `client`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_updateApp_1_2",
+                    "kind": "selection",
+                    "title": "`!client`",
+                    "selectionMode": "if_else",
+                    "condition": "`!client`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_updateApp_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "OAuth application '${idOrClientId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_updateApp_2_3",
+                    "kind": "step",
+                    "title": "Database `update` on `OAuthClient` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_updateApp_3_4",
+                    "kind": "selection",
+                    "title": "`!updated`",
+                    "selectionMode": "if_else",
+                    "condition": "`!updated`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_updateApp_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "OAuth application '${idOrClientId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_updateApp_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"client\": {\n    \"id\": \"<updated.id>\",\n    \"clientId\": \"<updated.clientId>\",\n    \"name\": \"<updated.name>\",\n    \"description\": \"<updated.description>\",\n    \"logoUrl\": \"<updated.logoUrl>\",\n    \"websiteUrl\": \"<updated.websiteUrl>\",\n    \"redirectUris\": [\n      \"<...updated.redirectUris>\"\n    ],\n    \"isPublic\": \"<updated.isPublic>\",\n    \"isTrusted\": \"<updated.isTrusted>\",\n    \"createdAt\": \"<toDate(updated.createdAt).toISOString()>\",\n    \"updatedAt\": \"<toDate(updated.updatedAt).toISOString()>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-deleteApp",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-deleteApp",
+                "title": "CarinaOAuthServ.deleteApp(userId, idOrClientId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_deleteApp_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `OAuthClient` and stores it as `client`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_deleteApp_1_2",
+                    "kind": "selection",
+                    "title": "`!client`",
+                    "selectionMode": "if_else",
+                    "condition": "`!client`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_deleteApp_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "OAuth application '${idOrClientId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_deleteApp_2_3",
+                    "kind": "step",
+                    "title": "Database `delete` on `OAuthClient`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_deleteApp_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"<`OAuth application '${client.name}' deleted successfully.`>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-regenerateSecret",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-regenerateSecret",
+                "title": "CarinaOAuthServ.regenerateSecret(userId, idOrClientId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_regenerateSecret_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `OAuthClient` and stores it as `client`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_regenerateSecret_1_2",
+                    "kind": "selection",
+                    "title": "`!client`",
+                    "selectionMode": "if_else",
+                    "condition": "`!client`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_regenerateSecret_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "OAuth application '${idOrClientId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_regenerateSecret_2_3",
+                    "kind": "step",
+                    "title": "Calls `generateClientSecret` and stores result as `newSecret`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_regenerateSecret_3_4",
+                    "kind": "step",
+                    "title": "Calls `hashClientSecret` and stores result as `hashed`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_regenerateSecret_4_5",
+                    "kind": "step",
+                    "title": "Database `update` on `OAuthClient`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_regenerateSecret_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"clientSecret\": \"<newSecret>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-listAuthorizations",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-listAuthorizations",
+                "title": "CarinaOAuthServ.listAuthorizations(userId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_listAuthorizations_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `OAuthConsent` and stores it as `consents`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_listAuthorizations_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"authorizations\": \"<consents.map((c) => ({ id: c.id, clientId: c.client.clientId, appName: c.client.name, appLogo: c.client.logoUrl, websiteUrl: c.client.websiteUrl, scopes: [...c.scopes], ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaOAuthServ-revokeAuthorization",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth.serv.ts-CarinaOAuthServ-revokeAuthorization",
+                "title": "CarinaOAuthServ.revokeAuthorization(userId, idOrClientId)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_CarinaOAuthServ_revokeAuthorization_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `OAuthClient` and stores it as `targetClient`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_revokeAuthorization_1_2",
+                    "kind": "step",
+                    "title": "Database `first` on `OAuthConsent` and stores it as `consent`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_revokeAuthorization_2_3",
+                    "kind": "selection",
+                    "title": "`!consent`",
+                    "selectionMode": "if_else",
+                    "condition": "`!consent`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaOAuthServ_revokeAuthorization_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User authorization grant not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_revokeAuthorization_3_4",
+                    "kind": "step",
+                    "title": "Database `all` on `OAuthConsent`"
+                  },
+                  {
+                    "id": "m_CarinaOAuthServ_revokeAuthorization_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Authorization grant and associated tokens have been revoked.\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "19 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "OAuth application '${client_id}' was not found."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "The redirect URI '${redirect_uri}' is not registered for this client application."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Missing required 'code' parameter."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid or expired authorization code."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Authorization code already used. Potential replay detected."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Authorization code has expired."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "The redirect_uri provided does not match the authorization request."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Missing 'code_verifier' required for PKCE verification."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "PKCE verification failed: code_verifier does not match challenge."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Client authentication failed."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Missing 'refresh_token' parameter."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid, expired, or revoked refresh token."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Client ID and Client Secret are required."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid client credentials."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Unsupported grant_type '${grant_type}'."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User profile not found."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Authentication required to register an OAuth application."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "OAuth application '${idOrClientId}' was not found."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User authorization grant not found."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

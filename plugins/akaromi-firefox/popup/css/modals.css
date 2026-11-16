@@ -25,7 +25,7 @@
   max-width: 95%;
   height: 100%;
   max-height: 100%;
-  background: #101014;
+  background: var(--background);
   border-left: 1px solid var(--border);
   border-top: none;
   border-right: none;
@@ -57,7 +57,7 @@
   justify-content: space-between;
   padding-inline: 14px;
   border-bottom: 1px solid var(--border);
-  background: #141418;
+  background: var(--card);
   flex-shrink: 0;
 }
 
@@ -213,7 +213,7 @@
 }
 
 .additional-pass-row-item {
-  background: #141418;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 8px 10px;
@@ -237,7 +237,7 @@
   height: 28px;
   font-size: 11.5px;
   padding: 4px 8px;
-  background: #101014;
+  background: var(--background);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--foreground);
@@ -247,8 +247,7 @@
 }
 
 .pass-row-name:focus {
-  border-color: #52525b;
-  box-shadow: 0 0 0 1px #52525b;
+  border-color: var(--ring);`n  box-shadow: 0 0 0 1px var(--ring);
 }
 
 .pass-val-wrap {
@@ -263,7 +262,7 @@
   height: 30px;
   font-size: 12px;
   padding: 4px 58px 4px 8px;
-  background: #101014;
+  background: var(--background);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--foreground);
@@ -273,8 +272,7 @@
 }
 
 .pass-row-value:focus {
-  border-color: #52525b;
-  box-shadow: 0 0 0 1px #52525b;
+  border-color: var(--ring);`n  box-shadow: 0 0 0 1px var(--ring);
 }
 
 .pass-val-actions {
@@ -314,7 +312,7 @@
 }
 
 .custom-field-row-item {
-  background: #141418;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 8px 10px;
@@ -338,7 +336,7 @@
   height: 28px;
   font-size: 11.5px;
   padding: 4px 8px;
-  background: #101014;
+  background: var(--background);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--foreground);
@@ -348,8 +346,7 @@
 }
 
 .custom-field-name:focus {
-  border-color: #52525b;
-  box-shadow: 0 0 0 1px #52525b;
+  border-color: var(--ring);`n  box-shadow: 0 0 0 1px var(--ring);
 }
 
 .custom-field-val-wrap {
@@ -364,7 +361,7 @@
   height: 30px;
   font-size: 12px;
   padding: 4px 34px 4px 8px;
-  background: #101014;
+  background: var(--background);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--foreground);
@@ -374,8 +371,7 @@
 }
 
 .custom-field-value:focus {
-  border-color: #52525b;
-  box-shadow: 0 0 0 1px #52525b;
+  border-color: var(--ring);`n  box-shadow: 0 0 0 1px var(--ring);
 }
 
 .custom-field-val-actions {
@@ -440,7 +436,7 @@
   height: 30px;
   font-size: 11.5px;
   padding: 2px 24px 2px 8px;
-  background-color: #101014;
+  background-color: var(--background);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 6px center;
@@ -458,12 +454,11 @@
 }
 
 .website-input-row .select-website-match:focus {
-  border-color: #52525b;
-  box-shadow: 0 0 0 1px #52525b;
+  border-color: var(--ring);`n  box-shadow: 0 0 0 1px var(--ring);
 }
 
 .website-input-row .select-website-match option {
-  background: #18181b;
+  background: var(--popover);
   color: #fafafa;
   padding: 6px 10px;
 }
@@ -520,7 +515,7 @@
 }
 
 .gen-output-box {
-  background: #141418;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 12px 14px;
@@ -686,7 +681,7 @@
   height: 28px;
   padding: 2px 8px;
   font-size: 11.5px;
-  background: #101014;
+  background: var(--background);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--foreground);
@@ -696,8 +691,7 @@
 }
 
 .form-select.mini:focus {
-  border-color: #52525b;
-  box-shadow: 0 0 0 1px #52525b;
+  border-color: var(--ring);`n  box-shadow: 0 0 0 1px var(--ring);
 }
 
 /* Shadcn Zinc Toggle Switch */
@@ -721,8 +715,8 @@
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background-color: #27272a;
-  border: 1px solid #3f3f46;
+  background-color: var(--secondary);
+  border: 1px solid var(--border);
   transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   border-radius: 9999px;
 }
@@ -740,13 +734,12 @@
 }
 
 .toggle-switch input:checked + .toggle-slider {
-  background-color: #fafafa;
-  border-color: #fafafa;
+  background-color: var(--primary);`n  border-color: var(--primary);
 }
 
 .toggle-switch input:checked + .toggle-slider:before {
   transform: translateX(16px);
-  background-color: #09090b;
+  background-color: var(--primary-foreground);
 }
 
 .toggle-switch input:focus-visible + .toggle-slider {
@@ -804,7 +797,7 @@
 /* PIN Setup Dialog */
 .modal-dialog-box {
   width: 360px;
-  background: #141418;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 16px;
@@ -845,7 +838,7 @@
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
-  background: #18181b;
+  background: var(--popover);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
@@ -866,7 +859,7 @@
   font-size: 10.5px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #71717a;
+  color: var(--muted-foreground);
   padding: 6px 8px;
   letter-spacing: 0.04em;
 }
@@ -894,7 +887,7 @@
 }
 
 .dropdown-item.active {
-  background: #27272a;
+  background: var(--secondary);
   font-weight: 600;
 }
 

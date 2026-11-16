@@ -1,0 +1,796 @@
+{
+  "id": "core/bullmq/base.wrk",
+  "title": "base.wrk",
+  "description": "",
+  "icon": "IconSettingsAutomation",
+  "metadata": {
+    "pathname": "apps/elysia/src/core/bullmq/base.wrk.ts",
+    "relPath": "core/bullmq/base.wrk.ts",
+    "role": "Worker",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconSettingsAutomation",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "base.wrk"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Worker"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/core/bullmq/base.wrk.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "4 caller(s), 3 subclass(es)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/sync/media.wrk",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/sync/media.wrk.ts (BaseBullMQWorker)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/carina/connections/connection-sync.wrk",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/connections/connection-sync.wrk.ts (BaseBullMQWorker)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/core/bullmq/registry",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "core/bullmq/registry.ts (BaseBullMQWorker)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-3",
+                        "props": {
+                          "href": "/docs/core/email/email.wrk",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "core/email/email.wrk.ts (BaseBullMQWorker)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/sync/media.wrk",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "MediaSyncWorker (apps/borealis/sync/media.wrk.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-1",
+                        "props": {
+                          "href": "/docs/apps/carina/connections/connection-sync.wrk",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "ConnectionProviderWorker (apps/carina/connections/connection-sync.wrk.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-2",
+                        "props": {
+                          "href": "/docs/core/email/email.wrk",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "EmailWorker (core/email/email.wrk.ts)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "4 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseBullMQWorker.constructor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(config)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseBullMQWorker.start"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Worker<TData, TResult>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseBullMQWorker.isRunning"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "boolean"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseBullMQWorker.shutdown"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<void>"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseBullMQWorker-constructor",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/bullmq/base.wrk.ts-BaseBullMQWorker-constructor",
+                "title": "BaseBullMQWorker.constructor(config)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_BaseBullMQWorker_constructor_0_1",
+                    "kind": "step",
+                    "title": "Assign `this.queueName`",
+                    "payload": "this.queueName = config.queueName",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_constructor_1_2",
+                    "kind": "step",
+                    "title": "Assign `this.config`",
+                    "payload": "this.config = config",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_constructor_2_3",
+                    "kind": "step",
+                    "title": "Assign `this.logger`",
+                    "payload": "this.logger = new LogFactory(`BullMQ:Worker:${config.queueName}`)",
+                    "payloadLanguage": "typescript"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseBullMQWorker-start",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/bullmq/base.wrk.ts-BaseBullMQWorker-start",
+                "title": "BaseBullMQWorker.start()",
+                "description": "Starts the BullMQ Worker if not already running and registers it for shutdown.",
+                "steps": [
+                  {
+                    "id": "m_BaseBullMQWorker_start_0_1",
+                    "kind": "selection",
+                    "title": "`this._worker`",
+                    "selectionMode": "if_else",
+                    "condition": "`this._worker`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BaseBullMQWorker_start_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`this._worker`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_start_1_2",
+                    "kind": "step",
+                    "title": "Assign `this._worker`",
+                    "payload": "this._worker = new Worker<TData, TResult>( this.queueName, async (job) => await this.processJob(job), { connection: getBullMQConnectionOptions(), concurrency: this.config.concurrency ?? 2, ...(this.config.limiter ? { limiter: this.config.limiter } : {}), ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_start_2_3",
+                    "kind": "step",
+                    "title": "Calls `attachBullMQErrorHandler`"
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_start_3_4",
+                    "kind": "step",
+                    "title": "Calls `this._worker.on`"
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_start_4_5",
+                    "kind": "step",
+                    "title": "Calls `this._worker.on`"
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_start_5_6",
+                    "kind": "warning",
+                    "code": "Warning",
+                    "message": "stalled', (jobId) => { this.logger.warn(`Job ${jobId} stalled and will be reprocessed`) }"
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_start_6_7",
+                    "kind": "step",
+                    "title": "Calls `BullMQRegistry.registerWorker`"
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_start_7_8",
+                    "kind": "step",
+                    "title": "Calls `this.logger.info`"
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_start_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this._worker`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseBullMQWorker-isRunning",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/bullmq/base.wrk.ts-BaseBullMQWorker-isRunning",
+                "title": "BaseBullMQWorker.isRunning()",
+                "description": "Returns true if the worker is currently instantiated.",
+                "steps": [
+                  {
+                    "id": "m_BaseBullMQWorker_isRunning_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this._worker !== null`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseBullMQWorker-shutdown",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/bullmq/base.wrk.ts-BaseBullMQWorker-shutdown",
+                "title": "BaseBullMQWorker.shutdown()",
+                "description": "Gracefully pauses intake and drains in-flight jobs before closing the Redis connection.",
+                "steps": [
+                  {
+                    "id": "m_BaseBullMQWorker_shutdown_0_1",
+                    "kind": "selection",
+                    "title": "`!this._worker`",
+                    "selectionMode": "if_else",
+                    "condition": "`!this._worker`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BaseBullMQWorker_shutdown_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_shutdown_1_2",
+                    "kind": "var_def",
+                    "title": "Define `worker`",
+                    "payload": "const worker = this._worker",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_shutdown_2_3",
+                    "kind": "step",
+                    "title": "Assign `this._worker`",
+                    "payload": "this._worker = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BaseBullMQWorker_shutdown_3_4",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_BaseBullMQWorker_shutdown_3_4_try_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `worker.pause().catch`"
+                      },
+                      {
+                        "id": "m_BaseBullMQWorker_shutdown_3_4_try_1_4_2",
+                        "kind": "step",
+                        "title": "Calls `worker.close`"
+                      },
+                      {
+                        "id": "m_BaseBullMQWorker_shutdown_3_4_try_2_4_3",
+                        "kind": "step",
+                        "title": "Calls `this.logger.info`"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "m_BaseBullMQWorker_shutdown_3_4_catch_0_5_1",
+                        "kind": "step",
+                        "title": "Calls `this.logger.error`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "stalled', (jobId) => { this.logger.warn(`Job ${jobId} stalled and will be reprocessed`) }"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

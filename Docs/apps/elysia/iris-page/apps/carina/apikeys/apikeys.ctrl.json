@@ -1,0 +1,1989 @@
+{
+  "id": "apps/carina/apikeys/apikeys.ctrl",
+  "title": "Get all API keys (10 per page)",
+  "description": "",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/carina/auth/apikeys",
+    "relPath": "apps/carina/apikeys/apikeys.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET",
+      "POST",
+      "PATCH",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/auth/apikeys",
+      "/carina/auth/apikeys",
+      "/carina/auth/apikeys/:keyId",
+      "/carina/auth/apikeys/:keyId",
+      "/carina/auth/apikeys/:keyId/regenerate"
+    ],
+    "errorCount": 2
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Get all API keys (10 per page)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/apikeys"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/apikeys"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-orange-500/15 text-orange-700 dark:text-orange-300 border-orange-500/30"
+                            },
+                            "text": "PATCH"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/apikeys/:keyId"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30"
+                            },
+                            "text": "DELETE"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/apikeys/:keyId"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-4",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/apikeys/:keyId/regenerate"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_17)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "26 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/auth/apikeys · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.listQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/auth/apikeys · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.listResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/auth/apikeys · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/auth/apikeys · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/apikeys · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.createBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/apikeys · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.createResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/apikeys · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/apikeys · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/apikeys · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/auth/apikeys/:keyId · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.keyParams"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/auth/apikeys/:keyId · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.updateBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/auth/apikeys/:keyId · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.updateResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/auth/apikeys/:keyId · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/auth/apikeys/:keyId · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/auth/apikeys/:keyId · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/auth/apikeys/:keyId · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/auth/apikeys/:keyId · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.keyParams"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/auth/apikeys/:keyId · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.deleteResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/auth/apikeys/:keyId · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/auth/apikeys/:keyId · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/auth/apikeys/:keyId · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/apikeys/:keyId/regenerate · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.keyParams"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/apikeys/:keyId/regenerate · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.regenerateResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-23",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/apikeys/:keyId/regenerate · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-24",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/apikeys/:keyId/regenerate · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-25",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/apikeys/:keyId/regenerate · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaApiKeysModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/apikeys/apikeys.ctrl.ts-route-0",
+                "title": "GET /carina/auth/apikeys",
+                "description": "Get all API keys (10 per page)",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `CarinaApiKeysModel.listQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_0_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaApiKeysServ.listKeys(user.id, query)`"
+                  },
+                  {
+                    "id": "call_0_CarinaApiKeysServ_listKeys",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaApiKeysServ.listKeys",
+                    "isAsync": true,
+                    "targetAlg": "CarinaApiKeysServ.listKeys"
+                  },
+                  {
+                    "id": "svc_0_CarinaApiKeysServ_listKeys",
+                    "kind": "sequence",
+                    "title": "CarinaApiKeysServ.listKeys Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_CarinaApiKeysServ_listKeys_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_0_CarinaApiKeysServ_listKeys_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_0_CarinaApiKeysServ_listKeys_2_3",
+                        "kind": "var_def",
+                        "title": "Define `skip`",
+                        "payload": "const skip = page - 1 * limit",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaApiKeysServ_listKeys_3_4",
+                        "kind": "step",
+                        "title": "Database `all` on `ApiKey` and stores it as `[total, keys]`"
+                      },
+                      {
+                        "id": "svc_0_CarinaApiKeysServ_listKeys_4_5",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"total\": \"<total>\",\n  \"page\": \"<page>\",\n  \"limit\": \"<limit>\",\n  \"apiKeys\": \"<keys.map(serializeApiKey)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/apikeys/apikeys.ctrl.ts-route-1",
+                "title": "POST /carina/auth/apikeys",
+                "description": "Create API key",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaApiKeysModel.createBody`"
+                  },
+                  {
+                    "id": "route_1_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_1_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaApiKeysServ.createKey(user.id, body)`"
+                  },
+                  {
+                    "id": "call_1_CarinaApiKeysServ_createKey",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaApiKeysServ.createKey",
+                    "isAsync": true,
+                    "targetAlg": "CarinaApiKeysServ.createKey"
+                  },
+                  {
+                    "id": "svc_1_CarinaApiKeysServ_createKey",
+                    "kind": "sequence",
+                    "title": "CarinaApiKeysServ.createKey Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_CarinaApiKeysServ_createKey_0_1",
+                        "kind": "var_def",
+                        "title": "Define `rawName`",
+                        "payload": "const rawName = body.name || ''.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_CarinaApiKeysServ_createKey_1_2",
+                        "kind": "selection",
+                        "title": "`!rawName`",
+                        "selectionMode": "if_else",
+                        "condition": "`!rawName`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_CarinaApiKeysServ_createKey_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "API key name cannot be empty or contain only whitespace."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_CarinaApiKeysServ_createKey_2_3",
+                        "kind": "var_def",
+                        "title": "Define `entropy`, `rawKey`, `prefix`",
+                        "payload": "const entropy = randomBytes(24).toString('hex')\nconst rawKey = `iris-key-${entropy}`\nconst prefix = rawKey.slice(0, 17)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_CarinaApiKeysServ_createKey_3_4",
+                        "kind": "step",
+                        "title": "Calls `hashApiKey` and stores result as `hash`"
+                      },
+                      {
+                        "id": "svc_1_CarinaApiKeysServ_createKey_4_5",
+                        "kind": "var_def",
+                        "title": "Define `expiresAt`",
+                        "payload": "let expiresAt: Date | null = null",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_CarinaApiKeysServ_createKey_5_6",
+                        "kind": "selection",
+                        "title": "`typeofbody.expirationDays === 'number' && body.expirationDays > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`typeofbody.expirationDays === 'number' && body.expirationDays > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_CarinaApiKeysServ_createKey_5_6_then_0_6_1",
+                            "kind": "step",
+                            "title": "Assign `expiresAt`",
+                            "payload": "expiresAt = new Date( Date.now() + body.expirationDays * 24 * 60 * 60 * 1000 )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_CarinaApiKeysServ_createKey_6_7",
+                        "kind": "step",
+                        "title": "Database `create` on `ApiKey` and stores it as `created`"
+                      },
+                      {
+                        "id": "svc_1_CarinaApiKeysServ_createKey_7_8",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"rawKey\": \"<rawKey>\",\n  \"apiKey\": \"<serializeApiKey(created)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/apikeys/apikeys.ctrl.ts-route-2",
+                "title": "PATCH /carina/auth/apikeys/:keyId",
+                "description": "Update API key",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaApiKeysModel.keyParams`, body: `CarinaApiKeysModel.updateBody`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_2_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaApiKeysServ.updateKey(user.id, keyId, body)`"
+                  },
+                  {
+                    "id": "call_2_CarinaApiKeysServ_updateKey",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaApiKeysServ.updateKey",
+                    "isAsync": true,
+                    "targetAlg": "CarinaApiKeysServ.updateKey"
+                  },
+                  {
+                    "id": "svc_2_CarinaApiKeysServ_updateKey",
+                    "kind": "sequence",
+                    "title": "CarinaApiKeysServ.updateKey Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_CarinaApiKeysServ_updateKey_0_1",
+                        "kind": "var_def",
+                        "title": "Define `rawName`",
+                        "payload": "const rawName = body.name || ''.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_CarinaApiKeysServ_updateKey_1_2",
+                        "kind": "selection",
+                        "title": "`!rawName`",
+                        "selectionMode": "if_else",
+                        "condition": "`!rawName`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaApiKeysServ_updateKey_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "API key name cannot be empty or contain only whitespace."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaApiKeysServ_updateKey_2_3",
+                        "kind": "step",
+                        "title": "Database `first` on `ApiKey` and stores it as `existing`"
+                      },
+                      {
+                        "id": "svc_2_CarinaApiKeysServ_updateKey_3_4",
+                        "kind": "selection",
+                        "title": "`!existing`",
+                        "selectionMode": "if_else",
+                        "condition": "`!existing`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaApiKeysServ_updateKey_3_4_then_0_4_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "API key with ID '${keyId}' was not found."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaApiKeysServ_updateKey_4_5",
+                        "kind": "step",
+                        "title": "Database `update` on `ApiKey` and stores it as `updated`"
+                      },
+                      {
+                        "id": "svc_2_CarinaApiKeysServ_updateKey_5_6",
+                        "kind": "selection",
+                        "title": "`!updated`",
+                        "selectionMode": "if_else",
+                        "condition": "`!updated`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaApiKeysServ_updateKey_5_6_then_0_6_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "API key with ID '${keyId}' was not found."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaApiKeysServ_updateKey_6_7",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"apiKey\": \"<serializeApiKey(updated)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/apikeys/apikeys.ctrl.ts-route-3",
+                "title": "DELETE /carina/auth/apikeys/:keyId",
+                "description": "Delete API key",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaApiKeysModel.keyParams`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_3_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaApiKeysServ.deleteKey(user.id, keyId)`"
+                  },
+                  {
+                    "id": "call_3_CarinaApiKeysServ_deleteKey",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaApiKeysServ.deleteKey",
+                    "isAsync": true,
+                    "targetAlg": "CarinaApiKeysServ.deleteKey"
+                  },
+                  {
+                    "id": "svc_3_CarinaApiKeysServ_deleteKey",
+                    "kind": "sequence",
+                    "title": "CarinaApiKeysServ.deleteKey Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_CarinaApiKeysServ_deleteKey_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `ApiKey` and stores it as `existing`"
+                      },
+                      {
+                        "id": "svc_3_CarinaApiKeysServ_deleteKey_1_2",
+                        "kind": "selection",
+                        "title": "`!existing`",
+                        "selectionMode": "if_else",
+                        "condition": "`!existing`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaApiKeysServ_deleteKey_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "API key with ID '${keyId}' was not found."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaApiKeysServ_deleteKey_2_3",
+                        "kind": "step",
+                        "title": "Database `delete` on `ApiKey`"
+                      },
+                      {
+                        "id": "svc_3_CarinaApiKeysServ_deleteKey_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"<`API key '${keyId}' was deleted successfully.`>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-4",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/apikeys/apikeys.ctrl.ts-route-4",
+                "title": "POST /carina/auth/apikeys/:keyId/regenerate",
+                "description": "Regenerate API key",
+                "steps": [
+                  {
+                    "id": "route_4_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaApiKeysModel.keyParams`"
+                  },
+                  {
+                    "id": "route_4_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_4_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaApiKeysServ.regenerateKey(user.id, keyId)`"
+                  },
+                  {
+                    "id": "call_4_CarinaApiKeysServ_regenerateKey",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaApiKeysServ.regenerateKey",
+                    "isAsync": true,
+                    "targetAlg": "CarinaApiKeysServ.regenerateKey"
+                  },
+                  {
+                    "id": "svc_4_CarinaApiKeysServ_regenerateKey",
+                    "kind": "sequence",
+                    "title": "CarinaApiKeysServ.regenerateKey Flow",
+                    "children": [
+                      {
+                        "id": "svc_4_CarinaApiKeysServ_regenerateKey_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `ApiKey` and stores it as `existing`"
+                      },
+                      {
+                        "id": "svc_4_CarinaApiKeysServ_regenerateKey_1_2",
+                        "kind": "selection",
+                        "title": "`!existing`",
+                        "selectionMode": "if_else",
+                        "condition": "`!existing`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_CarinaApiKeysServ_regenerateKey_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "API key with ID '${keyId}' was not found."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_CarinaApiKeysServ_regenerateKey_2_3",
+                        "kind": "var_def",
+                        "title": "Define `entropy`, `rawKey`, `prefix`",
+                        "payload": "const entropy = randomBytes(24).toString('hex')\nconst rawKey = `iris-key-${entropy}`\nconst prefix = rawKey.slice(0, 17)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_CarinaApiKeysServ_regenerateKey_3_4",
+                        "kind": "step",
+                        "title": "Calls `hashApiKey` and stores result as `hash`"
+                      },
+                      {
+                        "id": "svc_4_CarinaApiKeysServ_regenerateKey_4_5",
+                        "kind": "step",
+                        "title": "Database `update` on `ApiKey` and stores it as `updated`"
+                      },
+                      {
+                        "id": "svc_4_CarinaApiKeysServ_regenerateKey_5_6",
+                        "kind": "selection",
+                        "title": "`!updated`",
+                        "selectionMode": "if_else",
+                        "condition": "`!updated`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_CarinaApiKeysServ_regenerateKey_5_6_then_0_6_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "API key with ID '${keyId}' was not found."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_CarinaApiKeysServ_regenerateKey_6_7",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"rawKey\": \"<rawKey>\",\n  \"apiKey\": \"<serializeApiKey(updated)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "2 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "API key name cannot be empty or contain only whitespace."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "API key with ID '${keyId}' was not found."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -2,15 +2,17 @@ import './load-env'
 import cluster from 'node:cluster'
 import os from 'node:os'
 import process from 'node:process'
-import { LogFactory } from '@Iris/logger'
-import { MediaQueueManager } from './services/borealis/queue'
-import { ConnectionSyncQueueManager } from './services/carina/connection-sync.queue'
-import { activityServ } from './services/carina/activity.serv'
+import { LogFactory } from '@NamelessLiberty/logger'
+import { BullMQRegistry } from './core/bullmq/registry'
+import { emailWorker } from './core/email/email.wrk'
+import { MediaQueueManager } from './apps/borealis/sync/media.queue'
+import { ConnectionSyncQueueManager } from './apps/carina/connections/connection-sync.queue'
+import { activityServ } from './apps/carina/activity/activity.serv'
 import { app, type App, startServer } from './server'
 
 export { app, type App, startServer }
-export { wsHub, WsServ, type IrisWebSocket } from './services/ws.serv'
-export * from './types/media-details'
+export { wsHub, WsServ, type IrisWebSocket } from './core/ws/ws.serv'
+export * from './core/types/media-details'
 
 const logger = new LogFactory('Elysia:Cluster')
 
@@ -38,6 +40,13 @@ if (isClusteringEnabled && cluster.isPrimary) {
     ConnectionSyncQueueManager.initWorkers()
   } catch (err: any) {
     logger.warn(`ConnectionSyncQueue initialization notice: ${err?.message || err}`)
+  }
+
+  // Initialize background email worker in the primary process only
+  try {
+    emailWorker.start()
+  } catch (err: any) {
+    logger.warn(`EmailWorker initialization notice: ${err?.message || err}`)
   }
 
   // Initialize background activity retention cleanup scheduler in the primary process only
@@ -73,6 +82,7 @@ if (isClusteringEnabled && cluster.isPrimary) {
       await Promise.all([
         MediaQueueManager.shutdown(),
         ConnectionSyncQueueManager.shutdown(),
+        BullMQRegistry.shutdownAll(),
         activityServ.shutdown(),
       ])
     } catch {}
@@ -100,6 +110,11 @@ if (isClusteringEnabled && cluster.isPrimary) {
       ConnectionSyncQueueManager.initWorkers()
     } catch (err: any) {
       logger.warn(`ConnectionSyncQueue initialization notice: ${err?.message || err}`)
+    }
+    try {
+      emailWorker.start()
+    } catch (err: any) {
+      logger.warn(`EmailWorker initialization notice: ${err?.message || err}`)
     }
     try {
       activityServ.initCron()

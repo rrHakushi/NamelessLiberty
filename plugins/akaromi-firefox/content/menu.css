@@ -2,24 +2,24 @@
 
 .akaromi-dropdown,
 .akaromi-dropdown *,
-.iris-pass-dropdown,
-.iris-pass-dropdown * {
+.akaromi-dropdown,
+.akaromi-dropdown * {
   box-sizing: border-box !important;
 }
 
 /* In-Page Dropdown */
 .akaromi-dropdown,
-.iris-pass-dropdown {
+.akaromi-dropdown {
   position: fixed !important;
   z-index: 2147483645 !important;
   width: 280px !important;
   min-width: 240px !important;
   max-width: 320px !important;
-  background: #101014 !important;
-  border: 1px solid #27272a !important;
+  background: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 12px !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
   color: #fafafa !important;
   font-size: 13px !important;
   overflow: hidden !important;
@@ -38,64 +38,64 @@
   }
 }
 
-.iris-pass-dropdown-header {
+.akaromi-dropdown-header {
   padding: 8px 12px !important;
-  border-bottom: 1px solid #27272a !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  background: #141418 !important;
+  background: oklch(0.09 0.003 285.885) !important;
 }
 
-.iris-pass-dropdown-brand {
+.akaromi-dropdown-brand {
   display: flex !important;
   align-items: center !important;
   gap: 6px !important;
 }
 
-.iris-pass-dropdown-title {
+.akaromi-dropdown-title {
   font-weight: 600 !important;
   font-size: 12px !important;
   color: #fafafa !important;
 }
 
-.iris-pass-dropdown-count {
+.akaromi-dropdown-count {
   font-size: 10px !important;
-  background: #27272a !important;
-  color: #a1a1aa !important;
+  background: oklch(0.15 0.005 285.885) !important;
+  color: oklch(0.65 0.012 286.067) !important;
   padding: 1px 6px !important;
   border-radius: 9999px !important;
 }
 
 /* Inline Search Box */
-.iris-pass-search-container {
+.akaromi-search-container {
   padding: 6px 8px 4px 8px !important;
-  border-bottom: 1px solid #27272a !important;
-  background: #141418 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: oklch(0.09 0.003 285.885) !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 4px !important;
 }
 
-.iris-pass-search-input-wrap {
+.akaromi-search-input-wrap {
   position: relative !important;
   display: flex !important;
   align-items: center !important;
   width: 100% !important;
 }
 
-.iris-pass-search-icon {
+.akaromi-search-icon {
   position: absolute !important;
   left: 8px !important;
-  color: #71717a !important;
+  color: oklch(0.65 0.012 286.067) !important;
   pointer-events: none !important;
 }
 
-.iris-pass-search-field {
+.akaromi-search-field {
   width: 100% !important;
   height: 28px !important;
-  background: #18181b !important;
-  border: 1px solid #27272a !important;
+  background: oklch(0.09 0.003 285.885) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 6px !important;
   color: #fafafa !important;
   font-size: 11px !important;
@@ -104,11 +104,11 @@
   box-sizing: border-box !important;
 }
 
-.iris-pass-search-field:focus {
-  border-color: #3f3f46 !important;
+.akaromi-search-field:focus {
+  border-color: rgba(255, 255, 255, 0.18) !important;
 }
 
-.iris-pass-toggle-all-btn {
+.akaromi-toggle-all-btn {
   position: absolute !important;
   right: 4px !important;
   display: inline-flex !important;
@@ -116,35 +116,35 @@
   gap: 3px !important;
   padding: 2px 6px !important;
   height: 20px !important;
-  background: #27272a !important;
-  border: 1px solid #3f3f46 !important;
+  background: oklch(0.15 0.005 285.885) !important;
+  border: 1px solid oklch(0.17 0.006 285.885) !important;
   border-radius: 4px !important;
-  color: #a1a1aa !important;
+  color: oklch(0.65 0.012 286.067) !important;
   font-size: 10px !important;
   font-weight: 600 !important;
   cursor: pointer !important;
   transition: all 0.12s ease !important;
 }
 
-.iris-pass-toggle-all-btn.active {
+.akaromi-toggle-all-btn.active {
   background: #fafafa !important;
-  color: #09090b !important;
+  color: #000000 !important;
   border-color: #ffffff !important;
 }
 
-.iris-pass-chips-row {
+.akaromi-chips-row {
   display: flex !important;
   gap: 4px !important;
   overflow-x: auto !important;
   padding-bottom: 2px !important;
 }
 
-.iris-pass-filter-chip {
+.akaromi-filter-chip {
   padding: 1px 6px !important;
-  background: #18181b !important;
-  border: 1px solid #27272a !important;
+  background: oklch(0.09 0.003 285.885) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 4px !important;
-  color: #71717a !important;
+  color: oklch(0.65 0.012 286.067) !important;
   font-size: 10px !important;
   font-family: ui-monospace, monospace !important;
   cursor: pointer !important;
@@ -152,12 +152,12 @@
   transition: all 0.1s ease !important;
 }
 
-.iris-pass-filter-chip:hover {
-  background: #27272a !important;
+.akaromi-filter-chip:hover {
+  background: oklch(0.15 0.005 285.885) !important;
   color: #e4e4e7 !important;
 }
 
-.iris-pass-section-header {
+.akaromi-section-header {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -167,32 +167,32 @@
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.05em !important;
-  color: #71717a !important;
+  color: oklch(0.65 0.012 286.067) !important;
 }
 
-.iris-pass-section-header .sec-count {
+.akaromi-section-header .sec-count {
   font-size: 9px !important;
-  background: #27272a !important;
-  color: #a1a1aa !important;
+  background: oklch(0.15 0.005 285.885) !important;
+  color: oklch(0.65 0.012 286.067) !important;
   padding: 0 4px !important;
   border-radius: 4px !important;
 }
 
-.iris-pass-dropdown-loading,
-.iris-pass-dropdown-empty {
+.akaromi-dropdown-loading,
+.akaromi-dropdown-empty {
   padding: 16px 12px !important;
   text-align: center !important;
-  color: #a1a1aa !important;
+  color: oklch(0.65 0.012 286.067) !important;
   font-size: 12px !important;
   line-height: 1.4 !important;
 }
 
-.iris-pass-btn-unlock {
+.akaromi-btn-unlock {
   margin-top: 10px !important;
   width: 100% !important;
   padding: 6px 12px !important;
   background: #fafafa !important;
-  color: #09090b !important;
+  color: #000000 !important;
   border: none !important;
   border-radius: 6px !important;
   font-size: 12px !important;
@@ -200,11 +200,11 @@
   cursor: pointer !important;
 }
 
-.iris-pass-btn-unlock:hover {
+.akaromi-btn-unlock:hover {
   opacity: 0.9 !important;
 }
 
-.iris-pass-dropdown-list {
+.akaromi-dropdown-list {
   max-height: 280px !important;
   overflow-y: auto !important;
   padding: 4px !important;
@@ -213,7 +213,7 @@
   gap: 4px !important;
 }
 
-.iris-pass-dropdown-item {
+.akaromi-dropdown-item {
   border-radius: 8px !important;
   background: transparent !important;
   transition: background 0.12s ease !important;
@@ -222,7 +222,7 @@
   width: 100% !important;
 }
 
-.iris-pass-item-main {
+.akaromi-item-main {
   display: flex !important;
   align-items: center !important;
   gap: 10px !important;
@@ -233,15 +233,15 @@
   box-sizing: border-box !important;
 }
 
-.iris-pass-item-main:hover {
-  background: #27272a !important;
+.akaromi-item-main:hover {
+  background: oklch(0.15 0.005 285.885) !important;
 }
 
-.iris-pass-item-icon {
+.akaromi-item-icon {
   width: 24px !important;
   height: 24px !important;
   border-radius: 6px !important;
-  background: #27272a !important;
+  background: oklch(0.15 0.005 285.885) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -249,7 +249,7 @@
   color: #fafafa !important;
 }
 
-.iris-pass-item-meta {
+.akaromi-item-meta {
   flex: 1 !important;
   min-width: 0 !important;
   display: flex !important;
@@ -259,7 +259,7 @@
   overflow: hidden !important;
 }
 
-.iris-pass-item-title {
+.akaromi-item-title {
   font-weight: 500 !important;
   font-size: 13px !important;
   line-height: 1.25 !important;
@@ -271,19 +271,19 @@
   text-overflow: ellipsis !important;
 }
 
-.iris-pass-item-user {
+.akaromi-item-user {
   font-size: 11px !important;
   line-height: 1.2 !important;
   margin: 0 !important;
   padding: 0 !important;
-  color: #a1a1aa !important;
+  color: oklch(0.65 0.012 286.067) !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
 
 /* Sub-passwords Dropdown for Additional Passwords */
-.iris-pass-sub-toggle-btn {
+.akaromi-sub-toggle-btn {
   all: unset !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -296,24 +296,24 @@
   max-height: 24px !important;
   border-radius: 6px !important;
   cursor: pointer !important;
-  color: #71717a !important;
+  color: oklch(0.65 0.012 286.067) !important;
   margin-inline-start: auto !important;
   flex-shrink: 0 !important;
   transition: all 0.15s ease !important;
   box-sizing: border-box !important;
 }
 
-.iris-pass-sub-toggle-btn:hover {
+.akaromi-sub-toggle-btn:hover {
   background: rgba(255, 255, 255, 0.08) !important;
   color: #fafafa !important;
 }
 
-.iris-pass-item-main:hover .iris-pass-sub-toggle-btn {
-  color: #a1a1aa !important;
+.akaromi-item-main:hover .akaromi-sub-toggle-btn {
+  color: oklch(0.65 0.012 286.067) !important;
 }
 
-.iris-pass-sub-chevron,
-svg.iris-pass-sub-chevron {
+.akaromi-sub-chevron,
+svg.akaromi-sub-chevron {
   width: 14px !important;
   height: 14px !important;
   min-width: 14px !important;
@@ -321,7 +321,7 @@ svg.iris-pass-sub-chevron {
   max-width: 14px !important;
   max-height: 14px !important;
   flex-shrink: 0 !important;
-  color: #71717a !important;
+  color: oklch(0.65 0.012 286.067) !important;
   stroke: currentColor !important;
   fill: none !important;
   stroke-width: 2 !important;
@@ -329,13 +329,13 @@ svg.iris-pass-sub-chevron {
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.12s ease, color 0.12s ease !important;
 }
 
-.iris-pass-dropdown-item.open .iris-pass-sub-chevron,
-.iris-pass-dropdown-item.open svg.iris-pass-sub-chevron {
+.akaromi-dropdown-item.open .akaromi-sub-chevron,
+.akaromi-dropdown-item.open svg.akaromi-sub-chevron {
   transform: rotate(180deg) !important;
   color: #fafafa !important;
 }
 
-.iris-pass-sub-passwords-wrapper {
+.akaromi-sub-passwords-wrapper {
   display: none !important;
   padding: 4px 10px 8px 36px !important;
   flex-direction: column !important;
@@ -344,29 +344,29 @@ svg.iris-pass-sub-chevron {
   width: 100% !important;
 }
 
-.iris-pass-dropdown-item.open .iris-pass-sub-passwords-wrapper {
+.akaromi-dropdown-item.open .akaromi-sub-passwords-wrapper {
   display: flex !important;
 }
 
-.iris-pass-sub-list {
+.akaromi-sub-list {
   display: none !important;
   flex-direction: column !important;
   gap: 3px !important;
   padding-top: 2px !important;
 }
 
-.iris-pass-sub-passwords-wrapper.open .iris-pass-sub-list {
+.akaromi-sub-passwords-wrapper.open .akaromi-sub-list {
   display: flex !important;
 }
 
-.iris-pass-sub-btn {
+.akaromi-sub-btn {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
   padding: 5px 8px !important;
   border-radius: 6px !important;
-  background: #18181b !important;
-  border: 1px solid #27272a !important;
+  background: oklch(0.09 0.003 285.885) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   color: #fafafa !important;
   font-size: 11px !important;
   cursor: pointer !important;
@@ -375,31 +375,31 @@ svg.iris-pass-sub-chevron {
   box-sizing: border-box !important;
 }
 
-.iris-pass-sub-btn:hover {
-  background: #27272a !important;
-  border-color: #3f3f46 !important;
+.akaromi-sub-btn:hover {
+  background: oklch(0.15 0.005 285.885) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
 }
 
-.iris-pass-sub-btn .sub-label {
+.akaromi-sub-btn .sub-label {
   font-weight: 500 !important;
   color: #e4e4e7 !important;
 }
 
-.iris-pass-sub-btn .sub-masked {
+.akaromi-sub-btn .sub-masked {
   font-family: ui-monospace, monospace !important;
-  color: #71717a !important;
+  color: oklch(0.65 0.012 286.067) !important;
   letter-spacing: 0.1em !important;
 }
 
 /* Floating Toast */
-.iris-pass-toast {
+.akaromi-toast {
   position: fixed !important;
   bottom: 24px !important;
   right: 24px !important;
   z-index: 2147483647 !important;
-  background: #18181b !important;
+  background: oklch(0.09 0.003 285.885) !important;
   color: #fafafa !important;
-  border: 1px solid #27272a !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 8px !important;
   padding: 10px 16px !important;
   font-size: 13px !important;
@@ -411,7 +411,7 @@ svg.iris-pass-sub-chevron {
   pointer-events: none !important;
 }
 
-.iris-pass-toast.visible {
+.akaromi-toast.visible {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
@@ -439,12 +439,12 @@ svg.iris-pass-sub-chevron {
   top: 24px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  background: #18181b !important;
-  border: 1px solid #27272a !important;
+  background: oklch(0.09 0.003 285.885) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 9999px !important;
   padding: 8px 18px !important;
   color: #fafafa !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
   font-size: 13px !important;
   font-weight: 500 !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
@@ -458,8 +458,8 @@ svg.iris-pass-sub-chevron {
 }
 
 .iris-qr-key-badge {
-  background: #27272a !important;
-  color: #a1a1aa !important;
+  background: oklch(0.15 0.005 285.885) !important;
+  color: oklch(0.65 0.012 286.067) !important;
   padding: 2px 7px !important;
   border-radius: 4px !important;
   font-size: 11px !important;
@@ -484,9 +484,9 @@ svg.iris-pass-sub-chevron {
   position: absolute !important;
   bottom: -24px !important;
   right: 0 !important;
-  background: #18181b !important;
+  background: oklch(0.09 0.003 285.885) !important;
   color: #38bdf8 !important;
-  border: 1px solid #27272a !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
   font-size: 11px !important;
   font-weight: 600 !important;
@@ -505,15 +505,15 @@ svg.iris-pass-sub-chevron {
   right: 24px !important;
   z-index: 2147483647 !important;
   width: 280px !important;
-  background: #101014 !important;
-  border: 1px solid #27272a !important;
+  background: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 12px !important;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
   padding: 12px 14px !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 8px !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
   color: #fafafa !important;
   user-select: none !important;
   -webkit-user-select: none !important;
@@ -563,7 +563,7 @@ svg.iris-pass-sub-chevron {
 .iris-totp-widget-close {
   background: transparent !important;
   border: none !important;
-  color: #71717a !important;
+  color: oklch(0.65 0.012 286.067) !important;
   cursor: pointer !important;
   font-size: 13px !important;
   padding: 2px 4px !important;
@@ -582,8 +582,8 @@ svg.iris-pass-sub-chevron {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  background: #18181b !important;
-  border: 1px solid #27272a !important;
+  background: oklch(0.09 0.003 285.885) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 8px !important;
   padding: 8px 12px !important;
   transition: background-color 0.2s ease, border-color 0.2s ease !important;
@@ -595,8 +595,8 @@ svg.iris-pass-sub-chevron {
     border-color: #38bdf8 !important;
   }
   100% {
-    background-color: #18181b !important;
-    border-color: #27272a !important;
+    background-color: oklch(0.09 0.003 285.885) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
   }
 }
 
@@ -624,8 +624,8 @@ svg.iris-pass-sub-chevron {
 }
 
 .iris-totp-widget-copy-btn {
-  background: #27272a !important;
-  border: 1px solid #3f3f46 !important;
+  background: oklch(0.15 0.005 285.885) !important;
+  border: 1px solid oklch(0.17 0.006 285.885) !important;
   border-radius: 6px !important;
   color: #fafafa !important;
   font-size: 11px !important;
@@ -639,8 +639,8 @@ svg.iris-pass-sub-chevron {
 }
 
 .iris-totp-widget-copy-btn:hover {
-  background: #3f3f46 !important;
-  border-color: #52525b !important;
+  background: oklch(0.17 0.006 285.885) !important;
+  border-color: oklch(60.145% 0.25696 299.856) !important;
 }
 
 .iris-totp-widget-timer-badge {
@@ -669,7 +669,7 @@ svg.iris-pass-sub-chevron {
 .iris-totp-progress-track {
   width: 100% !important;
   height: 3px !important;
-  background: #27272a !important;
+  background: oklch(0.15 0.005 285.885) !important;
   border-radius: 9999px !important;
   overflow: hidden !important;
   margin: 1px 0 !important;
@@ -687,7 +687,7 @@ svg.iris-pass-sub-chevron {
   align-items: center !important;
   justify-content: space-between !important;
   font-size: 11px !important;
-  color: #a1a1aa !important;
+  color: oklch(0.65 0.012 286.067) !important;
 }
 
 .iris-totp-status-hint {
@@ -712,5 +712,5 @@ svg.iris-pass-sub-chevron {
 
 .iris-totp-quick-fill-btn:hover {
   background: #38bdf8 !important;
-  color: #09090b !important;
+  color: #000000 !important;
 }

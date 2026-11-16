@@ -1,0 +1,420 @@
+{
+  "id": "apps/borealis/_shared/media-overview.helper",
+  "title": "media-overview.helper",
+  "description": "",
+  "icon": "IconFunction",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/_shared/media-overview.helper.ts",
+    "relPath": "apps/borealis/_shared/media-overview.helper.ts",
+    "role": "Functions",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconFunction",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "media-overview.helper"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Functions"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/_shared/media-overview.helper.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "7 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/anime/anime.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/anime/anime.serv.ts (imageSource, fetchTopCharacters)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/borealis/books/books.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/books/books.serv.ts (fetchTopCharacters, flattenGenres, flattenTags, imageSource)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/borealis/games/games.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/games/games.serv.ts (fetchTopCharacters, pick, flattenGenres, flattenTags, imageSource)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-3",
+                        "props": {
+                          "href": "/docs/apps/borealis/manga/manga.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/manga/manga.serv.ts (fetchTopCharacters, pick, flattenGenres, flattenTags, imageSource)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-4",
+                        "props": {
+                          "href": "/docs/apps/borealis/movies/movies.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/movies/movies.serv.ts (fetchTopCharacters, pick, flattenGenres, flattenTags, imageSource)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-5",
+                        "props": {
+                          "href": "/docs/apps/borealis/music/music.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/music/music.serv.ts (pick, flattenGenres, flattenTags, imageSource)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-6",
+                        "props": {
+                          "href": "/docs/apps/borealis/tv/tv.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/tv/tv.serv.ts (fetchTopCharacters, pick, flattenGenres, flattenTags, imageSource)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-fetchTopCharacters",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/media-overview.helper.ts-fetchTopCharacters",
+                "title": "function fetchTopCharacters",
+                "description": "Top 16 characters for a media overview (MAIN first).",
+                "steps": [
+                  {
+                    "id": "exp_fetchTopCharacters_0_1",
+                    "kind": "var_def",
+                    "title": "Define `BATCH`, `seen`, `result`",
+                    "payload": "const BATCH = 100\nconst seen = new Set<number>()\nconst result: any[] = []",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_fetchTopCharacters_1_2",
+                    "kind": "step",
+                    "title": "Database `query` on `MediaCharacter` and stores it as `collect`"
+                  },
+                  {
+                    "id": "exp_fetchTopCharacters_2_3",
+                    "kind": "step",
+                    "title": "Calls `collect`"
+                  },
+                  {
+                    "id": "exp_fetchTopCharacters_3_4",
+                    "kind": "selection",
+                    "title": "`result.length < limit`",
+                    "selectionMode": "if_else",
+                    "condition": "`result.length < limit`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_fetchTopCharacters_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `collect`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_fetchTopCharacters_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`result.map((c: any) => ({ id: c.id, mediaId: c.mediaId, mediaType: c.mediaType, characterId: c.characterId, actorId: c.actorId ?? null, role: c.role, ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-pick",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/media-overview.helper.ts-pick",
+                "title": "function pick",
+                "description": "Pick listed keys from a record, defaulting missing values to null.",
+                "steps": [
+                  {
+                    "id": "exp_pick_0_1",
+                    "kind": "var_def",
+                    "title": "Define `out`",
+                    "payload": "const out: Record<string, any> = {}",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_pick_1_2",
+                    "kind": "iteration",
+                    "title": "Iterate `const k` over `keys`",
+                    "loopType": "while",
+                    "condition": "Iterate `const k` over `keys`",
+                    "children": [
+                      {
+                        "id": "exp_pick_1_2_loop_0_2_1",
+                        "kind": "step",
+                        "title": "Assign `out[k]`",
+                        "payload": "out[k] = src?.[k] ?? null",
+                        "payloadLanguage": "typescript"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_pick_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`out`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-flattenGenres",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/media-overview.helper.ts-flattenGenres",
+                "title": "function flattenGenres",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_flattenGenres_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`rows || [].flatMap((g: any) => unwrap(g.genre)).map((ge: any) => ({ id: ge.id, name: ge.name }))`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-flattenTags",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/media-overview.helper.ts-flattenTags",
+                "title": "function flattenTags",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_flattenTags_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`rows || [].flatMap((t: any) => unwrap(t.tag)).map((te: any) => ({ id: te.id, name: te.name }))`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-similarItem",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/media-overview.helper.ts-similarItem",
+                "title": "function similarItem",
+                "description": "Normalised similar/catalog item (spec fields only).",
+                "steps": [
+                  {
+                    "id": "exp_similarItem_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"id\": \"<c.id>\",\n  \"titlePrimary\": \"<c.titlePrimary>\",\n  \"titleSecondary\": \"<c.titleSecondary ?? null>\",\n  \"titleNative\": \"<c.titleNative ?? null>\",\n  \"coverImage\": \"<c.coverImage ?? null>\",\n  \"bannerImage\": \"<c.bannerImage ?? null>\",\n  \"averageScore\": \"<c.averageScore ?? null>\",\n  \"format\": \"<format ? String(format) : null>\",\n  \"status\": \"<c.status ? String(c.status) : null>\",\n  \"startDateYear\": \"<year ?? null>\",\n  \"description\": \"<c.description ?? null>\",\n  \"genres\": \"<c.genres>\",\n  \"tags\": \"<c.tags>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-imageSource",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/media-overview.helper.ts-imageSource",
+                "title": "function imageSource",
+                "description": "Read a key out of a Jsonb `images` blob (object keyed by provider).",
+                "steps": [
+                  {
+                    "id": "exp_imageSource_0_1",
+                    "kind": "selection",
+                    "title": "`!images || typeofimages !== 'object'`",
+                    "selectionMode": "if_else",
+                    "condition": "`!images || typeofimages !== 'object'`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_imageSource_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_imageSource_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`images[key] ?? null`"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

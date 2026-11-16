@@ -132,17 +132,21 @@ export function ServarrInteractiveSearchDialog({
   }
 
   // Fetch releases from indexers
-  const fetchReleases = async () => {
+  const fetchReleases = async (overrideTerm?: string) => {
     if (!mediaId) return
     setIsLoading(true)
     try {
       let res: any
-      const trimmedTerm = searchTerm.trim()
+      const trimmedTerm = (overrideTerm ?? searchTerm).trim()
+      const isCustomTerm =
+        Boolean(trimmedTerm) && trimmedTerm !== defaultSearchTerm.trim()
+
       if (provider === "RADARR") {
         res = await elysia.servarr.radarr.release.get({
           query: {
-            movieId: mediaId,
-            ...(trimmedTerm ? { term: trimmedTerm } : {}),
+            ...(isCustomTerm
+              ? { term: trimmedTerm }
+              : { movieId: mediaId }),
             ...(selectedIndexerId ? { indexerId: selectedIndexerId } : {}),
           },
           fetch: { credentials: "include" },
@@ -150,10 +154,13 @@ export function ServarrInteractiveSearchDialog({
       } else {
         res = await elysia.servarr.sonarr.release.get({
           query: {
-            seriesId: mediaId,
-            ...(seasonNumber !== undefined ? { seasonNumber } : {}),
-            ...(episodeId ? { episodeId } : {}),
-            ...(trimmedTerm ? { term: trimmedTerm } : {}),
+            ...(isCustomTerm
+              ? { term: trimmedTerm }
+              : {
+                  seriesId: mediaId,
+                  ...(seasonNumber !== undefined ? { seasonNumber } : {}),
+                  ...(episodeId ? { episodeId } : {}),
+                }),
             ...(selectedIndexerId ? { indexerId: selectedIndexerId } : {}),
           },
           fetch: { credentials: "include" },
@@ -196,7 +203,7 @@ export function ServarrInteractiveSearchDialog({
       setSelectedIndexerId(undefined)
       setSearchFilter("")
       fetchIndexers()
-      fetchReleases()
+      fetchReleases(defaultSearchTerm)
     } else {
       setReleases([])
       setSearchFilter("")
@@ -323,7 +330,7 @@ export function ServarrInteractiveSearchDialog({
             <Button
               variant="outline"
               size="sm"
-              onClick={fetchReleases}
+              onClick={() => fetchReleases()}
               disabled={isLoading}
               className="h-8 gap-1.5 rounded-xl text-xs"
             >
@@ -385,7 +392,7 @@ export function ServarrInteractiveSearchDialog({
           {/* Search Button */}
           <Button
             size="sm"
-            onClick={fetchReleases}
+            onClick={() => fetchReleases()}
             disabled={isLoading}
             className="h-8 shrink-0 gap-1.5 rounded-xl text-xs font-semibold shadow-xs"
           >

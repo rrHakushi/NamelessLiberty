@@ -1,0 +1,1508 @@
+{
+  "id": "core/utils/network",
+  "title": "network",
+  "description": "",
+  "icon": "IconTools",
+  "metadata": {
+    "pathname": "apps/elysia/src/core/utils/network.ts",
+    "relPath": "core/utils/network.ts",
+    "role": "Utils",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 7
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconTools",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "network"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Utils"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/core/utils/network.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "4 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/lists/_base/base-list.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/lists/_base/base-list.serv.ts (assertSafeExternalUrl)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/carina/connections/connections.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/connections/connections.ctrl.ts (validateReturnToUrl)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/tesseract/signaling/tesseract.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/tesseract/signaling/tesseract.serv.ts (extractTrustedClientIp, isPrivateOrLoopbackIp, normalizeIpAddress)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-3",
+                        "props": {
+                          "href": "/docs/core/plugins/rate-limiter",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "core/plugins/rate-limiter.ts (extractTrustedClientIp)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-isPrivateOrLoopbackIp",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/network.ts-isPrivateOrLoopbackIp",
+                "title": "function isPrivateOrLoopbackIp",
+                "description": "Checks whether an IPv4 or IPv6 address belongs to loopback, private, link-local, carrier-grade NAT, or multicast ranges.",
+                "steps": [
+                  {
+                    "id": "exp_isPrivateOrLoopbackIp_0_1",
+                    "kind": "selection",
+                    "title": "`!rawIp`",
+                    "selectionMode": "if_else",
+                    "condition": "`!rawIp`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isPrivateOrLoopbackIp_1_2",
+                    "kind": "var_def",
+                    "title": "Define `ip`",
+                    "payload": "let ip = rawIp.trim().toLowerCase()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_isPrivateOrLoopbackIp_2_3",
+                    "kind": "selection",
+                    "title": "`!ip`",
+                    "selectionMode": "if_else",
+                    "condition": "`!ip`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_2_3_then_0_3_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isPrivateOrLoopbackIp_3_4",
+                    "kind": "selection",
+                    "title": "`ip.startsWith('::ffff:')`",
+                    "selectionMode": "if_else",
+                    "condition": "`ip.startsWith('::ffff:')`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Assign `ip`",
+                        "payload": "ip = ip.slice(7)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isPrivateOrLoopbackIp_4_5",
+                    "kind": "selection",
+                    "title": "`isIP(ip) === 4`",
+                    "selectionMode": "if_else",
+                    "condition": "`isIP(ip) === 4`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_4_5_then_0_5_1",
+                        "kind": "var_def",
+                        "title": "Define `parts`",
+                        "payload": "const parts = ip.split('.').map(Number)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_4_5_then_1_5_2",
+                        "kind": "selection",
+                        "title": "`parts.length !== 4 || parts.some((n) => !Number.isInteger(n) || n < 0 || n > 255)`",
+                        "selectionMode": "if_else",
+                        "condition": "`parts.length !== 4 || parts.some((n) => !Number.isInteger(n) || n < 0 || n > 255)`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_isPrivateOrLoopbackIp_4_5_then_1_5_2_then_0_5_2_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_4_5_then_2_5_3",
+                        "kind": "var_def",
+                        "title": "Define `[a, b]`",
+                        "payload": "const [a, b] = parts as [number, number, number, number]",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_4_5_then_3_5_4",
+                        "kind": "selection",
+                        "title": "`a === 0 || a === 10 || a === 127`",
+                        "selectionMode": "if_else",
+                        "condition": "`a === 0 || a === 10 || a === 127`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_isPrivateOrLoopbackIp_4_5_then_3_5_4_then_0_5_4_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_4_5_then_4_5_5",
+                        "kind": "selection",
+                        "title": "`a === 169 && b === 254`",
+                        "selectionMode": "if_else",
+                        "condition": "`a === 169 && b === 254`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_isPrivateOrLoopbackIp_4_5_then_4_5_5_then_0_5_5_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_4_5_then_5_5_6",
+                        "kind": "selection",
+                        "title": "`a === 172 && b >= 16 && b <= 31`",
+                        "selectionMode": "if_else",
+                        "condition": "`a === 172 && b >= 16 && b <= 31`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_isPrivateOrLoopbackIp_4_5_then_5_5_6_then_0_5_6_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_4_5_then_6_5_7",
+                        "kind": "selection",
+                        "title": "`a === 192 && b === 168`",
+                        "selectionMode": "if_else",
+                        "condition": "`a === 192 && b === 168`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_isPrivateOrLoopbackIp_4_5_then_6_5_7_then_0_5_7_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_4_5_then_7_5_8",
+                        "kind": "selection",
+                        "title": "`a === 100 && b >= 64 && b <= 127`",
+                        "selectionMode": "if_else",
+                        "condition": "`a === 100 && b >= 64 && b <= 127`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_isPrivateOrLoopbackIp_4_5_then_7_5_8_then_0_5_8_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_4_5_then_8_5_9",
+                        "kind": "selection",
+                        "title": "`a >= 224`",
+                        "selectionMode": "if_else",
+                        "condition": "`a >= 224`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_isPrivateOrLoopbackIp_4_5_then_8_5_9_then_0_5_9_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_4_5_then_9_5_10",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isPrivateOrLoopbackIp_5_6",
+                    "kind": "selection",
+                    "title": "`isIP(ip) === 6`",
+                    "selectionMode": "if_else",
+                    "condition": "`isIP(ip) === 6`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_5_6_then_0_6_1",
+                        "kind": "selection",
+                        "title": "`ip === '::1' || ip === '::'`",
+                        "selectionMode": "if_else",
+                        "condition": "`ip === '::1' || ip === '::'`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_isPrivateOrLoopbackIp_5_6_then_0_6_1_then_0_6_1_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_5_6_then_1_6_2",
+                        "kind": "selection",
+                        "title": "`ip.startsWith('fc') || ip.startsWith('fd')`",
+                        "selectionMode": "if_else",
+                        "condition": "`ip.startsWith('fc') || ip.startsWith('fd')`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_isPrivateOrLoopbackIp_5_6_then_1_6_2_then_0_6_2_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_5_6_then_2_6_3",
+                        "kind": "selection",
+                        "title": "`ip.startsWith('fe8') || ip.startsWith('fe9') || ip.startsWith('fea') || ip.startsWith('feb')`",
+                        "selectionMode": "if_else",
+                        "condition": "`ip.startsWith('fe8') || ip.startsWith('fe9') || ip.startsWith('fea') || ip.startsWith('feb')`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_isPrivateOrLoopbackIp_5_6_then_2_6_3_then_0_6_3_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_5_6_then_3_6_4",
+                        "kind": "selection",
+                        "title": "`ip.startsWith('ff')`",
+                        "selectionMode": "if_else",
+                        "condition": "`ip.startsWith('ff')`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_isPrivateOrLoopbackIp_5_6_then_3_6_4_then_0_6_4_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`true`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_isPrivateOrLoopbackIp_5_6_then_4_6_5",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isPrivateOrLoopbackIp_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`false`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-normalizeIpAddress",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/network.ts-normalizeIpAddress",
+                "title": "function normalizeIpAddress",
+                "description": "Normalizes raw IP strings by stripping brackets, port suffixes, and IPv4-mapped prefixes.",
+                "steps": [
+                  {
+                    "id": "exp_normalizeIpAddress_0_1",
+                    "kind": "selection",
+                    "title": "`!raw`",
+                    "selectionMode": "if_else",
+                    "condition": "`!raw`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_normalizeIpAddress_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`''`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_normalizeIpAddress_1_2",
+                    "kind": "var_def",
+                    "title": "Define `ip`",
+                    "payload": "let ip = raw.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_normalizeIpAddress_2_3",
+                    "kind": "selection",
+                    "title": "`ip.startsWith('[')`",
+                    "selectionMode": "if_else",
+                    "condition": "`ip.startsWith('[')`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_normalizeIpAddress_2_3_then_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `ip.indexOf` and stores result as `endBracket`"
+                      },
+                      {
+                        "id": "exp_normalizeIpAddress_2_3_then_1_3_2",
+                        "kind": "selection",
+                        "title": "`endBracket !== -1`",
+                        "selectionMode": "if_else",
+                        "condition": "`endBracket !== -1`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_normalizeIpAddress_2_3_then_1_3_2_then_0_3_2_1",
+                            "kind": "step",
+                            "title": "Assign `ip`",
+                            "payload": "ip = ip.slice(1, endBracket)",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "exp_normalizeIpAddress_2_3_else_0_4_1",
+                        "kind": "selection",
+                        "title": "`ip.includes('.') && ip.includes(':')`",
+                        "selectionMode": "if_else",
+                        "condition": "`ip.includes('.') && ip.includes(':')`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_normalizeIpAddress_2_3_else_0_4_1_then_0_4_1_1",
+                            "kind": "step",
+                            "title": "Assign `ip`",
+                            "payload": "ip = ip.split(':')[0] || ip",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_normalizeIpAddress_4_5",
+                    "kind": "step",
+                    "title": "Calls `ip.indexOf` and stores result as `zoneIdx`"
+                  },
+                  {
+                    "id": "exp_normalizeIpAddress_5_6",
+                    "kind": "selection",
+                    "title": "`zoneIdx !== -1`",
+                    "selectionMode": "if_else",
+                    "condition": "`zoneIdx !== -1`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_normalizeIpAddress_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Assign `ip`",
+                        "payload": "ip = ip.slice(0, zoneIdx)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_normalizeIpAddress_6_7",
+                    "kind": "selection",
+                    "title": "`ip.toLowerCase().startsWith('::ffff:')`",
+                    "selectionMode": "if_else",
+                    "condition": "`ip.toLowerCase().startsWith('::ffff:')`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_normalizeIpAddress_6_7_then_0_7_1",
+                        "kind": "step",
+                        "title": "Assign `ip`",
+                        "payload": "ip = ip.slice(7)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_normalizeIpAddress_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`ip.trim()`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-extractTrustedClientIp",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/network.ts-extractTrustedClientIp",
+                "title": "function extractTrustedClientIp",
+                "description": "Extracts client IP from forwarded headers ONLY when the immediate peer is a trusted proxy or `TRUST_PROXY=true` is explicitly configured.",
+                "steps": [
+                  {
+                    "id": "exp_extractTrustedClientIp_0_1",
+                    "kind": "step",
+                    "title": "Calls `normalizeIpAddress` and stores result as `peerIp`"
+                  },
+                  {
+                    "id": "exp_extractTrustedClientIp_1_2",
+                    "kind": "var_def",
+                    "title": "Define `trustProxy`",
+                    "payload": "const trustProxy = Bun.env.TRUST_PROXY === 'true' || peerIp.length > 0 && isPrivateOrLoopbackIp(peerIp)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_extractTrustedClientIp_2_3",
+                    "kind": "selection",
+                    "title": "`trustProxy`",
+                    "selectionMode": "if_else",
+                    "condition": "`trustProxy`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_extractTrustedClientIp_2_3_then_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `request.headers.get` and stores result as `xff`"
+                      },
+                      {
+                        "id": "exp_extractTrustedClientIp_2_3_then_1_3_2",
+                        "kind": "selection",
+                        "title": "`xff`",
+                        "selectionMode": "if_else",
+                        "condition": "`xff`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_extractTrustedClientIp_2_3_then_1_3_2_then_0_3_2_1",
+                            "kind": "step",
+                            "title": "Calls `normalizeIpAddress` and stores result as `first`"
+                          },
+                          {
+                            "id": "exp_extractTrustedClientIp_2_3_then_1_3_2_then_1_3_2_2",
+                            "kind": "selection",
+                            "title": "`first && isIP(first) !== 0`",
+                            "selectionMode": "if_else",
+                            "condition": "`first && isIP(first) !== 0`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_extractTrustedClientIp_2_3_then_1_3_2_then_1_3_2_2_then_0_3_2_2_1",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`first`"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_extractTrustedClientIp_2_3_then_2_3_3",
+                        "kind": "step",
+                        "title": "Calls `normalizeIpAddress` and stores result as `cfIp`"
+                      },
+                      {
+                        "id": "exp_extractTrustedClientIp_2_3_then_3_3_4",
+                        "kind": "selection",
+                        "title": "`cfIp && isIP(cfIp) !== 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`cfIp && isIP(cfIp) !== 0`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_extractTrustedClientIp_2_3_then_3_3_4_then_0_3_4_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`cfIp`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_extractTrustedClientIp_2_3_then_4_3_5",
+                        "kind": "step",
+                        "title": "Calls `normalizeIpAddress` and stores result as `realIp`"
+                      },
+                      {
+                        "id": "exp_extractTrustedClientIp_2_3_then_5_3_6",
+                        "kind": "selection",
+                        "title": "`realIp && isIP(realIp) !== 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`realIp && isIP(realIp) !== 0`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_extractTrustedClientIp_2_3_then_5_3_6_then_0_3_6_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`realIp`"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_extractTrustedClientIp_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`peerIp || 'unknown'`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-assertSafeExternalUrl",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/network.ts-assertSafeExternalUrl",
+                "title": "function assertSafeExternalUrl",
+                "description": "Validates that a target URL is a safe public HTTP(S) URL and does not resolve to loopback, link-local, metadata, or private RFC1918/ULA addresses (SSRF protection).",
+                "steps": [
+                  {
+                    "id": "exp_assertSafeExternalUrl_0_1",
+                    "kind": "var_def",
+                    "title": "Define `parsed`",
+                    "payload": "let parsed: URL",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_assertSafeExternalUrl_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_assertSafeExternalUrl_1_2_try_0_2_1",
+                        "kind": "step",
+                        "title": "Assign `parsed`",
+                        "payload": "parsed = new URL(rawUrl)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_assertSafeExternalUrl_1_2_catch_0_3_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Invalid remote URL provided"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_assertSafeExternalUrl_3_4",
+                    "kind": "selection",
+                    "title": "`parsed.protocol !== 'http:' && parsed.protocol !== 'https:'`",
+                    "selectionMode": "if_else",
+                    "condition": "`parsed.protocol !== 'http:' && parsed.protocol !== 'https:'`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_assertSafeExternalUrl_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Only HTTP and HTTPS remote URLs are permitted"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_assertSafeExternalUrl_4_5",
+                    "kind": "selection",
+                    "title": "`parsed.username || parsed.password`",
+                    "selectionMode": "if_else",
+                    "condition": "`parsed.username || parsed.password`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_assertSafeExternalUrl_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Embedded credentials in remote URLs are prohibited"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_assertSafeExternalUrl_5_6",
+                    "kind": "var_def",
+                    "title": "Define `hostname`",
+                    "payload": "const hostname = parsed.hostname.toLowerCase().replace(/^\\[|\\]$/g, '')",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_assertSafeExternalUrl_6_7",
+                    "kind": "selection",
+                    "title": "`!hostname || hostname === 'localhost' || hostname.endsWith('.local') || hostname.endsWith('.internal') || hostname.endsWith('.localhost')`",
+                    "selectionMode": "if_else",
+                    "condition": "`!hostname || hostname === 'localhost' || hostname.endsWith('.local') || hostname.endsWith('.internal') || hostname.endsWith('.localhost')`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_assertSafeExternalUrl_6_7_then_0_7_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Access to local or internal network hosts is prohibited"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_assertSafeExternalUrl_7_8",
+                    "kind": "selection",
+                    "title": "`isIP(hostname) !== 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`isIP(hostname) !== 0`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_assertSafeExternalUrl_7_8_then_0_8_1",
+                        "kind": "selection",
+                        "title": "`isPrivateOrLoopbackIp(hostname)`",
+                        "selectionMode": "if_else",
+                        "condition": "`isPrivateOrLoopbackIp(hostname)`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_assertSafeExternalUrl_7_8_then_0_8_1_then_0_8_1_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Access to private or loopback IP addresses is prohibited"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_assertSafeExternalUrl_7_8_then_1_8_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`parsed`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_assertSafeExternalUrl_8_9",
+                    "kind": "var_def",
+                    "title": "Define `addresses`",
+                    "payload": "let addresses: Array<{ address: string }>",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_assertSafeExternalUrl_9_10",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_assertSafeExternalUrl_9_10_try_0_10_1",
+                        "kind": "step",
+                        "title": "Assign `addresses`",
+                        "payload": "addresses = await lookup(hostname, { all: true })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_assertSafeExternalUrl_9_10_catch_0_11_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Could not resolve remote hostname"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_assertSafeExternalUrl_11_12",
+                    "kind": "selection",
+                    "title": "`!addresses.length || addresses.some((entry) => isPrivateOrLoopbackIp(entry.address))`",
+                    "selectionMode": "if_else",
+                    "condition": "`!addresses.length || addresses.some((entry) => isPrivateOrLoopbackIp(entry.address))`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_assertSafeExternalUrl_11_12_then_0_12_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Remote hostname resolves to a restricted network address"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_assertSafeExternalUrl_12_13",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`parsed`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-validateReturnToUrl",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/network.ts-validateReturnToUrl",
+                "title": "function validateReturnToUrl",
+                "description": "Validates a `returnTo` redirect target against relative paths or allowlisted application origins. Prevents Open Redirect vulnerabilities on OAuth callbacks.",
+                "steps": [
+                  {
+                    "id": "exp_validateReturnToUrl_0_1",
+                    "kind": "selection",
+                    "title": "`!rawReturnTo || !rawReturnTo.trim()`",
+                    "selectionMode": "if_else",
+                    "condition": "`!rawReturnTo || !rawReturnTo.trim()`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_validateReturnToUrl_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`new URL(fallbackUrl)`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_validateReturnToUrl_1_2",
+                    "kind": "var_def",
+                    "title": "Define `trimmed`, `baseOrigin`",
+                    "payload": "const trimmed = rawReturnTo.trim()\nconst baseOrigin = new URL(fallbackUrl).origin",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_validateReturnToUrl_2_3",
+                    "kind": "selection",
+                    "title": "`trimmed.startsWith('/') && !trimmed.startsWith('//')`",
+                    "selectionMode": "if_else",
+                    "condition": "`trimmed.startsWith('/') && !trimmed.startsWith('//')`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_validateReturnToUrl_2_3_then_0_3_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`new URL(trimmed, baseOrigin)`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_validateReturnToUrl_3_4",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_validateReturnToUrl_3_4_try_0_4_1",
+                        "kind": "var_def",
+                        "title": "Define `parsed`",
+                        "payload": "const parsed = new URL(trimmed)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_validateReturnToUrl_3_4_try_1_4_2",
+                        "kind": "selection",
+                        "title": "`parsed.protocol !== 'http:' && parsed.protocol !== 'https:'`",
+                        "selectionMode": "if_else",
+                        "condition": "`parsed.protocol !== 'http:' && parsed.protocol !== 'https:'`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_validateReturnToUrl_3_4_try_1_4_2_then_0_4_2_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`new URL(fallbackUrl)`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_validateReturnToUrl_3_4_try_2_4_3",
+                        "kind": "var_def",
+                        "title": "Define `allowedOrigins`",
+                        "payload": "const allowedOrigins = new Set<string>([baseOrigin])",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_validateReturnToUrl_3_4_try_3_4_4",
+                        "kind": "selection",
+                        "title": "`Bun.env.NEXT_PUBLIC_URL`",
+                        "selectionMode": "if_else",
+                        "condition": "`Bun.env.NEXT_PUBLIC_URL`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_validateReturnToUrl_3_4_try_3_4_4_then_0_4_4_1",
+                            "kind": "try_catch_finally",
+                            "title": "Try block",
+                            "catchVar": "err",
+                            "tryBlock": [
+                              {
+                                "id": "exp_validateReturnToUrl_3_4_try_3_4_4_then_0_4_4_1_try_0_4_4_1_1",
+                                "kind": "step",
+                                "title": "Calls `allowedOrigins.add`"
+                              }
+                            ],
+                            "catchBlock": [],
+                            "finallyBlock": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_validateReturnToUrl_3_4_try_4_4_5",
+                        "kind": "selection",
+                        "title": "`Bun.env.CORS_ORIGINS`",
+                        "selectionMode": "if_else",
+                        "condition": "`Bun.env.CORS_ORIGINS`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_validateReturnToUrl_3_4_try_4_4_5_then_0_4_5_1",
+                            "kind": "iteration",
+                            "title": "Iterate `const origin` over `Bun.env.CORS_ORIGINS.split(',')`",
+                            "loopType": "while",
+                            "condition": "Iterate `const origin` over `Bun.env.CORS_ORIGINS.split(',')`",
+                            "children": [
+                              {
+                                "id": "exp_validateReturnToUrl_3_4_try_4_4_5_then_0_4_5_1_loop_0_4_5_1_1",
+                                "kind": "var_def",
+                                "title": "Define `clean`",
+                                "payload": "const clean = origin.trim()",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "exp_validateReturnToUrl_3_4_try_4_4_5_then_0_4_5_1_loop_1_4_5_1_2",
+                                "kind": "selection",
+                                "title": "`clean`",
+                                "selectionMode": "if_else",
+                                "condition": "`clean`",
+                                "thenBranch": [
+                                  {
+                                    "id": "exp_validateReturnToUrl_3_4_try_4_4_5_then_0_4_5_1_loop_1_4_5_1_2_then_0_4_5_1_2_1",
+                                    "kind": "try_catch_finally",
+                                    "title": "Try block",
+                                    "catchVar": "err",
+                                    "tryBlock": [
+                                      {
+                                        "id": "exp_validateReturnToUrl_3_4_try_4_4_5_then_0_4_5_1_loop_1_4_5_1_2_then_0_4_5_1_2_1_try_0_4_5_1_2_1_1",
+                                        "kind": "step",
+                                        "title": "Calls `allowedOrigins.add`"
+                                      }
+                                    ],
+                                    "catchBlock": [],
+                                    "finallyBlock": []
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ]
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_validateReturnToUrl_3_4_try_5_4_6",
+                        "kind": "selection",
+                        "title": "`Bun.env.NODE_ENV !== 'production'`",
+                        "selectionMode": "if_else",
+                        "condition": "`Bun.env.NODE_ENV !== 'production'`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_validateReturnToUrl_3_4_try_5_4_6_then_0_4_6_1",
+                            "kind": "step",
+                            "title": "Calls `allowedOrigins.add`"
+                          },
+                          {
+                            "id": "exp_validateReturnToUrl_3_4_try_5_4_6_then_1_4_6_2",
+                            "kind": "step",
+                            "title": "Calls `allowedOrigins.add`"
+                          },
+                          {
+                            "id": "exp_validateReturnToUrl_3_4_try_5_4_6_then_2_4_6_3",
+                            "kind": "step",
+                            "title": "Calls `allowedOrigins.add`"
+                          },
+                          {
+                            "id": "exp_validateReturnToUrl_3_4_try_5_4_6_then_3_4_6_4",
+                            "kind": "step",
+                            "title": "Calls `allowedOrigins.add`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_validateReturnToUrl_3_4_try_6_4_7",
+                        "kind": "selection",
+                        "title": "`allowedOrigins.has(parsed.origin)`",
+                        "selectionMode": "if_else",
+                        "condition": "`allowedOrigins.has(parsed.origin)`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_validateReturnToUrl_3_4_try_6_4_7_then_0_4_7_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`parsed`"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_validateReturnToUrl_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`new URL(fallbackUrl)`"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "7 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid remote URL provided"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Only HTTP and HTTPS remote URLs are permitted"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Embedded credentials in remote URLs are prohibited"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Access to local or internal network hosts is prohibited"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Access to private or loopback IP addresses is prohibited"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Could not resolve remote hostname"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Remote hostname resolves to a restricted network address"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

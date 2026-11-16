@@ -1,9 +1,9 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia, ValidationError } from 'elysia'
-import { akaromiVault } from '../../src/api/controllers/akaromi/vault.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt } from '../../src/utils/auth-crypto'
-import { prisma, type PassCipherType, type PassRepromptType } from '@Iris/db'
+import { akaromiVault } from '../../src/apps/akaromi/vault/vault.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
+import { prisma, type PassCipherType, type PassRepromptType } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------
 // In-Memory Database Mock for Vault Synchronization & Backup

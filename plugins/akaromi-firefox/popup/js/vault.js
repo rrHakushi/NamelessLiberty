@@ -203,35 +203,68 @@
   function renderCiphersList() {
     let filtered = state.allCiphers.filter((c) => !c.deletedAt)
 
-    // Search query filter with prefix support
+    // Search query filter with multi-term AND, * wildcards, and prefix support
     const rawQuery = state.currentSearchQuery.trim()
     if (rawQuery) {
-      const q = rawQuery.toLowerCase()
-      if (q.startsWith("user:") || q.startsWith("username:")) {
-        const val = q.replace(/^user(name)?:/, "").trim()
-        filtered = filtered.filter((c) => (c.data?.username || "").toLowerCase().includes(val))
-      } else if (q.startsWith("email:")) {
-        const val = q.replace(/^email:/, "").trim()
-        filtered = filtered.filter((c) => (c.data?.email || c.data?.username || "").toLowerCase().includes(val))
-      } else if (q.startsWith("domain:") || q.startsWith("url:") || q.startsWith("host:")) {
-        const val = q.replace(/^(domain|url|host):/, "").trim()
-        filtered = filtered.filter((c) => {
-          const uris = (c.data?.uris || c.login?.uris || c.data?.websites || []).map((u) => (typeof u === "string" ? u : u.uri || "")).join(" ").toLowerCase()
-          return uris.includes(val)
-        })
-      } else if (q.startsWith("title:")) {
-        const val = q.replace(/^title:/, "").trim()
-        filtered = filtered.filter((c) => (c.title || "").toLowerCase().includes(val))
-      } else if (q.startsWith("note:") || q.startsWith("notes:")) {
-        const val = q.replace(/^notes?:/, "").trim()
-        filtered = filtered.filter((c) => (c.data?.notes || c.data?.noteBody || "").toLowerCase().includes(val))
-      } else {
+      const tokens = (rawQuery.match(/(?:[^\s"]+|"[^"]*")+/g) || [])
+        .map((t) => t.replace(/^"(.*)"$/, "$1").toLowerCase())
+        .filter(Boolean)
+
+      const matchesPattern = (haystack, pattern) => {
+        if (!pattern) return true
+        if (!pattern.includes("*")) return haystack.includes(pattern)
+        const parts = pattern.split("*")
+        let pos = 0
+        for (let i = 0; i < parts.length; i++) {
+          const part = parts[i]
+          if (!part) continue
+          const idx = haystack.indexOf(part, pos)
+          if (idx === -1) return false
+          pos = idx + part.length
+        }
+        return true
+      }
+
+      if (tokens.length > 0) {
         filtered = filtered.filter((c) => {
           const title = (c.title || "").toLowerCase()
-          const user = (c.data?.username || c.data?.email || "").toLowerCase()
-          const uris = (c.data?.uris || c.login?.uris || c.data?.websites || []).map((u) => (typeof u === "string" ? u : u.uri || "")).join(" ").toLowerCase()
+          const username = (c.data?.username || "").toLowerCase()
+          const email = (c.data?.email || "").toLowerCase()
+          const urisList = (c.data?.uris || c.login?.uris || c.data?.websites || [])
+            .map((u) => (typeof u === "string" ? u : u?.uri || "").toLowerCase())
+            .filter(Boolean)
+          if (c.data?.passkey?.rpId) urisList.push(String(c.data.passkey.rpId).toLowerCase())
           const notes = (c.data?.notes || c.data?.noteBody || "").toLowerCase()
-          return title.includes(q) || user.includes(q) || uris.includes(q) || notes.includes(q)
+
+          return tokens.every((tok) => {
+            if (tok.startsWith("user:") || tok.startsWith("username:")) {
+              const val = tok.replace(/^user(name)?:/, "")
+              return matchesPattern(username, val)
+            }
+            if (tok.startsWith("email:")) {
+              const val = tok.replace(/^email:/, "")
+              return matchesPattern(email, val) || matchesPattern(username, val)
+            }
+            if (tok.startsWith("domain:") || tok.startsWith("url:") || tok.startsWith("host:")) {
+              const val = tok.replace(/^(domain|url|host):/, "")
+              return !val || urisList.some((u) => matchesPattern(u, val))
+            }
+            if (tok.startsWith("title:")) {
+              const val = tok.replace(/^title:/, "")
+              return matchesPattern(title, val)
+            }
+            if (tok.startsWith("note:") || tok.startsWith("notes:")) {
+              const val = tok.replace(/^notes?:/, "")
+              return matchesPattern(notes, val)
+            }
+            return (
+              matchesPattern(title, tok) ||
+              matchesPattern(username, tok) ||
+              matchesPattern(email, tok) ||
+              urisList.some((u) => matchesPattern(u, tok)) ||
+              matchesPattern(notes, tok)
+            )
+          })
         })
       }
     }
@@ -555,7 +588,6 @@
             if (rowVal) {
               navigator.clipboard.writeText(rowVal).then(() => {
                 showToast(`${rowName} copied`)
-                ext.runtime.sendMessage({ action: "SCHEDULE_CLIPBOARD_CLEAR", payload: { text: rowVal } }).catch(() => {})
               })
             }
           })
@@ -567,9 +599,41 @@
       }
     }
 
-    // Custom Fields
-    const customFields = data.customFields || []
+    // Structured item fields (card, ssh, identity) + Custom Fields
+    const itemType = data.itemType || (cipher.type === "SSH_KEY" || cipher.type === 2 ? "ssh" : "login")
+    const structuredFields = []
+    if (itemType === "card") {
+      if (data.cardHolder) structuredFields.push({ name: "Cardholder", value: data.cardHolder, isHidden: false })
+      if (data.cardNumber) structuredFields.push({ name: "Card Number", value: data.cardNumber, isHidden: true })
+      if (data.cardExp) structuredFields.push({ name: "Expiration", value: data.cardExp, isHidden: false })
+      if (data.cardCvv) structuredFields.push({ name: "Security Code (CVV)", value: data.cardCvv, isHidden: true })
+      if (data.cardPin) structuredFields.push({ name: "PIN", value: data.cardPin, isHidden: true })
+    } else if (itemType === "ssh") {
+      if (data.keyType) structuredFields.push({ name: "Key Type", value: data.keyType, isHidden: false })
+      if (data.publicKey) structuredFields.push({ name: "Public Key", value: data.publicKey, isHidden: false })
+      if (data.fingerprint) structuredFields.push({ name: "Fingerprint", value: data.fingerprint, isHidden: false })
+      if (data.privateKey) structuredFields.push({ name: "Private Key", value: data.privateKey, isHidden: true })
+      if (data.passphrase) structuredFields.push({ name: "Passphrase", value: data.passphrase, isHidden: true })
+    } else if (itemType === "identity") {
+      if (data.fullName) structuredFields.push({ name: "Full Name", value: data.fullName, isHidden: false })
+      if (data.company) structuredFields.push({ name: "Company", value: data.company, isHidden: false })
+      if (data.phone) structuredFields.push({ name: "Phone", value: data.phone, isHidden: false })
+      if (data.address) structuredFields.push({ name: "Address", value: data.address, isHidden: false })
+    }
+
+    const customFields = [...structuredFields, ...(data.customFields || [])]
     if (detailCustomFieldsCard && detailCustomFieldsList) {
+      const cardHeader = detailCustomFieldsCard.querySelector(".card-subtitle-header")
+      if (cardHeader) {
+        cardHeader.textContent =
+          itemType === "card"
+            ? "Card Details"
+            : itemType === "ssh"
+              ? "SSH Key"
+              : itemType === "identity"
+                ? "Identity Details"
+                : "Custom Fields"
+      }
       if (customFields.length > 0) {
         detailCustomFieldsCard.style.display = "flex"
         detailCustomFieldsList.replaceChildren()
@@ -638,9 +702,6 @@
             if (cfVal) {
               navigator.clipboard.writeText(cfVal).then(() => {
                 showToast(`${cfName} copied`)
-                if (isHidden) {
-                  ext.runtime.sendMessage({ action: "SCHEDULE_CLIPBOARD_CLEAR", payload: { text: cfVal } }).catch(() => {})
-                }
               })
             }
           })
@@ -709,15 +770,34 @@
         uris.forEach((u) => {
           const urlStr = typeof u === "string" ? u : u.uri
           if (!urlStr) return
-          const link = document.createElement("a")
-          link.href = urlStr.includes("://") ? urlStr : `https://${urlStr}`
-          link.target = "_blank"
-          link.title = urlStr
-          link.className = "field-value font-mono"
-          link.textContent = formatDisplayHost(urlStr)
-          link.style.display = "block"
-          link.style.textDecoration = "none"
-          detailWebsitesContainer.appendChild(link)
+          let safeHref = null
+          try {
+            const candidate = urlStr.includes("://") ? urlStr : `https://${urlStr}`
+            const parsed = new URL(candidate)
+            if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+              safeHref = parsed.href
+            }
+          } catch {}
+
+          if (safeHref) {
+            const link = document.createElement("a")
+            link.href = safeHref
+            link.target = "_blank"
+            link.rel = "noopener noreferrer"
+            link.title = urlStr
+            link.className = "field-value font-mono"
+            link.textContent = formatDisplayHost(urlStr)
+            link.style.display = "block"
+            link.style.textDecoration = "none"
+            detailWebsitesContainer.appendChild(link)
+          } else {
+            const span = document.createElement("span")
+            span.title = urlStr
+            span.className = "field-value font-mono"
+            span.textContent = urlStr
+            span.style.display = "block"
+            detailWebsitesContainer.appendChild(span)
+          }
         })
       } else {
         rowDetailWebsites.style.display = "none"
@@ -781,7 +861,6 @@
     if (secret) {
       navigator.clipboard.writeText(secret).then(() => {
         showToast("Password copied")
-        ext.runtime.sendMessage({ action: "SCHEDULE_CLIPBOARD_CLEAR", payload: { text: secret } }).catch(() => {})
       })
     }
   })
@@ -821,23 +900,30 @@
     if (code && code !== "------" && code !== "--- ---") {
       navigator.clipboard.writeText(code).then(() => {
         showToast("2FA code copied to clipboard")
-        ext.runtime.sendMessage({ action: "SCHEDULE_CLIPBOARD_CLEAR", payload: { text: code } }).catch(() => {})
       }).catch(() => {})
 
       const label = cipher?.title || "2FA Code"
 
-      // Show floating countdown widget and auto-copy next code on active tab
-      if (totpSecret) {
-        ext.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
+      // Show floating countdown widget and auto-copy next code on active tab (top frame only, never send raw totpSecret)
+      if (totpSecret && cipher?.id) {
+        ext.tabs.query({ active: true, currentWindow: true }).then(async (tabs) => {
           if (tabs[0]?.id) {
-            ext.tabs.sendMessage(tabs[0].id, {
-              action: "SHOW_FLOATING_TOTP_WIDGET",
-              payload: {
-                secret: totpSecret,
-                label,
-                initialCode: code,
-              },
+            await ext.runtime.sendMessage({
+              action: "AUTHORIZE_TAB_TOTP",
+              payload: { tabId: tabs[0].id, cipherId: cipher.id, url: tabs[0].url },
             }).catch(() => {})
+            ext.tabs.sendMessage(
+              tabs[0].id,
+              {
+                action: "SHOW_FLOATING_TOTP_WIDGET",
+                payload: {
+                  cipherId: cipher.id,
+                  label,
+                  initialCode: code,
+                },
+              },
+              { frameId: 0 }
+            ).catch(() => {})
           }
         }).catch(() => {})
       }
@@ -926,20 +1012,37 @@
       cipher.totp ||
       ""
     const totpSecret = typeof rawTotpSecret === "string" ? rawTotpSecret.trim() : ""
+    const hasTotp = Boolean(totpSecret)
+    let totpCode = ""
+    if (hasTotp && typeof IrisTotp !== "undefined" && typeof IrisTotp.generateTotpSync === "function") {
+      totpCode = IrisTotp.generateTotpSync(totpSecret)
+    }
 
     try {
       const tabs = await ext.tabs.query({ active: true, currentWindow: true })
       if (tabs[0]?.id) {
+        if (hasTotp && cipher.id) {
+          await ext.runtime.sendMessage({
+            action: "AUTHORIZE_TAB_TOTP",
+            payload: { tabId: tabs[0].id, cipherId: cipher.id, url: tabs[0].url },
+          }).catch(() => {})
+        }
         ext.tabs
-          .sendMessage(tabs[0].id, {
-            action: "FILL_CREDENTIALS",
-            payload: {
-              title: cipher.title || data.username || "2FA",
-              username: data.username || data.email || "",
-              password: data.password || "",
-              totpSecret,
+          .sendMessage(
+            tabs[0].id,
+            {
+              action: "FILL_CREDENTIALS",
+              payload: {
+                cipherId: hasTotp ? cipher.id : "",
+                hasTotp,
+                totpCode,
+                title: cipher.title || data.username || "2FA",
+                username: data.username || data.email || "",
+                password: data.password || "",
+              },
             },
-          })
+            { frameId: 0 }
+          )
           .catch(() => {
             showToast("Could not autofill on this page")
           })
@@ -952,6 +1055,38 @@
 
 
 
+  function clearDecryptedState() {
+    if (liveTotpTimer) {
+      clearInterval(liveTotpTimer)
+      liveTotpTimer = null
+    }
+    state.allCiphers = []
+    state.matchingCiphers = []
+    state.selectedCipherId = null
+    if (vaultCardsList) vaultCardsList.replaceChildren()
+    if (matchingCardsList) matchingCardsList.replaceChildren()
+    if (matchingBaseCardsList) matchingBaseCardsList.replaceChildren()
+    if (detailAdditionalPasswordsList) detailAdditionalPasswordsList.replaceChildren()
+    if (detailCustomFieldsList) detailCustomFieldsList.replaceChildren()
+    if (detailValPassword) {
+      detailValPassword.textContent = "••••••••••••"
+      detailValPassword.dataset.revealed = "false"
+      delete detailValPassword.dataset.secret
+    }
+    if (detailValTotp) {
+      detailValTotp.textContent = "------"
+      delete detailValTotp.dataset.code
+    }
+    if (detailValNotes) {
+      detailValNotes.textContent = ""
+    }
+    global.AkaromiEditor?.clearSensitiveInputs?.()
+    global.AkaromiGenerator?.clearSensitiveOutput?.()
+    global.AkaromiSettings?.closeSettings?.()
+    global.AkaromiSettings?.closeDrawer?.()
+    showDetailEmpty()
+  }
+
   global.AkaromiVault = {
     loadVaultData,
     renderCiphersList,
@@ -959,5 +1094,6 @@
     selectCipher,
     showDetailEmpty,
     sortCiphers,
+    clearDecryptedState,
   }
 })(typeof window !== "undefined" ? window : globalThis)

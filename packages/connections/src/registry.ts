@@ -14,8 +14,6 @@ import {
   RiotGamesAdapter,
   SimklAdapter,
   SonarrAdapter,
-  SteamAdapter,
-  IrisAdapter,
   HikkaAdapter,
   MangaUpdatesAdapter,
   MangaBakaAdapter,
@@ -54,13 +52,11 @@ registerConnectionAdapter(new AniListAdapter());
 registerConnectionAdapter(new MyAnimeListAdapter());
 registerConnectionAdapter(new SimklAdapter());
 registerConnectionAdapter(new BangumiAdapter());
-registerConnectionAdapter(new SteamAdapter());
 registerConnectionAdapter(new RiotGamesAdapter());
 registerConnectionAdapter(new RadarrAdapter());
 registerConnectionAdapter(new SonarrAdapter());
 registerConnectionAdapter(new DeezerAdapter());
 registerConnectionAdapter(new LastFmAdapter());
-registerConnectionAdapter(new IrisAdapter());
 registerConnectionAdapter(new HikkaAdapter());
 registerConnectionAdapter(new MangaUpdatesAdapter());
 registerConnectionAdapter(new MangaBakaAdapter());
@@ -158,14 +154,6 @@ export function getSupportedProviders(): ProviderMetadata[] {
       accentColor: "#D51007",
     },
     {
-      provider: "STEAM",
-      name: "Steam",
-      category: "GAMING",
-      description: "Sync Steam library, achievements, and recently played game activity.",
-      websiteUrl: "https://store.steampowered.com",
-      accentColor: "#171A21",
-    },
-    {
       provider: "RIOT_GAMES",
       name: "Riot Games",
       category: "GAMING",
@@ -188,14 +176,6 @@ export function getSupportedProviders(): ProviderMetadata[] {
       description: "Connect your Sonarr instance to search, monitor, and manage TV series downloads.",
       websiteUrl: "https://sonarr.tv",
       accentColor: "#00CDF0",
-    },
-    {
-      provider: "IRIS",
-      name: "IRIS Instance",
-      category: "TRACKING",
-      description: "Link another IRIS instance to synchronize media libraries, activity, and federate accounts.",
-      websiteUrl: "https://github.com/rrHakushi/IRIS",
-      accentColor: "#E11D48",
     },
     {
       provider: "HIKKA",

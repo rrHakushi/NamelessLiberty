@@ -6,14 +6,18 @@
 const ext = typeof browser !== "undefined" ? browser : chrome
 const storage = typeof IrisStorage !== "undefined" ? IrisStorage : ext.storage.local
 
-// In-memory vault state (strictly zero-history, wiped on lock or restart)
+try {
+  ext.storage?.session?.setAccessLevel?.({ accessLevel: "TRUSTED_CONTEXTS" })?.catch?.(() => {})
+} catch {}
+
 // In-memory vault state (strictly zero-history, wiped on lock or restart)
 // Step 1: In-Memory Volatile Vault Store
 // Step 1.1: Zero-History Vault Key & Decrypted Ciphers State
 let inMemoryVaultKey = null
 let inMemoryCiphers = []
 let autoLockTimer = null
-let clipboardClearTimer = null
+let pendingScannedTotpMemory = null
+let ensureVaultPromise = null
 
 const ONE_HOUR_MS = 60 * 60 * 1000
 
@@ -39,8 +43,11 @@ async function saveVaultKeyToSession() {
  * Removes session vault key
  */
 async function clearVaultKeyFromSession() {
+  pendingScannedTotpMemory = null
   if (ext.storage?.session) {
-    await ext.storage.session.remove(["vaultKeyHex", "encryptedVaultKey", "lastActive"]).catch(() => {})
+    await ext.storage.session
+      .remove(["vaultKeyHex", "encryptedVaultKey", "lastActive", "pendingScannedTotp", "pinUnlockData", "pinUnlockEnabled"])
+      .catch(() => {})
   }
 }
 
@@ -49,48 +56,56 @@ async function clearVaultKeyFromSession() {
  * Uses cached encrypted ciphers from local storage to avoid redundant network calls!
  */
 async function ensureVaultActive() {
-  if (inMemoryVaultKey) {
-    if (inMemoryCiphers.length === 0) {
-      await decryptCachedVault(inMemoryVaultKey)
-    }
-    // Check if background hourly sync is due
-    checkHourlySyncDue()
-    return true
-  }
-
-  if (ext.storage?.session) {
+  if (ensureVaultPromise) return ensureVaultPromise
+  ensureVaultPromise = (async () => {
     try {
-      const sessionData = await ext.storage.session.get([
-        "vaultKeyHex",
-        "lastActive",
-      ])
-      if (sessionData?.vaultKeyHex) {
-        const settings = await storage.get(["autoLockMinutes"])
-        const minutes = settings.autoLockMinutes ?? 15
-
-        if (minutes > 0 && sessionData.lastActive) {
-          const elapsed = Date.now() - sessionData.lastActive
-          if (elapsed >= minutes * 60 * 1000) {
-            console.log(
-              "[Akaromi] Auto-lock expired while background worker was idle"
-            )
-            lockVault()
-            return false
-          }
+      if (inMemoryVaultKey) {
+        if (inMemoryCiphers.length === 0) {
+          await decryptCachedVault(inMemoryVaultKey)
         }
-
-        inMemoryVaultKey = IrisCrypto.hexToBytes(sessionData.vaultKeyHex)
-        await decryptCachedVault(inMemoryVaultKey)
-        await resetAutoLock({ preserveLastActive: true })
+        // Check if background hourly sync is due
         checkHourlySyncDue()
         return true
       }
-    } catch (err) {
-      console.warn("[Akaromi] Session restore error:", err)
-    }
-  }
 
-  return false
+      if (ext.storage?.session) {
+        try {
+          const sessionData = await ext.storage.session.get([
+            "vaultKeyHex",
+            "lastActive",
+          ])
+          if (sessionData?.vaultKeyHex) {
+            const settings = await storage.get(["autoLockMinutes"])
+            const minutes = settings.autoLockMinutes ?? 15
+
+            if (minutes > 0 && sessionData.lastActive) {
+              const elapsed = Date.now() - sessionData.lastActive
+              if (elapsed >= minutes * 60 * 1000) {
+                console.log(
+                  "[Akaromi] Auto-lock expired while background worker was idle"
+                )
+                lockVault()
+                return false
+              }
+            }
+
+            inMemoryVaultKey = IrisCrypto.hexToBytes(sessionData.vaultKeyHex)
+            await decryptCachedVault(inMemoryVaultKey)
+            await resetAutoLock({ preserveLastActive: true })
+            checkHourlySyncDue()
+            return true
+          }
+        } catch (err) {
+          console.warn("[Akaromi] Session restore error:", err)
+        }
+      }
+
+      return false
+    } finally {
+      ensureVaultPromise = null
+    }
+  })()
+  return ensureVaultPromise
 }
 
 /**
@@ -172,15 +187,44 @@ function lockVault() {
     inMemoryVaultKey = null
   }
   inMemoryCiphers = []
+  pendingScannedTotpMemory = null
+  if (typeof lastAutofilledCipherByTab !== "undefined") {
+    lastAutofilledCipherByTab.clear()
+  }
+  if (typeof inlineSearchAuthorizedByTab !== "undefined") {
+    inlineSearchAuthorizedByTab.clear()
+  }
   if (autoLockTimer) clearTimeout(autoLockTimer)
   try {
     ext.alarms?.clear("autoLock")
   } catch {}
-  clearVaultKeyFromSession()
+  if (ext.storage?.session) {
+    ext.storage.session
+      .remove(["vaultKeyHex", "encryptedVaultKey", "lastActive", "pendingScannedTotp"])
+      .catch(() => {})
+  }
+  storage
+    .remove([
+      "sessionMasterKey",
+      "akaromi_auth_draft",
+      "akaromi_edit_draft",
+      "akaromi_gen_draft",
+      "pendingScannedTotp",
+    ])
+    .catch(() => {})
   updateBadge()
+  try {
+    ext.runtime.sendMessage({ action: "VAULT_LOCKED" }).catch(() => {})
+  } catch {}
 }
 
 function isPrivilegedSender(sender) {
-  // Only internal extension contexts (e.g. popup, options page) - not untrusted webpage content scripts
-  return !sender.tab && sender.id === ext.runtime.id
+  // Allow internal extension pages (toolbar popup, standalone popup window, extension tab, options page)
+  // while rejecting webpage content scripts.
+  if (!sender || sender.id !== ext.runtime.id) return false
+  const extOrigin = ext.runtime.getURL("")
+  if (sender.url) {
+    return sender.url.startsWith(extOrigin)
+  }
+  return !sender.tab
 }

@@ -1,0 +1,2173 @@
+[
+  {
+    "slug": "apps/akaromi/ciphers/ciphers.ctrl",
+    "title": "Get vault ciphers with optional filters (folder, type, favorite, trash)",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/akaromi/ciphers/",
+    "relPath": "apps/akaromi/ciphers/ciphers.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE",
+      "PATCH",
+      "PUT"
+    ],
+    "routePaths": [
+      "/akaromi/ciphers/",
+      "/akaromi/ciphers/",
+      "/akaromi/ciphers/trash",
+      "/akaromi/ciphers/:cipherId",
+      "/akaromi/ciphers/:cipherId",
+      "/akaromi/ciphers/:cipherId",
+      "/akaromi/ciphers/:cipherId",
+      "/akaromi/ciphers/:cipherId/restore"
+    ],
+    "errorCount": 5
+  },
+  {
+    "slug": "apps/akaromi/ciphers/ciphers.serv",
+    "title": "ciphers.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/akaromi/ciphers/ciphers.serv.ts",
+    "relPath": "apps/akaromi/ciphers/ciphers.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 5
+  },
+  {
+    "slug": "apps/akaromi/encryption/encryption.ctrl",
+    "title": "Get user post-quantum encryption keys and cryptographic salt",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/akaromi/encryption/keys",
+    "relPath": "apps/akaromi/encryption/encryption.ctrl.ts",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/akaromi/encryption/keys"
+    ],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/akaromi/encryption/encryption.serv",
+    "title": "encryption.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/akaromi/encryption/encryption.serv.ts",
+    "relPath": "apps/akaromi/encryption/encryption.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/akaromi/vault/vault.ctrl",
+    "title": "Full or incremental vault synchronization state",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/akaromi/sync",
+    "relPath": "apps/akaromi/vault/vault.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/akaromi/sync",
+      "/akaromi/export",
+      "/akaromi/import"
+    ],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/akaromi/vault/vault.serv",
+    "title": "vault.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/akaromi/vault/vault.serv.ts",
+    "relPath": "apps/akaromi/vault/vault.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/_shared/base-media.serv",
+    "title": "base-media.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/_shared/base-media.serv.ts",
+    "relPath": "apps/borealis/_shared/base-media.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/_shared/base-provider",
+    "title": "base-provider",
+    "description": "",
+    "role": "Module / Helper",
+    "pathname": "apps/elysia/src/apps/borealis/_shared/base-provider.ts",
+    "relPath": "apps/borealis/_shared/base-provider.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/_shared/base-syncer",
+    "title": "base-syncer",
+    "description": "",
+    "role": "Module / Helper",
+    "pathname": "apps/elysia/src/apps/borealis/_shared/base-syncer.ts",
+    "relPath": "apps/borealis/_shared/base-syncer.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/_shared/freshness",
+    "title": "freshness",
+    "description": "",
+    "role": "Module / Helper",
+    "pathname": "apps/elysia/src/apps/borealis/_shared/freshness.ts",
+    "relPath": "apps/borealis/_shared/freshness.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/_shared/media-overview.helper",
+    "title": "media-overview.helper",
+    "description": "",
+    "role": "Module / Helper",
+    "pathname": "apps/elysia/src/apps/borealis/_shared/media-overview.helper.ts",
+    "relPath": "apps/borealis/_shared/media-overview.helper.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/_shared/media-relations.helper",
+    "title": "media-relations.helper",
+    "description": "",
+    "role": "Module / Helper",
+    "pathname": "apps/elysia/src/apps/borealis/_shared/media-relations.helper.ts",
+    "relPath": "apps/borealis/_shared/media-relations.helper.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/_shared/media-stats.serv",
+    "title": "media-stats.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/_shared/media-stats.serv.ts",
+    "relPath": "apps/borealis/_shared/media-stats.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/anime/anime.ctrl",
+    "title": "Get anime catalog",
+    "description": "Retrieves paginated anime catalog with cursor or page, supporting comprehensive multi-field filtering.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/",
+    "relPath": "apps/borealis/anime/anime.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/",
+      "/filters",
+      "/:animeId",
+      "/:animeId/refresh",
+      "/:animeId/similar",
+      "/:animeId/relations",
+      "/:animeId/characters",
+      "/:animeId/staff",
+      "/:animeId/episodes",
+      "/:animeId/images",
+      "/:animeId/stats",
+      "/:animeId/friends",
+      "/:animeId/people",
+      "/:animeId/recommendations"
+    ],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/anime/anime.serv",
+    "title": "anime.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/anime/anime.serv.ts",
+    "relPath": "apps/borealis/anime/anime.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/books/books.ctrl",
+    "title": "Get books catalog",
+    "description": "Returns 50 books per page with cursor or page pagination and filtering.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/",
+    "relPath": "apps/borealis/books/books.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/",
+      "/filters",
+      "/:bookId",
+      "/:bookId/refresh",
+      "/:bookId/similar",
+      "/:bookId/characters",
+      "/:bookId/staff",
+      "/:bookId/images",
+      "/:bookId/stats",
+      "/:bookId/friends",
+      "/:bookId/people",
+      "/:bookId/recommendations"
+    ],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/books/books.serv",
+    "title": "books.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/books/books.serv.ts",
+    "relPath": "apps/borealis/books/books.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/calendar/calendar.ctrl",
+    "title": "Media broadcast / release calendar",
+    "description": "Fetches upcoming and past media releases across Anime (airing schedules), Manga (start/end dates), Games, Books, Movies, TV Episodes (air dates and seasons), and Music with list filtering.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/borealis/calendar",
+    "relPath": "apps/borealis/calendar/calendar.ctrl.ts",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/borealis/calendar"
+    ],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/calendar/calendar.serv",
+    "title": "calendar.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/calendar/calendar.serv.ts",
+    "relPath": "apps/borealis/calendar/calendar.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/entities/entities.ctrl",
+    "title": "Get characters catalog (40 per page)",
+    "description": "Browse paginated characters catalog with keyword searching, gender filters, and sorting.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/borealis/characters",
+    "relPath": "apps/borealis/entities/entities.ctrl.ts",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/borealis/characters",
+      "/borealis/characters/filters",
+      "/borealis/characters/:id",
+      "/borealis/people",
+      "/borealis/people/filters",
+      "/borealis/people/:id",
+      "/borealis/studios",
+      "/borealis/studios/filters",
+      "/borealis/studios/:id"
+    ],
+    "errorCount": 3
+  },
+  {
+    "slug": "apps/borealis/entities/entities.serv",
+    "title": "entities.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/entities/entities.serv.ts",
+    "relPath": "apps/borealis/entities/entities.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 3
+  },
+  {
+    "slug": "apps/borealis/games/games.ctrl",
+    "title": "Get game catalog",
+    "description": "Retrieves paginated game catalog with cursor or page, supporting comprehensive multi-field filtering.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/",
+    "relPath": "apps/borealis/games/games.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/",
+      "/filters",
+      "/:gameId",
+      "/:gameId/refresh",
+      "/:gameId/similar",
+      "/:gameId/characters",
+      "/:gameId/staff",
+      "/:gameId/images",
+      "/:gameId/stats",
+      "/:gameId/friends",
+      "/:gameId/people",
+      "/:gameId/recommendations"
+    ],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/games/games.serv",
+    "title": "games.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/games/games.serv.ts",
+    "relPath": "apps/borealis/games/games.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/lists/_base/base-list.serv",
+    "title": "base-list.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/lists/_base/base-list.serv.ts",
+    "relPath": "apps/borealis/lists/_base/base-list.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/lists/_base/base-stats.serv",
+    "title": "base-stats.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/lists/_base/base-stats.serv.ts",
+    "relPath": "apps/borealis/lists/_base/base-stats.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/lists/lists.ctrl",
+    "title": "Get anime list (40 per page)",
+    "description": "Retrieves user anime list with pagination and optional filters.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/anime",
+    "relPath": "apps/borealis/lists/lists.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/anime",
+      "/anime/stats",
+      "/anime/filters",
+      "/anime/:animeId",
+      "/anime/:animeId",
+      "/anime/:animeId",
+      "/anime/:animeId/increment",
+      "/manga",
+      "/manga/stats",
+      "/manga/filters",
+      "/manga/:mangaId",
+      "/manga/:mangaId",
+      "/manga/:mangaId",
+      "/manga/:mangaId/increment",
+      "/movies",
+      "/movies/stats",
+      "/movies/filters",
+      "/movies/:movieId",
+      "/movies/:movieId",
+      "/movies/:movieId",
+      "/movies/:movieId/increment",
+      "/tv",
+      "/tv/stats",
+      "/tv/filters",
+      "/tv/:tvId",
+      "/tv/:tvId",
+      "/tv/:tvId",
+      "/tv/:tvId/increment",
+      "/games",
+      "/games/stats",
+      "/games/filters",
+      "/games/:gameId",
+      "/games/:gameId",
+      "/games/:gameId",
+      "/games/:gameId/increment",
+      "/books",
+      "/books/stats",
+      "/books/filters",
+      "/books/:bookId",
+      "/books/:bookId",
+      "/books/:bookId",
+      "/books/:bookId/increment",
+      "/music",
+      "/music/stats",
+      "/music/filters",
+      "/music/:musicId",
+      "/music/:musicId",
+      "/music/:musicId",
+      "/music/:musicId/increment",
+      "/other",
+      "/other/stats",
+      "/other/filters",
+      "/other/:otherId",
+      "/other/:otherId",
+      "/other/:otherId",
+      "/other/:otherId/increment",
+      "/export",
+      "/export/shares",
+      "/export/shares",
+      "/export/shares/:shareId",
+      "/import",
+      "/import/fetch-remote",
+      "/stats",
+      "/watching"
+    ],
+    "errorCount": 38
+  },
+  {
+    "slug": "apps/borealis/lists/lists.serv",
+    "title": "lists.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/lists/lists.serv.ts",
+    "relPath": "apps/borealis/lists/lists.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 38
+  },
+  {
+    "slug": "apps/borealis/lists/user-stats.serv",
+    "title": "user-stats.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/lists/user-stats.serv.ts",
+    "relPath": "apps/borealis/lists/user-stats.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/manga/manga.ctrl",
+    "title": "Get manga catalog",
+    "description": "Retrieves paginated manga catalog with cursor or page, supporting comprehensive multi-field filtering.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/",
+    "relPath": "apps/borealis/manga/manga.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/",
+      "/filters",
+      "/:mangaId",
+      "/:mangaId/refresh",
+      "/:mangaId/similar",
+      "/:mangaId/relations",
+      "/:mangaId/characters",
+      "/:mangaId/staff",
+      "/:mangaId/images",
+      "/:mangaId/stats",
+      "/:mangaId/friends",
+      "/:mangaId/people",
+      "/:mangaId/recommendations"
+    ],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/manga/manga.serv",
+    "title": "manga.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/manga/manga.serv.ts",
+    "relPath": "apps/borealis/manga/manga.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/movies/movies.ctrl",
+    "title": "Get movie catalog",
+    "description": "Retrieves paginated movie catalog with cursor or page, supporting comprehensive multi-field filtering.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/",
+    "relPath": "apps/borealis/movies/movies.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/",
+      "/filters",
+      "/:movieId",
+      "/:movieId/refresh",
+      "/:movieId/similar",
+      "/:movieId/characters",
+      "/:movieId/staff",
+      "/:movieId/images",
+      "/:movieId/stats",
+      "/:movieId/friends",
+      "/:movieId/people",
+      "/:movieId/recommendations"
+    ],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/movies/movies.serv",
+    "title": "movies.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/movies/movies.serv.ts",
+    "relPath": "apps/borealis/movies/movies.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/music/music.ctrl",
+    "title": "Get music catalog",
+    "description": "Retrieves paginated music tracks and albums with cursor or page, supporting comprehensive multi-field filtering.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/",
+    "relPath": "apps/borealis/music/music.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/",
+      "/filters",
+      "/:musicId",
+      "/:musicId/refresh",
+      "/:musicId/similar",
+      "/:musicId/tracks",
+      "/:musicId/lyrics",
+      "/:musicId/staff",
+      "/:musicId/images",
+      "/:musicId/stats",
+      "/:musicId/friends",
+      "/:musicId/people",
+      "/:musicId/recommendations"
+    ],
+    "errorCount": 2
+  },
+  {
+    "slug": "apps/borealis/music/music.serv",
+    "title": "music.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/music/music.serv.ts",
+    "relPath": "apps/borealis/music/music.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  {
+    "slug": "apps/borealis/other/other.ctrl",
+    "title": "Get public custom items catalog",
+    "description": "Returns 50 published custom items per page with cursor/page pagination.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/",
+    "relPath": "apps/borealis/other/other.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/",
+      "/filters",
+      "/upload",
+      "/",
+      "/:otherId",
+      "/:otherId",
+      "/:otherId",
+      "/:otherId/fork",
+      "/:otherId/stats",
+      "/:otherId/friends",
+      "/:otherId/people",
+      "/:otherId/recommendations"
+    ],
+    "errorCount": 11
+  },
+  {
+    "slug": "apps/borealis/other/other.serv",
+    "title": "other.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/other/other.serv.ts",
+    "relPath": "apps/borealis/other/other.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 11
+  },
+  {
+    "slug": "apps/borealis/playlists/playlists.ctrl",
+    "title": "Get user custom playlists",
+    "description": "Lists all custom playlists belonging to the user or where user is a collaborator.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/",
+    "relPath": "apps/borealis/playlists/playlists.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "PATCH",
+      "DELETE",
+      "PUT"
+    ],
+    "routePaths": [
+      "/",
+      "/",
+      "/:playlistId/entries",
+      "/:playlistId/entries",
+      "/:playlistId/entries",
+      "/:playlistId/entries",
+      "/:playlistId/reorder",
+      "/:playlistId/collaborators",
+      "/:playlistId/collaborators",
+      "/:playlistId/collaborators/:collaboratorId",
+      "/:playlistId/collaborators/:collaboratorId",
+      "/:playlistId/comments",
+      "/:playlistId/comments",
+      "/:playlistId/comments/:commentId",
+      "/:playlistId/activity",
+      "/:playlistId",
+      "/:playlistId"
+    ],
+    "errorCount": 25
+  },
+  {
+    "slug": "apps/borealis/playlists/playlists.serv",
+    "title": "playlists.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/playlists/playlists.serv.ts",
+    "relPath": "apps/borealis/playlists/playlists.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 24
+  },
+  {
+    "slug": "apps/borealis/providers/anilist.provider",
+    "title": "anilist.provider",
+    "description": "",
+    "role": "External Metadata Provider",
+    "pathname": "apps/elysia/src/apps/borealis/providers/anilist.provider.ts",
+    "relPath": "apps/borealis/providers/anilist.provider.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 5
+  },
+  {
+    "slug": "apps/borealis/providers/anime-mapping.provider",
+    "title": "anime-mapping.provider",
+    "description": "",
+    "role": "External Metadata Provider",
+    "pathname": "apps/elysia/src/apps/borealis/providers/anime-mapping.provider.ts",
+    "relPath": "apps/borealis/providers/anime-mapping.provider.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/providers/deezer.provider",
+    "title": "deezer.provider",
+    "description": "",
+    "role": "External Metadata Provider",
+    "pathname": "apps/elysia/src/apps/borealis/providers/deezer.provider.ts",
+    "relPath": "apps/borealis/providers/deezer.provider.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/providers/google-books.provider",
+    "title": "google-books.provider",
+    "description": "",
+    "role": "External Metadata Provider",
+    "pathname": "apps/elysia/src/apps/borealis/providers/google-books.provider.ts",
+    "relPath": "apps/borealis/providers/google-books.provider.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  {
+    "slug": "apps/borealis/providers/igdb.provider",
+    "title": "igdb.provider",
+    "description": "",
+    "role": "External Metadata Provider",
+    "pathname": "apps/elysia/src/apps/borealis/providers/igdb.provider.ts",
+    "relPath": "apps/borealis/providers/igdb.provider.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 5
+  },
+  {
+    "slug": "apps/borealis/providers/index",
+    "title": "index",
+    "description": "",
+    "role": "Module / Helper",
+    "pathname": "apps/elysia/src/apps/borealis/providers/index.ts",
+    "relPath": "apps/borealis/providers/index.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/providers/tvdb.provider",
+    "title": "tvdb.provider",
+    "description": "",
+    "role": "External Metadata Provider",
+    "pathname": "apps/elysia/src/apps/borealis/providers/tvdb.provider.ts",
+    "relPath": "apps/borealis/providers/tvdb.provider.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 4
+  },
+  {
+    "slug": "apps/borealis/search/external-search.serv",
+    "title": "external-search.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/search/external-search.serv.ts",
+    "relPath": "apps/borealis/search/external-search.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/search/search.ctrl",
+    "title": "Search media catalog (?q=...&category=...)",
+    "description": "Searches media catalog items across media, anime, manga, movies, tv, music, books, characters, people, studios.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/borealis/search",
+    "relPath": "apps/borealis/search/search.ctrl.ts",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/borealis/search"
+    ],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/search/search.serv",
+    "title": "search.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/search/search.serv.ts",
+    "relPath": "apps/borealis/search/search.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/sync/media-entity.syncer",
+    "title": "media-entity.syncer",
+    "description": "",
+    "role": "Media Syncer",
+    "pathname": "apps/elysia/src/apps/borealis/sync/media-entity.syncer.ts",
+    "relPath": "apps/borealis/sync/media-entity.syncer.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 19
+  },
+  {
+    "slug": "apps/borealis/sync/media-preview.syncer",
+    "title": "media-preview.syncer",
+    "description": "",
+    "role": "Media Syncer",
+    "pathname": "apps/elysia/src/apps/borealis/sync/media-preview.syncer.ts",
+    "relPath": "apps/borealis/sync/media-preview.syncer.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/sync/media.queue",
+    "title": "media.queue",
+    "description": "",
+    "role": "BullMQ Queue Manager",
+    "pathname": "apps/elysia/src/apps/borealis/sync/media.queue.ts",
+    "relPath": "apps/borealis/sync/media.queue.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/borealis/sync/media.wrk",
+    "title": "media.wrk",
+    "description": "",
+    "role": "BullMQ Background Worker",
+    "pathname": "apps/elysia/src/apps/borealis/sync/media.wrk.ts",
+    "relPath": "apps/borealis/sync/media.wrk.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 4
+  },
+  {
+    "slug": "apps/borealis/tv/tv.ctrl",
+    "title": "Get TV show catalog",
+    "description": "Retrieves paginated TV catalog with cursor or page, supporting comprehensive multi-field filtering.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/",
+    "relPath": "apps/borealis/tv/tv.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/",
+      "/filters",
+      "/:tvId",
+      "/:tvId/refresh",
+      "/:tvId/similar",
+      "/:tvId/characters",
+      "/:tvId/staff",
+      "/:tvId/seasons",
+      "/:tvId/episodes",
+      "/:tvId/images",
+      "/:tvId/stats",
+      "/:tvId/friends",
+      "/:tvId/people",
+      "/:tvId/recommendations"
+    ],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/borealis/tv/tv.serv",
+    "title": "tv.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/borealis/tv/tv.serv.ts",
+    "relPath": "apps/borealis/tv/tv.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/carina/_shared/base-mfa.serv",
+    "title": "base-mfa.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/_shared/base-mfa.serv.ts",
+    "relPath": "apps/carina/_shared/base-mfa.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  {
+    "slug": "apps/carina/activity/activity.ctrl",
+    "title": "Create a status post on your Carina activity feed",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/activity",
+    "relPath": "apps/carina/activity/activity.ctrl.ts",
+    "methods": [
+      "POST",
+      "GET",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/activity",
+      "/carina/activity/:id/like",
+      "/carina/activity/:id/replies",
+      "/carina/activity/:id/replies",
+      "/carina/activity/:id/replies/:replyId"
+    ],
+    "errorCount": 10
+  },
+  {
+    "slug": "apps/carina/activity/activity.serv",
+    "title": "activity.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/activity/activity.serv.ts",
+    "relPath": "apps/carina/activity/activity.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 13
+  },
+  {
+    "slug": "apps/carina/apikeys/apikeys.ctrl",
+    "title": "Get all API keys (10 per page)",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/auth/apikeys",
+    "relPath": "apps/carina/apikeys/apikeys.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "PATCH",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/auth/apikeys",
+      "/carina/auth/apikeys",
+      "/carina/auth/apikeys/:keyId",
+      "/carina/auth/apikeys/:keyId",
+      "/carina/auth/apikeys/:keyId/regenerate"
+    ],
+    "errorCount": 2
+  },
+  {
+    "slug": "apps/carina/apikeys/apikeys.serv",
+    "title": "apikeys.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/apikeys/apikeys.serv.ts",
+    "relPath": "apps/carina/apikeys/apikeys.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  {
+    "slug": "apps/carina/auth/auth.ctrl",
+    "title": "User login (JWT / session)",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/auth/login",
+    "relPath": "apps/carina/auth/auth.ctrl.ts",
+    "methods": [
+      "POST"
+    ],
+    "routePaths": [
+      "/carina/auth/login",
+      "/carina/auth/logout",
+      "/carina/auth/register",
+      "/carina/auth/password/change",
+      "/carina/auth/password/forgot",
+      "/carina/auth/password/reset"
+    ],
+    "errorCount": 10
+  },
+  {
+    "slug": "apps/carina/auth/auth.serv",
+    "title": "auth.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/auth/auth.serv.ts",
+    "relPath": "apps/carina/auth/auth.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 10
+  },
+  {
+    "slug": "apps/carina/backupcodes/backupcodes.ctrl",
+    "title": "Generate initial backup codes",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/auth/twofactor/backupcodes/generate",
+    "relPath": "apps/carina/backupcodes/backupcodes.ctrl.ts",
+    "methods": [
+      "POST"
+    ],
+    "routePaths": [
+      "/carina/auth/twofactor/backupcodes/generate",
+      "/carina/auth/twofactor/backupcodes/regenerate",
+      "/carina/auth/twofactor/backupcodes/verify"
+    ],
+    "errorCount": 10
+  },
+  {
+    "slug": "apps/carina/backupcodes/backupcodes.serv",
+    "title": "backupcodes.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/backupcodes/backupcodes.serv.ts",
+    "relPath": "apps/carina/backupcodes/backupcodes.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 10
+  },
+  {
+    "slug": "apps/carina/bookmarks/bookmarks.ctrl",
+    "title": "Get user bookmarks with pagination (10 per page default)",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/bookmarks/",
+    "relPath": "apps/carina/bookmarks/bookmarks.ctrl.ts",
+    "methods": [
+      "GET",
+      "PUT",
+      "POST",
+      "PATCH",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/bookmarks/",
+      "/carina/bookmarks/",
+      "/carina/bookmarks/",
+      "/carina/bookmarks/:bookmarkId",
+      "/carina/bookmarks/:bookmarkId"
+    ],
+    "errorCount": 5
+  },
+  {
+    "slug": "apps/carina/bookmarks/bookmarks.serv",
+    "title": "bookmarks.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/bookmarks/bookmarks.serv.ts",
+    "relPath": "apps/carina/bookmarks/bookmarks.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 5
+  },
+  {
+    "slug": "apps/carina/comments/comments.ctrl",
+    "title": "Get comments on user profile strictly by user ID (10 per page default)",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/comments/user/:userId",
+    "relPath": "apps/carina/comments/comments.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE",
+      "PATCH"
+    ],
+    "routePaths": [
+      "/carina/comments/user/:userId",
+      "/carina/comments/user/:userId",
+      "/carina/comments/lists/:userId/:mediaType",
+      "/carina/comments/lists/:userId/:mediaType",
+      "/carina/comments/:commentId/reply/:replyId",
+      "/carina/comments/:commentId/reply/:replyId",
+      "/carina/comments/:commentId/reply",
+      "/carina/comments/:commentId"
+    ],
+    "errorCount": 17
+  },
+  {
+    "slug": "apps/carina/comments/comments.serv",
+    "title": "comments.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/comments/comments.serv.ts",
+    "relPath": "apps/carina/comments/comments.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 17
+  },
+  {
+    "slug": "apps/carina/connections/connection-sync.queue",
+    "title": "connection-sync.queue",
+    "description": "",
+    "role": "BullMQ Queue Manager",
+    "pathname": "apps/elysia/src/apps/carina/connections/connection-sync.queue.ts",
+    "relPath": "apps/carina/connections/connection-sync.queue.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  {
+    "slug": "apps/carina/connections/connection-sync.wrk",
+    "title": "connection-sync.wrk",
+    "description": "",
+    "role": "BullMQ Background Worker",
+    "pathname": "apps/elysia/src/apps/carina/connections/connection-sync.wrk.ts",
+    "relPath": "apps/carina/connections/connection-sync.wrk.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 18
+  },
+  {
+    "slug": "apps/carina/connections/connections.ctrl",
+    "title": "Get paginated connected accounts for authenticated user (10 per page default)",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/connections/",
+    "relPath": "apps/carina/connections/connections.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "PATCH",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/connections/",
+      "/carina/connections/",
+      "/carina/connections/providers",
+      "/carina/connections/search",
+      "/carina/connections/:connectionId/auth",
+      "/carina/connections/:connectionId/callback",
+      "/carina/connections/callback",
+      "/carina/connections/:connectionId/sync",
+      "/carina/connections/:connectionId/test",
+      "/carina/connections/:connectionId",
+      "/carina/connections/:connectionId",
+      "/carina/connections/:connectionId"
+    ],
+    "errorCount": 15
+  },
+  {
+    "slug": "apps/carina/connections/connections.serv",
+    "title": "connections.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/connections/connections.serv.ts",
+    "relPath": "apps/carina/connections/connections.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 14
+  },
+  {
+    "slug": "apps/carina/email-2fa/email-2fa.ctrl",
+    "title": "Setup 2FA email",
+    "description": "Initiates two-factor email verification by sending a 6-digit confirmation code to the user registered email address.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/auth/twofactor/email/setup",
+    "relPath": "apps/carina/email-2fa/email-2fa.ctrl.ts",
+    "methods": [
+      "POST",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/auth/twofactor/email/setup",
+      "/carina/auth/twofactor/email/send",
+      "/carina/auth/twofactor/email/verify",
+      "/carina/auth/twofactor/email"
+    ],
+    "errorCount": 19
+  },
+  {
+    "slug": "apps/carina/email-2fa/email-2fa.serv",
+    "title": "email-2fa.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/email-2fa/email-2fa.serv.ts",
+    "relPath": "apps/carina/email-2fa/email-2fa.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 19
+  },
+  {
+    "slug": "apps/carina/favorites/favorites.ctrl",
+    "title": "Get all user favorites in all categories at once",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/favorites/all",
+    "relPath": "apps/carina/favorites/favorites.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/favorites/all",
+      "/carina/favorites/",
+      "/carina/favorites/:category/:targetId",
+      "/carina/favorites/:category/:targetId"
+    ],
+    "errorCount": 2
+  },
+  {
+    "slug": "apps/carina/favorites/favorites.serv",
+    "title": "favorites.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/favorites/favorites.serv.ts",
+    "relPath": "apps/carina/favorites/favorites.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 3
+  },
+  {
+    "slug": "apps/carina/friends/friends.ctrl",
+    "title": "Get paginated friends list for authenticated user (10 per page default)",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/friends/",
+    "relPath": "apps/carina/friends/friends.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE",
+      "PATCH"
+    ],
+    "routePaths": [
+      "/carina/friends/",
+      "/carina/friends/requests",
+      "/carina/friends/requests",
+      "/carina/friends/requests/:requestId/accept",
+      "/carina/friends/requests/:requestId/decline",
+      "/carina/friends/media/:mediaType/:id",
+      "/carina/friends/recommend",
+      "/carina/friends/:friendId",
+      "/carina/friends/:friendId",
+      "/carina/friends/requests/:requestId/respond",
+      "/carina/friends/requests/:requestId",
+      "/carina/friends/block",
+      "/carina/friends/block/:blockId"
+    ],
+    "errorCount": 17
+  },
+  {
+    "slug": "apps/carina/friends/friends.serv",
+    "title": "friends.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/friends/friends.serv.ts",
+    "relPath": "apps/carina/friends/friends.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 17
+  },
+  {
+    "slug": "apps/carina/notifications/notifications.ctrl",
+    "title": "Get paginated encrypted notifications for authenticated user (10 per page default)",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/notifications/",
+    "relPath": "apps/carina/notifications/notifications.ctrl.ts",
+    "methods": [
+      "GET",
+      "DELETE",
+      "POST"
+    ],
+    "routePaths": [
+      "/carina/notifications/",
+      "/carina/notifications/",
+      "/carina/notifications/read",
+      "/carina/notifications/:notificationId/read",
+      "/carina/notifications/:notificationId/action",
+      "/carina/notifications/:notificationId",
+      "/carina/notifications/:notificationId"
+    ],
+    "errorCount": 3
+  },
+  {
+    "slug": "apps/carina/notifications/notifications.serv",
+    "title": "notifications.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/notifications/notifications.serv.ts",
+    "relPath": "apps/carina/notifications/notifications.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 8
+  },
+  {
+    "slug": "apps/carina/oauth/oauth-discovery.ctrl",
+    "title": "OpenID Connect discovery document",
+    "description": "RFC 8414 & OpenID Connect 1.0 machine-readable discovery metadata.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/.well-known/openid-configuration",
+    "relPath": "apps/carina/oauth/oauth-discovery.ctrl.ts",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/.well-known/openid-configuration",
+      "/.well-known/oauth-authorization-server"
+    ],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/carina/oauth/oauth.ctrl",
+    "title": "OAuth authorization endpoint (consent / prompt)",
+    "description": "Validates client application credentials and returns details for the user consent screen.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/oauth/authorize",
+    "relPath": "apps/carina/oauth/oauth.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "PATCH",
+      "PUT",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/oauth/authorize",
+      "/carina/oauth/authorize",
+      "/carina/oauth/token",
+      "/carina/oauth/userinfo",
+      "/carina/oauth/revoke",
+      "/carina/oauth/introspect",
+      "/carina/oauth/register",
+      "/carina/oauth/apps",
+      "/carina/oauth/apps",
+      "/carina/oauth/apps/:id",
+      "/carina/oauth/apps/:id",
+      "/carina/oauth/apps/:id",
+      "/carina/oauth/apps/:id",
+      "/carina/oauth/apps/:id/regenerate-secret",
+      "/carina/oauth/authorizations",
+      "/carina/oauth/authorizations/:id"
+    ],
+    "errorCount": 19
+  },
+  {
+    "slug": "apps/carina/oauth/oauth.serv",
+    "title": "oauth.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/oauth/oauth.serv.ts",
+    "relPath": "apps/carina/oauth/oauth.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 19
+  },
+  {
+    "slug": "apps/carina/passkeys/passkeys.ctrl",
+    "title": "Get all passkeys (10 per page)",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/auth/twofactor/passkeys",
+    "relPath": "apps/carina/passkeys/passkeys.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/auth/twofactor/passkeys",
+      "/carina/auth/twofactor/passkeys",
+      "/carina/auth/twofactor/passkeys/login",
+      "/carina/auth/twofactor/passkeys/login/verify",
+      "/carina/auth/twofactor/passkeys/verify",
+      "/carina/auth/twofactor/passkeys/:passkeyId"
+    ],
+    "errorCount": 13
+  },
+  {
+    "slug": "apps/carina/passkeys/passkeys.serv",
+    "title": "passkeys.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/passkeys/passkeys.serv.ts",
+    "relPath": "apps/carina/passkeys/passkeys.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 13
+  },
+  {
+    "slug": "apps/carina/public/public.ctrl",
+    "title": "Serve static / public uploaded files",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/public/*",
+    "relPath": "apps/carina/public/public.ctrl.ts",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/public/*",
+      "/carina/public/*"
+    ],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/carina/public/public.serv",
+    "title": "public.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/public/public.serv.ts",
+    "relPath": "apps/carina/public/public.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 4
+  },
+  {
+    "slug": "apps/carina/qc/qc.ctrl",
+    "title": "Generate quick connect session/code",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/auth/qc/generate",
+    "relPath": "apps/carina/qc/qc.ctrl.ts",
+    "methods": [
+      "POST",
+      "GET"
+    ],
+    "routePaths": [
+      "/carina/auth/qc/generate",
+      "/carina/auth/qc/approve",
+      "/carina/auth/qc/status"
+    ],
+    "errorCount": 2
+  },
+  {
+    "slug": "apps/carina/qc/qc.serv",
+    "title": "qc.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/qc/qc.serv.ts",
+    "relPath": "apps/carina/qc/qc.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  {
+    "slug": "apps/carina/recommendations/recommendations.ctrl",
+    "title": "Submit media recommendation strictly by media IDs",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/recommendations/",
+    "relPath": "apps/carina/recommendations/recommendations.ctrl.ts",
+    "methods": [
+      "POST",
+      "GET",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/recommendations/",
+      "/carina/recommendations/:type/:id",
+      "/carina/recommendations/:id",
+      "/carina/recommendations/:id/vote"
+    ],
+    "errorCount": 4
+  },
+  {
+    "slug": "apps/carina/recommendations/recommendations.serv",
+    "title": "recommendations.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/recommendations/recommendations.serv.ts",
+    "relPath": "apps/carina/recommendations/recommendations.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 5
+  },
+  {
+    "slug": "apps/carina/totp/totp.ctrl",
+    "title": "Setup TOTP authenticator app",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/auth/twofactor/totp/setup",
+    "relPath": "apps/carina/totp/totp.ctrl.ts",
+    "methods": [
+      "POST",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/auth/twofactor/totp/setup",
+      "/carina/auth/twofactor/totp/verify",
+      "/carina/auth/twofactor/totp"
+    ],
+    "errorCount": 12
+  },
+  {
+    "slug": "apps/carina/totp/totp.serv",
+    "title": "totp.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/totp/totp.serv.ts",
+    "relPath": "apps/carina/totp/totp.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 12
+  },
+  {
+    "slug": "apps/carina/users/users.ctrl",
+    "title": "Search and list public users (10 per page default)",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/carina/users/",
+    "relPath": "apps/carina/users/users.ctrl.ts",
+    "methods": [
+      "GET",
+      "PATCH",
+      "POST",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/users/",
+      "/carina/users/me",
+      "/carina/users/me",
+      "/carina/users/me/assets",
+      "/carina/users/me/assets",
+      "/carina/users/activity/:id",
+      "/carina/users/:userId/block",
+      "/carina/users/:userId/unblock",
+      "/carina/users/:userId/friendship",
+      "/carina/users/:userId/assets",
+      "/carina/users/:userId/badges",
+      "/carina/users/:userId/badges/evaluate",
+      "/carina/users/:userId/activity/:category",
+      "/carina/users/:userId/activity",
+      "/carina/users/:userId/favorites/all",
+      "/carina/users/:userId/favorites/:category",
+      "/carina/users/:userId/favorites",
+      "/carina/users/:userId",
+      "/carina/users/:userId/friends"
+    ],
+    "errorCount": 14
+  },
+  {
+    "slug": "apps/carina/users/users.serv",
+    "title": "users.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/carina/users/users.serv.ts",
+    "relPath": "apps/carina/users/users.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 15
+  },
+  {
+    "slug": "apps/controllers.generated",
+    "title": "controllers.generated",
+    "description": "",
+    "role": "Module / Helper",
+    "pathname": "apps/elysia/src/apps/controllers.generated.ts",
+    "relPath": "apps/controllers.generated.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/kiroshi/history/history.ctrl",
+    "title": "Get decrypted web search history for the authenticated user",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/kiroshi/history/",
+    "relPath": "apps/kiroshi/history/history.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/kiroshi/history/",
+      "/kiroshi/history/track",
+      "/kiroshi/history/",
+      "/kiroshi/history/:id"
+    ],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/kiroshi/history/history.serv",
+    "title": "history.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/kiroshi/history/history.serv.ts",
+    "relPath": "apps/kiroshi/history/history.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/kiroshi/search/search.ctrl",
+    "title": "Web search proxying upstream SearXNG with encrypted history and caching",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/kiroshi/search",
+    "relPath": "apps/kiroshi/search/search.ctrl.ts",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/kiroshi/search",
+      "/kiroshi/suggestions"
+    ],
+    "errorCount": 8
+  },
+  {
+    "slug": "apps/kiroshi/search/search.serv",
+    "title": "search.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/kiroshi/search/search.serv.ts",
+    "relPath": "apps/kiroshi/search/search.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 8
+  },
+  {
+    "slug": "apps/kiroshi/settings/settings.ctrl",
+    "title": "Get search engine settings and preferences for authenticated user",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/kiroshi/settings/",
+    "relPath": "apps/kiroshi/settings/settings.ctrl.ts",
+    "methods": [
+      "GET",
+      "PATCH"
+    ],
+    "routePaths": [
+      "/kiroshi/settings/",
+      "/kiroshi/settings/"
+    ],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/kiroshi/settings/settings.serv",
+    "title": "settings.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/kiroshi/settings/settings.serv.ts",
+    "relPath": "apps/kiroshi/settings/settings.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/servarr/core/servarr.ctrl",
+    "title": "Get blocklist entries",
+    "description": "Fetches blacklisted releases that failed or were manually rejected.",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/blocklist",
+    "relPath": "apps/servarr/core/servarr.ctrl.ts",
+    "methods": [
+      "GET",
+      "DELETE",
+      "POST",
+      "PUT"
+    ],
+    "routePaths": [
+      "/blocklist",
+      "/blocklist",
+      "/command",
+      "/files",
+      "/files",
+      "/history",
+      "/indexer",
+      "/library",
+      "/lookup",
+      "/lookup",
+      "/manage",
+      "/manage",
+      "/manualimport",
+      "/manualimport",
+      "/queue",
+      "/queue",
+      "/release",
+      "/release",
+      "/rename",
+      "/rename",
+      "/wanted/cutoff",
+      "/wanted/missing",
+      "/:app/blocklist",
+      "/:app/blocklist",
+      "/:app/command",
+      "/:app/files",
+      "/:app/files",
+      "/:app/history",
+      "/:app/indexer",
+      "/:app/library",
+      "/:app/lookup",
+      "/:app/lookup",
+      "/:app/manage",
+      "/:app/manage",
+      "/:app/manualimport",
+      "/:app/manualimport",
+      "/:app/queue",
+      "/:app/queue",
+      "/:app/release",
+      "/:app/release",
+      "/:app/rename",
+      "/:app/rename",
+      "/:app/wanted/cutoff",
+      "/:app/wanted/missing",
+      "/radarr/movies",
+      "/radarr/movies/anime",
+      "/radarr/movies/anime/api/v3/movie",
+      "/radarr/movies/anime/api/v3/qualityprofile",
+      "/radarr/movies/anime/api/v3/system/status",
+      "/radarr/movies/api/v3/movie",
+      "/radarr/movies/api/v3/qualityprofile",
+      "/radarr/movies/api/v3/system/status",
+      "/radarr/movies/:id",
+      "/radarr/movies/:id",
+      "/radarr/movies/:id",
+      "/sonarr/anime",
+      "/sonarr/anime/api/v3/series",
+      "/sonarr/anime/api/v3/qualityprofile",
+      "/sonarr/anime/api/v3/system/status",
+      "/sonarr/tv",
+      "/sonarr/tv/api/v3/series",
+      "/sonarr/tv/api/v3/qualityprofile",
+      "/sonarr/tv/api/v3/system/status",
+      "/sonarr/series/:id",
+      "/sonarr/series/:id",
+      "/sonarr/series/:id",
+      "/sonarr/episode/monitor",
+      "/sonarr/episode/:id"
+    ],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/servarr/core/servarr.serv",
+    "title": "servarr.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/servarr/core/servarr.serv.ts",
+    "relPath": "apps/servarr/core/servarr.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/servarr/extended/servarr-extended.ctrl",
+    "title": "Activate upstream SignalR relay",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/realtime/connect",
+    "relPath": "apps/servarr/extended/servarr-extended.ctrl.ts",
+    "methods": [
+      "POST",
+      "GET",
+      "PUT",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/realtime/connect",
+      "/borealis-link",
+      "/mediacover/:mediaId/:filename",
+      "/config/naming/examples",
+      "/config/:section",
+      "/config/:section",
+      "/providers/:resource",
+      "/providers/:resource/schema",
+      "/providers/:resource",
+      "/providers/:resource/:id",
+      "/providers/:resource/:id",
+      "/providers/:resource/test",
+      "/providers/:resource/testall",
+      "/providers/:resource/action/:name",
+      "/dictionaries",
+      "/tags/detail",
+      "/rules/delayprofile/reorder/:id",
+      "/rules/qualitydefinition/bulk",
+      "/rules/qualitydefinition/limits",
+      "/rules/:resource",
+      "/rules/:resource/schema",
+      "/rules/:resource",
+      "/rules/:resource/:id",
+      "/rules/:resource/:id",
+      "/exclusions",
+      "/exclusions",
+      "/exclusions/bulk",
+      "/exclusions/:id",
+      "/import",
+      "/files/:id",
+      "/files/bulk",
+      "/parse",
+      "/credits",
+      "/extrafiles",
+      "/alttitles",
+      "/collections",
+      "/collections/:id",
+      "/discover",
+      "/discover",
+      "/series/:id/season",
+      "/seasonpass",
+      "/queue/details",
+      "/queue/grab/bulk",
+      "/queue/grab/:id",
+      "/queue/bulk",
+      "/history/scoped",
+      "/history/failed/:id",
+      "/system/overview",
+      "/system/commands",
+      "/system/commands/:id",
+      "/system/backups",
+      "/system/backups/restore/upload",
+      "/system/backups/restore/:id",
+      "/system/backups/:id/download",
+      "/system/backups/:id",
+      "/system/restart",
+      "/system/shutdown",
+      "/log",
+      "/log/file",
+      "/log/file/:filename/download",
+      "/filesystem",
+      "/filesystem/mediafiles"
+    ],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/servarr/extended/servarr-extended.serv",
+    "title": "servarr-extended.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/servarr/extended/servarr-extended.serv.ts",
+    "relPath": "apps/servarr/extended/servarr-extended.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "apps/servarr/realtime/servarr-realtime.serv",
+    "title": "servarr-realtime.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/servarr/realtime/servarr-realtime.serv.ts",
+    "relPath": "apps/servarr/realtime/servarr-realtime.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  {
+    "slug": "apps/tesseract/signaling/tesseract.ctrl",
+    "title": "Get Tesseract LAN lobby scope and optional authenticated user profile",
+    "description": "",
+    "role": "Controller (HTTP / WS Routes)",
+    "pathname": "/tesseract/identity",
+    "relPath": "apps/tesseract/signaling/tesseract.ctrl.ts",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "routePaths": [
+      "/tesseract/identity",
+      "/tesseract/events",
+      "/tesseract/signal"
+    ],
+    "errorCount": 1
+  },
+  {
+    "slug": "apps/tesseract/signaling/tesseract.serv",
+    "title": "tesseract.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/apps/tesseract/signaling/tesseract.serv.ts",
+    "relPath": "apps/tesseract/signaling/tesseract.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  {
+    "slug": "core/base/base.serv",
+    "title": "base.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/core/base/base.serv.ts",
+    "relPath": "core/base/base.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "core/bullmq/base.queue",
+    "title": "base.queue",
+    "description": "",
+    "role": "BullMQ Queue Manager",
+    "pathname": "apps/elysia/src/core/bullmq/base.queue.ts",
+    "relPath": "core/bullmq/base.queue.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/bullmq/base.wrk",
+    "title": "base.wrk",
+    "description": "",
+    "role": "BullMQ Background Worker",
+    "pathname": "apps/elysia/src/core/bullmq/base.wrk.ts",
+    "relPath": "core/bullmq/base.wrk.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "core/bullmq/redis",
+    "title": "redis",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/bullmq/redis.ts",
+    "relPath": "core/bullmq/redis.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 3
+  },
+  {
+    "slug": "core/bullmq/registry",
+    "title": "registry",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/bullmq/registry.ts",
+    "relPath": "core/bullmq/registry.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/email/email.queue",
+    "title": "email.queue",
+    "description": "",
+    "role": "BullMQ Queue Manager",
+    "pathname": "apps/elysia/src/core/email/email.queue.ts",
+    "relPath": "core/email/email.queue.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/email/email.serv",
+    "title": "email.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/core/email/email.serv.ts",
+    "relPath": "core/email/email.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/email/email.wrk",
+    "title": "email.wrk",
+    "description": "",
+    "role": "BullMQ Background Worker",
+    "pathname": "apps/elysia/src/core/email/email.wrk.ts",
+    "relPath": "core/email/email.wrk.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "core/email/mailer",
+    "title": "mailer",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/email/mailer.ts",
+    "relPath": "core/email/mailer.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  {
+    "slug": "core/email/templates/index",
+    "title": "index",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/email/templates/index.ts",
+    "relPath": "core/email/templates/index.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/email/templates/MfaVerificationEmail.tsx",
+    "title": "MfaVerificationEmail.tsx",
+    "description": "",
+    "role": "Email Template (React Email)",
+    "pathname": "apps/elysia/src/core/email/templates/MfaVerificationEmail.tsx",
+    "relPath": "core/email/templates/MfaVerificationEmail.tsx",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/email/templates/PasswordResetEmail.tsx",
+    "title": "PasswordResetEmail.tsx",
+    "description": "",
+    "role": "Email Template (React Email)",
+    "pathname": "apps/elysia/src/core/email/templates/PasswordResetEmail.tsx",
+    "relPath": "core/email/templates/PasswordResetEmail.tsx",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/errors/http-errors",
+    "title": "http-errors",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/errors/http-errors.ts",
+    "relPath": "core/errors/http-errors.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/plugins/controllers",
+    "title": "controllers",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/plugins/controllers.ts",
+    "relPath": "core/plugins/controllers.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "core/plugins/index",
+    "title": "index",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/plugins/index.ts",
+    "relPath": "core/plugins/index.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/plugins/rate-limiter",
+    "title": "rate-limiter",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/plugins/rate-limiter.ts",
+    "relPath": "core/plugins/rate-limiter.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/plugins/session",
+    "title": "session",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/plugins/session.ts",
+    "relPath": "core/plugins/session.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  {
+    "slug": "core/typebox/setup",
+    "title": "setup",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/typebox/setup.ts",
+    "relPath": "core/typebox/setup.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/types/media-details",
+    "title": "media-details",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/types/media-details.ts",
+    "relPath": "core/types/media-details.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/utils/auth-crypto",
+    "title": "auth-crypto",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/utils/auth-crypto.ts",
+    "relPath": "core/utils/auth-crypto.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 4
+  },
+  {
+    "slug": "core/utils/cache",
+    "title": "cache",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/utils/cache.ts",
+    "relPath": "core/utils/cache.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "core/utils/domain",
+    "title": "domain",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/utils/domain.ts",
+    "relPath": "core/utils/domain.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "core/utils/network",
+    "title": "network",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/utils/network.ts",
+    "relPath": "core/utils/network.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 7
+  },
+  {
+    "slug": "core/utils/oauth",
+    "title": "oauth",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/utils/oauth.ts",
+    "relPath": "core/utils/oauth.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "core/utils/s3",
+    "title": "s3",
+    "description": "",
+    "role": "Core Infrastructure",
+    "pathname": "apps/elysia/src/core/utils/s3.ts",
+    "relPath": "core/utils/s3.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  {
+    "slug": "core/ws/ws.serv",
+    "title": "ws.serv",
+    "description": "",
+    "role": "Service (Business Logic)",
+    "pathname": "apps/elysia/src/core/ws/ws.serv.ts",
+    "relPath": "core/ws/ws.serv.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  {
+    "slug": "index",
+    "title": "index",
+    "description": "",
+    "role": "Application Entrypoint",
+    "pathname": "apps/elysia/src/index.ts",
+    "relPath": "index.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "load-env",
+    "title": "load-env",
+    "description": "",
+    "role": "Module / Helper",
+    "pathname": "apps/elysia/src/load-env.ts",
+    "relPath": "load-env.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  {
+    "slug": "server",
+    "title": "server",
+    "description": "",
+    "role": "Application Entrypoint",
+    "pathname": "apps/elysia/src/server.ts",
+    "relPath": "server.ts",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  }
+]

@@ -1,11 +1,11 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { generateSecret, generateSync } from 'otplib'
 import { Elysia } from 'elysia'
-import { carinaTotp } from '../../src/api/controllers/carina/totp.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt, hashPassword, encryptSecret } from '../../src/utils/auth-crypto'
-import { cache } from '../../src/utils/cache'
-import { prisma } from '@Iris/db'
+import { carinaTotp } from '../../src/apps/carina/totp/totp.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt, hashPassword, encryptSecret } from '../../src/core/utils/auth-crypto'
+import { cache } from '../../src/core/utils/cache'
+import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------
 // In-Memory Database Mock for Users and TOTP

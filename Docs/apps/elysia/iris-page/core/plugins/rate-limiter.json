@@ -1,0 +1,630 @@
+{
+  "id": "core/plugins/rate-limiter",
+  "title": "rate-limiter",
+  "description": "",
+  "icon": "IconFunction",
+  "metadata": {
+    "pathname": "apps/elysia/src/core/plugins/rate-limiter.ts",
+    "relPath": "core/plugins/rate-limiter.ts",
+    "role": "Functions",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconFunction",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "rate-limiter"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Functions"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/core/plugins/rate-limiter.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "0 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "font-mono text-xs text-muted-foreground"
+                    },
+                    "text": "None"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-getClientIp",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/rate-limiter.ts-getClientIp",
+                "title": "function getClientIp",
+                "description": "Extracts the real client IP address from incoming request headers, inspecting Cloudflare, X-Forwarded-For, and X-Real-IP reverse proxy headers. @param request - Optional Request instance @returns Client IP address string (defaults to '127.0.0.1' if absent)",
+                "steps": [
+                  {
+                    "id": "exp_getClientIp_0_1",
+                    "kind": "selection",
+                    "title": "`!request?.headers?.get`",
+                    "selectionMode": "if_else",
+                    "condition": "`!request?.headers?.get`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_getClientIp_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`DEFAULT_IP`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_getClientIp_1_2",
+                    "kind": "step",
+                    "title": "Calls `extractTrustedClientIp` and stores result as `resolved`"
+                  },
+                  {
+                    "id": "exp_getClientIp_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`resolved === \"unknown\" ? DEFAULT_IP : resolved`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-isContextAuthenticated",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/rate-limiter.ts-isContextAuthenticated",
+                "title": "function isContextAuthenticated",
+                "description": "Checks if the request context indicates an authenticated (logged-in) user or client.",
+                "steps": [
+                  {
+                    "id": "exp_isContextAuthenticated_0_1",
+                    "kind": "selection",
+                    "title": "`!ctx`",
+                    "selectionMode": "if_else",
+                    "condition": "`!ctx`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isContextAuthenticated_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isContextAuthenticated_1_2",
+                    "kind": "var_def",
+                    "title": "Define `session`",
+                    "payload": "const session = ctx.session as any",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_isContextAuthenticated_2_3",
+                    "kind": "selection",
+                    "title": "`session?.getUser?.()?.id || session?.user?.id || session?.apiKeyId`",
+                    "selectionMode": "if_else",
+                    "condition": "`session?.getUser?.()?.id || session?.user?.id || session?.apiKeyId`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isContextAuthenticated_2_3_then_0_3_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`true`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isContextAuthenticated_3_4",
+                    "kind": "var_def",
+                    "title": "Define `request`",
+                    "payload": "const request = ctx.request",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_isContextAuthenticated_4_5",
+                    "kind": "selection",
+                    "title": "`!request?.headers?.get`",
+                    "selectionMode": "if_else",
+                    "condition": "`!request?.headers?.get`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isContextAuthenticated_4_5_then_0_5_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isContextAuthenticated_5_6",
+                    "kind": "selection",
+                    "title": "`request.headers.get('x-api-key') || request.headers.get('apikey') || request.headers.get(\"authorization\")?.startsWith(\"ApiKey \") || request.headers.get(\"authorization\")?.startsWith(\"Bearer \")`",
+                    "selectionMode": "if_else",
+                    "condition": "`request.headers.get('x-api-key') || request.headers.get('apikey') || request.headers.get(\"authorization\")?.startsWith(\"ApiKey \") || request.headers.get(\"authorization\")?.startsWith(\"Bearer \")`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isContextAuthenticated_5_6_then_0_6_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`true`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isContextAuthenticated_6_7",
+                    "kind": "step",
+                    "title": "Calls `request.headers.get` and stores result as `cookieHeader`"
+                  },
+                  {
+                    "id": "exp_isContextAuthenticated_7_8",
+                    "kind": "selection",
+                    "title": "`cookieHeader && /(?:^|;\\s*)session=/.test(cookieHeader)`",
+                    "selectionMode": "if_else",
+                    "condition": "`cookieHeader && /(?:^|;\\s*)session=/.test(cookieHeader)`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_isContextAuthenticated_7_8_then_0_8_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`true`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_isContextAuthenticated_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`false`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-resolveRateLimitKey",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/rate-limiter.ts-resolveRateLimitKey",
+                "title": "function resolveRateLimitKey",
+                "description": "Resolves a rate-limit key in strict multi-tier hierarchy: 1. Authenticated User ID (`usr:<userId>`) 2. API Key ID or SHA-256 hash (`key:<hash>`) 3. Client IP + Device ID (`dev:<ip>:<deviceId>`) 4. Anonymous IP + User-Agent fingerprint (`ip:<ip>:<uaHash>`) @param ctx - Request route execution context @returns Unique string identifying the client quota bucket",
+                "steps": [
+                  {
+                    "id": "exp_resolveRateLimitKey_0_1",
+                    "kind": "var_def",
+                    "title": "Define `request`, `session`, `userId`",
+                    "payload": "const request = ctx?.request\nconst session = ctx?.session as any\nconst userId = session?.getUser?.()?.id ?? session?.user?.id",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_resolveRateLimitKey_1_2",
+                    "kind": "selection",
+                    "title": "`userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`userId`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_resolveRateLimitKey_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "``usr:${userId}``"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_resolveRateLimitKey_2_3",
+                    "kind": "selection",
+                    "title": "`session?.apiKeyId`",
+                    "selectionMode": "if_else",
+                    "condition": "`session?.apiKeyId`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_resolveRateLimitKey_2_3_then_0_3_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "``key:${session.apiKeyId}``"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_resolveRateLimitKey_3_4",
+                    "kind": "selection",
+                    "title": "`request?.headers`",
+                    "selectionMode": "if_else",
+                    "condition": "`request?.headers`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_resolveRateLimitKey_3_4_then_0_4_1",
+                        "kind": "var_def",
+                        "title": "Define `rawApiKey`",
+                        "payload": "const rawApiKey = request.headers.get('x-api-key') || request.headers.get('apikey') || request.headers.get(\"authorization\")?.startsWith(\"ApiKey \") ? request.headers.get(\"authorization\")?.slice(7).trim() : null",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_resolveRateLimitKey_3_4_then_1_4_2",
+                        "kind": "selection",
+                        "title": "`rawApiKey`",
+                        "selectionMode": "if_else",
+                        "condition": "`rawApiKey`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_resolveRateLimitKey_3_4_then_1_4_2_then_0_4_2_1",
+                            "kind": "var_def",
+                            "title": "Define `hash`",
+                            "payload": "const hash = createHash('sha256').update(rawApiKey.trim()).digest('hex').slice(0, 16)",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "exp_resolveRateLimitKey_3_4_then_1_4_2_then_1_4_2_2",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "``key:${hash}``"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_resolveRateLimitKey_3_4_then_2_4_3",
+                        "kind": "step",
+                        "title": "Calls `request.headers.get` and stores result as `authHeader`"
+                      },
+                      {
+                        "id": "exp_resolveRateLimitKey_3_4_then_3_4_4",
+                        "kind": "selection",
+                        "title": "`authHeader?.startsWith(\"Bearer \")`",
+                        "selectionMode": "if_else",
+                        "condition": "`authHeader?.startsWith(\"Bearer \")`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_resolveRateLimitKey_3_4_then_3_4_4_then_0_4_4_1",
+                            "kind": "var_def",
+                            "title": "Define `token`, `tokenHash`",
+                            "payload": "const token = authHeader.slice(7).trim()\nconst tokenHash = createHash('sha256').update(token).digest('hex').slice(0, 16)",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "exp_resolveRateLimitKey_3_4_then_3_4_4_then_1_4_4_2",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "``tok:${tokenHash}``"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "exp_resolveRateLimitKey_3_4_then_4_4_5",
+                        "kind": "step",
+                        "title": "Calls `request.headers.get` and stores result as `cookieHeader`"
+                      },
+                      {
+                        "id": "exp_resolveRateLimitKey_3_4_then_5_4_6",
+                        "kind": "selection",
+                        "title": "`cookieHeader && cookieHeader.includes('session=')`",
+                        "selectionMode": "if_else",
+                        "condition": "`cookieHeader && cookieHeader.includes('session=')`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_resolveRateLimitKey_3_4_then_5_4_6_then_0_4_6_1",
+                            "kind": "step",
+                            "title": "Calls `cookieHeader.match` and stores result as `sessionMatch`"
+                          },
+                          {
+                            "id": "exp_resolveRateLimitKey_3_4_then_5_4_6_then_1_4_6_2",
+                            "kind": "selection",
+                            "title": "`sessionMatch && sessionMatch[1]`",
+                            "selectionMode": "if_else",
+                            "condition": "`sessionMatch && sessionMatch[1]`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_resolveRateLimitKey_3_4_then_5_4_6_then_1_4_6_2_then_0_4_6_2_1",
+                                "kind": "var_def",
+                                "title": "Define `cookieHash`",
+                                "payload": "const cookieHash = createHash('sha256').update(sessionMatch[1]).digest('hex').slice(0, 16)",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "exp_resolveRateLimitKey_3_4_then_5_4_6_then_1_4_6_2_then_1_4_6_2_2",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "``ses:${cookieHash}``"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_resolveRateLimitKey_4_5",
+                    "kind": "step",
+                    "title": "Calls `getClientIp` and stores result as `ip`"
+                  },
+                  {
+                    "id": "exp_resolveRateLimitKey_5_6",
+                    "kind": "var_def",
+                    "title": "Define `deviceId`",
+                    "payload": "const deviceId = request?.headers?.get(\"x-device-id\") || request?.headers?.get(\"device-id\") || request?.headers?.get(\"x-client-id\")",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_resolveRateLimitKey_6_7",
+                    "kind": "selection",
+                    "title": "`deviceId`",
+                    "selectionMode": "if_else",
+                    "condition": "`deviceId`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_resolveRateLimitKey_6_7_then_0_7_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "``dev:${ip}:${deviceId.trim()}``"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_resolveRateLimitKey_7_8",
+                    "kind": "var_def",
+                    "title": "Define `userAgent`",
+                    "payload": "const userAgent = request?.headers?.get(\"user-agent\")",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_resolveRateLimitKey_8_9",
+                    "kind": "selection",
+                    "title": "`userAgent`",
+                    "selectionMode": "if_else",
+                    "condition": "`userAgent`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_resolveRateLimitKey_8_9_then_0_9_1",
+                        "kind": "var_def",
+                        "title": "Define `uaHash`",
+                        "payload": "const uaHash = createHash('md5').update(userAgent).digest('hex').slice(0, 8)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_resolveRateLimitKey_8_9_then_1_9_2",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "``ip:${ip}:${uaHash}``"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_resolveRateLimitKey_9_10",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "``ip:${ip}``"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-createRateLimiter",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/rate-limiter.ts-createRateLimiter",
+                "title": "function createRateLimiter",
+                "description": "Creates an in-memory Token Bucket rate limiter function. Implements smooth token replenishment over time at a constant rate while allowing bursts up to the bucket's maximum capacity. @param config - Rate limiter configuration options (capacity, duration, cost, refillRate) @returns A limiter middleware function accepting request Context and returning a 429 error payload or null @example ```typescript const limiter = createRateLimiter({ capacity: 10, duration: 60000 }); const err = limiter(ctx); if (err) return err; ```",
+                "steps": [
+                  {
+                    "id": "exp_createRateLimiter_0_1",
+                    "kind": "var_def",
+                    "title": "Define `duration`, `cost`, `store`",
+                    "payload": "const duration = config.duration ?? DEFAULT_DURATION\nconst cost = config.cost ?? DEFAULT_COST\nconst store = new Map<string, TokenBucketRecord>()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_createRateLimiter_1_2",
+                    "kind": "step",
+                    "title": "Calls `setInterval` and stores result as `timer`"
+                  },
+                  {
+                    "id": "exp_createRateLimiter_2_3",
+                    "kind": "selection",
+                    "title": "`typeoftimer === 'object' && timer !== null && 'unref' in timer`",
+                    "selectionMode": "if_else",
+                    "condition": "`typeoftimer === 'object' && timer !== null && 'unref' in timer`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_createRateLimiter_2_3_then_0_3_1",
+                        "kind": "step",
+                        "title": "Calls `timer as { unref: () => void }.unref`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_createRateLimiter_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`( ctx: RateLimitContext | Context ): RateLimitErrorResponse | null => { const set = ctx?.set if (config.skip && config.skip(ctx as any)) { return null ...`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-rateLimiter",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/rate-limiter.ts-rateLimiter",
+                "title": "function rateLimiter",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_rateLimiter_0_1",
+                    "kind": "step",
+                    "title": "Calls `createRateLimiter` and stores result as `limiter`"
+                  },
+                  {
+                    "id": "exp_rateLimiter_1_2",
+                    "kind": "var_def",
+                    "title": "Define `duration`, `cost`",
+                    "payload": "const duration = options.duration ?? DEFAULT_DURATION\nconst cost = options.cost ?? DEFAULT_COST",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_rateLimiter_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`new Elysia({ name: \"iris-rate-limiter\" }).onBeforeHandle('global', async (ctx) => { const rateCtx = ctx as unknown as RateLimitContext const redis = getRateLimitRedis() if (redis && !options.skip?.(rateCtx)) { try { if (redis.status === \"wait\") { ...)`"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

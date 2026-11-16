@@ -98,6 +98,23 @@ export type AnimeFormat = EnumValues<"AnimeFormat">;
 export type EpisodeType = EnumValues<"EpisodeType">;
 export type MangaFormat = EnumValues<"MangaFormat">;
 export type MusicType = EnumValues<"MusicType">;
+export type ReliquaryVisibility = EnumValues<"ReliquaryVisibility">;
+export type ReliquaryCategory = EnumValues<"ReliquaryCategory">;
+
+export const RELIQUARY_VISIBILITIES = [
+  "PUBLIC",
+  "UNLISTED",
+  "PRIVATE",
+] as const satisfies readonly ReliquaryVisibility[];
+
+export const RELIQUARY_CATEGORIES = [
+  "API_DOCS",
+  "WIKI",
+  "GUIDES",
+  "TUTORIALS",
+  "REFERENCE",
+  "OTHER",
+] as const satisfies readonly ReliquaryCategory[];
 
 export const ENTRY_PRIORITIES = [
   "LOW",

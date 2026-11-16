@@ -1,9 +1,9 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia } from 'elysia'
-import { carinaApiKeys } from '../../src/api/controllers/carina/apikeys.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt, hashApiKey } from '../../src/utils/auth-crypto'
-import { prisma } from '@Iris/db'
+import { carinaApiKeys } from '../../src/apps/carina/apikeys/apikeys.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt, hashApiKey } from '../../src/core/utils/auth-crypto'
+import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------
 // In-Memory Database Mock for API Keys and Users

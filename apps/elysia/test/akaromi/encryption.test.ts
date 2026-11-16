@@ -1,10 +1,10 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia, ValidationError } from 'elysia'
-import { akaromiEncryption } from '../../src/api/controllers/akaromi/encryption.ctrl'
-import { isHttpError, NotFound } from '../../src/lib/errors'
-import { signUserJwt } from '../../src/utils/auth-crypto'
-import { AkaromiEncryptionServ } from '../../src/services/akaromi/encryption.serv'
-import { prisma } from '@Iris/db'
+import { akaromiEncryption } from '../../src/apps/akaromi/encryption/encryption.ctrl'
+import { isHttpError, NotFound } from '../../src/core/errors/http-errors'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
+import { AkaromiEncryptionServ } from '../../src/apps/akaromi/encryption/encryption.serv'
+import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------
 // In-Memory Database Mock for Master Encryption Keys

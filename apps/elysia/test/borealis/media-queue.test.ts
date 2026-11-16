@@ -1,15 +1,15 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
-import { prisma } from '@Iris/db'
+import { prisma } from '@NamelessLiberty/db'
 import {
   MediaQueueManager,
   syncActiveMedia,
   MEDIA_QUEUE_NAME,
   type MediaJobData,
-} from '../../src/services/borealis/queue'
+} from '../../src/apps/borealis/sync/media.queue'
 import {
   executeMediaUpdate,
   createMediaWorker,
-} from '../../src/workers/media.wrk'
+} from '../../src/apps/borealis/sync/media.wrk'
 
 describe('Borealis Media Queue & Weekly Cron Worker Test Suite', () => {
   let enqueuedJobs: Array<{ name: string; data: MediaJobData; opts?: any }> = []

@@ -1,0 +1,469 @@
+{
+  "id": "core/utils/domain",
+  "title": "domain",
+  "description": "",
+  "icon": "IconTools",
+  "metadata": {
+    "pathname": "apps/elysia/src/core/utils/domain.ts",
+    "relPath": "core/utils/domain.ts",
+    "role": "Utils",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconTools",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "domain"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Utils"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/core/utils/domain.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "9 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/carina/auth/auth.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/auth/auth.ctrl.ts (getDomainConfig)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/carina/auth/auth.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/auth/auth.serv.ts (getDomainConfig)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/carina/backupcodes/backupcodes.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/backupcodes/backupcodes.ctrl.ts (getDomainConfig)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-3",
+                        "props": {
+                          "href": "/docs/apps/carina/email-2fa/email-2fa.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/email-2fa/email-2fa.ctrl.ts (getDomainConfig)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-4",
+                        "props": {
+                          "href": "/docs/apps/carina/passkeys/passkeys.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/passkeys/passkeys.ctrl.ts (getDomainConfig)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-5",
+                        "props": {
+                          "href": "/docs/apps/carina/passkeys/passkeys.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/passkeys/passkeys.serv.ts (getDomainConfig)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-6",
+                        "props": {
+                          "href": "/docs/apps/carina/qc/qc.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/qc/qc.ctrl.ts (getDomainConfig)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-7",
+                        "props": {
+                          "href": "/docs/apps/carina/qc/qc.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/qc/qc.serv.ts (getDomainConfig)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-8",
+                        "props": {
+                          "href": "/docs/apps/carina/totp/totp.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/totp/totp.ctrl.ts (getDomainConfig)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-getDomainConfig",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/utils/domain.ts-getDomainConfig",
+                "title": "function getDomainConfig",
+                "description": "Canonical domain, origin, and cookie configuration derived strictly from `NEXT_PUBLIC_URL`. Eliminates redundant environment variables (RP_ID, COOKIE_DOMAIN, NEXTAUTH_URL).",
+                "steps": [
+                  {
+                    "id": "exp_getDomainConfig_0_1",
+                    "kind": "var_def",
+                    "title": "Define `urlStr`",
+                    "payload": "const urlStr = Bun.env.NEXT_PUBLIC_URL",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_getDomainConfig_1_2",
+                    "kind": "selection",
+                    "title": "`!urlStr`",
+                    "selectionMode": "if_else",
+                    "condition": "`!urlStr`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_getDomainConfig_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "NEXT_PUBLIC_URL environment variable is required"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_getDomainConfig_2_3",
+                    "kind": "var_def",
+                    "title": "Define `url`, `hostname`, `isLocalhost`",
+                    "payload": "const url = new URL(urlStr)\nconst hostname = url.hostname\nconst isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_getDomainConfig_3_4",
+                    "kind": "var_def",
+                    "title": "Define `rpId`",
+                    "description": "WebAuthn RP_ID (hostname only, without port or protocol).",
+                    "payload": "const rpId = hostname",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_getDomainConfig_4_5",
+                    "kind": "var_def",
+                    "title": "Define `cookieDomain`",
+                    "description": "Cookie domain: in production, set to root domain with leading dot (e.g. \".runerra.org\") so subdomains share it, or omit on localhost so browsers accept it across localhost ports.",
+                    "payload": "let cookieDomain: string | undefined = undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_getDomainConfig_5_6",
+                    "kind": "selection",
+                    "title": "`!isLocalhost`",
+                    "selectionMode": "if_else",
+                    "condition": "`!isLocalhost`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_getDomainConfig_5_6_then_0_6_1",
+                        "kind": "var_def",
+                        "title": "Define `parts`",
+                        "payload": "const parts = hostname.split('.')",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "exp_getDomainConfig_5_6_then_1_6_2",
+                        "kind": "step",
+                        "title": "Assign `cookieDomain`",
+                        "payload": "cookieDomain = parts.length >= 2 ? `.${parts.slice(-2).join('.')}` : `.${hostname}`",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_getDomainConfig_6_7",
+                    "kind": "var_def",
+                    "title": "Define `isSecure`",
+                    "payload": "const isSecure = Bun.env.BUN_ENV === 'production' && !isLocalhost",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_getDomainConfig_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"url\": \"<urlStr>\",\n  \"origin\": \"<url.origin>\",\n  \"hostname\": \"<hostname>\",\n  \"rpId\": \"<rpId>\",\n  \"cookieDomain\": \"<cookieDomain>\",\n  \"isSecure\": \"<isSecure>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "NEXT_PUBLIC_URL environment variable is required"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

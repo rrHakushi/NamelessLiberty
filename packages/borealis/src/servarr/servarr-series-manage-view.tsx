@@ -9,10 +9,23 @@ import { Input } from "@workspace/ui/components/input"
 import { Spinner } from "@workspace/ui/components/spinner"
 import {
   Dialog,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogDescription,
 } from "@workspace/ui/components/dialog"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectList,
+  SelectTrigger,
+  SelectValue,
+} from "@workspace/ui/components/select"
+import { Label } from "@workspace/ui/components/label"
+import { Switch } from "@workspace/ui/components/switch"
+import { servarrRequest, type ServarrApp } from "./servarr-client"
+import { useServarrRealtime } from "./use-servarr-realtime"
 import {
   IconSearch,
   IconFolder,
@@ -82,6 +95,19 @@ export function ServarrSeriesManageView({
   const [deleteFilesOnDisk, setDeleteFilesOnDisk] = useState(false)
   const [addImportListExclusion, setAddImportListExclusion] = useState(false)
 
+  // Extended mass edit & Season Pass state
+  const app: ServarrApp = provider === "RADARR" ? "radarr" : "sonarr"
+  const [qualityProfiles, setQualityProfiles] = useState<{ id: number; name: string }[]>([])
+  const [rootFolders, setRootFolders] = useState<{ id: number; path: string }[]>([])
+  const [tags, setTags] = useState<{ id: number; label: string }[]>([])
+  const [bulkQualityId, setBulkQualityId] = useState<string>("")
+  const [bulkRootFolder, setBulkRootFolder] = useState<string>("")
+  const [bulkTagId, setBulkTagId] = useState<string>("")
+  const [bulkMinAvailability, setBulkMinAvailability] = useState<string>("")
+  const [moveFilesOnFolderChange, setMoveFilesOnFolderChange] = useState(false)
+  const [isSeasonPassOpen, setIsSeasonPassOpen] = useState(false)
+  const [seasonPassMonitor, setSeasonPassMonitor] = useState<string>("all")
+
   const inFlightRef = React.useRef(false)
   const lastLoadedKeyRef = React.useRef<string | null>(null)
 
@@ -92,7 +118,7 @@ export function ServarrSeriesManageView({
       inFlightRef.current = true
       if (!silent) setIsLoading(true)
       try {
-        const res = await dedupGet(
+        const res = (await dedupGet(
           `servarr:${provider}:library`,
           () =>
             provider === "RADARR"
@@ -103,7 +129,7 @@ export function ServarrSeriesManageView({
                   fetch: { credentials: "include" },
                 }),
           { force, ttlMs: 3000 }
-        )
+        )) as any
 
         if (res?.data?.success && Array.isArray(res.data.items)) {
           setItems(res.data.items)
@@ -125,7 +151,80 @@ export function ServarrSeriesManageView({
     if (lastLoadedKeyRef.current === provider) return
     lastLoadedKeyRef.current = provider
     loadMedia()
-  }, [authStatus, provider, loadMedia])
+    void (async () => {
+      try {
+        const [qpRes, rfRes, tagRes] = await Promise.all([
+          servarrRequest<{ id: number; name: string }[]>(app, "/rules/qualityprofile"),
+          servarrRequest<{ id: number; path: string }[]>(app, "/rules/rootfolder"),
+          servarrRequest<{ id: number; label: string }[]>(app, "/rules/tag"),
+        ])
+        if (qpRes.ok && Array.isArray(qpRes.data)) setQualityProfiles(qpRes.data)
+        if (rfRes.ok && Array.isArray(rfRes.data)) setRootFolders(rfRes.data)
+        if (tagRes.ok && Array.isArray(tagRes.data)) setTags(tagRes.data)
+      } catch {
+        // Non-fatal
+      }
+    })()
+  }, [authStatus, provider, app, loadMedia])
+
+  useServarrRealtime({
+    app,
+    topics: ["movie", "series", "command", "moviefile", "episodefile"],
+    onSync: () => {
+      void loadMedia(true, true)
+    },
+    fallbackPollMs: 45_000,
+  })
+
+  const applyBulkEditorPatch = async (patch: Record<string, any>) => {
+    if (selectedIds.size === 0) return
+    setIsBulkOperating(true)
+    try {
+      const ids = Array.from(selectedIds)
+      const payload =
+        app === "radarr"
+          ? { movieIds: ids, ...patch }
+          : { seriesIds: ids, ...patch }
+      const res = await servarrRequest(
+        app,
+        app === "radarr" ? "/movie/editor" : "/series/editor",
+        {
+          method: "PUT",
+          body: JSON.stringify(payload),
+        }
+      )
+      if (!res.ok) throw new Error(res.error || "Bulk update failed")
+      toast.success(`Updated ${ids.length} ${itemNoun}(s)`)
+      await loadMedia(true, true)
+    } catch (err: any) {
+      toast.error(err?.message || "Bulk update failed")
+    } finally {
+      setIsBulkOperating(false)
+    }
+  }
+
+  const handleSeasonPassApply = async () => {
+    if (app !== "sonarr" || selectedIds.size === 0) return
+    setIsBulkOperating(true)
+    try {
+      const ids = Array.from(selectedIds)
+      const res = await servarrRequest("sonarr", "/seasonpass", {
+        method: "POST",
+        body: JSON.stringify({
+          series: ids.map((id) => ({ id })),
+          monitoringOptions: { monitor: seasonPassMonitor },
+        }),
+      })
+      if (!res.ok) throw new Error(res.error || "Season Pass update failed")
+      toast.success(`Season Pass applied to ${ids.length} series`)
+      setIsSeasonPassOpen(false)
+      await loadMedia(true, true)
+    } catch (err: any) {
+      toast.error(err?.message || "Season Pass update failed")
+    } finally {
+      setIsBulkOperating(false)
+    }
+  }
 
   // Filtered Items
   const processedItems = useMemo(() => {
@@ -509,7 +608,7 @@ export function ServarrSeriesManageView({
       {/* Floating Bulk Actions Bar */}
       {selectedIds.size > 0 && (
         <div className="fixed inset-x-0 bottom-6 z-30 flex justify-center px-4">
-          <div className="flex items-center gap-2 rounded-2xl border border-border/80 bg-popover/95 p-2 shadow-xl backdrop-blur-md">
+          <div className="flex max-w-5xl flex-wrap items-center gap-2 rounded-2xl border border-border/80 bg-popover/95 p-2 shadow-xl backdrop-blur-md">
             <span className="ps-2 pe-1 text-xs font-bold text-foreground">
               {selectedIds.size} Selected
             </span>
@@ -538,6 +637,168 @@ export function ServarrSeriesManageView({
               <span>Unmonitor</span>
             </Button>
 
+            {qualityProfiles.length > 0 && (
+              <div className="flex items-center gap-1">
+                <Select
+                  selectedKey={bulkQualityId || null}
+                  onSelectionChange={(k) => setBulkQualityId(String(k ?? ""))}
+                  placeholder="Quality Profile"
+                >
+                  <SelectTrigger className="h-8 w-36 rounded-xl text-xs">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectList>
+                      {qualityProfiles.map((qp) => (
+                        <SelectItem key={qp.id} id={String(qp.id)}>
+                          {qp.name}
+                        </SelectItem>
+                      ))}
+                    </SelectList>
+                  </SelectContent>
+                </Select>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  disabled={!bulkQualityId || isBulkOperating}
+                  onClick={() =>
+                    applyBulkEditorPatch({ qualityProfileId: Number(bulkQualityId) })
+                  }
+                  className="h-8 rounded-xl text-xs"
+                >
+                  Apply
+                </Button>
+              </div>
+            )}
+
+            {rootFolders.length > 0 && (
+              <div className="flex items-center gap-1">
+                <Select
+                  selectedKey={bulkRootFolder || null}
+                  onSelectionChange={(k) => setBulkRootFolder(String(k ?? ""))}
+                  placeholder="Root Folder"
+                >
+                  <SelectTrigger className="h-8 w-36 rounded-xl text-xs">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectList>
+                      {rootFolders.map((rf) => (
+                        <SelectItem key={rf.id} id={rf.path}>
+                          {rf.path}
+                        </SelectItem>
+                      ))}
+                    </SelectList>
+                  </SelectContent>
+                </Select>
+                <label className="flex cursor-pointer items-center gap-1 text-[11px] text-muted-foreground">
+                  <Checkbox
+                    isSelected={moveFilesOnFolderChange}
+                    onChange={(v) => setMoveFilesOnFolderChange(Boolean(v))}
+                  />
+                  <span>Move</span>
+                </label>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  disabled={!bulkRootFolder || isBulkOperating}
+                  onClick={() =>
+                    applyBulkEditorPatch({
+                      rootFolderPath: bulkRootFolder,
+                      moveFiles: moveFilesOnFolderChange,
+                    })
+                  }
+                  className="h-8 rounded-xl text-xs"
+                >
+                  Set Folder
+                </Button>
+              </div>
+            )}
+
+            {tags.length > 0 && (
+              <div className="flex items-center gap-1">
+                <Select
+                  selectedKey={bulkTagId || null}
+                  onSelectionChange={(k) => setBulkTagId(String(k ?? ""))}
+                  placeholder="Tag"
+                >
+                  <SelectTrigger className="h-8 w-28 rounded-xl text-xs">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectList>
+                      {tags.map((t) => (
+                        <SelectItem key={t.id} id={String(t.id)}>
+                          {t.label}
+                        </SelectItem>
+                      ))}
+                    </SelectList>
+                  </SelectContent>
+                </Select>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  disabled={!bulkTagId || isBulkOperating}
+                  onClick={() =>
+                    applyBulkEditorPatch({
+                      tags: [Number(bulkTagId)],
+                      applyTags: "add",
+                    })
+                  }
+                  className="h-8 rounded-xl text-xs"
+                >
+                  +Tag
+                </Button>
+              </div>
+            )}
+
+            {app === "radarr" && (
+              <div className="flex items-center gap-1">
+                <Select
+                  selectedKey={bulkMinAvailability || null}
+                  onSelectionChange={(k) => setBulkMinAvailability(String(k ?? ""))}
+                  placeholder="Min Availability"
+                >
+                  <SelectTrigger className="h-8 w-36 rounded-xl text-xs">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectList>
+                      <SelectItem id="announced">Announced</SelectItem>
+                      <SelectItem id="inCinemas">In Cinemas</SelectItem>
+                      <SelectItem id="released">Released</SelectItem>
+                    </SelectList>
+                  </SelectContent>
+                </Select>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  disabled={!bulkMinAvailability || isBulkOperating}
+                  onClick={() =>
+                    applyBulkEditorPatch({
+                      minimumAvailability: bulkMinAvailability,
+                    })
+                  }
+                  className="h-8 rounded-xl text-xs"
+                >
+                  Set
+                </Button>
+              </div>
+            )}
+
+            {app === "sonarr" && (
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={isBulkOperating}
+                onClick={() => setIsSeasonPassOpen(true)}
+                className="h-8 gap-1.5 rounded-xl text-xs"
+              >
+                <IconListCheck className="size-3.5 text-primary" />
+                <span>Season Pass</span>
+              </Button>
+            )}
+
             <Button
               variant="destructive"
               size="sm"
@@ -551,6 +812,62 @@ export function ServarrSeriesManageView({
           </div>
         </div>
       )}
+
+      {/* Sonarr Season Pass Modal */}
+      <Dialog
+        isOpen={isSeasonPassOpen}
+        onOpenChange={(open) => !open && setIsSeasonPassOpen(false)}
+        className="p-6 sm:max-w-md"
+      >
+        <DialogHeader>
+          <DialogTitle>Sonarr Season Pass</DialogTitle>
+          <DialogDescription>
+            Apply a season &amp; episode monitoring preset to {selectedIds.size} selected series.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="space-y-3 py-2">
+          <div className="space-y-1.5">
+            <Label className="text-xs">Monitoring Strategy</Label>
+            <Select
+              selectedKey={seasonPassMonitor}
+              onSelectionChange={(k) => setSeasonPassMonitor(String(k ?? "all"))}
+            >
+              <SelectTrigger className="h-9 text-xs">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectList>
+                  <SelectItem id="all">All Episodes</SelectItem>
+                  <SelectItem id="future">Future Episodes</SelectItem>
+                  <SelectItem id="missing">Missing Episodes</SelectItem>
+                  <SelectItem id="existing">Existing Episodes</SelectItem>
+                  <SelectItem id="firstSeason">First Season</SelectItem>
+                  <SelectItem id="lastSeason">Last Season</SelectItem>
+                  <SelectItem id="latestSeason">Latest Season</SelectItem>
+                  <SelectItem id="pilot">Pilot Episode</SelectItem>
+                  <SelectItem id="none">None</SelectItem>
+                </SelectList>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+        <DialogFooter>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsSeasonPassOpen(false)}
+          >
+            Cancel
+          </Button>
+          <Button
+            size="sm"
+            disabled={isBulkOperating}
+            onClick={handleSeasonPassApply}
+          >
+            {isBulkOperating ? "Applying..." : "Apply Season Pass"}
+          </Button>
+        </DialogFooter>
+      </Dialog>
 
       {/* Interactive Search Modal */}
       {activeSearchItem && (

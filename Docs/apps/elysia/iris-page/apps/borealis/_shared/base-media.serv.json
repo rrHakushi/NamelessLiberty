@@ -1,0 +1,850 @@
+{
+  "id": "apps/borealis/_shared/base-media.serv",
+  "title": "base-media.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/_shared/base-media.serv.ts",
+    "relPath": "apps/borealis/_shared/base-media.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "base-media.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/_shared/base-media.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "8 caller(s), 8 subclass(es)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/anime/anime.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/anime/anime.serv.ts (BaseBorealisMediaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/borealis/books/books.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/books/books.serv.ts (BaseBorealisMediaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/borealis/games/games.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/games/games.serv.ts (BaseBorealisMediaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-3",
+                        "props": {
+                          "href": "/docs/apps/borealis/manga/manga.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/manga/manga.serv.ts (BaseBorealisMediaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-4",
+                        "props": {
+                          "href": "/docs/apps/borealis/movies/movies.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/movies/movies.serv.ts (BaseBorealisMediaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-5",
+                        "props": {
+                          "href": "/docs/apps/borealis/music/music.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/music/music.serv.ts (BaseBorealisMediaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-6",
+                        "props": {
+                          "href": "/docs/apps/borealis/other/other.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/other/other.serv.ts (BaseBorealisMediaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-7",
+                        "props": {
+                          "href": "/docs/apps/borealis/tv/tv.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/tv/tv.serv.ts (BaseBorealisMediaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/anime/anime.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisAnimeServ (apps/borealis/anime/anime.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-1",
+                        "props": {
+                          "href": "/docs/apps/borealis/books/books.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisBooksServ (apps/borealis/books/books.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-2",
+                        "props": {
+                          "href": "/docs/apps/borealis/games/games.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisGamesServ (apps/borealis/games/games.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-3",
+                        "props": {
+                          "href": "/docs/apps/borealis/manga/manga.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisMangaServ (apps/borealis/manga/manga.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-4",
+                        "props": {
+                          "href": "/docs/apps/borealis/movies/movies.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisMoviesServ (apps/borealis/movies/movies.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-5",
+                        "props": {
+                          "href": "/docs/apps/borealis/music/music.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisMusicServ (apps/borealis/music/music.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-6",
+                        "props": {
+                          "href": "/docs/apps/borealis/other/other.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisOtherServ (apps/borealis/other/other.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-7",
+                        "props": {
+                          "href": "/docs/apps/borealis/tv/tv.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "BorealisTvServ (apps/borealis/tv/tv.serv.ts)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "7 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseBorealisMediaService.constructor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(loggerName)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseBorealisMediaService.parseCsvList"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(val)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "string[]"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseBorealisMediaService.parseCsvNumbers"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(val)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "number[]"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseBorealisMediaService.resolveCatalogPagination"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query, defaultLimit = 50, maxLimit = 100)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseBorealisMediaService.buildPaginationMeta"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(items, total, page, limit, hasCursor)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "PaginationMeta"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseBorealisMediaService.getAcceptedFriendIds"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<string[]>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseBorealisMediaService.formatPublicUserSummary"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(user)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseBorealisMediaService-parseCsvList",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/base-media.serv.ts-BaseBorealisMediaService-parseCsvList",
+                "title": "BaseBorealisMediaService.parseCsvList(val)",
+                "description": "Parses a comma-separated query parameter into trimmed non-empty strings.",
+                "steps": [
+                  {
+                    "id": "m_BaseBorealisMediaService_parseCsvList_0_1",
+                    "kind": "selection",
+                    "title": "`!val || typeofval !== 'string'`",
+                    "selectionMode": "if_else",
+                    "condition": "`!val || typeofval !== 'string'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BaseBorealisMediaService_parseCsvList_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BaseBorealisMediaService_parseCsvList_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`val.split(',').map((s) => s.trim()).filter(Boolean)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseBorealisMediaService-parseCsvNumbers",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/base-media.serv.ts-BaseBorealisMediaService-parseCsvNumbers",
+                "title": "BaseBorealisMediaService.parseCsvNumbers(val)",
+                "description": "Parses a comma-separated numeric query parameter into finite numbers.",
+                "steps": [
+                  {
+                    "id": "m_BaseBorealisMediaService_parseCsvNumbers_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.parseCsvList(val).map((v) => Number(v)).filter((n) => Number.isFinite(n))`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseBorealisMediaService-resolveCatalogPagination",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/base-media.serv.ts-BaseBorealisMediaService-resolveCatalogPagination",
+                "title": "BaseBorealisMediaService.resolveCatalogPagination(query, defaultLimit = 50, maxLimit = 100)",
+                "description": "Resolves catalog pagination parameters supporting both cursor and page/limit modes.",
+                "steps": [
+                  {
+                    "id": "m_BaseBorealisMediaService_resolveCatalogPagination_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.clampPagination` and stores result as `{ page, limit }`"
+                  },
+                  {
+                    "id": "m_BaseBorealisMediaService_resolveCatalogPagination_1_2",
+                    "kind": "var_def",
+                    "title": "Define `skip`",
+                    "payload": "const skip = query?.cursor ? 0 : (page - 1) * limit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BaseBorealisMediaService_resolveCatalogPagination_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"page\": \"<page>\",\n  \"limit\": \"<limit>\",\n  \"skip\": \"<skip>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseBorealisMediaService-buildPaginationMeta",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/base-media.serv.ts-BaseBorealisMediaService-buildPaginationMeta",
+                "title": "BaseBorealisMediaService.buildPaginationMeta(items, total, page, limit, hasCursor)",
+                "description": "Builds standardized catalog pagination metadata from queried items.",
+                "steps": [
+                  {
+                    "id": "m_BaseBorealisMediaService_buildPaginationMeta_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `totalPages`"
+                  },
+                  {
+                    "id": "m_BaseBorealisMediaService_buildPaginationMeta_1_2",
+                    "kind": "var_def",
+                    "title": "Define `nextCursor`",
+                    "payload": "const nextCursor = items.length === limit ? (items[items.length - 1]?.id ?? null) : null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BaseBorealisMediaService_buildPaginationMeta_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"page\": \"<page>\",\n  \"limit\": \"<limit>\",\n  \"total\": \"<total>\",\n  \"totalPages\": \"<totalPages>\",\n  \"hasNextPage\": \"<hasCursor ? nextCursor !== null : page < totalPages>\",\n  \"hasPrevPage\": \"<page > 1>\",\n  \"nextCursor\": \"<nextCursor>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseBorealisMediaService-getAcceptedFriendIds",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/base-media.serv.ts-BaseBorealisMediaService-getAcceptedFriendIds",
+                "title": "BaseBorealisMediaService.getAcceptedFriendIds(userId)",
+                "description": "Resolves accepted friend user IDs for the authenticated caller.",
+                "steps": [
+                  {
+                    "id": "m_BaseBorealisMediaService_getAcceptedFriendIds_0_1",
+                    "kind": "selection",
+                    "title": "`!userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BaseBorealisMediaService_getAcceptedFriendIds_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`[]`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BaseBorealisMediaService_getAcceptedFriendIds_1_2",
+                    "kind": "step",
+                    "title": "Database `all` on `Friend` and stores it as `friendships`"
+                  },
+                  {
+                    "id": "m_BaseBorealisMediaService_getAcceptedFriendIds_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`friendships.map((f) => (f.userId === userId ? f.friendId : f.userId))`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseBorealisMediaService-formatPublicUserSummary",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/_shared/base-media.serv.ts-BaseBorealisMediaService-formatPublicUserSummary",
+                "title": "BaseBorealisMediaService.formatPublicUserSummary(user)",
+                "description": "Formats a minimal public user header (id, username, displayName, avatarUrl).",
+                "steps": [
+                  {
+                    "id": "m_BaseBorealisMediaService_formatPublicUserSummary_0_1",
+                    "kind": "step",
+                    "title": "Calls `getProfileCustomization` and stores result as `profile`"
+                  },
+                  {
+                    "id": "m_BaseBorealisMediaService_formatPublicUserSummary_1_2",
+                    "kind": "var_def",
+                    "title": "Define `displayName`",
+                    "payload": "const displayName = typeof profile.displayName === 'string' && profile.displayName.trim().length > 0 ? profile.displayName.trim() : null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BaseBorealisMediaService_formatPublicUserSummary_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"id\": \"<user.id>\",\n  \"username\": \"<user.username.trim()>\",\n  \"displayName\": \"<displayName>\",\n  \"avatarUrl\": \"<profile.avatarUrl ?? null>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

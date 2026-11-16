@@ -1,0 +1,3422 @@
+{
+  "id": "apps/carina/activity/activity.serv",
+  "title": "activity.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/carina/activity/activity.serv.ts",
+    "relPath": "apps/carina/activity/activity.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 13
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "activity.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/carina/activity/activity.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "9 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/lists/lists.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/lists/lists.serv.ts (ActivityServ, normalizeDisplayScore, ActivityDiffChange, MediaListAction)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/borealis/playlists/playlists.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/playlists/playlists.serv.ts (ActivityServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/carina/activity/activity.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/activity/activity.ctrl.ts (ActivityServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-3",
+                        "props": {
+                          "href": "/docs/apps/carina/connections/connections.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/connections/connections.serv.ts (ActivityServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-4",
+                        "props": {
+                          "href": "/docs/apps/carina/favorites/favorites.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/favorites/favorites.serv.ts (ActivityServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-5",
+                        "props": {
+                          "href": "/docs/apps/carina/friends/friends.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/friends/friends.serv.ts (ActivityServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-6",
+                        "props": {
+                          "href": "/docs/apps/carina/recommendations/recommendations.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/recommendations/recommendations.serv.ts (ActivityServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-7",
+                        "props": {
+                          "href": "/docs/apps/carina/users/users.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/users/users.serv.ts (ActivityServ)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-8",
+                        "props": {
+                          "href": "/docs/index",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "index.ts (activityServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "22 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.constructor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.getInstance"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "ActivityServ"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.runNonBlocking"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(task, context)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.resolveEntitySummary"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(entityType, targetId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<ResolvedMediaSummary>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.formatActivityEntries"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(rawActivities, options)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.assertCanViewActivity"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(activity, viewer)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<void>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.checkCompletedMilestone"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(input)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<void>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.recordMilestoneActivitySync"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(input)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<boolean>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.recordBadgeMilestone"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, badgeId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.recordMediaListActivity"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(input)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.recordFavoriteActivity"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(input)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.recordFriendActivity"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(input)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.recordRecommendationActivity"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(input)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.recordImportOrSyncSummaryActivity"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(input)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.createStatusPost"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.toggleLike"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, permissions, activityId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.getReplies"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(activityId, query, viewer)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.createReply"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, permissions, activityId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.deleteReply"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, permissions, activityId, replyId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.purgeOldActivities"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(daysToKeep = 30)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<number>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.initCron"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "ActivityServ.shutdown"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "void"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-normalizeDisplayScore",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-normalizeDisplayScore",
+                "title": "function normalizeDisplayScore",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_normalizeDisplayScore_0_1",
+                    "kind": "selection",
+                    "title": "`score === null || score === undefined || Number.isNaN(Number(score))`",
+                    "selectionMode": "if_else",
+                    "condition": "`score === null || score === undefined || Number.isNaN(Number(score))`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_normalizeDisplayScore_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_normalizeDisplayScore_1_2",
+                    "kind": "step",
+                    "title": "Calls `Number` and stores result as `num`"
+                  },
+                  {
+                    "id": "exp_normalizeDisplayScore_2_3",
+                    "kind": "selection",
+                    "title": "`num <= 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`num <= 0`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_normalizeDisplayScore_2_3_then_0_3_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_normalizeDisplayScore_3_4",
+                    "kind": "var_def",
+                    "title": "Define `normalized`",
+                    "payload": "const normalized = num > 10 ? num / 10 : num",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_normalizeDisplayScore_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`Math.round(normalized * 10) / 10`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-toActivityScoreInt",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-toActivityScoreInt",
+                "title": "function toActivityScoreInt",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_toActivityScoreInt_0_1",
+                    "kind": "step",
+                    "title": "Calls `normalizeDisplayScore` and stores result as `displayScore`"
+                  },
+                  {
+                    "id": "exp_toActivityScoreInt_1_2",
+                    "kind": "selection",
+                    "title": "`displayScore === null`",
+                    "selectionMode": "if_else",
+                    "condition": "`displayScore === null`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_toActivityScoreInt_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`null`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_toActivityScoreInt_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`Math.round(displayScore * 10)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-formatActivityAuthor",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-formatActivityAuthor",
+                "title": "function formatActivityAuthor",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_formatActivityAuthor_0_1",
+                    "kind": "step",
+                    "title": "Calls `getProfileCustomization` and stores result as `profile`"
+                  },
+                  {
+                    "id": "exp_formatActivityAuthor_1_2",
+                    "kind": "var_def",
+                    "title": "Define `displayName`",
+                    "payload": "const displayName = typeof profile.displayName === 'string' && profile.displayName.trim() !== '' ? profile.displayName.trim() : null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_formatActivityAuthor_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"id\": \"<user.id>\",\n  \"username\": \"<user.username>\",\n  \"displayName\": \"<displayName>\",\n  \"avatarUrl\": \"<profile.avatarUrl || null>\",\n  \"avatarFrame\": \"<profile.avatarFrame || null>\",\n  \"bannerUrl\": \"<profile.bannerUrl || null>\",\n  \"bannerOverlayUrl\": \"<profile.bannerOverlayUrl || null>\",\n  \"nameplateUrl\": \"<profile.nameplateUrl || null>\",\n  \"accentColor\": \"<profile.accentColor || null>\",\n  \"bio\": \"<profile.bio || null>\",\n  \"statusText\": \"<profile.statusText || null>\",\n  \"pronouns\": \"<profile.pronouns || null>\",\n  \"displayNameStyle\": \"<profile.displayNameStyle || null>\",\n  \"showcaseBadgeIds\": \"<profile.showcaseBadgeIds || []>\",\n  \"pinnedSpotlight\": \"<profile.pinnedSpotlight || null>\",\n  \"socialLinks\": \"<profile.socialLinks || []>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-getInstance",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-getInstance",
+                "title": "ActivityServ.getInstance()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_getInstance_0_1",
+                    "kind": "selection",
+                    "title": "`!ActivityServ.instance`",
+                    "selectionMode": "if_else",
+                    "condition": "`!ActivityServ.instance`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_getInstance_0_1_then_0_1_1",
+                        "kind": "step",
+                        "title": "Assign `ActivityServ.instance`",
+                        "payload": "ActivityServ.instance = new ActivityServ()",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_getInstance_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`ActivityServ.instance`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-runNonBlocking",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-runNonBlocking",
+                "title": "ActivityServ.runNonBlocking(task, context)",
+                "description": "Executes DB activity logging asynchronously without blocking HTTP request execution.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_runNonBlocking_0_1",
+                    "kind": "warning",
+                    "code": "Warning",
+                    "message": "async () => { try { await task() } catch (err: any) { logger.warn( `${c.red(`⚠️ [${context}]`)} Failed to record activity log asynchronously: ${err?.message || err}` ) ..."
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-resolveEntitySummary",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-resolveEntitySummary",
+                "title": "ActivityServ.resolveEntitySummary(entityType, targetId)",
+                "description": "Resolves canonical title/cover/banner/format for any catalog media or profile entity.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_resolveEntitySummary_0_1",
+                    "kind": "var_def",
+                    "title": "Define `upper`",
+                    "payload": "const upper = entityType.toUpperCase()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_resolveEntitySummary_1_2",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_ActivityServ_resolveEntitySummary_1_2_try_0_2_1",
+                        "kind": "var_def",
+                        "title": "Define `mediaSpec`",
+                        "payload": "const mediaSpec = MEDIA_MODEL_BY_TYPE[upper]",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2",
+                        "kind": "selection",
+                        "title": "`mediaSpec`",
+                        "selectionMode": "if_else",
+                        "condition": "`mediaSpec`",
+                        "thenBranch": [
+                          {
+                            "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_then_0_2_2_1",
+                            "kind": "step",
+                            "title": "Database `query` on `Record` and stores it as `table`"
+                          },
+                          {
+                            "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_then_1_2_2_2",
+                            "kind": "selection",
+                            "title": "`table?.where`",
+                            "selectionMode": "if_else",
+                            "condition": "`table?.where`",
+                            "thenBranch": [
+                              {
+                                "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_then_1_2_2_2_then_0_2_2_2_1",
+                                "kind": "step",
+                                "title": "Calls `table.where({ id: targetId }).first` and stores result as `item`"
+                              },
+                              {
+                                "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_then_1_2_2_2_then_1_2_2_2_2",
+                                "kind": "selection",
+                                "title": "`item`",
+                                "selectionMode": "if_else",
+                                "condition": "`item`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_then_1_2_2_2_then_1_2_2_2_2_then_0_2_2_2_2_1",
+                                    "kind": "return",
+                                    "title": "",
+                                    "payload": "{\n  \"title\": \"<item.titlePrimary || item.titleSecondary || item.titleNative || null>\",\n  \"coverImage\": \"<item.coverImage ?? null>\",\n  \"bannerImage\": \"<mediaSpec.hasBanner ? (item.bannerImage ?? null) : null>\",\n  \"format\": \"<mediaSpec.formatField ? (item[mediaSpec.formatField] ?? null) : null>\"\n}",
+                                    "payloadLanguage": "json"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1",
+                            "kind": "selection",
+                            "title": "`upper === 'CHARACTER'`",
+                            "selectionMode": "if_else",
+                            "condition": "`upper === 'CHARACTER'`",
+                            "thenBranch": [
+                              {
+                                "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1_then_0_2_3_1_1",
+                                "kind": "step",
+                                "title": "Database `first` on `Character` and stores it as `ch`"
+                              },
+                              {
+                                "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1_then_1_2_3_1_2",
+                                "kind": "selection",
+                                "title": "`ch`",
+                                "selectionMode": "if_else",
+                                "condition": "`ch`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1_then_1_2_3_1_2_then_0_2_3_1_2_1",
+                                    "kind": "return",
+                                    "title": "",
+                                    "payload": "{\n  \"title\": \"<ch.namePrimary ?? null>\",\n  \"coverImage\": \"<ch.image ?? null>\",\n  \"bannerImage\": null,\n  \"format\": null\n}",
+                                    "payloadLanguage": "json"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1_else_0_2_3_2_1",
+                                "kind": "selection",
+                                "title": "`upper === 'PERSON'`",
+                                "selectionMode": "if_else",
+                                "condition": "`upper === 'PERSON'`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1_else_0_2_3_2_1_then_0_2_3_2_1_1",
+                                    "kind": "step",
+                                    "title": "Database `first` on `Person` and stores it as `p`"
+                                  },
+                                  {
+                                    "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1_else_0_2_3_2_1_then_1_2_3_2_1_2",
+                                    "kind": "selection",
+                                    "title": "`p`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`p`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1_else_0_2_3_2_1_then_1_2_3_2_1_2_then_0_2_3_2_1_2_1",
+                                        "kind": "return",
+                                        "title": "",
+                                        "payload": "{\n  \"title\": \"<p.namePrimary ?? null>\",\n  \"coverImage\": \"<p.image ?? null>\",\n  \"bannerImage\": null,\n  \"format\": null\n}",
+                                        "payloadLanguage": "json"
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1_else_0_2_3_2_1_else_0_2_3_2_2_1",
+                                    "kind": "selection",
+                                    "title": "`upper === 'STUDIO'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`upper === 'STUDIO'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1_else_0_2_3_2_1_else_0_2_3_2_2_1_then_0_2_3_2_2_1_1",
+                                        "kind": "step",
+                                        "title": "Database `first` on `Studio` and stores it as `s`"
+                                      },
+                                      {
+                                        "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1_else_0_2_3_2_1_else_0_2_3_2_2_1_then_1_2_3_2_2_1_2",
+                                        "kind": "selection",
+                                        "title": "`s`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`s`",
+                                        "thenBranch": [
+                                          {
+                                            "id": "m_ActivityServ_resolveEntitySummary_1_2_try_1_2_2_else_0_2_3_1_else_0_2_3_2_1_else_0_2_3_2_2_1_then_1_2_3_2_2_1_2_then_0_2_3_2_2_1_2_1",
+                                            "kind": "return",
+                                            "title": "",
+                                            "payload": "{\n  \"title\": \"<s.name ?? null>\",\n  \"coverImage\": null,\n  \"bannerImage\": null,\n  \"format\": null\n}",
+                                            "payloadLanguage": "json"
+                                          }
+                                        ],
+                                        "elseBranch": []
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_ActivityServ_resolveEntitySummary_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"title\": null,\n  \"coverImage\": null,\n  \"bannerImage\": null,\n  \"format\": null\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-formatActivityEntries",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-formatActivityEntries",
+                "title": "ActivityServ.formatActivityEntries(rawActivities, options)",
+                "description": "Formats raw ActivityLog rows into unified API payload with full author profile and viewer like state.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_formatActivityEntries_0_1",
+                    "kind": "var_def",
+                    "title": "Define `viewerUserId`, `likedIds`",
+                    "payload": "const viewerUserId = options?.viewerUserId ?? null\nconst likedIds = new Set<string>()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_formatActivityEntries_1_2",
+                    "kind": "selection",
+                    "title": "`viewerUserId && rawActivities.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`viewerUserId && rawActivities.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_formatActivityEntries_1_2_then_0_2_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "m_ActivityServ_formatActivityEntries_1_2_then_0_2_1_try_0_2_1_1",
+                            "kind": "var_def",
+                            "title": "Define `activityLikeTable`",
+                            "payload": "const activityLikeTable = (prisma as any)?.orm?.public?.ActivityLike",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_ActivityServ_formatActivityEntries_1_2_then_0_2_1_try_1_2_1_2",
+                            "kind": "selection",
+                            "title": "`activityLikeTable?.where`",
+                            "selectionMode": "if_else",
+                            "condition": "`activityLikeTable?.where`",
+                            "thenBranch": [
+                              {
+                                "id": "m_ActivityServ_formatActivityEntries_1_2_then_0_2_1_try_1_2_1_2_then_0_2_1_2_1",
+                                "kind": "var_def",
+                                "title": "Define `ids`",
+                                "payload": "const ids = rawActivities.map((a) => a.id).filter(Boolean)",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "m_ActivityServ_formatActivityEntries_1_2_then_0_2_1_try_1_2_1_2_then_1_2_1_2_2",
+                                "kind": "selection",
+                                "title": "`ids.length > 0`",
+                                "selectionMode": "if_else",
+                                "condition": "`ids.length > 0`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_ActivityServ_formatActivityEntries_1_2_then_0_2_1_try_1_2_1_2_then_1_2_1_2_2_then_0_2_1_2_2_1",
+                                    "kind": "step",
+                                    "title": "Calls `activityLikeTable.where((l: any) => and(l.userId.eq(viewerUserId), l.activityId.in(ids))).select('activityId').all` and stores result as `likes`"
+                                  },
+                                  {
+                                    "id": "m_ActivityServ_formatActivityEntries_1_2_then_0_2_1_try_1_2_1_2_then_1_2_1_2_2_then_1_2_1_2_2_2",
+                                    "kind": "iteration",
+                                    "title": "Iterate `const like` over `likes`",
+                                    "loopType": "while",
+                                    "condition": "Iterate `const like` over `likes`",
+                                    "children": [
+                                      {
+                                        "id": "m_ActivityServ_formatActivityEntries_1_2_then_0_2_1_try_1_2_1_2_then_1_2_1_2_2_then_1_2_1_2_2_2_loop_0_2_1_2_2_2_1",
+                                        "kind": "step",
+                                        "title": "Calls `likedIds.add`"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "catchBlock": [],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_formatActivityEntries_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`rawActivities.map((a) => { const canDelete = Boolean(options?.isAdmin) || (viewerUserId ? a.userId === viewerUserId : Boolean(options?.isOwner)) const userObj = a.user ? formatActivityAuthor(a.user) : { ...)`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-assertCanViewActivity",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-assertCanViewActivity",
+                "title": "ActivityServ.assertCanViewActivity(activity, viewer)",
+                "description": "Ensures viewer has access to read or engage with an activity item.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_assertCanViewActivity_0_1",
+                    "kind": "selection",
+                    "title": "`!activity`",
+                    "selectionMode": "if_else",
+                    "condition": "`!activity`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_assertCanViewActivity_0_1_then_0_1_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Activity item not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_assertCanViewActivity_1_2",
+                    "kind": "selection",
+                    "title": "`!activity.isPrivate`",
+                    "selectionMode": "if_else",
+                    "condition": "`!activity.isPrivate`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_assertCanViewActivity_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_assertCanViewActivity_2_3",
+                    "kind": "var_def",
+                    "title": "Define `isOwner`, `isAdmin`",
+                    "payload": "const isOwner = viewer?.id === activity.userId\nconst isAdmin = viewer?.permissions ? new IRISBitField(viewer.permissions).has(IRISFlags.ADMINISTRATOR) : false",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_assertCanViewActivity_3_4",
+                    "kind": "selection",
+                    "title": "`isOwner || isAdmin`",
+                    "selectionMode": "if_else",
+                    "condition": "`isOwner || isAdmin`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_assertCanViewActivity_3_4_then_0_4_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_assertCanViewActivity_4_5",
+                    "kind": "var_def",
+                    "title": "Define `customListId`",
+                    "payload": "const customListId = (activity.metadata as any)?.customListId",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_assertCanViewActivity_5_6",
+                    "kind": "selection",
+                    "title": "`customListId && viewer?.id`",
+                    "selectionMode": "if_else",
+                    "condition": "`customListId && viewer?.id`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_assertCanViewActivity_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Database `first` on `CustomList` and stores it as `list`"
+                      },
+                      {
+                        "id": "m_ActivityServ_assertCanViewActivity_5_6_then_1_6_2",
+                        "kind": "selection",
+                        "title": "`list`",
+                        "selectionMode": "if_else",
+                        "condition": "`list`",
+                        "thenBranch": [
+                          {
+                            "id": "m_ActivityServ_assertCanViewActivity_5_6_then_1_6_2_then_0_6_2_1",
+                            "kind": "var_def",
+                            "title": "Define `isCollab`",
+                            "payload": "const isCollab = (list.collaborators as any[])?.some( (c) => c.userId === viewer.id )",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "m_ActivityServ_assertCanViewActivity_5_6_then_1_6_2_then_1_6_2_2",
+                            "kind": "selection",
+                            "title": "`list.userId === viewer.id || isCollab || !list.isPrivate`",
+                            "selectionMode": "if_else",
+                            "condition": "`list.userId === viewer.id || isCollab || !list.isPrivate`",
+                            "thenBranch": [
+                              {
+                                "id": "m_ActivityServ_assertCanViewActivity_5_6_then_1_6_2_then_1_6_2_2_then_0_6_2_2_1",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`void`"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_assertCanViewActivity_6_7",
+                    "kind": "error",
+                    "code": "Forbidden",
+                    "httpStatus": 403,
+                    "message": "You do not have permission to view this private activity"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-checkCompletedMilestone",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-checkCompletedMilestone",
+                "title": "ActivityServ.checkCompletedMilestone(input)",
+                "description": "Evaluates and records a USER_MILESTONE activity when completing a round count of titles.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_checkCompletedMilestone_0_1",
+                    "kind": "step",
+                    "title": "Database `query` on `Record` and stores it as `listTable`"
+                  },
+                  {
+                    "id": "m_ActivityServ_checkCompletedMilestone_1_2",
+                    "kind": "selection",
+                    "title": "`!listTable?.where`",
+                    "selectionMode": "if_else",
+                    "condition": "`!listTable?.where`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_checkCompletedMilestone_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_checkCompletedMilestone_2_3",
+                    "kind": "var_def",
+                    "title": "Define `completedQuery`",
+                    "payload": "const completedQuery = input.isPrivate ? listTable.where({ userId: input.userId, status: 'COMPLETED' }) : listTable.where({ userId: input.userId, status: 'COMPLETED', private: false })",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_checkCompletedMilestone_3_4",
+                    "kind": "step",
+                    "title": "Calls `countOf` and stores result as `completedCount`"
+                  },
+                  {
+                    "id": "m_ActivityServ_checkCompletedMilestone_4_5",
+                    "kind": "step",
+                    "title": "Calls `[...COMPLETED_MILESTONE_THRESHOLDS].reverse().find` and stores result as `threshold`"
+                  },
+                  {
+                    "id": "m_ActivityServ_checkCompletedMilestone_5_6",
+                    "kind": "selection",
+                    "title": "`!threshold`",
+                    "selectionMode": "if_else",
+                    "condition": "`!threshold`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_checkCompletedMilestone_5_6_then_0_6_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_checkCompletedMilestone_6_7",
+                    "kind": "var_def",
+                    "title": "Define `domainLabelMap`, `label`, `milestoneKey`",
+                    "payload": "const domainLabelMap: Record<string, string> = { ANIME: 'Anime', MANGA: 'Manga', MOVIE: 'Movies', TV: 'TV Shows', GAME: 'Games', BOOK: 'Books', ...\nconst label = domainLabelMap[input.mediaType] || input.mediaType\nconst milestoneKey = `COMPLETED:${input.mediaType}:${threshold}`",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_checkCompletedMilestone_7_8",
+                    "kind": "step",
+                    "title": "Calls `this.recordMilestoneActivitySync`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-recordMilestoneActivitySync",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-recordMilestoneActivitySync",
+                "title": "ActivityServ.recordMilestoneActivitySync(input)",
+                "description": "Records a USER_MILESTONE activity if no matching milestoneKey already exists for the user.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_recordMilestoneActivitySync_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `ActivityLog` and stores it as `existingMilestones`"
+                  },
+                  {
+                    "id": "m_ActivityServ_recordMilestoneActivitySync_1_2",
+                    "kind": "step",
+                    "title": "Calls `existingMilestones.some` and stores result as `alreadyLogged`"
+                  },
+                  {
+                    "id": "m_ActivityServ_recordMilestoneActivitySync_2_3",
+                    "kind": "selection",
+                    "title": "`alreadyLogged`",
+                    "selectionMode": "if_else",
+                    "condition": "`alreadyLogged`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_recordMilestoneActivitySync_2_3_then_0_3_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`false`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_recordMilestoneActivitySync_3_4",
+                    "kind": "step",
+                    "title": "Database `create` on `ActivityLog`"
+                  },
+                  {
+                    "id": "m_ActivityServ_recordMilestoneActivitySync_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`true`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-recordBadgeMilestone",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-recordBadgeMilestone",
+                "title": "ActivityServ.recordBadgeMilestone(userId, badgeId)",
+                "description": "Non-blocking wrapper to emit a badge unlock USER_MILESTONE activity.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_recordBadgeMilestone_0_1",
+                    "kind": "step",
+                    "title": "Calls `getBadgeById` and stores result as `badge`"
+                  },
+                  {
+                    "id": "m_ActivityServ_recordBadgeMilestone_1_2",
+                    "kind": "selection",
+                    "title": "`!badge`",
+                    "selectionMode": "if_else",
+                    "condition": "`!badge`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_recordBadgeMilestone_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_recordBadgeMilestone_2_3",
+                    "kind": "step",
+                    "title": "Calls `this.runNonBlocking`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-recordMediaListActivity",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-recordMediaListActivity",
+                "title": "ActivityServ.recordMediaListActivity(input)",
+                "description": "Records a media list tracking event (supports combined multi-field diff pills + milestones).",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_recordMediaListActivity_0_1",
+                    "kind": "var_def",
+                    "title": "Define `type`",
+                    "payload": "let type: ActivityType",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_recordMediaListActivity_1_2",
+                    "kind": "selection",
+                    "title": "Branch on `input.action`",
+                    "selectionMode": "switch",
+                    "condition": "Branch on `input.action`",
+                    "cases": [
+                      {
+                        "id": "m_ActivityServ_recordMediaListActivity_1_2_case_0",
+                        "label": "Case `'ADDED'`",
+                        "children": [
+                          {
+                            "id": "m_ActivityServ_recordMediaListActivity_1_2_c0_0_2_1_1",
+                            "kind": "step",
+                            "title": "Assign `type`",
+                            "payload": "type = 'LIST_ITEM_ADDED'",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "m_ActivityServ_recordMediaListActivity_1_2_case_1",
+                        "label": "Case `'COMPLETED'`",
+                        "children": [
+                          {
+                            "id": "m_ActivityServ_recordMediaListActivity_1_2_c1_0_2_2_1",
+                            "kind": "step",
+                            "title": "Assign `type`",
+                            "payload": "type = 'LIST_COMPLETED'",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "m_ActivityServ_recordMediaListActivity_1_2_case_2",
+                        "label": "Case `'STATUS_CHANGED'`",
+                        "children": [
+                          {
+                            "id": "m_ActivityServ_recordMediaListActivity_1_2_c2_0_2_3_1",
+                            "kind": "step",
+                            "title": "Assign `type`",
+                            "payload": "type = 'LIST_STATUS_UPDATED'",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "m_ActivityServ_recordMediaListActivity_1_2_case_3",
+                        "label": "Case `'PROGRESS_CHANGED'`",
+                        "children": [
+                          {
+                            "id": "m_ActivityServ_recordMediaListActivity_1_2_c3_0_2_4_1",
+                            "kind": "step",
+                            "title": "Assign `type`",
+                            "payload": "type = 'LIST_PROGRESS_UPDATED'",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "m_ActivityServ_recordMediaListActivity_1_2_case_4",
+                        "label": "Case `'SCORE_CHANGED'`",
+                        "children": [
+                          {
+                            "id": "m_ActivityServ_recordMediaListActivity_1_2_c4_0_2_5_1",
+                            "kind": "step",
+                            "title": "Assign `type`",
+                            "payload": "type = 'LIST_SCORE_UPDATED'",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "m_ActivityServ_recordMediaListActivity_1_2_case_5",
+                        "label": "Case `'REWATCH_STARTED'`",
+                        "children": [
+                          {
+                            "id": "m_ActivityServ_recordMediaListActivity_1_2_c5_0_2_6_1",
+                            "kind": "step",
+                            "title": "Assign `type`",
+                            "payload": "type = 'LIST_REWATCH_STARTED'",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "m_ActivityServ_recordMediaListActivity_1_2_case_6",
+                        "label": "Case `'REMOVED'`",
+                        "children": [
+                          {
+                            "id": "m_ActivityServ_recordMediaListActivity_1_2_c6_0_2_7_1",
+                            "kind": "step",
+                            "title": "Assign `type`",
+                            "payload": "type = 'LIST_ITEM_REMOVED'",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "m_ActivityServ_recordMediaListActivity_1_2_case_7",
+                        "label": "Default",
+                        "children": [
+                          {
+                            "id": "m_ActivityServ_recordMediaListActivity_1_2_c7_0_2_8_1",
+                            "kind": "step",
+                            "title": "Assign `type`",
+                            "payload": "type = 'LIST_STATUS_UPDATED'",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_ActivityServ_recordMediaListActivity_2_3",
+                    "kind": "step",
+                    "title": "Calls `toActivityScoreInt` and stores result as `scoreInt`"
+                  },
+                  {
+                    "id": "m_ActivityServ_recordMediaListActivity_3_4",
+                    "kind": "step",
+                    "title": "Calls `normalizeDisplayScore` and stores result as `exactScore`"
+                  },
+                  {
+                    "id": "m_ActivityServ_recordMediaListActivity_4_5",
+                    "kind": "step",
+                    "title": "Calls `normalizeDisplayScore` and stores result as `prevScore`"
+                  },
+                  {
+                    "id": "m_ActivityServ_recordMediaListActivity_5_6",
+                    "kind": "step",
+                    "title": "Database `create` on `ActivityLog`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-recordFavoriteActivity",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-recordFavoriteActivity",
+                "title": "ActivityServ.recordFavoriteActivity(input)",
+                "description": "Records a user favorite addition or removal event.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_recordFavoriteActivity_0_1",
+                    "kind": "var_def",
+                    "title": "Define `isAdded`, `verb`",
+                    "payload": "const isAdded = input.action === 'FAVORITE_ADDED'\nconst verb = isAdded ? 'Added' : 'Removed'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_recordFavoriteActivity_1_2",
+                    "kind": "step",
+                    "title": "Calls `this.runNonBlocking`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-recordFriendActivity",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-recordFriendActivity",
+                "title": "ActivityServ.recordFriendActivity(input)",
+                "description": "Records a bilateral friend acceptance event.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_recordFriendActivity_0_1",
+                    "kind": "step",
+                    "title": "Database `create` on `ActivityLog`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-recordRecommendationActivity",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-recordRecommendationActivity",
+                "title": "ActivityServ.recordRecommendationActivity(input)",
+                "description": "Records a public media-to-media recommendation event.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_recordRecommendationActivity_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.runNonBlocking`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-recordImportOrSyncSummaryActivity",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-recordImportOrSyncSummaryActivity",
+                "title": "ActivityServ.recordImportOrSyncSummaryActivity(input)",
+                "description": "Records a single concise summary activity entry for bulk list imports or connection syncs.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_recordImportOrSyncSummaryActivity_0_1",
+                    "kind": "var_def",
+                    "title": "Define `totalTouched`",
+                    "payload": "const totalTouched = input.importedCount + input.updatedCount",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_recordImportOrSyncSummaryActivity_1_2",
+                    "kind": "selection",
+                    "title": "`totalTouched <= 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`totalTouched <= 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_recordImportOrSyncSummaryActivity_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_recordImportOrSyncSummaryActivity_2_3",
+                    "kind": "var_def",
+                    "title": "Define `providerLabel`, `verb`",
+                    "payload": "const providerLabel = input.provider ? input.provider.toUpperCase() : null\nconst verb = input.source === 'CONNECTION_SYNC' ? `Synced ${totalTouched} item${totalTouched === 1 ? '' : 's'}${providerLabel ? ` from ${providerLabel}` : ''}` : `Imported ${totalTouched} list item${totalTouched === 1 ? '' : 's'}`",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_recordImportOrSyncSummaryActivity_3_4",
+                    "kind": "step",
+                    "title": "Database `create` on `ActivityLog`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-createStatusPost",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-createStatusPost",
+                "title": "ActivityServ.createStatusPost(userId, body)",
+                "description": "Creates a user STATUS_POST activity with optional tagged media, spoiler flag, and privacy.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_createStatusPost_0_1",
+                    "kind": "var_def",
+                    "title": "Define `content`",
+                    "payload": "const content = body.content?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_createStatusPost_1_2",
+                    "kind": "selection",
+                    "title": "`!content`",
+                    "selectionMode": "if_else",
+                    "condition": "`!content`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_createStatusPost_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Status post cannot be empty"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_createStatusPost_2_3",
+                    "kind": "selection",
+                    "title": "`content.length > 2000`",
+                    "selectionMode": "if_else",
+                    "condition": "`content.length > 2000`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_createStatusPost_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Status post cannot exceed 2000 characters"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_createStatusPost_3_4",
+                    "kind": "var_def",
+                    "title": "Define `mediaType`, `mediaId`, `mediaSummary`",
+                    "payload": "let mediaType: MediaType | null = null\nlet mediaId: number | null = null\nlet mediaSummary: ResolvedMediaSummary | null = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_createStatusPost_4_5",
+                    "kind": "selection",
+                    "title": "`body.mediaType && body.mediaId`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.mediaType && body.mediaId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_createStatusPost_4_5_then_0_5_1",
+                        "kind": "var_def",
+                        "title": "Define `upper`",
+                        "payload": "const upper = body.mediaType.trim().toUpperCase()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_ActivityServ_createStatusPost_4_5_then_1_5_2",
+                        "kind": "selection",
+                        "title": "`!MEDIA_MODEL_BY_TYPE[upper]`",
+                        "selectionMode": "if_else",
+                        "condition": "`!MEDIA_MODEL_BY_TYPE[upper]`",
+                        "thenBranch": [
+                          {
+                            "id": "m_ActivityServ_createStatusPost_4_5_then_1_5_2_then_0_5_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Unsupported media type \"${body.mediaType}\""
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_ActivityServ_createStatusPost_4_5_then_2_5_3",
+                        "kind": "step",
+                        "title": "Assign `mediaType`",
+                        "payload": "mediaType = (upper === 'MUSIC_ALBUM' || upper === 'MUSIC_TRACK' ? 'MUSIC' : upper) as MediaType",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_ActivityServ_createStatusPost_4_5_then_3_5_4",
+                        "kind": "step",
+                        "title": "Assign `mediaId`",
+                        "payload": "mediaId = Number(body.mediaId)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_ActivityServ_createStatusPost_4_5_then_4_5_5",
+                        "kind": "selection",
+                        "title": "`!Number.isInteger(mediaId) || mediaId < 1`",
+                        "selectionMode": "if_else",
+                        "condition": "`!Number.isInteger(mediaId) || mediaId < 1`",
+                        "thenBranch": [
+                          {
+                            "id": "m_ActivityServ_createStatusPost_4_5_then_4_5_5_then_0_5_5_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Invalid mediaId"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_ActivityServ_createStatusPost_4_5_then_5_5_6",
+                        "kind": "step",
+                        "title": "Assign `mediaSummary`",
+                        "payload": "mediaSummary = await this.resolveEntitySummary(mediaType, mediaId)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_ActivityServ_createStatusPost_4_5_then_6_5_7",
+                        "kind": "selection",
+                        "title": "`!mediaSummary.title`",
+                        "selectionMode": "if_else",
+                        "condition": "`!mediaSummary.title`",
+                        "thenBranch": [
+                          {
+                            "id": "m_ActivityServ_createStatusPost_4_5_then_6_5_7_then_0_5_7_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Media item ${mediaType} #${mediaId} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_createStatusPost_5_6",
+                    "kind": "step",
+                    "title": "Database `create` on `ActivityLog` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_ActivityServ_createStatusPost_6_7",
+                    "kind": "step",
+                    "title": "Database `first` on `ActivityLog` and stores it as `hydrated`"
+                  },
+                  {
+                    "id": "m_ActivityServ_createStatusPost_7_8",
+                    "kind": "step",
+                    "title": "Calls `this.formatActivityEntries` and stores result as `[formatted]`"
+                  },
+                  {
+                    "id": "m_ActivityServ_createStatusPost_8_9",
+                    "kind": "selection",
+                    "title": "`!formatted`",
+                    "selectionMode": "if_else",
+                    "condition": "`!formatted`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_createStatusPost_8_9_then_0_9_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Created activity entry could not be loaded"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_createStatusPost_9_10",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"activity\": \"<formatted>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-toggleLike",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-toggleLike",
+                "title": "ActivityServ.toggleLike(userId, permissions, activityId)",
+                "description": "Toggles a like on any visible ActivityLog entry and syncs likeCount.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_toggleLike_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `ActivityLog` and stores it as `activity`"
+                  },
+                  {
+                    "id": "m_ActivityServ_toggleLike_1_2",
+                    "kind": "step",
+                    "title": "Calls `this.assertCanViewActivity`"
+                  },
+                  {
+                    "id": "m_ActivityServ_toggleLike_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `ActivityLike` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_ActivityServ_toggleLike_3_4",
+                    "kind": "var_def",
+                    "title": "Define `liked`",
+                    "payload": "let liked = false",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_toggleLike_4_5",
+                    "kind": "selection",
+                    "title": "`existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_toggleLike_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Database `delete` on `ActivityLike`"
+                      },
+                      {
+                        "id": "m_ActivityServ_toggleLike_4_5_then_1_5_2",
+                        "kind": "step",
+                        "title": "Assign `liked`",
+                        "payload": "liked = false",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_ActivityServ_toggleLike_4_5_else_0_6_1",
+                        "kind": "step",
+                        "title": "Database `create` on `ActivityLike`"
+                      },
+                      {
+                        "id": "m_ActivityServ_toggleLike_4_5_else_1_6_2",
+                        "kind": "step",
+                        "title": "Assign `liked`",
+                        "payload": "liked = true",
+                        "payloadLanguage": "typescript"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_ActivityServ_toggleLike_6_7",
+                    "kind": "step",
+                    "title": "Database `query` on `ActivityLike` and stores it as `likeCount`"
+                  },
+                  {
+                    "id": "m_ActivityServ_toggleLike_7_8",
+                    "kind": "step",
+                    "title": "Database `update` on `ActivityLog`"
+                  },
+                  {
+                    "id": "m_ActivityServ_toggleLike_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"liked\": \"<liked>\",\n  \"likeCount\": \"<likeCount>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-getReplies",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-getReplies",
+                "title": "ActivityServ.getReplies(activityId, query, viewer)",
+                "description": "Lists replies for an ActivityLog entry ordered oldest-first.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_getReplies_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `ActivityLog` and stores it as `activity`"
+                  },
+                  {
+                    "id": "m_ActivityServ_getReplies_1_2",
+                    "kind": "step",
+                    "title": "Calls `this.assertCanViewActivity`"
+                  },
+                  {
+                    "id": "m_ActivityServ_getReplies_2_3",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_ActivityServ_getReplies_3_4",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_ActivityServ_getReplies_4_5",
+                    "kind": "var_def",
+                    "title": "Define `skip`",
+                    "payload": "const skip = page - 1 * limit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_getReplies_5_6",
+                    "kind": "step",
+                    "title": "Database `query` on `ActivityReply` and stores it as `replyQuery`"
+                  },
+                  {
+                    "id": "m_ActivityServ_getReplies_6_7",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawReplies]`"
+                  },
+                  {
+                    "id": "m_ActivityServ_getReplies_7_8",
+                    "kind": "var_def",
+                    "title": "Define `isAdmin`, `replies`",
+                    "payload": "const isAdmin = viewer ? new IRISBitField(viewer.permissions).has(IRISFlags.ADMINISTRATOR) : false\nconst replies = rawReplies.map((r: any) => ({ id: r.id, activityId: r.activityId, userId: r.userId, content: r.content, likeCount: r.likeCount ?? 0, createdAt: toDate(r.createdAt).toISOString(), ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_getReplies_8_9",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `totalPages`"
+                  },
+                  {
+                    "id": "m_ActivityServ_getReplies_9_10",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"replies\": \"<replies>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<totalPages>\",\n    \"hasMore\": \"<page < totalPages>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-createReply",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-createReply",
+                "title": "ActivityServ.createReply(userId, permissions, activityId, body)",
+                "description": "Adds a reply to any visible ActivityLog entry and syncs replyCount.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_createReply_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `ActivityLog` and stores it as `activity`"
+                  },
+                  {
+                    "id": "m_ActivityServ_createReply_1_2",
+                    "kind": "step",
+                    "title": "Calls `this.assertCanViewActivity`"
+                  },
+                  {
+                    "id": "m_ActivityServ_createReply_2_3",
+                    "kind": "var_def",
+                    "title": "Define `content`",
+                    "payload": "const content = body.content?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_createReply_3_4",
+                    "kind": "selection",
+                    "title": "`!content`",
+                    "selectionMode": "if_else",
+                    "condition": "`!content`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_createReply_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Reply content cannot be empty"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_createReply_4_5",
+                    "kind": "selection",
+                    "title": "`content.length > 1000`",
+                    "selectionMode": "if_else",
+                    "condition": "`content.length > 1000`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_createReply_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Reply content cannot exceed 1000 characters"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_createReply_5_6",
+                    "kind": "step",
+                    "title": "Database `create` on `ActivityReply` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_ActivityServ_createReply_6_7",
+                    "kind": "step",
+                    "title": "Database `all` on `ActivityReply` and stores it as `[replyCount, hydrated]`"
+                  },
+                  {
+                    "id": "m_ActivityServ_createReply_7_8",
+                    "kind": "step",
+                    "title": "Database `update` on `ActivityLog`"
+                  },
+                  {
+                    "id": "m_ActivityServ_createReply_8_9",
+                    "kind": "var_def",
+                    "title": "Define `row`",
+                    "payload": "const row = hydrated || created",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_createReply_9_10",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"reply\": {\n    \"id\": \"<row.id>\",\n    \"activityId\": \"<row.activityId>\",\n    \"userId\": \"<row.userId>\",\n    \"content\": \"<row.content>\",\n    \"likeCount\": \"<row.likeCount ?? 0>\",\n    \"createdAt\": \"<toDate(row.createdAt).toISOString()>\",\n    \"updatedAt\": \"<toDate(row.updatedAt).toISOString()>\",\n    \"user\": \"<(row as any).user ? formatActivityAuthor((row as any).user) : { id: userId, username: 'Unknown', displayName: null, avatarUrl: null, ...>\",\n    \"canDelete\": true\n  },\n  \"replyCount\": \"<replyCount>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-deleteReply",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-deleteReply",
+                "title": "ActivityServ.deleteReply(userId, permissions, activityId, replyId)",
+                "description": "Deletes an ActivityReply (reply author, activity owner, or admin) and syncs replyCount.",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_deleteReply_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `ActivityLog` and stores it as `[activity, reply]`"
+                  },
+                  {
+                    "id": "m_ActivityServ_deleteReply_1_2",
+                    "kind": "selection",
+                    "title": "`!activity || !reply || reply.activityId !== activityId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!activity || !reply || reply.activityId !== activityId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_deleteReply_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Reply not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_deleteReply_2_3",
+                    "kind": "step",
+                    "title": "Calls `new IRISBitField(permissions).has` and stores result as `isAdmin`"
+                  },
+                  {
+                    "id": "m_ActivityServ_deleteReply_3_4",
+                    "kind": "var_def",
+                    "title": "Define `isAllowed`",
+                    "payload": "const isAllowed = isAdmin || reply.userId === userId || activity.userId === userId",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_deleteReply_4_5",
+                    "kind": "selection",
+                    "title": "`!isAllowed`",
+                    "selectionMode": "if_else",
+                    "condition": "`!isAllowed`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_deleteReply_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "You do not have permission to delete this reply"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_deleteReply_5_6",
+                    "kind": "step",
+                    "title": "Database `delete` on `ActivityReply`"
+                  },
+                  {
+                    "id": "m_ActivityServ_deleteReply_6_7",
+                    "kind": "step",
+                    "title": "Database `query` on `ActivityReply` and stores it as `replyCount`"
+                  },
+                  {
+                    "id": "m_ActivityServ_deleteReply_7_8",
+                    "kind": "step",
+                    "title": "Database `update` on `ActivityLog`"
+                  },
+                  {
+                    "id": "m_ActivityServ_deleteReply_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"replyCount\": \"<replyCount>\",\n  \"message\": \"Reply deleted successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-purgeOldActivities",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-purgeOldActivities",
+                "title": "ActivityServ.purgeOldActivities(daysToKeep = 30)",
+                "description": "Purges ALL activity log records older than the retention window (default: 30 days).",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_purgeOldActivities_0_1",
+                    "kind": "var_def",
+                    "title": "Define `cutoff`",
+                    "payload": "const cutoff = new Date(Date.now() - daysToKeep * 24 * 60 * 60 * 1000)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_purgeOldActivities_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await prisma.orm.public.ActivityLog.where((a) => a.createdAt.lt(cutoff)).deleteAndCount()`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-initCron",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-initCron",
+                "title": "ActivityServ.initCron()",
+                "description": "Initializes a recurring daily retention cleanup task (30 days across all activity types).",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_initCron_0_1",
+                    "kind": "selection",
+                    "title": "`this.cronJobTimer`",
+                    "selectionMode": "if_else",
+                    "condition": "`this.cronJobTimer`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_initCron_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`void`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_ActivityServ_initCron_1_2",
+                    "kind": "var_def",
+                    "title": "Define `runCleanup`",
+                    "payload": "const runCleanup = async () => { try { const count = await ActivityServ.purgeOldActivities(30) if (count > 0) { logger.info( `${c.cyan('🧹 [Retention Cleanup]')}: Purged ${c.bold(String(count))} activity logs older than 30 days` ) ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_initCron_2_3",
+                    "kind": "step",
+                    "title": "Calls `setTimeout`"
+                  },
+                  {
+                    "id": "m_ActivityServ_initCron_3_4",
+                    "kind": "step",
+                    "title": "Assign `this.cronJobTimer`",
+                    "payload": "this.cronJobTimer = setInterval(() => { runCleanup().catch(() => {}) }, 24 * 60 * 60 * 1000)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_ActivityServ_initCron_4_5",
+                    "kind": "selection",
+                    "title": "`this.cronJobTimer && typeofthis.cronJobTimer.unref === 'function'`",
+                    "selectionMode": "if_else",
+                    "condition": "`this.cronJobTimer && typeofthis.cronJobTimer.unref === 'function'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_initCron_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Calls `this.cronJobTimer.unref`"
+                      }
+                    ],
+                    "elseBranch": []
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-ActivityServ-shutdown",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.serv.ts-ActivityServ-shutdown",
+                "title": "ActivityServ.shutdown()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_ActivityServ_shutdown_0_1",
+                    "kind": "selection",
+                    "title": "`this.cronJobTimer`",
+                    "selectionMode": "if_else",
+                    "condition": "`this.cronJobTimer`",
+                    "thenBranch": [
+                      {
+                        "id": "m_ActivityServ_shutdown_0_1_then_0_1_1",
+                        "kind": "step",
+                        "title": "Calls `clearInterval`"
+                      },
+                      {
+                        "id": "m_ActivityServ_shutdown_0_1_then_1_1_2",
+                        "kind": "step",
+                        "title": "Assign `this.cronJobTimer`",
+                        "payload": "this.cronJobTimer = null",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "13 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "async () => { try { await task() } catch (err: any) { logger.warn( `${c.red(`⚠️ [${context}]`)} Failed to record activity log asynchronously: ${err?.message || err}` ) ..."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Activity item not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to view this private activity"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Status post cannot be empty"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Status post cannot exceed 2000 characters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Unsupported media type \"${body.mediaType}\""
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid mediaId"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Media item ${mediaType} #${mediaId} not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Created activity entry could not be loaded"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Reply content cannot be empty"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Reply content cannot exceed 1000 characters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Reply not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to delete this reply"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

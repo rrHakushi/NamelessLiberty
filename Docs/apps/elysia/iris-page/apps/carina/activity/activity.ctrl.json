@@ -1,0 +1,2673 @@
+{
+  "id": "apps/carina/activity/activity.ctrl",
+  "title": "Create a status post on your Carina activity feed",
+  "description": "",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/carina/activity",
+    "relPath": "apps/carina/activity/activity.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "POST",
+      "GET",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/activity",
+      "/carina/activity/:id/like",
+      "/carina/activity/:id/replies",
+      "/carina/activity/:id/replies",
+      "/carina/activity/:id/replies/:replyId"
+    ],
+    "errorCount": 10
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Create a status post on your Carina activity feed"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/activity"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/activity/:id/like"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/activity/:id/replies"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/activity/:id/replies"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-4",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30"
+                            },
+                            "text": "DELETE"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/activity/:id/replies/:replyId"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_16)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "32 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.createStatusPostBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.createStatusPostResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/like · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.activityParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/like · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.toggleLikeResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/like · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/like · Response 403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.forbiddenError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/like · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/like · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/activity/:id/replies · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.activityParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/activity/:id/replies · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.repliesQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/activity/:id/replies · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.repliesResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/activity/:id/replies · Response 403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.forbiddenError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/activity/:id/replies · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/activity/:id/replies · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/replies · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.activityParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/replies · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.createReplyBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/replies · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.createReplyResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/replies · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/replies · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-23",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/replies · Response 403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.forbiddenError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-24",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/replies · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-25",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/activity/:id/replies · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-26",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/activity/:id/replies/:replyId · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.replyParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-27",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/activity/:id/replies/:replyId · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.deleteReplyResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-28",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/activity/:id/replies/:replyId · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-29",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/activity/:id/replies/:replyId · Response 403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.forbiddenError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-30",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/activity/:id/replies/:replyId · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-31",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/activity/:id/replies/:replyId · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaActivityModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.ctrl.ts-route-0",
+                "title": "POST /carina/activity",
+                "description": "Create a status post on your Carina activity feed",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaActivityModel.createStatusPostBody`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_0_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await ActivityServ.createStatusPost(user.id, body)`"
+                  },
+                  {
+                    "id": "call_0_ActivityServ_createStatusPost",
+                    "kind": "alg_call",
+                    "title": "Invoke ActivityServ.createStatusPost",
+                    "isAsync": true,
+                    "targetAlg": "ActivityServ.createStatusPost"
+                  },
+                  {
+                    "id": "svc_0_ActivityServ_createStatusPost",
+                    "kind": "sequence",
+                    "title": "ActivityServ.createStatusPost Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_ActivityServ_createStatusPost_0_1",
+                        "kind": "var_def",
+                        "title": "Define `content`",
+                        "payload": "const content = body.content?.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_ActivityServ_createStatusPost_1_2",
+                        "kind": "selection",
+                        "title": "`!content`",
+                        "selectionMode": "if_else",
+                        "condition": "`!content`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_ActivityServ_createStatusPost_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Status post cannot be empty"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_ActivityServ_createStatusPost_2_3",
+                        "kind": "selection",
+                        "title": "`content.length > 2000`",
+                        "selectionMode": "if_else",
+                        "condition": "`content.length > 2000`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_ActivityServ_createStatusPost_2_3_then_0_3_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Status post cannot exceed 2000 characters"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_ActivityServ_createStatusPost_3_4",
+                        "kind": "var_def",
+                        "title": "Define `mediaType`, `mediaId`, `mediaSummary`",
+                        "payload": "let mediaType: MediaType | null = null\nlet mediaId: number | null = null\nlet mediaSummary: ResolvedMediaSummary | null = null",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_ActivityServ_createStatusPost_4_5",
+                        "kind": "selection",
+                        "title": "`body.mediaType && body.mediaId`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.mediaType && body.mediaId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_ActivityServ_createStatusPost_4_5_then_0_5_1",
+                            "kind": "var_def",
+                            "title": "Define `upper`",
+                            "payload": "const upper = body.mediaType.trim().toUpperCase()",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_0_ActivityServ_createStatusPost_4_5_then_1_5_2",
+                            "kind": "selection",
+                            "title": "`!MEDIA_MODEL_BY_TYPE[upper]`",
+                            "selectionMode": "if_else",
+                            "condition": "`!MEDIA_MODEL_BY_TYPE[upper]`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_0_ActivityServ_createStatusPost_4_5_then_1_5_2_then_0_5_2_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Unsupported media type \"${body.mediaType}\""
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_0_ActivityServ_createStatusPost_4_5_then_2_5_3",
+                            "kind": "step",
+                            "title": "Assign `mediaType`",
+                            "payload": "mediaType = (upper === 'MUSIC_ALBUM' || upper === 'MUSIC_TRACK' ? 'MUSIC' : upper) as MediaType",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_0_ActivityServ_createStatusPost_4_5_then_3_5_4",
+                            "kind": "step",
+                            "title": "Assign `mediaId`",
+                            "payload": "mediaId = Number(body.mediaId)",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_0_ActivityServ_createStatusPost_4_5_then_4_5_5",
+                            "kind": "selection",
+                            "title": "`!Number.isInteger(mediaId) || mediaId < 1`",
+                            "selectionMode": "if_else",
+                            "condition": "`!Number.isInteger(mediaId) || mediaId < 1`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_0_ActivityServ_createStatusPost_4_5_then_4_5_5_then_0_5_5_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Invalid mediaId"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_0_ActivityServ_createStatusPost_4_5_then_5_5_6",
+                            "kind": "step",
+                            "title": "Assign `mediaSummary`",
+                            "payload": "mediaSummary = await this.resolveEntitySummary(mediaType, mediaId)",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_0_ActivityServ_createStatusPost_4_5_then_6_5_7",
+                            "kind": "selection",
+                            "title": "`!mediaSummary.title`",
+                            "selectionMode": "if_else",
+                            "condition": "`!mediaSummary.title`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_0_ActivityServ_createStatusPost_4_5_then_6_5_7_then_0_5_7_1",
+                                "kind": "error",
+                                "code": "NotFound",
+                                "httpStatus": 404,
+                                "message": "Media item ${mediaType} #${mediaId} not found"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_ActivityServ_createStatusPost_5_6",
+                        "kind": "step",
+                        "title": "Database `create` on `ActivityLog` and stores it as `created`"
+                      },
+                      {
+                        "id": "svc_0_ActivityServ_createStatusPost_6_7",
+                        "kind": "step",
+                        "title": "Database `first` on `ActivityLog` and stores it as `hydrated`"
+                      },
+                      {
+                        "id": "svc_0_ActivityServ_createStatusPost_7_8",
+                        "kind": "step",
+                        "title": "Calls `this.formatActivityEntries` and stores result as `[formatted]`"
+                      },
+                      {
+                        "id": "svc_0_ActivityServ_createStatusPost_8_9",
+                        "kind": "selection",
+                        "title": "`!formatted`",
+                        "selectionMode": "if_else",
+                        "condition": "`!formatted`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_ActivityServ_createStatusPost_8_9_then_0_9_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Created activity entry could not be loaded"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_ActivityServ_createStatusPost_9_10",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"activity\": \"<formatted>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.ctrl.ts-route-1",
+                "title": "POST /carina/activity/:id/like",
+                "description": "Toggle like on an activity entry",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaActivityModel.activityParam`"
+                  },
+                  {
+                    "id": "route_1_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_1_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await ActivityServ.toggleLike(user.id, user.permissions, params.id)`"
+                  },
+                  {
+                    "id": "call_1_ActivityServ_toggleLike",
+                    "kind": "alg_call",
+                    "title": "Invoke ActivityServ.toggleLike",
+                    "isAsync": true,
+                    "targetAlg": "ActivityServ.toggleLike"
+                  },
+                  {
+                    "id": "svc_1_ActivityServ_toggleLike",
+                    "kind": "sequence",
+                    "title": "ActivityServ.toggleLike Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_ActivityServ_toggleLike_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `ActivityLog` and stores it as `activity`"
+                      },
+                      {
+                        "id": "svc_1_ActivityServ_toggleLike_1_2",
+                        "kind": "step",
+                        "title": "Calls `this.assertCanViewActivity`"
+                      },
+                      {
+                        "id": "svc_1_ActivityServ_toggleLike_2_3",
+                        "kind": "step",
+                        "title": "Database `first` on `ActivityLike` and stores it as `existing`"
+                      },
+                      {
+                        "id": "svc_1_ActivityServ_toggleLike_3_4",
+                        "kind": "var_def",
+                        "title": "Define `liked`",
+                        "payload": "let liked = false",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_ActivityServ_toggleLike_4_5",
+                        "kind": "selection",
+                        "title": "`existing`",
+                        "selectionMode": "if_else",
+                        "condition": "`existing`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_ActivityServ_toggleLike_4_5_then_0_5_1",
+                            "kind": "step",
+                            "title": "Database `delete` on `ActivityLike`"
+                          },
+                          {
+                            "id": "svc_1_ActivityServ_toggleLike_4_5_then_1_5_2",
+                            "kind": "step",
+                            "title": "Assign `liked`",
+                            "payload": "liked = false",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "svc_1_ActivityServ_toggleLike_4_5_else_0_6_1",
+                            "kind": "step",
+                            "title": "Database `create` on `ActivityLike`"
+                          },
+                          {
+                            "id": "svc_1_ActivityServ_toggleLike_4_5_else_1_6_2",
+                            "kind": "step",
+                            "title": "Assign `liked`",
+                            "payload": "liked = true",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "svc_1_ActivityServ_toggleLike_6_7",
+                        "kind": "step",
+                        "title": "Database `query` on `ActivityLike` and stores it as `likeCount`"
+                      },
+                      {
+                        "id": "svc_1_ActivityServ_toggleLike_7_8",
+                        "kind": "step",
+                        "title": "Database `update` on `ActivityLog`"
+                      },
+                      {
+                        "id": "svc_1_ActivityServ_toggleLike_8_9",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"liked\": \"<liked>\",\n  \"likeCount\": \"<likeCount>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.ctrl.ts-route-2",
+                "title": "GET /carina/activity/:id/replies",
+                "description": "List replies for an activity entry",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaActivityModel.activityParam`, query: `CarinaActivityModel.repliesQuery`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await ActivityServ.getReplies(params.id, query, userSession.getUser())`"
+                  },
+                  {
+                    "id": "call_2_ActivityServ_getReplies",
+                    "kind": "alg_call",
+                    "title": "Invoke ActivityServ.getReplies",
+                    "isAsync": true,
+                    "targetAlg": "ActivityServ.getReplies"
+                  },
+                  {
+                    "id": "svc_2_ActivityServ_getReplies",
+                    "kind": "sequence",
+                    "title": "ActivityServ.getReplies Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_ActivityServ_getReplies_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `ActivityLog` and stores it as `activity`"
+                      },
+                      {
+                        "id": "svc_2_ActivityServ_getReplies_1_2",
+                        "kind": "step",
+                        "title": "Calls `this.assertCanViewActivity`"
+                      },
+                      {
+                        "id": "svc_2_ActivityServ_getReplies_2_3",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_2_ActivityServ_getReplies_3_4",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_2_ActivityServ_getReplies_4_5",
+                        "kind": "var_def",
+                        "title": "Define `skip`",
+                        "payload": "const skip = page - 1 * limit",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_ActivityServ_getReplies_5_6",
+                        "kind": "step",
+                        "title": "Database `query` on `ActivityReply` and stores it as `replyQuery`"
+                      },
+                      {
+                        "id": "svc_2_ActivityServ_getReplies_6_7",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, rawReplies]`"
+                      },
+                      {
+                        "id": "svc_2_ActivityServ_getReplies_7_8",
+                        "kind": "var_def",
+                        "title": "Define `isAdmin`, `replies`",
+                        "payload": "const isAdmin = viewer ? new IRISBitField(viewer.permissions).has(IRISFlags.ADMINISTRATOR) : false\nconst replies = rawReplies.map((r: any) => ({ id: r.id, activityId: r.activityId, userId: r.userId, content: r.content, likeCount: r.likeCount ?? 0, createdAt: toDate(r.createdAt).toISOString(), ...)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_ActivityServ_getReplies_8_9",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `totalPages`"
+                      },
+                      {
+                        "id": "svc_2_ActivityServ_getReplies_9_10",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"replies\": \"<replies>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<totalPages>\",\n    \"hasMore\": \"<page < totalPages>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.ctrl.ts-route-3",
+                "title": "POST /carina/activity/:id/replies",
+                "description": "Add a reply to an activity entry",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaActivityModel.activityParam`, body: `CarinaActivityModel.createReplyBody`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_3_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await ActivityServ.createReply(user.id, user.permissions, params.id, ...)`"
+                  },
+                  {
+                    "id": "call_3_ActivityServ_createReply",
+                    "kind": "alg_call",
+                    "title": "Invoke ActivityServ.createReply",
+                    "isAsync": true,
+                    "targetAlg": "ActivityServ.createReply"
+                  },
+                  {
+                    "id": "svc_3_ActivityServ_createReply",
+                    "kind": "sequence",
+                    "title": "ActivityServ.createReply Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_ActivityServ_createReply_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `ActivityLog` and stores it as `activity`"
+                      },
+                      {
+                        "id": "svc_3_ActivityServ_createReply_1_2",
+                        "kind": "step",
+                        "title": "Calls `this.assertCanViewActivity`"
+                      },
+                      {
+                        "id": "svc_3_ActivityServ_createReply_2_3",
+                        "kind": "var_def",
+                        "title": "Define `content`",
+                        "payload": "const content = body.content?.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_3_ActivityServ_createReply_3_4",
+                        "kind": "selection",
+                        "title": "`!content`",
+                        "selectionMode": "if_else",
+                        "condition": "`!content`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_ActivityServ_createReply_3_4_then_0_4_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Reply content cannot be empty"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_ActivityServ_createReply_4_5",
+                        "kind": "selection",
+                        "title": "`content.length > 1000`",
+                        "selectionMode": "if_else",
+                        "condition": "`content.length > 1000`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_ActivityServ_createReply_4_5_then_0_5_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Reply content cannot exceed 1000 characters"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_ActivityServ_createReply_5_6",
+                        "kind": "step",
+                        "title": "Database `create` on `ActivityReply` and stores it as `created`"
+                      },
+                      {
+                        "id": "svc_3_ActivityServ_createReply_6_7",
+                        "kind": "step",
+                        "title": "Database `all` on `ActivityReply` and stores it as `[replyCount, hydrated]`"
+                      },
+                      {
+                        "id": "svc_3_ActivityServ_createReply_7_8",
+                        "kind": "step",
+                        "title": "Database `update` on `ActivityLog`"
+                      },
+                      {
+                        "id": "svc_3_ActivityServ_createReply_8_9",
+                        "kind": "var_def",
+                        "title": "Define `row`",
+                        "payload": "const row = hydrated || created",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_3_ActivityServ_createReply_9_10",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"reply\": {\n    \"id\": \"<row.id>\",\n    \"activityId\": \"<row.activityId>\",\n    \"userId\": \"<row.userId>\",\n    \"content\": \"<row.content>\",\n    \"likeCount\": \"<row.likeCount ?? 0>\",\n    \"createdAt\": \"<toDate(row.createdAt).toISOString()>\",\n    \"updatedAt\": \"<toDate(row.updatedAt).toISOString()>\",\n    \"user\": \"<(row as any).user ? formatActivityAuthor((row as any).user) : { id: userId, username: 'Unknown', displayName: null, avatarUrl: null, ...>\",\n    \"canDelete\": true\n  },\n  \"replyCount\": \"<replyCount>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-4",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/activity/activity.ctrl.ts-route-4",
+                "title": "DELETE /carina/activity/:id/replies/:replyId",
+                "description": "Delete an activity reply",
+                "steps": [
+                  {
+                    "id": "route_4_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaActivityModel.replyParam`"
+                  },
+                  {
+                    "id": "route_4_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_4_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await ActivityServ.deleteReply(user.id, user.permissions, params.id, ...)`"
+                  },
+                  {
+                    "id": "call_4_ActivityServ_deleteReply",
+                    "kind": "alg_call",
+                    "title": "Invoke ActivityServ.deleteReply",
+                    "isAsync": true,
+                    "targetAlg": "ActivityServ.deleteReply"
+                  },
+                  {
+                    "id": "svc_4_ActivityServ_deleteReply",
+                    "kind": "sequence",
+                    "title": "ActivityServ.deleteReply Flow",
+                    "children": [
+                      {
+                        "id": "svc_4_ActivityServ_deleteReply_0_1",
+                        "kind": "step",
+                        "title": "Database `all` on `ActivityLog` and stores it as `[activity, reply]`"
+                      },
+                      {
+                        "id": "svc_4_ActivityServ_deleteReply_1_2",
+                        "kind": "selection",
+                        "title": "`!activity || !reply || reply.activityId !== activityId`",
+                        "selectionMode": "if_else",
+                        "condition": "`!activity || !reply || reply.activityId !== activityId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_ActivityServ_deleteReply_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Reply not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_ActivityServ_deleteReply_2_3",
+                        "kind": "step",
+                        "title": "Calls `new IRISBitField(permissions).has` and stores result as `isAdmin`"
+                      },
+                      {
+                        "id": "svc_4_ActivityServ_deleteReply_3_4",
+                        "kind": "var_def",
+                        "title": "Define `isAllowed`",
+                        "payload": "const isAllowed = isAdmin || reply.userId === userId || activity.userId === userId",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_ActivityServ_deleteReply_4_5",
+                        "kind": "selection",
+                        "title": "`!isAllowed`",
+                        "selectionMode": "if_else",
+                        "condition": "`!isAllowed`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_ActivityServ_deleteReply_4_5_then_0_5_1",
+                            "kind": "error",
+                            "code": "Forbidden",
+                            "httpStatus": 403,
+                            "message": "You do not have permission to delete this reply"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_ActivityServ_deleteReply_5_6",
+                        "kind": "step",
+                        "title": "Database `delete` on `ActivityReply`"
+                      },
+                      {
+                        "id": "svc_4_ActivityServ_deleteReply_6_7",
+                        "kind": "step",
+                        "title": "Database `query` on `ActivityReply` and stores it as `replyCount`"
+                      },
+                      {
+                        "id": "svc_4_ActivityServ_deleteReply_7_8",
+                        "kind": "step",
+                        "title": "Database `update` on `ActivityLog`"
+                      },
+                      {
+                        "id": "svc_4_ActivityServ_deleteReply_8_9",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"replyCount\": \"<replyCount>\",\n  \"message\": \"Reply deleted successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "10 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Status post cannot be empty"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Status post cannot exceed 2000 characters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Unsupported media type \"${body.mediaType}\""
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid mediaId"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Media item ${mediaType} #${mediaId} not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Created activity entry could not be loaded"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Reply content cannot be empty"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Reply content cannot exceed 1000 characters"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Reply not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to delete this reply"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

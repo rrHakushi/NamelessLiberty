@@ -1,0 +1,124 @@
+// use prisma-8
+
+enum ReliquaryVisibility {
+    PUBLIC
+    UNLISTED
+    PRIVATE
+}
+
+enum ReliquaryCategory {
+    API_DOCS
+    WIKI
+    GUIDES
+    TUTORIALS
+    REFERENCE
+    OTHER
+}
+
+model ReliquaryDoc {
+    id          String              @id @onCreate(uuid())
+    title       String
+    description String?
+    icon        String?
+    category    ReliquaryCategory   @default(GUIDES)
+    tags        String[]            @default([])
+    visibility  ReliquaryVisibility @default(PUBLIC)
+
+    creatorId String
+    creator   User   @relation("ReliquaryDocCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+
+    // Serializable 5-level tree of ReliquarySidebarNode items
+    sidebarConfig Jsonb    @default(json`[]`)
+    // Ordered list of child ReliquaryPage UUID v7 IDs linked to this Main Doc
+    pageIds       String[] @default([])
+    // Root/landing IrisPageSchema JSON rendered at /reliquary/:docId
+    schema        Jsonb    @default(json`{}`)
+
+    // Main-doc-level edit lock (landing page + sidebarConfig structure)
+    lockedById    String?
+    lockedBy      User?     @relation("ReliquaryDocLocker", fields: [lockedById], references: [id], onDelete: SetNull)
+    lockedAt      DateTime?
+    lockExpiresAt DateTime?
+
+    pages         ReliquaryPage[]
+    collaborators ReliquaryCollaborator[]
+    bookmarks     ReliquaryBookmark[]
+    recentVisits  ReliquaryRecentVisit[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @onCreate(now()) @onUpdate(now())
+
+    @@index([creatorId])
+    @@index([visibility, category])
+    @@index([updatedAt])
+}
+
+model ReliquaryPage {
+    id    String       @id @onCreate(uuid())
+    docId String
+    doc   ReliquaryDoc @relation(fields: [docId], references: [id], onDelete: Cascade)
+
+    title  String
+    icon   String?
+    schema Jsonb   @default(json`{}`)
+
+    creatorId      String
+    creator        User    @relation("ReliquaryPageCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+    lastEditedById String?
+    lastEditedBy   User?   @relation("ReliquaryPageEditor", fields: [lastEditedById], references: [id], onDelete: SetNull)
+
+    // Sub-page-level edit lock
+    lockedById    String?
+    lockedBy      User?     @relation("ReliquaryPageLocker", fields: [lockedById], references: [id], onDelete: SetNull)
+    lockedAt      DateTime?
+    lockExpiresAt DateTime?
+
+    recentVisits ReliquaryRecentVisit[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @onCreate(now()) @onUpdate(now())
+
+    @@index([docId])
+    @@index([creatorId])
+    @@index([lockedById])
+}
+
+model ReliquaryCollaborator {
+    id        String           @id @onCreate(uuid())
+    docId     String
+    doc       ReliquaryDoc     @relation(fields: [docId], references: [id], onDelete: Cascade)
+    userId    String
+    user      User             @relation("ReliquaryCollaborations", fields: [userId], references: [id], onDelete: Cascade)
+    role      CollaboratorRole @default(EDITOR)
+    createdAt DateTime         @default(now())
+
+    @@unique([docId, userId])
+    @@index([userId])
+    @@index([docId])
+}
+
+model ReliquaryBookmark {
+    id        String       @id @onCreate(uuid())
+    userId    String
+    user      User         @relation("ReliquaryBookmarks", fields: [userId], references: [id], onDelete: Cascade)
+    docId     String
+    doc       ReliquaryDoc @relation(fields: [docId], references: [id], onDelete: Cascade)
+    createdAt DateTime     @default(now())
+
+    @@unique([userId, docId])
+    @@index([userId, createdAt])
+}
+
+model ReliquaryRecentVisit {
+    id        String         @id @onCreate(uuid())
+    userId    String
+    user      User           @relation("ReliquaryRecentVisits", fields: [userId], references: [id], onDelete: Cascade)
+    docId     String
+    doc       ReliquaryDoc   @relation(fields: [docId], references: [id], onDelete: Cascade)
+    pageId    String?
+    page      ReliquaryPage? @relation(fields: [pageId], references: [id], onDelete: SetNull)
+    visitedAt DateTime       @default(now())
+
+    @@unique([userId, docId])
+    @@index([userId, visitedAt])
+}

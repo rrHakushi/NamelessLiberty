@@ -3,7 +3,7 @@ import { Elysia, t } from 'elysia'
 import { openapi } from '@elysia/openapi'
 import fs from 'node:fs'
 import path from 'node:path'
-import { controllers, isElysiaInstance, scanFiles } from '../../src/plugins/controllers'
+import { controllers, isElysiaInstance, scanFiles } from '../../src/core/plugins/controllers'
 
 const FIXTURES_DIR = path.resolve(import.meta.dirname, '../fixtures/controllers')
 
@@ -60,7 +60,7 @@ describe('Controllers Autoload Plugin', () => {
   it('auto-registers existing project controllers (carina/auth.ctrl.ts)', async () => {
     const app = new Elysia({ strictPath: true }).use(
       controllers({
-        dir: path.resolve(import.meta.dirname, '../../src/api/controllers'),
+        dir: path.resolve(import.meta.dirname, '../../src/apps'),
         verbose: false,
       })
     )

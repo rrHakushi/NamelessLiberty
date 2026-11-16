@@ -1,0 +1,2827 @@
+{
+  "id": "apps/carina/friends/friends.serv",
+  "title": "friends.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/carina/friends/friends.serv.ts",
+    "relPath": "apps/carina/friends/friends.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 17
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "friends.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/carina/friends/friends.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/carina/friends/friends.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/friends/friends.ctrl.ts (CarinaFriendsServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "13 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.listFriends"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.updateFriend"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, friendId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.removeFriend"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, friendId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.listFriendRequests"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.sendFriendRequest"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.acceptFriendRequest"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, requestId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.declineFriendRequest"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, requestId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.respondFriendRequest"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, requestId, action)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.cancelFriendRequest"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, requestId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.blockUser"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.unblockUser"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, blockId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.getFriendsMediaTracking"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, mediaType, mediaId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaFriendsServ.recommendToFriends"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(currentUserId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-listFriends",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-listFriends",
+                "title": "CarinaFriendsServ.listFriends(currentUserId, query)",
+                "description": "Get friends list for authenticated user with pagination.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_listFriends_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriends_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriends_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`",
+                    "payload": "const skip = page - 1 * limit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriends_3_4",
+                    "kind": "step",
+                    "title": "Database `query` on `Friend` and stores it as `friendsQuery`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriends_4_5",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawFriends, rawIncoming, rawOutgoing, rawBlocked]`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriends_5_6",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `totalPages`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriends_6_7",
+                    "kind": "var_def",
+                    "title": "Define `hasMore`, `friends`, `incomingRequests`, `outgoingRequests`, `blockedUsers`",
+                    "payload": "const hasMore = page < totalPages\nconst friends = rawFriends.map((f) => { const profile = getProfileCustomization(f.friend.customization) return { id: f.id, friendId: f.friendId, nickname: f.nickname, isPrivate: f.isPrivate, ...)\nconst incomingRequests = rawIncoming.map((r) => { const senderProfile = getProfileCustomization(r.sender.customization) return { id: r.id, senderId: r.senderId, message: r.message, createdAt: toDate(r.createdAt).toISOString(), ...)\nconst outgoingRequests = rawOutgoing.map((r) => { const receiverProfile = getProfileCustomization(r.receiver.customization) return { id: r.id, receiverId: r.receiverId, message: r.message, createdAt: toDate(r.createdAt).toISOString(), ...)\nconst blockedUsers = rawBlocked.map((b) => { const blockedProfile = getProfileCustomization(b.blocked.customization) return { id: b.id, blockedId: b.blockedId, createdAt: toDate(b.createdAt).toISOString(), blocked: { ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriends_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"friends\": \"<friends>\",\n  \"incomingRequests\": \"<incomingRequests>\",\n  \"outgoingRequests\": \"<outgoingRequests>\",\n  \"blockedUsers\": \"<blockedUsers>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<totalPages>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-updateFriend",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-updateFriend",
+                "title": "CarinaFriendsServ.updateFriend(currentUserId, friendId, body)",
+                "description": "Update friend relationship (privacy, nickname).",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_updateFriend_0_1",
+                    "kind": "var_def",
+                    "title": "Define `trimmedId`",
+                    "payload": "const trimmedId = friendId.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_updateFriend_1_2",
+                    "kind": "step",
+                    "title": "Database `first` on `Friend` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_updateFriend_2_3",
+                    "kind": "selection",
+                    "title": "`!existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`!existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_updateFriend_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Friend not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_updateFriend_3_4",
+                    "kind": "var_def",
+                    "title": "Define `data`",
+                    "payload": "const data: { isPrivate?: boolean; nickname?: string | null } = {}",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_updateFriend_4_5",
+                    "kind": "selection",
+                    "title": "`body.isPrivate !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.isPrivate !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_updateFriend_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Assign `data.isPrivate`",
+                        "payload": "data.isPrivate = Boolean(body.isPrivate)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_updateFriend_5_6",
+                    "kind": "selection",
+                    "title": "`body.nickname !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.nickname !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_updateFriend_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Assign `data.nickname`",
+                        "payload": "data.nickname = body.nickname?.trim() || null",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_updateFriend_6_7",
+                    "kind": "step",
+                    "title": "Database `update` on `Friend` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_updateFriend_7_8",
+                    "kind": "selection",
+                    "title": "`body.isPrivate !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.isPrivate !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_updateFriend_7_8_then_0_8_1",
+                        "kind": "step",
+                        "title": "Calls `Boolean` and stores result as `nextPrivate`"
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_updateFriend_7_8_then_1_8_2",
+                        "kind": "step",
+                        "title": "Database `all` on `ActivityLog`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_updateFriend_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"friend\": \"<updated>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-removeFriend",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-removeFriend",
+                "title": "CarinaFriendsServ.removeFriend(currentUserId, friendId)",
+                "description": "Remove friend strictly by target friend user ID or friendship record ID.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_removeFriend_0_1",
+                    "kind": "var_def",
+                    "title": "Define `trimmedFriendId`",
+                    "payload": "const trimmedFriendId = friendId.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_removeFriend_1_2",
+                    "kind": "step",
+                    "title": "Database `first` on `Friend` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_removeFriend_2_3",
+                    "kind": "selection",
+                    "title": "`!existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`!existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_removeFriend_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Friendship not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_removeFriend_3_4",
+                    "kind": "var_def",
+                    "title": "Define `targetFriendId`",
+                    "payload": "const targetFriendId = existing.friendId",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_removeFriend_4_5",
+                    "kind": "step",
+                    "title": "Database `deleteAll` on `Friend`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_removeFriend_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Friend removed successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-listFriendRequests",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-listFriendRequests",
+                "title": "CarinaFriendsServ.listFriendRequests(currentUserId, query)",
+                "description": "Get pending friend requests (incoming, outgoing, or all).",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_listFriendRequests_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriendRequests_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriendRequests_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`, `type`",
+                    "payload": "const skip = page - 1 * limit\nconst type = query?.type ?? 'incoming'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriendRequests_3_4",
+                    "kind": "step",
+                    "title": "Database `query` on `FriendRequest` and stores it as `requestsQuery`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriendRequests_4_5",
+                    "kind": "selection",
+                    "title": "`type === 'outgoing'`",
+                    "selectionMode": "if_else",
+                    "condition": "`type === 'outgoing'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_listFriendRequests_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Assign `requestsQuery`",
+                        "payload": "requestsQuery = requestsQuery.where((r) => r.senderId.eq(currentUserId))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_listFriendRequests_4_5_else_0_6_1",
+                        "kind": "selection",
+                        "title": "`type === 'all'`",
+                        "selectionMode": "if_else",
+                        "condition": "`type === 'all'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaFriendsServ_listFriendRequests_4_5_else_0_6_1_then_0_6_1_1",
+                            "kind": "step",
+                            "title": "Assign `requestsQuery`",
+                            "payload": "requestsQuery = requestsQuery.where((r) => or(r.receiverId.eq(currentUserId), r.senderId.eq(currentUserId)) )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "m_CarinaFriendsServ_listFriendRequests_4_5_else_0_6_1_else_0_6_2_1",
+                            "kind": "step",
+                            "title": "Assign `requestsQuery`",
+                            "payload": "requestsQuery = requestsQuery.where((r) => r.receiverId.eq(currentUserId))",
+                            "payloadLanguage": "typescript"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriendRequests_6_7",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawRequests]`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriendRequests_7_8",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `totalPages`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriendRequests_8_9",
+                    "kind": "var_def",
+                    "title": "Define `hasMore`, `requests`",
+                    "payload": "const hasMore = page < totalPages\nconst requests = rawRequests.map((r) => { const senderProfile = getProfileCustomization(r.sender.customization) const receiverProfile = getProfileCustomization(r.receiver.customization) return { id: r.id, senderId: r.senderId, ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_listFriendRequests_9_10",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"requests\": \"<requests>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<totalPages>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-sendFriendRequest",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-sendFriendRequest",
+                "title": "CarinaFriendsServ.sendFriendRequest(currentUserId, body)",
+                "description": "Send a friend request by target user ID (UUID) or username.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_0_1",
+                    "kind": "var_def",
+                    "title": "Define `targetUserId`",
+                    "payload": "let targetUserId = body.targetUserId?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_1_2",
+                    "kind": "selection",
+                    "title": "`!targetUserId && body.targetUsername`",
+                    "selectionMode": "if_else",
+                    "condition": "`!targetUserId && body.targetUsername`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_sendFriendRequest_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Database `first` on `User` and stores it as `user`"
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_sendFriendRequest_1_2_then_1_2_2",
+                        "kind": "selection",
+                        "title": "`!user`",
+                        "selectionMode": "if_else",
+                        "condition": "`!user`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaFriendsServ_sendFriendRequest_1_2_then_1_2_2_then_0_2_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "User @${body.targetUsername.trim()} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_sendFriendRequest_1_2_then_2_2_3",
+                        "kind": "step",
+                        "title": "Assign `targetUserId`",
+                        "payload": "targetUserId = user.id",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_2_3",
+                    "kind": "selection",
+                    "title": "`!targetUserId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!targetUserId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_sendFriendRequest_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Either targetUserId or targetUsername is required"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_3_4",
+                    "kind": "selection",
+                    "title": "`targetUserId === currentUserId`",
+                    "selectionMode": "if_else",
+                    "condition": "`targetUserId === currentUserId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_sendFriendRequest_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "You cannot send a friend request to yourself"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_4_5",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `targetUser`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_5_6",
+                    "kind": "selection",
+                    "title": "`!targetUser`",
+                    "selectionMode": "if_else",
+                    "condition": "`!targetUser`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_sendFriendRequest_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User with ID \"${targetUserId}\" not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_6_7",
+                    "kind": "step",
+                    "title": "Database `first` on `UserBlock` and stores it as `isBlocked`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_7_8",
+                    "kind": "selection",
+                    "title": "`isBlocked`",
+                    "selectionMode": "if_else",
+                    "condition": "`isBlocked`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_sendFriendRequest_7_8_then_0_8_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Cannot send friend request to blocked user"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_8_9",
+                    "kind": "step",
+                    "title": "Database `first` on `Friend` and stores it as `alreadyFriends`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_9_10",
+                    "kind": "selection",
+                    "title": "`alreadyFriends`",
+                    "selectionMode": "if_else",
+                    "condition": "`alreadyFriends`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_sendFriendRequest_9_10_then_0_10_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "You are already friends with this user"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_10_11",
+                    "kind": "step",
+                    "title": "Database `first` on `FriendRequest` and stores it as `existingOutgoing`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_11_12",
+                    "kind": "selection",
+                    "title": "`existingOutgoing`",
+                    "selectionMode": "if_else",
+                    "condition": "`existingOutgoing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_sendFriendRequest_11_12_then_0_12_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Friend request already sent and pending"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_12_13",
+                    "kind": "step",
+                    "title": "Database `first` on `FriendRequest` and stores it as `existingIncoming`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_13_14",
+                    "kind": "selection",
+                    "title": "`existingIncoming`",
+                    "selectionMode": "if_else",
+                    "condition": "`existingIncoming`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_sendFriendRequest_13_14_then_0_14_1",
+                        "kind": "step",
+                        "title": "Calls `prisma.transaction`"
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_sendFriendRequest_13_14_then_1_14_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"Mutual friend request accepted, you are now friends!\",\n  \"requestId\": \"<existingIncoming.id>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_14_15",
+                    "kind": "step",
+                    "title": "Database `create` on `FriendRequest` and stores it as `newRequest`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_sendFriendRequest_15_16",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Friend request sent successfully\",\n  \"requestId\": \"<newRequest.id>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-acceptFriendRequest",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-acceptFriendRequest",
+                "title": "CarinaFriendsServ.acceptFriendRequest(currentUserId, requestId)",
+                "description": "Accept a pending friend request by request ID.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_acceptFriendRequest_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `FriendRequest` and stores it as `friendRequest`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_acceptFriendRequest_1_2",
+                    "kind": "selection",
+                    "title": "`!friendRequest || friendRequest.receiverId !== currentUserId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!friendRequest || friendRequest.receiverId !== currentUserId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_acceptFriendRequest_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Friend request not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_acceptFriendRequest_2_3",
+                    "kind": "selection",
+                    "title": "`friendRequest.status !== 'PENDING'`",
+                    "selectionMode": "if_else",
+                    "condition": "`friendRequest.status !== 'PENDING'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_acceptFriendRequest_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Friend request is not pending"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_acceptFriendRequest_3_4",
+                    "kind": "step",
+                    "title": "Calls `prisma.transaction`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_acceptFriendRequest_4_5",
+                    "kind": "var_def",
+                    "title": "Define `senderProfile`, `receiverProfile`",
+                    "payload": "const senderProfile = friendRequest.sender ? getProfileCustomization(friendRequest.sender.customization) : null\nconst receiverProfile = friendRequest.receiver ? getProfileCustomization(friendRequest.receiver.customization) : null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_acceptFriendRequest_5_6",
+                    "kind": "step",
+                    "title": "Calls `ActivityServ.recordFriendActivity`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_acceptFriendRequest_6_7",
+                    "kind": "step",
+                    "title": "Calls `ActivityServ.recordFriendActivity`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_acceptFriendRequest_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Friend request accepted successfully\",\n  \"friendId\": \"<friendRequest.senderId>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-declineFriendRequest",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-declineFriendRequest",
+                "title": "CarinaFriendsServ.declineFriendRequest(currentUserId, requestId)",
+                "description": "Decline a pending friend request by request ID.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_declineFriendRequest_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `FriendRequest` and stores it as `friendRequest`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_declineFriendRequest_1_2",
+                    "kind": "selection",
+                    "title": "`!friendRequest || friendRequest.receiverId !== currentUserId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!friendRequest || friendRequest.receiverId !== currentUserId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_declineFriendRequest_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Friend request not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_declineFriendRequest_2_3",
+                    "kind": "step",
+                    "title": "Database `deleteAll` on `FriendRequest`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_declineFriendRequest_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Friend request declined successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-respondFriendRequest",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-respondFriendRequest",
+                "title": "CarinaFriendsServ.respondFriendRequest(currentUserId, requestId, action)",
+                "description": "Respond to a friend request (ACCEPT, DECLINE, or BLOCK).",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_respondFriendRequest_0_1",
+                    "kind": "selection",
+                    "title": "`action === 'ACCEPT'`",
+                    "selectionMode": "if_else",
+                    "condition": "`action === 'ACCEPT'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_respondFriendRequest_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`await this.acceptFriendRequest(currentUserId, requestId)`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_respondFriendRequest_1_2",
+                    "kind": "selection",
+                    "title": "`action === 'DECLINE'`",
+                    "selectionMode": "if_else",
+                    "condition": "`action === 'DECLINE'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_respondFriendRequest_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`await this.declineFriendRequest(currentUserId, requestId)`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_respondFriendRequest_2_3",
+                    "kind": "selection",
+                    "title": "`action === 'BLOCK'`",
+                    "selectionMode": "if_else",
+                    "condition": "`action === 'BLOCK'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_respondFriendRequest_2_3_then_0_3_1",
+                        "kind": "step",
+                        "title": "Database `first` on `FriendRequest` and stores it as `request`"
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_respondFriendRequest_2_3_then_1_3_2",
+                        "kind": "selection",
+                        "title": "`!request || request.receiverId !== currentUserId`",
+                        "selectionMode": "if_else",
+                        "condition": "`!request || request.receiverId !== currentUserId`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaFriendsServ_respondFriendRequest_2_3_then_1_3_2_then_0_3_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Friend request not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_respondFriendRequest_2_3_then_2_3_3",
+                        "kind": "var_def",
+                        "title": "Define `senderId`",
+                        "payload": "const senderId = request.senderId",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_respondFriendRequest_2_3_then_3_3_4",
+                        "kind": "step",
+                        "title": "Database `deleteAll` on `FriendRequest`"
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_respondFriendRequest_2_3_then_4_3_5",
+                        "kind": "step",
+                        "title": "Calls `this.blockUser`"
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_respondFriendRequest_2_3_then_5_3_6",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"Friend request rejected and user blocked\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_respondFriendRequest_3_4",
+                    "kind": "error",
+                    "code": "BadRequest",
+                    "httpStatus": 400,
+                    "message": "Invalid action \"${action}\""
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-cancelFriendRequest",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-cancelFriendRequest",
+                "title": "CarinaFriendsServ.cancelFriendRequest(currentUserId, requestId)",
+                "description": "Cancel an outgoing friend request by request ID.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_cancelFriendRequest_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `FriendRequest` and stores it as `friendRequest`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_cancelFriendRequest_1_2",
+                    "kind": "selection",
+                    "title": "`!friendRequest`",
+                    "selectionMode": "if_else",
+                    "condition": "`!friendRequest`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_cancelFriendRequest_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Friend request not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_cancelFriendRequest_2_3",
+                    "kind": "step",
+                    "title": "Database `deleteAll` on `FriendRequest`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_cancelFriendRequest_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Friend request cancelled successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-blockUser",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-blockUser",
+                "title": "CarinaFriendsServ.blockUser(currentUserId, body)",
+                "description": "Block a user by target user ID or username.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_blockUser_0_1",
+                    "kind": "var_def",
+                    "title": "Define `targetUserId`",
+                    "payload": "let targetUserId = body.targetUserId?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_blockUser_1_2",
+                    "kind": "selection",
+                    "title": "`!targetUserId && body.targetUsername`",
+                    "selectionMode": "if_else",
+                    "condition": "`!targetUserId && body.targetUsername`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_blockUser_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Database `first` on `User` and stores it as `user`"
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_blockUser_1_2_then_1_2_2",
+                        "kind": "selection",
+                        "title": "`!user`",
+                        "selectionMode": "if_else",
+                        "condition": "`!user`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaFriendsServ_blockUser_1_2_then_1_2_2_then_0_2_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "User @${body.targetUsername.trim()} not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_blockUser_1_2_then_2_2_3",
+                        "kind": "step",
+                        "title": "Assign `targetUserId`",
+                        "payload": "targetUserId = user.id",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_blockUser_2_3",
+                    "kind": "selection",
+                    "title": "`!targetUserId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!targetUserId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_blockUser_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Either targetUserId or targetUsername is required"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_blockUser_3_4",
+                    "kind": "selection",
+                    "title": "`targetUserId === currentUserId`",
+                    "selectionMode": "if_else",
+                    "condition": "`targetUserId === currentUserId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_blockUser_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "You cannot block yourself"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_blockUser_4_5",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `targetUser`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_blockUser_5_6",
+                    "kind": "selection",
+                    "title": "`!targetUser`",
+                    "selectionMode": "if_else",
+                    "condition": "`!targetUser`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_blockUser_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_blockUser_6_7",
+                    "kind": "step",
+                    "title": "Calls `prisma.transaction`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_blockUser_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"User blocked successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-unblockUser",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-unblockUser",
+                "title": "CarinaFriendsServ.unblockUser(currentUserId, blockId)",
+                "description": "Unblock a user by block record ID or blocked user ID.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_unblockUser_0_1",
+                    "kind": "var_def",
+                    "title": "Define `trimmed`",
+                    "payload": "const trimmed = blockId.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_unblockUser_1_2",
+                    "kind": "step",
+                    "title": "Database `first` on `UserBlock` and stores it as `block`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_unblockUser_2_3",
+                    "kind": "selection",
+                    "title": "`!block`",
+                    "selectionMode": "if_else",
+                    "condition": "`!block`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_unblockUser_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Blocked user record not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_unblockUser_3_4",
+                    "kind": "step",
+                    "title": "Database `deleteAll` on `UserBlock`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_unblockUser_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"User unblocked successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-getFriendsMediaTracking",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-getFriendsMediaTracking",
+                "title": "CarinaFriendsServ.getFriendsMediaTracking(currentUserId, mediaType, mediaId)",
+                "description": "Get friends tracking status for a media item.",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_0_1",
+                    "kind": "var_def",
+                    "title": "Define `normType`",
+                    "payload": "const normType = mediaType.toLowerCase().trim() as ValidMediaType",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_1_2",
+                    "kind": "selection",
+                    "title": "`!VALID_MEDIA_TYPES.includes(normType)`",
+                    "selectionMode": "if_else",
+                    "condition": "`!VALID_MEDIA_TYPES.includes(normType)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_getFriendsMediaTracking_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Invalid media type \"${mediaType}\". Valid types: ${VALID_MEDIA_TYPES.join(', ')}"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_2_3",
+                    "kind": "step",
+                    "title": "Database `all` on `Friend` and stores it as `friends`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_3_4",
+                    "kind": "selection",
+                    "title": "`friends.length === 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`friends.length === 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_getFriendsMediaTracking_3_4_then_0_4_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"mediaType\": \"<normType>\",\n  \"mediaId\": \"<mediaId>\",\n  \"friends\": []\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_4_5",
+                    "kind": "var_def",
+                    "title": "Define `friendIds`, `friendMap`, `trackingList`, `formatEntry`",
+                    "payload": "const friendIds = friends.map((f) => f.friendId)\nconst friendMap = new Map(friends.map((f) => [f.friendId, f]))\nconst trackingList: Array<{ id: string friendId: string nickname: string | null status: string progress: number | null progressVolumes: number | null ... = []\nconst formatEntry = ( userId: string, status: string, progress: number | null, progressVolumes: number | null, score: number | null, updatedAt: any ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6",
+                    "kind": "selection",
+                    "title": "`normType === 'anime'`",
+                    "selectionMode": "if_else",
+                    "condition": "`normType === 'anime'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Database `all` on `AnimeList` and stores it as `entries`"
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_then_1_6_2",
+                        "kind": "iteration",
+                        "title": "Iterate `const e` over `entries`",
+                        "loopType": "while",
+                        "condition": "Iterate `const e` over `entries`",
+                        "children": [
+                          {
+                            "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_then_1_6_2_loop_0_6_2_1",
+                            "kind": "step",
+                            "title": "Calls `formatEntry`"
+                          }
+                        ]
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1",
+                        "kind": "selection",
+                        "title": "`normType === 'manga'`",
+                        "selectionMode": "if_else",
+                        "condition": "`normType === 'manga'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_then_0_7_1_1",
+                            "kind": "step",
+                            "title": "Database `all` on `MangaList` and stores it as `entries`"
+                          },
+                          {
+                            "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_then_1_7_1_2",
+                            "kind": "iteration",
+                            "title": "Iterate `const e` over `entries`",
+                            "loopType": "while",
+                            "condition": "Iterate `const e` over `entries`",
+                            "children": [
+                              {
+                                "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_then_1_7_1_2_loop_0_7_1_2_1",
+                                "kind": "step",
+                                "title": "Calls `formatEntry`"
+                              }
+                            ]
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1",
+                            "kind": "selection",
+                            "title": "`normType === 'movie'`",
+                            "selectionMode": "if_else",
+                            "condition": "`normType === 'movie'`",
+                            "thenBranch": [
+                              {
+                                "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_then_0_7_2_1_1",
+                                "kind": "step",
+                                "title": "Database `all` on `MovieList` and stores it as `entries`"
+                              },
+                              {
+                                "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_then_1_7_2_1_2",
+                                "kind": "iteration",
+                                "title": "Iterate `const e` over `entries`",
+                                "loopType": "while",
+                                "condition": "Iterate `const e` over `entries`",
+                                "children": [
+                                  {
+                                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_then_1_7_2_1_2_loop_0_7_2_1_2_1",
+                                    "kind": "step",
+                                    "title": "Calls `formatEntry`"
+                                  }
+                                ]
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1",
+                                "kind": "selection",
+                                "title": "`normType === 'tv'`",
+                                "selectionMode": "if_else",
+                                "condition": "`normType === 'tv'`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_then_0_7_2_2_1_1",
+                                    "kind": "step",
+                                    "title": "Database `all` on `TvList` and stores it as `entries`"
+                                  },
+                                  {
+                                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_then_1_7_2_2_1_2",
+                                    "kind": "iteration",
+                                    "title": "Iterate `const e` over `entries`",
+                                    "loopType": "while",
+                                    "condition": "Iterate `const e` over `entries`",
+                                    "children": [
+                                      {
+                                        "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_then_1_7_2_2_1_2_loop_0_7_2_2_1_2_1",
+                                        "kind": "step",
+                                        "title": "Calls `formatEntry`"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1",
+                                    "kind": "selection",
+                                    "title": "`normType === 'game'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`normType === 'game'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1_then_0_7_2_2_2_1_1",
+                                        "kind": "step",
+                                        "title": "Database `all` on `GameList` and stores it as `entries`"
+                                      },
+                                      {
+                                        "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1_then_1_7_2_2_2_1_2",
+                                        "kind": "iteration",
+                                        "title": "Iterate `const e` over `entries`",
+                                        "loopType": "while",
+                                        "condition": "Iterate `const e` over `entries`",
+                                        "children": [
+                                          {
+                                            "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1_then_1_7_2_2_2_1_2_loop_0_7_2_2_2_1_2_1",
+                                            "kind": "step",
+                                            "title": "Calls `formatEntry`"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "elseBranch": [
+                                      {
+                                        "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1_else_0_7_2_2_2_2_1",
+                                        "kind": "selection",
+                                        "title": "`normType === 'book'`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`normType === 'book'`",
+                                        "thenBranch": [
+                                          {
+                                            "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1_else_0_7_2_2_2_2_1_then_0_7_2_2_2_2_1_1",
+                                            "kind": "step",
+                                            "title": "Database `all` on `BookList` and stores it as `entries`"
+                                          },
+                                          {
+                                            "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1_else_0_7_2_2_2_2_1_then_1_7_2_2_2_2_1_2",
+                                            "kind": "iteration",
+                                            "title": "Iterate `const e` over `entries`",
+                                            "loopType": "while",
+                                            "condition": "Iterate `const e` over `entries`",
+                                            "children": [
+                                              {
+                                                "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1_else_0_7_2_2_2_2_1_then_1_7_2_2_2_2_1_2_loop_0_7_2_2_2_2_1_2_1",
+                                                "kind": "step",
+                                                "title": "Calls `formatEntry`"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "elseBranch": [
+                                          {
+                                            "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1_else_0_7_2_2_2_2_1_else_0_7_2_2_2_2_2_1",
+                                            "kind": "selection",
+                                            "title": "`normType === 'music'`",
+                                            "selectionMode": "if_else",
+                                            "condition": "`normType === 'music'`",
+                                            "thenBranch": [
+                                              {
+                                                "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1_else_0_7_2_2_2_2_1_else_0_7_2_2_2_2_2_1_then_0_7_2_2_2_2_2_1_1",
+                                                "kind": "step",
+                                                "title": "Database `all` on `MusicList` and stores it as `entries`"
+                                              },
+                                              {
+                                                "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1_else_0_7_2_2_2_2_1_else_0_7_2_2_2_2_2_1_then_1_7_2_2_2_2_2_1_2",
+                                                "kind": "iteration",
+                                                "title": "Iterate `const e` over `entries`",
+                                                "loopType": "while",
+                                                "condition": "Iterate `const e` over `entries`",
+                                                "children": [
+                                                  {
+                                                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_5_6_else_0_7_1_else_0_7_2_1_else_0_7_2_2_1_else_0_7_2_2_2_1_else_0_7_2_2_2_2_1_else_0_7_2_2_2_2_2_1_then_1_7_2_2_2_2_2_1_2_loop_0_7_2_2_2_2_2_1_2_1",
+                                                    "kind": "step",
+                                                    "title": "Calls `formatEntry`"
+                                                  }
+                                                ]
+                                              }
+                                            ],
+                                            "elseBranch": []
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_getFriendsMediaTracking_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"mediaType\": \"<normType>\",\n  \"mediaId\": \"<mediaId>\",\n  \"friends\": \"<trackingList>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaFriendsServ-recommendToFriends",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/friends/friends.serv.ts-CarinaFriendsServ-recommendToFriends",
+                "title": "CarinaFriendsServ.recommendToFriends(currentUserId, body)",
+                "description": "Recommend media directly to friends strictly by user IDs (UUIDs).",
+                "steps": [
+                  {
+                    "id": "m_CarinaFriendsServ_recommendToFriends_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `Friend` and stores it as `validFriends`"
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_recommendToFriends_1_2",
+                    "kind": "selection",
+                    "title": "`validFriends.length === 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`validFriends.length === 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaFriendsServ_recommendToFriends_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "No valid friends selected"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_recommendToFriends_2_3",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "m_CarinaFriendsServ_recommendToFriends_2_3_try_0_3_1",
+                        "kind": "var_def",
+                        "title": "Define `upperMediaType`",
+                        "payload": "const upperMediaType = body.mediaType.toUpperCase() as MediaType",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_CarinaFriendsServ_recommendToFriends_2_3_try_1_3_2",
+                        "kind": "step",
+                        "title": "Database `create` on `ActivityLog`"
+                      }
+                    ],
+                    "catchBlock": [],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "m_CarinaFriendsServ_recommendToFriends_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Media recommendation sent to friend(s)\",\n  \"sentCount\": \"<validFriends.length>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "17 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Friend not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Friendship not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User @${body.targetUsername.trim()} not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Either targetUserId or targetUsername is required"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You cannot send a friend request to yourself"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User with ID \"${targetUserId}\" not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Cannot send friend request to blocked user"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You are already friends with this user"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Friend request already sent and pending"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Friend request not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Friend request is not pending"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid action \"${action}\""
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You cannot block yourself"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Blocked user record not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid media type \"${mediaType}\". Valid types: ${VALID_MEDIA_TYPES.join(', ')}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "No valid friends selected"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

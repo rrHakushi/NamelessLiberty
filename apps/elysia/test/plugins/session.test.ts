@@ -3,10 +3,10 @@ Bun.env.NEXT_PUBLIC_URL = 'http://localhost:3000'
 
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia } from 'elysia'
-import { session, resolveSessionFromRequest } from '../../src/plugins/session'
-import { signUserJwt } from '../../src/utils/auth-crypto'
-import { isHttpError, Unauthorized } from '../../src/lib/errors'
-import { prisma } from '@Iris/db'
+import { session, resolveSessionFromRequest } from '../../src/core/plugins/session'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
+import { isHttpError, Unauthorized } from '../../src/core/errors/http-errors'
+import { prisma } from '@NamelessLiberty/db'
 
 interface MockUser {
   id: string

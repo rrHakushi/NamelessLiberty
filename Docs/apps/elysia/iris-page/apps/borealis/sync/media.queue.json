@@ -1,0 +1,555 @@
+{
+  "id": "apps/borealis/sync/media.queue",
+  "title": "media.queue",
+  "description": "",
+  "icon": "IconStack2",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/sync/media.queue.ts",
+    "relPath": "apps/borealis/sync/media.queue.ts",
+    "role": "Queue",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconStack2",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "media.queue"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Queue"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/sync/media.queue.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "12 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/_shared/freshness",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/_shared/freshness.ts (MediaType)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/borealis/anime/anime.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/anime/anime.serv.ts (MediaQueueManager)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/borealis/books/books.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/books/books.serv.ts (MediaQueueManager)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-3",
+                        "props": {
+                          "href": "/docs/apps/borealis/games/games.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/games/games.serv.ts (MediaQueueManager)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-4",
+                        "props": {
+                          "href": "/docs/apps/borealis/manga/manga.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/manga/manga.serv.ts (MediaQueueManager)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-5",
+                        "props": {
+                          "href": "/docs/apps/borealis/movies/movies.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/movies/movies.serv.ts (MediaQueueManager)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-6",
+                        "props": {
+                          "href": "/docs/apps/borealis/music/music.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/music/music.serv.ts (MediaQueueManager)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-7",
+                        "props": {
+                          "href": "/docs/apps/borealis/search/external-search.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/search/external-search.serv.ts (MediaQueueManager)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-8",
+                        "props": {
+                          "href": "/docs/apps/borealis/sync/media-entity.syncer",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/sync/media-entity.syncer.ts (MediaQueueManager, MediaType)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-9",
+                        "props": {
+                          "href": "/docs/apps/borealis/sync/media.wrk",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/sync/media.wrk.ts (MEDIA_QUEUE_NAME, syncActiveMedia, MediaQueueManager, MediaJobData, MediaType)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-10",
+                        "props": {
+                          "href": "/docs/apps/borealis/tv/tv.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/tv/tv.serv.ts (MediaQueueManager)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-11",
+                        "props": {
+                          "href": "/docs/index",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "index.ts (MediaQueueManager)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-getMediaQueue",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media.queue.ts-getMediaQueue",
+                "title": "function getMediaQueue",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_getMediaQueue_0_1",
+                    "kind": "selection",
+                    "title": "`!mediaQueueWrapper`",
+                    "selectionMode": "if_else",
+                    "condition": "`!mediaQueueWrapper`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_getMediaQueue_0_1_then_0_1_1",
+                        "kind": "step",
+                        "title": "Assign `mediaQueueWrapper`",
+                        "payload": "mediaQueueWrapper = new MediaUpdatesQueue()",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_getMediaQueue_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`mediaQueueWrapper.getQueue()`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-syncActiveMedia",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media.queue.ts-syncActiveMedia",
+                "title": "function syncActiveMedia",
+                "description": "Scans all media entities currently in active/ongoing publication/broadcasting status (RELEASING, HIATUS, UPCOMING) and enqueues background refresh jobs into the reusable BullMQ media queue. For weekly updates, depth is strictly set to 0 so only this single media item updates without cascading to relations.",
+                "steps": [
+                  {
+                    "id": "exp_syncActiveMedia_0_1",
+                    "kind": "var_def",
+                    "title": "Define `result`",
+                    "payload": "const result: ActiveMediaSyncResult = { anime: 0, manga: 0, tv: 0, movie: 0, book: 0, game: 0, ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_syncActiveMedia_1_2",
+                    "kind": "step",
+                    "title": "Calls `getWeekIdentifier` and stores result as `weekKey`"
+                  },
+                  {
+                    "id": "exp_syncActiveMedia_2_3",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_2_3_try_0_3_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Anime` and stores it as `animes`"
+                      },
+                      {
+                        "id": "exp_syncActiveMedia_2_3_try_1_3_2",
+                        "kind": "iteration",
+                        "title": "Iterate `const anime` over `animes`",
+                        "loopType": "while",
+                        "condition": "Iterate `const anime` over `animes`",
+                        "children": [
+                          {
+                            "id": "exp_syncActiveMedia_2_3_try_1_3_2_loop_0_3_2_1",
+                            "kind": "step",
+                            "title": "Calls `MediaQueueManager.enqueueMediaUpdate('ANIME', anime.id, { externalId: anime.anilistId, priority: 10, triggeredBy: 'cron', depth: 0, maxDepth: 0, jobId: `media-update-ANIME-${anime.id}-${weekKey}`, ...).catch`"
+                          }
+                        ]
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_2_3_catch_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_syncActiveMedia_4_5",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_4_5_try_0_5_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Manga` and stores it as `mangas`"
+                      },
+                      {
+                        "id": "exp_syncActiveMedia_4_5_try_1_5_2",
+                        "kind": "iteration",
+                        "title": "Iterate `const manga` over `mangas`",
+                        "loopType": "while",
+                        "condition": "Iterate `const manga` over `mangas`",
+                        "children": [
+                          {
+                            "id": "exp_syncActiveMedia_4_5_try_1_5_2_loop_0_5_2_1",
+                            "kind": "step",
+                            "title": "Calls `MediaQueueManager.enqueueMediaUpdate('MANGA', manga.id, { externalId: manga.anilistId, priority: 10, triggeredBy: 'cron', depth: 0, maxDepth: 0, jobId: `media-update-MANGA-${manga.id}-${weekKey}`, ...).catch`"
+                          }
+                        ]
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_4_5_catch_0_6_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_syncActiveMedia_6_7",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_6_7_try_0_7_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Tv` and stores it as `tvs`"
+                      },
+                      {
+                        "id": "exp_syncActiveMedia_6_7_try_1_7_2",
+                        "kind": "iteration",
+                        "title": "Iterate `const tv` over `tvs`",
+                        "loopType": "while",
+                        "condition": "Iterate `const tv` over `tvs`",
+                        "children": [
+                          {
+                            "id": "exp_syncActiveMedia_6_7_try_1_7_2_loop_0_7_2_1",
+                            "kind": "step",
+                            "title": "Calls `MediaQueueManager.enqueueMediaUpdate('TV', tv.id, { externalId: tv.tvDBId, priority: 10, triggeredBy: 'cron', depth: 0, jobId: `media-update-TV-${tv.id}-${weekKey}`, }).catch`"
+                          }
+                        ]
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_6_7_catch_0_8_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_syncActiveMedia_8_9",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_8_9_try_0_9_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Movie` and stores it as `movies`"
+                      },
+                      {
+                        "id": "exp_syncActiveMedia_8_9_try_1_9_2",
+                        "kind": "iteration",
+                        "title": "Iterate `const movie` over `movies`",
+                        "loopType": "while",
+                        "condition": "Iterate `const movie` over `movies`",
+                        "children": [
+                          {
+                            "id": "exp_syncActiveMedia_8_9_try_1_9_2_loop_0_9_2_1",
+                            "kind": "step",
+                            "title": "Calls `MediaQueueManager.enqueueMediaUpdate('MOVIE', movie.id, { externalId: movie.tvDBId, priority: 10, triggeredBy: 'cron', depth: 0, jobId: `media-update-MOVIE-${movie.id}-${weekKey}`, }).catch`"
+                          }
+                        ]
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_8_9_catch_0_10_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_syncActiveMedia_10_11",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_10_11_try_0_11_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Book` and stores it as `books`"
+                      },
+                      {
+                        "id": "exp_syncActiveMedia_10_11_try_1_11_2",
+                        "kind": "iteration",
+                        "title": "Iterate `const book` over `books`",
+                        "loopType": "while",
+                        "condition": "Iterate `const book` over `books`",
+                        "children": [
+                          {
+                            "id": "exp_syncActiveMedia_10_11_try_1_11_2_loop_0_11_2_1",
+                            "kind": "step",
+                            "title": "Calls `MediaQueueManager.enqueueMediaUpdate('BOOK', book.id, { externalId: book.googleBookId, priority: 10, triggeredBy: 'cron', depth: 0, jobId: `media-update-BOOK-${book.id}-${weekKey}`, }).catch`"
+                          }
+                        ]
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_10_11_catch_0_12_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_syncActiveMedia_12_13",
+                    "kind": "try_catch_finally",
+                    "title": "Try block",
+                    "catchVar": "err",
+                    "tryBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_12_13_try_0_13_1",
+                        "kind": "step",
+                        "title": "Database `all` on `Game` and stores it as `games`"
+                      },
+                      {
+                        "id": "exp_syncActiveMedia_12_13_try_1_13_2",
+                        "kind": "iteration",
+                        "title": "Iterate `const game` over `games`",
+                        "loopType": "while",
+                        "condition": "Iterate `const game` over `games`",
+                        "children": [
+                          {
+                            "id": "exp_syncActiveMedia_12_13_try_1_13_2_loop_0_13_2_1",
+                            "kind": "step",
+                            "title": "Calls `MediaQueueManager.enqueueMediaUpdate('GAME', game.id, { externalId: game.igdbId, priority: 10, triggeredBy: 'cron', depth: 0, jobId: `media-update-GAME-${game.id}-${weekKey}`, }).catch`"
+                          }
+                        ]
+                      }
+                    ],
+                    "catchBlock": [
+                      {
+                        "id": "exp_syncActiveMedia_12_13_catch_0_14_1",
+                        "kind": "step",
+                        "title": "Calls `logger.error`"
+                      }
+                    ],
+                    "finallyBlock": []
+                  },
+                  {
+                    "id": "exp_syncActiveMedia_14_15",
+                    "kind": "step",
+                    "title": "Assign `result.total`",
+                    "payload": "result.total = result.anime + result.manga + result.tv + result.movie + result.book + result.game",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_syncActiveMedia_15_16",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`result`"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

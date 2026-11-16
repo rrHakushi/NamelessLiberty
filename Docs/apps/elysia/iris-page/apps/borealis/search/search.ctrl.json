@@ -1,0 +1,736 @@
+{
+  "id": "apps/borealis/search/search.ctrl",
+  "title": "Search media catalog (?q=...&category=...)",
+  "description": "Searches media catalog items across media, anime, manga, movies, tv, music, books, characters, people, studios.",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/borealis/search",
+    "relPath": "apps/borealis/search/search.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/borealis/search"
+    ],
+    "errorCount": 1
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Search media catalog (?q=...&category=...)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              },
+              {
+                "type": "CardDescription",
+                "props": {
+                  "className": "text-start pt-1"
+                },
+                "text": "Searches media catalog items across media, anime, manga, movies, tv, music, books, characters, people, studios."
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/borealis/search"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_14)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "3 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisSearchModel.searchQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisSearchModel.searchResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisSearchModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/search/search.ctrl.ts-route-0",
+                "title": "GET /borealis/search",
+                "description": "Search media catalog (?q=...&category=...)",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `BorealisSearchModel.searchQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisSearchServ.search(query)`"
+                  },
+                  {
+                    "id": "call_0_BorealisSearchServ_search",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisSearchServ.search",
+                    "isAsync": true,
+                    "targetAlg": "BorealisSearchServ.search"
+                  },
+                  {
+                    "id": "svc_0_BorealisSearchServ_search",
+                    "kind": "sequence",
+                    "title": "BorealisSearchServ.search Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_BorealisSearchServ_search_0_1",
+                        "kind": "var_def",
+                        "title": "Define `rawQuery`",
+                        "payload": "const rawQuery = query.q",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisSearchServ_search_1_2",
+                        "kind": "selection",
+                        "title": "`!rawQuery || rawQuery.trim().length === 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`!rawQuery || rawQuery.trim().length === 0`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Query parameter \"q\" cannot be empty."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisSearchServ_search_2_3",
+                        "kind": "var_def",
+                        "title": "Define `cleanQuery`, `category`",
+                        "payload": "const cleanQuery = rawQuery.trim()\nconst category = query.category || 'media'",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisSearchServ_search_3_4",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_0_BorealisSearchServ_search_4_5",
+                        "kind": "step",
+                        "title": "Calls `Math.min` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_0_BorealisSearchServ_search_5_6",
+                        "kind": "var_def",
+                        "title": "Define `skip`, `isExternal`, `externalStubs`",
+                        "payload": "const skip = page - 1 * limit\nconst isExternal = query.external === true || query.external === 'true' || query.external === '1'\nlet externalStubs: PreviewResult[] = []",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisSearchServ_search_6_7",
+                        "kind": "selection",
+                        "title": "`isExternal && [ 'anime', 'manga', 'movies', 'tv', 'games', 'books', ....includes(category)`",
+                        "selectionMode": "if_else",
+                        "condition": "`isExternal && [ 'anime', 'manga', 'movies', 'tv', 'games', 'books', ....includes(category)`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_6_7_then_0_7_1",
+                            "kind": "step",
+                            "title": "Assign `externalStubs`",
+                            "payload": "externalStubs = await BorealisExternalSearchServ.enqueueSearchFetch( category, cleanQuery, limit )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisSearchServ_search_7_8",
+                        "kind": "selection",
+                        "title": "Branch on `category`",
+                        "selectionMode": "switch",
+                        "condition": "Branch on `category`",
+                        "cases": [
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_0",
+                            "label": "Case `'anime'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_1",
+                            "label": "Case `'manga'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_2",
+                            "label": "Case `'movie'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_3",
+                            "label": "Case `'movies'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_4",
+                            "label": "Case `'tv'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_5",
+                            "label": "Case `'game'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_6",
+                            "label": "Case `'games'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_7",
+                            "label": "Case `'music'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_8",
+                            "label": "Case `'book'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_9",
+                            "label": "Case `'books'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_10",
+                            "label": "Case `'character'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_11",
+                            "label": "Case `'characters'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_12",
+                            "label": "Case `'staff'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_13",
+                            "label": "Case `'people'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_14",
+                            "label": "Case `'studio'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_15",
+                            "label": "Case `'studios'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_16",
+                            "label": "Case `'media'`",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_17",
+                            "label": "Default",
+                            "children": []
+                          },
+                          {
+                            "id": "svc_0_BorealisSearchServ_search_7_8_case_18",
+                            "label": "Case `'other'`",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "1 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Query parameter \"q\" cannot be empty."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

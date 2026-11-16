@@ -18,6 +18,7 @@ import { elysia } from "@/lib/elysia"
 import { dedupGet, invalidateDedup } from "@/lib/request-dedup"
 import { toast } from "sonner"
 import { cn } from "@workspace/ui/lib/utils"
+import { useServarrRealtime } from "./use-servarr-realtime"
 
 export interface ServarrBlocklistViewProps {
   provider: "SONARR" | "RADARR"
@@ -43,7 +44,7 @@ export function ServarrBlocklistView({ provider }: ServarrBlocklistViewProps) {
       setIsLoading(true)
       try {
         const cacheKey = `servarr:${provider}:blocklist:${page}:${pageSize}`
-        const res = await dedupGet(
+        const res = (await dedupGet(
           cacheKey,
           () =>
             provider === "SONARR"
@@ -64,7 +65,7 @@ export function ServarrBlocklistView({ provider }: ServarrBlocklistViewProps) {
                   },
                 }),
           { force, ttlMs: 2500 }
-        )
+        )) as any
 
         if (res?.data?.success && Array.isArray(res.data.records)) {
           setRecords(res.data.records)
@@ -92,6 +93,16 @@ export function ServarrBlocklistView({ provider }: ServarrBlocklistViewProps) {
     setSelectedIds(new Set())
     fetchBlocklist()
   }, [provider, page, fetchBlocklist])
+
+  useServarrRealtime({
+    app: provider === "RADARR" ? "radarr" : "sonarr",
+    topics: ["blocklist", "command"],
+    onSync: () => {
+      invalidateDedup(`servarr:${provider}:blocklist`)
+      void fetchBlocklist(true)
+    },
+    fallbackPollMs: 45_000,
+  })
 
   const handleToggleSelect = (id: number) => {
     const next = new Set(selectedIds)

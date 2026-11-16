@@ -1,16 +1,16 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia } from 'elysia'
-import { carinaAuth } from '../../src/api/controllers/carina/auth.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { cache } from '../../src/utils/cache'
+import { carinaAuth } from '../../src/apps/carina/auth/auth.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { cache } from '../../src/core/utils/cache'
 import {
   hashPassword,
   verifyPassword,
   signUserJwt,
   generateUserKeypair,
-} from '../../src/utils/auth-crypto'
-import { prisma } from '@Iris/db'
-import { IRISFlags } from '@IRIS/permissions'
+} from '../../src/core/utils/auth-crypto'
+import { prisma } from '@NamelessLiberty/db'
+import { IRISFlags } from '@NamelessLiberty/permissions'
 
 // -----------------------------------------------------------------------------
 // In-Memory Database Mock for (prisma as any).user

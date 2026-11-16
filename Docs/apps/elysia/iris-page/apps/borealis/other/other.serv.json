@@ -1,0 +1,2441 @@
+{
+  "id": "apps/borealis/other/other.serv",
+  "title": "other.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/other/other.serv.ts",
+    "relPath": "apps/borealis/other/other.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 11
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "other.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/other/other.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/other/other.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/other/other.ctrl.ts (BorealisOtherServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "12 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.getCatalog"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.getFilters"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.createItem"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, body, isAdmin)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.getItem"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(otherId, currentUserId, isAdmin = false)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.updateItem"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, otherId, body, isAdmin = false)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.deleteItem"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, otherId, isAdmin = false)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.forkItem"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, otherId, isAdmin = false)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.uploadAsset"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, file, type)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.getStats"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(otherId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.getFriends"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(otherId, currentUserId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.getPeople"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(otherId, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisOtherServ.getRecommendations"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(_otherId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-getCatalog",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-getCatalog",
+                "title": "BorealisOtherServ.getCatalog(query)",
+                "description": "Get public catalog of custom items with pagination and filters.",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`, `search`",
+                    "payload": "const skip = query?.cursor ? 0 : (page - 1) * limit\nconst search = query?.search?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_3_4",
+                    "kind": "step",
+                    "title": "Calls `parseList` and stores result as `formats`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_4_5",
+                    "kind": "var_def",
+                    "title": "Define `sortBy`, `sortOrder`",
+                    "payload": "const sortBy = query?.sortBy ?? 'popularity'\nconst sortOrder = query?.sortOrder ?? sortBy === 'title' ? 'asc' : 'desc'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_5_6",
+                    "kind": "step",
+                    "title": "Database `query` on `Other` and stores it as `q`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_6_7",
+                    "kind": "selection",
+                    "title": "`search`",
+                    "selectionMode": "if_else",
+                    "condition": "`search`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getCatalog_6_7_then_0_7_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => or( m.titlePrimary.ilike(`%${search}%`), m.titleSecondary.ilike(`%${search}%`) ) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_7_8",
+                    "kind": "selection",
+                    "title": "`formats.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`formats.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getCatalog_7_8_then_0_8_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => m.format.in(formats))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_8_9",
+                    "kind": "selection",
+                    "title": "`query?.cursor`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.cursor`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getCatalog_8_9_then_0_9_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((m) => sortOrder === 'asc' ? m.id.gt(query.cursor!) : m.id.lt(query.cursor!) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_9_10",
+                    "kind": "var_def",
+                    "title": "Define `itemsQ`",
+                    "payload": "let itemsQ = q",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_10_11",
+                    "kind": "selection",
+                    "title": "`sortBy === 'score'`",
+                    "selectionMode": "if_else",
+                    "condition": "`sortBy === 'score'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getCatalog_10_11_then_0_11_1",
+                        "kind": "step",
+                        "title": "Assign `itemsQ`",
+                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.averageScore.asc() : x.averageScore.desc() )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getCatalog_10_11_else_0_12_1",
+                        "kind": "selection",
+                        "title": "`sortBy === 'title'`",
+                        "selectionMode": "if_else",
+                        "condition": "`sortBy === 'title'`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisOtherServ_getCatalog_10_11_else_0_12_1_then_0_12_1_1",
+                            "kind": "step",
+                            "title": "Assign `itemsQ`",
+                            "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.titlePrimary.asc() : x.titlePrimary.desc() )",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "m_BorealisOtherServ_getCatalog_10_11_else_0_12_1_else_0_12_2_1",
+                            "kind": "selection",
+                            "title": "`sortBy === 'releaseDate'`",
+                            "selectionMode": "if_else",
+                            "condition": "`sortBy === 'releaseDate'`",
+                            "thenBranch": [
+                              {
+                                "id": "m_BorealisOtherServ_getCatalog_10_11_else_0_12_1_else_0_12_2_1_then_0_12_2_1_1",
+                                "kind": "step",
+                                "title": "Assign `itemsQ`",
+                                "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.startDate.asc() : x.startDate.desc() )",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "m_BorealisOtherServ_getCatalog_10_11_else_0_12_1_else_0_12_2_1_else_0_12_2_2_1",
+                                "kind": "selection",
+                                "title": "`sortBy === 'favorites'`",
+                                "selectionMode": "if_else",
+                                "condition": "`sortBy === 'favorites'`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_BorealisOtherServ_getCatalog_10_11_else_0_12_1_else_0_12_2_1_else_0_12_2_2_1_then_0_12_2_2_1_1",
+                                    "kind": "step",
+                                    "title": "Assign `itemsQ`",
+                                    "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.favorites.asc() : x.favorites.desc() )",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "m_BorealisOtherServ_getCatalog_10_11_else_0_12_1_else_0_12_2_1_else_0_12_2_2_1_else_0_12_2_2_2_1",
+                                    "kind": "selection",
+                                    "title": "`sortBy === 'updatedAt'`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`sortBy === 'updatedAt'`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_BorealisOtherServ_getCatalog_10_11_else_0_12_1_else_0_12_2_1_else_0_12_2_2_1_else_0_12_2_2_2_1_then_0_12_2_2_2_1_1",
+                                        "kind": "step",
+                                        "title": "Assign `itemsQ`",
+                                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.updatedAt.asc() : x.updatedAt.desc() )",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ],
+                                    "elseBranch": [
+                                      {
+                                        "id": "m_BorealisOtherServ_getCatalog_10_11_else_0_12_1_else_0_12_2_1_else_0_12_2_2_1_else_0_12_2_2_2_1_else_0_12_2_2_2_2_1",
+                                        "kind": "step",
+                                        "title": "Assign `itemsQ`",
+                                        "payload": "itemsQ = itemsQ.orderBy((x) => sortOrder === 'asc' ? x.popularity.asc() : x.popularity.desc() )",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_12_13",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawItems]`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_13_14",
+                    "kind": "var_def",
+                    "title": "Define `items`, `nextCursor`, `hasMore`",
+                    "payload": "const items = rawItems.map((m: any) => ({ id: m.id, titlePrimary: m.titlePrimary, titleSecondary: m.titleSecondary ?? null, titleNative: m.titleSecondary ?? null, coverImage: m.coverImage ?? null, bannerImage: m.bannerImage ?? null, ...)\nconst nextCursor = items.length === limit ? items[items.length - 1]!.id : null\nconst hasMore = query?.cursor ? nextCursor !== null : skip + limit < total",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getCatalog_14_15",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"items\": \"<items>\",\n  \"nextCursor\": \"<nextCursor>\",\n  \"hasMore\": \"<hasMore>\",\n  \"total\": \"<total>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit)>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-getFilters",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-getFilters",
+                "title": "BorealisOtherServ.getFilters()",
+                "description": "Get available catalog filters for other items.",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_getFilters_0_1",
+                    "kind": "step",
+                    "title": "Database `all` on `Other` and stores it as `allPublished`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getFilters_1_2",
+                    "kind": "var_def",
+                    "title": "Define `formatCounts`, `yearCounts`",
+                    "payload": "const formatCounts: Record<string, number> = {}\nconst yearCounts: Record<number, number> = {}",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getFilters_2_3",
+                    "kind": "iteration",
+                    "title": "Iterate `const item` over `allPublished`",
+                    "loopType": "while",
+                    "condition": "Iterate `const item` over `allPublished`",
+                    "children": [
+                      {
+                        "id": "m_BorealisOtherServ_getFilters_2_3_loop_0_3_1",
+                        "kind": "selection",
+                        "title": "`item.format`",
+                        "selectionMode": "if_else",
+                        "condition": "`item.format`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisOtherServ_getFilters_2_3_loop_0_3_1_then_0_3_1_1",
+                            "kind": "step",
+                            "title": "Assign `formatCounts[item.format]`",
+                            "payload": "formatCounts[item.format] = (formatCounts[item.format] || 0) + 1",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_BorealisOtherServ_getFilters_2_3_loop_1_3_2",
+                        "kind": "selection",
+                        "title": "`item.startDate`",
+                        "selectionMode": "if_else",
+                        "condition": "`item.startDate`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisOtherServ_getFilters_2_3_loop_1_3_2_then_0_3_2_1",
+                            "kind": "step",
+                            "title": "Calls `toDate(item.startDate).getFullYear` and stores result as `y`"
+                          },
+                          {
+                            "id": "m_BorealisOtherServ_getFilters_2_3_loop_1_3_2_then_1_3_2_2",
+                            "kind": "step",
+                            "title": "Assign `yearCounts[y]`",
+                            "payload": "yearCounts[y] = (yearCounts[y] || 0) + 1",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getFilters_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"statuses\": [\n    {\n      \"value\": \"PUBLISHED\",\n      \"count\": \"<allPublished.length>\"\n    }\n  ],\n  \"formats\": \"<Object.entries(formatCounts).map(([value, count]) => ({ value, count }))>\",\n  \"genres\": [],\n  \"years\": \"<Object.entries(yearCounts).map(([value, count]) => ({ value: Number(value), count })).sort((a, b) => b.value - a.value)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-createItem",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-createItem",
+                "title": "BorealisOtherServ.createItem(userId, body, isAdmin)",
+                "description": "Create a custom trackable catalog item. Standard users are capped at 500 created items; ADMINISTRATOR users are unlimited.",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_createItem_0_1",
+                    "kind": "selection",
+                    "title": "`!isAdmin`",
+                    "selectionMode": "if_else",
+                    "condition": "`!isAdmin`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_createItem_0_1_then_0_1_1",
+                        "kind": "step",
+                        "title": "Database `query` on `Other` and stores it as `existingCount`"
+                      },
+                      {
+                        "id": "m_BorealisOtherServ_createItem_0_1_then_1_1_2",
+                        "kind": "selection",
+                        "title": "`existingCount >= 500`",
+                        "selectionMode": "if_else",
+                        "condition": "`existingCount >= 500`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisOtherServ_createItem_0_1_then_1_1_2_then_0_1_2_1",
+                            "kind": "error",
+                            "code": "Forbidden",
+                            "httpStatus": 403,
+                            "message": "You have reached the maximum limit of 500 custom items. Administrator permission is required to create more."
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_createItem_1_2",
+                    "kind": "selection",
+                    "title": "`!body.progressFields || body.progressFields.length === 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`!body.progressFields || body.progressFields.length === 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_createItem_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "At least one progress field must be defined."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_createItem_2_3",
+                    "kind": "var_def",
+                    "title": "Define `fieldKeys`",
+                    "payload": "const fieldKeys = new Set(body.progressFields.map((f) => f.key))",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_createItem_3_4",
+                    "kind": "selection",
+                    "title": "`!fieldKeys.has(body.incrementFieldKey)`",
+                    "selectionMode": "if_else",
+                    "condition": "`!fieldKeys.has(body.incrementFieldKey)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_createItem_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Designated incrementFieldKey \"${body.incrementFieldKey}\" must match one of the defined progress field keys."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_createItem_4_5",
+                    "kind": "var_def",
+                    "title": "Define `startDate`, `endDate`, `format`",
+                    "payload": "const startDate = body.startDate ? new Date(body.startDate) : null\nconst endDate = body.endDate ? new Date(body.endDate) : null\nconst format = body.format ? body.format.trim().toLowerCase() : null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_createItem_5_6",
+                    "kind": "step",
+                    "title": "Database `create` on `Other` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_createItem_6_7",
+                    "kind": "step",
+                    "title": "Database `first` on `Other` and stores it as `item`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_createItem_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"item\": \"<item>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-getItem",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-getItem",
+                "title": "BorealisOtherServ.getItem(otherId, currentUserId, isAdmin = false)",
+                "description": "Get single custom item by ID.",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_getItem_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Other` and stores it as `item`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getItem_1_2",
+                    "kind": "selection",
+                    "title": "`!item`",
+                    "selectionMode": "if_else",
+                    "condition": "`!item`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getItem_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Custom item with ID ${otherId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getItem_2_3",
+                    "kind": "selection",
+                    "title": "`!item.isPublished && item.creatorId !== currentUserId && !isAdmin`",
+                    "selectionMode": "if_else",
+                    "condition": "`!item.isPublished && item.creatorId !== currentUserId && !isAdmin`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getItem_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Custom item with ID ${otherId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getItem_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"item\": \"<item>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-updateItem",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-updateItem",
+                "title": "BorealisOtherServ.updateItem(userId, otherId, body, isAdmin = false)",
+                "description": "Update an existing custom item. If the item is published and tracked by other users, creates a pre-update snapshot and dispatches interactive notifications to tracking users with a one-click fork option.",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_updateItem_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Other` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_updateItem_1_2",
+                    "kind": "selection",
+                    "title": "`!existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`!existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_updateItem_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Custom item with ID ${otherId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_updateItem_2_3",
+                    "kind": "selection",
+                    "title": "`existing.creatorId !== userId && !isAdmin`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing.creatorId !== userId && !isAdmin`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_updateItem_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "Only the creator or an administrator can edit this item"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_updateItem_3_4",
+                    "kind": "var_def",
+                    "title": "Define `progressFields`, `incrementFieldKey`",
+                    "payload": "const progressFields = body.progressFields ?? existing.progressFields as any\nconst incrementFieldKey = body.incrementFieldKey ?? existing.incrementFieldKey",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_updateItem_4_5",
+                    "kind": "selection",
+                    "title": "`body.progressFields || body.incrementFieldKey`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.progressFields || body.incrementFieldKey`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_updateItem_4_5_then_0_5_1",
+                        "kind": "selection",
+                        "title": "`!progressFields || progressFields.length === 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`!progressFields || progressFields.length === 0`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisOtherServ_updateItem_4_5_then_0_5_1_then_0_5_1_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "At least one progress field must be defined."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_BorealisOtherServ_updateItem_4_5_then_1_5_2",
+                        "kind": "var_def",
+                        "title": "Define `fieldKeys`",
+                        "payload": "const fieldKeys = new Set(progressFields.map((f: any) => f.key))",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_BorealisOtherServ_updateItem_4_5_then_2_5_3",
+                        "kind": "selection",
+                        "title": "`incrementFieldKey && !fieldKeys.has(incrementFieldKey)`",
+                        "selectionMode": "if_else",
+                        "condition": "`incrementFieldKey && !fieldKeys.has(incrementFieldKey)`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisOtherServ_updateItem_4_5_then_2_5_3_then_0_5_3_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Designated incrementFieldKey \"${incrementFieldKey}\" must match one of the defined progress field keys."
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_updateItem_5_6",
+                    "kind": "step",
+                    "title": "Database `all` on `OtherList` and stores it as `trackers`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_updateItem_6_7",
+                    "kind": "var_def",
+                    "title": "Define `preUpdateSnapshot`",
+                    "payload": "let preUpdateSnapshot = existing.preUpdateSnapshot",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_updateItem_7_8",
+                    "kind": "selection",
+                    "title": "`existing.isPublished && trackers.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing.isPublished && trackers.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_updateItem_7_8_then_0_8_1",
+                        "kind": "step",
+                        "title": "Assign `preUpdateSnapshot`",
+                        "payload": "preUpdateSnapshot = { titlePrimary: existing.titlePrimary, titleSecondary: existing.titleSecondary, description: existing.description, coverImage: existing.coverImage, bannerImage: existing.bannerImage, format: existing.format, ...",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_BorealisOtherServ_updateItem_7_8_then_1_8_2",
+                        "kind": "iteration",
+                        "title": "Iterate `const tracker` over `trackers`",
+                        "loopType": "while",
+                        "condition": "Iterate `const tracker` over `trackers`",
+                        "children": [
+                          {
+                            "id": "m_BorealisOtherServ_updateItem_7_8_then_1_8_2_loop_0_8_2_1",
+                            "kind": "try_catch_finally",
+                            "title": "Try block",
+                            "catchVar": "err",
+                            "tryBlock": [
+                              {
+                                "id": "m_BorealisOtherServ_updateItem_7_8_then_1_8_2_loop_0_8_2_1_try_0_8_2_1_1",
+                                "kind": "step",
+                                "title": "Calls `CarinaNotificationsServ.createNotification`"
+                              }
+                            ],
+                            "catchBlock": [
+                              {
+                                "id": "m_BorealisOtherServ_updateItem_7_8_then_1_8_2_loop_0_8_2_1_catch_0_8_2_2_1",
+                                "kind": "warning",
+                                "code": "Warning",
+                                "message": "[OtherServ] Failed to send update notification to user ${tracker.userId}:`, err"
+                              }
+                            ],
+                            "finallyBlock": []
+                          }
+                        ]
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_updateItem_8_9",
+                    "kind": "step",
+                    "title": "Database `update` on `Other`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_updateItem_9_10",
+                    "kind": "step",
+                    "title": "Database `first` on `Other` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_updateItem_10_11",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"item\": \"<updated>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-deleteItem",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-deleteItem",
+                "title": "BorealisOtherServ.deleteItem(userId, otherId, isAdmin = false)",
+                "description": "Delete custom item. STRICT INTEGRITY: If any user other than creator has it in their list or favorited, deletion is strictly blocked (even for admins).",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Other` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_1_2",
+                    "kind": "selection",
+                    "title": "`!existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`!existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_deleteItem_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Custom item with ID ${otherId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_2_3",
+                    "kind": "selection",
+                    "title": "`existing.creatorId !== userId && !isAdmin`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing.creatorId !== userId && !isAdmin`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_deleteItem_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "Only the creator or an administrator can delete this item"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_3_4",
+                    "kind": "step",
+                    "title": "Database `query` on `OtherList` and stores it as `otherUserTrackingCount`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_4_5",
+                    "kind": "step",
+                    "title": "Database `query` on `Favorite` and stores it as `otherUserFavoriteCount`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_5_6",
+                    "kind": "step",
+                    "title": "Database `all` on `CustomList` and stores it as `userCustomLists`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_6_7",
+                    "kind": "var_def",
+                    "title": "Define `userCustomListIds`",
+                    "payload": "const userCustomListIds = userCustomLists.map((cl) => cl.id)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_7_8",
+                    "kind": "step",
+                    "title": "Database `query` on `CustomListEntry` and stores it as `customListEntryQuery`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_8_9",
+                    "kind": "step",
+                    "title": "Calls `countOf` and stores result as `otherUserCustomListCount`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_9_10",
+                    "kind": "selection",
+                    "title": "`otherUserTrackingCount > 0 || otherUserFavoriteCount > 0 || otherUserCustomListCount > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`otherUserTrackingCount > 0 || otherUserFavoriteCount > 0 || otherUserCustomListCount > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_deleteItem_9_10_then_0_10_1",
+                        "kind": "error",
+                        "code": "Conflict",
+                        "httpStatus": 409,
+                        "message": "This item cannot be deleted because other users have it tracked in their list, favorited, or in a custom list."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_10_11",
+                    "kind": "step",
+                    "title": "Calls `prisma.transaction`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_deleteItem_11_12",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Item removed successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-forkItem",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-forkItem",
+                "title": "BorealisOtherServ.forkItem(userId, otherId, isAdmin = false)",
+                "description": "Fork pre-update snapshot (or current item) into a new private item for the requesting user, and repoint their list entry to the new private item.",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_forkItem_0_1",
+                    "kind": "selection",
+                    "title": "`!isAdmin`",
+                    "selectionMode": "if_else",
+                    "condition": "`!isAdmin`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_forkItem_0_1_then_0_1_1",
+                        "kind": "step",
+                        "title": "Database `query` on `Other` and stores it as `existingCount`"
+                      },
+                      {
+                        "id": "m_BorealisOtherServ_forkItem_0_1_then_1_1_2",
+                        "kind": "selection",
+                        "title": "`existingCount >= 500`",
+                        "selectionMode": "if_else",
+                        "condition": "`existingCount >= 500`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisOtherServ_forkItem_0_1_then_1_1_2_then_0_1_2_1",
+                            "kind": "error",
+                            "code": "Forbidden",
+                            "httpStatus": 403,
+                            "message": "You have reached the maximum limit of 500 custom items. Administrator permission is required to create more."
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_forkItem_1_2",
+                    "kind": "step",
+                    "title": "Database `first` on `Other` and stores it as `item`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_forkItem_2_3",
+                    "kind": "selection",
+                    "title": "`!item`",
+                    "selectionMode": "if_else",
+                    "condition": "`!item`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_forkItem_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Custom item with ID ${otherId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_forkItem_3_4",
+                    "kind": "var_def",
+                    "title": "Define `snapshot`",
+                    "payload": "const snapshot = item.preUpdateSnapshot as any || item",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_forkItem_4_5",
+                    "kind": "step",
+                    "title": "Database `create` on `Other` and stores it as `cloned`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_forkItem_5_6",
+                    "kind": "var_def",
+                    "title": "Define `updatedEntry`",
+                    "payload": "let updatedEntry: any = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_forkItem_6_7",
+                    "kind": "step",
+                    "title": "Database `first` on `OtherList` and stores it as `existingListEntry`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_forkItem_7_8",
+                    "kind": "selection",
+                    "title": "`existingListEntry`",
+                    "selectionMode": "if_else",
+                    "condition": "`existingListEntry`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_forkItem_7_8_then_0_8_1",
+                        "kind": "step",
+                        "title": "Database `delete` on `OtherList`"
+                      },
+                      {
+                        "id": "m_BorealisOtherServ_forkItem_7_8_then_1_8_2",
+                        "kind": "step",
+                        "title": "Assign `updatedEntry`",
+                        "payload": "updatedEntry = await prisma.orm.public.OtherList.create({ userId, otherId: cloned.id, status: existingListEntry.status, progressValues: existingListEntry.progressValues as any, score: existingListEntry.score, notes: existingListEntry.notes, ...",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_forkItem_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Item copied successfully to your private items\",\n  \"item\": \"<cloned>\",\n  \"entry\": \"<updatedEntry>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-uploadAsset",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-uploadAsset",
+                "title": "BorealisOtherServ.uploadAsset(userId, file, type)",
+                "description": "Upload and optimize an asset file (cover or banner) <= 1MB. Converts to WebP format with sharp.",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_uploadAsset_0_1",
+                    "kind": "var_def",
+                    "title": "Define `allowedTypes`",
+                    "payload": "const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_uploadAsset_1_2",
+                    "kind": "selection",
+                    "title": "`!allowedTypes.includes(file.type)`",
+                    "selectionMode": "if_else",
+                    "condition": "`!allowedTypes.includes(file.type)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_uploadAsset_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Unsupported file format. Please upload JPEG, PNG, WebP, or GIF."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_uploadAsset_2_3",
+                    "kind": "var_def",
+                    "title": "Define `maxSizeBytes`",
+                    "payload": "const maxSizeBytes = 1 * 1024 * 1024",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_uploadAsset_3_4",
+                    "kind": "selection",
+                    "title": "`file.size > maxSizeBytes`",
+                    "selectionMode": "if_else",
+                    "condition": "`file.size > maxSizeBytes`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_uploadAsset_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "File size exceeds the 1MB limit."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_uploadAsset_4_5",
+                    "kind": "step",
+                    "title": "Calls `Buffer.from` and stores result as `rawBuffer`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_uploadAsset_5_6",
+                    "kind": "step",
+                    "title": "Calls `new Bun.Image(rawBuffer).webp({ quality: 85 }).toBuffer` and stores result as `webpBuffer`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_uploadAsset_6_7",
+                    "kind": "var_def",
+                    "title": "Define `key`",
+                    "payload": "const key = `borealis/other/${userId}/${type}-${Date.now()}.webp`",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_uploadAsset_7_8",
+                    "kind": "step",
+                    "title": "Calls `uploadPublicAsset` and stores result as `{ publicUrl }`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_uploadAsset_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"url\": \"<publicUrl>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-getStats",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-getStats",
+                "title": "BorealisOtherServ.getStats(otherId)",
+                "description": "Get stats for custom item.",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_getStats_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Other` and stores it as `item`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getStats_1_2",
+                    "kind": "selection",
+                    "title": "`!item`",
+                    "selectionMode": "if_else",
+                    "condition": "`!item`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getStats_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Custom item with ID ${otherId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getStats_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"stats\": {\n    \"averageScore\": \"<item.averageScore ?? null>\",\n    \"favorites\": \"<item.favorites ?? 0>\",\n    \"popularity\": \"<item.popularity ?? 0>\",\n    \"scoreDistribution\": \"<item.scoreDistribution ?? {}>\",\n    \"statusDistribution\": \"<item.statusDistribution ?? {}>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-getFriends",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-getFriends",
+                "title": "BorealisOtherServ.getFriends(otherId, currentUserId)",
+                "description": "Get friends tracking this custom item.",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_getFriends_0_1",
+                    "kind": "selection",
+                    "title": "`!currentUserId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!currentUserId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getFriends_0_1_then_0_1_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getFriends_1_2",
+                    "kind": "step",
+                    "title": "Database `first` on `Other` and stores it as `item`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getFriends_2_3",
+                    "kind": "selection",
+                    "title": "`!item`",
+                    "selectionMode": "if_else",
+                    "condition": "`!item`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getFriends_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Custom item with ID ${otherId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getFriends_3_4",
+                    "kind": "step",
+                    "title": "Database `all` on `Friend` and stores it as `userFriends`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getFriends_4_5",
+                    "kind": "var_def",
+                    "title": "Define `friendIds`",
+                    "payload": "const friendIds = userFriends.map((f) => f.friendId)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getFriends_5_6",
+                    "kind": "selection",
+                    "title": "`friendIds.length === 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`friendIds.length === 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getFriends_5_6_then_0_6_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"friends\": []\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getFriends_6_7",
+                    "kind": "step",
+                    "title": "Database `all` on `OtherList` and stores it as `rawEntries`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getFriends_7_8",
+                    "kind": "var_def",
+                    "title": "Define `friends`",
+                    "payload": "const friends = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) const primary = item.incrementFieldKey ? (raw.progressValues as any)?.[item.incrementFieldKey] ?? null : null return { id: raw.id, ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getFriends_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"friends\": \"<friends>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-getPeople",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-getPeople",
+                "title": "BorealisOtherServ.getPeople(otherId, query)",
+                "description": "Get all public users tracking this custom item.",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_getPeople_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `Other` and stores it as `item`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getPeople_1_2",
+                    "kind": "selection",
+                    "title": "`!item`",
+                    "selectionMode": "if_else",
+                    "condition": "`!item`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getPeople_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Custom item with ID ${otherId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getPeople_2_3",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getPeople_3_4",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getPeople_4_5",
+                    "kind": "var_def",
+                    "title": "Define `skip`, `filterStatus`",
+                    "payload": "const skip = page - 1 * limit\nconst filterStatus = query?.status?.toUpperCase()?.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getPeople_5_6",
+                    "kind": "step",
+                    "title": "Database `query` on `OtherList` and stores it as `q`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getPeople_6_7",
+                    "kind": "selection",
+                    "title": "`filterStatus`",
+                    "selectionMode": "if_else",
+                    "condition": "`filterStatus`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisOtherServ_getPeople_6_7_then_0_7_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where({ status: filterStatus as any })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getPeople_7_8",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawEntries]`"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getPeople_8_9",
+                    "kind": "var_def",
+                    "title": "Define `people`",
+                    "payload": "const people = rawEntries.map((raw: any) => { const profile = getProfileCustomization(raw.user?.customization) const primary = item.incrementFieldKey ? (raw.progressValues as any)?.[item.incrementFieldKey] ?? null : null return { id: raw.id, ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisOtherServ_getPeople_9_10",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"mediaType\": \"other\",\n  \"mediaId\": \"<otherId>\",\n  \"total\": \"<total>\",\n  \"page\": \"<page>\",\n  \"limit\": \"<limit>\",\n  \"totalPages\": \"<Math.ceil(total / limit)>\",\n  \"people\": \"<people>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisOtherServ-getRecommendations",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/other/other.serv.ts-BorealisOtherServ-getRecommendations",
+                "title": "BorealisOtherServ.getRecommendations(_otherId)",
+                "description": "Get recommendations for this custom item.",
+                "steps": [
+                  {
+                    "id": "m_BorealisOtherServ_getRecommendations_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"recommendations\": []\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "11 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You have reached the maximum limit of 500 custom items. Administrator permission is required to create more."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "At least one progress field must be defined."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Designated incrementFieldKey \"${body.incrementFieldKey}\" must match one of the defined progress field keys."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Custom item with ID ${otherId} not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Only the creator or an administrator can edit this item"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Designated incrementFieldKey \"${incrementFieldKey}\" must match one of the defined progress field keys."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "WARN"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Warning"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "[OtherServ] Failed to send update notification to user ${tracker.userId}:`, err"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Only the creator or an administrator can delete this item"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "409"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Conflict"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "This item cannot be deleted because other users have it tracked in their list, favorited, or in a custom list."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Unsupported file format. Please upload JPEG, PNG, WebP, or GIF."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "File size exceeds the 1MB limit."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

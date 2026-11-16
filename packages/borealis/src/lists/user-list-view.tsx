@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useRef, useCallback, useMemo } from "react"
+import React, { useState, useEffect, useRef, useCallback, useMemo, useDeferredValue, useTransition } from "react"
 import { useSession } from "@/context/session-context"
 import { toast } from "sonner"
 import { elysia } from "@/lib/elysia"
@@ -10,7 +10,7 @@ import dynamic from "next/dynamic"
 import {
   getMediaPreferences,
   type UserProfileCustomization,
-} from "@IRIS/shared"
+} from "@NamelessLiberty/shared"
 import {
   UserListBanner,
   UserListToolbar,
@@ -23,7 +23,7 @@ import {
   type SortByOption,
   type SortOrderOption,
   getMediaListStatusText,
-} from "@Runa/borealis"
+} from "@NamelessLiberty/borealis"
 import { MediaListGrid } from "./media-list-grid"
 
 const ListCommentsTab = dynamic(
@@ -1512,6 +1512,20 @@ export function UserListView({
     sortOrder,
   ])
 
+  const [, startTransition] = useTransition()
+
+  const handleFiltersChange = useCallback((next: UserListFilterState) => {
+    startTransition(() => {
+      setFilterState(next)
+    })
+  }, [])
+
+  const handleOpenFilterSheet = useCallback(() => {
+    setIsFilterSheetOpen(true)
+  }, [])
+
+  const deferredFilteredItems = useDeferredValue(filteredItems)
+
   const isSearching = Boolean(
     searchQuery.trim() &&
       (isLoading ||
@@ -1552,8 +1566,8 @@ export function UserListView({
           sortOrder={sortOrder}
           onSortOrderChange={setSortOrder}
           filters={filterState}
-          onFiltersChange={setFilterState}
-          onOpenFilterSheet={() => setIsFilterSheetOpen(true)}
+          onFiltersChange={handleFiltersChange}
+          onOpenFilterSheet={handleOpenFilterSheet}
           action={
             mediaType === "other" && isOwner ? (
               <Button
@@ -1574,7 +1588,7 @@ export function UserListView({
           isOpen={isFilterSheetOpen}
           onOpenChange={setIsFilterSheetOpen}
           filters={filterState}
-          onFiltersChange={setFilterState}
+          onFiltersChange={handleFiltersChange}
           facets={facets}
           mediaType={mediaType}
         />
@@ -1584,7 +1598,7 @@ export function UserListView({
           <MediaListGrid
             mediaType={mediaType}
             activeStatus={activeGridStatus}
-            items={filteredItems}
+            items={deferredFilteredItems}
             isLoading={isLoading}
             isLoadingMore={isLoadingMore}
             hasMore={hasMore}
@@ -1596,7 +1610,7 @@ export function UserListView({
             onStatusChange={isOwner ? handleStatusChange : undefined}
             onScoreChange={isOwner ? handleScoreChange : undefined}
             mediaTitlePreference={mediaTitlePreference}
-            searchQuery={searchQuery.trim()}
+            searchQuery={debouncedSearch.trim()}
             facets={facets as any}
             totalCount={totalCount}
           />

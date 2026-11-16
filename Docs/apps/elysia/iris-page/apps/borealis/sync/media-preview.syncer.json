@@ -1,0 +1,1374 @@
+{
+  "id": "apps/borealis/sync/media-preview.syncer",
+  "title": "media-preview.syncer",
+  "description": "",
+  "icon": "IconBox",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/sync/media-preview.syncer.ts",
+    "relPath": "apps/borealis/sync/media-preview.syncer.ts",
+    "role": "Class",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 0
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconBox",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "media-preview.syncer"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Class"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/sync/media-preview.syncer.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "3 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/search/external-search.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/search/external-search.serv.ts (MediaPreviewSyncer, PreviewResult)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/borealis/search/search.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/search/search.serv.ts (PreviewResult)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/borealis/sync/media-entity.syncer",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/sync/media-entity.syncer.ts (MediaPreviewSyncer, mapAnimeFormat, mapMangaFormat, mapMovieStatus, mapTvStatus, PreviewResult)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "8 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "MediaPreviewSyncer.upsertAnimeSearchPreview"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(item)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<PreviewResult>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "MediaPreviewSyncer.upsertMangaSearchPreview"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(item)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<PreviewResult>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "MediaPreviewSyncer.upsertTvSearchPreview"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(item)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<PreviewResult>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "MediaPreviewSyncer.upsertMovieSearchPreview"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(item)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<PreviewResult>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "MediaPreviewSyncer.upsertBookSearchPreview"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(item)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<PreviewResult>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "MediaPreviewSyncer.upsertGameSearchPreview"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(item)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<PreviewResult>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "MediaPreviewSyncer.upsertMusicTrackSearchPreview"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(item)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<PreviewResult>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "MediaPreviewSyncer.upsertMusicAlbumSearchPreview"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(item)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<PreviewResult>"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-mapAnimeFormat",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-mapAnimeFormat",
+                "title": "function mapAnimeFormat",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_mapAnimeFormat_0_1",
+                    "kind": "var_def",
+                    "title": "Define `map`",
+                    "payload": "const map: Record<string, string> = { TV: 'TV', TV_SHORT: 'TV_SHORT', MOVIE: 'MOVIE', SPECIAL: 'SPECIAL', OVA: 'OVA', ONA: 'ONA', ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_mapAnimeFormat_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`fmt && map[fmt.toUpperCase()] || 'UNKNOWN'`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-mapMangaFormat",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-mapMangaFormat",
+                "title": "function mapMangaFormat",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_mapMangaFormat_0_1",
+                    "kind": "var_def",
+                    "title": "Define `map`",
+                    "payload": "const map: Record<string, string> = { MANGA: 'MANGA', NOVEL: 'NOVEL', LIGHT_NOVEL: 'LIGHT_NOVEL', ONE_SHOT: 'ONE_SHOT', MANHWA: 'MANHWA', MANHUA: 'MANHUA', ...",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_mapMangaFormat_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`fmt && map[fmt.toUpperCase()] || 'UNKNOWN'`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-mapTvStatus",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-mapTvStatus",
+                "title": "function mapTvStatus",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_mapTvStatus_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`st ? normalizeMediaStatus(st) : 'UNKNOWN'`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-mapMovieStatus",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-mapMovieStatus",
+                "title": "function mapMovieStatus",
+                "description": "Exported algorithm sequence",
+                "steps": [
+                  {
+                    "id": "exp_mapMovieStatus_0_1",
+                    "kind": "var_def",
+                    "title": "Define `mapped`",
+                    "payload": "const mapped = st ? normalizeMediaStatus(st) : 'UNKNOWN'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_mapMovieStatus_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`mapped === 'UNKNOWN' ? 'RELEASED' : mapped`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-MediaPreviewSyncer-upsertAnimeSearchPreview",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-MediaPreviewSyncer-upsertAnimeSearchPreview",
+                "title": "MediaPreviewSyncer.upsertAnimeSearchPreview(item)",
+                "description": "Upserts lightweight search preview stub for Anime.",
+                "steps": [
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertAnimeSearchPreview_0_1",
+                    "kind": "var_def",
+                    "title": "Define `titlePrimary`, `titleSecondary`, `titleNative`, `coverImage`",
+                    "payload": "const titlePrimary = item.title.english || item.title.userPreferred || item.title.romaji || 'Unknown Anime'\nconst titleSecondary = item.title.romaji || item.title.english || null\nconst titleNative = item.title.native || null\nconst coverImage = item.coverImage?.extraLarge || item.coverImage?.large || item.coverImage?.medium || null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertAnimeSearchPreview_1_2",
+                    "kind": "step",
+                    "title": "Calls `mapAnimeFormat` and stores result as `format`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertAnimeSearchPreview_2_3",
+                    "kind": "var_def",
+                    "title": "Define `seasonSeason`",
+                    "payload": "const seasonSeason = ( item.season && ['WINTER', 'SPRING', 'SUMMER', 'FALL'].includes(item.season) ? item.season : 'UNKNOWN' ) as any",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertAnimeSearchPreview_3_4",
+                    "kind": "step",
+                    "title": "Database `first` on `Anime` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertAnimeSearchPreview_4_5",
+                    "kind": "selection",
+                    "title": "`existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertAnimeSearchPreview_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Calls `evaluateRecordFreshness` and stores result as `freshness`"
+                      },
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertAnimeSearchPreview_4_5_then_1_5_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"...existing\": \"...\",\n  \"mediaType\": \"anime\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": \"<!freshness.isFresh>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertAnimeSearchPreview_5_6",
+                    "kind": "step",
+                    "title": "Database `create` on `Anime` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertAnimeSearchPreview_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"...created\": \"...\",\n  \"mediaType\": \"anime\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": true\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-MediaPreviewSyncer-upsertMangaSearchPreview",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-MediaPreviewSyncer-upsertMangaSearchPreview",
+                "title": "MediaPreviewSyncer.upsertMangaSearchPreview(item)",
+                "description": "Upserts lightweight search preview stub for Manga.",
+                "steps": [
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMangaSearchPreview_0_1",
+                    "kind": "var_def",
+                    "title": "Define `titlePrimary`, `titleSecondary`, `titleNative`, `coverImage`",
+                    "payload": "const titlePrimary = item.title.english || item.title.userPreferred || item.title.romaji || 'Unknown Manga'\nconst titleSecondary = item.title.romaji || item.title.english || null\nconst titleNative = item.title.native || null\nconst coverImage = item.coverImage?.extraLarge || item.coverImage?.large || item.coverImage?.medium || null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMangaSearchPreview_1_2",
+                    "kind": "step",
+                    "title": "Calls `mapMangaFormat` and stores result as `format`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMangaSearchPreview_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `Manga` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMangaSearchPreview_3_4",
+                    "kind": "selection",
+                    "title": "`existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertMangaSearchPreview_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `evaluateRecordFreshness` and stores result as `freshness`"
+                      },
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertMangaSearchPreview_3_4_then_1_4_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"...existing\": \"...\",\n  \"mediaType\": \"manga\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": \"<!freshness.isFresh>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMangaSearchPreview_4_5",
+                    "kind": "step",
+                    "title": "Database `create` on `Manga` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMangaSearchPreview_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"...created\": \"...\",\n  \"mediaType\": \"manga\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": true\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-MediaPreviewSyncer-upsertTvSearchPreview",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-MediaPreviewSyncer-upsertTvSearchPreview",
+                "title": "MediaPreviewSyncer.upsertTvSearchPreview(item)",
+                "description": "Upserts lightweight search preview stub for TV series.",
+                "steps": [
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_0_1",
+                    "kind": "var_def",
+                    "title": "Define `rawId`, `tvdbId`, `engTitle`, `engOverview`, `titlePrimary`, `titleSecondary`, `titleNative`",
+                    "payload": "const rawId = item.tvdb_id || item.id || item.objectID\nconst tvdbId = typeof rawId === 'number' ? rawId : parseInt(String(rawId).replace(/\\D/g, ''), 10)\nconst engTitle = item.translations?.eng?.trim()\nconst engOverview = item.overviews?.eng?.trim()\nconst titlePrimary = engTitle || item.name || 'Unknown TV Series'\nconst titleSecondary = engTitle && engTitle !== item.name ? item.name : undefined\nconst titleNative = item.primary_language && ['kor', 'jpn', 'zho', 'zhtw', 'ko', 'ja', 'zh'].includes(item.primary_language.toLowerCase()) ? item.name : undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_1_2",
+                    "kind": "step",
+                    "title": "Calls `normalizeTvdbImageUrl` and stores result as `coverImage`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_2_3",
+                    "kind": "var_def",
+                    "title": "Define `firstAiredYear`",
+                    "payload": "const firstAiredYear = item.year ? parseInt(String(item.year).slice(0, 4), 10) : undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_3_4",
+                    "kind": "step",
+                    "title": "Calls `mapTvStatus` and stores result as `status`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_4_5",
+                    "kind": "var_def",
+                    "title": "Define `description`",
+                    "payload": "const description = engOverview || item.overview || undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_5_6",
+                    "kind": "selection",
+                    "title": "`tvdbId`",
+                    "selectionMode": "if_else",
+                    "condition": "`tvdbId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Tv` and stores it as `existing`"
+                      },
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_5_6_then_1_6_2",
+                        "kind": "selection",
+                        "title": "`existing`",
+                        "selectionMode": "if_else",
+                        "condition": "`existing`",
+                        "thenBranch": [
+                          {
+                            "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_5_6_then_1_6_2_then_0_6_2_1",
+                            "kind": "step",
+                            "title": "Calls `evaluateRecordFreshness` and stores result as `freshness`"
+                          },
+                          {
+                            "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_5_6_then_1_6_2_then_1_6_2_2",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"...existing\": \"...\",\n  \"mediaType\": \"tv\",\n  \"releaseDateYear\": \"<existing.firstAiredYear>\",\n  \"externalId\": \"<tvdbId>\",\n  \"queuedForFetch\": \"<!freshness.isFresh>\"\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_6_7",
+                    "kind": "step",
+                    "title": "Database `create` on `Tv` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertTvSearchPreview_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"...created\": \"...\",\n  \"mediaType\": \"tv\",\n  \"releaseDateYear\": \"<created.firstAiredYear>\",\n  \"externalId\": \"<tvdbId>\",\n  \"queuedForFetch\": true\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-MediaPreviewSyncer-upsertMovieSearchPreview",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-MediaPreviewSyncer-upsertMovieSearchPreview",
+                "title": "MediaPreviewSyncer.upsertMovieSearchPreview(item)",
+                "description": "Upserts lightweight search preview stub for Movie.",
+                "steps": [
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_0_1",
+                    "kind": "var_def",
+                    "title": "Define `rawId`, `tvdbId`, `engTitle`, `engOverview`, `titlePrimary`, `titleSecondary`, `titleNative`",
+                    "payload": "const rawId = item.tvdb_id || item.id || item.objectID\nconst tvdbId = typeof rawId === 'number' ? rawId : parseInt(String(rawId).replace(/\\D/g, ''), 10)\nconst engTitle = item.translations?.eng?.trim()\nconst engOverview = item.overviews?.eng?.trim()\nconst titlePrimary = engTitle || item.name || 'Unknown Movie'\nconst titleSecondary = engTitle && engTitle !== item.name ? item.name : undefined\nconst titleNative = item.primary_language && ['kor', 'jpn', 'zho', 'zhtw', 'ko', 'ja', 'zh'].includes(item.primary_language.toLowerCase()) ? item.name : undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_1_2",
+                    "kind": "step",
+                    "title": "Calls `normalizeTvdbImageUrl` and stores result as `coverImage`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_2_3",
+                    "kind": "var_def",
+                    "title": "Define `releaseDateYear`",
+                    "payload": "const releaseDateYear = item.year ? parseInt(String(item.year).slice(0, 4), 10) : undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_3_4",
+                    "kind": "step",
+                    "title": "Calls `mapMovieStatus` and stores result as `status`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_4_5",
+                    "kind": "var_def",
+                    "title": "Define `description`",
+                    "payload": "const description = engOverview || item.overview || undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_5_6",
+                    "kind": "selection",
+                    "title": "`tvdbId`",
+                    "selectionMode": "if_else",
+                    "condition": "`tvdbId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Movie` and stores it as `existing`"
+                      },
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_5_6_then_1_6_2",
+                        "kind": "selection",
+                        "title": "`existing`",
+                        "selectionMode": "if_else",
+                        "condition": "`existing`",
+                        "thenBranch": [
+                          {
+                            "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_5_6_then_1_6_2_then_0_6_2_1",
+                            "kind": "step",
+                            "title": "Calls `evaluateRecordFreshness` and stores result as `freshness`"
+                          },
+                          {
+                            "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_5_6_then_1_6_2_then_1_6_2_2",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"...existing\": \"...\",\n  \"mediaType\": \"movie\",\n  \"externalId\": \"<tvdbId>\",\n  \"queuedForFetch\": \"<!freshness.isFresh>\"\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_6_7",
+                    "kind": "step",
+                    "title": "Database `create` on `Movie` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMovieSearchPreview_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"...created\": \"...\",\n  \"mediaType\": \"movie\",\n  \"externalId\": \"<tvdbId>\",\n  \"queuedForFetch\": true\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-MediaPreviewSyncer-upsertBookSearchPreview",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-MediaPreviewSyncer-upsertBookSearchPreview",
+                "title": "MediaPreviewSyncer.upsertBookSearchPreview(item)",
+                "description": "Upserts lightweight search preview stub for Book.",
+                "steps": [
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_0_1",
+                    "kind": "var_def",
+                    "title": "Define `info`, `titlePrimary`, `titleSecondary`, `coverImage`",
+                    "payload": "const info = item.volumeInfo || {}\nconst titlePrimary = info.title || 'Unknown Book'\nconst titleSecondary = info.subtitle || null\nlet coverImage = info.imageLinks?.large || info.imageLinks?.medium || info.imageLinks?.thumbnail || null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_1_2",
+                    "kind": "selection",
+                    "title": "`coverImage && coverImage.startsWith('http://')`",
+                    "selectionMode": "if_else",
+                    "condition": "`coverImage && coverImage.startsWith('http://')`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Assign `coverImage`",
+                        "payload": "coverImage = coverImage.replace('http://', 'https://')",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_2_3",
+                    "kind": "var_def",
+                    "title": "Define `authors`, `releaseDateYear`",
+                    "payload": "const authors = info.authors || []\nlet releaseDateYear: number | undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_3_4",
+                    "kind": "selection",
+                    "title": "`info.publishedDate`",
+                    "selectionMode": "if_else",
+                    "condition": "`info.publishedDate`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `parseInt` and stores result as `yr`"
+                      },
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_3_4_then_1_4_2",
+                        "kind": "selection",
+                        "title": "`!isNaN(yr)`",
+                        "selectionMode": "if_else",
+                        "condition": "`!isNaN(yr)`",
+                        "thenBranch": [
+                          {
+                            "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_3_4_then_1_4_2_then_0_4_2_1",
+                            "kind": "step",
+                            "title": "Assign `releaseDateYear`",
+                            "payload": "releaseDateYear = yr",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_4_5",
+                    "kind": "step",
+                    "title": "Database `first` on `Book` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_5_6",
+                    "kind": "selection",
+                    "title": "`existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Calls `evaluateRecordFreshness` and stores result as `freshness`"
+                      },
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_5_6_then_1_6_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"...existing\": \"...\",\n  \"mediaType\": \"book\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": \"<!freshness.isFresh>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_6_7",
+                    "kind": "step",
+                    "title": "Database `create` on `Book` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertBookSearchPreview_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"...created\": \"...\",\n  \"mediaType\": \"book\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": true\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-MediaPreviewSyncer-upsertGameSearchPreview",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-MediaPreviewSyncer-upsertGameSearchPreview",
+                "title": "MediaPreviewSyncer.upsertGameSearchPreview(item)",
+                "description": "Upserts lightweight search preview stub for Game.",
+                "steps": [
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertGameSearchPreview_0_1",
+                    "kind": "var_def",
+                    "title": "Define `titlePrimary`, `coverImage`, `releaseDateYear`",
+                    "payload": "const titlePrimary = item.name || 'Unknown Game'\nconst coverImage = item.cover?.image_id ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${item.cover.image_id}.jpg` : null\nlet releaseDateYear: number | undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertGameSearchPreview_1_2",
+                    "kind": "selection",
+                    "title": "`item.first_release_date`",
+                    "selectionMode": "if_else",
+                    "condition": "`item.first_release_date`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertGameSearchPreview_1_2_then_0_2_1",
+                        "kind": "step",
+                        "title": "Assign `releaseDateYear`",
+                        "payload": "releaseDateYear = new Date(item.first_release_date * 1000).getUTCFullYear()",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertGameSearchPreview_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `Game` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertGameSearchPreview_3_4",
+                    "kind": "selection",
+                    "title": "`existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertGameSearchPreview_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `evaluateRecordFreshness` and stores result as `freshness`"
+                      },
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertGameSearchPreview_3_4_then_1_4_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"...existing\": \"...\",\n  \"mediaType\": \"game\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": \"<!freshness.isFresh>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertGameSearchPreview_4_5",
+                    "kind": "step",
+                    "title": "Database `create` on `Game` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertGameSearchPreview_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"...created\": \"...\",\n  \"mediaType\": \"game\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": true\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-MediaPreviewSyncer-upsertMusicTrackSearchPreview",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-MediaPreviewSyncer-upsertMusicTrackSearchPreview",
+                "title": "MediaPreviewSyncer.upsertMusicTrackSearchPreview(item)",
+                "description": "Upserts lightweight search preview stub for Music Track.",
+                "steps": [
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicTrackSearchPreview_0_1",
+                    "kind": "var_def",
+                    "title": "Define `titlePrimary`, `artist`",
+                    "payload": "const titlePrimary = item.title?.trim() || 'Unknown Track'\nconst artist = item.artist?.name?.trim() || null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicTrackSearchPreview_1_2",
+                    "kind": "step",
+                    "title": "Calls `String` and stores result as `deezerIdStr`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicTrackSearchPreview_2_3",
+                    "kind": "var_def",
+                    "title": "Define `coverImage`",
+                    "payload": "const coverImage = item.album?.cover_big || item.album?.cover_medium || item.album?.cover || null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicTrackSearchPreview_3_4",
+                    "kind": "step",
+                    "title": "Database `first` on `Music` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicTrackSearchPreview_4_5",
+                    "kind": "selection",
+                    "title": "`existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertMusicTrackSearchPreview_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Calls `evaluateRecordFreshness` and stores result as `freshness`"
+                      },
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertMusicTrackSearchPreview_4_5_then_1_5_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"...existing\": \"...\",\n  \"mediaType\": \"music\",\n  \"itemType\": \"TRACK\",\n  \"type\": \"TRACK\",\n  \"artist\": \"<existing.artistName>\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": \"<!freshness.isFresh>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicTrackSearchPreview_5_6",
+                    "kind": "step",
+                    "title": "Database `upsert` on `Music` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicTrackSearchPreview_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"...created\": \"...\",\n  \"mediaType\": \"music\",\n  \"itemType\": \"TRACK\",\n  \"type\": \"TRACK\",\n  \"artist\": \"<created.artistName>\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": true\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-MediaPreviewSyncer-upsertMusicAlbumSearchPreview",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/sync/media-preview.syncer.ts-MediaPreviewSyncer-upsertMusicAlbumSearchPreview",
+                "title": "MediaPreviewSyncer.upsertMusicAlbumSearchPreview(item)",
+                "description": "Upserts lightweight search preview stub for Music Album.",
+                "steps": [
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_0_1",
+                    "kind": "var_def",
+                    "title": "Define `titlePrimary`, `artist`",
+                    "payload": "const titlePrimary = item.title?.trim() || 'Unknown Album'\nconst artist = item.artist?.name?.trim() || null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_1_2",
+                    "kind": "step",
+                    "title": "Calls `String` and stores result as `deezerIdStr`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_2_3",
+                    "kind": "var_def",
+                    "title": "Define `coverImage`, `releaseDateYear`",
+                    "payload": "const coverImage = item.cover_big || item.cover_medium || item.cover || null\nlet releaseDateYear: number | undefined",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_3_4",
+                    "kind": "selection",
+                    "title": "`item.release_date`",
+                    "selectionMode": "if_else",
+                    "condition": "`item.release_date`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `parseInt` and stores result as `yr`"
+                      },
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_3_4_then_1_4_2",
+                        "kind": "selection",
+                        "title": "`!isNaN(yr)`",
+                        "selectionMode": "if_else",
+                        "condition": "`!isNaN(yr)`",
+                        "thenBranch": [
+                          {
+                            "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_3_4_then_1_4_2_then_0_4_2_1",
+                            "kind": "step",
+                            "title": "Assign `releaseDateYear`",
+                            "payload": "releaseDateYear = yr",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_4_5",
+                    "kind": "step",
+                    "title": "Database `first` on `Music` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_5_6",
+                    "kind": "selection",
+                    "title": "`existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Calls `evaluateRecordFreshness` and stores result as `freshness`"
+                      },
+                      {
+                        "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_5_6_then_1_6_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"...existing\": \"...\",\n  \"mediaType\": \"music\",\n  \"itemType\": \"ALBUM\",\n  \"type\": \"ALBUM\",\n  \"artist\": \"<existing.artistName>\",\n  \"releaseDateYear\": \"<releaseDateYear>\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": \"<!freshness.isFresh>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_6_7",
+                    "kind": "step",
+                    "title": "Database `upsert` on `Music` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_MediaPreviewSyncer_upsertMusicAlbumSearchPreview_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"...created\": \"...\",\n  \"mediaType\": \"music\",\n  \"itemType\": \"ALBUM\",\n  \"type\": \"ALBUM\",\n  \"artist\": \"<created.artistName>\",\n  \"releaseDateYear\": \"<releaseDateYear>\",\n  \"externalId\": \"<item.id>\",\n  \"queuedForFetch\": true\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

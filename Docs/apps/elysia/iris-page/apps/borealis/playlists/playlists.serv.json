@@ -1,0 +1,4128 @@
+{
+  "id": "apps/borealis/playlists/playlists.serv",
+  "title": "playlists.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/borealis/playlists/playlists.serv.ts",
+    "relPath": "apps/borealis/playlists/playlists.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 24
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "playlists.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/borealis/playlists/playlists.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/borealis/playlists/playlists.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/playlists/playlists.ctrl.ts (BorealisPlaylistsServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "18 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.getPlaylistAccess"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(playlistId, userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.listPlaylists"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.createPlaylist"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.updatePlaylist"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.deletePlaylist"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.getPlaylistEntries"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.addPlaylistEntry"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.updatePlaylistEntry"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.removePlaylistEntry"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, target)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.reorderEntries"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, entryIds)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.listCollaborators"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.addCollaborator"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.updateCollaborator"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, collaboratorId, role)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.removeCollaborator"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, collaboratorId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.listComments"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, query)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.createComment"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.deleteComment"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(user, playlistId, commentId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BorealisPlaylistsServ.listActivity"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, playlistId, query, permissions = [])"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-getPlaylistAccess",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-getPlaylistAccess",
+                "title": "BorealisPlaylistsServ.getPlaylistAccess(playlistId, userId)",
+                "description": "Helper to check access levels (Owner, Editor, Viewer) for a custom playlist.",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistAccess_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `CustomList` and stores it as `playlist`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistAccess_1_2",
+                    "kind": "selection",
+                    "title": "`!playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_getPlaylistAccess_1_2_then_0_2_1",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"playlist\": null,\n  \"canView\": false,\n  \"canEdit\": false,\n  \"isOwner\": false,\n  \"role\": null\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistAccess_2_3",
+                    "kind": "var_def",
+                    "title": "Define `isOwner`, `collab`, `role`, `canEdit`, `canView`",
+                    "payload": "const isOwner = playlist.userId === userId\nconst collab = (playlist.collaborators as any[])?.find((c: any) => c.userId === userId)\nconst role: 'OWNER' | 'EDITOR' | 'VIEWER' | null = isOwner ? 'OWNER' : collab ? (collab.role as 'EDITOR' | 'VIEWER') : null\nconst canEdit = isOwner || role === 'EDITOR'\nconst canView = isOwner || !!role || !playlist.isPrivate",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistAccess_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"playlist\": \"<playlist>\",\n  \"canView\": \"<canView>\",\n  \"canEdit\": \"<canEdit>\",\n  \"isOwner\": \"<isOwner>\",\n  \"role\": \"<role>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-listPlaylists",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-listPlaylists",
+                "title": "BorealisPlaylistsServ.listPlaylists(userId, query)",
+                "description": "List custom playlists belonging to the user or where user is a collaborator.",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`",
+                    "payload": "const skip = page - 1 * limit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_3_4",
+                    "kind": "step",
+                    "title": "Database `all` on `CustomListCollaborator` and stores it as `collabRecords`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_4_5",
+                    "kind": "var_def",
+                    "title": "Define `collabListIds`, `collabRoleMap`",
+                    "payload": "const collabListIds = collabRecords.map((c: any) => c.listId)\nconst collabRoleMap = new Map<string, string>( collabRecords.map((c: any) => [c.listId, c.role]) )",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_5_6",
+                    "kind": "step",
+                    "title": "Database `query` on `CustomList` and stores it as `q`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_6_7",
+                    "kind": "selection",
+                    "title": "`collabListIds.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`collabListIds.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listPlaylists_6_7_then_0_7_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((cl) => or(cl.userId.eq(userId), cl.id.in(collabListIds)))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listPlaylists_6_7_else_0_8_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where({ userId })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_8_9",
+                    "kind": "selection",
+                    "title": "`query?.q`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.q`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listPlaylists_8_9_then_0_9_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((cl) => cl.name.ilike(`%${query.q!.trim()}%`))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_9_10",
+                    "kind": "selection",
+                    "title": "`query?.isPrivate !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.isPrivate !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listPlaylists_9_10_then_0_10_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where({ isPrivate: Boolean(query.isPrivate) })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_10_11",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, playlists]`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_11_12",
+                    "kind": "var_def",
+                    "title": "Define `playlistIds`, `coversMap`",
+                    "payload": "const playlistIds = playlists.map((p: any) => p.id)\nconst coversMap = new Map<string, string[]>()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_12_13",
+                    "kind": "selection",
+                    "title": "`playlistIds.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`playlistIds.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listPlaylists_12_13_then_0_13_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "m_BorealisPlaylistsServ_listPlaylists_12_13_then_0_13_1_try_0_13_1_1",
+                            "kind": "step",
+                            "title": "Database `all` on `CustomListEntry` and stores it as `topEntries`"
+                          },
+                          {
+                            "id": "m_BorealisPlaylistsServ_listPlaylists_12_13_then_0_13_1_try_1_13_1_2",
+                            "kind": "iteration",
+                            "title": "Iterate `const entry` over `topEntries`",
+                            "loopType": "while",
+                            "condition": "Iterate `const entry` over `topEntries`",
+                            "children": [
+                              {
+                                "id": "m_BorealisPlaylistsServ_listPlaylists_12_13_then_0_13_1_try_1_13_1_2_loop_0_13_1_2_1",
+                                "kind": "var_def",
+                                "title": "Define `cover`",
+                                "payload": "const cover = (entry as any).anime?.coverImage || (entry as any).manga?.coverImage || (entry as any).movie?.coverImage || (entry as any).tv?.coverImage || (entry as any).game?.coverImage || (entry as any).book?.coverImage || (entry as any).music?.coverImage || null",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "m_BorealisPlaylistsServ_listPlaylists_12_13_then_0_13_1_try_1_13_1_2_loop_1_13_1_2_2",
+                                "kind": "selection",
+                                "title": "`cover`",
+                                "selectionMode": "if_else",
+                                "condition": "`cover`",
+                                "thenBranch": [
+                                  {
+                                    "id": "m_BorealisPlaylistsServ_listPlaylists_12_13_then_0_13_1_try_1_13_1_2_loop_1_13_1_2_2_then_0_13_1_2_2_1",
+                                    "kind": "var_def",
+                                    "title": "Define `list`",
+                                    "payload": "const list = coversMap.get(entry as any.listId) || []",
+                                    "payloadLanguage": "typescript"
+                                  },
+                                  {
+                                    "id": "m_BorealisPlaylistsServ_listPlaylists_12_13_then_0_13_1_try_1_13_1_2_loop_1_13_1_2_2_then_1_13_1_2_2_2",
+                                    "kind": "selection",
+                                    "title": "`list.length < 5`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`list.length < 5`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "m_BorealisPlaylistsServ_listPlaylists_12_13_then_0_13_1_try_1_13_1_2_loop_1_13_1_2_2_then_1_13_1_2_2_2_then_0_13_1_2_2_2_1",
+                                        "kind": "step",
+                                        "title": "Calls `coversMap.set`"
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ]
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "m_BorealisPlaylistsServ_listPlaylists_12_13_then_0_13_1_catch_0_13_2_1",
+                            "kind": "step",
+                            "title": "Calls `console.error`"
+                          }
+                        ],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_13_14",
+                    "kind": "var_def",
+                    "title": "Define `containing`",
+                    "payload": "let containing = new Set<string>()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_14_15",
+                    "kind": "selection",
+                    "title": "`query?.mediaType && query?.mediaId && playlists.length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.mediaType && query?.mediaId && playlists.length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listPlaylists_14_15_then_0_15_1",
+                        "kind": "var_def",
+                        "title": "Define `mType`",
+                        "payload": "const mType = String(query.mediaType).toUpperCase() as MediaType",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_listPlaylists_14_15_then_1_15_2",
+                        "kind": "step",
+                        "title": "Calls `Number` and stores result as `mId`"
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_listPlaylists_14_15_then_2_15_3",
+                        "kind": "step",
+                        "title": "Database `all` on `CustomListEntry` and stores it as `entries`"
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_listPlaylists_14_15_then_3_15_4",
+                        "kind": "var_def",
+                        "title": "Define `ids`",
+                        "payload": "const ids = new Set(playlists.map((p: any) => p.id))",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_listPlaylists_14_15_then_4_15_5",
+                        "kind": "step",
+                        "title": "Assign `containing`",
+                        "payload": "containing = new Set( entries.map((e: any) => e.listId).filter((id: string) => ids.has(id)) )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_15_16",
+                    "kind": "step",
+                    "title": "Calls `Boolean` and stores result as `checkMembership`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listPlaylists_16_17",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"playlists\": \"<playlists.map((p: any) => { const isOwner = p.userId === userId const role = isOwner ? 'OWNER' : (collabRoleMap.get(p.id) || 'VIEWER') const owner = formatUser(p.user) return { ...formatPlaylist(p, undefined, role, isOwner, owner, coversMap.get(p.id) || []), ...)>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n    \"hasMore\": \"<page * limit < total>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-createPlaylist",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-createPlaylist",
+                "title": "BorealisPlaylistsServ.createPlaylist(userId, body)",
+                "description": "Create a new custom playlist for the user.",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_createPlaylist_0_1",
+                    "kind": "var_def",
+                    "title": "Define `name`",
+                    "payload": "const name = body.name.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createPlaylist_1_2",
+                    "kind": "selection",
+                    "title": "`!name`",
+                    "selectionMode": "if_else",
+                    "condition": "`!name`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_createPlaylist_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Playlist name cannot be empty"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createPlaylist_2_3",
+                    "kind": "step",
+                    "title": "Database `create` on `CustomList` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createPlaylist_3_4",
+                    "kind": "step",
+                    "title": "Database `create` on `ActivityLog`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createPlaylist_4_5",
+                    "kind": "step",
+                    "title": "Calls `CarinaUsersServ.evaluateBadgesNonBlocking`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createPlaylist_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Playlist created successfully\",\n  \"playlist\": \"<formatPlaylist(created, 0, 'OWNER', ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-updatePlaylist",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-updatePlaylist",
+                "title": "BorealisPlaylistsServ.updatePlaylist(userId, playlistId, body)",
+                "description": "Update details of an existing playlist (owner or editor).",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_2_3",
+                    "kind": "selection",
+                    "title": "`!access.canEdit`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.canEdit`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "You do not have permission to edit this playlist"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_3_4",
+                    "kind": "var_def",
+                    "title": "Define `updateData`",
+                    "payload": "const updateData: any = {}",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_4_5",
+                    "kind": "selection",
+                    "title": "`body.name !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.name !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_4_5_then_0_5_1",
+                        "kind": "var_def",
+                        "title": "Define `trimmed`",
+                        "payload": "const trimmed = body.name.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_4_5_then_1_5_2",
+                        "kind": "selection",
+                        "title": "`!trimmed`",
+                        "selectionMode": "if_else",
+                        "condition": "`!trimmed`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisPlaylistsServ_updatePlaylist_4_5_then_1_5_2_then_0_5_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Playlist name cannot be empty"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_4_5_then_2_5_3",
+                        "kind": "step",
+                        "title": "Assign `updateData.name`",
+                        "payload": "updateData.name = trimmed",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_5_6",
+                    "kind": "selection",
+                    "title": "`body.description !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.description !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Assign `updateData.description`",
+                        "payload": "updateData.description = body.description",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_6_7",
+                    "kind": "selection",
+                    "title": "`body.isPrivate !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.isPrivate !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_6_7_then_0_7_1",
+                        "kind": "selection",
+                        "title": "`!access.isOwner`",
+                        "selectionMode": "if_else",
+                        "condition": "`!access.isOwner`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisPlaylistsServ_updatePlaylist_6_7_then_0_7_1_then_0_7_1_1",
+                            "kind": "error",
+                            "code": "Forbidden",
+                            "httpStatus": 403,
+                            "message": "Only the list owner can change playlist privacy"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_6_7_then_1_7_2",
+                        "kind": "step",
+                        "title": "Assign `updateData.isPrivate`",
+                        "payload": "updateData.isPrivate = Boolean(body.isPrivate)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_7_8",
+                    "kind": "selection",
+                    "title": "`body.coverImage !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.coverImage !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_7_8_then_0_8_1",
+                        "kind": "step",
+                        "title": "Assign `updateData.coverImage`",
+                        "payload": "updateData.coverImage = body.coverImage",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_8_9",
+                    "kind": "selection",
+                    "title": "`body.order !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.order !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_8_9_then_0_9_1",
+                        "kind": "step",
+                        "title": "Assign `updateData.order`",
+                        "payload": "updateData.order = Number(body.order)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_9_10",
+                    "kind": "step",
+                    "title": "Database `update` on `CustomList` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_10_11",
+                    "kind": "selection",
+                    "title": "`body.isPrivate !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.isPrivate !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_10_11_then_0_11_1",
+                        "kind": "step",
+                        "title": "Calls `Boolean` and stores result as `nextPrivate`"
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_10_11_then_1_11_2",
+                        "kind": "step",
+                        "title": "Database `all` on `CustomListCollaborator` and stores it as `collabs`"
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_10_11_then_2_11_3",
+                        "kind": "step",
+                        "title": "Calls `Array.from` and stores result as `memberIds`"
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylist_10_11_then_3_11_4",
+                        "kind": "step",
+                        "title": "Database `all` on `ActivityLog`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_11_12",
+                    "kind": "step",
+                    "title": "Database `all` on `CustomListEntry` and stores it as `count`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylist_12_13",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Playlist updated successfully\",\n  \"playlist\": \"<formatPlaylist(updated, count.length, access.role || 'EDITOR', ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-deletePlaylist",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-deletePlaylist",
+                "title": "BorealisPlaylistsServ.deletePlaylist(userId, playlistId)",
+                "description": "Delete a playlist (strictly owner only).",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_deletePlaylist_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `CustomList` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deletePlaylist_1_2",
+                    "kind": "selection",
+                    "title": "`!existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`!existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_deletePlaylist_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deletePlaylist_2_3",
+                    "kind": "selection",
+                    "title": "`existing.userId !== userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing.userId !== userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_deletePlaylist_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "Only the list owner can delete this playlist"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deletePlaylist_3_4",
+                    "kind": "step",
+                    "title": "Database `delete` on `CustomList`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deletePlaylist_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Playlist deleted successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-getPlaylistEntries",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-getPlaylistEntries",
+                "title": "BorealisPlaylistsServ.getPlaylistEntries(userId, playlistId, query)",
+                "description": "Get entries of a playlist with pagination and resolved media details.",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_getPlaylistEntries_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_2_3",
+                    "kind": "selection",
+                    "title": "`!access.canView`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.canView`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_getPlaylistEntries_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "Access to this playlist is denied"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_3_4",
+                    "kind": "var_def",
+                    "title": "Define `playlist`",
+                    "payload": "const playlist = access.playlist",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_4_5",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_5_6",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_6_7",
+                    "kind": "var_def",
+                    "title": "Define `skip`, `order`",
+                    "payload": "const skip = page - 1 * limit\nconst order = query?.order === 'desc' ? 'desc' : 'asc'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_7_8",
+                    "kind": "step",
+                    "title": "Database `query` on `CustomListEntry` and stores it as `q`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_8_9",
+                    "kind": "selection",
+                    "title": "`query?.mediaType`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.mediaType`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_getPlaylistEntries_8_9_then_0_9_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where({ mediaType: query.mediaType.toUpperCase() as MediaType })",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_9_10",
+                    "kind": "selection",
+                    "title": "`query?.q`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.q`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_getPlaylistEntries_9_10_then_0_10_1",
+                        "kind": "step",
+                        "title": "Assign `q`",
+                        "payload": "q = q.where((cle) => cle.customNotes.ilike(`%${query.q!.trim()}%`))",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_10_11",
+                    "kind": "var_def",
+                    "title": "Define `itemsQ`",
+                    "payload": "let itemsQ = q",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_11_12",
+                    "kind": "selection",
+                    "title": "`query?.sortBy === 'addedAt'`",
+                    "selectionMode": "if_else",
+                    "condition": "`query?.sortBy === 'addedAt'`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_getPlaylistEntries_11_12_then_0_12_1",
+                        "kind": "step",
+                        "title": "Assign `itemsQ`",
+                        "payload": "itemsQ = itemsQ.orderBy((cle) => order === 'desc' ? cle.addedAt.desc() : cle.addedAt.asc() )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_getPlaylistEntries_11_12_else_0_13_1",
+                        "kind": "step",
+                        "title": "Assign `itemsQ`",
+                        "payload": "itemsQ = itemsQ.orderBy((cle) => order === 'desc' ? cle.order.desc() : cle.order.asc() )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_13_14",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, entries]`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_getPlaylistEntries_14_15",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"playlist\": {\n    \"id\": \"<playlist.id>\",\n    \"name\": \"<playlist.name>\",\n    \"description\": \"<playlist.description ?? null>\",\n    \"isPrivate\": \"<playlist.isPrivate>\",\n    \"coverImage\": \"<playlist.coverImage ?? null>\",\n    \"entriesCount\": \"<total>\",\n    \"role\": \"<access.role || 'VIEWER'>\",\n    \"isOwner\": \"<access.isOwner>\"\n  },\n  \"items\": \"<entries.map((item) => { const media = item.anime || item.manga || item.movie || item.tv || item.game || ...)>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n    \"hasMore\": \"<page * limit < total>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-addPlaylistEntry",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-addPlaylistEntry",
+                "title": "BorealisPlaylistsServ.addPlaylistEntry(userId, playlistId, body)",
+                "description": "Add a media entry to the playlist (owner or editor).",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_addPlaylistEntry_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_2_3",
+                    "kind": "selection",
+                    "title": "`!access.canEdit`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.canEdit`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_addPlaylistEntry_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "You do not have permission to add entries to this playlist"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_3_4",
+                    "kind": "var_def",
+                    "title": "Define `mediaType`",
+                    "payload": "const mediaType = body.mediaType.toUpperCase() as MediaType",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_4_5",
+                    "kind": "step",
+                    "title": "Calls `Number` and stores result as `mediaId`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_5_6",
+                    "kind": "selection",
+                    "title": "`!mediaId || isNaN(mediaId)`",
+                    "selectionMode": "if_else",
+                    "condition": "`!mediaId || isNaN(mediaId)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_addPlaylistEntry_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Valid mediaId is required"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_6_7",
+                    "kind": "var_def",
+                    "title": "Define `order`",
+                    "payload": "let order = body.order",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_7_8",
+                    "kind": "selection",
+                    "title": "`order === undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`order === undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_addPlaylistEntry_7_8_then_0_8_1",
+                        "kind": "step",
+                        "title": "Database `first` on `CustomListEntry` and stores it as `highest`"
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_addPlaylistEntry_7_8_then_1_8_2",
+                        "kind": "step",
+                        "title": "Assign `order`",
+                        "payload": "order = (highest?.order ?? 0) + 1",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_8_9",
+                    "kind": "var_def",
+                    "title": "Define `isMusic`",
+                    "payload": "const isMusic = ['MUSIC', 'MUSIC_ALBUM', 'MUSIC_TRACK'].includes(mediaType)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_9_10",
+                    "kind": "step",
+                    "title": "Database `first` on `CustomListEntry` and stores it as `existingEntry`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_10_11",
+                    "kind": "var_def",
+                    "title": "Define `entry`",
+                    "payload": "let entry: any",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_11_12",
+                    "kind": "selection",
+                    "title": "`existingEntry`",
+                    "selectionMode": "if_else",
+                    "condition": "`existingEntry`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_addPlaylistEntry_11_12_then_0_12_1",
+                        "kind": "step",
+                        "title": "Assign `entry`",
+                        "payload": "entry = await prisma.orm.public.CustomListEntry .where({ id: existingEntry.id }) .update({ order, ...(body.customNotes !== undefined ? { customNotes: body.customNotes } : {}), ...",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_addPlaylistEntry_11_12_else_0_13_1",
+                        "kind": "step",
+                        "title": "Assign `entry`",
+                        "payload": "entry = await prisma.orm.public.CustomListEntry.create({ listId: playlistId, mediaType, mediaId, order, customNotes: body.customNotes ? body.customNotes ...",
+                        "payloadLanguage": "typescript"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_13_14",
+                    "kind": "step",
+                    "title": "Calls `Boolean` and stores result as `playlistIsPrivate`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_14_15",
+                    "kind": "var_def",
+                    "title": "Define `listName`",
+                    "payload": "const listName = access.playlist.name",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_15_16",
+                    "kind": "step",
+                    "title": "Database `create` on `ActivityLog`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addPlaylistEntry_16_17",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Entry added to playlist successfully\",\n  \"entry\": \"<formatEntry(entry, userId)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-updatePlaylistEntry",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-updatePlaylistEntry",
+                "title": "BorealisPlaylistsServ.updatePlaylistEntry(userId, playlistId, body)",
+                "description": "Update an entry in the playlist (order, notes, or batch reorder).",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_2_3",
+                    "kind": "selection",
+                    "title": "`!access.canEdit`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.canEdit`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "You do not have permission to modify entries in this playlist"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_3_4",
+                    "kind": "selection",
+                    "title": "`body.reorder && Array.isArray(body.reorder)`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.reorder && Array.isArray(body.reorder)`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_3_4_then_0_4_1",
+                        "kind": "iteration",
+                        "title": "Iterate `const item` over `body.reorder`",
+                        "loopType": "while",
+                        "condition": "Iterate `const item` over `body.reorder`",
+                        "children": [
+                          {
+                            "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_3_4_then_0_4_1_loop_0_4_1_1",
+                            "kind": "step",
+                            "title": "Database `update` on `CustomListEntry`"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_3_4_then_1_4_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"Playlist entries reordered successfully\",\n  \"entry\": null\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_4_5",
+                    "kind": "var_def",
+                    "title": "Define `entry`",
+                    "payload": "let entry: any = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_5_6",
+                    "kind": "selection",
+                    "title": "`body.id`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.id`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Assign `entry`",
+                        "payload": "entry = await prisma.orm.public.CustomListEntry .where({ id: body.id, listId: playlistId }) .first()",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_5_6_else_0_7_1",
+                        "kind": "selection",
+                        "title": "`body.mediaType && body.mediaId`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.mediaType && body.mediaId`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_5_6_else_0_7_1_then_0_7_1_1",
+                            "kind": "step",
+                            "title": "Assign `entry`",
+                            "payload": "entry = await prisma.orm.public.CustomListEntry .where({ listId: playlistId, mediaType: body.mediaType.toUpperCase() as MediaType, mediaId: Number(body.mediaId), }) .first()",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_7_8",
+                    "kind": "selection",
+                    "title": "`!entry`",
+                    "selectionMode": "if_else",
+                    "condition": "`!entry`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_7_8_then_0_8_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist entry not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_8_9",
+                    "kind": "var_def",
+                    "title": "Define `updateData`",
+                    "payload": "const updateData: any = {}",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_9_10",
+                    "kind": "selection",
+                    "title": "`body.order !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.order !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_9_10_then_0_10_1",
+                        "kind": "step",
+                        "title": "Assign `updateData.order`",
+                        "payload": "updateData.order = Number(body.order)",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_10_11",
+                    "kind": "selection",
+                    "title": "`body.customNotes !== undefined`",
+                    "selectionMode": "if_else",
+                    "condition": "`body.customNotes !== undefined`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_10_11_then_0_11_1",
+                        "kind": "step",
+                        "title": "Assign `updateData.customNotes`",
+                        "payload": "updateData.customNotes = body.customNotes",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_11_12",
+                    "kind": "step",
+                    "title": "Database `update` on `CustomListEntry` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updatePlaylistEntry_12_13",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Playlist entry updated successfully\",\n  \"entry\": \"<formatEntry(updated, userId)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-removePlaylistEntry",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-removePlaylistEntry",
+                "title": "BorealisPlaylistsServ.removePlaylistEntry(userId, playlistId, target)",
+                "description": "Remove an entry from the playlist.",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_removePlaylistEntry_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removePlaylistEntry_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_removePlaylistEntry_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removePlaylistEntry_2_3",
+                    "kind": "selection",
+                    "title": "`!access.canEdit`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.canEdit`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_removePlaylistEntry_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "You do not have permission to remove entries from this playlist"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removePlaylistEntry_3_4",
+                    "kind": "var_def",
+                    "title": "Define `entry`",
+                    "payload": "let entry: any = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removePlaylistEntry_4_5",
+                    "kind": "selection",
+                    "title": "`target.id`",
+                    "selectionMode": "if_else",
+                    "condition": "`target.id`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_removePlaylistEntry_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Assign `entry`",
+                        "payload": "entry = await prisma.orm.public.CustomListEntry .where({ id: target.id, listId: playlistId }) .first()",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_removePlaylistEntry_4_5_else_0_6_1",
+                        "kind": "selection",
+                        "title": "`target.mediaType && target.mediaId`",
+                        "selectionMode": "if_else",
+                        "condition": "`target.mediaType && target.mediaId`",
+                        "thenBranch": [
+                          {
+                            "id": "m_BorealisPlaylistsServ_removePlaylistEntry_4_5_else_0_6_1_then_0_6_1_1",
+                            "kind": "step",
+                            "title": "Assign `entry`",
+                            "payload": "entry = await prisma.orm.public.CustomListEntry .where({ listId: playlistId, mediaType: target.mediaType.toUpperCase() as MediaType, mediaId: Number(target.mediaId), }) .first()",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removePlaylistEntry_6_7",
+                    "kind": "selection",
+                    "title": "`!entry`",
+                    "selectionMode": "if_else",
+                    "condition": "`!entry`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_removePlaylistEntry_6_7_then_0_7_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist entry not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removePlaylistEntry_7_8",
+                    "kind": "step",
+                    "title": "Database `delete` on `CustomListEntry`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removePlaylistEntry_8_9",
+                    "kind": "step",
+                    "title": "Calls `Boolean` and stores result as `playlistIsPrivate`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removePlaylistEntry_9_10",
+                    "kind": "var_def",
+                    "title": "Define `listName`",
+                    "payload": "const listName = access.playlist.name",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removePlaylistEntry_10_11",
+                    "kind": "step",
+                    "title": "Database `create` on `ActivityLog`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removePlaylistEntry_11_12",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Entry removed from playlist successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-reorderEntries",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-reorderEntries",
+                "title": "BorealisPlaylistsServ.reorderEntries(userId, playlistId, entryIds)",
+                "description": "Reorder entries in bulk by passing ordered array of entry IDs.",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_reorderEntries_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_reorderEntries_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_reorderEntries_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_reorderEntries_2_3",
+                    "kind": "selection",
+                    "title": "`!access.canEdit`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.canEdit`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_reorderEntries_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "You do not have permission to reorder this playlist"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_reorderEntries_3_4",
+                    "kind": "iteration",
+                    "title": "Loop `i < entryIds.length`",
+                    "loopType": "while",
+                    "condition": "Loop `i < entryIds.length`",
+                    "children": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_reorderEntries_3_4_loop_0_4_1",
+                        "kind": "step",
+                        "title": "Database `update` on `CustomListEntry`"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_reorderEntries_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Playlist entries reordered successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-listCollaborators",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-listCollaborators",
+                "title": "BorealisPlaylistsServ.listCollaborators(userId, playlistId)",
+                "description": "List collaborators of a playlist.",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_listCollaborators_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listCollaborators_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listCollaborators_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listCollaborators_2_3",
+                    "kind": "selection",
+                    "title": "`!access.canView`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.canView`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listCollaborators_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "Access denied"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listCollaborators_3_4",
+                    "kind": "step",
+                    "title": "Database `all` on `CustomListCollaborator` and stores it as `collabs`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listCollaborators_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"collaborators\": \"<collabs.map((c: any) => ({ id: c.id, userId: c.userId, role: c.role, createdAt: toDate(c.createdAt).toISOString(), user: formatUser(c.user) || { id: c.userId, ...)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-addCollaborator",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-addCollaborator",
+                "title": "BorealisPlaylistsServ.addCollaborator(userId, playlistId, body)",
+                "description": "Add a collaborator by username (Owner only).",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_addCollaborator_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_2_3",
+                    "kind": "selection",
+                    "title": "`!access.isOwner`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.isOwner`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_addCollaborator_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "Only the list owner can add collaborators"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_3_4",
+                    "kind": "var_def",
+                    "title": "Define `username`",
+                    "payload": "const username = body.username.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_4_5",
+                    "kind": "step",
+                    "title": "Database `first` on `User` and stores it as `target`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_5_6",
+                    "kind": "selection",
+                    "title": "`!target`",
+                    "selectionMode": "if_else",
+                    "condition": "`!target`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_addCollaborator_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "User @${username} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_6_7",
+                    "kind": "selection",
+                    "title": "`target.id === userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`target.id === userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_addCollaborator_6_7_then_0_7_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "You cannot add yourself as a collaborator"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_7_8",
+                    "kind": "step",
+                    "title": "Database `first` on `CustomListCollaborator` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_8_9",
+                    "kind": "selection",
+                    "title": "`existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_addCollaborator_8_9_then_0_9_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "@${target.username} is already a collaborator on this list"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_9_10",
+                    "kind": "var_def",
+                    "title": "Define `role`",
+                    "payload": "const role = body.role || 'EDITOR'",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_10_11",
+                    "kind": "step",
+                    "title": "Database `create` on `CustomListCollaborator` and stores it as `collab`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_11_12",
+                    "kind": "step",
+                    "title": "Database `create` on `ActivityLog`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_addCollaborator_12_13",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"<`Added @${target.username} as collaborator`>\",\n  \"collaborator\": {\n    \"id\": \"<collab.id>\",\n    \"userId\": \"<collab.userId>\",\n    \"role\": \"<collab.role>\",\n    \"createdAt\": \"<toDate(collab.createdAt).toISOString()>\",\n    \"user\": \"<formatUser(target)!>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-updateCollaborator",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-updateCollaborator",
+                "title": "BorealisPlaylistsServ.updateCollaborator(userId, playlistId, collaboratorId, role)",
+                "description": "Update a collaborator's role (Owner only).",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_updateCollaborator_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updateCollaborator_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updateCollaborator_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updateCollaborator_2_3",
+                    "kind": "selection",
+                    "title": "`!access.isOwner`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.isOwner`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updateCollaborator_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "Only the list owner can update collaborator roles"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updateCollaborator_3_4",
+                    "kind": "step",
+                    "title": "Database `first` on `CustomListCollaborator` and stores it as `collab`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updateCollaborator_4_5",
+                    "kind": "selection",
+                    "title": "`!collab`",
+                    "selectionMode": "if_else",
+                    "condition": "`!collab`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updateCollaborator_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Collaborator not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updateCollaborator_5_6",
+                    "kind": "step",
+                    "title": "Database `update` on `CustomListCollaborator` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updateCollaborator_6_7",
+                    "kind": "selection",
+                    "title": "`!updated`",
+                    "selectionMode": "if_else",
+                    "condition": "`!updated`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_updateCollaborator_6_7_then_0_7_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Failed to update collaborator"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_updateCollaborator_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Collaborator role updated successfully\",\n  \"collaborator\": {\n    \"id\": \"<updated.id>\",\n    \"userId\": \"<updated.userId>\",\n    \"role\": \"<updated.role>\",\n    \"createdAt\": \"<toDate(updated.createdAt).toISOString()>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-removeCollaborator",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-removeCollaborator",
+                "title": "BorealisPlaylistsServ.removeCollaborator(userId, playlistId, collaboratorId)",
+                "description": "Remove a collaborator (Owner or the collaborator leaving).",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_removeCollaborator_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removeCollaborator_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_removeCollaborator_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removeCollaborator_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `CustomListCollaborator` and stores it as `collab`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removeCollaborator_3_4",
+                    "kind": "selection",
+                    "title": "`!collab`",
+                    "selectionMode": "if_else",
+                    "condition": "`!collab`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_removeCollaborator_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Collaborator not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removeCollaborator_4_5",
+                    "kind": "selection",
+                    "title": "`!access.isOwner && collab.userId !== userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.isOwner && collab.userId !== userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_removeCollaborator_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "You do not have permission to remove this collaborator"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removeCollaborator_5_6",
+                    "kind": "step",
+                    "title": "Database `delete` on `CustomListCollaborator`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_removeCollaborator_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Collaborator removed successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-listComments",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-listComments",
+                "title": "BorealisPlaylistsServ.listComments(userId, playlistId, query)",
+                "description": "List comments on a custom playlist.",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_listComments_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listComments_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listComments_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listComments_2_3",
+                    "kind": "selection",
+                    "title": "`!access.canView`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.canView`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listComments_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "Access denied"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listComments_3_4",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listComments_4_5",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listComments_5_6",
+                    "kind": "var_def",
+                    "title": "Define `skip`",
+                    "payload": "const skip = page - 1 * limit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listComments_6_7",
+                    "kind": "step",
+                    "title": "Database `query` on `ListComment` and stores it as `commentQ`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listComments_7_8",
+                    "kind": "step",
+                    "title": "Calls `Promise.all` and stores result as `[total, rawComments]`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listComments_8_9",
+                    "kind": "var_def",
+                    "title": "Define `comments`",
+                    "payload": "const comments = rawComments.map((c: any) => ({ id: c.id, listOwnerId: c.listOwnerId, customListId: c.customListId, authorId: c.authorId, content: c.content, isSpoiler: c.isSpoiler, ...)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listComments_9_10",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"comments\": \"<comments>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<Math.ceil(total / limit) || 1>\",\n    \"hasMore\": \"<page * limit < total>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-createComment",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-createComment",
+                "title": "BorealisPlaylistsServ.createComment(userId, playlistId, body)",
+                "description": "Post a comment on a custom playlist.",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_createComment_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createComment_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_createComment_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createComment_2_3",
+                    "kind": "selection",
+                    "title": "`!access.canView`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.canView`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_createComment_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "Access denied"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createComment_3_4",
+                    "kind": "var_def",
+                    "title": "Define `trimmed`",
+                    "payload": "const trimmed = body.content.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createComment_4_5",
+                    "kind": "selection",
+                    "title": "`!trimmed`",
+                    "selectionMode": "if_else",
+                    "condition": "`!trimmed`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_createComment_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Comment content cannot be empty"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createComment_5_6",
+                    "kind": "step",
+                    "title": "Database `create` on `ListComment` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createComment_6_7",
+                    "kind": "step",
+                    "title": "Database `first` on `ListComment` and stores it as `comment`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_createComment_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"comment\": {\n    \"id\": \"<comment!.id>\",\n    \"listOwnerId\": \"<comment!.listOwnerId>\",\n    \"customListId\": \"<comment!.customListId>\",\n    \"authorId\": \"<comment!.authorId>\",\n    \"content\": \"<comment!.content>\",\n    \"isSpoiler\": \"<comment!.isSpoiler>\",\n    \"createdAt\": \"<toDate(comment!.createdAt).toISOString()>\",\n    \"updatedAt\": \"<toDate(comment!.updatedAt).toISOString()>\",\n    \"author\": \"<formatUser(comment as any.author)>\",\n    \"reply\": null\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-deleteComment",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-deleteComment",
+                "title": "BorealisPlaylistsServ.deleteComment(user, playlistId, commentId)",
+                "description": "Delete a comment on a custom playlist.",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_deleteComment_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deleteComment_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_deleteComment_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deleteComment_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `ListComment` and stores it as `comment`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deleteComment_3_4",
+                    "kind": "selection",
+                    "title": "`!comment`",
+                    "selectionMode": "if_else",
+                    "condition": "`!comment`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_deleteComment_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Comment not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deleteComment_4_5",
+                    "kind": "var_def",
+                    "title": "Define `isAuthor`, `isOwner`",
+                    "payload": "const isAuthor = comment.authorId === user.id\nconst isOwner = access.isOwner",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deleteComment_5_6",
+                    "kind": "step",
+                    "title": "Calls `new IRISBitField(user.permissions).has` and stores result as `isAdmin`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deleteComment_6_7",
+                    "kind": "selection",
+                    "title": "`!isAuthor && !isOwner && !isAdmin`",
+                    "selectionMode": "if_else",
+                    "condition": "`!isAuthor && !isOwner && !isAdmin`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_deleteComment_6_7_then_0_7_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "You do not have permission to delete this comment"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deleteComment_7_8",
+                    "kind": "step",
+                    "title": "Database `delete` on `ListComment`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_deleteComment_8_9",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"Comment deleted successfully\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BorealisPlaylistsServ-listActivity",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/playlists/playlists.serv.ts-BorealisPlaylistsServ-listActivity",
+                "title": "BorealisPlaylistsServ.listActivity(userId, playlistId, query, permissions = [])",
+                "description": "Get chronological activity log for a custom playlist.",
+                "steps": [
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_0_1",
+                    "kind": "step",
+                    "title": "Calls `this.getPlaylistAccess` and stores result as `access`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_1_2",
+                    "kind": "selection",
+                    "title": "`!access.playlist`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.playlist`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listActivity_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "Playlist with ID ${playlistId} not found"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_2_3",
+                    "kind": "selection",
+                    "title": "`!access.canView`",
+                    "selectionMode": "if_else",
+                    "condition": "`!access.canView`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listActivity_2_3_then_0_3_1",
+                        "kind": "error",
+                        "code": "Forbidden",
+                        "httpStatus": 403,
+                        "message": "Access denied"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_3_4",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_4_5",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_5_6",
+                    "kind": "var_def",
+                    "title": "Define `skip`, `collaboratorIds`",
+                    "payload": "const skip = page - 1 * limit\nconst collaboratorIds = access.playlist.collaborators as any[] || [].map((c: any) => c.userId)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_6_7",
+                    "kind": "step",
+                    "title": "Calls `Array.from` and stores result as `memberIds`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_7_8",
+                    "kind": "step",
+                    "title": "Database `all` on `ActivityLog` and stores it as `rawMemberLogs`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_8_9",
+                    "kind": "var_def",
+                    "title": "Define `matchingLogs`",
+                    "payload": "const matchingLogs = rawMemberLogs.filter((l: any) => l.metadata && (l.metadata as any).customListId === playlistId)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_9_10",
+                    "kind": "step",
+                    "title": "Calls `new IRISBitField(permissions).has` and stores result as `isAdmin`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_10_11",
+                    "kind": "var_def",
+                    "title": "Define `total`",
+                    "payload": "const total = matchingLogs.length",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_11_12",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `totalPages`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_12_13",
+                    "kind": "var_def",
+                    "title": "Define `hasMore`, `pageSlice`",
+                    "payload": "const hasMore = page < totalPages\nconst pageSlice = matchingLogs.slice(skip, skip + limit)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_13_14",
+                    "kind": "step",
+                    "title": "Calls `ActivityServ.formatActivityEntries` and stores result as `listLogs`"
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_14_15",
+                    "kind": "selection",
+                    "title": "`total === 0 && page === 1`",
+                    "selectionMode": "if_else",
+                    "condition": "`total === 0 && page === 1`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BorealisPlaylistsServ_listActivity_14_15_then_0_15_1",
+                        "kind": "step",
+                        "title": "Assign `listLogs`",
+                        "payload": "listLogs = await ActivityServ.formatActivityEntries( [ { id: `created-${access.playlist.id}`, userId: access.playlist.userId, type: 'CUSTOM_LIST_CREATED', mediaType: null, ...",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BorealisPlaylistsServ_listActivity_15_16",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"activity\": \"<listLogs>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total === 0 ? 1 : total>\",\n    \"totalPages\": \"<totalPages>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "24 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Playlist name cannot be empty"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Playlist with ID ${playlistId} not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to edit this playlist"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Only the list owner can change playlist privacy"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Only the list owner can delete this playlist"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Access to this playlist is denied"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to add entries to this playlist"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Valid mediaId is required"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to modify entries in this playlist"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Playlist entry not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to remove entries from this playlist"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to reorder this playlist"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Access denied"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Only the list owner can add collaborators"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User @${username} not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You cannot add yourself as a collaborator"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "@${target.username} is already a collaborator on this list"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Only the list owner can update collaborator roles"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Collaborator not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to update collaborator"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to remove this collaborator"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Comment content cannot be empty"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Comment not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-23",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to delete this comment"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

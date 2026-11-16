@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Akaromi for Firefox",
-  "version": "2.1.1",
+  "name": "NamelessLiberty's Akaromi",
+  "version": "2.2",
   "description": "Self hosted password manager to keep your login credentials safe.",
   "browser_specific_settings": {
     "gecko": {
-      "id": "info@runerra.org",
+      "id": "akaromi@namelessliberty",
       "strict_min_version": "142.0",
       "data_collection_permissions": {
         "required": [
@@ -34,6 +34,7 @@
     "scripts": [
       "lib/noble.js",
       "lib/crypto.js",
+      "lib/psl.js",
       "lib/matching.js",
       "lib/totp.js",
       "lib/qr-decoder.js",
@@ -67,11 +68,21 @@
         "<all_urls>"
       ],
       "js": [
+        "content/event-shield.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
         "content/passkey-injected.js"
       ],
       "world": "MAIN",
       "run_at": "document_start",
-      "all_frames": true
+      "all_frames": false
     },
     {
       "matches": [
@@ -93,7 +104,7 @@
         "content/content.css"
       ],
       "run_at": "document_idle",
-      "all_frames": true
+      "all_frames": false
     }
   ],
   "web_accessible_resources": [
@@ -101,11 +112,17 @@
       "resources": [
         "icons/icon-16.png",
         "icons/icon-48.png",
-        "icons/icons.svg"
+        "icons/icons.svg",
+        "content/badge.css",
+        "content/menu.css",
+        "content/passkey.css"
       ],
       "matches": [
         "<all_urls>"
       ]
     }
-  ]
+  ],
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'; object-src 'none'; connect-src https: http://localhost:* http://127.0.0.1:* http://[::1]:*; img-src 'self' https: http://localhost:* http://127.0.0.1:* http://[::1]:* data: blob:; style-src 'self' 'unsafe-inline'"
+  }
 }

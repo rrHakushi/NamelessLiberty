@@ -11,7 +11,9 @@ import {
   IconChevronLeft,
   IconChevronRight,
   IconChevronUp,
+  IconLayoutGrid,
 } from "@tabler/icons-react"
+import { Button } from "@workspace/ui/components/button"
 import { cn } from "@workspace/ui/lib/utils"
 import {
   Carousel,
@@ -56,6 +58,10 @@ export interface BorealisCardGroupProps
   dragFree?: boolean
   /** Embla carousel options override */
   opts?: Record<string, any>
+  /** Callback fired in carousel mode when horizontal/vertical overflow state changes */
+  onOverflowChange?: (isOverflowing: boolean) => void
+  /** Whether to show a "Show more" / "Show less" button in the header when cards overflow to toggle grid mode */
+  expandable?: boolean
   /** Custom class for header */
   headerClassName?: string
   /** Custom class for content / viewport */
@@ -183,6 +189,10 @@ interface HeaderProps {
   titlePosition: BorealisCardGroupTitlePosition
   orientation: BorealisCardGroupOrientation
   showControls: boolean
+  expandable?: boolean
+  isOverflowing?: boolean
+  isExpanded?: boolean
+  onToggleExpand?: () => void
   className?: string
   controlsClassName?: string
 }
@@ -193,10 +203,16 @@ function BorealisCardGroupHeader({
   titlePosition,
   orientation,
   showControls,
+  expandable,
+  isOverflowing,
+  isExpanded,
+  onToggleExpand,
   className,
   controlsClassName,
 }: HeaderProps) {
-  if (!title && !subtitle && !showControls) {
+  const showExpandButton = Boolean(expandable && (isOverflowing || isExpanded))
+
+  if (!title && !subtitle && !showControls && !showExpandButton) {
     return null
   }
 
@@ -234,6 +250,36 @@ function BorealisCardGroupHeader({
     />
   ) : null
 
+  const expandButtonNode = showExpandButton ? (
+    <Button
+      type="button"
+      variant="ghost"
+      size="sm"
+      onClick={onToggleExpand}
+      className="h-7 gap-1.5 px-2 text-xs text-zinc-400 hover:text-zinc-100"
+    >
+      {isExpanded ? (
+        <>
+          <span>Show less</span>
+          <IconChevronUp className="size-3.5" />
+        </>
+      ) : (
+        <>
+          <span>Show more</span>
+          <IconLayoutGrid className="size-3.5" />
+        </>
+      )}
+    </Button>
+  ) : null
+
+  const rightNode =
+    controlsNode || expandButtonNode ? (
+      <div className="flex items-center gap-2 shrink-0">
+        {expandButtonNode}
+        {controlsNode}
+      </div>
+    ) : null
+
   return (
     <div
       className={cn(
@@ -243,7 +289,7 @@ function BorealisCardGroupHeader({
       )}
     >
       {titleNode}
-      {controlsNode}
+      {rightNode}
     </div>
   )
 }
@@ -352,6 +398,8 @@ export function BorealisCardGroup({
   enableWheelScroll = true,
   dragFree = true,
   opts,
+  onOverflowChange,
+  expandable = false,
   className,
   headerClassName,
   contentClassName,
@@ -362,9 +410,13 @@ export function BorealisCardGroup({
   const isHorizontal = orientation === "horizontal"
   const gapClass = resolveGapClass(gap)
 
-  // When grid is true, layout === "grid", or columnCount is explicitly provided,
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [isOverflowing, setIsOverflowing] = useState(false)
+
+  // When grid is true, layout === "grid", columnCount is provided, or expanded via Show more,
   // BorealisCardGroup renders as a CSS Grid with rows flowing down naturally (everything visible, NO scroll).
-  const isGrid = Boolean(columnCount) || grid === true || layout === "grid"
+  const isGrid =
+    Boolean(columnCount) || grid === true || layout === "grid" || (expandable && isExpanded)
 
   const childArray = useMemo(() => React.Children.toArray(children), [children])
 
@@ -377,6 +429,114 @@ export function BorealisCardGroup({
     }
     return childArray
   }, [childArray, rowCount, columnCount])
+
+  const effectiveControlsPlacement: BorealisCardGroupControlsPlacement =
+    controlsPlacement ?? "floating"
+
+  const [api, setApi] = useState<CarouselApi>()
+  const [visibleSlideIndices, setVisibleSlideIndices] = useState<number[] | null>(null)
+  const [itemDimensions, setItemDimensions] = useState<{ width: number; height: number } | null>(null)
+
+  // Each slide chunk has rowCount items stacked vertically
+  const chunkSize = Math.max(1, rowCount ?? 1)
+
+  const slides = useMemo(() => {
+    return chunkChildren(effectiveChildren, chunkSize)
+  }, [effectiveChildren, chunkSize])
+
+  // Track window resize to re-measure card dimensions dynamically
+  useEffect(() => {
+    if (isGrid) return
+    const handleResize = () => setItemDimensions(null)
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [isGrid])
+
+  // Notify caller and internal expandable state when carousel overflow state changes
+  useEffect(() => {
+    if (isGrid || !api || (!onOverflowChange && !expandable)) return
+
+    const updateOverflow = () => {
+      const overflowing = api.canScrollPrev() || api.canScrollNext()
+      if (expandable) {
+        setIsOverflowing(overflowing)
+      }
+      onOverflowChange?.(overflowing)
+    }
+
+    updateOverflow()
+    api.on("reInit", updateOverflow)
+    api.on("select", updateOverflow)
+
+    return () => {
+      api.off("reInit", updateOverflow)
+      api.off("select", updateOverflow)
+    }
+  }, [api, isGrid, expandable, onOverflowChange])
+
+  // Windowing: Only render visible slides + 2 buffer cards on each side
+  useEffect(() => {
+    if (isGrid || !api) return
+
+    let rafId: number | null = null
+
+    const updateVisibleSlides = () => {
+      if (rafId !== null) return
+      rafId = requestAnimationFrame(() => {
+        rafId = null
+        const inView = api.slidesInView()
+        if (!inView || inView.length === 0) return
+
+        const min = Math.min(...inView)
+        const max = Math.max(...inView)
+
+        // Buffer of 2 on each side: visible cards + 2
+        const buffer = 2
+        const start = Math.max(0, min - buffer)
+        const end = Math.min(slides.length - 1, max + buffer)
+
+        setVisibleSlideIndices((prev) => {
+          if (
+            prev &&
+            prev.length === end - start + 1 &&
+            prev[0] === start &&
+            prev[prev.length - 1] === end
+          ) {
+            return prev
+          }
+          const range: number[] = []
+          for (let i = start; i <= end; i++) {
+            range.push(i)
+          }
+          return range
+        })
+      })
+    }
+
+    updateVisibleSlides()
+
+    api.on("slidesInView", updateVisibleSlides)
+    api.on("scroll", updateVisibleSlides)
+    api.on("reInit", updateVisibleSlides)
+
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId)
+      api.off("slidesInView", updateVisibleSlides)
+      api.off("scroll", updateVisibleSlides)
+      api.off("reInit", updateVisibleSlides)
+    }
+  }, [api, isGrid, slides.length])
+
+  const carouselOpts = useMemo(
+    () => ({
+      align: "start" as const,
+      containScroll: "trimSnaps" as const,
+      dragFree,
+      axis: isHorizontal ? ("x" as const) : ("y" as const),
+      ...opts,
+    }),
+    [dragFree, isHorizontal, opts]
+  )
 
   // ---------------------------------------------------------------------------
   // 1. Grid Mode: responsive or columnCount grid, all items visible, no scroll
@@ -391,6 +551,10 @@ export function BorealisCardGroup({
           titlePosition={titlePosition}
           orientation={orientation}
           showControls={false}
+          expandable={expandable}
+          isOverflowing={isOverflowing}
+          isExpanded={isExpanded}
+          onToggleExpand={() => setIsExpanded((prev) => !prev)}
           className={headerClassName}
           controlsClassName={controlsClassName}
         />
@@ -445,81 +609,6 @@ export function BorealisCardGroup({
   // ---------------------------------------------------------------------------
   // 2. Carousel Mode: horizontal / vertical scrolling with rowCount rows
   // ---------------------------------------------------------------------------
-  // Floating frosted arrows are the default controls for the group
-  const effectiveControlsPlacement: BorealisCardGroupControlsPlacement =
-    controlsPlacement ?? "floating"
-
-  const [api, setApi] = useState<CarouselApi>()
-  const [visibleSlideIndices, setVisibleSlideIndices] = useState<number[] | null>(null)
-  const [itemDimensions, setItemDimensions] = useState<{ width: number; height: number } | null>(null)
-
-  // Each slide chunk has rowCount items stacked vertically
-  const chunkSize = Math.max(1, rowCount ?? 1)
-
-  const slides = useMemo(() => {
-    return chunkChildren(effectiveChildren, chunkSize)
-  }, [effectiveChildren, chunkSize])
-
-  // Track window resize to re-measure card dimensions dynamically
-  useEffect(() => {
-    const handleResize = () => setItemDimensions(null)
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
-
-  // Windowing: Only render visible slides + 2 buffer cards on each side
-  useEffect(() => {
-    if (!api) return
-
-    let rafId: number | null = null
-
-    const updateVisibleSlides = () => {
-      if (rafId !== null) return
-      rafId = requestAnimationFrame(() => {
-        rafId = null
-        const inView = api.slidesInView()
-        if (!inView || inView.length === 0) return
-
-        const min = Math.min(...inView)
-        const max = Math.max(...inView)
-
-        // Buffer of 2 on each side: visible cards + 2
-        const buffer = 2
-        const start = Math.max(0, min - buffer)
-        const end = Math.min(slides.length - 1, max + buffer)
-
-        setVisibleSlideIndices((prev) => {
-          if (
-            prev &&
-            prev.length === end - start + 1 &&
-            prev[0] === start &&
-            prev[prev.length - 1] === end
-          ) {
-            return prev
-          }
-          const range: number[] = []
-          for (let i = start; i <= end; i++) {
-            range.push(i)
-          }
-          return range
-        })
-      })
-    }
-
-    updateVisibleSlides()
-
-    api.on("slidesInView", updateVisibleSlides)
-    api.on("scroll", updateVisibleSlides)
-    api.on("reInit", updateVisibleSlides)
-
-    return () => {
-      if (rafId !== null) cancelAnimationFrame(rafId)
-      api.off("slidesInView", updateVisibleSlides)
-      api.off("scroll", updateVisibleSlides)
-      api.off("reInit", updateVisibleSlides)
-    }
-  }, [api, slides.length])
-
   const isSlideRendered = (slideIdx: number): boolean => {
     // Before Embla mounts, render the initial 8 slides (initial visible + 2 buffer)
     if (visibleSlideIndices === null) {
@@ -527,17 +616,6 @@ export function BorealisCardGroup({
     }
     return visibleSlideIndices.includes(slideIdx)
   }
-
-  const carouselOpts = useMemo(
-    () => ({
-      align: "start" as const,
-      containScroll: "trimSnaps" as const,
-      dragFree,
-      axis: isHorizontal ? ("x" as const) : ("y" as const),
-      ...opts,
-    }),
-    [dragFree, isHorizontal, opts]
-  )
 
   const carouselContent = (
     <Carousel
@@ -558,6 +636,10 @@ export function BorealisCardGroup({
         titlePosition={titlePosition}
         orientation={orientation}
         showControls={effectiveControlsPlacement === "header"}
+        expandable={expandable}
+        isOverflowing={isOverflowing}
+        isExpanded={isExpanded}
+        onToggleExpand={() => setIsExpanded((prev) => !prev)}
         className={headerClassName}
         controlsClassName={controlsClassName}
       />

@@ -542,17 +542,6 @@ export function MediaListConnectionsTab({
             : null,
         }
       )
-      if (category === "book") {
-        const googleBookId = (media as any).googleBookId ?? null
-        list.push({
-          key: "googlebooks",
-          name: "Google Books",
-          detectedId: googleBookId,
-          externalUrl: googleBookId
-            ? `https://books.google.com/books?id=${googleBookId}`
-            : null,
-        })
-      }
     } else if (category === "tv" || category === "movie") {
       list.push(
         {
@@ -862,14 +851,12 @@ export function MediaListConnectionsTab({
 
         // Check if query is an explicit ID/URL pattern across providers
         const idPrefixMatch = q.match(
-          /^(?:id:|anilist:|al:|mal:|simkl:|bgm:|bangumi:|hikka:|mu:|mangaupdates:|mb:|mangabaka:|trakt:|imdb:|gb:|googlebooks:|lastfm:|mbid:|#)\s*([^\s/#?]+)$/i
+          /^(?:id:|anilist:|al:|mal:|simkl:|bgm:|bangumi:|hikka:|mu:|mangaupdates:|mb:|mangabaka:|trakt:|lastfm:|mbid:|#)\s*([^\s/#?]+)$/i
         )
         const urlIdMatch =
           q.match(/(?:anilist\.co|myanimelist\.net|simkl\.com|hikka\.io|trakt\.tv)\/(?:anime|manga|tv|movies|shows)\/([^/?#\s]+)/i) ||
           q.match(/(?:bgm|bangumi|chii)\.(?:tv|in)\/subject\/(\d+)/i) ||
-          q.match(/(?:mangaupdates\.com|mangabaka\.org)\/series\/(\d+)/i) ||
-          q.match(/[?&]id=([^&#\s]+)/i) ||
-          q.match(/\/volumes\/([^/?#\s]+)/i)
+          q.match(/(?:mangaupdates\.com|mangabaka\.org)\/series\/(\d+)/i)
         const isNumeric = /^\d+$/.test(q)
         const isImdbId = /^tt\d+$/i.test(q)
         const explicitId =
@@ -1107,52 +1094,6 @@ export function MediaListConnectionsTab({
             setSearchResults(mapped)
             setIsSearching(false)
             return
-          }
-        }
-
-        // 4. Client-side direct fallback for Google Books
-        if (provider.key === "googlebooks") {
-          const gbUrl =
-            isExplicitOnly && explicitId
-              ? `https://www.googleapis.com/books/v1/volumes/${encodeURIComponent(explicitId)}`
-              : `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=15`
-          const resp = await fetch(gbUrl)
-          if (resp.ok) {
-            const json = await resp.json()
-            const rawItems = Array.isArray(json?.items)
-              ? json.items
-              : json?.id
-                ? [json]
-                : []
-            if (rawItems.length > 0) {
-              const mapped: ProviderSearchResult[] = rawItems.map((b: any) => {
-                const info = b.volumeInfo || {}
-                const rawCover =
-                  info.imageLinks?.large ||
-                  info.imageLinks?.medium ||
-                  info.imageLinks?.thumbnail ||
-                  info.imageLinks?.smallThumbnail ||
-                  null
-                const cover = rawCover ? String(rawCover).replace(/^http:\/\//i, "https://") : null
-                const year = info.publishedDate
-                  ? parseInt(String(info.publishedDate).substring(0, 4), 10)
-                  : null
-                return {
-                  externalId: String(b.id),
-                  title: info.title || "Untitled",
-                  titleSecondary: Array.isArray(info.authors) ? info.authors.join(", ") : null,
-                  coverImage: cover,
-                  releaseYear: year && !Number.isNaN(year) ? year : null,
-                  format: "BOOK",
-                  episodes: info.pageCount ?? null,
-                  status: null,
-                  url: `https://books.google.com/books?id=${b.id}`,
-                }
-              })
-              setSearchResults(mapped)
-              setIsSearching(false)
-              return
-            }
           }
         }
 

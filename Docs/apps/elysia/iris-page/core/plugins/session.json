@@ -1,0 +1,1394 @@
+{
+  "id": "core/plugins/session",
+  "title": "session",
+  "description": "",
+  "icon": "IconBox",
+  "metadata": {
+    "pathname": "apps/elysia/src/core/plugins/session.ts",
+    "relPath": "core/plugins/session.ts",
+    "role": "Class",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconBox",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "session"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Class"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/core/plugins/session.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "41 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/akaromi/ciphers/ciphers.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/akaromi/ciphers/ciphers.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/akaromi/encryption/encryption.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/akaromi/encryption/encryption.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/akaromi/vault/vault.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/akaromi/vault/vault.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-3",
+                        "props": {
+                          "href": "/docs/apps/borealis/anime/anime.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/anime/anime.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-4",
+                        "props": {
+                          "href": "/docs/apps/borealis/books/books.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/books/books.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-5",
+                        "props": {
+                          "href": "/docs/apps/borealis/calendar/calendar.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/calendar/calendar.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-6",
+                        "props": {
+                          "href": "/docs/apps/borealis/games/games.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/games/games.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-7",
+                        "props": {
+                          "href": "/docs/apps/borealis/lists/lists.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/lists/lists.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-8",
+                        "props": {
+                          "href": "/docs/apps/borealis/manga/manga.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/manga/manga.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-9",
+                        "props": {
+                          "href": "/docs/apps/borealis/movies/movies.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/movies/movies.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-10",
+                        "props": {
+                          "href": "/docs/apps/borealis/music/music.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/music/music.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-11",
+                        "props": {
+                          "href": "/docs/apps/borealis/other/other.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/other/other.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-12",
+                        "props": {
+                          "href": "/docs/apps/borealis/playlists/playlists.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/playlists/playlists.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-13",
+                        "props": {
+                          "href": "/docs/apps/borealis/tv/tv.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/borealis/tv/tv.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-14",
+                        "props": {
+                          "href": "/docs/apps/carina/activity/activity.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/activity/activity.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-15",
+                        "props": {
+                          "href": "/docs/apps/carina/apikeys/apikeys.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/apikeys/apikeys.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-16",
+                        "props": {
+                          "href": "/docs/apps/carina/auth/auth.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/auth/auth.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-17",
+                        "props": {
+                          "href": "/docs/apps/carina/backupcodes/backupcodes.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/backupcodes/backupcodes.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-18",
+                        "props": {
+                          "href": "/docs/apps/carina/bookmarks/bookmarks.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/bookmarks/bookmarks.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-19",
+                        "props": {
+                          "href": "/docs/apps/carina/comments/comments.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/comments/comments.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-20",
+                        "props": {
+                          "href": "/docs/apps/carina/connections/connections.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/connections/connections.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-21",
+                        "props": {
+                          "href": "/docs/apps/carina/email-2fa/email-2fa.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/email-2fa/email-2fa.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-22",
+                        "props": {
+                          "href": "/docs/apps/carina/favorites/favorites.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/favorites/favorites.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-23",
+                        "props": {
+                          "href": "/docs/apps/carina/friends/friends.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/friends/friends.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-24",
+                        "props": {
+                          "href": "/docs/apps/carina/notifications/notifications.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/notifications/notifications.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-25",
+                        "props": {
+                          "href": "/docs/apps/carina/oauth/oauth.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/oauth/oauth.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-26",
+                        "props": {
+                          "href": "/docs/apps/carina/oauth/oauth.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/oauth/oauth.serv.ts (SessionUser)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-27",
+                        "props": {
+                          "href": "/docs/apps/carina/passkeys/passkeys.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/passkeys/passkeys.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-28",
+                        "props": {
+                          "href": "/docs/apps/carina/qc/qc.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/qc/qc.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-29",
+                        "props": {
+                          "href": "/docs/apps/carina/recommendations/recommendations.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/recommendations/recommendations.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-30",
+                        "props": {
+                          "href": "/docs/apps/carina/totp/totp.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/totp/totp.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-31",
+                        "props": {
+                          "href": "/docs/apps/carina/users/users.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/users/users.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-32",
+                        "props": {
+                          "href": "/docs/apps/kiroshi/history/history.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/kiroshi/history/history.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-33",
+                        "props": {
+                          "href": "/docs/apps/kiroshi/search/search.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/kiroshi/search/search.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-34",
+                        "props": {
+                          "href": "/docs/apps/kiroshi/settings/settings.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/kiroshi/settings/settings.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-35",
+                        "props": {
+                          "href": "/docs/apps/servarr/core/servarr.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/servarr/core/servarr.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-36",
+                        "props": {
+                          "href": "/docs/apps/servarr/extended/servarr-extended.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/servarr/extended/servarr-extended.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-37",
+                        "props": {
+                          "href": "/docs/apps/tesseract/signaling/tesseract.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/tesseract/signaling/tesseract.ctrl.ts (session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-38",
+                        "props": {
+                          "href": "/docs/apps/tesseract/signaling/tesseract.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/tesseract/signaling/tesseract.serv.ts (resolveSessionFromRequest)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-39",
+                        "props": {
+                          "href": "/docs/core/plugins/rate-limiter",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "core/plugins/rate-limiter.ts (Session)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-40",
+                        "props": {
+                          "href": "/docs/server",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "server.ts (resolveSessionFromRequest)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "3 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "Session.constructor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(user, token = null)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "Session.getUser"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "SessionUser | null"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "Session.requireUser"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "()"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "SessionUser"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-Session-constructor",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/session.ts-Session-constructor",
+                "title": "Session.constructor(user, token = null)",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_Session_constructor_0_1",
+                    "kind": "step",
+                    "title": "Assign `this.user`",
+                    "payload": "this.user = user",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_Session_constructor_1_2",
+                    "kind": "step",
+                    "title": "Assign `this.isAuthenticated`",
+                    "payload": "this.isAuthenticated = user !== null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_Session_constructor_2_3",
+                    "kind": "step",
+                    "title": "Assign `this.token`",
+                    "payload": "this.token = token",
+                    "payloadLanguage": "typescript"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-Session-getUser",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/session.ts-Session-getUser",
+                "title": "Session.getUser()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_Session_getUser_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.user`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-Session-requireUser",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/session.ts-Session-requireUser",
+                "title": "Session.requireUser()",
+                "description": "Method execution sequence",
+                "steps": [
+                  {
+                    "id": "m_Session_requireUser_0_1",
+                    "kind": "selection",
+                    "title": "`!this.user`",
+                    "selectionMode": "if_else",
+                    "condition": "`!this.user`",
+                    "thenBranch": [
+                      {
+                        "id": "m_Session_requireUser_0_1_then_0_1_1",
+                        "kind": "error",
+                        "code": "Unauthorized",
+                        "httpStatus": 401,
+                        "message": "Authentication required"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_Session_requireUser_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`this.user`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-resolveSessionFromRequest",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/session.ts-resolveSessionFromRequest",
+                "title": "function resolveSessionFromRequest",
+                "description": "Resolves an authenticated user session from a Request. Supports: 1. Bearer Token (`Authorization: Bearer <jwt>`) 2. Session Cookie (`Cookie: session=<jwt>`) 3. OAuth 2.0 Access Token (`Authorization: Bearer <oauth_token>`) 4. API Key (`x-api-key`, `apikey`, `x-api`, `Authorization: ApiKey <key>`)",
+                "steps": [
+                  {
+                    "id": "exp_resolveSessionFromRequest_0_1",
+                    "kind": "var_def",
+                    "title": "Define `secret`",
+                    "payload": "const secret = Bun.env.JWT_SECRET",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_resolveSessionFromRequest_1_2",
+                    "kind": "selection",
+                    "title": "`!secret`",
+                    "selectionMode": "if_else",
+                    "condition": "`!secret`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_resolveSessionFromRequest_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "JWT_SECRET environment variable is required"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_resolveSessionFromRequest_2_3",
+                    "kind": "step",
+                    "title": "Calls `request.headers.get` and stores result as `authHeader`"
+                  },
+                  {
+                    "id": "exp_resolveSessionFromRequest_3_4",
+                    "kind": "var_def",
+                    "title": "Define `rawToken`",
+                    "payload": "let rawToken: string | null = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_resolveSessionFromRequest_4_5",
+                    "kind": "selection",
+                    "title": "`injectedBearer && injectedBearer.trim().length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`injectedBearer && injectedBearer.trim().length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_resolveSessionFromRequest_4_5_then_0_5_1",
+                        "kind": "step",
+                        "title": "Assign `rawToken`",
+                        "payload": "rawToken = injectedBearer.trim()",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "exp_resolveSessionFromRequest_4_5_else_0_6_1",
+                        "kind": "selection",
+                        "title": "`authHeader?.startsWith('Bearer ')`",
+                        "selectionMode": "if_else",
+                        "condition": "`authHeader?.startsWith('Bearer ')`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_resolveSessionFromRequest_4_5_else_0_6_1_then_0_6_1_1",
+                            "kind": "step",
+                            "title": "Assign `rawToken`",
+                            "payload": "rawToken = authHeader.slice(7).trim()",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "exp_resolveSessionFromRequest_6_7",
+                    "kind": "selection",
+                    "title": "`!rawToken`",
+                    "selectionMode": "if_else",
+                    "condition": "`!rawToken`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_resolveSessionFromRequest_6_7_then_0_7_1",
+                        "kind": "selection",
+                        "title": "`injectedSessionCookie && injectedSessionCookie.trim().length > 0`",
+                        "selectionMode": "if_else",
+                        "condition": "`injectedSessionCookie && injectedSessionCookie.trim().length > 0`",
+                        "thenBranch": [
+                          {
+                            "id": "exp_resolveSessionFromRequest_6_7_then_0_7_1_then_0_7_1_1",
+                            "kind": "step",
+                            "title": "Assign `rawToken`",
+                            "payload": "rawToken = injectedSessionCookie.trim()",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": [
+                          {
+                            "id": "exp_resolveSessionFromRequest_6_7_then_0_7_1_else_0_7_2_1",
+                            "kind": "step",
+                            "title": "Calls `request.headers.get` and stores result as `cookieHeader`"
+                          },
+                          {
+                            "id": "exp_resolveSessionFromRequest_6_7_then_0_7_1_else_1_7_2_2",
+                            "kind": "selection",
+                            "title": "`cookieHeader`",
+                            "selectionMode": "if_else",
+                            "condition": "`cookieHeader`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_resolveSessionFromRequest_6_7_then_0_7_1_else_1_7_2_2_then_0_7_2_2_1",
+                                "kind": "step",
+                                "title": "Calls `Object.fromEntries` and stores result as `cookies`"
+                              },
+                              {
+                                "id": "exp_resolveSessionFromRequest_6_7_then_0_7_1_else_1_7_2_2_then_1_7_2_2_2",
+                                "kind": "selection",
+                                "title": "`cookies.session`",
+                                "selectionMode": "if_else",
+                                "condition": "`cookies.session`",
+                                "thenBranch": [
+                                  {
+                                    "id": "exp_resolveSessionFromRequest_6_7_then_0_7_1_else_1_7_2_2_then_1_7_2_2_2_then_0_7_2_2_2_1",
+                                    "kind": "step",
+                                    "title": "Assign `rawToken`",
+                                    "payload": "rawToken = cookies.session",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ]
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_resolveSessionFromRequest_7_8",
+                    "kind": "selection",
+                    "title": "`rawToken`",
+                    "selectionMode": "if_else",
+                    "condition": "`rawToken`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_0_8_1_1",
+                            "kind": "step",
+                            "title": "Calls `new TextEncoder().encode` and stores result as `secretKey`"
+                          },
+                          {
+                            "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_1_8_1_2",
+                            "kind": "step",
+                            "title": "Calls `jwtVerify` and stores result as `{ payload }`"
+                          },
+                          {
+                            "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_2_8_1_3",
+                            "kind": "selection",
+                            "title": "`payload && payload.id`",
+                            "selectionMode": "if_else",
+                            "condition": "`payload && payload.id`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_2_8_1_3_then_0_8_1_3_1",
+                                "kind": "step",
+                                "title": "Database `first` on `User` and stores it as `dbUser`"
+                              },
+                              {
+                                "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_2_8_1_3_then_1_8_1_3_2",
+                                "kind": "selection",
+                                "title": "`dbUser`",
+                                "selectionMode": "if_else",
+                                "condition": "`dbUser`",
+                                "thenBranch": [
+                                  {
+                                    "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_2_8_1_3_then_1_8_1_3_2_then_0_8_1_3_2_1",
+                                    "kind": "var_def",
+                                    "title": "Define `isRevoked`",
+                                    "payload": "let isRevoked = false",
+                                    "payloadLanguage": "typescript"
+                                  },
+                                  {
+                                    "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_2_8_1_3_then_1_8_1_3_2_then_1_8_1_3_2_2",
+                                    "kind": "selection",
+                                    "title": "`dbUser.passwordChangedAt && payload.iat`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`dbUser.passwordChangedAt && payload.iat`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_2_8_1_3_then_1_8_1_3_2_then_1_8_1_3_2_2_then_0_8_1_3_2_2_1",
+                                        "kind": "step",
+                                        "title": "Calls `Math.floor` and stores result as `pwdChangedSeconds`"
+                                      },
+                                      {
+                                        "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_2_8_1_3_then_1_8_1_3_2_then_1_8_1_3_2_2_then_1_8_1_3_2_2_2",
+                                        "kind": "selection",
+                                        "title": "`payload.iat as number < pwdChangedSeconds`",
+                                        "selectionMode": "if_else",
+                                        "condition": "`payload.iat as number < pwdChangedSeconds`",
+                                        "thenBranch": [
+                                          {
+                                            "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_2_8_1_3_then_1_8_1_3_2_then_1_8_1_3_2_2_then_1_8_1_3_2_2_2_then_0_8_1_3_2_2_2_1",
+                                            "kind": "step",
+                                            "title": "Assign `isRevoked`",
+                                            "payload": "isRevoked = true",
+                                            "payloadLanguage": "typescript"
+                                          }
+                                        ],
+                                        "elseBranch": []
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  },
+                                  {
+                                    "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_2_8_1_3_then_1_8_1_3_2_then_2_8_1_3_2_3",
+                                    "kind": "selection",
+                                    "title": "`!isRevoked`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`!isRevoked`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "exp_resolveSessionFromRequest_7_8_then_0_8_1_try_2_8_1_3_then_1_8_1_3_2_then_2_8_1_3_2_3_then_0_8_1_3_2_3_1",
+                                        "kind": "return",
+                                        "title": "",
+                                        "payload": "{\n  \"user\": {\n    \"id\": \"<dbUser.id>\",\n    \"username\": \"<dbUser.username>\",\n    \"email\": \"<dbUser.email>\",\n    \"permissions\": [\n      \"<...dbUser.permissions>\"\n    ]\n  },\n  \"token\": \"<rawToken>\"\n}",
+                                        "payloadLanguage": "json"
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "catchBlock": [],
+                        "finallyBlock": []
+                      },
+                      {
+                        "id": "exp_resolveSessionFromRequest_7_8_then_2_8_3",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "exp_resolveSessionFromRequest_7_8_then_2_8_3_try_0_8_3_1",
+                            "kind": "step",
+                            "title": "Database `first` on `OAuthAccessToken` and stores it as `oauthToken`"
+                          },
+                          {
+                            "id": "exp_resolveSessionFromRequest_7_8_then_2_8_3_try_1_8_3_2",
+                            "kind": "selection",
+                            "title": "`oauthToken && oauthToken.user && !oauthToken.revokedAt && toDate(oauthToken.expiresAt).getTime() > Date.now()`",
+                            "selectionMode": "if_else",
+                            "condition": "`oauthToken && oauthToken.user && !oauthToken.revokedAt && toDate(oauthToken.expiresAt).getTime() > Date.now()`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_resolveSessionFromRequest_7_8_then_2_8_3_try_1_8_3_2_then_0_8_3_2_1",
+                                "kind": "return",
+                                "title": "",
+                                "payload": "{\n  \"user\": {\n    \"id\": \"<oauthToken.user.id>\",\n    \"username\": \"<oauthToken.user.username.trim()>\",\n    \"email\": \"<oauthToken.user.email>\",\n    \"permissions\": [\n      \"<...oauthToken.user.permissions>\"\n    ]\n  },\n  \"token\": \"<rawToken>\"\n}",
+                                "payloadLanguage": "json"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "catchBlock": [],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_resolveSessionFromRequest_8_9",
+                    "kind": "var_def",
+                    "title": "Define `xApiKey`",
+                    "payload": "const xApiKey = request.headers.get('x-api-key') || request.headers.get('apikey') || request.headers.get('x-api') || authHeader?.startsWith('ApiKey ') ? authHeader.slice(7).trim() : null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_resolveSessionFromRequest_9_10",
+                    "kind": "selection",
+                    "title": "`xApiKey && xApiKey.trim().length > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`xApiKey && xApiKey.trim().length > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_resolveSessionFromRequest_9_10_then_0_10_1",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "exp_resolveSessionFromRequest_9_10_then_0_10_1_try_0_10_1_1",
+                            "kind": "step",
+                            "title": "Calls `hashApiKey` and stores result as `keyHash`"
+                          },
+                          {
+                            "id": "exp_resolveSessionFromRequest_9_10_then_0_10_1_try_1_10_1_2",
+                            "kind": "step",
+                            "title": "Database `first` on `ApiKey` and stores it as `keyRecord`"
+                          },
+                          {
+                            "id": "exp_resolveSessionFromRequest_9_10_then_0_10_1_try_2_10_1_3",
+                            "kind": "selection",
+                            "title": "`keyRecord && keyRecord.user && !keyRecord.expiresAt || toDate(keyRecord.expiresAt).getTime() > Date.now()`",
+                            "selectionMode": "if_else",
+                            "condition": "`keyRecord && keyRecord.user && !keyRecord.expiresAt || toDate(keyRecord.expiresAt).getTime() > Date.now()`",
+                            "thenBranch": [
+                              {
+                                "id": "exp_resolveSessionFromRequest_9_10_then_0_10_1_try_2_10_1_3_then_0_10_1_3_1",
+                                "kind": "step",
+                                "title": "Database `update` on `ApiKey`"
+                              },
+                              {
+                                "id": "exp_resolveSessionFromRequest_9_10_then_0_10_1_try_2_10_1_3_then_1_10_1_3_2",
+                                "kind": "return",
+                                "title": "",
+                                "payload": "{\n  \"user\": {\n    \"id\": \"<keyRecord.user.id>\",\n    \"username\": \"<keyRecord.user.username.trim()>\",\n    \"email\": \"<keyRecord.user.email>\",\n    \"permissions\": [\n      \"<...keyRecord.user.permissions>\"\n    ]\n  },\n  \"token\": null\n}",
+                                "payloadLanguage": "json"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "catchBlock": [],
+                        "finallyBlock": []
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_resolveSessionFromRequest_10_11",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"user\": null,\n  \"token\": null\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "exp-algo-session",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "core/plugins/session.ts-session",
+                "title": "const session",
+                "description": "Elysia session plugin providing request-scoped session resolution.",
+                "steps": [
+                  {
+                    "id": "exp_session_0_1",
+                    "kind": "var_def",
+                    "title": "Define `secret`",
+                    "payload": "const secret = Bun.env.JWT_SECRET",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "exp_session_1_2",
+                    "kind": "selection",
+                    "title": "`!secret`",
+                    "selectionMode": "if_else",
+                    "condition": "`!secret`",
+                    "thenBranch": [
+                      {
+                        "id": "exp_session_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "Error",
+                        "httpStatus": 500,
+                        "message": "JWT_SECRET environment variable is required"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "exp_session_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`new Elysia({ name: 'iris-session' }).use(bearer()).use(jwt({ name: 'jwt', secret, exp: '365d' })).derive('global', async ({ request, bearer: bearerToken, cookie }) => { const { user, token } = await resolveSessionFromRequest( request, options?.prisma ?? defaultPrisma, bearerToken, cookie?.session?.value as string | undefined ) ...)`"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "2 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Authentication required"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "JWT_SECRET environment variable is required"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

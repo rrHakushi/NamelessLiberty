@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useMemo, useRef } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import Link from "next/link"
 import {
   IconArrowRight,
@@ -38,7 +38,7 @@ import {
   getMediaPreferences,
   parseMalThemeSong,
   getDeezerFallbackSearchUrl,
-} from "@IRIS/shared"
+} from "@NamelessLiberty/shared"
 import { formatMediaTitle } from "@/lib/browse-search"
 import { getMediaDetailHref } from "@/lib/media-routes"
 import type {
@@ -51,7 +51,7 @@ import type {
 import { MusicTracklist } from "../music/music-tracklist"
 import { MusicPlayerPreview } from "../music/music-player-preview"
 import { MusicLyrics } from "../music/music-lyrics"
-import { BorealisCard, BorealisCardGroup } from "@Runa/borealis"
+import { BorealisCard, BorealisCardGroup } from "@NamelessLiberty/borealis"
 
 interface OverviewTabProps {
   media: NormalizedMediaData
@@ -178,6 +178,10 @@ export function OverviewTab({
     return uniqueList.slice(0, 16)
   }, [media.characters, media.category])
 
+  const [isSynopsisExpanded, setIsSynopsisExpanded] = useState(false)
+  const [isSynopsisTruncated, setIsSynopsisTruncated] = useState(false)
+  const synopsisRef = useRef<HTMLParagraphElement>(null)
+
   // Parse description cleanly
   const cleanDescription = useMemo(() => {
     if (!media.description) return null
@@ -186,6 +190,26 @@ export function OverviewTab({
       .replace(/<[^>]*>/g, "")
       .trim()
   }, [media.description])
+
+  useEffect(() => {
+    setIsSynopsisExpanded(false)
+  }, [cleanDescription])
+
+  useEffect(() => {
+    const el = synopsisRef.current
+    if (!el || isSynopsisExpanded) return
+
+    const checkTruncation = () => {
+      setIsSynopsisTruncated(el.scrollHeight > el.clientHeight + 1)
+    }
+
+    checkTruncation()
+
+    if (typeof ResizeObserver === "undefined") return
+    const observer = new ResizeObserver(checkTruncation)
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [cleanDescription, isSynopsisExpanded])
 
   // Helper to format full dates
   const formatFullDate = (
@@ -583,9 +607,26 @@ export function OverviewTab({
                 Synopsis
               </h2>
               {cleanDescription ? (
-                <p className="text-sm leading-relaxed whitespace-pre-line text-foreground/80">
-                  {cleanDescription}
-                </p>
+                <div>
+                  <p
+                    ref={synopsisRef}
+                    className={cn(
+                      "text-sm leading-relaxed whitespace-pre-line text-foreground/80",
+                      !isSynopsisExpanded && "line-clamp-4 sm:line-clamp-none"
+                    )}
+                  >
+                    {cleanDescription}
+                  </p>
+                  {(isSynopsisTruncated || isSynopsisExpanded) && (
+                    <button
+                      type="button"
+                      onClick={() => setIsSynopsisExpanded((prev) => !prev)}
+                      className="mt-2 cursor-pointer text-xs font-semibold text-primary outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring sm:hidden"
+                    >
+                      {isSynopsisExpanded ? "Show less" : "Show more"}
+                    </button>
+                  )}
+                </div>
               ) : (
                 <p className="text-sm text-muted-foreground italic">
                   No synopsis available.
@@ -830,6 +871,7 @@ export function OverviewTab({
               title="Characters"
               rowCount={1}
               dragFree
+              expandable
               variant="none"
             >
               {featuredCharacters.map((item) => (
@@ -916,6 +958,7 @@ export function OverviewTab({
               title="Similar Titles"
               rowCount={1}
               dragFree
+              expandable
               variant="none"
             >
               {similarListItems.map((item) => (
@@ -1894,7 +1937,7 @@ export function OverviewTab({
                       href={media.lastFmUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-[#D51007]/10 px-2.5 py-1 text-[11px] font-medium text-[#D51007] transition-colors hover:bg-[#D51007]/20"
+                      className="inline-flex items-center gap-1 rounded-lg bg-red-600/10 px-2.5 py-1 text-[11px] font-medium text-red-600 transition-colors hover:bg-red-600/20"
                     >
                       <span>Last.fm</span>
                       <IconExternalLink
@@ -1908,7 +1951,7 @@ export function OverviewTab({
                       href={`https://open.spotify.com/${media.format === "TRACK" ? "track" : "album"}/${media.spotifyId}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-[#1DB954]/10 px-2.5 py-1 text-[11px] font-medium text-[#1DB954] transition-colors hover:bg-[#1DB954]/20"
+                      className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/10 px-2.5 py-1 text-[11px] font-medium text-emerald-500 transition-colors hover:bg-emerald-500/20"
                     >
                       <span>Spotify</span>
                       <IconExternalLink
@@ -1922,7 +1965,7 @@ export function OverviewTab({
                       href={`https://music.apple.com/song/${media.appleMusicId}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-[#FA243C]/10 px-2.5 py-1 text-[11px] font-medium text-[#FA243C] transition-colors hover:bg-[#FA243C]/20"
+                      className="inline-flex items-center gap-1 rounded-lg bg-rose-500/10 px-2.5 py-1 text-[11px] font-medium text-rose-500 transition-colors hover:bg-rose-500/20"
                     >
                       <span>Apple Music</span>
                       <IconExternalLink
@@ -1936,7 +1979,7 @@ export function OverviewTab({
                       href={`https://music.youtube.com/watch?v=${media.youtubeMusicId}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-[#FF0000]/10 px-2.5 py-1 text-[11px] font-medium text-[#FF0000] transition-colors hover:bg-[#FF0000]/20"
+                      className="inline-flex items-center gap-1 rounded-lg bg-red-500/10 px-2.5 py-1 text-[11px] font-medium text-red-500 transition-colors hover:bg-red-500/20"
                     >
                       <span>YouTube Music</span>
                       <IconExternalLink
@@ -1950,7 +1993,7 @@ export function OverviewTab({
                       href={`https://musicbrainz.org/${media.format === "TRACK" ? "recording" : "release-group"}/${media.musicBrainzId}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg bg-[#BA478F]/10 px-2.5 py-1 text-[11px] font-medium text-[#BA478F] transition-colors hover:bg-[#BA478F]/20"
+                      className="inline-flex items-center gap-1 rounded-lg bg-fuchsia-600/10 px-2.5 py-1 text-[11px] font-medium text-fuchsia-600 transition-colors hover:bg-fuchsia-600/20"
                     >
                       <span>MusicBrainz</span>
                       <IconExternalLink

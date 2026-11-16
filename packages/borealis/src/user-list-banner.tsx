@@ -7,7 +7,7 @@ import {
   getDisplayNameStyleCss,
   getDisplayNameEffectClasses,
   type UserProfileCustomization,
-} from "@IRIS/shared"
+} from "@NamelessLiberty/shared"
 import { GlassCard } from "./glass-card"
 
 export interface UserListBannerProps {
@@ -64,7 +64,7 @@ export function UserListBanner({
           <img
             src={profile!.bannerUrl!}
             alt={`${nameToDisplay}'s banner`}
-            className="size-full object-cover object-center transition-transform duration-700 hover:scale-105"
+            className="size-full object-cover object-center"
           />
         ) : (
           <div className="flex size-full items-center justify-end bg-linear-to-br from-primary/20 via-background to-muted/40 pe-8 text-primary/10 select-none">

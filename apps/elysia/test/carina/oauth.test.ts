@@ -1,11 +1,11 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { createHash, randomBytes } from 'node:crypto'
 import { Elysia } from 'elysia'
-import { carinaOAuthDiscovery } from '../../src/api/controllers/carina/oauth-discovery.ctrl'
-import { carinaOAuth } from '../../src/api/controllers/carina/oauth.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt, hashPassword } from '../../src/utils/auth-crypto'
-import { prisma } from '@Iris/db'
+import { carinaOAuthDiscovery } from '../../src/apps/carina/oauth/oauth-discovery.ctrl'
+import { carinaOAuth } from '../../src/apps/carina/oauth/oauth.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt, hashPassword } from '../../src/core/utils/auth-crypto'
+import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------
 // In-Memory Database Mock for OAuth 2.0 / OIDC

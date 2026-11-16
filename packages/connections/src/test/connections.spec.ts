@@ -13,7 +13,7 @@ import {
 import { SearchProxyManager } from "../search/index.js";
 import type { ConnectionCredentials } from "../types/index.js";
 
-describe("@IRIS/connections - Cryptographic Envelope", () => {
+describe("@NamelessLiberty/connections - Cryptographic Envelope", () => {
   const userId = "user_test_12345";
   const otherUserId = "user_attacker_67890";
 
@@ -79,14 +79,13 @@ describe("@IRIS/connections - Cryptographic Envelope", () => {
   });
 });
 
-describe("@IRIS/connections - Provider Registry", () => {
+describe("@NamelessLiberty/connections - Provider Registry", () => {
   it("should register and retrieve all required providers", () => {
     const providers = [
       "ANILIST",
       "MAL",
       "SIMKL",
       "BANGUMI",
-      "STEAM",
       "RIOT_GAMES",
       "RADARR",
       "SONARR",
@@ -106,9 +105,8 @@ describe("@IRIS/connections - Provider Registry", () => {
 
   it("should list supported providers metadata for UI rendering", () => {
     const list = getSupportedProviders();
-    assert.ok(list.length >= 12);
+    assert.ok(list.length >= 11);
     assert.ok(list.some((p) => p.provider === "MAL"));
-    assert.ok(list.some((p) => p.provider === "STEAM"));
     assert.ok(list.some((p) => p.provider === "RADARR"));
     assert.ok(list.some((p) => p.provider === "HIKKA"));
     assert.ok(list.some((p) => p.provider === "MANGAUPDATES"));
@@ -117,7 +115,7 @@ describe("@IRIS/connections - Provider Registry", () => {
   });
 });
 
-describe("@IRIS/connections - Search Proxy", () => {
+describe("@NamelessLiberty/connections - Search Proxy", () => {
   it("should ensure tracking providers have search capability enabled", () => {
     const searchProviders = [
       "ANILIST",
@@ -139,7 +137,7 @@ describe("@IRIS/connections - Search Proxy", () => {
   it("should throw error when searching on provider without search capability", async () => {
     await assert.rejects(
       async () => {
-        await SearchProxyManager.search("STEAM" as any, "Elden Ring");
+        await SearchProxyManager.search("RIOT_GAMES" as any, "Elden Ring");
       },
       {
         message: /does not support media search/,

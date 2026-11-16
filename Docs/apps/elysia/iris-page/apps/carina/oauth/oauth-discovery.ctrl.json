@@ -1,0 +1,540 @@
+{
+  "id": "apps/carina/oauth/oauth-discovery.ctrl",
+  "title": "OpenID Connect discovery document",
+  "description": "RFC 8414 & OpenID Connect 1.0 machine-readable discovery metadata.",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/.well-known/openid-configuration",
+    "relPath": "apps/carina/oauth/oauth-discovery.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/.well-known/openid-configuration",
+      "/.well-known/oauth-authorization-server"
+    ],
+    "errorCount": 0
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "OpenID Connect discovery document"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              },
+              {
+                "type": "CardDescription",
+                "props": {
+                  "className": "text-start pt-1"
+                },
+                "text": "RFC 8414 & OpenID Connect 1.0 machine-readable discovery metadata."
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/.well-known/openid-configuration"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/.well-known/oauth-authorization-server"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_27)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "2 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /.well-known/openid-configuration · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaOAuthModel.openidConfigResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /.well-known/oauth-authorization-server · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaOAuthModel.oauthServerConfigResponse"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth-discovery.ctrl.ts-route-0",
+                "title": "GET /.well-known/openid-configuration",
+                "description": "OpenID Connect discovery document",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`CarinaOAuthServ.getOpenIdConfiguration()`"
+                  },
+                  {
+                    "id": "call_0_CarinaOAuthServ_getOpenIdConfiguration",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaOAuthServ.getOpenIdConfiguration",
+                    "isAsync": true,
+                    "targetAlg": "CarinaOAuthServ.getOpenIdConfiguration"
+                  },
+                  {
+                    "id": "svc_0_CarinaOAuthServ_getOpenIdConfiguration",
+                    "kind": "sequence",
+                    "title": "CarinaOAuthServ.getOpenIdConfiguration Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_CarinaOAuthServ_getOpenIdConfiguration_0_1",
+                        "kind": "step",
+                        "title": "Calls `getIssuerUrl` and stores result as `issuer`"
+                      },
+                      {
+                        "id": "svc_0_CarinaOAuthServ_getOpenIdConfiguration_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"issuer\": \"<issuer>\",\n  \"authorization_endpoint\": \"<`${issuer}/carina/oauth/authorize`>\",\n  \"token_endpoint\": \"<`${issuer}/carina/oauth/token`>\",\n  \"userinfo_endpoint\": \"<`${issuer}/carina/oauth/userinfo`>\",\n  \"revocation_endpoint\": \"<`${issuer}/carina/oauth/revoke`>\",\n  \"introspection_endpoint\": \"<`${issuer}/carina/oauth/introspect`>\",\n  \"registration_endpoint\": \"<`${issuer}/carina/oauth/register`>\",\n  \"scopes_supported\": [\n    \"<...SUPPORTED_SCOPES>\"\n  ],\n  \"response_types_supported\": [\n    \"code\"\n  ],\n  \"grant_types_supported\": [\n    \"authorization_code\"\n  ],\n  \"token_endpoint_auth_methods_supported\": [\n    \"client_secret_basic\"\n  ],\n  \"code_challenge_methods_supported\": [\n    \"S256\"\n  ]\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/oauth/oauth-discovery.ctrl.ts-route-1",
+                "title": "GET /.well-known/oauth-authorization-server",
+                "description": "OAuth 2.0 authorization server metadata",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`CarinaOAuthServ.getOAuthAuthorizationServerMetadata()`"
+                  },
+                  {
+                    "id": "call_1_CarinaOAuthServ_getOAuthAuthorizationServerMetadata",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaOAuthServ.getOAuthAuthorizationServerMetadata",
+                    "isAsync": true,
+                    "targetAlg": "CarinaOAuthServ.getOAuthAuthorizationServerMetadata"
+                  },
+                  {
+                    "id": "svc_1_CarinaOAuthServ_getOAuthAuthorizationServerMetadata",
+                    "kind": "sequence",
+                    "title": "CarinaOAuthServ.getOAuthAuthorizationServerMetadata Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_CarinaOAuthServ_getOAuthAuthorizationServerMetadata_0_1",
+                        "kind": "step",
+                        "title": "Calls `getIssuerUrl` and stores result as `issuer`"
+                      },
+                      {
+                        "id": "svc_1_CarinaOAuthServ_getOAuthAuthorizationServerMetadata_1_2",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"issuer\": \"<issuer>\",\n  \"authorization_endpoint\": \"<`${issuer}/carina/oauth/authorize`>\",\n  \"token_endpoint\": \"<`${issuer}/carina/oauth/token`>\",\n  \"revocation_endpoint\": \"<`${issuer}/carina/oauth/revoke`>\",\n  \"introspection_endpoint\": \"<`${issuer}/carina/oauth/introspect`>\",\n  \"registration_endpoint\": \"<`${issuer}/carina/oauth/register`>\",\n  \"scopes_supported\": [\n    \"<...SUPPORTED_SCOPES>\"\n  ],\n  \"response_types_supported\": [\n    \"code\"\n  ],\n  \"grant_types_supported\": [\n    \"authorization_code\"\n  ],\n  \"code_challenge_methods_supported\": [\n    \"S256\"\n  ]\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertCircle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "0 errors"
+                  }
+                ]
+              },
+              {
+                "type": "Callout",
+                "props": {
+                  "variant": "info",
+                  "title": "No explicit error throws detected"
+                },
+                "children": "This module does not throw explicit HTTP or domain errors in its analyzed AST paths."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

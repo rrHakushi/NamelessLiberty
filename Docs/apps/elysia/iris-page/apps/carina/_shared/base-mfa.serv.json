@@ -1,0 +1,878 @@
+{
+  "id": "apps/carina/_shared/base-mfa.serv",
+  "title": "base-mfa.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/carina/_shared/base-mfa.serv.ts",
+    "relPath": "apps/carina/_shared/base-mfa.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "base-mfa.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/carina/_shared/base-mfa.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "4 caller(s), 4 subclass(es)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/carina/backupcodes/backupcodes.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/backupcodes/backupcodes.serv.ts (BaseMfaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-1",
+                        "props": {
+                          "href": "/docs/apps/carina/email-2fa/email-2fa.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/email-2fa/email-2fa.serv.ts (BaseMfaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-2",
+                        "props": {
+                          "href": "/docs/apps/carina/passkeys/passkeys.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/passkeys/passkeys.serv.ts (BaseMfaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "caller-3",
+                        "props": {
+                          "href": "/docs/apps/carina/totp/totp.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/totp/totp.serv.ts (BaseMfaService)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-0",
+                        "props": {
+                          "href": "/docs/apps/carina/backupcodes/backupcodes.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaBackupCodesServ (apps/carina/backupcodes/backupcodes.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-1",
+                        "props": {
+                          "href": "/docs/apps/carina/email-2fa/email-2fa.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaEmail2faServ (apps/carina/email-2fa/email-2fa.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-2",
+                        "props": {
+                          "href": "/docs/apps/carina/passkeys/passkeys.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaPasskeysServ (apps/carina/passkeys/passkeys.serv.ts)"
+                      },
+                      {
+                        "type": "a",
+                        "key": "sub-3",
+                        "props": {
+                          "href": "/docs/apps/carina/totp/totp.serv",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 font-mono text-[11px] text-sky-700 dark:text-sky-300 transition-colors hover:opacity-80"
+                        },
+                        "text": "CarinaTotpServ (apps/carina/totp/totp.serv.ts)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "6 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseMfaService.constructor"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(loggerName)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseMfaService.resolveMfaTicket"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(mfaTicket)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<MfaTicketPayload>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseMfaService.recordFailedMfaAttempt"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(mfaTicket, maxAttempts = 5)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<void>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseMfaService.clearMfaTicket"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(mfaTicket)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<void>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseMfaService.invalidateUserMfaCache"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<void>"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "BaseMfaService.issueMfaSessionToken"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(user)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "Promise<string>"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseMfaService-resolveMfaTicket",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/_shared/base-mfa.serv.ts-BaseMfaService-resolveMfaTicket",
+                "title": "BaseMfaService.resolveMfaTicket(mfaTicket)",
+                "description": "Resolves an active MFA ticket payload from cache, or throws HTTP 401 when missing/expired.",
+                "steps": [
+                  {
+                    "id": "m_BaseMfaService_resolveMfaTicket_0_1",
+                    "kind": "step",
+                    "title": "Cache `get` -> `ticketData`"
+                  },
+                  {
+                    "id": "m_BaseMfaService_resolveMfaTicket_1_2",
+                    "kind": "selection",
+                    "title": "`!ticketData?.userId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!ticketData?.userId`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BaseMfaService_resolveMfaTicket_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "Unauthorized",
+                        "httpStatus": 401,
+                        "message": "MFA challenge ticket is invalid or has expired. Please sign in again."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BaseMfaService_resolveMfaTicket_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`ticketData`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseMfaService-recordFailedMfaAttempt",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/_shared/base-mfa.serv.ts-BaseMfaService-recordFailedMfaAttempt",
+                "title": "BaseMfaService.recordFailedMfaAttempt(mfaTicket, maxAttempts = 5)",
+                "description": "Increments failed MFA verification attempts for a ticket and invalidates it after `maxAttempts`.",
+                "steps": [
+                  {
+                    "id": "m_BaseMfaService_recordFailedMfaAttempt_0_1",
+                    "kind": "var_def",
+                    "title": "Define `attemptKey`",
+                    "payload": "const attemptKey = `auth:mfa-ticket:attempts:${mfaTicket}`",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_BaseMfaService_recordFailedMfaAttempt_1_2",
+                    "kind": "step",
+                    "title": "Cache `get` -> `attempts`"
+                  },
+                  {
+                    "id": "m_BaseMfaService_recordFailedMfaAttempt_2_3",
+                    "kind": "selection",
+                    "title": "`attempts + 1 >= maxAttempts`",
+                    "selectionMode": "if_else",
+                    "condition": "`attempts + 1 >= maxAttempts`",
+                    "thenBranch": [
+                      {
+                        "id": "m_BaseMfaService_recordFailedMfaAttempt_2_3_then_0_3_1",
+                        "kind": "step",
+                        "title": "Cache `del`"
+                      },
+                      {
+                        "id": "m_BaseMfaService_recordFailedMfaAttempt_2_3_then_1_3_2",
+                        "kind": "step",
+                        "title": "Cache `del`"
+                      },
+                      {
+                        "id": "m_BaseMfaService_recordFailedMfaAttempt_2_3_then_2_3_3",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "Too many failed MFA verification attempts. Please sign in again."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_BaseMfaService_recordFailedMfaAttempt_3_4",
+                    "kind": "step",
+                    "title": "Cache `set`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseMfaService-clearMfaTicket",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/_shared/base-mfa.serv.ts-BaseMfaService-clearMfaTicket",
+                "title": "BaseMfaService.clearMfaTicket(mfaTicket)",
+                "description": "Deletes an MFA ticket and its attempt counter after successful verification.",
+                "steps": [
+                  {
+                    "id": "m_BaseMfaService_clearMfaTicket_0_1",
+                    "kind": "step",
+                    "title": "Cache `del`"
+                  },
+                  {
+                    "id": "m_BaseMfaService_clearMfaTicket_1_2",
+                    "kind": "step",
+                    "title": "Cache `del`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseMfaService-invalidateUserMfaCache",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/_shared/base-mfa.serv.ts-BaseMfaService-invalidateUserMfaCache",
+                "title": "BaseMfaService.invalidateUserMfaCache(userId)",
+                "description": "Invalidates cached user profile keys when MFA security state changes.",
+                "steps": [
+                  {
+                    "id": "m_BaseMfaService_invalidateUserMfaCache_0_1",
+                    "kind": "step",
+                    "title": "Cache `del`"
+                  },
+                  {
+                    "id": "m_BaseMfaService_invalidateUserMfaCache_1_2",
+                    "kind": "step",
+                    "title": "Cache `del`"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-BaseMfaService-issueMfaSessionToken",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/_shared/base-mfa.serv.ts-BaseMfaService-issueMfaSessionToken",
+                "title": "BaseMfaService.issueMfaSessionToken(user)",
+                "description": "Signs an authenticated user JWT with normalized username, permissions, and passwordChangedAt.",
+                "steps": [
+                  {
+                    "id": "m_BaseMfaService_issueMfaSessionToken_0_1",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await signUserJwt({ id: user.id, username: user.username.trim(), email: user.email, permissions: [...user.permissions], passwordChangedAt: user.passwordChangedAt, })`"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "2 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "MFA challenge ticket is invalid or has expired. Please sign in again."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Too many failed MFA verification attempts. Please sign in again."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

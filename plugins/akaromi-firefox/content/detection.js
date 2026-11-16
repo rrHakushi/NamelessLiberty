@@ -6,6 +6,8 @@
 
   const SEARCH_REGEX = /(search|query|find|filter|lookup|keyword|term)/i
   const OTP_OR_PROMO_REGEX = /(otp|2fa|totp|captcha|promo|coupon|discount|gift|cvv|cvc|security[_-]?code)/i
+  const TOTP_FIELD_REGEX = /(otp|2fa|totp|mfa|auth[-_]?code|verification[-_]?code|security[-_]?code|two[-_]?factor|authenticator)/i
+  const NON_TOTP_EXCLUDE_REGEX = /(captcha|promo|coupon|discount|gift|cvv|cvc)/i
   const LOGIN_USER_REGEX = /(user|login|email|identifier|account|member|signin|auth)/i
 
   /**
@@ -39,7 +41,39 @@
   }
 
   /**
-   * Determines if an element is a valid credential input (username, email, or password)
+   * Determines if an input element is a TOTP / 2FA / One-Time-Code input
+   */
+  function isTotpInput(el) {
+    if (!el || el.tagName !== "INPUT") return false
+    if (el.closest("#akaromi-portal, .akaromi-portal-root, .akaromi-field-icon")) {
+      return false
+    }
+    if (el.disabled || el.readOnly) return false
+
+    const type = (el.type || "text").toLowerCase()
+    if (!["text", "tel", "number", ""].includes(type)) return false
+    if (isSearchInput(el)) return false
+
+    const auto = (el.getAttribute("autocomplete") || "").toLowerCase()
+    const identifier = [
+      el.id,
+      el.name,
+      el.placeholder,
+      el.getAttribute("aria-label"),
+      el.getAttribute("data-testid"),
+      el.className,
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase()
+
+    if (NON_TOTP_EXCLUDE_REGEX.test(identifier)) return false
+    if (auto === "one-time-code") return true
+    return TOTP_FIELD_REGEX.test(identifier)
+  }
+
+  /**
+   * Determines if an element is a valid credential input (username, email, password, or TOTP)
    * Follows strict Bitwarden heuristics to prevent unwanted badges on non-credential inputs.
    */
     // Step 2: Credential Field Identification Heuristics
@@ -51,6 +85,8 @@
     if (el.closest("#akaromi-portal, .akaromi-portal-root, .akaromi-field-icon")) {
       return false
     }
+
+    if (isTotpInput(el)) return true
 
     const type = (el.type || "text").toLowerCase()
 
@@ -157,5 +193,6 @@
   global.AkaromiDetection = {
     isCredentialInput,
     isSearchInput,
+    isTotpInput,
   }
 })(typeof window !== "undefined" ? window : globalThis)

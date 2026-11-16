@@ -1,0 +1,1839 @@
+{
+  "id": "apps/kiroshi/search/search.ctrl",
+  "title": "Web search proxying upstream SearXNG with encrypted history and caching",
+  "description": "",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/kiroshi/search",
+    "relPath": "apps/kiroshi/search/search.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/kiroshi/search",
+      "/kiroshi/suggestions"
+    ],
+    "errorCount": 8
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Web search proxying upstream SearXNG with encrypted history and caching"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/kiroshi/search"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/kiroshi/suggestions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_36)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "11 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/search · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiSearchModel.searchQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/search · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiSearchModel.searchResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/search · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiSearchModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/search · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiSearchModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/search · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiSearchModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/search · Response 429"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiSearchModel.tooManyRequestsError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/search · Response 502"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiSearchModel.badGatewayError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/suggestions · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiSearchModel.suggestionsQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/suggestions · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiSearchModel.suggestionsResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/suggestions · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiSearchModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /kiroshi/suggestions · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "KiroshiSearchModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/kiroshi/search/search.ctrl.ts-route-0",
+                "title": "GET /kiroshi/search",
+                "description": "Web search proxying upstream SearXNG with encrypted history and caching",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `KiroshiSearchModel.searchQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "var_def",
+                    "title": "Define `authenticatedUserId`",
+                    "payload": "let authenticatedUserId: string | null = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "route_0_2_3",
+                    "kind": "selection",
+                    "title": "`userSession.isAuthenticated && userSession.user`",
+                    "selectionMode": "if_else",
+                    "condition": "`userSession.isAuthenticated && userSession.user`",
+                    "thenBranch": [
+                      {
+                        "id": "route_0_2_3_then_0_3_1",
+                        "kind": "step",
+                        "title": "Assign `authenticatedUserId`",
+                        "payload": "authenticatedUserId = userSession.user.id",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": [
+                      {
+                        "id": "route_0_2_3_else_0_4_1",
+                        "kind": "var_def",
+                        "title": "Define `authHeader`, `xApiKey`, `apiKey`",
+                        "payload": "const authHeader = request.headers.get('authorization') || ''\nconst xApiKey = request.headers.get('x-api-key') || request.headers.get('api-key')\nconst apiKey = xApiKey || authHeader.startsWith('Bearer ') ? authHeader.slice(7).trim() : null",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "route_0_2_3_else_1_4_2",
+                        "kind": "selection",
+                        "title": "`apiKey`",
+                        "selectionMode": "if_else",
+                        "condition": "`apiKey`",
+                        "thenBranch": [
+                          {
+                            "id": "route_0_2_3_else_1_4_2_then_0_4_2_1",
+                            "kind": "step",
+                            "title": "Calls `createHash('sha256').update(apiKey).digest` and stores result as `hash`"
+                          },
+                          {
+                            "id": "route_0_2_3_else_1_4_2_then_1_4_2_2",
+                            "kind": "step",
+                            "title": "Database `first` on `ApiKey` and stores it as `keyRecord`"
+                          },
+                          {
+                            "id": "route_0_2_3_else_1_4_2_then_2_4_2_3",
+                            "kind": "selection",
+                            "title": "`keyRecord && !keyRecord.expiresAt || toDate(keyRecord.expiresAt).getTime() > Date.now()`",
+                            "selectionMode": "if_else",
+                            "condition": "`keyRecord && !keyRecord.expiresAt || toDate(keyRecord.expiresAt).getTime() > Date.now()`",
+                            "thenBranch": [
+                              {
+                                "id": "route_0_2_3_else_1_4_2_then_2_4_2_3_then_0_4_2_3_1",
+                                "kind": "step",
+                                "title": "Assign `authenticatedUserId`",
+                                "payload": "authenticatedUserId = keyRecord.userId",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "route_0_4_5",
+                    "kind": "selection",
+                    "title": "`!authenticatedUserId`",
+                    "selectionMode": "if_else",
+                    "condition": "`!authenticatedUserId`",
+                    "thenBranch": [
+                      {
+                        "id": "route_0_4_5_then_0_5_1",
+                        "kind": "error",
+                        "code": "Unauthorized",
+                        "httpStatus": 401,
+                        "message": "Authentication required via IRIS session or header (x-api-key / Authorization)."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "route_0_5_6",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await KiroshiSearchServ.search(authenticatedUserId, query)`"
+                  },
+                  {
+                    "id": "call_0_KiroshiSearchServ_search",
+                    "kind": "alg_call",
+                    "title": "Invoke KiroshiSearchServ.search",
+                    "isAsync": true,
+                    "targetAlg": "KiroshiSearchServ.search"
+                  },
+                  {
+                    "id": "svc_0_KiroshiSearchServ_search",
+                    "kind": "sequence",
+                    "title": "KiroshiSearchServ.search Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_0_1",
+                        "kind": "var_def",
+                        "title": "Define `q`",
+                        "payload": "const q = query.q || ''.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_1_2",
+                        "kind": "selection",
+                        "title": "`!q`",
+                        "selectionMode": "if_else",
+                        "condition": "`!q`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Query string 'q' is required."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_2_3",
+                        "kind": "var_def",
+                        "title": "Define `category`",
+                        "payload": "const category = query.category || 'general'.toLowerCase()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_3_4",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `pageno`"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_4_5",
+                        "kind": "var_def",
+                        "title": "Define `timeRange`, `language`, `safeSearch`, `isPrivateWindow`, `cacheKey`",
+                        "payload": "const timeRange = query.time_range || ''\nconst language = query.language || 'auto'\nconst safeSearch = query.safesearch || '0'\nconst isPrivateWindow = query.isPrivate === 'true' || query.isPrivate === '1'\nconst cacheKey = `${category}:${language}:${safeSearch}:${timeRange}:${pageno}:${q.toLowerCase()}`",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_5_6",
+                        "kind": "step",
+                        "title": "Calls `searchCache.get` and stores result as `cached`"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_6_7",
+                        "kind": "selection",
+                        "title": "`cached`",
+                        "selectionMode": "if_else",
+                        "condition": "`cached`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_6_7_then_0_7_1",
+                            "kind": "selection",
+                            "title": "`!isPrivateWindow`",
+                            "selectionMode": "if_else",
+                            "condition": "`!isPrivateWindow`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_0_KiroshiSearchServ_search_6_7_then_0_7_1_then_0_7_1_1",
+                                "kind": "step",
+                                "title": "Calls `KiroshiSearchServ.recordSearchHistoryAsync(userId, q, category).catch`"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_6_7_then_1_7_2",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`cached`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_7_8",
+                        "kind": "selection",
+                        "title": "`!isPrivateWindow`",
+                        "selectionMode": "if_else",
+                        "condition": "`!isPrivateWindow`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_7_8_then_0_8_1",
+                            "kind": "step",
+                            "title": "Calls `KiroshiSearchServ.recordSearchHistoryAsync(userId, q, category).catch`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_8_9",
+                        "kind": "var_def",
+                        "title": "Define `searxBase`",
+                        "payload": "const searxBase = Bun.env.SEARXNG_URL",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_9_10",
+                        "kind": "selection",
+                        "title": "`!searxBase`",
+                        "selectionMode": "if_else",
+                        "condition": "`!searxBase`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_9_10_then_0_10_1",
+                            "kind": "error",
+                            "code": "Error",
+                            "httpStatus": 500,
+                            "message": "Missing required environment variable: SEARXNG_URL"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_10_11",
+                        "kind": "var_def",
+                        "title": "Define `url`",
+                        "payload": "const url = new URL('/search', searxBase)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_11_12",
+                        "kind": "step",
+                        "title": "Calls `url.searchParams.set`"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_12_13",
+                        "kind": "step",
+                        "title": "Calls `url.searchParams.set`"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_13_14",
+                        "kind": "selection",
+                        "title": "`category && category !== 'general'`",
+                        "selectionMode": "if_else",
+                        "condition": "`category && category !== 'general'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_13_14_then_0_14_1",
+                            "kind": "var_def",
+                            "title": "Define `searxCategory`",
+                            "payload": "const searxCategory = category === 'social_media' ? 'social media' : category",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_13_14_then_1_14_2",
+                            "kind": "step",
+                            "title": "Calls `url.searchParams.set`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_14_15",
+                        "kind": "selection",
+                        "title": "`pageno > 1`",
+                        "selectionMode": "if_else",
+                        "condition": "`pageno > 1`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_14_15_then_0_15_1",
+                            "kind": "step",
+                            "title": "Calls `url.searchParams.set`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_15_16",
+                        "kind": "selection",
+                        "title": "`timeRange && timeRange !== 'anytime'`",
+                        "selectionMode": "if_else",
+                        "condition": "`timeRange && timeRange !== 'anytime'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_15_16_then_0_16_1",
+                            "kind": "step",
+                            "title": "Calls `url.searchParams.set`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_16_17",
+                        "kind": "selection",
+                        "title": "`language && language !== 'auto'`",
+                        "selectionMode": "if_else",
+                        "condition": "`language && language !== 'auto'`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_16_17_then_0_17_1",
+                            "kind": "step",
+                            "title": "Calls `url.searchParams.set`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_17_18",
+                        "kind": "selection",
+                        "title": "`safeSearch`",
+                        "selectionMode": "if_else",
+                        "condition": "`safeSearch`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_17_18_then_0_18_1",
+                            "kind": "step",
+                            "title": "Calls `url.searchParams.set`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_18_19",
+                        "kind": "step",
+                        "title": "Calls `performance.now` and stores result as `startTime`"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_19_20",
+                        "kind": "var_def",
+                        "title": "Define `searxResponse`",
+                        "payload": "let searxResponse: Response",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_20_21",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "fetchErr",
+                        "tryBlock": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_20_21_try_0_21_1",
+                            "kind": "step",
+                            "title": "Assign `searxResponse`",
+                            "payload": "searxResponse = await fetch(url.toString(), { headers: { Accept: 'application/json', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 IRIS-Search/1.0', }, })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_20_21_catch_0_22_1",
+                            "kind": "error",
+                            "code": "BadGateway",
+                            "httpStatus": 500,
+                            "message": "Could not reach SearXNG instance at ${searxBase}: ${fetchErr?.message || 'connection failed'}"
+                          }
+                        ],
+                        "finallyBlock": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_22_23",
+                        "kind": "selection",
+                        "title": "`searxResponse.status === 403`",
+                        "selectionMode": "if_else",
+                        "condition": "`searxResponse.status === 403`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_22_23_then_0_23_1",
+                            "kind": "error",
+                            "code": "BadGateway",
+                            "httpStatus": 500,
+                            "message": "SearXNG JSON output is disabled. Please ensure 'json' is included in search.formats in SearXNG settings.yml."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_23_24",
+                        "kind": "selection",
+                        "title": "`searxResponse.status === 429`",
+                        "selectionMode": "if_else",
+                        "condition": "`searxResponse.status === 429`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_23_24_then_0_24_1",
+                            "kind": "error",
+                            "code": "TooManyRequests",
+                            "httpStatus": 429,
+                            "message": "SearXNG rate limit exceeded. Please wait a few moments before searching again."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_24_25",
+                        "kind": "selection",
+                        "title": "`!searxResponse.ok`",
+                        "selectionMode": "if_else",
+                        "condition": "`!searxResponse.ok`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_24_25_then_0_25_1",
+                            "kind": "step",
+                            "title": "Calls `searxResponse.text().catch` and stores result as `text`"
+                          },
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_24_25_then_1_25_2",
+                            "kind": "error",
+                            "code": "BadGateway",
+                            "httpStatus": 500,
+                            "message": "SearXNG returned error ${searxResponse.status}: ${text.slice(0, 150)}"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_25_26",
+                        "kind": "var_def",
+                        "title": "Define `json`",
+                        "payload": "const json = (await searxResponse.json().catch(() => null)) as any",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_26_27",
+                        "kind": "selection",
+                        "title": "`!json`",
+                        "selectionMode": "if_else",
+                        "condition": "`!json`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_KiroshiSearchServ_search_26_27_then_0_27_1",
+                            "kind": "error",
+                            "code": "BadGateway",
+                            "httpStatus": 500,
+                            "message": "Failed to parse SearXNG JSON response"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_27_28",
+                        "kind": "step",
+                        "title": "Calls `Math.round` and stores result as `durationMs`"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_28_29",
+                        "kind": "var_def",
+                        "title": "Define `rawResults`, `results`, `rawInfoboxes`, `infoboxes`, `responsePayload`",
+                        "payload": "const rawResults = Array.isArray(json.results) ? json.results : []\nconst results = rawResults.map((item: any) => { let contentStr = typeof item.content === 'string' ? item.content : item.snippet || '' if (!contentStr && item.address && typeof item.address === 'object') { contentStr = Object.values(item.address).filter(Boolean).join(', ') } let urlStr = item.url || '' if (!urlStr && item.latitude && item.longitude) { ...)\nconst rawInfoboxes = Array.isArray(json.infoboxes) ? json.infoboxes : []\nconst infoboxes = rawInfoboxes.map((ib: any) => ({ infobox: String(ib.infobox || 'Information'), id: ib.id ? String(ib.id) : undefined, content: typeof ib.content === 'string' ? ib.content : null, img_src: ib.img_src || null, urls: Array.isArray(ib.urls) ? ib.urls.map((u: any) => ({ ...)\nconst responsePayload = { success: true, query: json.query || q, category, page: pageno, numberOfResults: typeof json.number_of_results === 'number' ? json.number_of_results : results.length, ...",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_29_30",
+                        "kind": "step",
+                        "title": "Calls `searchCache.set`"
+                      },
+                      {
+                        "id": "svc_0_KiroshiSearchServ_search_30_31",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`responsePayload`"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/kiroshi/search/search.ctrl.ts-route-1",
+                "title": "GET /kiroshi/suggestions",
+                "description": "Get web search autocomplete suggestions from SearXNG",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `KiroshiSearchModel.suggestionsQuery`"
+                  },
+                  {
+                    "id": "route_1_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await KiroshiSearchServ.getSuggestions(query)`"
+                  },
+                  {
+                    "id": "call_1_KiroshiSearchServ_getSuggestions",
+                    "kind": "alg_call",
+                    "title": "Invoke KiroshiSearchServ.getSuggestions",
+                    "isAsync": true,
+                    "targetAlg": "KiroshiSearchServ.getSuggestions"
+                  },
+                  {
+                    "id": "svc_1_KiroshiSearchServ_getSuggestions",
+                    "kind": "sequence",
+                    "title": "KiroshiSearchServ.getSuggestions Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_KiroshiSearchServ_getSuggestions_0_1",
+                        "kind": "var_def",
+                        "title": "Define `q`",
+                        "payload": "const q = query.q || ''.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_KiroshiSearchServ_getSuggestions_1_2",
+                        "kind": "selection",
+                        "title": "`!q`",
+                        "selectionMode": "if_else",
+                        "condition": "`!q`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_1_2_then_0_2_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`query.format === 'opensearch' ? [q, []] : { suggestions: [] }`"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_KiroshiSearchServ_getSuggestions_2_3",
+                        "kind": "var_def",
+                        "title": "Define `cacheKey`",
+                        "payload": "const cacheKey = q.toLowerCase()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_KiroshiSearchServ_getSuggestions_3_4",
+                        "kind": "step",
+                        "title": "Calls `suggestionCache.get` and stores result as `cached`"
+                      },
+                      {
+                        "id": "svc_1_KiroshiSearchServ_getSuggestions_4_5",
+                        "kind": "selection",
+                        "title": "`cached`",
+                        "selectionMode": "if_else",
+                        "condition": "`cached`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_4_5_then_0_5_1",
+                            "kind": "selection",
+                            "title": "`query.format === 'opensearch'`",
+                            "selectionMode": "if_else",
+                            "condition": "`query.format === 'opensearch'`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_KiroshiSearchServ_getSuggestions_4_5_then_0_5_1_then_0_5_1_1",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`[q, cached]`"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_4_5_then_1_5_2",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"suggestions\": \"<cached>\"\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_KiroshiSearchServ_getSuggestions_5_6",
+                        "kind": "var_def",
+                        "title": "Define `searxBase`",
+                        "payload": "const searxBase = Bun.env.SEARXNG_URL",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_KiroshiSearchServ_getSuggestions_6_7",
+                        "kind": "selection",
+                        "title": "`!searxBase`",
+                        "selectionMode": "if_else",
+                        "condition": "`!searxBase`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_6_7_then_0_7_1",
+                            "kind": "error",
+                            "code": "Error",
+                            "httpStatus": 500,
+                            "message": "Missing required environment variable: SEARXNG_URL"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_KiroshiSearchServ_getSuggestions_7_8",
+                        "kind": "var_def",
+                        "title": "Define `url`",
+                        "payload": "const url = new URL('/autocompleter', searxBase)",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_1_KiroshiSearchServ_getSuggestions_8_9",
+                        "kind": "step",
+                        "title": "Calls `url.searchParams.set`"
+                      },
+                      {
+                        "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10",
+                        "kind": "try_catch_finally",
+                        "title": "Try block",
+                        "catchVar": "err",
+                        "tryBlock": [
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_0_10_1",
+                            "kind": "step",
+                            "title": "Calls `fetch` and stores result as `res`"
+                          },
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_1_10_2",
+                            "kind": "selection",
+                            "title": "`!res.ok`",
+                            "selectionMode": "if_else",
+                            "condition": "`!res.ok`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_1_10_2_then_0_10_2_1",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`query.format === 'opensearch' ? [q, []] : { suggestions: [] }`"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_2_10_3",
+                            "kind": "var_def",
+                            "title": "Define `data`, `suggestions`",
+                            "payload": "const data = (await res.json().catch(() => null)) as any\nlet suggestions: string[] = []",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_3_10_4",
+                            "kind": "selection",
+                            "title": "`Array.isArray(data)`",
+                            "selectionMode": "if_else",
+                            "condition": "`Array.isArray(data)`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_3_10_4_then_0_10_4_1",
+                                "kind": "selection",
+                                "title": "`Array.isArray(data[1])`",
+                                "selectionMode": "if_else",
+                                "condition": "`Array.isArray(data[1])`",
+                                "thenBranch": [
+                                  {
+                                    "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_3_10_4_then_0_10_4_1_then_0_10_4_1_1",
+                                    "kind": "step",
+                                    "title": "Assign `suggestions`",
+                                    "payload": "suggestions = data[1].filter((s: unknown) => typeof s === 'string')",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "elseBranch": [
+                                  {
+                                    "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_3_10_4_then_0_10_4_1_else_0_10_4_2_1",
+                                    "kind": "step",
+                                    "title": "Assign `suggestions`",
+                                    "payload": "suggestions = data.filter((s: unknown) => typeof s === 'string')",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ]
+                              }
+                            ],
+                            "elseBranch": [
+                              {
+                                "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_3_10_4_else_0_10_5_1",
+                                "kind": "selection",
+                                "title": "`data && Array.isArray(data.suggestions)`",
+                                "selectionMode": "if_else",
+                                "condition": "`data && Array.isArray(data.suggestions)`",
+                                "thenBranch": [
+                                  {
+                                    "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_3_10_4_else_0_10_5_1_then_0_10_5_1_1",
+                                    "kind": "step",
+                                    "title": "Assign `suggestions`",
+                                    "payload": "suggestions = data.suggestions",
+                                    "payloadLanguage": "typescript"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_5_10_6",
+                            "kind": "step",
+                            "title": "Calls `suggestionCache.set`"
+                          },
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_6_10_7",
+                            "kind": "selection",
+                            "title": "`query.format === 'opensearch'`",
+                            "selectionMode": "if_else",
+                            "condition": "`query.format === 'opensearch'`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_6_10_7_then_0_10_7_1",
+                                "kind": "return",
+                                "title": "",
+                                "returnValue": "`[q, suggestions]`"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_try_7_10_8",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"suggestions\": \"<suggestions>\"\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "catchBlock": [
+                          {
+                            "id": "svc_1_KiroshiSearchServ_getSuggestions_9_10_catch_0_11_1",
+                            "kind": "return",
+                            "title": "",
+                            "returnValue": "`query.format === 'opensearch' ? [q, []] : { suggestions: [] }`"
+                          }
+                        ],
+                        "finallyBlock": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "8 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Authentication required via IRIS session or header (x-api-key / Authorization)."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Query string 'q' is required."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Missing required environment variable: SEARXNG_URL"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadGateway"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Could not reach SearXNG instance at ${searxBase}: ${fetchErr?.message || 'connection failed'}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadGateway"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "SearXNG JSON output is disabled. Please ensure 'json' is included in search.formats in SearXNG settings.yml."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "429"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "TooManyRequests"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "SearXNG rate limit exceeded. Please wait a few moments before searching again."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadGateway"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "SearXNG returned error ${searxResponse.status}: ${text.slice(0, 150)}"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "500"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadGateway"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Failed to parse SearXNG JSON response"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

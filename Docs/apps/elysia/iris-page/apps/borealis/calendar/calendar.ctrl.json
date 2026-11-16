@@ -1,0 +1,557 @@
+{
+  "id": "apps/borealis/calendar/calendar.ctrl",
+  "title": "Media broadcast / release calendar",
+  "description": "Fetches upcoming and past media releases across Anime (airing schedules), Manga (start/end dates), Games, Books, Movies, TV Episodes (air dates and seasons), and Music with list filtering.",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/borealis/calendar",
+    "relPath": "apps/borealis/calendar/calendar.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET"
+    ],
+    "routePaths": [
+      "/borealis/calendar"
+    ],
+    "errorCount": 0
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Media broadcast / release calendar"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              },
+              {
+                "type": "CardDescription",
+                "props": {
+                  "className": "text-start pt-1"
+                },
+                "text": "Fetches upcoming and past media releases across Anime (airing schedules), Manga (start/end dates), Games, Books, Movies, TV Episodes (air dates and seasons), and Music with list filtering."
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/borealis/calendar"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_5)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "3 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisCalendarModel.calendarQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisCalendarModel.calendarResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "BorealisCalendarModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/borealis/calendar/calendar.ctrl.ts-route-0",
+                "title": "GET /borealis/calendar",
+                "description": "Media broadcast / release calendar",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `BorealisCalendarModel.calendarQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.getUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_0_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await BorealisCalendarServ.getCalendar(query, user?.id)`"
+                  },
+                  {
+                    "id": "call_0_BorealisCalendarServ_getCalendar",
+                    "kind": "alg_call",
+                    "title": "Invoke BorealisCalendarServ.getCalendar",
+                    "isAsync": true,
+                    "targetAlg": "BorealisCalendarServ.getCalendar"
+                  },
+                  {
+                    "id": "svc_0_BorealisCalendarServ_getCalendar",
+                    "kind": "sequence",
+                    "title": "BorealisCalendarServ.getCalendar Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_BorealisCalendarServ_getCalendar_0_1",
+                        "kind": "var_def",
+                        "title": "Define `now`, `defaultStart`, `defaultEnd`, `startParam`, `endParam`, `startDate`, `endDate`, `validStart`, `validEnd`",
+                        "payload": "const now = new Date()\nconst defaultStart = new Date( Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1) )\nconst defaultEnd = new Date( Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 0, 23, 59, 59, 999) )\nconst startParam = typeof query?.start === 'string' ? query.start : undefined\nconst endParam = typeof query?.end === 'string' ? query.end : undefined\nconst startDate = startParam ? new Date(startParam) : defaultStart\nconst endDate = endParam ? new Date(endParam) : defaultEnd\nconst validStart = isNaN(startDate.getTime()) ? defaultStart : startDate\nconst validEnd = isNaN(endDate.getTime()) ? defaultEnd : endDate",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisCalendarServ_getCalendar_1_2",
+                        "kind": "step",
+                        "title": "Calls `validStart.getUTCFullYear` and stores result as `startYear`"
+                      },
+                      {
+                        "id": "svc_0_BorealisCalendarServ_getCalendar_2_3",
+                        "kind": "step",
+                        "title": "Calls `validEnd.getUTCFullYear` and stores result as `endYear`"
+                      },
+                      {
+                        "id": "svc_0_BorealisCalendarServ_getCalendar_3_4",
+                        "kind": "var_def",
+                        "title": "Define `typesParam`, `rawTypes`, `isRequested`, `onlyInLists`, `currentUserId`",
+                        "payload": "const typesParam = typeof query?.types === 'string' ? query.types : undefined\nconst rawTypes = typesParam ? typesParam .toLowerCase() .split(',') .map((t) => t.trim()) .filter(Boolean) .map((t) => (TYPE_ALIAS_MAP[t] ?? t) as CalendarMediaType) ...\nconst isRequested = (type: CalendarMediaType) => rawTypes.length === 0 || rawTypes.includes(type)\nconst onlyInLists = query?.onlyInLists === true || query?.onlyInLists === 'true' || query?.onlyInLists === '1'\nconst currentUserId = userId ?? null",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisCalendarServ_getCalendar_4_5",
+                        "kind": "selection",
+                        "title": "`onlyInLists && !currentUserId`",
+                        "selectionMode": "if_else",
+                        "condition": "`onlyInLists && !currentUserId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_BorealisCalendarServ_getCalendar_4_5_then_0_5_1",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"items\": [],\n  \"meta\": {\n    \"start\": \"<validStart.toISOString()>\",\n    \"end\": \"<validEnd.toISOString()>\",\n    \"total\": 0,\n    \"counts\": {\n      \"anime\": 0,\n      \"manga\": 0,\n      \"movie\": 0,\n      \"tv\": 0,\n      \"game\": 0,\n      \"book\": 0,\n      \"music\": 0\n    }\n  }\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_BorealisCalendarServ_getCalendar_5_6",
+                        "kind": "var_def",
+                        "title": "Define `startKey`, `endKey`, `typesKey`, `userScope`, `cacheKey`",
+                        "payload": "const startKey = validStart.toISOString().split('T')[0]\nconst endKey = validEnd.toISOString().split('T')[0]\nconst typesKey = rawTypes.slice().sort().join(',') || 'all'\nconst userScope = onlyInLists && currentUserId ? `user:${currentUserId}` : 'public'\nconst cacheKey = `calendar:${startKey}:${endKey}:${typesKey}:${userScope}`",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_BorealisCalendarServ_getCalendar_6_7",
+                        "kind": "return",
+                        "title": "",
+                        "returnValue": "`await cache.getOrSet(cacheKey, async () => { const calendarItems: CalendarItem[] = [] // 5. Parallel database queries for all requested media types const [ userAnimeIds, userMangaIds, ..., CALENDAR_CACHE_TTL)`"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertCircle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "0 errors"
+                  }
+                ]
+              },
+              {
+                "type": "Callout",
+                "props": {
+                  "variant": "info",
+                  "title": "No explicit error throws detected"
+                },
+                "children": "This module does not throw explicit HTTP or domain errors in its analyzed AST paths."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

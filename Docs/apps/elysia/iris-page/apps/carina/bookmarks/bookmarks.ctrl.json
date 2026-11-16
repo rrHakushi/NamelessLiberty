@@ -1,0 +1,2367 @@
+{
+  "id": "apps/carina/bookmarks/bookmarks.ctrl",
+  "title": "Get user bookmarks with pagination (10 per page default)",
+  "description": "",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/carina/bookmarks/",
+    "relPath": "apps/carina/bookmarks/bookmarks.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "GET",
+      "PUT",
+      "POST",
+      "PATCH",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/bookmarks/",
+      "/carina/bookmarks/",
+      "/carina/bookmarks/",
+      "/carina/bookmarks/:bookmarkId",
+      "/carina/bookmarks/:bookmarkId"
+    ],
+    "errorCount": 5
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Get user bookmarks with pagination (10 per page default)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                            },
+                            "text": "GET"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/bookmarks/"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30"
+                            },
+                            "text": "PUT"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/bookmarks/"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/bookmarks/"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-orange-500/15 text-orange-700 dark:text-orange-300 border-orange-500/30"
+                            },
+                            "text": "PATCH"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/bookmarks/:bookmarkId"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-4",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30"
+                            },
+                            "text": "DELETE"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/bookmarks/:bookmarkId"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_20)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "27 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/bookmarks/ · Query"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.listBookmarksQuery"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/bookmarks/ · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.listBookmarksResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/bookmarks/ · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "GET /carina/bookmarks/ · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PUT /carina/bookmarks/ · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.putBookmarksBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PUT /carina/bookmarks/ · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.putBookmarksResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PUT /carina/bookmarks/ · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PUT /carina/bookmarks/ · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/bookmarks/ · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.createBookmarkBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/bookmarks/ · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.createBookmarkResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/bookmarks/ · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/bookmarks/ · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/bookmarks/ · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/bookmarks/:bookmarkId · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.bookmarkParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/bookmarks/:bookmarkId · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.updateBookmarkBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/bookmarks/:bookmarkId · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.updateBookmarkResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/bookmarks/:bookmarkId · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/bookmarks/:bookmarkId · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/bookmarks/:bookmarkId · Response 403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.forbiddenError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/bookmarks/:bookmarkId · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "PATCH /carina/bookmarks/:bookmarkId · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/bookmarks/:bookmarkId · Params"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.bookmarkParam"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/bookmarks/:bookmarkId · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.deleteBookmarkResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-23",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/bookmarks/:bookmarkId · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-24",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/bookmarks/:bookmarkId · Response 403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.forbiddenError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-25",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/bookmarks/:bookmarkId · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-26",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/bookmarks/:bookmarkId · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaBookmarksModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/bookmarks/bookmarks.ctrl.ts-route-0",
+                "title": "GET /carina/bookmarks/",
+                "description": "Get user bookmarks with pagination (10 per page default)",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "query: `CarinaBookmarksModel.listBookmarksQuery`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_0_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaBookmarksServ.getBookmarks(user.id, query)`"
+                  },
+                  {
+                    "id": "call_0_CarinaBookmarksServ_getBookmarks",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaBookmarksServ.getBookmarks",
+                    "isAsync": true,
+                    "targetAlg": "CarinaBookmarksServ.getBookmarks"
+                  },
+                  {
+                    "id": "svc_0_CarinaBookmarksServ_getBookmarks",
+                    "kind": "sequence",
+                    "title": "CarinaBookmarksServ.getBookmarks Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_0_1",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `page`"
+                      },
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_1_2",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `limit`"
+                      },
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_2_3",
+                        "kind": "var_def",
+                        "title": "Define `skip`",
+                        "payload": "const skip = page - 1 * limit",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_3_4",
+                        "kind": "step",
+                        "title": "Database `query` on `Bookmark` and stores it as `bmQuery`"
+                      },
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_4_5",
+                        "kind": "selection",
+                        "title": "`query?.group !== undefined`",
+                        "selectionMode": "if_else",
+                        "condition": "`query?.group !== undefined`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaBookmarksServ_getBookmarks_4_5_then_0_5_1",
+                            "kind": "step",
+                            "title": "Assign `bmQuery`",
+                            "payload": "bmQuery = bmQuery.where({ group: query.group.trim() })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_5_6",
+                        "kind": "selection",
+                        "title": "`query?.pinned !== undefined`",
+                        "selectionMode": "if_else",
+                        "condition": "`query?.pinned !== undefined`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaBookmarksServ_getBookmarks_5_6_then_0_6_1",
+                            "kind": "step",
+                            "title": "Assign `bmQuery`",
+                            "payload": "bmQuery = bmQuery.where({ pinned: Boolean(query.pinned) })",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_6_7",
+                        "kind": "step",
+                        "title": "Calls `Promise.all` and stores result as `[total, rawBookmarks]`"
+                      },
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_7_8",
+                        "kind": "step",
+                        "title": "Calls `rawBookmarks.sort`"
+                      },
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_8_9",
+                        "kind": "step",
+                        "title": "Calls `Math.max` and stores result as `totalPages`"
+                      },
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_9_10",
+                        "kind": "var_def",
+                        "title": "Define `hasMore`",
+                        "payload": "const hasMore = page < totalPages",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_10_11",
+                        "kind": "step",
+                        "title": "Calls `Array.from` and stores result as `groups`"
+                      },
+                      {
+                        "id": "svc_0_CarinaBookmarksServ_getBookmarks_11_12",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"bookmarks\": \"<rawBookmarks.map((b) => this.formatBookmark(b))>\",\n  \"groups\": \"<groups>\",\n  \"pagination\": {\n    \"page\": \"<page>\",\n    \"limit\": \"<limit>\",\n    \"total\": \"<total>\",\n    \"totalPages\": \"<totalPages>\",\n    \"hasMore\": \"<hasMore>\"\n  }\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/bookmarks/bookmarks.ctrl.ts-route-1",
+                "title": "PUT /carina/bookmarks/",
+                "description": "Reorder and batch-update bookmarks for current user",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaBookmarksModel.putBookmarksBody`"
+                  },
+                  {
+                    "id": "route_1_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_1_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaBookmarksServ.putBookmarks(user.id, body)`"
+                  },
+                  {
+                    "id": "call_1_CarinaBookmarksServ_putBookmarks",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaBookmarksServ.putBookmarks",
+                    "isAsync": true,
+                    "targetAlg": "CarinaBookmarksServ.putBookmarks"
+                  },
+                  {
+                    "id": "svc_1_CarinaBookmarksServ_putBookmarks",
+                    "kind": "sequence",
+                    "title": "CarinaBookmarksServ.putBookmarks Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_CarinaBookmarksServ_putBookmarks_0_1",
+                        "kind": "step",
+                        "title": "Calls `prisma.transaction`"
+                      },
+                      {
+                        "id": "svc_1_CarinaBookmarksServ_putBookmarks_1_2",
+                        "kind": "step",
+                        "title": "Database `all` on `Bookmark` and stores it as `dbBookmarks`"
+                      },
+                      {
+                        "id": "svc_1_CarinaBookmarksServ_putBookmarks_2_3",
+                        "kind": "step",
+                        "title": "Calls `dbBookmarks.sort`"
+                      },
+                      {
+                        "id": "svc_1_CarinaBookmarksServ_putBookmarks_3_4",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"bookmarks\": \"<dbBookmarks.map((b) => this.formatBookmark(b))>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/bookmarks/bookmarks.ctrl.ts-route-2",
+                "title": "POST /carina/bookmarks/",
+                "description": "Create bookmark for current user",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaBookmarksModel.createBookmarkBody`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_2_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaBookmarksServ.createBookmark(user.id, body)`"
+                  },
+                  {
+                    "id": "call_2_CarinaBookmarksServ_createBookmark",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaBookmarksServ.createBookmark",
+                    "isAsync": true,
+                    "targetAlg": "CarinaBookmarksServ.createBookmark"
+                  },
+                  {
+                    "id": "svc_2_CarinaBookmarksServ_createBookmark",
+                    "kind": "sequence",
+                    "title": "CarinaBookmarksServ.createBookmark Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_CarinaBookmarksServ_createBookmark_0_1",
+                        "kind": "var_def",
+                        "title": "Define `title`",
+                        "payload": "const title = body.title.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_CarinaBookmarksServ_createBookmark_1_2",
+                        "kind": "selection",
+                        "title": "`!title`",
+                        "selectionMode": "if_else",
+                        "condition": "`!title`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaBookmarksServ_createBookmark_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Bookmark title cannot be empty"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaBookmarksServ_createBookmark_2_3",
+                        "kind": "var_def",
+                        "title": "Define `url`",
+                        "payload": "const url = body.url.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_CarinaBookmarksServ_createBookmark_3_4",
+                        "kind": "selection",
+                        "title": "`!url`",
+                        "selectionMode": "if_else",
+                        "condition": "`!url`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaBookmarksServ_createBookmark_3_4_then_0_4_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Bookmark URL cannot be empty"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaBookmarksServ_createBookmark_4_5",
+                        "kind": "step",
+                        "title": "Database `create` on `Bookmark` and stores it as `created`"
+                      },
+                      {
+                        "id": "svc_2_CarinaBookmarksServ_createBookmark_5_6",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"bookmark\": \"<this.formatBookmark(created)>\",\n  \"message\": \"Bookmark created successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/bookmarks/bookmarks.ctrl.ts-route-3",
+                "title": "PATCH /carina/bookmarks/:bookmarkId",
+                "description": "Update bookmark strictly by bookmark ID (UUID)",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaBookmarksModel.bookmarkParam`, body: `CarinaBookmarksModel.updateBookmarkBody`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_3_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaBookmarksServ.updateBookmark(user, params.bookmarkId, body)`"
+                  },
+                  {
+                    "id": "call_3_CarinaBookmarksServ_updateBookmark",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaBookmarksServ.updateBookmark",
+                    "isAsync": true,
+                    "targetAlg": "CarinaBookmarksServ.updateBookmark"
+                  },
+                  {
+                    "id": "svc_3_CarinaBookmarksServ_updateBookmark",
+                    "kind": "sequence",
+                    "title": "CarinaBookmarksServ.updateBookmark Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Bookmark` and stores it as `bookmark`"
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_1_2",
+                        "kind": "selection",
+                        "title": "`!bookmark`",
+                        "selectionMode": "if_else",
+                        "condition": "`!bookmark`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Bookmark not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_2_3",
+                        "kind": "var_def",
+                        "title": "Define `isOwner`",
+                        "payload": "const isOwner = bookmark.userId === user.id",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_3_4",
+                        "kind": "step",
+                        "title": "Calls `new IRISBitField(user.permissions).has` and stores result as `isAdmin`"
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_4_5",
+                        "kind": "selection",
+                        "title": "`!isOwner && !isAdmin`",
+                        "selectionMode": "if_else",
+                        "condition": "`!isOwner && !isAdmin`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_4_5_then_0_5_1",
+                            "kind": "error",
+                            "code": "Forbidden",
+                            "httpStatus": 403,
+                            "message": "You do not have permission to update this bookmark"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_5_6",
+                        "kind": "var_def",
+                        "title": "Define `data`",
+                        "payload": "const data: any = {}",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_6_7",
+                        "kind": "selection",
+                        "title": "`body.title !== undefined`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.title !== undefined`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_6_7_then_0_7_1",
+                            "kind": "var_def",
+                            "title": "Define `trimmedTitle`",
+                            "payload": "const trimmedTitle = body.title.trim()",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_6_7_then_1_7_2",
+                            "kind": "selection",
+                            "title": "`!trimmedTitle`",
+                            "selectionMode": "if_else",
+                            "condition": "`!trimmedTitle`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_3_CarinaBookmarksServ_updateBookmark_6_7_then_1_7_2_then_0_7_2_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Bookmark title cannot be empty"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_6_7_then_2_7_3",
+                            "kind": "step",
+                            "title": "Assign `data.title`",
+                            "payload": "data.title = trimmedTitle",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_7_8",
+                        "kind": "selection",
+                        "title": "`body.url !== undefined`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.url !== undefined`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_7_8_then_0_8_1",
+                            "kind": "var_def",
+                            "title": "Define `trimmedUrl`",
+                            "payload": "const trimmedUrl = body.url.trim()",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_7_8_then_1_8_2",
+                            "kind": "selection",
+                            "title": "`!trimmedUrl`",
+                            "selectionMode": "if_else",
+                            "condition": "`!trimmedUrl`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_3_CarinaBookmarksServ_updateBookmark_7_8_then_1_8_2_then_0_8_2_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Bookmark URL cannot be empty"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_7_8_then_2_8_3",
+                            "kind": "step",
+                            "title": "Assign `data.url`",
+                            "payload": "data.url = trimmedUrl",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_8_9",
+                        "kind": "selection",
+                        "title": "`body.icon !== undefined`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.icon !== undefined`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_8_9_then_0_9_1",
+                            "kind": "step",
+                            "title": "Assign `data.icon`",
+                            "payload": "data.icon = body.icon?.trim() || null",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_9_10",
+                        "kind": "selection",
+                        "title": "`body.color !== undefined`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.color !== undefined`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_9_10_then_0_10_1",
+                            "kind": "step",
+                            "title": "Assign `data.color`",
+                            "payload": "data.color = body.color?.trim() || null",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_10_11",
+                        "kind": "selection",
+                        "title": "`body.pinned !== undefined`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.pinned !== undefined`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_10_11_then_0_11_1",
+                            "kind": "step",
+                            "title": "Assign `data.pinned`",
+                            "payload": "data.pinned = Boolean(body.pinned)",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_11_12",
+                        "kind": "selection",
+                        "title": "`body.appId !== undefined`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.appId !== undefined`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_11_12_then_0_12_1",
+                            "kind": "step",
+                            "title": "Assign `data.appId`",
+                            "payload": "data.appId = body.appId?.trim() || null",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_12_13",
+                        "kind": "selection",
+                        "title": "`body.group !== undefined`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.group !== undefined`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_12_13_then_0_13_1",
+                            "kind": "step",
+                            "title": "Assign `data.group`",
+                            "payload": "data.group = body.group?.trim() || null",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_13_14",
+                        "kind": "selection",
+                        "title": "`body.order !== undefined`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.order !== undefined`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_13_14_then_0_14_1",
+                            "kind": "step",
+                            "title": "Assign `data.order`",
+                            "payload": "data.order = body.order",
+                            "payloadLanguage": "typescript"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_14_15",
+                        "kind": "step",
+                        "title": "Database `update` on `Bookmark` and stores it as `updated`"
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_15_16",
+                        "kind": "selection",
+                        "title": "`!updated`",
+                        "selectionMode": "if_else",
+                        "condition": "`!updated`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaBookmarksServ_updateBookmark_15_16_then_0_16_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Bookmark not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaBookmarksServ_updateBookmark_16_17",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"bookmark\": \"<this.formatBookmark(updated)>\",\n  \"message\": \"Bookmark updated successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-4",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/bookmarks/bookmarks.ctrl.ts-route-4",
+                "title": "DELETE /carina/bookmarks/:bookmarkId",
+                "description": "Delete bookmark strictly by bookmark ID (UUID)",
+                "steps": [
+                  {
+                    "id": "route_4_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "params: `CarinaBookmarksModel.bookmarkParam`"
+                  },
+                  {
+                    "id": "route_4_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_4_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaBookmarksServ.deleteBookmark(user, params.bookmarkId)`"
+                  },
+                  {
+                    "id": "call_4_CarinaBookmarksServ_deleteBookmark",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaBookmarksServ.deleteBookmark",
+                    "isAsync": true,
+                    "targetAlg": "CarinaBookmarksServ.deleteBookmark"
+                  },
+                  {
+                    "id": "svc_4_CarinaBookmarksServ_deleteBookmark",
+                    "kind": "sequence",
+                    "title": "CarinaBookmarksServ.deleteBookmark Flow",
+                    "children": [
+                      {
+                        "id": "svc_4_CarinaBookmarksServ_deleteBookmark_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `Bookmark` and stores it as `bookmark`"
+                      },
+                      {
+                        "id": "svc_4_CarinaBookmarksServ_deleteBookmark_1_2",
+                        "kind": "selection",
+                        "title": "`!bookmark`",
+                        "selectionMode": "if_else",
+                        "condition": "`!bookmark`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_CarinaBookmarksServ_deleteBookmark_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "Bookmark not found"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_CarinaBookmarksServ_deleteBookmark_2_3",
+                        "kind": "var_def",
+                        "title": "Define `isOwner`",
+                        "payload": "const isOwner = bookmark.userId === user.id",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_4_CarinaBookmarksServ_deleteBookmark_3_4",
+                        "kind": "step",
+                        "title": "Calls `new IRISBitField(user.permissions).has` and stores result as `isAdmin`"
+                      },
+                      {
+                        "id": "svc_4_CarinaBookmarksServ_deleteBookmark_4_5",
+                        "kind": "selection",
+                        "title": "`!isOwner && !isAdmin`",
+                        "selectionMode": "if_else",
+                        "condition": "`!isOwner && !isAdmin`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_4_CarinaBookmarksServ_deleteBookmark_4_5_then_0_5_1",
+                            "kind": "error",
+                            "code": "Forbidden",
+                            "httpStatus": 403,
+                            "message": "You do not have permission to delete this bookmark"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_4_CarinaBookmarksServ_deleteBookmark_5_6",
+                        "kind": "step",
+                        "title": "Database `delete` on `Bookmark`"
+                      },
+                      {
+                        "id": "svc_4_CarinaBookmarksServ_deleteBookmark_6_7",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"id\": \"<bookmark.id>\",\n  \"message\": \"Bookmark deleted successfully\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "5 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Bookmark title cannot be empty"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Bookmark URL cannot be empty"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Bookmark not found"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to update this bookmark"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "403"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Forbidden"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "You do not have permission to delete this bookmark"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

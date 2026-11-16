@@ -1,9 +1,9 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia } from 'elysia'
-import { carinaBackupCodes } from '../../src/api/controllers/carina/backupcodes.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt, generateBackupCodes } from '../../src/utils/auth-crypto'
-import { prisma } from '@Iris/db'
+import { carinaBackupCodes } from '../../src/apps/carina/backupcodes/backupcodes.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt, generateBackupCodes } from '../../src/core/utils/auth-crypto'
+import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------
 // In-Memory Database Mock for Backup Codes

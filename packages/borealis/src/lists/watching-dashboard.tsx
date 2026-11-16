@@ -19,6 +19,8 @@ import {
   IconArrowsSort,
   IconRotateClockwise,
   IconChevronDown,
+  IconChevronUp,
+  IconLayoutGrid,
   IconCategory,
 } from "@tabler/icons-react"
 import { cn } from "@workspace/ui/lib/utils"
@@ -34,7 +36,7 @@ import {
 import { toast } from "sonner"
 import { elysia } from "@/lib/elysia"
 import { useUser } from "@/context/user-context"
-import { getMediaPreferences } from "@IRIS/shared"
+import { getMediaPreferences } from "@NamelessLiberty/shared"
 import {
   BorealisCard,
   BorealisCardGroup,
@@ -42,7 +44,7 @@ import {
   getMediaListStatusText,
   type ListStatus,
   type BorealisCardSavePayload,
-} from "@Runa/borealis"
+} from "@NamelessLiberty/borealis"
 import { saveListEntry } from "@/lib/save-list-entry"
 import {
   toNormalizedMedia,
@@ -301,6 +303,8 @@ function WatchingCategorySection({
   prioritySection = false,
 }: WatchingCategorySectionProps) {
   const SectionIcon = meta.icon
+  const [isOverflowing, setIsOverflowing] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   // Not loaded yet: render skeleton while loading
   if (!data.isLoaded) {
@@ -308,7 +312,7 @@ function WatchingCategorySection({
       <div className="min-h-[40px] w-full">
         {data.isLoading && (
           <div className="flex animate-pulse flex-col gap-3 py-4">
-            <div className="flex items-center gap-2 border-b border-border/40 pb-2.5">
+            <div className="flex items-center gap-2">
               <SectionIcon className="size-4.5 text-primary" />
               <div className="h-5 w-28 rounded bg-muted/40" />
             </div>
@@ -344,13 +348,39 @@ function WatchingCategorySection({
         icon={SectionIcon}
         isCollapsed={isCollapsed}
         onToggle={() => onToggleCollapse(type)}
+        headerClassName="border-b-0 pb-0"
+        actions={
+          !isCollapsed && (isOverflowing || isExpanded) ? (
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsExpanded((prev) => !prev)}
+              className="h-7 gap-1.5 px-2 text-xs text-zinc-400 hover:text-zinc-100"
+            >
+              {isExpanded ? (
+                <>
+                  <span>Show less</span>
+                  <IconChevronUp className="size-3.5" />
+                </>
+              ) : (
+                <>
+                  <span>Show more</span>
+                  <IconLayoutGrid className="size-3.5" />
+                </>
+              )}
+            </Button>
+          ) : undefined
+        }
       />
 
-      {/* Media cards in smooth BorealisCardGroup carousel */}
+      {/* Media cards in smooth BorealisCardGroup carousel or expanded grid */}
       {!isCollapsed && (
         <BorealisCardGroup
           rowCount={1}
           dragFree
+          grid={isExpanded}
+          onOverflowChange={setIsOverflowing}
           className="w-full"
         >
           {data.items.map((item, idx) => (

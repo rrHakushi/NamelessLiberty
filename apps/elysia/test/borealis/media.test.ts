@@ -1,15 +1,16 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia, ValidationError } from 'elysia'
-import { borealisAnime } from '../../src/api/controllers/borealis/anime.ctrl'
-import { borealisManga } from '../../src/api/controllers/borealis/manga.ctrl'
-import { borealisTv } from '../../src/api/controllers/borealis/tv.ctrl'
-import { borealisMovies } from '../../src/api/controllers/borealis/movies.ctrl'
-import { borealisBooks } from '../../src/api/controllers/borealis/books.ctrl'
-import { borealisGames } from '../../src/api/controllers/borealis/games.ctrl'
-import { borealisMusic } from '../../src/api/controllers/borealis/music.ctrl'
-import { borealisOther } from '../../src/api/controllers/borealis/other.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { prisma } from '@Iris/db'
+import { borealisAnime } from '../../src/apps/borealis/anime/anime.ctrl'
+import { borealisManga } from '../../src/apps/borealis/manga/manga.ctrl'
+import { borealisTv } from '../../src/apps/borealis/tv/tv.ctrl'
+import { borealisMovies } from '../../src/apps/borealis/movies/movies.ctrl'
+import { borealisBooks } from '../../src/apps/borealis/books/books.ctrl'
+import { borealisGames } from '../../src/apps/borealis/games/games.ctrl'
+import { borealisMusic } from '../../src/apps/borealis/music/music.ctrl'
+import { borealisOther } from '../../src/apps/borealis/other/other.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { MediaQueueManager } from '../../src/apps/borealis/sync/media.queue'
+import { prisma } from '@NamelessLiberty/db'
 
 // Mock Data
 let mockAnime: any[] = []
@@ -606,6 +607,42 @@ describe('Borealis Media Metadata Test Suite', () => {
     it('GET /borealis/anime/:id fails (404) when anime does not exist', async () => {
       const res = await app.handle(new Request('http://localhost/borealis/anime/999'))
       expect(res.status).toBe(404)
+    })
+
+    it('GET /borealis/anime/:id queues background update when stale and skips when fresh', async () => {
+      const enqueued: any[] = []
+      const originalEnqueue = MediaQueueManager.enqueueMediaUpdate
+      ;(MediaQueueManager as any).enqueueMediaUpdate = async (
+        mediaType: string,
+        mediaId: number,
+        options: any
+      ) => {
+        enqueued.push({ mediaType, mediaId, options })
+        return null
+      }
+
+      try {
+        // Stale record (updatedAt missing / old)
+        mockAnime[0].updatedAt = new Date(Date.now() - 120 * 24 * 60 * 60 * 1000)
+        mockAnime[0].alUpdatedAt = 1720000000
+        const staleRes = await app.handle(new Request('http://localhost/borealis/anime/1'))
+        expect(staleRes.status).toBe(200)
+        await new Promise((resolve) => setTimeout(resolve, 10))
+        expect(enqueued.length).toBe(1)
+        expect(enqueued[0].mediaType).toBe('ANIME')
+        expect(enqueued[0].mediaId).toBe(1)
+        expect(enqueued[0].options.externalId).toBe(154587)
+
+        // Fresh record (updated today)
+        enqueued.length = 0
+        mockAnime[0].updatedAt = new Date()
+        const freshRes = await app.handle(new Request('http://localhost/borealis/anime/1'))
+        expect(freshRes.status).toBe(200)
+        await new Promise((resolve) => setTimeout(resolve, 10))
+        expect(enqueued.length).toBe(0)
+      } finally {
+        ;(MediaQueueManager as any).enqueueMediaUpdate = originalEnqueue
+      }
     })
 
     it('POST /borealis/anime/:id/refresh queues metadata refresh', async () => {

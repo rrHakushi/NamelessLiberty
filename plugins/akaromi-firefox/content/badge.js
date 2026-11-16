@@ -5,11 +5,86 @@
 ;(function (global) {
   "use strict"
 
+  if (window !== window.top) return
+
   const ext = typeof browser !== "undefined" ? browser : (typeof chrome !== "undefined" ? chrome : global.browser || global.chrome)
   global.AkaromiExt = ext
 
   const inputIconMap = new Map()
   let activeDropdownTarget = null
+
+  let portalHost = null
+  let portalShadow = null
+  let portalContainer = null
+
+  function getOrCreatePortalRoot() {
+    if (portalHost && portalHost.isConnected && portalShadow && portalContainer && portalContainer.isConnected) {
+      return portalContainer
+    }
+
+    if (!portalHost) {
+      portalHost = document.createElement("div")
+      portalHost.setAttribute("data-akaromi-portal", "true")
+      portalHost.className = "akaromi-portal-root"
+      global.AkaromiEventShield?.setPortalHost?.(portalHost)
+    }
+
+    const targetParent = document.documentElement || document.body
+    if (portalHost.parentElement !== targetParent) {
+      targetParent.appendChild(portalHost)
+    }
+
+    if (!portalShadow) {
+      portalShadow = portalHost.attachShadow({ mode: "closed" })
+
+      const cssFiles = ["content/badge.css", "content/menu.css", "content/passkey.css"]
+      for (const cssPath of cssFiles) {
+        const link = document.createElement("link")
+        link.rel = "stylesheet"
+        link.href = ext?.runtime?.getURL?.(cssPath) || cssPath
+        portalShadow.appendChild(link)
+      }
+
+      portalContainer = document.createElement("div")
+      portalContainer.className = "akaromi-portal-root"
+      portalShadow.appendChild(portalContainer)
+
+      // Isolate keyboard, input, paste, and pointer events inside the closed shadow root from host page listeners
+      const SHADOW_ISOLATED_EVENTS = [
+        "keydown",
+        "keyup",
+        "keypress",
+        "beforeinput",
+        "input",
+        "paste",
+        "pointerdown",
+        "mousedown",
+        "mouseup",
+        "click",
+        "touchstart",
+        "touchend",
+        "focusin",
+      ]
+      for (const evtName of SHADOW_ISOLATED_EVENTS) {
+        portalShadow.addEventListener(evtName, (e) => {
+          e.stopPropagation()
+        })
+      }
+    } else if (!portalContainer || !portalContainer.isConnected) {
+      portalContainer = document.createElement("div")
+      portalContainer.className = "akaromi-portal-root"
+      portalShadow.appendChild(portalContainer)
+    }
+
+    return portalContainer
+  }
+
+  global.AkaromiPortal = {
+    getRoot: getOrCreatePortalRoot,
+    getShadowRoot: () => portalShadow,
+    getHost: () => portalHost,
+    isHost: (el) => Boolean(el && portalHost && (el === portalHost || portalHost.contains(el))),
+  }
 
     // Step 2: Trailing Button Collision Avoidance & Absolute Positioning
   // Step 2.1: Native Eye Icon Collision Detection & Viewport Tracking
@@ -79,7 +154,7 @@
 
     const icon = document.createElement("button")
     icon.type = "button"
-    icon.className = "akaromi-field-icon iris-pass-field-icon"
+    icon.className = "akaromi-field-icon"
     icon.title = "Akaromi Autofill"
     icon.tabIndex = -1
 
@@ -87,7 +162,7 @@
     const iconImg = document.createElement("img")
     iconImg.src = iconUrl
     iconImg.alt = "Akaromi"
-    iconImg.className = "akaromi-badge-img iris-pass-badge-img"
+    iconImg.className = "akaromi-badge-img"
     icon.appendChild(iconImg)
 
     inputIconMap.set(input, icon)
@@ -139,6 +214,7 @@
     })
 
     icon.addEventListener("click", (e) => {
+      if (!e.isTrusted) return
       e.preventDefault()
       e.stopPropagation()
       if (activeDropdownTarget === input) {
@@ -148,12 +224,7 @@
       }
     })
 
-    const targetPortal =
-      portal ||
-      document.getElementById("akaromi-portal") ||
-      document.getElementById("iris-pass-portal") ||
-      document.documentElement ||
-      document.body
+    const targetPortal = portal || getOrCreatePortalRoot()
 
     targetPortal.appendChild(icon)
 

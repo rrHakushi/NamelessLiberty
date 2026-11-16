@@ -1,19 +1,19 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
-import { prisma, type ConnectionProvider } from '@Iris/db'
+import { prisma, type ConnectionProvider } from '@NamelessLiberty/db'
 import {
   ConnectionSyncQueueManager,
   isProviderSupportedForMediaType,
   type ConnectionSyncJobData,
-} from '../../src/services/carina/connection-sync.queue'
+} from '../../src/apps/carina/connections/connection-sync.queue'
 import {
   createConnectionProviderWorker,
   processConnectionSyncJob,
   handleJobFailure,
   PROVIDER_WORKER_CONFIGS,
-} from '../../src/workers/connection-sync.wrk'
-import { CarinaNotificationsServ } from '../../src/services/carina/notifications.serv'
-import { ConnectionRateLimitError, AniListAdapter } from '@IRIS/connections'
-import { BorealisListsServ } from '../../src/services/borealis/lists.serv'
+} from '../../src/apps/carina/connections/connection-sync.wrk'
+import { CarinaNotificationsServ } from '../../src/apps/carina/notifications/notifications.serv'
+import { ConnectionRateLimitError, AniListAdapter } from '@NamelessLiberty/connections'
+import { BorealisListsServ } from '../../src/apps/borealis/lists/lists.serv'
 
 describe('Borealis Media Connection Sync Queue & Worker Test Suite', () => {
   let enqueuedJobs: Array<{

@@ -21,6 +21,7 @@ function getMatchingLogins(targetUrl) {
   for (const cipher of inMemoryCiphers) {
     if (cipher.deletedAt) continue
     if (cipher.type === "SSH_KEY" || cipher.type === 2) continue
+    if (cipher.data?.itemType && cipher.data.itemType !== "login") continue
 
     const candidates = []
 
@@ -68,27 +69,21 @@ function getMatchingLogins(targetUrl) {
         continue
       }
 
-      const candHost = IrisMatching.extractHost(uri)
-      const candBase = IrisMatching.extractBaseDomain(uri)
+      if (!IrisMatching.isUriMatch(targetUrl, uri, normStrategy)) {
+        continue
+      }
 
-      // Exact match tier: host matches target host, or exact URL match
-      if (candHost && targetHost && candHost === targetHost) {
+      const candHost = IrisMatching.extractHost(uri)
+      if (
+        (candHost && targetHost && candHost === targetHost) ||
+        normStrategy === IrisMatching.BitwardenUriMatch.HOST ||
+        normStrategy === IrisMatching.BitwardenUriMatch.EXACT
+      ) {
         isExactHost = true
         break
       }
 
-      if (IrisMatching.isUriMatch(targetUrl, uri, matchType)) {
-        if (candHost && targetHost && candHost === targetHost) {
-          isExactHost = true
-          break
-        }
-        isBaseMatched = true
-      }
-
-      // Base domain match tier: base domain matches target base domain
-      if (candBase && targetBase && candBase === targetBase) {
-        isBaseMatched = true
-      }
+      isBaseMatched = true
     }
 
     if (isExactHost) {

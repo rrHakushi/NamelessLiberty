@@ -1,0 +1,204 @@
+import { prisma, toDate } from '@NamelessLiberty/db'
+import { BaseMfaService } from '../_shared/base-mfa.serv'
+import { cache } from '../../../core/utils/cache'
+import { generateBackupCodes, verifyBackupCode } from '../../../core/utils/auth-crypto'
+import { BadRequest, NotFound, Unauthorized } from '../../../core/errors/http-errors'
+import type { CarinaBackupCodesModel } from './backupcodes.model'
+
+export class CarinaBackupCodesServ extends BaseMfaService {
+  private static readonly instance = new CarinaBackupCodesServ()
+
+  private constructor() {
+    super('CarinaBackupCodesServ')
+  }
+  /**
+   * Generate initial backup codes for an MFA-protected user account.
+   */
+  static async generateCodes(userId: string) {
+    const user = await prisma.orm.public.User.where({ id: userId })
+      .include('passkeys')
+      .first()
+
+    if (!user) {
+      throw new NotFound(`User with ID '${userId}' was not found.`)
+    }
+
+    const hasMfaActive =
+      user.TOTPEnabled || user.emailMfaEnabled || user.passkeys.length > 0
+
+    if (!hasMfaActive) {
+      throw new BadRequest(
+        'Multi-factor authentication must be enabled to generate backup codes.'
+      )
+    }
+
+    if (user.backupCodes.length > 0) {
+      throw new BadRequest(
+        'Backup codes have already been generated for this account. Use regenerate to create new ones.'
+      )
+    }
+
+    const { plain, hashed } = await generateBackupCodes()
+
+    await prisma.orm.public.User.where({ id: user.id }).update({
+      backupCodes: hashed,
+    })
+
+    await cache.del(`users:me:user:${user.id}`)
+    await cache.del(`user:${user.id}`)
+
+    return {
+      success: true,
+      backupCodes: plain,
+    }
+  }
+
+  /**
+   * Regenerate 10 new backup recovery codes, replacing all previous ones.
+   */
+  static async regenerateCodes(userId: string) {
+    const user = await prisma.orm.public.User.where({ id: userId })
+      .include('passkeys')
+      .first()
+
+    if (!user) {
+      throw new NotFound(`User with ID '${userId}' was not found.`)
+    }
+
+    const hasMfaActive =
+      user.TOTPEnabled || user.emailMfaEnabled || user.passkeys.length > 0
+
+    if (!hasMfaActive) {
+      throw new BadRequest(
+        'Multi-factor authentication must be enabled to generate backup codes.'
+      )
+    }
+
+    const { plain, hashed } = await generateBackupCodes()
+
+    await prisma.orm.public.User.where({ id: user.id }).update({
+      backupCodes: hashed,
+    })
+
+    await cache.del(`users:me:user:${user.id}`)
+    await cache.del(`user:${user.id}`)
+
+    return {
+      success: true,
+      backupCodes: plain,
+    }
+  }
+
+  /**
+   * Verify and consume a single-use backup recovery code.
+   * Supports both active login challenges (via mfaTicket) and authenticated verification.
+   */
+  static async verifyCode(
+    userId: string | null | undefined,
+    body: CarinaBackupCodesModel['verifyBody']
+  ) {
+    // 1. Unauthenticated Login Challenge Flow via mfaTicket
+    if (body.mfaTicket) {
+      const ticketData = await cache.get<{ userId: string }>(
+        `auth:mfa-ticket:${body.mfaTicket}`
+      )
+      if (!ticketData?.userId) {
+        throw new BadRequest('Invalid or expired MFA session ticket.')
+      }
+
+      const user = await prisma.orm.public.User.where({ id: ticketData.userId }).first()
+
+      if (!user) {
+        throw new NotFound('User account not found.')
+      }
+
+      if (user.backupCodes.length === 0) {
+        throw new BadRequest('No backup codes exist for this account.')
+      }
+
+      const matchedIndex = await verifyBackupCode(body.code, user.backupCodes)
+
+      if (matchedIndex === -1) {
+        const attemptKey = `auth:mfa-ticket:attempts:${body.mfaTicket}`
+        const attempts = (await cache.get<number>(attemptKey)) || 0
+        if (attempts >= 4) {
+          await cache.del(`auth:mfa-ticket:${body.mfaTicket}`)
+          await cache.del(attemptKey)
+          throw new Unauthorized('Too many failed verification attempts. Please log in again.')
+        }
+        await cache.set(attemptKey, attempts + 1, 300)
+        throw new Unauthorized(`Invalid or previously used backup recovery code. ${4 - attempts} attempt(s) remaining.`)
+      }
+
+      // Consume the matched single-use code
+      const updatedCodes = user.backupCodes.filter((_, idx) => idx !== matchedIndex)
+
+      await prisma.orm.public.User.where({ id: user.id }).update({
+        backupCodes: updatedCodes,
+      })
+
+      // Invalidate ticket & caches via BaseMfaService
+      await CarinaBackupCodesServ.instance.clearMfaTicket(body.mfaTicket)
+      await CarinaBackupCodesServ.instance.invalidateUserMfaCache(user.id)
+
+      // Issue authenticated JWT session token
+      const pwdChangedAt = toDate(user.passwordChangedAt)
+      const token = await CarinaBackupCodesServ.instance.issueMfaSessionToken({
+        ...user,
+        passwordChangedAt: pwdChangedAt,
+      })
+
+      return {
+        success: true,
+        message: 'Backup code verified successfully',
+        remainingCount: updatedCodes.length,
+        token,
+        user: {
+          id: user.id,
+          username: user.username.trim(),
+          email: user.email,
+          passwordChangedAt: pwdChangedAt
+            ? Math.floor(pwdChangedAt.getTime() / 1000)
+            : null,
+        },
+      }
+    }
+
+    // 2. Authenticated Verification Flow
+    if (!userId) {
+      throw new Unauthorized('Authentication required or valid mfaTicket required.')
+    }
+
+    const user = await prisma.orm.public.User.where({ id: userId }).first()
+
+    if (!user) {
+      throw new NotFound(`User with ID '${userId}' was not found.`)
+    }
+
+    if (user.backupCodes.length === 0) {
+      throw new BadRequest('No backup codes exist for this account.')
+    }
+
+    const matchedIndex = await verifyBackupCode(body.code, user.backupCodes)
+
+    if (matchedIndex === -1) {
+      throw new BadRequest('Invalid or previously used backup recovery code.')
+    }
+
+    // Consume the matched single-use code
+    const updatedCodes = user.backupCodes.filter((_, idx) => idx !== matchedIndex)
+
+    await prisma.orm.public.User.where({ id: user.id }).update({
+      backupCodes: updatedCodes,
+    })
+
+    await cache.del(`users:me:user:${user.id}`)
+    await cache.del(`user:${user.id}`)
+
+    return {
+      success: true,
+      message: 'Backup code verified successfully',
+      remainingCount: updatedCodes.length,
+    }
+  }
+}

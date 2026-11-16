@@ -261,8 +261,7 @@ export function FavoriteButton({
 
   const buttonContent = (
     <Button
-      variant={isFavorited ? "default" : variant}
-      size={size}
+      variant={variant}
       aria-label={tooltipText}
       aria-pressed={isFavorited}
       aria-busy={isPending}
@@ -271,8 +270,8 @@ export function FavoriteButton({
       className={cn(
         "transition-none", // strictly no animations
         isFavorited
-          ? "bg-rose-500 text-white hover:bg-rose-600 dark:bg-rose-600 dark:hover:bg-rose-700"
-          : "text-muted-foreground hover:text-foreground",
+          ? "text-primary hover:text-primary"
+          : "text-foreground hover:text-primary",
         className
       )}
     >
@@ -280,7 +279,7 @@ export function FavoriteButton({
         data-icon="inline-start"
         className={cn(
           "transition-none",
-          isFavorited && "fill-current text-white"
+          isFavorited && "fill-current text-primary"
         )}
         aria-hidden="true"
       />

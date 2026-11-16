@@ -1,10 +1,10 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import { Elysia, ValidationError } from 'elysia'
-import { carinaComments } from '../../src/api/controllers/carina/comments.ctrl'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt } from '../../src/utils/auth-crypto'
-import { IRISBitField, IRISFlags } from '@IRIS/permissions'
-import { prisma } from '@Iris/db'
+import { carinaComments } from '../../src/apps/carina/comments/comments.ctrl'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
+import { IRISBitField, IRISFlags } from '@NamelessLiberty/permissions'
+import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------
 // In-Memory Database Mock for Comments, Replies, Users, Blocks, and Friends

@@ -1,11 +1,11 @@
 import { describe, expect, it, beforeEach } from 'bun:test'
 import crypto from 'node:crypto'
 import { Elysia, ValidationError } from 'elysia'
-import { carinaNotifications } from '../../src/api/controllers/carina/notifications.ctrl'
-import { CarinaNotificationsServ } from '../../src/services/carina/notifications.serv'
-import { isHttpError } from '../../src/lib/errors'
-import { signUserJwt } from '../../src/utils/auth-crypto'
-import { prisma } from '@Iris/db'
+import { carinaNotifications } from '../../src/apps/carina/notifications/notifications.ctrl'
+import { CarinaNotificationsServ } from '../../src/apps/carina/notifications/notifications.serv'
+import { isHttpError } from '../../src/core/errors/http-errors'
+import { signUserJwt } from '../../src/core/utils/auth-crypto'
+import { prisma } from '@NamelessLiberty/db'
 
 // -----------------------------------------------------------------------------
 // In-Memory Database Mock for Notifications and Users

@@ -1,0 +1,3145 @@
+{
+  "id": "apps/carina/email-2fa/email-2fa.ctrl",
+  "title": "Setup 2FA email",
+  "description": "Initiates two-factor email verification by sending a 6-digit confirmation code to the user registered email address.",
+  "icon": "IconRoute",
+  "metadata": {
+    "pathname": "/carina/auth/twofactor/email/setup",
+    "relPath": "apps/carina/email-2fa/email-2fa.ctrl.ts",
+    "role": "Controller",
+    "methods": [
+      "POST",
+      "DELETE"
+    ],
+    "routePaths": [
+      "/carina/auth/twofactor/email/setup",
+      "/carina/auth/twofactor/email/send",
+      "/carina/auth/twofactor/email/verify",
+      "/carina/auth/twofactor/email"
+    ],
+    "errorCount": 19
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconRoute",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "Setup 2FA email"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Controller"
+                  }
+                ]
+              },
+              {
+                "type": "CardDescription",
+                "props": {
+                  "className": "text-start pt-1"
+                },
+                "text": "Initiates two-factor email verification by sending a 6-digit confirmation code to the user registered email address."
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "key": "path-badge-0",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/twofactor/email/setup"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-1",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/twofactor/email/send"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-2",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+                            },
+                            "text": "POST"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/twofactor/email/verify"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "div",
+                        "key": "path-badge-3",
+                        "props": {
+                          "className": "flex flex-wrap items-center gap-2"
+                        },
+                        "children": [
+                          {
+                            "type": "Badge",
+                            "props": {
+                              "variant": "outline",
+                              "className": "font-mono text-xs bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30"
+                            },
+                            "text": "DELETE"
+                          },
+                          {
+                            "type": "code",
+                            "props": {
+                              "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                            },
+                            "text": "/carina/auth/twofactor/email"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/controllers.generated",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/controllers.generated.ts (_ctrl_23)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "24 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/setup · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.setupResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/setup · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/setup · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/setup · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/setup · Response 429"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.tooManyRequestsError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/send · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.sendBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/send · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.sendResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/send · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/send · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/send · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/send · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/send · Response 429"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.tooManyRequestsError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/verify · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.verifyBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/verify · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.verifyResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/verify · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/verify · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/verify · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "POST /carina/auth/twofactor/email/verify · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.validationError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/auth/twofactor/email · Body"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.deleteBody"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-19",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/auth/twofactor/email · Response 200"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.deleteResponse"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-20",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/auth/twofactor/email · Response 400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.badRequestError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-21",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/auth/twofactor/email · Response 401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.unauthorizedError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-22",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/auth/twofactor/email · Response 404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.notFoundError"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-23",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "DELETE /carina/auth/twofactor/email · Response 422"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(schema)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "CarinaEmail2faModel.validationError"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-0",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/email-2fa/email-2fa.ctrl.ts-route-0",
+                "title": "POST /carina/auth/twofactor/email/setup",
+                "description": "Setup 2FA email",
+                "steps": [
+                  {
+                    "id": "route_0_0_1",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_0_1_2",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaEmail2faServ.setupEmail2fa(user.id)`"
+                  },
+                  {
+                    "id": "call_0_CarinaEmail2faServ_setupEmail2fa",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaEmail2faServ.setupEmail2fa",
+                    "isAsync": true,
+                    "targetAlg": "CarinaEmail2faServ.setupEmail2fa"
+                  },
+                  {
+                    "id": "svc_0_CarinaEmail2faServ_setupEmail2fa",
+                    "kind": "sequence",
+                    "title": "CarinaEmail2faServ.setupEmail2fa Flow",
+                    "children": [
+                      {
+                        "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `User` and stores it as `user`"
+                      },
+                      {
+                        "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_1_2",
+                        "kind": "selection",
+                        "title": "`!user`",
+                        "selectionMode": "if_else",
+                        "condition": "`!user`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "User with ID '${userId}' was not found."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_2_3",
+                        "kind": "selection",
+                        "title": "`!user.email`",
+                        "selectionMode": "if_else",
+                        "condition": "`!user.email`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_2_3_then_0_3_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "An email address must be associated with your account before enabling Email 2FA."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_3_4",
+                        "kind": "selection",
+                        "title": "`user.emailMfaEnabled`",
+                        "selectionMode": "if_else",
+                        "condition": "`user.emailMfaEnabled`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_3_4_then_0_4_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Email two-factor authentication is already enabled on this account."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_4_5",
+                        "kind": "step",
+                        "title": "Cache `get` -> `cooldownActive`"
+                      },
+                      {
+                        "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_5_6",
+                        "kind": "selection",
+                        "title": "`cooldownActive`",
+                        "selectionMode": "if_else",
+                        "condition": "`cooldownActive`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_5_6_then_0_6_1",
+                            "kind": "error",
+                            "code": "TooManyRequests",
+                            "httpStatus": 429,
+                            "message": "Please wait a moment before requesting another verification code."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_6_7",
+                        "kind": "var_def",
+                        "title": "Define `code`",
+                        "payload": "const code = randomInt(100000, 1000000).toString()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_7_8",
+                        "kind": "step",
+                        "title": "Cache `set`"
+                      },
+                      {
+                        "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_8_9",
+                        "kind": "step",
+                        "title": "Cache `set`"
+                      },
+                      {
+                        "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_9_10",
+                        "kind": "step",
+                        "title": "Calls `EmailService.sendMfaVerificationEmail`"
+                      },
+                      {
+                        "id": "svc_0_CarinaEmail2faServ_setupEmail2fa_10_11",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"Verification code sent to registered email\",\n  \"email\": \"<maskEmail(user.email)>\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-1",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/email-2fa/email-2fa.ctrl.ts-route-1",
+                "title": "POST /carina/auth/twofactor/email/send",
+                "description": "Send 2FA verification email",
+                "steps": [
+                  {
+                    "id": "route_1_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaEmail2faModel.sendBody`"
+                  },
+                  {
+                    "id": "route_1_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.getUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_1_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaEmail2faServ.sendEmail2fa(user?.id, body)`"
+                  },
+                  {
+                    "id": "call_1_CarinaEmail2faServ_sendEmail2fa",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaEmail2faServ.sendEmail2fa",
+                    "isAsync": true,
+                    "targetAlg": "CarinaEmail2faServ.sendEmail2fa"
+                  },
+                  {
+                    "id": "svc_1_CarinaEmail2faServ_sendEmail2fa",
+                    "kind": "sequence",
+                    "title": "CarinaEmail2faServ.sendEmail2fa Flow",
+                    "children": [
+                      {
+                        "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1",
+                        "kind": "selection",
+                        "title": "`body?.mfaTicket`",
+                        "selectionMode": "if_else",
+                        "condition": "`body?.mfaTicket`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_0_1_1",
+                            "kind": "step",
+                            "title": "Cache `get` -> `ticketData`"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_1_1_2",
+                            "kind": "selection",
+                            "title": "`!ticketData || !ticketData.userId`",
+                            "selectionMode": "if_else",
+                            "condition": "`!ticketData || !ticketData.userId`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_1_1_2_then_0_1_2_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Invalid or expired MFA session ticket."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_2_1_3",
+                            "kind": "step",
+                            "title": "Database `first` on `User` and stores it as `user`"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_3_1_4",
+                            "kind": "selection",
+                            "title": "`!user || !user.email`",
+                            "selectionMode": "if_else",
+                            "condition": "`!user || !user.email`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_3_1_4_then_0_1_4_1",
+                                "kind": "error",
+                                "code": "NotFound",
+                                "httpStatus": 404,
+                                "message": "User account or email address not found."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_4_1_5",
+                            "kind": "selection",
+                            "title": "`!user.emailMfaEnabled`",
+                            "selectionMode": "if_else",
+                            "condition": "`!user.emailMfaEnabled`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_4_1_5_then_0_1_5_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Email MFA is not enabled on this account."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_5_1_6",
+                            "kind": "step",
+                            "title": "Cache `get` -> `cooldown`"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_6_1_7",
+                            "kind": "selection",
+                            "title": "`cooldown`",
+                            "selectionMode": "if_else",
+                            "condition": "`cooldown`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_6_1_7_then_0_1_7_1",
+                                "kind": "error",
+                                "code": "TooManyRequests",
+                                "httpStatus": 429,
+                                "message": "Please wait a moment before requesting another verification code."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_7_1_8",
+                            "kind": "var_def",
+                            "title": "Define `code`",
+                            "payload": "const code = randomInt(100000, 1000000).toString()",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_8_1_9",
+                            "kind": "step",
+                            "title": "Cache `set`"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_9_1_10",
+                            "kind": "step",
+                            "title": "Cache `set`"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_10_1_11",
+                            "kind": "step",
+                            "title": "Calls `EmailService.sendMfaVerificationEmail`"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_0_1_then_11_1_12",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"message\": \"Verification code sent to registered email\",\n  \"email\": \"<maskEmail(user.email)>\"\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2",
+                        "kind": "selection",
+                        "title": "`userId`",
+                        "selectionMode": "if_else",
+                        "condition": "`userId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_0_2_1",
+                            "kind": "step",
+                            "title": "Database `first` on `User` and stores it as `user`"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_1_2_2",
+                            "kind": "selection",
+                            "title": "`!user`",
+                            "selectionMode": "if_else",
+                            "condition": "`!user`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_1_2_2_then_0_2_2_1",
+                                "kind": "error",
+                                "code": "NotFound",
+                                "httpStatus": 404,
+                                "message": "User with ID '${userId}' was not found."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_2_2_3",
+                            "kind": "selection",
+                            "title": "`!user.email`",
+                            "selectionMode": "if_else",
+                            "condition": "`!user.email`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_2_2_3_then_0_2_3_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "No email address registered for this account."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_3_2_4",
+                            "kind": "selection",
+                            "title": "`user.emailMfaEnabled`",
+                            "selectionMode": "if_else",
+                            "condition": "`user.emailMfaEnabled`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_3_2_4_then_0_2_4_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Email two-factor authentication is already enabled on this account."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_4_2_5",
+                            "kind": "step",
+                            "title": "Cache `get` -> `cooldown`"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_5_2_6",
+                            "kind": "selection",
+                            "title": "`cooldown`",
+                            "selectionMode": "if_else",
+                            "condition": "`cooldown`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_5_2_6_then_0_2_6_1",
+                                "kind": "error",
+                                "code": "TooManyRequests",
+                                "httpStatus": 429,
+                                "message": "Please wait a moment before requesting another verification code."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_6_2_7",
+                            "kind": "var_def",
+                            "title": "Define `code`",
+                            "payload": "const code = randomInt(100000, 1000000).toString()",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_7_2_8",
+                            "kind": "step",
+                            "title": "Cache `set`"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_8_2_9",
+                            "kind": "step",
+                            "title": "Cache `set`"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_9_2_10",
+                            "kind": "step",
+                            "title": "Calls `EmailService.sendMfaVerificationEmail`"
+                          },
+                          {
+                            "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_1_2_then_10_2_11",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"message\": \"Verification code sent to registered email\",\n  \"email\": \"<maskEmail(user.email)>\"\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_1_CarinaEmail2faServ_sendEmail2fa_2_3",
+                        "kind": "error",
+                        "code": "Unauthorized",
+                        "httpStatus": 401,
+                        "message": "Authentication required or valid mfaTicket required."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-2",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/email-2fa/email-2fa.ctrl.ts-route-2",
+                "title": "POST /carina/auth/twofactor/email/verify",
+                "description": "Verify 2FA email code",
+                "steps": [
+                  {
+                    "id": "route_2_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaEmail2faModel.verifyBody`"
+                  },
+                  {
+                    "id": "route_2_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.getUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_2_2_3",
+                    "kind": "step",
+                    "title": "Calls `CarinaEmail2faServ.verifyEmail2fa` and stores result as `res`"
+                  },
+                  {
+                    "id": "route_2_3_4",
+                    "kind": "selection",
+                    "title": "`res.token && sessionCookie`",
+                    "selectionMode": "if_else",
+                    "condition": "`res.token && sessionCookie`",
+                    "thenBranch": [
+                      {
+                        "id": "route_2_3_4_then_0_4_1",
+                        "kind": "step",
+                        "title": "Calls `getDomainConfig` and stores result as `{ isSecure, cookieDomain }`"
+                      },
+                      {
+                        "id": "route_2_3_4_then_1_4_2",
+                        "kind": "step",
+                        "title": "Calls `sessionCookie.set`"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "route_2_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`res`"
+                  },
+                  {
+                    "id": "call_2_CarinaEmail2faServ_verifyEmail2fa",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaEmail2faServ.verifyEmail2fa",
+                    "isAsync": true,
+                    "targetAlg": "CarinaEmail2faServ.verifyEmail2fa"
+                  },
+                  {
+                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa",
+                    "kind": "sequence",
+                    "title": "CarinaEmail2faServ.verifyEmail2fa Flow",
+                    "children": [
+                      {
+                        "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_0_1",
+                        "kind": "selection",
+                        "title": "`!body || !body.code`",
+                        "selectionMode": "if_else",
+                        "condition": "`!body || !body.code`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_0_1_then_0_1_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Verification code is required."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_1_2",
+                        "kind": "var_def",
+                        "title": "Define `cleanCode`",
+                        "payload": "const cleanCode = body.code.trim()",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3",
+                        "kind": "selection",
+                        "title": "`body.mfaTicket`",
+                        "selectionMode": "if_else",
+                        "condition": "`body.mfaTicket`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_0_3_1",
+                            "kind": "step",
+                            "title": "Cache `get` -> `ticketData`"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_1_3_2",
+                            "kind": "selection",
+                            "title": "`!ticketData || !ticketData.userId`",
+                            "selectionMode": "if_else",
+                            "condition": "`!ticketData || !ticketData.userId`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_1_3_2_then_0_3_2_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Invalid or expired MFA session ticket."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_2_3_3",
+                            "kind": "step",
+                            "title": "Database `first` on `User` and stores it as `user`"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_3_3_4",
+                            "kind": "selection",
+                            "title": "`!user`",
+                            "selectionMode": "if_else",
+                            "condition": "`!user`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_3_3_4_then_0_3_4_1",
+                                "kind": "error",
+                                "code": "NotFound",
+                                "httpStatus": 404,
+                                "message": "User account not found."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_4_3_5",
+                            "kind": "var_def",
+                            "title": "Define `hasMfaActive`",
+                            "payload": "const hasMfaActive = user.emailMfaEnabled || user.TOTPEnabled || user.backupCodes.length > 0",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_5_3_6",
+                            "kind": "selection",
+                            "title": "`!hasMfaActive`",
+                            "selectionMode": "if_else",
+                            "condition": "`!hasMfaActive`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_5_3_6_then_0_3_6_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Multi-factor authentication is not active on this account."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_6_3_7",
+                            "kind": "var_def",
+                            "title": "Define `isVerified`",
+                            "payload": "let isVerified = false",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_7_3_8",
+                            "kind": "selection",
+                            "title": "`user.TOTPEnabled && user.TOTPSecret`",
+                            "selectionMode": "if_else",
+                            "condition": "`user.TOTPEnabled && user.TOTPSecret`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_7_3_8_then_0_3_8_1",
+                                "kind": "try_catch_finally",
+                                "title": "Try block",
+                                "catchVar": "err",
+                                "tryBlock": [
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_7_3_8_then_0_3_8_1_try_0_3_8_1_1",
+                                    "kind": "step",
+                                    "title": "Calls `decryptSecret` and stores result as `secret`"
+                                  },
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_7_3_8_then_0_3_8_1_try_1_3_8_1_2",
+                                    "kind": "step",
+                                    "title": "Calls `verifyTotpCode` and stores result as `totpResult`"
+                                  },
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_7_3_8_then_0_3_8_1_try_2_3_8_1_3",
+                                    "kind": "selection",
+                                    "title": "`totpResult?.valid`",
+                                    "selectionMode": "if_else",
+                                    "condition": "`totpResult?.valid`",
+                                    "thenBranch": [
+                                      {
+                                        "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_7_3_8_then_0_3_8_1_try_2_3_8_1_3_then_0_3_8_1_3_1",
+                                        "kind": "step",
+                                        "title": "Assign `isVerified`",
+                                        "payload": "isVerified = true",
+                                        "payloadLanguage": "typescript"
+                                      }
+                                    ],
+                                    "elseBranch": []
+                                  }
+                                ],
+                                "catchBlock": [],
+                                "finallyBlock": []
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_8_3_9",
+                            "kind": "selection",
+                            "title": "`!isVerified && user.emailMfaEnabled`",
+                            "selectionMode": "if_else",
+                            "condition": "`!isVerified && user.emailMfaEnabled`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_8_3_9_then_0_3_9_1",
+                                "kind": "step",
+                                "title": "Cache `get` -> `cachedCode`"
+                              },
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_8_3_9_then_1_3_9_2",
+                                "kind": "selection",
+                                "title": "`cachedCode && cachedCode === cleanCode`",
+                                "selectionMode": "if_else",
+                                "condition": "`cachedCode && cachedCode === cleanCode`",
+                                "thenBranch": [
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_8_3_9_then_1_3_9_2_then_0_3_9_2_1",
+                                    "kind": "step",
+                                    "title": "Assign `isVerified`",
+                                    "payload": "isVerified = true",
+                                    "payloadLanguage": "typescript"
+                                  },
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_8_3_9_then_1_3_9_2_then_1_3_9_2_2",
+                                    "kind": "step",
+                                    "title": "Cache `del`"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_9_3_10",
+                            "kind": "selection",
+                            "title": "`!isVerified && user.backupCodes && user.backupCodes.length > 0`",
+                            "selectionMode": "if_else",
+                            "condition": "`!isVerified && user.backupCodes && user.backupCodes.length > 0`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_9_3_10_then_0_3_10_1",
+                                "kind": "step",
+                                "title": "Calls `verifyBackupCode` and stores result as `matchedIndex`"
+                              },
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_9_3_10_then_1_3_10_2",
+                                "kind": "selection",
+                                "title": "`matchedIndex !== -1`",
+                                "selectionMode": "if_else",
+                                "condition": "`matchedIndex !== -1`",
+                                "thenBranch": [
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_9_3_10_then_1_3_10_2_then_0_3_10_2_1",
+                                    "kind": "step",
+                                    "title": "Assign `isVerified`",
+                                    "payload": "isVerified = true",
+                                    "payloadLanguage": "typescript"
+                                  },
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_9_3_10_then_1_3_10_2_then_1_3_10_2_2",
+                                    "kind": "var_def",
+                                    "title": "Define `updatedCodes`",
+                                    "payload": "const updatedCodes = [...user.backupCodes]",
+                                    "payloadLanguage": "typescript"
+                                  },
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_9_3_10_then_1_3_10_2_then_2_3_10_2_3",
+                                    "kind": "step",
+                                    "title": "Calls `updatedCodes.splice`"
+                                  },
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_9_3_10_then_1_3_10_2_then_3_3_10_2_4",
+                                    "kind": "step",
+                                    "title": "Database `update` on `User`"
+                                  }
+                                ],
+                                "elseBranch": []
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_10_3_11",
+                            "kind": "selection",
+                            "title": "`!isVerified`",
+                            "selectionMode": "if_else",
+                            "condition": "`!isVerified`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_10_3_11_then_0_3_11_1",
+                                "kind": "var_def",
+                                "title": "Define `attemptKey`",
+                                "payload": "const attemptKey = `auth:mfa-ticket:attempts:${body.mfaTicket}`",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_10_3_11_then_1_3_11_2",
+                                "kind": "step",
+                                "title": "Cache `get` -> `attempts`"
+                              },
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_10_3_11_then_2_3_11_3",
+                                "kind": "selection",
+                                "title": "`attempts >= 4`",
+                                "selectionMode": "if_else",
+                                "condition": "`attempts >= 4`",
+                                "thenBranch": [
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_10_3_11_then_2_3_11_3_then_0_3_11_3_1",
+                                    "kind": "step",
+                                    "title": "Cache `del`"
+                                  },
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_10_3_11_then_2_3_11_3_then_1_3_11_3_2",
+                                    "kind": "step",
+                                    "title": "Cache `del`"
+                                  },
+                                  {
+                                    "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_10_3_11_then_2_3_11_3_then_2_3_11_3_3",
+                                    "kind": "error",
+                                    "code": "Unauthorized",
+                                    "httpStatus": 401,
+                                    "message": "Too many failed verification attempts. Please log in again."
+                                  }
+                                ],
+                                "elseBranch": []
+                              },
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_10_3_11_then_3_3_11_4",
+                                "kind": "step",
+                                "title": "Cache `set`"
+                              },
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_10_3_11_then_4_3_11_5",
+                                "kind": "error",
+                                "code": "Unauthorized",
+                                "httpStatus": 401,
+                                "message": "Invalid verification code. ${4 - attempts} attempt(s) remaining."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_11_3_12",
+                            "kind": "step",
+                            "title": "Calls `CarinaEmail2faServ.instance.clearMfaTicket`"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_12_3_13",
+                            "kind": "step",
+                            "title": "Calls `toDate` and stores result as `pwdChangedAt`"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_13_3_14",
+                            "kind": "step",
+                            "title": "Calls `CarinaEmail2faServ.instance.issueMfaSessionToken` and stores result as `token`"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_2_3_then_14_3_15",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"message\": \"Successfully verified and logged in\",\n  \"token\": \"<token>\",\n  \"user\": {\n    \"id\": \"<user.id>\",\n    \"username\": \"<user.username.trim()>\",\n    \"email\": \"<user.email>\",\n    \"passwordChangedAt\": \"<pwdChangedAt ? Math.floor(pwdChangedAt.getTime() / 1000) : null>\"\n  }\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4",
+                        "kind": "selection",
+                        "title": "`userId`",
+                        "selectionMode": "if_else",
+                        "condition": "`userId`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_0_4_1",
+                            "kind": "step",
+                            "title": "Database `first` on `User` and stores it as `user`"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_1_4_2",
+                            "kind": "selection",
+                            "title": "`!user`",
+                            "selectionMode": "if_else",
+                            "condition": "`!user`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_1_4_2_then_0_4_2_1",
+                                "kind": "error",
+                                "code": "NotFound",
+                                "httpStatus": 404,
+                                "message": "User with ID '${userId}' was not found."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_2_4_3",
+                            "kind": "step",
+                            "title": "Cache `get` -> `cachedSetup`"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_3_4_4",
+                            "kind": "selection",
+                            "title": "`!cachedSetup`",
+                            "selectionMode": "if_else",
+                            "condition": "`!cachedSetup`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_3_4_4_then_0_4_4_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Email 2FA setup session expired or was not initiated. Please request a new verification code."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_4_4_5",
+                            "kind": "selection",
+                            "title": "`cachedSetup.code !== cleanCode`",
+                            "selectionMode": "if_else",
+                            "condition": "`cachedSetup.code !== cleanCode`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_4_4_5_then_0_4_5_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Invalid verification code."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_5_4_6",
+                            "kind": "var_def",
+                            "title": "Define `plainBackupCodes`, `hashedBackupCodes`, `otherMfaActive`",
+                            "payload": "let plainBackupCodes: string[] | undefined = undefined\nlet hashedBackupCodes: string[] | undefined = undefined\nconst otherMfaActive = user.TOTPEnabled || user.passkeys.length > 0",
+                            "payloadLanguage": "typescript"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_6_4_7",
+                            "kind": "selection",
+                            "title": "`!otherMfaActive && user.backupCodes.length === 0`",
+                            "selectionMode": "if_else",
+                            "condition": "`!otherMfaActive && user.backupCodes.length === 0`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_6_4_7_then_0_4_7_1",
+                                "kind": "step",
+                                "title": "Calls `generateBackupCodes` and stores result as `generated`"
+                              },
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_6_4_7_then_1_4_7_2",
+                                "kind": "step",
+                                "title": "Assign `plainBackupCodes`",
+                                "payload": "plainBackupCodes = generated.plain",
+                                "payloadLanguage": "typescript"
+                              },
+                              {
+                                "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_6_4_7_then_2_4_7_3",
+                                "kind": "step",
+                                "title": "Assign `hashedBackupCodes`",
+                                "payload": "hashedBackupCodes = generated.hashed",
+                                "payloadLanguage": "typescript"
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_7_4_8",
+                            "kind": "step",
+                            "title": "Database `update` on `User`"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_8_4_9",
+                            "kind": "step",
+                            "title": "Cache `del`"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_9_4_10",
+                            "kind": "step",
+                            "title": "Cache `del`"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_10_4_11",
+                            "kind": "step",
+                            "title": "Cache `del`"
+                          },
+                          {
+                            "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_3_4_then_11_4_12",
+                            "kind": "return",
+                            "title": "",
+                            "payload": "{\n  \"success\": true,\n  \"message\": \"Email two-factor authentication has been enabled\",\n  \"backupCodes\": \"<plainBackupCodes>\"\n}",
+                            "payloadLanguage": "json"
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_2_CarinaEmail2faServ_verifyEmail2fa_4_5",
+                        "kind": "error",
+                        "code": "Unauthorized",
+                        "httpStatus": 401,
+                        "message": "Authentication required or valid mfaTicket required."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "route-algo-3",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/email-2fa/email-2fa.ctrl.ts-route-3",
+                "title": "DELETE /carina/auth/twofactor/email",
+                "description": "Remove 2FA email",
+                "steps": [
+                  {
+                    "id": "route_3_0_1",
+                    "kind": "step",
+                    "title": "Validates request input (TypeBox)",
+                    "description": "body: `CarinaEmail2faModel.deleteBody`"
+                  },
+                  {
+                    "id": "route_3_1_2",
+                    "kind": "step",
+                    "title": "Calls `userSession.requireUser` and stores result as `user`"
+                  },
+                  {
+                    "id": "route_3_2_3",
+                    "kind": "return",
+                    "title": "",
+                    "returnValue": "`await CarinaEmail2faServ.deleteEmail2fa(user.id, body)`"
+                  },
+                  {
+                    "id": "call_3_CarinaEmail2faServ_deleteEmail2fa",
+                    "kind": "alg_call",
+                    "title": "Invoke CarinaEmail2faServ.deleteEmail2fa",
+                    "isAsync": true,
+                    "targetAlg": "CarinaEmail2faServ.deleteEmail2fa"
+                  },
+                  {
+                    "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa",
+                    "kind": "sequence",
+                    "title": "CarinaEmail2faServ.deleteEmail2fa Flow",
+                    "children": [
+                      {
+                        "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_0_1",
+                        "kind": "step",
+                        "title": "Database `first` on `User` and stores it as `user`"
+                      },
+                      {
+                        "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_1_2",
+                        "kind": "selection",
+                        "title": "`!user`",
+                        "selectionMode": "if_else",
+                        "condition": "`!user`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_1_2_then_0_2_1",
+                            "kind": "error",
+                            "code": "NotFound",
+                            "httpStatus": 404,
+                            "message": "User with ID '${userId}' was not found."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_2_3",
+                        "kind": "selection",
+                        "title": "`!user.emailMfaEnabled`",
+                        "selectionMode": "if_else",
+                        "condition": "`!user.emailMfaEnabled`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_2_3_then_0_3_1",
+                            "kind": "error",
+                            "code": "BadRequest",
+                            "httpStatus": 400,
+                            "message": "Email two-factor authentication is not currently enabled on this account."
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_3_4",
+                        "kind": "selection",
+                        "title": "`user.passwordHash`",
+                        "selectionMode": "if_else",
+                        "condition": "`user.passwordHash`",
+                        "thenBranch": [
+                          {
+                            "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_3_4_then_0_4_1",
+                            "kind": "selection",
+                            "title": "`!body?.password`",
+                            "selectionMode": "if_else",
+                            "condition": "`!body?.password`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_3_4_then_0_4_1_then_0_4_1_1",
+                                "kind": "error",
+                                "code": "BadRequest",
+                                "httpStatus": 400,
+                                "message": "Account password confirmation is required to disable Email 2FA."
+                              }
+                            ],
+                            "elseBranch": []
+                          },
+                          {
+                            "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_3_4_then_1_4_2",
+                            "kind": "step",
+                            "title": "Calls `verifyPassword` and stores result as `isPasswordValid`"
+                          },
+                          {
+                            "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_3_4_then_2_4_3",
+                            "kind": "selection",
+                            "title": "`!isPasswordValid`",
+                            "selectionMode": "if_else",
+                            "condition": "`!isPasswordValid`",
+                            "thenBranch": [
+                              {
+                                "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_3_4_then_2_4_3_then_0_4_3_1",
+                                "kind": "error",
+                                "code": "Unauthorized",
+                                "httpStatus": 401,
+                                "message": "Incorrect password confirmation."
+                              }
+                            ],
+                            "elseBranch": []
+                          }
+                        ],
+                        "elseBranch": []
+                      },
+                      {
+                        "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_4_5",
+                        "kind": "var_def",
+                        "title": "Define `remainingMfa`",
+                        "payload": "const remainingMfa = user.TOTPEnabled || user.passkeys.length > 0",
+                        "payloadLanguage": "typescript"
+                      },
+                      {
+                        "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_5_6",
+                        "kind": "step",
+                        "title": "Database `update` on `User`"
+                      },
+                      {
+                        "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_6_7",
+                        "kind": "step",
+                        "title": "Cache `del`"
+                      },
+                      {
+                        "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_7_8",
+                        "kind": "step",
+                        "title": "Cache `del`"
+                      },
+                      {
+                        "id": "svc_3_CarinaEmail2faServ_deleteEmail2fa_8_9",
+                        "kind": "return",
+                        "title": "",
+                        "payload": "{\n  \"success\": true,\n  \"message\": \"Email two-factor authentication has been disabled\"\n}",
+                        "payloadLanguage": "json"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "19 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User with ID '${userId}' was not found."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "An email address must be associated with your account before enabling Email 2FA."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Email two-factor authentication is already enabled on this account."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "429"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "TooManyRequests"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Please wait a moment before requesting another verification code."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid or expired MFA session ticket."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-5",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User account or email address not found."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-6",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Email MFA is not enabled on this account."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-7",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "No email address registered for this account."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-8",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Authentication required or valid mfaTicket required."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-9",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Verification code is required."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-10",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "User account not found."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-11",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Multi-factor authentication is not active on this account."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-12",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Too many failed verification attempts. Please log in again."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-13",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid verification code. ${4 - attempts} attempt(s) remaining."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-14",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Email 2FA setup session expired or was not initiated. Please request a new verification code."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-15",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Invalid verification code."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-16",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Email two-factor authentication is not currently enabled on this account."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-17",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Account password confirmation is required to disable Email 2FA."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-18",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "401"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "Unauthorized"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "Incorrect password confirmation."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

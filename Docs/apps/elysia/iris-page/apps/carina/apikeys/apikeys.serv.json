@@ -1,0 +1,954 @@
+{
+  "id": "apps/carina/apikeys/apikeys.serv",
+  "title": "apikeys.serv",
+  "description": "",
+  "icon": "IconCpu",
+  "metadata": {
+    "pathname": "apps/elysia/src/apps/carina/apikeys/apikeys.serv.ts",
+    "relPath": "apps/carina/apikeys/apikeys.serv.ts",
+    "role": "Service",
+    "methods": [],
+    "routePaths": [],
+    "errorCount": 2
+  },
+  "root": {
+    "type": "div",
+    "props": {
+      "className": "space-y-6"
+    },
+    "children": [
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardHeader",
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconCpu",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "CardTitle",
+                        "props": {
+                          "className": "text-xl text-start"
+                        },
+                        "text": "apikeys.serv"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Badge",
+                    "props": {
+                      "variant": "outline",
+                      "className": "font-mono text-xs"
+                    },
+                    "text": "Service"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "space-y-4"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "space-y-2 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+                    },
+                    "text": "Pathname"
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-col gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "code",
+                        "props": {
+                          "className": "rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-foreground"
+                        },
+                        "text": "apps/elysia/src/apps/carina/apikeys/apikeys.serv.ts"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Separator"
+              },
+              {
+                "type": "div",
+                "props": {
+                  "className": "rounded-xl border border-border/60 bg-muted/20 p-3 text-start space-y-2"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center justify-between gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "text-[11px] text-muted-foreground"
+                        },
+                        "text": "Dependents / Callers"
+                      },
+                      {
+                        "type": "div",
+                        "props": {
+                          "className": "font-mono text-[11px] text-muted-foreground"
+                        },
+                        "text": "1 caller(s)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex flex-wrap gap-1.5"
+                    },
+                    "children": [
+                      {
+                        "type": "a",
+                        "key": "caller-0",
+                        "props": {
+                          "href": "/docs/apps/carina/apikeys/apikeys.ctrl",
+                          "className": "inline-flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-2 py-0.5 font-mono text-[11px] text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                        },
+                        "text": "apps/carina/apikeys/apikeys.ctrl.ts (CarinaApiKeysServ)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconArrowsLeftRight",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Inputs & Outputs"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "5 entries"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Location / Scope"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Field / Params"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Type / Output"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "io-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaApiKeysServ.listKeys"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, query = {})"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaApiKeysServ.createKey"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-2",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaApiKeysServ.updateKey"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, keyId, body)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-3",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaApiKeysServ.deleteKey"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, keyId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "io-4",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-medium text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "outline",
+                                  "className": "font-mono text-[11px]"
+                                },
+                                "text": "CarinaApiKeysServ.regenerateKey"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "(userId, keyId)"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-muted-foreground text-start break-all"
+                            },
+                            "text": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "div",
+        "props": {
+          "className": "space-y-4"
+        },
+        "children": [
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaApiKeysServ-listKeys",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/apikeys/apikeys.serv.ts-CarinaApiKeysServ-listKeys",
+                "title": "CarinaApiKeysServ.listKeys(userId, query = {})",
+                "description": "List API keys for the authenticated user with pagination (10 per page default).",
+                "steps": [
+                  {
+                    "id": "m_CarinaApiKeysServ_listKeys_0_1",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `page`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_listKeys_1_2",
+                    "kind": "step",
+                    "title": "Calls `Math.max` and stores result as `limit`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_listKeys_2_3",
+                    "kind": "var_def",
+                    "title": "Define `skip`",
+                    "payload": "const skip = page - 1 * limit",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_listKeys_3_4",
+                    "kind": "step",
+                    "title": "Database `all` on `ApiKey` and stores it as `[total, keys]`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_listKeys_4_5",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"total\": \"<total>\",\n  \"page\": \"<page>\",\n  \"limit\": \"<limit>\",\n  \"apiKeys\": \"<keys.map(serializeApiKey)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaApiKeysServ-createKey",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/apikeys/apikeys.serv.ts-CarinaApiKeysServ-createKey",
+                "title": "CarinaApiKeysServ.createKey(userId, body)",
+                "description": "Create a new API key for the user. Generates a 24-byte entropy key (`iris-key-...`), stores SHA-256 hash, and returns raw token once.",
+                "steps": [
+                  {
+                    "id": "m_CarinaApiKeysServ_createKey_0_1",
+                    "kind": "var_def",
+                    "title": "Define `rawName`",
+                    "payload": "const rawName = body.name || ''.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_createKey_1_2",
+                    "kind": "selection",
+                    "title": "`!rawName`",
+                    "selectionMode": "if_else",
+                    "condition": "`!rawName`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaApiKeysServ_createKey_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "API key name cannot be empty or contain only whitespace."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_createKey_2_3",
+                    "kind": "var_def",
+                    "title": "Define `entropy`, `rawKey`, `prefix`",
+                    "payload": "const entropy = randomBytes(24).toString('hex')\nconst rawKey = `iris-key-${entropy}`\nconst prefix = rawKey.slice(0, 17)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_createKey_3_4",
+                    "kind": "step",
+                    "title": "Calls `hashApiKey` and stores result as `hash`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_createKey_4_5",
+                    "kind": "var_def",
+                    "title": "Define `expiresAt`",
+                    "payload": "let expiresAt: Date | null = null",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_createKey_5_6",
+                    "kind": "selection",
+                    "title": "`typeofbody.expirationDays === 'number' && body.expirationDays > 0`",
+                    "selectionMode": "if_else",
+                    "condition": "`typeofbody.expirationDays === 'number' && body.expirationDays > 0`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaApiKeysServ_createKey_5_6_then_0_6_1",
+                        "kind": "step",
+                        "title": "Assign `expiresAt`",
+                        "payload": "expiresAt = new Date( Date.now() + body.expirationDays * 24 * 60 * 60 * 1000 )",
+                        "payloadLanguage": "typescript"
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_createKey_6_7",
+                    "kind": "step",
+                    "title": "Database `create` on `ApiKey` and stores it as `created`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_createKey_7_8",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"rawKey\": \"<rawKey>\",\n  \"apiKey\": \"<serializeApiKey(created)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaApiKeysServ-updateKey",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/apikeys/apikeys.serv.ts-CarinaApiKeysServ-updateKey",
+                "title": "CarinaApiKeysServ.updateKey(userId, keyId, body)",
+                "description": "Update display name of an existing API key.",
+                "steps": [
+                  {
+                    "id": "m_CarinaApiKeysServ_updateKey_0_1",
+                    "kind": "var_def",
+                    "title": "Define `rawName`",
+                    "payload": "const rawName = body.name || ''.trim()",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_updateKey_1_2",
+                    "kind": "selection",
+                    "title": "`!rawName`",
+                    "selectionMode": "if_else",
+                    "condition": "`!rawName`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaApiKeysServ_updateKey_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "BadRequest",
+                        "httpStatus": 400,
+                        "message": "API key name cannot be empty or contain only whitespace."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_updateKey_2_3",
+                    "kind": "step",
+                    "title": "Database `first` on `ApiKey` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_updateKey_3_4",
+                    "kind": "selection",
+                    "title": "`!existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`!existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaApiKeysServ_updateKey_3_4_then_0_4_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "API key with ID '${keyId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_updateKey_4_5",
+                    "kind": "step",
+                    "title": "Database `update` on `ApiKey` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_updateKey_5_6",
+                    "kind": "selection",
+                    "title": "`!updated`",
+                    "selectionMode": "if_else",
+                    "condition": "`!updated`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaApiKeysServ_updateKey_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "API key with ID '${keyId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_updateKey_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"apiKey\": \"<serializeApiKey(updated)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaApiKeysServ-deleteKey",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/apikeys/apikeys.serv.ts-CarinaApiKeysServ-deleteKey",
+                "title": "CarinaApiKeysServ.deleteKey(userId, keyId)",
+                "description": "Delete an existing API key.",
+                "steps": [
+                  {
+                    "id": "m_CarinaApiKeysServ_deleteKey_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `ApiKey` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_deleteKey_1_2",
+                    "kind": "selection",
+                    "title": "`!existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`!existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaApiKeysServ_deleteKey_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "API key with ID '${keyId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_deleteKey_2_3",
+                    "kind": "step",
+                    "title": "Database `delete` on `ApiKey`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_deleteKey_3_4",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"message\": \"<`API key '${keyId}' was deleted successfully.`>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "AlgoBuilder",
+            "key": "method-algo-CarinaApiKeysServ-regenerateKey",
+            "props": {
+              "mode": "render",
+              "allowModeToggle": true,
+              "defaultValue": {
+                "id": "apps/carina/apikeys/apikeys.serv.ts-CarinaApiKeysServ-regenerateKey",
+                "title": "CarinaApiKeysServ.regenerateKey(userId, keyId)",
+                "description": "Regenerate an API key token. Generates a new secret, updates database hash and prefix, resets lastUsedAt.",
+                "steps": [
+                  {
+                    "id": "m_CarinaApiKeysServ_regenerateKey_0_1",
+                    "kind": "step",
+                    "title": "Database `first` on `ApiKey` and stores it as `existing`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_regenerateKey_1_2",
+                    "kind": "selection",
+                    "title": "`!existing`",
+                    "selectionMode": "if_else",
+                    "condition": "`!existing`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaApiKeysServ_regenerateKey_1_2_then_0_2_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "API key with ID '${keyId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_regenerateKey_2_3",
+                    "kind": "var_def",
+                    "title": "Define `entropy`, `rawKey`, `prefix`",
+                    "payload": "const entropy = randomBytes(24).toString('hex')\nconst rawKey = `iris-key-${entropy}`\nconst prefix = rawKey.slice(0, 17)",
+                    "payloadLanguage": "typescript"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_regenerateKey_3_4",
+                    "kind": "step",
+                    "title": "Calls `hashApiKey` and stores result as `hash`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_regenerateKey_4_5",
+                    "kind": "step",
+                    "title": "Database `update` on `ApiKey` and stores it as `updated`"
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_regenerateKey_5_6",
+                    "kind": "selection",
+                    "title": "`!updated`",
+                    "selectionMode": "if_else",
+                    "condition": "`!updated`",
+                    "thenBranch": [
+                      {
+                        "id": "m_CarinaApiKeysServ_regenerateKey_5_6_then_0_6_1",
+                        "kind": "error",
+                        "code": "NotFound",
+                        "httpStatus": 404,
+                        "message": "API key with ID '${keyId}' was not found."
+                      }
+                    ],
+                    "elseBranch": []
+                  },
+                  {
+                    "id": "m_CarinaApiKeysServ_regenerateKey_6_7",
+                    "kind": "return",
+                    "title": "",
+                    "payload": "{\n  \"success\": true,\n  \"rawKey\": \"<rawKey>\",\n  \"apiKey\": \"<serializeApiKey(updated)>\"\n}",
+                    "payloadLanguage": "json"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Card",
+        "props": {
+          "className": "rounded-2xl"
+        },
+        "children": [
+          {
+            "type": "CardContent",
+            "props": {
+              "className": "pt-6 space-y-3"
+            },
+            "children": [
+              {
+                "type": "div",
+                "props": {
+                  "className": "flex items-center justify-between gap-2 mb-3 text-start"
+                },
+                "children": [
+                  {
+                    "type": "div",
+                    "props": {
+                      "className": "flex items-center gap-2"
+                    },
+                    "children": [
+                      {
+                        "type": "IconAlertTriangle",
+                        "props": {
+                          "className": "size-5 text-primary shrink-0"
+                        }
+                      },
+                      {
+                        "type": "h2",
+                        "props": {
+                          "className": "text-lg font-semibold tracking-tight"
+                        },
+                        "text": "Error List & Messages"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "span",
+                    "props": {
+                      "className": "text-xs text-muted-foreground font-mono"
+                    },
+                    "text": "2 documented"
+                  }
+                ]
+              },
+              {
+                "type": "Table",
+                "children": [
+                  {
+                    "type": "TableHeader",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "children": [
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Status"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Error"
+                          },
+                          {
+                            "type": "TableHead",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "text": "Message"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "TableBody",
+                    "children": [
+                      {
+                        "type": "TableRow",
+                        "key": "err-0",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "400"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "BadRequest"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "API key name cannot be empty or contain only whitespace."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "TableRow",
+                        "key": "err-1",
+                        "children": [
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "text-start"
+                            },
+                            "children": [
+                              {
+                                "type": "Badge",
+                                "props": {
+                                  "variant": "destructive",
+                                  "className": "font-mono text-xs"
+                                },
+                                "text": "404"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs font-semibold text-start"
+                            },
+                            "text": "NotFound"
+                          },
+                          {
+                            "type": "TableCell",
+                            "props": {
+                              "className": "font-mono text-xs text-foreground text-start"
+                            },
+                            "text": "API key with ID '${keyId}' was not found."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
