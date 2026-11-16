@@ -215,6 +215,7 @@ export class MediaSyncWorker extends BaseBullMQWorker<MediaJobData, unknown> {
     super({
       queueName: MEDIA_QUEUE_NAME,
       concurrency: 2,
+      lockDuration: 120_000,
       limiter: {
         max: 5,
         duration: 1000, // Rate limit: max 5 requests per second

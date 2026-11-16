@@ -101,6 +101,27 @@ function getWeekIdentifier(date: Date = new Date()): string {
   return `${d.getUTCFullYear()}-W${weekNo}`
 }
 
+async function enqueueActiveMediaBatch(
+  mediaType: MediaType,
+  items: Array<{ id: number; externalId?: number | string | null }>,
+  weekKey: string
+): Promise<number> {
+  let enqueued = 0
+  for (const item of items) {
+    const job = await MediaQueueManager.enqueueMediaUpdate(mediaType, item.id, {
+      externalId: item.externalId,
+      priority: 10,
+      triggeredBy: 'cron',
+      depth: 0,
+      maxDepth: 0,
+      forceRefresh: true,
+      jobId: `media-update-${mediaType}-${item.id}-${weekKey}`,
+    }).catch(() => null)
+    if (job) enqueued++
+  }
+  return enqueued
+}
+
 /**
  * Scans all media entities currently in active/ongoing publication/broadcasting status
  * (RELEASING, HIATUS, UPCOMING)
@@ -138,17 +159,11 @@ export async function syncActiveMedia(): Promise<ActiveMediaSyncResult> {
       .select('id', 'anilistId', 'status')
       .all()
 
-    for (const anime of animes) {
-      await MediaQueueManager.enqueueMediaUpdate('ANIME', anime.id, {
-        externalId: anime.anilistId,
-        priority: 10,
-        triggeredBy: 'cron',
-        depth: 0,
-        maxDepth: 0,
-        jobId: `media-update-ANIME-${anime.id}-${weekKey}`,
-      }).catch(() => { })
-      result.anime++
-    }
+    result.anime = await enqueueActiveMediaBatch(
+      'ANIME',
+      animes.map((a) => ({ id: a.id, externalId: a.anilistId })),
+      weekKey
+    )
     logger.info(`${c.cyan('Anime Scan')}: enqueued ${c.bold(String(result.anime))} active items`)
   } catch (err: any) {
     logger.error(`Error scanning active anime: ${err?.message || err}`)
@@ -162,86 +177,65 @@ export async function syncActiveMedia(): Promise<ActiveMediaSyncResult> {
       .select('id', 'anilistId', 'status')
       .all()
 
-    for (const manga of mangas) {
-      await MediaQueueManager.enqueueMediaUpdate('MANGA', manga.id, {
-        externalId: manga.anilistId,
-        priority: 10,
-        triggeredBy: 'cron',
-        depth: 0,
-        maxDepth: 0,
-        jobId: `media-update-MANGA-${manga.id}-${weekKey}`,
-      }).catch(() => { })
-      result.manga++
-    }
+    result.manga = await enqueueActiveMediaBatch(
+      'MANGA',
+      mangas.map((m) => ({ id: m.id, externalId: m.anilistId })),
+      weekKey
+    )
     logger.info(`${c.cyan('Manga Scan')}: enqueued ${c.bold(String(result.manga))} active items`)
   } catch (err: any) {
     logger.error(`Error scanning active manga: ${err?.message || err}`)
   }
 
-  // 3. TV Series (RELEASING, UPCOMING)
+  // 3. TV Series (RELEASING, UPCOMING, HIATUS)
   try {
     const tvs = await prisma.orm.public.Tv.where((t) =>
-      t.status.in(['RELEASING', 'UPCOMING'])
+      t.status.in(['RELEASING', 'UPCOMING', 'HIATUS'])
     )
       .select('id', 'tvDBId', 'status')
       .all()
 
-    for (const tv of tvs) {
-      await MediaQueueManager.enqueueMediaUpdate('TV', tv.id, {
-        externalId: tv.tvDBId,
-        priority: 10,
-        triggeredBy: 'cron',
-        depth: 0,
-        jobId: `media-update-TV-${tv.id}-${weekKey}`,
-      }).catch(() => { })
-      result.tv++
-    }
+    result.tv = await enqueueActiveMediaBatch(
+      'TV',
+      tvs.map((t) => ({ id: t.id, externalId: t.tvDBId })),
+      weekKey
+    )
     logger.info(`${c.cyan('TV Scan')}: enqueued ${c.bold(String(result.tv))} active items`)
   } catch (err: any) {
     logger.error(`Error scanning active TV series: ${err?.message || err}`)
   }
 
-  // 4. Movies (UPCOMING)
+  // 4. Movies (RELEASING, UPCOMING)
   try {
     const movies = await prisma.orm.public.Movie.where((m) =>
-      m.status.in(['UPCOMING'])
+      m.status.in(['RELEASING', 'UPCOMING'])
     )
       .select('id', 'tvDBId', 'status')
       .all()
 
-    for (const movie of movies) {
-      await MediaQueueManager.enqueueMediaUpdate('MOVIE', movie.id, {
-        externalId: movie.tvDBId,
-        priority: 10,
-        triggeredBy: 'cron',
-        depth: 0,
-        jobId: `media-update-MOVIE-${movie.id}-${weekKey}`,
-      }).catch(() => { })
-      result.movie++
-    }
+    result.movie = await enqueueActiveMediaBatch(
+      'MOVIE',
+      movies.map((m) => ({ id: m.id, externalId: m.tvDBId })),
+      weekKey
+    )
     logger.info(`${c.cyan('Movies Scan')}: enqueued ${c.bold(String(result.movie))} active items`)
   } catch (err: any) {
     logger.error(`Error scanning active movies: ${err?.message || err}`)
   }
 
-  // 5. Books (RELEASING, HIATUS)
+  // 5. Books (RELEASING, UPCOMING, HIATUS)
   try {
     const books = await prisma.orm.public.Book.where((b) =>
-      b.status.in(['RELEASING', 'HIATUS'])
+      b.status.in(['RELEASING', 'UPCOMING', 'HIATUS'])
     )
       .select('id', 'googleBookId', 'status')
       .all()
 
-    for (const book of books) {
-      await MediaQueueManager.enqueueMediaUpdate('BOOK', book.id, {
-        externalId: book.googleBookId,
-        priority: 10,
-        triggeredBy: 'cron',
-        depth: 0,
-        jobId: `media-update-BOOK-${book.id}-${weekKey}`,
-      }).catch(() => { })
-      result.book++
-    }
+    result.book = await enqueueActiveMediaBatch(
+      'BOOK',
+      books.map((b) => ({ id: b.id, externalId: b.googleBookId })),
+      weekKey
+    )
     logger.info(`${c.cyan('Books Scan')}: enqueued ${c.bold(String(result.book))} active items`)
   } catch (err: any) {
     logger.error(`Error scanning active books: ${err?.message || err}`)
@@ -255,16 +249,11 @@ export async function syncActiveMedia(): Promise<ActiveMediaSyncResult> {
       .select('id', 'igdbId', 'status')
       .all()
 
-    for (const game of games) {
-      await MediaQueueManager.enqueueMediaUpdate('GAME', game.id, {
-        externalId: game.igdbId,
-        priority: 10,
-        triggeredBy: 'cron',
-        depth: 0,
-        jobId: `media-update-GAME-${game.id}-${weekKey}`,
-      }).catch(() => { })
-      result.game++
-    }
+    result.game = await enqueueActiveMediaBatch(
+      'GAME',
+      games.map((g) => ({ id: g.id, externalId: g.igdbId })),
+      weekKey
+    )
     logger.info(`${c.cyan('Games Scan')}: enqueued ${c.bold(String(result.game))} active items`)
   } catch (err: any) {
     logger.error(`Error scanning active games: ${err?.message || err}`)
@@ -426,7 +415,7 @@ export const MediaQueueManager = {
       if (typeof (queue as any).upsertJobScheduler === 'function') {
         res = await (queue as any).upsertJobScheduler(
           'weekly-active-media-sync-cron',
-          { pattern: '0 0 * * 0' },
+          { pattern: '0 0 * * 0', tz: 'UTC' },
           {
             name: 'weekly-active-media-sync',
             data: {
