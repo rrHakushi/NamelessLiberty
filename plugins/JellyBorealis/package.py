@@ -26,8 +26,27 @@ META_FILE = PLUGIN_DIR / "meta.json"
 THUMB_FILE = PLUGIN_DIR / "thumb.png"
 MANIFEST_FILE = RELEASES_DIR / "manifest.json"
 
-GITHUB_REPO = "rrHakushi/IRIS"
+GITHUB_REPO = "rrHakushi/NamelessLiberty"
 TARGET_ABI = "10.11.11.0"
+
+
+class _PreserveMethodRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Preserve HTTP method and body across 307/308 redirects."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        if code in (307, 308):
+            return urllib.request.Request(
+                newurl,
+                data=req.data,
+                headers=dict(req.header_items()),
+                origin_req_host=req.origin_req_host,
+                unverifiable=req.unverifiable,
+                method=req.get_method(),
+            )
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+urllib.request.install_opener(urllib.request.build_opener(_PreserveMethodRedirectHandler()))
 
 
 def read_meta():
