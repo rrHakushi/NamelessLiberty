@@ -87,9 +87,21 @@ export function PassCipherList({
     return true
   })
 
-  // 2. Filter by search query (supports user:, domain:, email:, title:, note: prefixes)
+  // 2. Filter by search query (supports multi-term AND, * wildcards, and user:/domain:/email:/title:/note: prefixes)
   if (searchQuery.trim()) {
-    const rawQ = searchQuery.trim().toLowerCase()
+    const tokens = (searchQuery.trim().match(/(?:[^\s"]+|"[^"]*")+/g) || [])
+      .map((t) => t.replace(/^"(.*)"$/, "$1").toLowerCase())
+      .filter(Boolean)
+
+    const matchesPattern = (haystack: string, pattern: string): boolean => {
+      if (!pattern) return true
+      if (!pattern.includes("*")) return haystack.includes(pattern)
+      const escaped = pattern
+        .replace(/[.+?^${}()|[\]\\]/g, "\\$&")
+        .replace(/\*/g, ".*")
+      return new RegExp(escaped).test(haystack)
+    }
+
     filtered = filtered.filter((c) => {
       const subtype = c.data?.itemType || (c.type === "SSH_KEY" ? "ssh" : "login")
       const title = (c.title || "").toLowerCase()
@@ -104,6 +116,7 @@ export function PassCipherList({
         username = (d.username || "").toLowerCase()
         email = (d.email || "").toLowerCase()
         uris = (d.uris || []).map((u) => u.uri.toLowerCase())
+        if (d.passkey?.rpId) uris.push(d.passkey.rpId.toLowerCase())
       } else if (subtype === "identity") {
         const d = c.data as DecryptedIdentityData
         username = (d.fullName || "").toLowerCase()
@@ -113,43 +126,43 @@ export function PassCipherList({
         username = (d.cardHolder || "").toLowerCase()
       }
 
-      if (rawQ.startsWith("user:") || rawQ.startsWith("username:")) {
-        const v = rawQ.replace(/^user(name)?:/, "").trim()
-        return username.includes(v)
-      }
-      if (rawQ.startsWith("email:")) {
-        const v = rawQ.replace(/^email:/, "").trim()
-        return email.includes(v) || username.includes(v)
-      }
-      if (rawQ.startsWith("domain:") || rawQ.startsWith("url:") || rawQ.startsWith("host:")) {
-        const v = rawQ.replace(/^(domain|url|host):/, "").trim()
-        return uris.some((u) => u.includes(v))
-      }
-      if (rawQ.startsWith("title:")) {
-        const v = rawQ.replace(/^title:/, "").trim()
-        return title.includes(v)
-      }
-      if (rawQ.startsWith("note:") || rawQ.startsWith("notes:")) {
-        const v = rawQ.replace(/^notes?:/, "").trim()
-        return notes.includes(v)
-      }
+      const cardNumber =
+        subtype === "card" ? ((c.data as DecryptedCardData).cardNumber || "").toLowerCase() : ""
+      const fingerprint =
+        subtype === "ssh" ? ((c.data as DecryptedSshKeyData).fingerprint || "").toLowerCase() : ""
 
-      // Default: match all fields
-      if (title.includes(rawQ)) return true
-      if (username.includes(rawQ)) return true
-      if (email.includes(rawQ)) return true
-      if (uris.some((u) => u.includes(rawQ))) return true
-      if (notes.includes(rawQ)) return true
+      return tokens.every((tok) => {
+        if (tok.startsWith("user:") || tok.startsWith("username:")) {
+          const v = tok.replace(/^user(name)?:/, "")
+          return matchesPattern(username, v)
+        }
+        if (tok.startsWith("email:")) {
+          const v = tok.replace(/^email:/, "")
+          return matchesPattern(email, v) || matchesPattern(username, v)
+        }
+        if (tok.startsWith("domain:") || tok.startsWith("url:") || tok.startsWith("host:")) {
+          const v = tok.replace(/^(domain|url|host):/, "")
+          return !v || uris.some((u) => matchesPattern(u, v))
+        }
+        if (tok.startsWith("title:")) {
+          const v = tok.replace(/^title:/, "")
+          return matchesPattern(title, v)
+        }
+        if (tok.startsWith("note:") || tok.startsWith("notes:")) {
+          const v = tok.replace(/^notes?:/, "")
+          return matchesPattern(notes, v)
+        }
 
-      if (subtype === "card") {
-        const d = c.data as DecryptedCardData
-        if (d.cardNumber && d.cardNumber.includes(rawQ)) return true
-      } else if (subtype === "ssh") {
-        const d = c.data as DecryptedSshKeyData
-        if (d.fingerprint && d.fingerprint.toLowerCase().includes(rawQ)) return true
-      }
-
-      return false
+        return (
+          matchesPattern(title, tok) ||
+          matchesPattern(username, tok) ||
+          matchesPattern(email, tok) ||
+          uris.some((u) => matchesPattern(u, tok)) ||
+          matchesPattern(notes, tok) ||
+          (cardNumber ? matchesPattern(cardNumber, tok) : false) ||
+          (fingerprint ? matchesPattern(fingerprint, tok) : false)
+        )
+      })
     })
   }
 
