@@ -72,7 +72,7 @@ You don't need to manually download or drag DLL files. Add the Borealis plugin r
    - **Repository Name**: `JellyBorealis`
    - **Repository URL**:
      ```text
-     https://raw.githubusercontent.com/rrHakushi/IRIS/main/releases/JellyBorealis/manifest.json
+     https://raw.githubusercontent.com/rrHakushi/NamelessLiberty/main/releases/JellyBorealis/manifest.json
      ```
 5. Click **Save**.
 6. Switch to the **Catalog** tab.

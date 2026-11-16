@@ -35,7 +35,7 @@ META_FILE = PLUGIN_DIR / "meta.json"
 ASSETS_DIR = PLUGIN_DIR / "Assets"
 MANIFEST_FILE = RELEASES_DIR / "manifest.json"
 
-GITHUB_REPO = "rrHakushi/IRIS"
+GITHUB_REPO = "rrHakushi/NamelessLiberty"
 APPIMAGETOOL_URL = "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage"
 
 
