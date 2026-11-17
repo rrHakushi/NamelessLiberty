@@ -171,7 +171,7 @@ public class BorealisWebController : ControllerBase
     }
 
     /// <summary>
-    /// Proxies media details request to Borealis API (/borealis/media/{category}/{id}).
+    /// Proxies media details request to Borealis API (/borealis/{category}/{id}).
     /// </summary>
     [HttpGet("Api/Details")]
     [AllowAnonymous]
