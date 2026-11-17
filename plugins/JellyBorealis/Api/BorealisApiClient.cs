@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Jellyfin.Plugin.Borealis.Models;
 using Microsoft.Extensions.Logging;
@@ -183,7 +184,8 @@ public class BorealisApiClient
     }
 
     /// <summary>
-    /// Fetches media metadata details via GET /borealis/media/{anime|tv|movies}/{id}.
+    /// Fetches media metadata details via GET /borealis/{anime|tv|movies}/{id}.
+    /// For TV shows, also fetches seasons and episodes and merges them into the media object.
     /// </summary>
     public virtual async Task<JsonElement?> GetMediaDetailsAsync(string mediaType, int id, string apiKey, string baseUrl)
     {
@@ -192,10 +194,72 @@ public class BorealisApiClient
         {
             var normType = NormalizeMediaType(mediaType);
             var cleanBase = CleanBaseUrl(baseUrl);
-            var url = $"{cleanBase}/borealis/media/{normType}/{id}";
+            var url = $"{cleanBase}/borealis/{normType}/{id}";
 
             _logger.LogInformation("{LogPrefix} Request URL: '{Url}'", logPrefix, url);
 
+            var detailsTask = SendGetJsonAsync(url, apiKey);
+            Task<JsonElement?>? seasonsTask = null;
+            Task<JsonElement?>? episodesTask = null;
+
+            if (normType == "tv")
+            {
+                seasonsTask = SendGetJsonAsync($"{cleanBase}/borealis/tv/{id}/seasons", apiKey);
+                episodesTask = SendGetJsonAsync($"{cleanBase}/borealis/tv/{id}/episodes", apiKey);
+            }
+
+            var rootOpt = await detailsTask.ConfigureAwait(false);
+            if (!rootOpt.HasValue)
+            {
+                return null;
+            }
+
+            var root = rootOpt.Value;
+            JsonElement mediaEl = root;
+            if (root.TryGetProperty("media", out var mediaProp) && mediaProp.ValueKind == JsonValueKind.Object)
+            {
+                mediaEl = mediaProp;
+            }
+            else if (root.TryGetProperty("data", out var dataProp) && dataProp.ValueKind == JsonValueKind.Object)
+            {
+                mediaEl = dataProp;
+            }
+
+            if (normType == "tv" && seasonsTask != null && episodesTask != null)
+            {
+                var seasonsRoot = await seasonsTask.ConfigureAwait(false);
+                var episodesRoot = await episodesTask.ConfigureAwait(false);
+
+                var mediaObj = JsonNode.Parse(mediaEl.GetRawText()) as JsonObject;
+                if (mediaObj != null)
+                {
+                    if (seasonsRoot.HasValue && seasonsRoot.Value.TryGetProperty("seasons", out var seasonsProp) && seasonsProp.ValueKind == JsonValueKind.Array)
+                    {
+                        mediaObj["seasons"] = JsonNode.Parse(seasonsProp.GetRawText());
+                    }
+                    if (episodesRoot.HasValue && episodesRoot.Value.TryGetProperty("episodes", out var episodesProp) && episodesProp.ValueKind == JsonValueKind.Array)
+                    {
+                        mediaObj["episodes"] = JsonNode.Parse(episodesProp.GetRawText());
+                    }
+
+                    using var mergedDoc = JsonDocument.Parse(mediaObj.ToJsonString());
+                    return mergedDoc.RootElement.Clone();
+                }
+            }
+
+            return mediaEl.Clone();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "{LogPrefix} Failed to fetch media details for Type={MediaType}, Id={Id}", logPrefix, mediaType, id);
+            return null;
+        }
+    }
+
+    private async Task<JsonElement?> SendGetJsonAsync(string url, string apiKey)
+    {
+        try
+        {
             using var request = new HttpRequestMessage(HttpMethod.Get, url);
             if (!string.IsNullOrWhiteSpace(apiKey))
             {
@@ -210,20 +274,11 @@ public class BorealisApiClient
 
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             using var doc = JsonDocument.Parse(json);
-            var root = doc.RootElement;
-            if (root.TryGetProperty("media", out var mediaProp) && mediaProp.ValueKind == JsonValueKind.Object)
-            {
-                return mediaProp.Clone();
-            }
-            if (root.TryGetProperty("data", out var dataProp) && dataProp.ValueKind == JsonValueKind.Object)
-            {
-                return dataProp.Clone();
-            }
-            return root.Clone();
+            return doc.RootElement.Clone();
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "{LogPrefix} Failed to fetch media details for Type={MediaType}, Id={Id}", logPrefix, mediaType, id);
+            _logger.LogDebug(ex, "[Borealis ApiClient] Optional GET request failed for '{Url}'", url);
             return null;
         }
     }

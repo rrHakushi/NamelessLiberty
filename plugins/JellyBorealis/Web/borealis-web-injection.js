@@ -701,6 +701,7 @@
         const bannerImage = rawMedia.bannerImage || rawMedia.backdropImage || rawMedia.coverImage || '';
 
         const actualEntry = (listEntry && (listEntry.entry || listEntry.data)) || listEntry;
+        const hasListEntry = Boolean(actualEntry);
         let rawStatus = (actualEntry?.status || "PLANNED").toUpperCase();
         let listStatus = rawStatus === "WATCHING" ? "IN_PROGRESS" : (rawStatus === "PLANNING" ? "PLANNED" : rawStatus);
         let score = actualEntry?.score !== undefined && actualEntry?.score !== null ? actualEntry.score.toString() : "";
@@ -720,7 +721,7 @@
         if (mediaType === "tv" && Array.isArray(rawMedia.episodes) && rawMedia.episodes.length > 0) {
             const seasonsMap = {};
             rawMedia.episodes.forEach(ep => {
-                const sNum = ep.seasonNumber || 1;
+                const sNum = ep.seasonNumber ?? 1;
                 if (!seasonsMap[sNum]) {
                     const matchSeason = (rawMedia.seasons || []).find(s => s.seasonNumber === sNum);
                     seasonsMap[sNum] = {
@@ -1369,9 +1370,9 @@
 
             try {
                 if (nextState) {
-                    await fetch(getProxyUrl(`Borealis/Api/Favorite?mediaType=${encodeURIComponent(mediaType)}&id=${borealisId}&title=${encodeURIComponent(titleText)}`), { method: 'POST' });
+                    await fetch(getProxyUrl(`Borealis/Api/Favorite?mediaType=${encodeURIComponent(mediaType)}&id=${borealisId}&title=${encodeURIComponent(titleText)}${uParam}`), { method: 'POST' });
                 } else {
-                    await fetch(getProxyUrl(`Borealis/Api/Favorite?mediaType=${encodeURIComponent(mediaType)}&id=${borealisId}`), { method: 'DELETE' });
+                    await fetch(getProxyUrl(`Borealis/Api/Favorite?mediaType=${encodeURIComponent(mediaType)}&id=${borealisId}${uParam}`), { method: 'DELETE' });
                 }
             } catch (e) {
                 console.error('[Borealis Plugin] Failed to toggle favorite:', e);
@@ -1398,7 +1399,7 @@
         document.getElementById('borealis-delete-entry-btn')?.addEventListener('click', async () => {
             if (!confirm(`Are you sure you want to remove this ${mediaType} from your Borealis list?`)) return;
             try {
-                const res = await fetch(getProxyUrl(`Borealis/Api/Entry?mediaType=${encodeURIComponent(mediaType)}&id=${borealisId}`), { method: 'DELETE' });
+                const res = await fetch(getProxyUrl(`Borealis/Api/Entry?mediaType=${encodeURIComponent(mediaType)}&id=${borealisId}${uParam}`), { method: 'DELETE' });
                 if (res.ok) closeModal();
                 else alert('Failed to delete entry from Borealis.');
             } catch (e) {
@@ -1481,7 +1482,7 @@
             }
 
             try {
-                const res = await fetch(getProxyUrl(`Borealis/Api/Save?mediaType=${encodeURIComponent(mediaType)}&id=${borealisId}`), {
+                const res = await fetch(getProxyUrl(`Borealis/Api/Save?mediaType=${encodeURIComponent(mediaType)}&id=${borealisId}${uParam}`), {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(dto)
