@@ -40,7 +40,7 @@
     -
 
 # Tesseract [Local network file sharing]
-    - 
+    - Local WebRTC handshake failed. Verify both devices are on the same LAN/Wi-Fi without client isolation.
 
 
 # Vex [Link shortener]
