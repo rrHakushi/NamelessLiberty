@@ -267,27 +267,67 @@ steps:
     depends_on:
       - Jellyborealis - Build
 
-  - name: BorealisExtra - Build
-    image: mcr.microsoft.com/dotnet/sdk:10.0
-    environment:
-      GITHUB_TOKEN:
-        from_secret: github_token
+  - name: NamelessLiberty - Build Linux
+    image: oven/bun:latest
     commands:
-      - apt-get update && apt-get install -y python3 file fuse libfuse2
-      - python3 plugins/BorealisExtra/package.py
+      - apt-get update && apt-get install -y libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+      - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - export PATH="$HOME/.cargo/bin:$PATH"
+      - bun --cwd apps/tauri tauri build
+      - mkdir -p releases/NamelessLiberty
+      - cp -f apps/tauri/src-tauri/target/release/bundle/appimage/*.AppImage releases/NamelessLiberty/ 2>/dev/null || true
+      - cp -f apps/tauri/src-tauri/target/release/bundle/deb/*.deb releases/NamelessLiberty/ 2>/dev/null || true
+      - cp -f apps/tauri/src-tauri/target/release/bundle/rpm/*.rpm releases/NamelessLiberty/ 2>/dev/null || true
     depends_on:
       - Jellyborealis - Release
 
-  - name: BorealisExtra - Release
-    image: mcr.microsoft.com/dotnet/sdk:10.0
+  - name: NamelessLiberty - Build Windows
+    image: oven/bun:latest
+    commands:
+      - apt-get update && apt-get install -y build-essential curl nsis lld llvm clang
+      - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - export PATH="$HOME/.cargo/bin:$PATH"
+      - rustup target add x86_64-pc-windows-msvc
+      - cargo install cargo-xwin
+      - bun --cwd apps/tauri tauri build --runner cargo-xwin --target x86_64-pc-windows-msvc
+      - mkdir -p releases/NamelessLiberty
+      - cp -f apps/tauri/src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis/*.exe releases/NamelessLiberty/ 2>/dev/null || true
+    depends_on:
+      - Jellyborealis - Release
+
+  - name: NamelessLiberty - Build Android
+    image: oven/bun:latest
+    commands:
+      - apt-get update && apt-get install -y build-essential curl unzip openjdk-17-jdk
+      - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - export PATH="$HOME/.cargo/bin:$PATH"
+      - rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android i686-linux-android
+      - export ANDROID_HOME=/opt/android-sdk
+      - export NDK_HOME="$ANDROID_HOME/ndk/27.2.12479018"
+      - export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+      - mkdir -p "$ANDROID_HOME/cmdline-tools"
+      - curl -sSL https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -o /tmp/cmdline-tools.zip
+      - unzip -q /tmp/cmdline-tools.zip -d /tmp/cmdline-tools && mv /tmp/cmdline-tools/cmdline-tools "$ANDROID_HOME/cmdline-tools/latest" && rm -rf /tmp/cmdline-tools /tmp/cmdline-tools.zip
+      - yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
+      - "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platform-tools" "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018"
+      - if [ ! -d apps/tauri/src-tauri/gen/android ]; then bun --cwd apps/tauri tauri android init; fi
+      - bun --cwd apps/tauri tauri android build --apk
+      - mkdir -p releases/NamelessLiberty
+      - find apps/tauri/src-tauri/gen/android/app/build/outputs/apk -name "*.apk" -exec cp -f {} releases/NamelessLiberty/ \;
+    depends_on:
+      - Jellyborealis - Release
+
+  - name: NamelessLiberty - Release
+    image: oven/bun:latest
     environment:
       GITHUB_TOKEN:
         from_secret: github_token
     commands:
-      - apt-get update && apt-get install -y python3
-      - python3 plugins/BorealisExtra/package.py --ci --skip-build
+      - bun apps/tauri/release.ts
     depends_on:
-      - BorealisExtra - Build
+      - NamelessLiberty - Build Linux
+      - NamelessLiberty - Build Windows
+      - NamelessLiberty - Build Android
 
   - name: Verify its running
     image: docker:latest
@@ -321,7 +361,7 @@ steps:
         docker compose logs next --tail=30
         exit $FAILED
     depends_on:
-      - BorealisExtra - Release
+      - NamelessLiberty - Release
       - databasus
 
   - name: Cleanup
