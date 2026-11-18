@@ -1,5 +1,5 @@
 {
-  "name": "IRIS2",
+  "name": "NamelessLiberty",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -15,7 +15,9 @@
     "vault:migrate-keys": "infisical run --env=dev -- bun scripts/migrate-vault-keys.ts",
     "db:update-description-urls": "infisical run --env=dev -- bun scripts/update-description-urls.ts",
     "plugin:borealis:build": "python3 plugins/JellyBorealis/package.py",
-    "plugin:borealis:release": "python3 plugins/JellyBorealis/package.py --ci"
+    "plugin:borealis:release": "python3 plugins/JellyBorealis/package.py --ci",
+    "tauri:dev": "bun --filter @NamelessLiberty/tauri dev",
+    "tauri:build": "bun --filter @NamelessLiberty/tauri build"
   },
   "devDependencies": {
     "@NamelessLiberty/db": "workspace:*",
@@ -24,7 +26,7 @@
     "@workspace/typescript-config": "workspace:*",
     "prettier": "^3.10.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "turbo": "^2.11.11",
+    "turbo": "^2.11.12",
     "typescript": "^7.0.2"
   },
   "packageManager": "bun@1.4.3",

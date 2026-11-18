@@ -1,0 +1,31 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Default capabilities for NamelessLiberty",
+  "windows": ["main"],
+  "local": true,
+  "remote": {
+    "urls": ["http://localhost:*/*", "http://127.0.0.1:*/*", "https://*/*"]
+  },
+  "permissions": [
+    "core:default",
+    "core:window:allow-start-dragging",
+    "core:window:allow-minimize",
+    "core:window:allow-toggle-maximize",
+    "core:window:allow-close",
+    "core:window:allow-is-maximized",
+    "allow-get-server-url",
+    "allow-connect-saved-server",
+    "allow-save-and-connect",
+    "allow-clear-server-url",
+    "allow-set-active-app",
+    "allow-tracker-get-running-processes",
+    "allow-tracker-get-global-paused",
+    "allow-tracker-toggle-global-pause",
+    "allow-tracker-get-all",
+    "allow-tracker-get-entry",
+    "allow-tracker-set-executables",
+    "allow-tracker-toggle-pause",
+    "allow-tracker-ack-synced-hours"
+  ]
+}

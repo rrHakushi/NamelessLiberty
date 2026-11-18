@@ -6,6 +6,7 @@ import React from "react"
 import { NextIntlClientProvider } from "next-intl"
 import { getLocale, getMessages } from "next-intl/server"
 import { Providers } from "@/components/providers"
+import { TauriTitlebar } from "@/components/tauri-titlebar"
 import { Metadata } from "next"
 
 export const dynamic = "force-dynamic"
@@ -73,6 +74,7 @@ export default async function RootLayout({
         className="min-h-svh bg-background text-foreground selection:bg-primary/20 selection:text-primary"
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <TauriTitlebar />
           <Providers>{children}</Providers>
         </NextIntlClientProvider>
       </body>

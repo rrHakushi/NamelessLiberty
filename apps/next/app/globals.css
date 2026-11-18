@@ -62,3 +62,17 @@ body::-webkit-scrollbar {
   contain-intrinsic-size: auto 280px;
 }
 
+/* Adjust full-viewport containers when custom Tauri titlebar (h-9 / 2.25rem) is active */
+html.tauri-shell .h-svh {
+  height: calc(100svh - 2.25rem) !important;
+}
+
+html.tauri-shell .min-h-svh {
+  min-height: calc(100svh - 2.25rem) !important;
+}
+
+html.tauri-shell [data-slot="sidebar-container"] {
+  top: 2.25rem !important;
+  height: calc(100svh - 2.25rem) !important;
+}
+
