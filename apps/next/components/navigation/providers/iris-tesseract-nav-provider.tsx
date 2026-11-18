@@ -41,7 +41,7 @@ export default function IrisTesseractNavProvider({
       {position === "left" && <IrisSidebar initialConfig={sidebarConfig} />}
       <SidebarInset
         className={cn(
-          "no-scrollbar flex flex-1 min-h-0 min-w-0 flex-col overflow-y-auto bg-background pt-0",
+          "no-scrollbar flex flex-1 min-h-0 min-w-0 flex-col overflow-y-auto bg-background pt-0 md:border md:border-border",
           isRight &&
             (state === "collapsed"
               ? "md:m-2 md:rounded-2xl md:shadow-sm"

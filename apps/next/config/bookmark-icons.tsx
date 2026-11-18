@@ -58,7 +58,7 @@ export const BOOKMARK_ICON_OPTIONS: BookmarkIconOption[] = [
     type: "app",
     customRender: (className = "size-4") => (
       <Image
-        src="/iris-icons/iris-account-ring-left.png"
+        src="/icons/carina.png"
         alt="Carina"
         width={24}
         height={24}
@@ -72,7 +72,7 @@ export const BOOKMARK_ICON_OPTIONS: BookmarkIconOption[] = [
     type: "app",
     customRender: (className = "size-4") => (
       <Image
-        src="/iris-icons/iris-list-ring-left.png"
+        src="/icons/borealis.png"
         alt="Borealis"
         width={24}
         height={24}
@@ -86,7 +86,7 @@ export const BOOKMARK_ICON_OPTIONS: BookmarkIconOption[] = [
     type: "app",
     customRender: (className = "size-4") => (
       <Image
-        src="/iris-icons/iris-pass-ring-left.png"
+        src="/icons/akaromi.png"
         alt="Akaromi"
         width={24}
         height={24}
@@ -100,7 +100,7 @@ export const BOOKMARK_ICON_OPTIONS: BookmarkIconOption[] = [
     type: "app",
     customRender: (className = "size-4") => (
       <Image
-        src="/iris-icons/iris-search-ring-left.png"
+        src="/icons/kiroshi.png"
         alt="Kiroshi"
         width={24}
         height={24}
@@ -128,7 +128,7 @@ export const BOOKMARK_ICON_OPTIONS: BookmarkIconOption[] = [
     type: "app",
     customRender: (className = "size-4") => (
       <Image
-        src="/iris-pass512left-ring.png"
+        src="/icons/amadeus.png"
         alt="IRIS Cloud"
         width={24}
         height={24}
@@ -142,7 +142,7 @@ export const BOOKMARK_ICON_OPTIONS: BookmarkIconOption[] = [
     type: "app",
     customRender: (className = "size-4") => (
       <Image
-        src="/iris-pass512left-ring.png"
+        src="/icons/astra.png"
         alt="IRIS Mail"
         width={24}
         height={24}
@@ -156,7 +156,7 @@ export const BOOKMARK_ICON_OPTIONS: BookmarkIconOption[] = [
     type: "app",
     customRender: (className = "size-4") => (
       <Image
-        src="/iris-pass512left-ring.png"
+        src="/icons/spica.png"
         alt="IRIS Messages"
         width={24}
         height={24}
@@ -170,7 +170,7 @@ export const BOOKMARK_ICON_OPTIONS: BookmarkIconOption[] = [
     type: "app",
     customRender: (className = "size-4") => (
       <Image
-        src="/iris-pass512left-ring.png"
+        src="/icons/reliquary.png"
         alt="IRIS Docs"
         width={24}
         height={24}
@@ -235,66 +235,6 @@ export function renderBookmarkIcon(
     return <IconBookmark className={className} style={style} />
   }
 
-  if (iconId === "app:carina" || iconId === "carina" || iconId === "app:iris-account" || iconId === "iris-account") {
-    return (
-      <Image
-        src="/iris-icons/iris-account-ring-left.png"
-        alt="Carina"
-        width={96}
-        height={96}
-        className={`${className} rounded-full object-contain`}
-      />
-    )
-  }
-
-  if (iconId === "app:borealis" || iconId === "borealis" || iconId === "app:iris-list" || iconId === "iris-list") {
-    return (
-      <Image
-        src="/iris-icons/iris-list-ring-left.png"
-        alt="Borealis"
-        width={96}
-        height={96}
-        className={`${className} rounded-full object-contain`}
-      />
-    )
-  }
-
-  if (iconId === "app:akaromi" || iconId === "akaromi" || iconId === "app:iris-pass" || iconId === "iris-pass") {
-    return (
-      <Image
-        src="/iris-icons/iris-pass-ring-left.png"
-        alt="Akaromi"
-        width={96}
-        height={96}
-        className={`${className} rounded-full object-contain`}
-      />
-    )
-  }
-
-  if (iconId === "app:kiroshi" || iconId === "kiroshi" || iconId === "app:iris-search" || iconId === "iris-search") {
-    return (
-      <Image
-        src="/iris-icons/iris-search-ring-left.png"
-        alt="Kiroshi"
-        width={96}
-        height={96}
-        className={`${className} rounded-full object-contain`}
-      />
-    )
-  }
-
-  if (iconId === "app:tesseract" || iconId === "tesseract") {
-    return (
-      <Image
-        src="/icons/tesseract.png"
-        alt="Tesseract"
-        width={96}
-        height={96}
-        className={`${className} rounded-full object-contain`}
-      />
-    )
-  }
-
   const option = BOOKMARK_ICONS_MAP[iconId]
   if (option) {
     if (option.customRender) {
@@ -315,19 +255,19 @@ export const BOOKMARK_COLOR_PRESETS: Array<{
   value: string
   bgClass: string
 }> = [
-  { id: "indigo", name: "Indigo", value: "#6366f1", bgClass: "bg-indigo-500" },
-  { id: "rose", name: "Rose", value: "#f43f5e", bgClass: "bg-rose-500" },
-  { id: "fuchsia", name: "Fuchsia", value: "#d800a6", bgClass: "bg-fuchsia-600" },
-  { id: "violet", name: "Violet", value: "#8b5cf6", bgClass: "bg-violet-500" },
-  { id: "cyan", name: "Cyan", value: "#06b6d4", bgClass: "bg-cyan-500" },
-  { id: "sky", name: "Sky", value: "#38bdf8", bgClass: "bg-sky-400" },
-  {
-    id: "emerald",
-    name: "Emerald",
-    value: "#10b981",
-    bgClass: "bg-emerald-500",
-  },
-  { id: "amber", name: "Amber", value: "#f59e0b", bgClass: "bg-amber-500" },
-  { id: "crimson", name: "Crimson", value: "#ef4444", bgClass: "bg-red-500" },
-  { id: "mauve", name: "Mauve", value: "#94a3b8", bgClass: "bg-slate-400" },
-]
+    { id: "indigo", name: "Indigo", value: "#6366f1", bgClass: "bg-indigo-500" },
+    { id: "rose", name: "Rose", value: "#f43f5e", bgClass: "bg-rose-500" },
+    { id: "fuchsia", name: "Fuchsia", value: "#d800a6", bgClass: "bg-fuchsia-600" },
+    { id: "violet", name: "Violet", value: "#8b5cf6", bgClass: "bg-violet-500" },
+    { id: "cyan", name: "Cyan", value: "#06b6d4", bgClass: "bg-cyan-500" },
+    { id: "sky", name: "Sky", value: "#38bdf8", bgClass: "bg-sky-400" },
+    {
+      id: "emerald",
+      name: "Emerald",
+      value: "#10b981",
+      bgClass: "bg-emerald-500",
+    },
+    { id: "amber", name: "Amber", value: "#f59e0b", bgClass: "bg-amber-500" },
+    { id: "crimson", name: "Crimson", value: "#ef4444", bgClass: "bg-red-500" },
+    { id: "mauve", name: "Mauve", value: "#94a3b8", bgClass: "bg-slate-400" },
+  ]
