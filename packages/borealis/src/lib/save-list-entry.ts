@@ -82,6 +82,7 @@ export async function saveListEntry(
         } as any)
       break
     case "game":
+    case "games":
       res = await elysia.borealis.lists
         .games({ gameId: numericId })
         .post({
