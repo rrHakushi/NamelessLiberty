@@ -16,12 +16,12 @@ import { setRuntimeEnabledApps } from "@/config/enabled-apps"
 
 import dynamic from "next/dynamic"
 
-const MetadataDevTool =
+const IrisDevTools =
   process.env.NODE_ENV === "development"
     ? dynamic(
         () =>
-          import("@/components/dev/metadata-dev-tool").then(
-            (m) => m.MetadataDevTool
+          import("@/components/dev/iris-dev-tools").then(
+            (m) => m.IrisDevTools
           ),
         { ssr: false }
       )
@@ -82,7 +82,7 @@ export function Providers({
                   <IrisSidebarProvider>{children}</IrisSidebarProvider>
                   <Toaster closeButton position="top-center" />
                   {process.env.NODE_ENV === "development" && (
-                    <MetadataDevTool />
+                    <IrisDevTools />
                   )}
                 </DirectionProvider>
               </NotificationProvider>
