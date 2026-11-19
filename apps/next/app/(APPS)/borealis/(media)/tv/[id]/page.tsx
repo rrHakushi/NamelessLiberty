@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { elysia } from "@/lib/elysia"
+import { buildBorealisDetailMetadata } from "@/lib/borealis-metadata"
 import { MediaDetailView, toNormalizedMediaOverview } from "@NamelessLiberty/borealis"
 
 type Props = {
@@ -28,17 +29,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const title =
       tvData.titlePrimary || tvData.titleSecondary || `TV Show #${numericId}`
-    return {
+    return buildBorealisDetailMetadata({
       title: `Borealis | TV > ${title}`,
       description: tvData.description
         ? tvData.description.slice(0, 160).replace(/<[^>]*>/g, "")
         : `${title} details on Borealis`,
-      openGraph: tvData.coverImage
-        ? {
-            images: [{ url: tvData.coverImage }],
-          }
-        : undefined,
-    }
+      image: tvData.coverImage,
+    })
   } catch {
     return {
       title: `Borealis | TV > #${numericId}`,

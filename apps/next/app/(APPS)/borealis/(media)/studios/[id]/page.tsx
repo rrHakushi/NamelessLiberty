@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import type { StudioDetails } from "@NamelessLiberty/elysia"
 import { elysia } from "@/lib/elysia"
+import { buildBorealisDetailMetadata } from "@/lib/borealis-metadata"
 import { StudioDetailView } from "@NamelessLiberty/borealis"
 
 interface Props {
@@ -27,10 +28,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     const name = studio.name || `Studio #${numericId}`
-    return {
+    return buildBorealisDetailMetadata({
       title: `Borealis | Studios > ${name}`,
       description: `Explore all anime, movies, and creations produced by ${name} on Borealis.`,
-    }
+    })
   } catch {
     return {
       title: `Borealis | Studios > #${numericId}`,
