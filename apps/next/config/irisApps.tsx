@@ -3,6 +3,7 @@ import Image from "next/image"
 import { useTranslations } from "next-intl"
 import { type IRISBitFieldResolvable } from "@NamelessLiberty/permissions"
 import { cn } from "@workspace/ui/lib/utils"
+import { isAppEnabled } from "./enabled-apps"
 
 export interface IrisApp {
   id: string
@@ -38,7 +39,7 @@ export function renderIrisAppIcon(
 }
 
 export function getIrisApps(t: (key: string) => string): IrisApp[] {
-  return [
+  const apps: IrisApp[] = [
     {
       id: "carina",
       name: t ? t("irisAccount.name") : "Carina",
@@ -188,6 +189,7 @@ export function getIrisApps(t: (key: string) => string): IrisApp[] {
     //   descriptionShort: "Financial tracking",
     // },
   ]
+  return apps.filter((app) => isAppEnabled(app.id))
 }
 
 export function useIrisApps(): IrisApp[] {

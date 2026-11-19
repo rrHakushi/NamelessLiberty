@@ -1,12 +1,14 @@
 "use client"
 
 import React, { useState } from "react"
-import type { TesseractPeer } from "@/lib/tesseract/types"
-import { SharedByYouPanel } from "./components/shared-by-you-panel"
-import { SharedByOthersPanel } from "./components/shared-by-others-panel"
-import { DirectSendDialog } from "./components/direct-send-dialog"
-import { IncomingTransferDialog } from "./components/incoming-transfer-dialog"
-import { ShelfApprovalDialog } from "./components/shelf-approval-dialog"
+import {
+  DirectSendDialog,
+  IncomingTransferDialog,
+  SharedByOthersPanel,
+  SharedByYouPanel,
+  ShelfApprovalDialog,
+  type TesseractPeer,
+} from "@NamelessLiberty/tesseract"
 
 export default function TesseractPage() {
   const [directTargetPeer, setDirectTargetPeer] =

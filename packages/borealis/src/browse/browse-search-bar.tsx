@@ -18,7 +18,7 @@ import {
   type BrowseCategory,
   BROWSE_CATEGORIES,
   parseCategoryTag,
-} from "@/lib/browse-history"
+} from "@NamelessLiberty/borealis/lib/browse-history"
 import { getCategoryLabel } from "./browse-category-nav"
 
 interface BrowseSearchBarProps {

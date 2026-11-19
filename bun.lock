@@ -59,11 +59,17 @@
       "name": "@NamelessLiberty/next",
       "version": "0.0.1",
       "dependencies": {
+        "@NamelessLiberty/akaromi": "workspace:*",
         "@NamelessLiberty/borealis": "workspace:*",
+        "@NamelessLiberty/carina": "workspace:*",
         "@NamelessLiberty/db": "workspace:*",
         "@NamelessLiberty/elysia": "workspace:*",
+        "@NamelessLiberty/iris": "workspace:*",
+        "@NamelessLiberty/kiroshi": "workspace:*",
         "@NamelessLiberty/permissions": "workspace:*",
+        "@NamelessLiberty/reliquary": "workspace:*",
         "@NamelessLiberty/shared": "workspace:*",
+        "@NamelessLiberty/tesseract": "workspace:*",
         "@base-ui/react": "^1.9.0",
         "@elysia/eden": "^2.0.0-rc.1",
         "@internationalized/date": "^3.12.4",
@@ -121,6 +127,33 @@
         "@tauri-apps/cli": "^2.12.5",
       },
     },
+    "packages/akaromi": {
+      "name": "@NamelessLiberty/akaromi",
+      "version": "0.0.1",
+      "dependencies": {
+        "@NamelessLiberty/elysia": "workspace:*",
+        "@NamelessLiberty/shared": "workspace:*",
+        "@noble/ciphers": "^2.4.0",
+        "@noble/hashes": "^2.4.0",
+        "@tabler/icons-react": "^3.52.0",
+        "@workspace/ui": "workspace:*",
+        "sonner": "^2.0.8",
+      },
+      "devDependencies": {
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@workspace/typescript-config": "workspace:*",
+        "next": "^16.4.6",
+        "next-intl": "^4.15.1",
+        "typescript": "^7.0.2",
+      },
+      "peerDependencies": {
+        "next": "^16.0.0",
+        "next-intl": "^4.14.9",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
+      },
+    },
     "packages/borealis": {
       "name": "@NamelessLiberty/borealis",
       "version": "0.0.1",
@@ -167,6 +200,33 @@
         "@types/bun": "^1.4.4",
         "@workspace/typescript-config": "workspace:*",
         "typescript": "^7.0.2",
+      },
+    },
+    "packages/carina": {
+      "name": "@NamelessLiberty/carina",
+      "version": "0.0.1",
+      "dependencies": {
+        "@NamelessLiberty/borealis": "workspace:*",
+        "@NamelessLiberty/elysia": "workspace:*",
+        "@NamelessLiberty/shared": "workspace:*",
+        "@simplewebauthn/browser": "^14.0.0",
+        "@tabler/icons-react": "^3.52.0",
+        "@workspace/ui": "workspace:*",
+        "sonner": "^2.0.8",
+      },
+      "devDependencies": {
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@workspace/typescript-config": "workspace:*",
+        "next": "^16.4.6",
+        "next-intl": "^4.15.1",
+        "typescript": "^7.0.2",
+      },
+      "peerDependencies": {
+        "next": "^16.0.0",
+        "next-intl": "^4.14.9",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
       },
     },
     "packages/connections": {
@@ -218,6 +278,51 @@
         "typescript-eslint": "^8.73.0",
       },
     },
+    "packages/iris": {
+      "name": "@NamelessLiberty/iris",
+      "version": "0.0.1",
+      "dependencies": {
+        "@tabler/icons-react": "^3.52.0",
+        "@workspace/ui": "workspace:*",
+      },
+      "devDependencies": {
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@workspace/typescript-config": "workspace:*",
+        "next": "^16.4.6",
+        "typescript": "^7.0.2",
+      },
+      "peerDependencies": {
+        "next": "^16.0.0",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
+      },
+    },
+    "packages/kiroshi": {
+      "name": "@NamelessLiberty/kiroshi",
+      "version": "0.0.1",
+      "dependencies": {
+        "@NamelessLiberty/elysia": "workspace:*",
+        "@NamelessLiberty/shared": "workspace:*",
+        "@tabler/icons-react": "^3.52.0",
+        "@workspace/ui": "workspace:*",
+        "sonner": "^2.0.8",
+      },
+      "devDependencies": {
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@workspace/typescript-config": "workspace:*",
+        "next": "^16.4.6",
+        "next-intl": "^4.15.1",
+        "typescript": "^7.0.2",
+      },
+      "peerDependencies": {
+        "next": "^16.0.0",
+        "next-intl": "^4.14.9",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
+      },
+    },
     "packages/logger": {
       "name": "@NamelessLiberty/logger",
       "version": "1.0.0",
@@ -254,6 +359,32 @@
         "rxjs",
       ],
     },
+    "packages/reliquary": {
+      "name": "@NamelessLiberty/reliquary",
+      "version": "0.0.1",
+      "dependencies": {
+        "@NamelessLiberty/db": "workspace:*",
+        "@NamelessLiberty/elysia": "workspace:*",
+        "@NamelessLiberty/shared": "workspace:*",
+        "@tabler/icons-react": "^3.52.0",
+        "@workspace/ui": "workspace:*",
+        "sonner": "^2.0.8",
+      },
+      "devDependencies": {
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@workspace/typescript-config": "workspace:*",
+        "next": "^16.4.6",
+        "next-intl": "^4.15.1",
+        "typescript": "^7.0.2",
+      },
+      "peerDependencies": {
+        "next": "^16.0.0",
+        "next-intl": "^4.14.9",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
+      },
+    },
     "packages/shared": {
       "name": "@NamelessLiberty/shared",
       "version": "1.0.0",
@@ -262,6 +393,31 @@
         "@types/node": "^26.6.6",
         "@workspace/typescript-config": "workspace:*",
         "typescript": "^7.0.2",
+      },
+    },
+    "packages/tesseract": {
+      "name": "@NamelessLiberty/tesseract",
+      "version": "0.0.1",
+      "dependencies": {
+        "@NamelessLiberty/shared": "workspace:*",
+        "@tabler/icons-react": "^3.52.0",
+        "@workspace/ui": "workspace:*",
+        "fflate": "^0.8.3",
+        "sonner": "^2.0.8",
+      },
+      "devDependencies": {
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@workspace/typescript-config": "workspace:*",
+        "next": "^16.4.6",
+        "next-intl": "^4.15.1",
+        "typescript": "^7.0.2",
+      },
+      "peerDependencies": {
+        "next": "^16.0.0",
+        "next-intl": "^4.14.9",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
       },
     },
     "packages/typescript-config": {
@@ -318,9 +474,13 @@
     "@parcel/watcher",
   ],
   "packages": {
+    "@NamelessLiberty/akaromi": ["@NamelessLiberty/akaromi@workspace:packages/akaromi"],
+
     "@NamelessLiberty/borealis": ["@NamelessLiberty/borealis@workspace:packages/borealis"],
 
     "@NamelessLiberty/cache": ["@NamelessLiberty/cache@workspace:packages/cache"],
+
+    "@NamelessLiberty/carina": ["@NamelessLiberty/carina@workspace:packages/carina"],
 
     "@NamelessLiberty/connections": ["@NamelessLiberty/connections@workspace:packages/connections"],
 
@@ -328,15 +488,23 @@
 
     "@NamelessLiberty/elysia": ["@NamelessLiberty/elysia@workspace:apps/elysia"],
 
+    "@NamelessLiberty/iris": ["@NamelessLiberty/iris@workspace:packages/iris"],
+
+    "@NamelessLiberty/kiroshi": ["@NamelessLiberty/kiroshi@workspace:packages/kiroshi"],
+
     "@NamelessLiberty/logger": ["@NamelessLiberty/logger@workspace:packages/logger"],
 
     "@NamelessLiberty/next": ["@NamelessLiberty/next@workspace:apps/next"],
 
     "@NamelessLiberty/permissions": ["@NamelessLiberty/permissions@workspace:packages/permissions"],
 
+    "@NamelessLiberty/reliquary": ["@NamelessLiberty/reliquary@workspace:packages/reliquary"],
+
     "@NamelessLiberty/shared": ["@NamelessLiberty/shared@workspace:packages/shared"],
 
     "@NamelessLiberty/tauri": ["@NamelessLiberty/tauri@workspace:apps/tauri"],
+
+    "@NamelessLiberty/tesseract": ["@NamelessLiberty/tesseract@workspace:packages/tesseract"],
 
     "@alchemy.run/node-utils": ["@alchemy.run/node-utils@2.0.0-beta.85", "", { "dependencies": { "chokidar": "^5.0.0", "rolldown": "1.2.13" } }, "sha512-2gxqMNMoJdx13w7wlDJw+gaXQ8e1VxQFsKldOvweqpd7JEgB5TGn3oO8r1sb/GB9+UzqXdh8tKp2MOVgFOrmbg=="],
 

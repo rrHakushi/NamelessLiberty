@@ -42,7 +42,7 @@ import {
 import { toast } from "sonner"
 import { useSession } from "@/context/session-context"
 import { API_URL, elysia } from "@/lib/elysia"
-import { getMediaDetailHref } from "@/lib/media-routes"
+import { getMediaDetailHref } from "@NamelessLiberty/borealis/lib/media-routes"
 import { renderBadgeIcon } from "@/components/navigation/settings-tabs/account/profile/badge-showcase-card"
 import { UserProfilePopover } from "@/components/navigation/settings-tabs/account/profile/profile-preview-card"
 import {

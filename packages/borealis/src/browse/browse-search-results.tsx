@@ -7,7 +7,7 @@ import { Skeleton } from "@workspace/ui/components/skeleton"
 import { Badge } from "@workspace/ui/components/badge"
 import { cn } from "@workspace/ui/lib/utils"
 import { BorealisCard, BorealisCardGroup, type BorealisEntityType } from "@NamelessLiberty/borealis"
-import type { BrowseCategory, VisitedMediaItem } from "@/lib/browse-history"
+import type { BrowseCategory, VisitedMediaItem } from "@NamelessLiberty/borealis/lib/browse-history"
 
 export interface SearchResultItem {
   id: number | string

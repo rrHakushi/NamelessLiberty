@@ -39,8 +39,8 @@ import {
   parseMalThemeSong,
   getDeezerFallbackSearchUrl,
 } from "@NamelessLiberty/shared"
-import { formatMediaTitle } from "@/lib/browse-search"
-import { getMediaDetailHref } from "@/lib/media-routes"
+import { formatMediaTitle } from "@NamelessLiberty/borealis/lib/browse-search"
+import { getMediaDetailHref } from "@NamelessLiberty/borealis/lib/media-routes"
 import type {
   CharacterItem,
   NormalizedMediaData,

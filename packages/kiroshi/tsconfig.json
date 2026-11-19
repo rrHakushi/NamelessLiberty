@@ -1,0 +1,18 @@
+{
+  "extends": "@workspace/typescript-config/react-library.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "paths": {
+      "@workspace/ui/*": ["../ui/src/*"],
+      "@NamelessLiberty/kiroshi": ["./src/index.ts"],
+      "@NamelessLiberty/kiroshi/*": ["./src/*"],
+      "@NamelessLiberty/shared": ["../shared/src/index.ts"],
+      "@NamelessLiberty/shared/*": ["../shared/src/*"],
+      "@NamelessLiberty/elysia": ["../../apps/elysia/src/index.ts"],
+      "@NamelessLiberty/elysia/*": ["../../apps/elysia/src/*"],
+      "@/*": ["../../apps/next/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

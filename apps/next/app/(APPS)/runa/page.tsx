@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { RunaStudio } from "./components/runa-studio"
+import { RunaStudio } from "@NamelessLiberty/iris"
 
 export const metadata: Metadata = {
   title: "Runa",

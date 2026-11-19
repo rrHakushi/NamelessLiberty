@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import React from "react"
-import IrisListNavProvider from "@/components/navigation/providers/iris-list-nav-provider"
+import { IrisListNavProvider } from "@NamelessLiberty/borealis"
 
 export const metadata: Metadata = {
   title: {

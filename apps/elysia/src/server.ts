@@ -4,6 +4,7 @@ import { Elysia, NotFound, ValidationError } from 'elysia'
 import { openapi } from '@elysia/openapi'
 import { cors } from '@elysia/cors'
 import { rateLimiter, generateControllersManifest } from './core/plugins'
+import { isElysiaAppEnabled } from './core/plugins/controllers'
 import { resolveSessionFromRequest } from './core/plugins/session'
 import { isHttpError } from './core/errors/http-errors'
 import { LogFactory, c } from '@NamelessLiberty/logger'
@@ -74,7 +75,29 @@ if (isDev) {
   allowedOrigins.add('http://127.0.0.1:4000')
 }
 
+const ELYSIA_APP_PREFIXES = new Set([
+  'akaromi',
+  'borealis',
+  'carina',
+  'kiroshi',
+  'reliquary',
+  'servarr',
+  'tesseract',
+])
+
 export const app = new Elysia()
+  .onRequest(({ request, set }) => {
+    try {
+      const seg = new URL(request.url).pathname.split('/')[1]?.toLowerCase()
+      if (seg && ELYSIA_APP_PREFIXES.has(seg) && !isElysiaAppEnabled(seg)) {
+        set.status = 404
+        return new Response(JSON.stringify({ error: 'App is disabled' }), {
+          status: 404,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      }
+    } catch {}
+  })
   .use(
     cors({
       origin: (request: Request): boolean => {

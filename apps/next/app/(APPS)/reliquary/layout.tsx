@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import React from "react"
-import { IrisReliquaryNavProvider } from "@/components/navigation/providers/iris-reliquary-nav-provider"
-import { ReliquaryProvider } from "./components/reliquary-context"
+import { IrisReliquaryNavProvider } from "@NamelessLiberty/reliquary"
+import { ReliquaryProvider } from "@NamelessLiberty/reliquary"
 
 export const metadata: Metadata = {
   title: {

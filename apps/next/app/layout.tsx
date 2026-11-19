@@ -7,6 +7,7 @@ import { NextIntlClientProvider } from "next-intl"
 import { getLocale, getMessages } from "next-intl/server"
 import { Providers } from "@/components/providers"
 import { TauriTitlebar } from "@/components/tauri-titlebar"
+import { getRuntimeEnabledApps } from "@/config/enabled-apps-server"
 import { Metadata } from "next"
 
 export const dynamic = "force-dynamic"
@@ -58,6 +59,7 @@ export default async function RootLayout({
 }>) {
   const locale = await getLocale()
   const messages = await getMessages()
+  const enabledApps = getRuntimeEnabledApps()
 
   return (
     <html
@@ -75,7 +77,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <TauriTitlebar />
-          <Providers>{children}</Providers>
+          <Providers enabledApps={enabledApps}>{children}</Providers>
         </NextIntlClientProvider>
       </body>
     </html>

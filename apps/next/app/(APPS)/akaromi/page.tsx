@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { usePass } from "@/context/pass-context"
+import { usePass } from "@NamelessLiberty/akaromi"
 import { Button } from "@workspace/ui/components/button"
 import { Input } from "@workspace/ui/components/input"
 import { Badge } from "@workspace/ui/components/badge"
@@ -30,11 +30,11 @@ import {
   IconRefresh,
 } from "@tabler/icons-react"
 import { toast } from "sonner"
-import { CipherIcon } from "./components/pass-cipher-icon"
-import { PassCipherModal } from "./components/pass-cipher-modal"
-import { PassGeneratorDialog } from "./components/pass-generator-dialog"
-import { calculatePasswordEntropy } from "@/lib/pass-generator"
-import type { AkaromiSubtype, DecryptedLoginData } from "@/lib/pass-types"
+import { CipherIcon } from "@NamelessLiberty/akaromi"
+import { PassCipherModal } from "@NamelessLiberty/akaromi"
+import { PassGeneratorDialog } from "@NamelessLiberty/akaromi"
+import { calculatePasswordEntropy } from "@NamelessLiberty/akaromi"
+import type { AkaromiSubtype, DecryptedLoginData } from "@NamelessLiberty/akaromi"
 
 export default function AkaromiDashboardPage() {
   const router = useRouter()

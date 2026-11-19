@@ -16,9 +16,9 @@ import {
   type BrowseCategory,
   type VisitedMediaItem,
   BROWSE_CATEGORIES,
-} from "@/lib/browse-history"
-import { useBrowseHistory } from "@/hooks/use-browse-history"
-import { searchCategoryMedia } from "@/lib/browse-search"
+} from "@NamelessLiberty/borealis/lib/browse-history"
+import { useBrowseHistory } from "@NamelessLiberty/borealis/hooks/use-browse-history"
+import { searchCategoryMedia } from "@NamelessLiberty/borealis/lib/browse-search"
 import { BrowseCategoryNav, getCategoryLabel } from "./browse-category-nav"
 import { BrowseSearchBar } from "./browse-search-bar"
 import { BrowseRecentQueries } from "./browse-recent-queries"

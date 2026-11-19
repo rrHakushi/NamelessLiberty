@@ -44,28 +44,31 @@ import { ConnectionsSettingsTab } from "./settings-tabs/account/connections-tab"
 import { PrivacySettingsTab } from "./settings-tabs/account/privacy-tab"
 import { OAuthAppsSettingsTab } from "./settings-tabs/account/oauth-apps-tab"
 import { AuthorizedAppsSettingsTab } from "./settings-tabs/account/authorized-apps-tab"
-import { PassSettingsTab } from "./settings-tabs/pass/pass-tab"
+// @app:akaromi:start
+import { PassSettingsTab } from "@NamelessLiberty/akaromi"
+// @app:akaromi:end
 
 // Customization Tabs
 import { AppearanceSettingsTab } from "./settings-tabs/customization/appearance-tab"
 import { SidebarSettingsTab } from "./settings-tabs/customization/sidebar-tab"
 import { DockSettingsTab } from "./settings-tabs/customization/dock-tab"
-import { MediaPreferencesSettingsTab } from "./settings-tabs/customization/media-preferences-tab"
-
-// Lists Tabs
-import { ListsImportSettingsTab } from "./settings-tabs/lists/lists-import-tab"
-import { ListsExportSettingsTab } from "./settings-tabs/lists/lists-export-tab"
-
-// Servarr Tabs
-import { SonarrSettingsTab } from "./settings-tabs/servarr/sonarr-tab"
-import { RadarrSettingsTab } from "./settings-tabs/servarr/radarr-tab"
-import { ReadarrSettingsTab } from "./settings-tabs/servarr/readarr-tab"
+// @app:borealis:start
+import {
+  MediaPreferencesSettingsTab,
+  ListsImportSettingsTab,
+  ListsExportSettingsTab,
+  SonarrSettingsTab,
+  RadarrSettingsTab,
+  ReadarrSettingsTab,
+} from "@NamelessLiberty/borealis"
+// @app:borealis:end
 
 // Email Tabs
 import { EmailAccountsSettingsTab } from "./settings-tabs/email/email-accounts-tab"
 
-// Search Tabs
-import { SearchSettingsTab } from "./settings-tabs/search/search-tab"
+// @app:kiroshi:start
+import { SearchSettingsTab } from "@NamelessLiberty/kiroshi"
+// @app:kiroshi:end
 
 import { useIsMobile } from "@workspace/ui/hooks/use-mobile"
 
@@ -125,6 +128,7 @@ function renderTabContent(
           setFooterContent={setFooterContent}
         />
       )
+    // @app:akaromi:start
     case "pass":
       return (
         <PassSettingsTab
@@ -132,6 +136,7 @@ function renderTabContent(
           setFooterContent={setFooterContent}
         />
       )
+    // @app:akaromi:end
     case "apiKeys":
       return (
         <ApiKeysSettingsTab
@@ -188,6 +193,7 @@ function renderTabContent(
           setFooterContent={setFooterContent}
         />
       )
+    // @app:borealis:start
     case "mediaPreferences":
       return (
         <MediaPreferencesSettingsTab
@@ -230,6 +236,7 @@ function renderTabContent(
           setFooterContent={setFooterContent}
         />
       )
+    // @app:borealis:end
     case "accounts":
       return (
         <EmailAccountsSettingsTab
@@ -237,6 +244,7 @@ function renderTabContent(
           setFooterContent={setFooterContent}
         />
       )
+    // @app:kiroshi:start
     case "search":
       return (
         <SearchSettingsTab
@@ -244,6 +252,7 @@ function renderTabContent(
           setFooterContent={setFooterContent}
         />
       )
+    // @app:kiroshi:end
     default:
       return null
   }

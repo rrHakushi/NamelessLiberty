@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import React from "react"
-import IrisPassNavProvider from "@/components/navigation/providers/iris-pass-nav-provider"
-import { PassProvider } from "@/context/pass-context"
+import { IrisPassNavProvider, PassProvider } from "@NamelessLiberty/akaromi"
 
 export const metadata: Metadata = {
   title: {

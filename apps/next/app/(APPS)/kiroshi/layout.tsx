@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import React from "react"
-import IrisSearchNavProvider from "@/components/navigation/providers/iris-search-nav-provider"
+import { IrisSearchNavProvider } from "@NamelessLiberty/kiroshi"
 
 export const metadata: Metadata = {
   title: {

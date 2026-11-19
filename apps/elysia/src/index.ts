@@ -9,6 +9,7 @@ import { MediaQueueManager } from './apps/borealis/sync/media.queue'
 import { ConnectionSyncQueueManager } from './apps/carina/connections/connection-sync.queue'
 import { activityServ } from './apps/carina/activity/activity.serv'
 import { app, type App, startServer } from './server'
+import { isElysiaAppEnabled } from './core/plugins/controllers'
 
 export { app, type App, startServer }
 export { wsHub, WsServ, type IrisWebSocket } from './core/ws/ws.serv'
@@ -31,15 +32,19 @@ if (isClusteringEnabled && cluster.isPrimary) {
   logger.info(`Forking ${numWorkers} multi-threaded Elysia worker processes (reusePort enabled)...`)
 
   // Initialize singleton background media worker & weekly cron in the primary process only
-  MediaQueueManager.initWorkerAndSchedule().catch((err) => {
-    logger.warn(`MediaQueue initialization notice: ${err?.message || err}`)
-  })
+  if (isElysiaAppEnabled('borealis')) {
+    MediaQueueManager.initWorkerAndSchedule().catch((err) => {
+      logger.warn(`MediaQueue initialization notice: ${err?.message || err}`)
+    })
+  }
 
   // Initialize background connection sync workers in the primary process only
-  try {
-    ConnectionSyncQueueManager.initWorkers()
-  } catch (err: any) {
-    logger.warn(`ConnectionSyncQueue initialization notice: ${err?.message || err}`)
+  if (isElysiaAppEnabled('carina')) {
+    try {
+      ConnectionSyncQueueManager.initWorkers()
+    } catch (err: any) {
+      logger.warn(`ConnectionSyncQueue initialization notice: ${err?.message || err}`)
+    }
   }
 
   // Initialize background email worker in the primary process only
@@ -50,10 +55,12 @@ if (isClusteringEnabled && cluster.isPrimary) {
   }
 
   // Initialize background activity retention cleanup scheduler in the primary process only
-  try {
-    activityServ.initCron()
-  } catch (err: any) {
-    logger.warn(`Activity cleanup cron initialization notice: ${err?.message || err}`)
+  if (isElysiaAppEnabled('carina')) {
+    try {
+      activityServ.initCron()
+    } catch (err: any) {
+      logger.warn(`Activity cleanup cron initialization notice: ${err?.message || err}`)
+    }
   }
 
   // Spawn cluster workers
@@ -103,23 +110,29 @@ if (isClusteringEnabled && cluster.isPrimary) {
   // If in worker process or single-process mode (CLUSTER=false)
   if (!isClusteringEnabled) {
     // In non-clustered mode, initialize background cron directly
-    MediaQueueManager.initWorkerAndSchedule().catch((err) => {
-      logger.warn(`MediaQueue initialization notice: ${err?.message || err}`)
-    })
-    try {
-      ConnectionSyncQueueManager.initWorkers()
-    } catch (err: any) {
-      logger.warn(`ConnectionSyncQueue initialization notice: ${err?.message || err}`)
+    if (isElysiaAppEnabled('borealis')) {
+      MediaQueueManager.initWorkerAndSchedule().catch((err) => {
+        logger.warn(`MediaQueue initialization notice: ${err?.message || err}`)
+      })
+    }
+    if (isElysiaAppEnabled('carina')) {
+      try {
+        ConnectionSyncQueueManager.initWorkers()
+      } catch (err: any) {
+        logger.warn(`ConnectionSyncQueue initialization notice: ${err?.message || err}`)
+      }
     }
     try {
       emailWorker.start()
     } catch (err: any) {
       logger.warn(`EmailWorker initialization notice: ${err?.message || err}`)
     }
-    try {
-      activityServ.initCron()
-    } catch (err: any) {
-      logger.warn(`Activity cleanup cron initialization notice: ${err?.message || err}`)
+    if (isElysiaAppEnabled('carina')) {
+      try {
+        activityServ.initCron()
+      } catch (err: any) {
+        logger.warn(`Activity cleanup cron initialization notice: ${err?.message || err}`)
+      }
     }
   }
 

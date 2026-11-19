@@ -17,7 +17,7 @@ import {
 } from "@tabler/icons-react"
 import { cn } from "@workspace/ui/lib/utils"
 import { Button } from "@workspace/ui/components/button"
-import { type BrowseCategory, BROWSE_CATEGORIES } from "@/lib/browse-history"
+import { type BrowseCategory, BROWSE_CATEGORIES } from "@NamelessLiberty/borealis/lib/browse-history"
 
 const CATEGORY_ICONS: Record<
   BrowseCategory,

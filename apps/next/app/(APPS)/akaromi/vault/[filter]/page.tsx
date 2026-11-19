@@ -3,7 +3,7 @@
 import React, { Suspense } from "react"
 import { useParams } from "next/navigation"
 import Image from "next/image"
-import { AkaromiVaultView } from "../../components/akaromi-vault-view"
+import { AkaromiVaultView } from "@NamelessLiberty/akaromi"
 
 function FilteredVault() {
   const params = useParams()

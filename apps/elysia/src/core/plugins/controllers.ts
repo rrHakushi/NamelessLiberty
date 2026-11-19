@@ -332,6 +332,57 @@ export function generateStaticManifest(
   fs.writeFileSync(outputFile, code, 'utf-8')
 }
 
+type IrisAppConfig = Record<string, { enabled?: boolean } | undefined>
+
+let cachedIrisAppConfig: IrisAppConfig | null = null
+
+function loadIrisAppConfig(forceReload = false): IrisAppConfig {
+  if (!forceReload && cachedIrisAppConfig) return cachedIrisAppConfig
+  const candidates = [
+    path.resolve(process.cwd(), 'iris.json'),
+    path.resolve(process.cwd(), '../../iris.json'),
+    path.resolve(__dirname, '../../../../../iris.json'),
+  ]
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) {
+      try {
+        cachedIrisAppConfig = JSON.parse(
+          fs.readFileSync(candidate, 'utf-8')
+        ) as IrisAppConfig
+        return cachedIrisAppConfig
+      } catch {
+        cachedIrisAppConfig = {}
+        return cachedIrisAppConfig
+      }
+    }
+  }
+  cachedIrisAppConfig = {}
+  return cachedIrisAppConfig
+}
+
+export function isElysiaAppEnabled(appId: string): boolean {
+  const config = loadIrisAppConfig()
+  const key = appId.toLowerCase()
+  if (key === 'servarr') {
+    return config.borealis?.enabled !== false && config.servarr?.enabled !== false
+  }
+  return config[key]?.enabled !== false
+}
+
+function isControllerFileDisabled(
+  filePath: string,
+  targetDir: string,
+  config: IrisAppConfig
+): boolean {
+  const rel = path.relative(targetDir, filePath).replace(/\\/g, '/')
+  const topDir = rel.split('/')[0]?.toLowerCase()
+  if (!topDir) return false
+  if (topDir === 'servarr') {
+    return config.borealis?.enabled === false || config.servarr?.enabled === false
+  }
+  return config[topDir]?.enabled === false
+}
+
 /**
  * Scans controller files in specifiedDir and regenerates the static controllers.generated.ts manifest.
  */
@@ -344,10 +395,14 @@ export function generateControllersManifest(
     return null
   }
 
+  const irisConfig = loadIrisAppConfig()
   const files = scanFiles(targetDir, true)
   const items: { exportName: string; filePath: string }[] = []
 
   for (const filePath of files) {
+    if (isControllerFileDisabled(filePath, targetDir, irisConfig)) {
+      continue
+    }
     try {
       const content = fs.readFileSync(filePath, 'utf-8')
       const namedRegex = /export\s+const\s+([a-zA-Z0-9_$]+)\s*=\s*(?:new\s+Elysia|create\w+(?:Router|Controller)|\()/g

@@ -15,7 +15,7 @@ import {
 import {
   PasswordChecklist,
   type PasswordCriteria,
-} from "@/components/auth/register/password-checklist"
+} from "@/components/shared/password-checklist"
 import { cn } from "@workspace/ui/lib/utils"
 
 export interface PasswordCardProps {

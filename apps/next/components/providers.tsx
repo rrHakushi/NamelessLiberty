@@ -12,6 +12,7 @@ import { WebSocketProvider } from "@/context/websocket-context"
 import { NotificationProvider } from "@/context/notification-context"
 import { Toaster } from "@/components/ui/sonner"
 import { LastAppTracker } from "@/components/navigation/last-app-tracker"
+import { setRuntimeEnabledApps } from "@/config/enabled-apps"
 
 import dynamic from "next/dynamic"
 
@@ -53,7 +54,16 @@ if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
   }
 }
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({
+  children,
+  enabledApps,
+}: {
+  children: React.ReactNode
+  enabledApps?: readonly string[]
+}) {
+  if (enabledApps) {
+    setRuntimeEnabledApps(enabledApps)
+  }
   const router = useRouter()
 
   return (

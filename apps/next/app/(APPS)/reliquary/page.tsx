@@ -14,13 +14,13 @@ import {
 import { Button } from "@workspace/ui/components/button"
 import { useSession } from "@/context/session-context"
 import { elysia } from "@/lib/elysia"
-import { CreateDocDialog } from "./components/create-doc-dialog"
-import { DocSummaryCard } from "./components/doc-summary-card"
-import { useReliquaryContext } from "./components/reliquary-context"
+import { CreateDocDialog } from "@NamelessLiberty/reliquary"
+import { DocSummaryCard } from "@NamelessLiberty/reliquary"
+import { useReliquaryContext } from "@NamelessLiberty/reliquary"
 import {
   extractApiErrorMessage,
   type ReliquaryDocSummary,
-} from "./components/reliquary-types"
+} from "@NamelessLiberty/reliquary"
 
 export default function ReliquaryHomePage() {
   const router = useRouter()

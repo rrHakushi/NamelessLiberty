@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
-import { CalendarPageClient } from "@/components/calendar/calendar-page-client"
-import { CalendarLoadingFallback } from "@/components/calendar/calendar-loading-fallback"
+import { CalendarPageClient } from "@NamelessLiberty/borealis"
+import { CalendarLoadingFallback } from "@NamelessLiberty/borealis"
 
 export const metadata: Metadata = {
   title: "Borealis | Calendar",

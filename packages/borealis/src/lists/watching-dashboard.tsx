@@ -45,7 +45,7 @@ import {
   type ListStatus,
   type BorealisCardSavePayload,
 } from "@NamelessLiberty/borealis"
-import { saveListEntry } from "@/lib/save-list-entry"
+import { saveListEntry } from "@NamelessLiberty/borealis/lib/save-list-entry"
 import {
   toNormalizedMedia,
   toMediaListEntry,

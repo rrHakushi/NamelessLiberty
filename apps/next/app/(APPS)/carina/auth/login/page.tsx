@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
-import { AuthCard } from "@/components/auth/auth-card"
-import { AuthHeader } from "@/components/auth/auth-header"
-import { AuthFooterLink } from "@/components/auth/auth-footer-link"
-import { LoginForm } from "@/components/auth/login/login-form"
-import { LanguageSelector } from "@/components/auth/language-selector"
+import { AuthCard } from "@NamelessLiberty/carina"
+import { AuthHeader } from "@NamelessLiberty/carina"
+import { AuthFooterLink } from "@NamelessLiberty/carina"
+import { LoginForm } from "@NamelessLiberty/carina"
+import { LanguageSelector } from "@NamelessLiberty/carina"
 
 export const metadata: Metadata = {
   title: "Carina | Auth > Login",
