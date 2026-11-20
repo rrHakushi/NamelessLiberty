@@ -2,9 +2,6 @@
     - Stremio plugin for borealis
     - Link manga list entries to books since its kinda the same
 
-
-
-    
 # Akaromi [Password manager]
     - 
     
@@ -19,17 +16,13 @@
     - Borealis integration
 
 # NamelessLiberty
-    - Dev tools (floating popup like nextjs has), onclick open sidebar with tools [metadata viewer, send notification, trigger events/workers... ]
-    - .md version of every single page
-    - mcp server for all the apps
-
+    - 
 
 # Apertune [Music player]
     - 
 
 # Reliquary [Docs, guides etc]  !! Priority
     - 
-
 
 # Spica [Chatting]
     - 
@@ -41,8 +34,7 @@
     -
 
 # Tesseract [Local network file sharing]
-    - Local WebRTC handshake failed. Verify both devices are on the same LAN/Wi-Fi without client isolation.
-
+    - 
 
 # Vex [Link shortener]
     -

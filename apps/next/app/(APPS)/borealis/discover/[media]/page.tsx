@@ -20,6 +20,7 @@ const VALID_CATEGORIES: Set<string> = new Set([
   "games",
   "books",
   "music",
+  "other",
   "characters",
   "staff",
   "people",

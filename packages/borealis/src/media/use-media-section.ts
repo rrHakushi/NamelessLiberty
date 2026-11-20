@@ -34,6 +34,7 @@ const ROUTE_KEYS: Record<string, { route: string; idKey: string }> = {
   book: { route: "books", idKey: "bookId" },
   books: { route: "books", idKey: "bookId" },
   music: { route: "music", idKey: "musicId" },
+  other: { route: "other", idKey: "otherId" },
 }
 
 function fetchSection(category: string, id: number, section: MediaSection) {

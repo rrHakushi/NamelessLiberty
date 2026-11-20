@@ -2592,7 +2592,328 @@ export class MediaStatsService extends BaseMediaStatsService {
   }
 
   /**
-   * Calculates overarching combined stats across all 7 media types.
+   * Calculates comprehensive stats for user's Other list.
+   */
+  public async getOtherStats(
+    userId: string,
+    isOwner: boolean,
+    period?: PeriodFilter
+  ): Promise<MediaStatsResponse> {
+    const cacheKey = `iris:stats:v2:${userId}:other:${period?.year ?? "all"}:${period?.quarter ?? "all"}:${period?.month ?? "all"}:${isOwner ? "1" : "0"}`
+
+    return cache.getOrSet(
+      cacheKey,
+      async () => {
+        let q = prisma.orm.public.OtherList.where({ userId })
+        if (!isOwner) {
+          q = q.where({ private: false })
+        }
+
+        const entries: any[] = await q
+          .include("other", (o) =>
+            o
+              .select(
+                "id",
+                "titlePrimary",
+                "format",
+                "status",
+                "startDateYear",
+                "countryOfOrigin",
+                "episodeDuration",
+                "runtime",
+                "duration",
+                "progressFields",
+                "incrementFieldKey"
+              )
+              .include("genres", (g) =>
+                g.include("genre", (ge) => ge.select("id", "name"))
+              )
+              .include("studios", (s) =>
+                s.include("studio", (st) => st.select("id", "name"))
+              )
+          )
+          .all()
+
+        const isPeriodFiltered = Boolean(
+          period?.year || period?.quarter || period?.month
+        )
+        const filteredEntries = isPeriodFiltered
+          ? entries.filter((e) => {
+              const d = resolveEntryDate(e.completedAt, e.startedAt, e.createdAt)
+              if (period?.year && d.getUTCFullYear() !== period.year) return false
+              if (
+                period?.quarter &&
+                Math.floor(d.getUTCMonth() / 3) + 1 !== period.quarter
+              ) {
+                return false
+              }
+              if (period?.month && d.getUTCMonth() + 1 !== period.month) return false
+              return true
+            })
+          : entries
+
+        let completedCount = 0
+        let currentCount = 0
+        let planningCount = 0
+        let onHoldCount = 0
+        let droppedCount = 0
+        let totalUnits = 0
+        let totalTimeMinutes = 0
+        let plannedMinutes = 0
+
+        const scores: number[] = []
+        const allScores: (number | null)[] = []
+        const formatCounts: Record<string, number> = {}
+        const statusCounts: Record<string, number> = {}
+        const countryCounts: Record<string, number> = {}
+        const releaseYearMap: Record<
+          number,
+          { titles: number; scores: number[]; minutes: number }
+        > = {}
+        const activityYearMap: Record<
+          number,
+          { titles: number; scores: number[]; minutes: number }
+        > = {}
+        const genreMap: Record<
+          string,
+          { count: number; scores: number[]; minutes: number }
+        > = {}
+        const studioMap: Record<string, { count: number; scores: number[] }> = {}
+        const monthlyActivityMap: Record<string, number> = {}
+        const weeklyActivityMap: Record<string, number> = {}
+        const dayOfWeekMap: Record<number, number> = {}
+
+        for (const e of filteredEntries) {
+          const item = e.other
+          if (e.status === "COMPLETED") completedCount++
+          else if (e.status === "IN_PROGRESS") currentCount++
+          else if (e.status === "PLANNED" || e.status === "MAYBE") planningCount++
+          else if (e.status === "ON_HOLD") onHoldCount++
+          else if (e.status === "DROPPED") droppedCount++
+
+          statusCounts[e.status] = (statusCounts[e.status] ?? 0) + 1
+
+          const fields: Array<{ key: string; unit?: string; max?: number }> =
+            Array.isArray(item?.progressFields) ? item.progressFields : []
+          const activeField =
+            fields.find((f) => f.key === item?.incrementFieldKey) || fields[0]
+          const pv = (e.progressValues && typeof e.progressValues === "object"
+            ? e.progressValues
+            : {}) as Record<string, number>
+          const rawProgress = activeField
+            ? Number(pv[activeField.key] ?? 0) || 0
+            : Number(Object.values(pv)[0] ?? 0) || 0
+
+          const rewatched = Number(e.rewatched ?? 0) || 0
+          const maxUnits = activeField?.max ?? rawProgress
+          const effectiveUnits = rawProgress + rewatched * maxUnits
+          totalUnits += effectiveUnits
+
+          let entryMinutes = 0
+          const unit = activeField?.unit || ""
+          if (/hour|hr/i.test(unit)) {
+            entryMinutes = Math.round(effectiveUnits * 60)
+          } else if (/min/i.test(unit)) {
+            entryMinutes = Math.round(effectiveUnits)
+          } else if (/sec/i.test(unit)) {
+            entryMinutes = Math.round(effectiveUnits / 60)
+          } else if (item?.episodeDuration && effectiveUnits > 0) {
+            entryMinutes = Math.round(effectiveUnits * item.episodeDuration)
+          } else if (item?.runtime && (e.status === "COMPLETED" || effectiveUnits > 0)) {
+            entryMinutes = Math.round(item.runtime * Math.max(1, rewatched + (e.status === "COMPLETED" ? 1 : 0)))
+          } else if (item?.duration && (e.status === "COMPLETED" || effectiveUnits > 0)) {
+            entryMinutes = Math.round((item.duration / 60) * Math.max(1, rewatched + (e.status === "COMPLETED" ? 1 : 0)))
+          }
+
+          totalTimeMinutes += entryMinutes
+          if ((e.status === "PLANNED" || e.status === "MAYBE") && activeField?.max) {
+            if (/hour|hr/i.test(unit)) plannedMinutes += Math.round(activeField.max * 60)
+            else if (/min/i.test(unit)) plannedMinutes += Math.round(activeField.max)
+            else if (item?.episodeDuration) plannedMinutes += Math.round(activeField.max * item.episodeDuration)
+            else if (item?.runtime) plannedMinutes += Math.round(item.runtime)
+          }
+
+          allScores.push(e.score ?? null)
+          if (typeof e.score === "number" && e.score > 0) {
+            scores.push(e.score)
+          }
+
+          const fmt = item?.format || "other"
+          formatCounts[fmt] = (formatCounts[fmt] ?? 0) + 1
+
+          if (item?.countryOfOrigin) {
+            countryCounts[item.countryOfOrigin] =
+              (countryCounts[item.countryOfOrigin] ?? 0) + 1
+          }
+
+          if (item?.startDateYear) {
+            const y = item.startDateYear
+            let node = releaseYearMap[y]
+            if (!node) {
+              node = { titles: 0, scores: [], minutes: 0 }
+              releaseYearMap[y] = node
+            }
+            node.titles++
+            node.minutes += entryMinutes
+            if (typeof e.score === "number" && e.score > 0) node.scores.push(e.score)
+          }
+
+          const entryDate = resolveEntryDate(e.completedAt, e.startedAt, e.createdAt)
+          const actYear = entryDate.getUTCFullYear()
+          let actNode = activityYearMap[actYear]
+          if (!actNode) {
+            actNode = { titles: 0, scores: [], minutes: 0 }
+            activityYearMap[actYear] = actNode
+          }
+          actNode.titles++
+          actNode.minutes += entryMinutes
+          if (typeof e.score === "number" && e.score > 0) actNode.scores.push(e.score)
+
+          const monthKey = `${entryDate.getUTCFullYear()}-${entryDate.getUTCMonth() + 1}`
+          monthlyActivityMap[monthKey] = (monthlyActivityMap[monthKey] ?? 0) + 1
+          const weekKey = `${entryDate.getUTCFullYear()}-${getISOWeekNumber(entryDate)}`
+          weeklyActivityMap[weekKey] = (weeklyActivityMap[weekKey] ?? 0) + 1
+          dayOfWeekMap[entryDate.getUTCDay()] =
+            (dayOfWeekMap[entryDate.getUTCDay()] ?? 0) + 1
+
+          for (const g of (item?.genres || []) as any[]) {
+            const gName = g?.genre?.name || g?.name
+            if (!gName) continue
+            let gNode = genreMap[gName]
+            if (!gNode) {
+              gNode = { count: 0, scores: [], minutes: 0 }
+              genreMap[gName] = gNode
+            }
+            gNode.count++
+            gNode.minutes += entryMinutes
+            if (typeof e.score === "number" && e.score > 0) gNode.scores.push(e.score)
+          }
+
+          for (const st of (item?.studios || []) as any[]) {
+            const sName = st?.studio?.name || st?.name
+            if (!sName) continue
+            let sNode = studioMap[sName]
+            if (!sNode) {
+              sNode = { count: 0, scores: [] }
+              studioMap[sName] = sNode
+            }
+            sNode.count++
+            if (typeof e.score === "number" && e.score > 0) sNode.scores.push(e.score)
+          }
+        }
+
+        const { mean, stdDev } = calculateMeanAndStdDev(scores)
+        const scoreDist = buildScoreDistribution(allScores)
+        const totalCount = filteredEntries.length
+
+        const releaseYearGraph: YearGraphItem[] = Object.keys(releaseYearMap)
+          .map(Number)
+          .sort((a, b) => a - b)
+          .map((year) => {
+            const node = releaseYearMap[year]!
+            return {
+              year,
+              titles: node.titles,
+              meanScore:
+                node.scores.length > 0
+                  ? Math.round((node.scores.reduce((a, b) => a + b, 0) / node.scores.length) * 10) / 10
+                  : 0,
+              hours: Math.round((node.minutes / 60) * 10) / 10,
+            }
+          })
+
+        const activityYearGraph: YearGraphItem[] = Object.keys(activityYearMap)
+          .map(Number)
+          .sort((a, b) => a - b)
+          .map((year) => {
+            const node = activityYearMap[year]!
+            return {
+              year,
+              titles: node.titles,
+              meanScore:
+                node.scores.length > 0
+                  ? Math.round((node.scores.reduce((a, b) => a + b, 0) / node.scores.length) * 10) / 10
+                  : 0,
+              hours: Math.round((node.minutes / 60) * 10) / 10,
+            }
+          })
+
+        const topGenres: TopGenreItem[] = Object.entries(genreMap)
+          .map(([genre, data]) => ({
+            genre,
+            count: data.count,
+            meanScore:
+              data.scores.length > 0
+                ? Math.round((data.scores.reduce((a, b) => a + b, 0) / data.scores.length) * 10) / 10
+                : 0,
+            hours: Math.round((data.minutes / 60) * 10) / 10,
+          }))
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 15)
+
+        const topCreators: TopCreatorItem[] = Object.entries(studioMap)
+          .map(([name, data]) => ({
+            name,
+            count: data.count,
+            meanScore:
+              data.scores.length > 0
+                ? Math.round((data.scores.reduce((a, b) => a + b, 0) / data.scores.length) * 10) / 10
+                : 0,
+          }))
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 10)
+
+        const monthlyActivity: MonthlyActivityItem[] = Object.entries(monthlyActivityMap)
+          .map(([key, count]) => {
+            const [y, m] = key.split("-").map(Number)
+            return { year: y ?? 0, month: m ?? 1, count }
+          })
+          .sort((a, b) => (a.year !== b.year ? a.year - b.year : a.month - b.month))
+
+        const { weeklyActivity, dayOfWeekActivity } = buildWeeklyAndDailyActivity(
+          weeklyActivityMap,
+          dayOfWeekMap
+        )
+
+        return {
+          mediaType: "other",
+          isPeriodFiltered,
+          period,
+          overview: {
+            totalCount,
+            completedCount,
+            currentCount,
+            planningCount,
+            onHoldCount,
+            droppedCount,
+            totalUnits,
+            totalTimeMinutes,
+            daysConsumed: Math.round((totalTimeMinutes / 1440) * 10) / 10,
+            daysPlanned: Math.round((plannedMinutes / 1440) * 10) / 10,
+            meanScore: mean,
+            standardDeviation: stdDev,
+            scoredCount: scores.length,
+          },
+          scoreDistribution: scoreDist,
+          lengthDistribution: [],
+          formatDistribution: buildDistribution(formatCounts, totalCount),
+          statusDistribution: buildDistribution(statusCounts, totalCount),
+          countryDistribution: buildDistribution(countryCounts, totalCount),
+          releaseYearGraph,
+          activityYearGraph,
+          topGenres,
+          topCreators,
+          monthlyActivity,
+          weeklyActivity,
+          dayOfWeekActivity,
+        }
+      },
+      STATS_CACHE_TTL_SECONDS
+    )
+  }
+
+  /**
+   * Calculates overarching combined stats across all 8 media types.
    */
   public async getCombinedStats(
     userId: string,
@@ -2604,7 +2925,7 @@ export class MediaStatsService extends BaseMediaStatsService {
     return cache.getOrSet(
       cacheKey,
       async () => {
-        const [anime, manga, movie, tv, game, book, music] = await Promise.all([
+        const [anime, manga, movie, tv, game, book, music, other] = await Promise.all([
           this.getAnimeStats(userId, isOwner, period),
           this.getMangaStats(userId, isOwner, period),
           this.getMovieStats(userId, isOwner, period),
@@ -2612,6 +2933,7 @@ export class MediaStatsService extends BaseMediaStatsService {
           this.getGameStats(userId, isOwner, period),
           this.getBookStats(userId, isOwner, period),
           this.getMusicStats(userId, isOwner, period),
+          this.getOtherStats(userId, isOwner, period),
         ])
 
         const allStats = [
@@ -2622,6 +2944,7 @@ export class MediaStatsService extends BaseMediaStatsService {
           { type: "game", stats: game },
           { type: "book", stats: book },
           { type: "music", stats: music },
+          { type: "other", stats: other },
         ]
 
         let totalTitles = 0

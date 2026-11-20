@@ -8,23 +8,44 @@ clone:
 steps:
   - name: Clone
     image: alpine/git:latest
+    environment:
+      REDIS_PASSWORD:
+        from_secret: REDIS_PASSWORD
+      POSTGRE_USER:
+        from_secret: POSTGRE_USER
+      POSTGRE_PASS:
+        from_secret: POSTGRE_PASS
+      POSTGRE_DB:
+        from_secret: POSTGRE_DB
+      INFISICAL_ENCRYPTION_KEY:
+        from_secret: INFISICAL_ENCRYPTION_KEY
+      INFISICAL_AUTH_SECRET:
+        from_secret: INFISICAL_AUTH_SECRET
+      INFISICAL_SITE_URL:
+        from_secret: INFISICAL_SITE_URL
     commands:
       - git init
       - git remote add origin ${DRONE_REMOTE_URL} || git remote set-url origin ${DRONE_REMOTE_URL}
       - git fetch --depth=1 origin +refs/heads/${DRONE_COMMIT_BRANCH}:refs/remotes/origin/${DRONE_COMMIT_BRANCH}
       - git checkout -f ${DRONE_COMMIT_SHA}
+      - |
+        cat << EOF > .env
+        REDIS_PASSWORD=$REDIS_PASSWORD
+        POSTGRE_USER=$POSTGRE_USER
+        POSTGRE_PASS=$POSTGRE_PASS
+        POSTGRE_DB=$POSTGRE_DB
+        INFISICAL_ENCRYPTION_KEY=$INFISICAL_ENCRYPTION_KEY
+        INFISICAL_AUTH_SECRET=$INFISICAL_AUTH_SECRET
+        INFISICAL_SITE_URL=$INFISICAL_SITE_URL
+        EOF
+      - chmod 600 .env
 
   - name: Redis
     image: docker:latest
-    environment:
-      REDIS_PASSWORD:
-        from_secret: REDIS_PASSWORD
     volumes:
       - name: docker_sock
         path: /var/run/docker.sock
     commands:
-      - printf "REDIS_PASSWORD=%s\n" "$REDIS_PASSWORD" > .env
-      - chmod 600 .env
       - docker compose up -d redis
       - |
         for i in $(seq 1 30); do
@@ -39,23 +60,10 @@ steps:
 
   - name: Postgre
     image: docker:latest
-    environment:
-      POSTGRE_USER:
-        from_secret: POSTGRE_USER
-      POSTGRE_PASS:
-        from_secret: POSTGRE_PASS
-      POSTGRE_DB:
-        from_secret: POSTGRE_DB
     volumes:
       - name: docker_sock
         path: /var/run/docker.sock
     commands:
-      - |
-        cat << EOF >> .env
-        POSTGRE_USER=$POSTGRE_USER
-        POSTGRE_PASS=$POSTGRE_PASS
-        POSTGRE_DB=$POSTGRE_DB
-        EOF
       - docker compose up -d postgre
       - |
         for i in $(seq 1 30); do
@@ -66,7 +74,7 @@ steps:
           sleep 2
         done
     depends_on:
-      - Redis
+      - Clone
 
   - name: databasus
     image: docker:latest
@@ -76,27 +84,14 @@ steps:
     commands:
       - docker compose up -d --no-deps databasus
     depends_on:
-      - Postgre
+      - Clone
 
   - name: infisical
     image: docker:latest
-    environment:
-      INFISICAL_ENCRYPTION_KEY:
-        from_secret: INFISICAL_ENCRYPTION_KEY
-      INFISICAL_AUTH_SECRET:
-        from_secret: INFISICAL_AUTH_SECRET
-      INFISICAL_SITE_URL:
-        from_secret: INFISICAL_SITE_URL
     volumes:
       - name: docker_sock
         path: /var/run/docker.sock
     commands:
-      - |
-        cat << EOF >> .env
-        INFISICAL_ENCRYPTION_KEY=$INFISICAL_ENCRYPTION_KEY
-        INFISICAL_AUTH_SECRET=$INFISICAL_AUTH_SECRET
-        INFISICAL_SITE_URL=$INFISICAL_SITE_URL
-        EOF
       - docker compose up -d --no-deps infisical
       - |
         for i in $(seq 1 30); do
@@ -107,7 +102,7 @@ steps:
           sleep 2
         done
     depends_on:
-      - Postgre
+      - Clone
 
   - name: Environment
     image: oven/bun:latest
@@ -129,6 +124,9 @@ steps:
       - bun install --frozen-lockfile
       - cp /usr/local/bin/infisical node_modules/.bin/infisical
     depends_on:
+      - Redis
+      - Postgre
+      - databasus
       - infisical
 
   - name: RustFS
@@ -149,7 +147,7 @@ steps:
     commands:
       - docker compose up -d deemix
     depends_on:
-      - RustFS
+      - Environment
 
   - name: searxng
     image: docker:latest
@@ -163,7 +161,7 @@ steps:
       - docker compose up -d searxng
       - docker compose restart searxng
     depends_on:
-      - deemix
+      - Environment
 
   - name: Prisma Contract
     image: oven/bun:latest
@@ -176,6 +174,8 @@ steps:
     commands:
       - INFISICAL_API_URL="$(printf '%s' "$INFISICAL_SITE_URL" | sed 's|/$||')/api" bun run --filter=@NamelessLiberty/db contract:emit
     depends_on:
+      - RustFS
+      - deemix
       - searxng
 
   - name: Prisma Update
@@ -298,13 +298,13 @@ steps:
   - name: NamelessLiberty - Build Android
     image: oven/bun:latest
     commands:
-      - apt-get update && apt-get install -y build-essential curl unzip openjdk-17-jdk
+      - apt-get update && apt-get install -y build-essential curl unzip default-jdk
       - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
       - export PATH="$HOME/.cargo/bin:$PATH"
       - rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android i686-linux-android
       - export ANDROID_HOME=/opt/android-sdk
       - export NDK_HOME="$ANDROID_HOME/ndk/27.2.12479018"
-      - export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+      - export JAVA_HOME="$(dirname "$(dirname "$(readlink -f "$(which javac)")")")"
       - mkdir -p "$ANDROID_HOME/cmdline-tools"
       - curl -sSL https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -o /tmp/cmdline-tools.zip
       - unzip -q /tmp/cmdline-tools.zip -d /tmp/cmdline-tools && mv /tmp/cmdline-tools/cmdline-tools "$ANDROID_HOME/cmdline-tools/latest" && rm -rf /tmp/cmdline-tools /tmp/cmdline-tools.zip

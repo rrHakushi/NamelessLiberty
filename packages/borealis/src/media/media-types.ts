@@ -358,7 +358,13 @@ export interface NormalizedMediaData {
   creatorId?: string | null
   creatorUsername?: string | null
   creatorDisplayName?: string | null
+  isPublished?: boolean
   lyricsSource?: string | null
+  customFields?: Array<{
+    label: string
+    value: string | string[]
+    type: "text" | "link" | "badges"
+  }> | null
   progressFields?: Array<{
     key: string
     label: string
@@ -366,6 +372,14 @@ export interface NormalizedMediaData {
     max?: number | null
   }> | null
   incrementFieldKey?: string | null
+  hasCharacters?: boolean
+  hasStaff?: boolean
+  hasRelations?: boolean
+  hasEpisodes?: boolean
+  hasTracks?: boolean
+  hasLyrics?: boolean
+  hasImages?: boolean
+  hasTrailers?: boolean
 
   updatedAt: string | Date
 }

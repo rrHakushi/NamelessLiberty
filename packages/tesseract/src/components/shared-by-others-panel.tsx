@@ -18,8 +18,6 @@ import {
   IconInfoCircle,
   IconLink,
   IconRefresh,
-  IconSend,
-  IconX,
 } from "@tabler/icons-react"
 import { toast } from "sonner"
 import {
@@ -50,7 +48,6 @@ import { supportsDirectoryPicker } from "@NamelessLiberty/tesseract/lib/download
 import type {
   RemoteFolderItem,
   RemoteShelfItem,
-  TesseractPeer,
 } from "@NamelessLiberty/tesseract/lib/types"
 import { DeviceTypeIcon } from "./device-icon"
 import { TransferActivityBar } from "./transfer-activity-bar"
@@ -68,11 +65,7 @@ function makeSelectionKey(peerId: string, id: string) {
   return `${peerId}::${id}`
 }
 
-export function SharedByOthersPanel({
-  onOpenDirectSend,
-}: {
-  onOpenDirectSend: (peer: TesseractPeer) => void
-}) {
+export function SharedByOthersPanel() {
   const t = useTranslations("tesseract")
   const {
     isAuthenticated,
@@ -82,8 +75,6 @@ export function SharedByOthersPanel({
     setMyDevicesOnly,
     peerDiagnostics,
     remoteShelves,
-    receivedDirectTexts,
-    dismissReceivedDirectText,
     retryPeerConnection,
     pullItemsFromPeer,
     transfers,
@@ -244,14 +235,6 @@ export function SharedByOthersPanel({
     })
   }
 
-  const totalRemoteItems = useMemo(() => {
-    let count = 0
-    for (const peer of filteredPeers) {
-      count += (remoteShelves[peer.peerId] || []).length
-    }
-    return count
-  }, [filteredPeers, remoteShelves])
-
   const selectedTotalBytes = useMemo(
     () => selectedSpecs.reduce((acc, s) => acc + s.size, 0),
     [selectedSpecs]
@@ -265,9 +248,6 @@ export function SharedByOthersPanel({
           <h2 className="text-base font-semibold text-foreground">
             {t("sharedByOthers.shelfTitle")}
           </h2>
-          <Badge variant="secondary" className="text-xs">
-            {totalRemoteItems}
-          </Badge>
         </div>
 
         <div className="flex flex-wrap items-center gap-1.5">
@@ -331,73 +311,6 @@ export function SharedByOthersPanel({
         </div>
       )}
 
-      {/* Received Direct Text Snippets */}
-      {receivedDirectTexts.length > 0 && (
-        <div className="mb-3 flex flex-col gap-2">
-          {receivedDirectTexts.map((bundle) => (
-            <div
-              key={bundle.id}
-              className="rounded-xl border border-lime-500/40 bg-lime-500/10 p-3"
-            >
-              <div className="mb-1.5 flex items-center justify-between gap-2">
-                <span className="text-xs font-medium text-foreground">
-                  {t("sharedByOthers.directTextFrom", {
-                    peer: bundle.fromAlias,
-                  })}
-                </span>
-                <Button
-                  type="button"
-                  size="icon-xs"
-                  variant="ghost"
-                  onClick={() => dismissReceivedDirectText(bundle.id)}
-                  aria-label={t("common.dismiss")}
-                >
-                  <IconX className="size-3.5" />
-                </Button>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                {bundle.items.map((txt) => (
-                  <div
-                    key={txt.id}
-                    className="flex items-center justify-between gap-2 rounded-lg bg-background/80 p-2 text-xs"
-                  >
-                    <span className="line-clamp-2 min-w-0 flex-1 break-all">
-                      {txt.content}
-                    </span>
-                    <div className="flex shrink-0 items-center gap-1">
-                      <Button
-                        type="button"
-                        size="icon-xs"
-                        variant="ghost"
-                        onClick={() => handleCopyText(txt.id, txt.content)}
-                        aria-label={t("common.copy")}
-                      >
-                        {copiedId === txt.id ? (
-                          <IconCheck className="size-3.5 text-lime-500" />
-                        ) : (
-                          <IconCopy className="size-3.5" />
-                        )}
-                      </Button>
-                      {txt.isUrl && /^https?:\/\//i.test(txt.content) && (
-                        <a
-                          href={txt.content}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex size-6 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
-                          aria-label={t("sharedByOthers.openLink")}
-                        >
-                          <IconExternalLink className="size-3.5" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
       {/* Available Files & Peer Shelves */}
       <ScrollArea className="flex-1 pe-1">
         {filteredPeers.length === 0 ? (
@@ -417,7 +330,6 @@ export function SharedByOthersPanel({
               const isSameAccount = Boolean(
                 currentUserId && peer.user?.id === currentUserId
               )
-              const canDirectSend = isAuthenticated && peer.isAuthenticated
 
               return (
                 <div
@@ -528,22 +440,6 @@ export function SharedByOthersPanel({
                             </Popover>
                           </PopoverTrigger>
                         </div>
-                      )}
-
-                      {canDirectSend && (
-                        <Button
-                          type="button"
-                          size="xs"
-                          variant="secondary"
-                          onClick={() => onOpenDirectSend(peer)}
-                          disabled={diag.state === "unreachable"}
-                        >
-                          <IconSend
-                            data-icon="inline-start"
-                            className="size-3"
-                          />
-                          <span>{t("sharedByOthers.directSend")}</span>
-                        </Button>
                       )}
                     </div>
                   </div>

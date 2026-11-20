@@ -21,6 +21,7 @@ model Studio {
     updatedAt DateTime @onCreate(now()) @onUpdate(now())
 
     mediaStudios MediaStudio[]
+    otherStudios OtherStudio[] @relation("OtherStudioRef")
 
     @@index([name])
 }

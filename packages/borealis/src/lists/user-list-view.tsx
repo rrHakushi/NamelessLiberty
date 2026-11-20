@@ -25,6 +25,7 @@ import {
   getMediaListStatusText,
 } from "@NamelessLiberty/borealis"
 import { MediaListGrid } from "./media-list-grid"
+import { matchesAnyFuzzy } from "../lib/fuzzy-search"
 
 const ListCommentsTab = dynamic(
   () => import("./list-comments-tab").then((m) => m.ListCommentsTab),
@@ -80,37 +81,21 @@ function matchesMediaSearch(
 ): boolean {
   if (!query) return true
 
-  // Direct checks across all titles, Romanizations, and names
-  if (media.titlePrimary && media.titlePrimary.toLowerCase().includes(query))
-    return true
-  if (
-    media.titleSecondary &&
-    media.titleSecondary.toLowerCase().includes(query)
-  )
-    return true
-  if (media.titleNative && media.titleNative.toLowerCase().includes(query))
-    return true
-  if (media.titleEnglish && media.titleEnglish.toLowerCase().includes(query))
-    return true
-  if (media.titleRomaji && media.titleRomaji.toLowerCase().includes(query))
-    return true
-  if (media.subtitle && media.subtitle.toLowerCase().includes(query))
-    return true
-  if (media.title && media.title.toLowerCase().includes(query)) return true
-  if (media.name && media.name.toLowerCase().includes(query)) return true
-  if (media.artist && media.artist.toLowerCase().includes(query)) return true
-  if (media.artistName && media.artistName.toLowerCase().includes(query))
-    return true
-  if (
-    Array.isArray(media.synonyms) &&
-    media.synonyms.some(
-      (s: string) => typeof s === "string" && s.toLowerCase().includes(query)
-    )
-  ) {
-    return true
-  }
-
-  return false
+  return matchesAnyFuzzy(query, [
+    media.titlePrimary,
+    media.titleSecondary,
+    media.titleNative,
+    media.titleEnglish,
+    media.titleRomaji,
+    media.subtitle,
+    media.title,
+    media.name,
+    media.artist,
+    media.artistName,
+    ...(Array.isArray(media.synonyms)
+      ? media.synonyms.filter((s: unknown): s is string => typeof s === "string")
+      : []),
+  ])
 }
 
 /**

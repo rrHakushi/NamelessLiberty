@@ -127,8 +127,8 @@ export function TransferActivityBar({
                   {task.status === "active" && (
                     <span className="text-[11px] tabular-nums text-muted-foreground">
                       {formatBytes(task.transferredBytes)} /{" "}
-                      {formatBytes(task.totalBytes)} Â·{" "}
-                      {formatSpeed(task.speedBytesPerSec)} Â·{" "}
+                      {formatBytes(task.totalBytes)} ·{" "}
+                      {formatSpeed(task.speedBytesPerSec)} ·{" "}
                       {formatEta(task.etaSeconds)}
                     </span>
                   )}

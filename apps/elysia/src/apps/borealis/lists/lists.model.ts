@@ -271,6 +271,8 @@ export const BorealisListsModel = {
     score: t.Optional(t.Nullable(t.Number({ minimum: 0, maximum: 10, description: 'Rating score (0-10)' }))),
     notes: t.Optional(t.Nullable(t.String({ description: 'Personal notes' }))),
     private: t.Optional(t.Boolean({ default: false, description: 'Private entry' })),
+    rewatched: t.Optional(t.Number({ minimum: 0, description: 'Repeat/rewatch count' })),
+    rewatchHistory: t.Optional(t.Any()),
     startedAt: t.Optional(t.Nullable(t.String({ description: 'Start date ISO string' }))),
     completedAt: t.Optional(t.Nullable(t.String({ description: 'Completion date ISO string' }))),
   }),

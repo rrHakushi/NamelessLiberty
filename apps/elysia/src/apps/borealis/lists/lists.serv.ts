@@ -3567,7 +3567,33 @@ export class BorealisListsServ extends BaseBorealisListService {
       itemsQ
         .offset(skip)
         .limit(limit)
-        .include('other')
+        .include('other', (o) =>
+          o.select(
+            'id',
+            'creatorId',
+            'titlePrimary',
+            'titleSecondary',
+            'titleNative',
+            'coverImage',
+            'bannerImage',
+            'description',
+            'format',
+            'status',
+            'isPublished',
+            'isAdult',
+            'startDateYear',
+            'startDateMonth',
+            'startDateDay',
+            'progressFields',
+            'incrementFieldKey',
+            'averageScore',
+            'favorites',
+            'popularity',
+            'preUpdateSnapshot',
+            'createdAt',
+            'updatedAt'
+          )
+        )
         .all(),
     ])
 
@@ -3602,7 +3628,21 @@ export class BorealisListsServ extends BaseBorealisListService {
 
   public static async getOtherEntry(userId: string, otherId: number) {
     const existing = await prisma.orm.public.OtherList.where({ userId, otherId })
-      .include('other')
+      .include('other', (o) =>
+        o.select(
+          'id',
+          'creatorId',
+          'titlePrimary',
+          'titleSecondary',
+          'coverImage',
+          'bannerImage',
+          'format',
+          'status',
+          'isPublished',
+          'progressFields',
+          'incrementFieldKey'
+        )
+      )
       .first()
 
     if (existing) {
@@ -3681,6 +3721,10 @@ export class BorealisListsServ extends BaseBorealisListService {
           score: body?.score !== undefined ? body.score : undefined,
           notes: body?.notes !== undefined ? body.notes : undefined,
           private: body?.private !== undefined ? Boolean(body.private) : undefined,
+          ...(body?.rewatched !== undefined ? { rewatched: body.rewatched } : {}),
+          ...(body?.rewatchHistory !== undefined
+            ? { rewatchHistory: body.rewatchHistory }
+            : {}),
           startedAt,
           completedAt,
         })
@@ -3693,6 +3737,8 @@ export class BorealisListsServ extends BaseBorealisListService {
           score: body?.score !== undefined ? body.score : null,
           notes: body?.notes !== undefined ? body.notes : null,
           private: body?.private !== undefined ? Boolean(body.private) : false,
+          rewatched: body?.rewatched ?? 0,
+          rewatchHistory: body?.rewatchHistory ?? null,
           startedAt,
           completedAt,
         })
@@ -3744,7 +3790,18 @@ export class BorealisListsServ extends BaseBorealisListService {
 
   public static async deleteOtherEntry(userId: string, otherId: number) {
     const existing = await prisma.orm.public.OtherList.where({ userId, otherId })
-      .include('other')
+      .include('other', (o) =>
+        o.select(
+          'id',
+          'titlePrimary',
+          'titleSecondary',
+          'coverImage',
+          'bannerImage',
+          'format',
+          'progressFields',
+          'incrementFieldKey'
+        )
+      )
       .first()
 
     await prisma.orm.public.OtherList.where({ userId, otherId }).deleteAll()
@@ -3879,69 +3936,41 @@ export class BorealisListsServ extends BaseBorealisListService {
     }
   }
 
-  public static async getOtherStats(userId: string) {
-    const entries = await prisma.orm.public.OtherList.where({ userId })
-      .include('other')
-      .all()
-
-    const total = entries.length
-    const statusCounts: Record<string, number> = {}
-    let totalScore = 0
-    let scoredCount = 0
-    let totalProgress = 0
-    const scoreBuckets: Record<number, number> = {}
-
-    for (let i = 1; i <= 10; i++) {
-      scoreBuckets[i] = 0
+  public static async getOtherStats(
+    userId: string,
+    query?: any,
+    isOwner: boolean = true
+  ) {
+    let q = prisma.orm.public.OtherList.where({ userId })
+    if (!isOwner) {
+      q = q.where({ private: false })
     }
-
-    for (const e of entries) {
-      if (e.status) {
-        statusCounts[e.status] = (statusCounts[e.status] || 0) + 1
-      }
-      if (e.score !== null && e.score !== undefined && e.score > 0) {
-        totalScore += e.score
-        scoredCount++
-        const rounded = Math.min(10, Math.max(1, Math.round(e.score)))
-        scoreBuckets[rounded] = (scoreBuckets[rounded] || 0) + 1
-      }
-      const incKey = e.other?.incrementFieldKey
-      const val =
-        incKey && (e.progressValues as any)?.[incKey]
-          ? Number((e.progressValues as any)[incKey])
-          : 0
-      totalProgress += val
-    }
-
-    const meanScore =
-      scoredCount > 0 ? Number((totalScore / scoredCount).toFixed(2)) : 0
-    const scoreDistribution = Object.entries(scoreBuckets).map(([score, count]) => ({
-      score: Number(score),
-      count,
-    }))
-
+    const items = await q.select('status', 'progressValues', 'score', 'rewatched').all()
+    const data = await mediaStatsService.getOtherStats(userId, isOwner, {
+      year: query?.year ? Number(query.year) : undefined,
+      quarter: query?.quarter ? Number(query.quarter) : undefined,
+      month: query?.month ? Number(query.month) : undefined,
+    })
     return {
       success: true,
-      stats: {
-        total,
-        statusCounts,
-        meanScore,
-        totalProgress,
-        scoreDistribution,
-      },
+      data,
+      stats: computeStats(items, 'progressValues'),
     }
   }
 
   public static async getOtherFilters(userId: string) {
-    const entries = await prisma.orm.public.OtherList.where({ userId })
+    const entries: any[] = await prisma.orm.public.OtherList.where({ userId })
       .select('status', 'priority', 'private', 'notes')
       .include('other', (o) =>
-        o.select('startDate', 'format')
+        o
+          .select('startDate', 'startDateYear', 'format', 'status')
+          .include('genres', (g) => g.include('genre', (ge) => ge.select('name')))
       )
       .all()
 
     const statusCounts: Record<string, number> = {}
     const formatCounts: Record<string, number> = {}
+    const genreCounts: Record<string, number> = {}
     const yearCounts: Record<number, number> = {}
     const priorityCounts: Record<string, number> = { LOW: 0, MEDIUM: 0, HIGH: 0, ULTRA: 0 }
     let publicCount = 0
@@ -3966,11 +3995,15 @@ export class BorealisListsServ extends BaseBorealisListService {
         const fmt = item.other.format.trim().toLowerCase()
         formatCounts[fmt] = (formatCounts[fmt] || 0) + 1
       }
-      if (item.other?.startDate) {
-        const yr = new Date(item.other.startDate).getFullYear()
-        if (!isNaN(yr)) {
-          yearCounts[yr] = (yearCounts[yr] || 0) + 1
-        }
+      const yr =
+        item.other?.startDateYear ??
+        (item.other?.startDate ? new Date(item.other.startDate).getFullYear() : NaN)
+      if (!isNaN(yr)) {
+        yearCounts[yr] = (yearCounts[yr] || 0) + 1
+      }
+      for (const g of item.other?.genres || []) {
+        const name = g?.genre?.name
+        if (name) genreCounts[name] = (genreCounts[name] || 0) + 1
       }
     }
 
@@ -3978,11 +4011,15 @@ export class BorealisListsServ extends BaseBorealisListService {
       success: true,
       statuses: Object.entries(statusCounts).map(([value, count]) => ({ value, count })),
       formats: Object.entries(formatCounts).map(([value, count]) => ({ value, count })),
-      genres: [],
-      years: Object.entries(yearCounts).map(([value, count]) => ({
-        value: Number(value),
-        count,
-      })),
+      genres: Object.entries(genreCounts)
+        .map(([value, count]) => ({ value, count }))
+        .sort((a, b) => b.count - a.count),
+      years: Object.entries(yearCounts)
+        .map(([value, count]) => ({
+          value: Number(value),
+          count,
+        }))
+        .sort((a, b) => b.value - a.value),
       priorities: Object.entries(priorityCounts).map(([value, count]) => ({ value, count })),
       connections: [],
       companies: [],

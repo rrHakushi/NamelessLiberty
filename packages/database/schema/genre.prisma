@@ -12,6 +12,7 @@ model Genre {
     games GameGenre[]
     books BookGenre[]
     music MusicGenre[]
+    others OtherGenre[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @onCreate(now()) @onUpdate(now())

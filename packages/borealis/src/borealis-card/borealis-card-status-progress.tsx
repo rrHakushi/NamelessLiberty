@@ -222,8 +222,8 @@ export function BorealisCardStatusProgress() {
         const isTv = data.type === "tv"
         const isMangaOrBook =
           data.type === "manga" || data.type === "books" || data.type === "book"
-        const isGameOrOther =
-          data.type === "games" || data.type === "game" || data.type === "other"
+        const isGame = data.type === "games" || data.type === "game"
+        const isOther = data.type === "other"
 
         const canIncrement = Boolean(config.onIncrement || effectiveOnIncrementVolume)
 
@@ -525,8 +525,25 @@ export function BorealisCardStatusProgress() {
         }
 
         let progressDisplayLabel: React.ReactNode = ""
-        if (isGameOrOther) {
+        if (isGame) {
           progressDisplayLabel = `${data.progress.current} Hours`
+        } else if (isOther) {
+          progressDisplayLabel = (
+            <>
+              {data.progress.current}
+              {data.progress.max ? (
+                <>
+                  <span className="text-muted-foreground/40 px-0.5 font-normal">/</span>
+                  <span>{data.progress.max}</span>
+                </>
+              ) : null}
+              {data.progress.unit ? (
+                <span className="text-muted-foreground ms-1 font-normal">
+                  {data.progress.unit}
+                </span>
+              ) : null}
+            </>
+          )
         } else {
           progressDisplayLabel = (
             <>
@@ -561,7 +578,7 @@ export function BorealisCardStatusProgress() {
               placement="bottom start"
               className="w-auto min-w-[130px] whitespace-nowrap text-[10px] border border-primary/40 bg-black/65 text-foreground shadow-2xl backdrop-blur-md z-[100]"
             >
-              {isGameOrOther ? (
+              {isGame ? (
                 <>
                   <DropdownMenuItem
                     onAction={() => config.onIncrement?.(1)}

@@ -174,29 +174,60 @@ export function MediaDetailView({
     const cat = media.category
     const isMusic = cat === "music"
 
-    if (cat === "anime" || cat === "manga") {
+    if (
+      cat === "anime" ||
+      cat === "manga" ||
+      (cat === "other" && (media.hasRelations || (media.relations?.length ?? 0) > 0))
+    ) {
       tabs.push({ key: "relations", label: "Relations" })
     }
 
-    if (isMusic && media.tracks && media.tracks.length > 0) {
+    if (
+      (isMusic || cat === "other") &&
+      (media.hasTracks || (media.tracks && media.tracks.length > 0))
+    ) {
       tabs.push({ key: "tracks", label: "Tracks" })
     }
-    if (isMusic && (media.lyrics || media.syncedLyrics)) {
+    if (
+      (isMusic || cat === "other") &&
+      (media.hasLyrics || media.lyrics || media.syncedLyrics)
+    ) {
       tabs.push({ key: "lyrics", label: "Lyrics" })
     }
-    if (cat !== "other" && !isMusic) {
+    if (
+      (cat !== "other" && !isMusic) ||
+      (cat === "other" && (media.hasCharacters || (media.characters?.length ?? 0) > 0))
+    ) {
       tabs.push({ key: "characters", label: "Characters" })
     }
-    if (cat !== "other") {
+    if (
+      cat !== "other" ||
+      (cat === "other" && (media.hasStaff || (media.staff?.length ?? 0) > 0))
+    ) {
       tabs.push({ key: "staff", label: isMusic ? "Credits" : "Staff" })
     }
-    if (cat === "anime" || cat === "tv") {
+    if (
+      cat === "anime" ||
+      cat === "tv" ||
+      (cat === "other" &&
+        (media.hasEpisodes ||
+          (media.episodes?.length ?? 0) > 0 ||
+          (media.seasons?.length ?? 0) > 0))
+    ) {
       tabs.push({ key: "episodes", label: "Episodes" })
     }
-    if (cat !== "other") {
+    if (
+      cat !== "other" ||
+      (cat === "other" &&
+        (media.hasImages ||
+          Boolean(media.images || media.coverImage || media.bannerImage)))
+    ) {
       tabs.push({ key: "images", label: "Images" })
     }
-    if (!isMusic && (media.trailers?.length ?? 0) > 0) {
+    if (
+      !isMusic &&
+      (media.hasTrailers || (media.trailers?.length ?? 0) > 0)
+    ) {
       tabs.push({ key: "trailers", label: "Trailers" })
     }
     tabs.push(
@@ -212,6 +243,22 @@ export function MediaDetailView({
     media.lyrics,
     media.syncedLyrics,
     media.trailers,
+    media.hasRelations,
+    media.relations,
+    media.hasTracks,
+    media.hasLyrics,
+    media.hasCharacters,
+    media.characters,
+    media.hasStaff,
+    media.staff,
+    media.hasEpisodes,
+    media.episodes,
+    media.seasons,
+    media.hasImages,
+    media.images,
+    media.coverImage,
+    media.bannerImage,
+    media.hasTrailers,
   ])
   // Fallback if URL tab is not in available tabs
   const validActiveTab = useMemo(() => {
@@ -220,7 +267,7 @@ export function MediaDetailView({
   }, [availableTabs, activeTab])
 
   // Lazy per-tab data (cached across tab switches)
-  const hasSections = media.category !== "other"
+  const hasSections = true
   const sec = (name: MediaSection, tabs: MediaTabKey[]) =>
     useMediaSection(
       media.category,
@@ -345,6 +392,7 @@ export function MediaDetailView({
             tracks={media.tracks ?? []}
             albumTitle={media.titlePrimary}
             albumArtistPersonId={media.artistPersonId}
+            disableTrackLinks={media.category === "other"}
           />
         )}
 

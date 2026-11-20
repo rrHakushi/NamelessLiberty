@@ -14,6 +14,7 @@ import {
   animeMappingProvider,
 } from '../providers'
 import { BaseMediaSyncer } from '../_shared/base-syncer'
+import { resolveCharacterDescriptionLinks } from '../_shared/character-description.helper'
 import {
   MediaPreviewSyncer,
   mapAnimeFormat,
@@ -399,6 +400,9 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
   ): Promise<void> {
     if (!characters?.edges || !Array.isArray(characters.edges)) return
 
+    const syncedCharacterIds: number[] = []
+    const knownAnilistToLocal = new Map<number, number>()
+
     for (const edge of characters.edges) {
       if (!edge?.node?.name?.full) continue
       const anilistCharId = edge.node.id
@@ -429,6 +433,11 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
             ...(edge.node.gender ? { gender: edge.node.gender } : {}),
             ...(edge.node.age ? { age: edge.node.age } : {}),
           }).catch(() => {})
+        }
+
+        syncedCharacterIds.push(char.id)
+        if (anilistCharId) {
+          knownAnilistToLocal.set(anilistCharId, char.id)
         }
 
         const role =
@@ -517,6 +526,12 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
       } catch (err: any) {
         logger.warn(`Failed to sync character for ${mediaType} #${mediaId}: ${err?.message || err}`)
       }
+    }
+
+    if (syncedCharacterIds.length > 0) {
+      await resolveCharacterDescriptionLinks(syncedCharacterIds, knownAnilistToLocal).catch((err: any) => {
+        logger.warn(`Failed to resolve character description links for ${mediaType} #${mediaId}: ${err?.message || err}`)
+      })
     }
   }
 

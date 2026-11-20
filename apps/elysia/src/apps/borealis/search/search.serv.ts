@@ -1,8 +1,20 @@
 import { BaseService } from '../../../core/base/base.serv'
-import { prisma, countOf, or } from '@NamelessLiberty/db'
 import { BadRequest } from '../../../core/errors/http-errors'
 import { BorealisExternalSearchServ } from './external-search.serv'
 import type { PreviewResult } from '../sync/media-preview.syncer'
+import {
+  searchAnimeRaw,
+  searchBookRaw,
+  searchCharacterRaw,
+  searchGameRaw,
+  searchMangaRaw,
+  searchMovieRaw,
+  searchMusicRaw,
+  searchOtherRaw,
+  searchPersonRaw,
+  searchStudioRaw,
+  searchTvRaw,
+} from './search-query.helper'
 
 export interface SearchQuery {
   q: string
@@ -34,7 +46,8 @@ function mergeWithExternal<T extends { id: number }>(
   items: T[],
   externalStubs: PreviewResult[],
   mediaType: string,
-  total: number
+  skip: number,
+  hasMore: boolean
 ) {
   const externalIds = new Set(externalStubs.map((s) => s.id))
   const results = items.map((x) => ({
@@ -56,9 +69,11 @@ function mergeWithExternal<T extends { id: number }>(
     }))
 
   const combined = [...results, ...newStubs]
+  const total = skip + combined.length + (hasMore ? 1 : 0)
   return {
     results: combined,
-    total: total + newStubs.length,
+    total,
+    hasMore,
   }
 }
 
@@ -105,856 +120,125 @@ export class BorealisSearchServ extends BaseService {
       )
     }
 
+    const formatPaginated = (
+      results: any[],
+      total: number,
+      hasMore: boolean,
+      cat: string = category
+    ) => ({
+      success: true,
+      category: cat,
+      query: cleanQuery,
+      results,
+      pagination: {
+        page,
+        limit,
+        total,
+        hasMore,
+      },
+    })
+
     switch (category) {
       case 'anime': {
-        const q = prisma.orm.public.Anime.where((a) =>
-          or(
-            a.titlePrimary.ilike(`%${cleanQuery}%`),
-            a.titleSecondary.ilike(`%${cleanQuery}%`),
-            a.titleNative.ilike(`%${cleanQuery}%`)
-          )
-        )
-        const [total, items] = await Promise.all([
-          countOf(q),
-          q
-            .offset(skip)
-            .limit(limit)
-            .select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'titleNative',
-              'coverImage',
-              'bannerImage',
-              'description',
-              'format',
-              'status',
-              'source',
-              'seasonYear',
-              'seasonSeason',
-              'episodeCount',
-              'averageScore',
-              'popularity',
-              'favorites',
-              'alUpdatedAt'
-            )
-            .include('genres', (g) =>
-              g.include('genre', (ge) => ge.select('id', 'name'))
-            )
-            .include('studios', (st) =>
-              st.include('studio', (s) => s.select('id', 'name'))
-            )
-            .all(),
-        ])
-        const mappedItems = items.map((x) => ({
-          ...x,
-          genres: (x.genres || [])
-            .filter((g) => Boolean(g.genre))
-            .map((g) => ({
-              id: g.genre!.id,
-              name: g.genre!.name,
-            })),
-          studios: (x.studios || [])
-            .filter((st: any) => Boolean(st.studio))
-            .map((st: any) => ({
-              id: st.studio!.id,
-              name: st.studio!.name,
-            })),
-        }))
-        const { results, total: combinedTotal } = mergeWithExternal(
-          mappedItems,
-          externalStubs,
-          'anime',
-          total
-        )
-        return {
-          success: true,
-          category,
-          query: cleanQuery,
-          results,
-          pagination: {
-            page,
-            limit,
-            total: combinedTotal,
-            hasMore: skip + results.length < combinedTotal,
-          },
-        }
+        const { items, hasMore } = await searchAnimeRaw(cleanQuery, limit, skip)
+        const merged = mergeWithExternal(items, externalStubs, 'anime', skip, hasMore)
+        return formatPaginated(merged.results, merged.total, merged.hasMore)
       }
 
       case 'manga': {
-        const q = prisma.orm.public.Manga.where((m) =>
-          or(
-            m.titlePrimary.ilike(`%${cleanQuery}%`),
-            m.titleSecondary.ilike(`%${cleanQuery}%`),
-            m.titleNative.ilike(`%${cleanQuery}%`)
-          )
-        )
-        const [total, items] = await Promise.all([
-          countOf(q),
-          q
-            .offset(skip)
-            .limit(limit)
-            .select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'titleNative',
-              'coverImage',
-              'bannerImage',
-              'description',
-              'format',
-              'status',
-              'source',
-              'startDateYear',
-              'chapterCount',
-              'volumeCount',
-              'averageScore',
-              'popularity',
-              'favorites',
-              'alUpdatedAt'
-            )
-            .include('genres', (g) =>
-              g.include('genre', (ge) => ge.select('id', 'name'))
-            )
-            .all(),
-        ])
-        const mappedItems = items.map((x) => ({
-          ...x,
-          genres: (x.genres || [])
-            .filter((g) => Boolean(g.genre))
-            .map((g) => ({
-              id: g.genre!.id,
-              name: g.genre!.name,
-            })),
-        }))
-        const { results, total: combinedTotal } = mergeWithExternal(
-          mappedItems,
-          externalStubs,
-          'manga',
-          total
-        )
-        return {
-          success: true,
-          category,
-          query: cleanQuery,
-          results,
-          pagination: {
-            page,
-            limit,
-            total: combinedTotal,
-            hasMore: skip + results.length < combinedTotal,
-          },
-        }
+        const { items, hasMore } = await searchMangaRaw(cleanQuery, limit, skip)
+        const merged = mergeWithExternal(items, externalStubs, 'manga', skip, hasMore)
+        return formatPaginated(merged.results, merged.total, merged.hasMore)
       }
 
       case 'movie':
       case 'movies': {
-        const q = prisma.orm.public.Movie.where((m) =>
-          or(
-            m.titlePrimary.ilike(`%${cleanQuery}%`),
-            m.titleSecondary.ilike(`%${cleanQuery}%`),
-            m.titleNative.ilike(`%${cleanQuery}%`)
-          )
-        )
-        const [total, items] = await Promise.all([
-          countOf(q),
-          q
-            .offset(skip)
-            .limit(limit)
-            .select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'titleNative',
-              'coverImage',
-              'bannerImage',
-              'description',
-              'status',
-              'runtime',
-              'releaseDateYear',
-              'averageScore',
-              'popularity',
-              'favorites',
-              'tvdbUpdatedAt'
-            )
-            .include('genres', (g) =>
-              g.include('genre', (ge) => ge.select('id', 'name'))
-            )
-            .include('studios', (st) =>
-              st.include('studio', (s) => s.select('id', 'name'))
-            )
-            .all(),
-        ])
-        const mappedItems = items.map((x) => ({
-          ...x,
-          duration: x.runtime,
-          genres: (x.genres || [])
-            .filter((g) => Boolean(g.genre))
-            .map((g) => ({
-              id: g.genre!.id,
-              name: g.genre!.name,
-            })),
-          studios: (x.studios || [])
-            .filter((st: any) => Boolean(st.studio))
-            .map((st: any) => ({
-              id: st.studio!.id,
-              name: st.studio!.name,
-            })),
-        }))
-        const { results, total: combinedTotal } = mergeWithExternal(
-          mappedItems,
-          externalStubs,
-          'movie',
-          total
-        )
-        return {
-          success: true,
-          category,
-          query: cleanQuery,
-          results,
-          pagination: {
-            page,
-            limit,
-            total: combinedTotal,
-            hasMore: skip + results.length < combinedTotal,
-          },
-        }
+        const { items, hasMore } = await searchMovieRaw(cleanQuery, limit, skip)
+        const merged = mergeWithExternal(items, externalStubs, 'movie', skip, hasMore)
+        return formatPaginated(merged.results, merged.total, merged.hasMore)
       }
 
       case 'tv': {
-        const q = prisma.orm.public.Tv.where((t) =>
-          or(
-            t.titlePrimary.ilike(`%${cleanQuery}%`),
-            t.titleSecondary.ilike(`%${cleanQuery}%`),
-            t.titleNative.ilike(`%${cleanQuery}%`)
-          )
-        )
-        const [total, items] = await Promise.all([
-          countOf(q),
-          q
-            .offset(skip)
-            .limit(limit)
-            .select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'titleNative',
-              'coverImage',
-              'bannerImage',
-              'description',
-              'status',
-              'episodeCount',
-              'firstAiredYear',
-              'averageScore',
-              'popularity',
-              'favorites',
-              'tvdbUpdatedAt'
-            )
-            .include('genres', (g) =>
-              g.include('genre', (ge) => ge.select('id', 'name'))
-            )
-            .all(),
-        ])
-        const mappedItems = items.map((x) => ({
-          ...x,
-          releaseDateYear: x.firstAiredYear,
-          genres: (x.genres || [])
-            .filter((g) => Boolean(g.genre))
-            .map((g) => ({
-              id: g.genre!.id,
-              name: g.genre!.name,
-            })),
-        }))
-        const { results, total: combinedTotal } = mergeWithExternal(
-          mappedItems,
-          externalStubs,
-          'tv',
-          total
-        )
-        return {
-          success: true,
-          category,
-          query: cleanQuery,
-          results,
-          pagination: {
-            page,
-            limit,
-            total: combinedTotal,
-            hasMore: skip + results.length < combinedTotal,
-          },
-        }
+        const { items, hasMore } = await searchTvRaw(cleanQuery, limit, skip)
+        const merged = mergeWithExternal(items, externalStubs, 'tv', skip, hasMore)
+        return formatPaginated(merged.results, merged.total, merged.hasMore)
       }
 
       case 'game':
       case 'games': {
-        const q = prisma.orm.public.Game.where((g) =>
-          or(
-            g.titlePrimary.ilike(`%${cleanQuery}%`),
-            g.titleSecondary.ilike(`%${cleanQuery}%`),
-            g.titleNative.ilike(`%${cleanQuery}%`)
-          )
-        )
-        const [total, items] = await Promise.all([
-          countOf(q),
-          q
-            .offset(skip)
-            .limit(limit)
-            .select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'titleNative',
-              'coverImage',
-              'bannerImage',
-              'description',
-              'platforms',
-              'status',
-              'releaseDateYear',
-              'averageScore',
-              'popularity',
-              'favorites',
-              'igdbUpdatedAt'
-            )
-            .include('genres', (g) =>
-              g.include('genre', (ge) => ge.select('id', 'name'))
-            )
-            .include('studios', (st) =>
-              st.include('studio', (s) => s.select('id', 'name'))
-            )
-            .all(),
-        ])
-        const mappedItems = items.map((x) => ({
-          ...x,
-          platforms: [...x.platforms],
-          genres: (x.genres || [])
-            .filter((g) => Boolean(g.genre))
-            .map((g) => ({
-              id: g.genre!.id,
-              name: g.genre!.name,
-            })),
-          studios: (x.studios || [])
-            .filter((st: any) => Boolean(st.studio))
-            .map((st: any) => ({
-              id: st.studio!.id,
-              name: st.studio!.name,
-            })),
-        }))
-        const { results, total: combinedTotal } = mergeWithExternal(
-          mappedItems,
-          externalStubs,
-          'game',
-          total
-        )
-        return {
-          success: true,
-          category,
-          query: cleanQuery,
-          results,
-          pagination: {
-            page,
-            limit,
-            total: combinedTotal,
-            hasMore: skip + results.length < combinedTotal,
-          },
-        }
+        const { items, hasMore } = await searchGameRaw(cleanQuery, limit, skip)
+        const merged = mergeWithExternal(items, externalStubs, 'game', skip, hasMore)
+        return formatPaginated(merged.results, merged.total, merged.hasMore)
       }
 
       case 'music': {
-        const q = prisma.orm.public.Music.where((m) =>
-          or(
-            m.titlePrimary.ilike(`%${cleanQuery}%`),
-            m.titleSecondary.ilike(`%${cleanQuery}%`),
-            m.artistName.ilike(`%${cleanQuery}%`)
-          )
-        )
-        const [total, items] = await Promise.all([
-          countOf(q),
-          q
-            .offset(skip)
-            .limit(limit)
-            .select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'artistName',
-              'coverImage',
-              'type',
-              'duration',
-              'releaseDateYear'
-            )
-            .include('album', (a) => a.select('titlePrimary'))
-            .include('genres', (g) =>
-              g.include('genre', (ge) => ge.select('id', 'name'))
-            )
-            .all(),
-        ])
-        const mappedItems = items.map((x) => ({
-          ...x,
-          artist: x.artistName,
-          albumTitle: x.album?.titlePrimary ?? null,
-          durationMs: x.duration ? x.duration * 1000 : null,
-          genres: (x.genres || [])
-            .filter((g) => Boolean(g.genre))
-            .map((g) => ({
-              id: g.genre!.id,
-              name: g.genre!.name,
-            })),
-        }))
-        const { results, total: combinedTotal } = mergeWithExternal(
-          mappedItems,
-          externalStubs,
-          'music',
-          total
-        )
-        return {
-          success: true,
-          category,
-          query: cleanQuery,
-          results,
-          pagination: {
-            page,
-            limit,
-            total: combinedTotal,
-            hasMore: skip + results.length < combinedTotal,
-          },
-        }
+        const { items, hasMore } = await searchMusicRaw(cleanQuery, limit, skip)
+        const merged = mergeWithExternal(items, externalStubs, 'music', skip, hasMore)
+        return formatPaginated(merged.results, merged.total, merged.hasMore)
       }
 
       case 'book':
       case 'books': {
-        const q = prisma.orm.public.Book.where((b) =>
-          or(
-            b.titlePrimary.ilike(`%${cleanQuery}%`),
-            b.titleSecondary.ilike(`%${cleanQuery}%`)
-          )
-        )
-        const [total, items] = await Promise.all([
-          countOf(q),
-          q
-            .offset(skip)
-            .limit(limit)
-            .select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'bannerImage',
-              'description',
-              'format',
-              'authors',
-              'pageCount',
-              'chapterCount',
-              'releaseDateYear',
-              'averageScore',
-              'popularity',
-              'favorites'
-            )
-            .include('genres', (g) =>
-              g.include('genre', (ge) => ge.select('id', 'name'))
-            )
-            .all(),
-        ])
-        const mappedItems = items.map((x) => ({
-          ...x,
-          authors: [...x.authors],
-          genres: (x.genres || [])
-            .filter((g) => Boolean(g.genre))
-            .map((g) => ({
-              id: g.genre!.id,
-              name: g.genre!.name,
-            })),
-        }))
-        const { results, total: combinedTotal } = mergeWithExternal(
-          mappedItems,
-          externalStubs,
-          'book',
-          total
-        )
-        return {
-          success: true,
-          category,
-          query: cleanQuery,
-          results,
-          pagination: {
-            page,
-            limit,
-            total: combinedTotal,
-            hasMore: skip + results.length < combinedTotal,
-          },
-        }
+        const { items, hasMore } = await searchBookRaw(cleanQuery, limit, skip)
+        const merged = mergeWithExternal(items, externalStubs, 'book', skip, hasMore)
+        return formatPaginated(merged.results, merged.total, merged.hasMore)
       }
 
       case 'character':
       case 'characters': {
-        const q = prisma.orm.public.Character.where((c) =>
-          or(
-            c.namePrimary.ilike(`%${cleanQuery}%`),
-            c.nameNative.ilike(`%${cleanQuery}%`)
-          )
-        )
-        const [total, items] = await Promise.all([
-          countOf(q),
-          q
-            .offset(skip)
-            .limit(limit)
-            .select(
-              'id',
-              'namePrimary',
-              'nameNative',
-              'image',
-              'gender',
-              'age',
-              'description',
-              'dateOfBirthDay',
-              'dateOfBirthMonth',
-              'favorites'
-            )
-            .all(),
-        ])
-        const merged = mergeWithExternal(
-          items,
-          externalStubs,
-          'characters',
-          total
-        )
-        return {
-          success: true,
-          category,
-          query: cleanQuery,
-          results: merged.results,
-          pagination: {
-            page,
-            limit,
-            total: merged.total,
-            hasMore: skip + merged.results.length < merged.total,
-          },
-        }
+        const { items, hasMore } = await searchCharacterRaw(cleanQuery, limit, skip)
+        const merged = mergeWithExternal(items, externalStubs, 'characters', skip, hasMore)
+        return formatPaginated(merged.results, merged.total, merged.hasMore)
       }
 
       case 'staff':
       case 'people': {
-        const q = prisma.orm.public.Person.where((p) =>
-          or(
-            p.namePrimary.ilike(`%${cleanQuery}%`),
-            p.nameNative.ilike(`%${cleanQuery}%`)
-          )
-        )
-        const [total, items] = await Promise.all([
-          countOf(q),
-          q
-            .offset(skip)
-            .limit(limit)
-            .select(
-              'id',
-              'namePrimary',
-              'nameNative',
-              'image',
-              'gender',
-              'age',
-              'language',
-              'primaryOccupations',
-              'description',
-              'homeTown',
-              'birthPlace',
-              'favorites'
-            )
-            .all(),
-        ])
-        const mappedItems = items.map((x) => ({
-          ...x,
-          primaryOccupations: [...x.primaryOccupations],
-        }))
-        const merged = mergeWithExternal(
-          mappedItems,
-          externalStubs,
-          'people',
-          total
-        )
-        return {
-          success: true,
-          category,
-          query: cleanQuery,
-          results: merged.results,
-          pagination: {
-            page,
-            limit,
-            total: merged.total,
-            hasMore: skip + merged.results.length < merged.total,
-          },
-        }
+        const { items, hasMore } = await searchPersonRaw(cleanQuery, limit, skip)
+        const merged = mergeWithExternal(items, externalStubs, 'people', skip, hasMore)
+        return formatPaginated(merged.results, merged.total, merged.hasMore)
       }
 
       case 'studio':
       case 'studios': {
-        const q = prisma.orm.public.Studio.where((s) =>
-          s.name.ilike(`%${cleanQuery}%`)
-        )
-        const [total, items] = await Promise.all([
-          countOf(q),
-          q
-            .offset(skip)
-            .limit(limit)
-            .select('id', 'name', 'isAnimationStudio', 'siteUrl', 'favorites')
-            .all(),
-        ])
-        return {
-          success: true,
-          category,
-          query: cleanQuery,
-          results: items,
-          pagination: {
-            page,
-            limit,
-            total,
-            hasMore: skip + items.length < total,
-          },
-        }
+        const { items, hasMore } = await searchStudioRaw(cleanQuery, limit, skip)
+        const total = skip + items.length + (hasMore ? 1 : 0)
+        return formatPaginated(items, total, hasMore)
+      }
+
+      case 'other': {
+        const { items, hasMore } = await searchOtherRaw(cleanQuery, limit, skip)
+        const total = skip + items.length + (hasMore ? 1 : 0)
+        return formatPaginated(items, total, hasMore)
       }
 
       case 'media':
       default: {
-        // Multi-media search across anime, manga, tv, movie, game, book, music, other
         const [anime, manga, tv, movie, game, book, music, other] =
           await Promise.all([
-            prisma.orm.public.Anime.where((a) =>
-              or(
-                a.titlePrimary.ilike(`%${cleanQuery}%`),
-                a.titleSecondary.ilike(`%${cleanQuery}%`)
-              )
-            )
-              .limit(limit)
-              .select(
-                'id',
-                'titlePrimary',
-                'titleSecondary',
-                'titleNative',
-                'coverImage',
-                'bannerImage',
-                'description',
-                'format',
-                'status',
-                'seasonYear',
-                'episodeCount',
-                'averageScore'
-              )
-              .all(),
-            prisma.orm.public.Manga.where((m) =>
-              or(
-                m.titlePrimary.ilike(`%${cleanQuery}%`),
-                m.titleSecondary.ilike(`%${cleanQuery}%`)
-              )
-            )
-              .limit(limit)
-              .select(
-                'id',
-                'titlePrimary',
-                'titleSecondary',
-                'titleNative',
-                'coverImage',
-                'bannerImage',
-                'description',
-                'format',
-                'status',
-                'startDateYear',
-                'chapterCount',
-                'averageScore'
-              )
-              .all(),
-            prisma.orm.public.Tv.where((t) =>
-              or(
-                t.titlePrimary.ilike(`%${cleanQuery}%`),
-                t.titleSecondary.ilike(`%${cleanQuery}%`)
-              )
-            )
-              .limit(limit)
-              .select(
-                'id',
-                'titlePrimary',
-                'titleSecondary',
-                'titleNative',
-                'coverImage',
-                'bannerImage',
-                'description',
-                'status',
-                'episodeCount',
-                'firstAiredYear',
-                'averageScore'
-              )
-              .all(),
-            prisma.orm.public.Movie.where((m) =>
-              or(
-                m.titlePrimary.ilike(`%${cleanQuery}%`),
-                m.titleSecondary.ilike(`%${cleanQuery}%`)
-              )
-            )
-              .limit(limit)
-              .select(
-                'id',
-                'titlePrimary',
-                'titleSecondary',
-                'titleNative',
-                'coverImage',
-                'bannerImage',
-                'description',
-                'status',
-                'runtime',
-                'releaseDateYear',
-                'averageScore'
-              )
-              .all(),
-            prisma.orm.public.Game.where((g) =>
-              or(
-                g.titlePrimary.ilike(`%${cleanQuery}%`),
-                g.titleSecondary.ilike(`%${cleanQuery}%`)
-              )
-            )
-              .limit(limit)
-              .select(
-                'id',
-                'titlePrimary',
-                'titleSecondary',
-                'titleNative',
-                'coverImage',
-                'bannerImage',
-                'description',
-                'status',
-                'platforms',
-                'releaseDateYear',
-                'averageScore'
-              )
-              .all(),
-            prisma.orm.public.Book.where((b) =>
-              or(
-                b.titlePrimary.ilike(`%${cleanQuery}%`),
-                b.titleSecondary.ilike(`%${cleanQuery}%`)
-              )
-            )
-              .limit(limit)
-              .select(
-                'id',
-                'titlePrimary',
-                'titleSecondary',
-                'coverImage',
-                'bannerImage',
-                'description',
-                'format',
-                'authors',
-                'pageCount',
-                'chapterCount',
-                'releaseDateYear',
-                'averageScore'
-              )
-              .all(),
-            prisma.orm.public.Music.where((m) =>
-              or(
-                m.titlePrimary.ilike(`%${cleanQuery}%`),
-                m.artistName.ilike(`%${cleanQuery}%`)
-              )
-            )
-              .limit(limit)
-              .select('id', 'titlePrimary', 'artistName', 'coverImage')
-              .all(),
-            prisma.orm.public.Other.where({ isPublished: true })
-              .where((o) =>
-                or(
-                  o.titlePrimary.ilike(`%${cleanQuery}%`),
-                  o.titleSecondary.ilike(`%${cleanQuery}%`),
-                  o.description.ilike(`%${cleanQuery}%`)
-                )
-              )
-              .limit(limit)
-              .select(
-                'id',
-                'titlePrimary',
-                'titleSecondary',
-                'coverImage',
-                'averageScore',
-                'format'
-              )
-              .all(),
+            searchAnimeRaw(cleanQuery, limit, 0),
+            searchMangaRaw(cleanQuery, limit, 0),
+            searchTvRaw(cleanQuery, limit, 0),
+            searchMovieRaw(cleanQuery, limit, 0),
+            searchGameRaw(cleanQuery, limit, 0),
+            searchBookRaw(cleanQuery, limit, 0),
+            searchMusicRaw(cleanQuery, limit, 0),
+            searchOtherRaw(cleanQuery, limit, 0),
           ])
 
         const combined = [
-          ...anime.map((x) => ({ ...x, mediaType: 'anime' })),
-          ...manga.map((x) => ({ ...x, mediaType: 'manga' })),
-          ...tv.map((x) => ({ ...x, mediaType: 'tv' })),
-          ...movie.map((x) => ({ ...x, mediaType: 'movie' })),
-          ...game.map((x) => ({ ...x, mediaType: 'game' })),
-          ...book.map((x) => ({ ...x, mediaType: 'book' })),
-          ...music.map((x) => ({ ...x, mediaType: 'music' })),
-          ...other.map((x) => ({ ...x, mediaType: 'other' })),
+          ...anime.items.map((x) => ({ ...x, mediaType: 'anime' })),
+          ...manga.items.map((x) => ({ ...x, mediaType: 'manga' })),
+          ...tv.items.map((x) => ({ ...x, mediaType: 'tv' })),
+          ...movie.items.map((x) => ({ ...x, mediaType: 'movie' })),
+          ...game.items.map((x) => ({ ...x, mediaType: 'game' })),
+          ...book.items.map((x) => ({ ...x, mediaType: 'book' })),
+          ...music.items.map((x) => ({ ...x, mediaType: 'music' })),
+          ...other.items.map((x) => ({ ...x, mediaType: 'other' })),
         ]
 
         const total = combined.length
         const results = combined.slice(skip, skip + limit)
-
-        return {
-          success: true,
-          category: 'media',
-          query: cleanQuery,
-          results,
-          pagination: {
-            page,
-            limit,
-            total,
-            hasMore: skip + results.length < total,
-          },
-        }
-      }
-
-      case 'other': {
-        const q = prisma.orm.public.Other.where({ isPublished: true }).where(
-          (o) =>
-            or(
-              o.titlePrimary.ilike(`%${cleanQuery}%`),
-              o.titleSecondary.ilike(`%${cleanQuery}%`),
-              o.description.ilike(`%${cleanQuery}%`)
-            )
-        )
-        const [total, items] = await Promise.all([
-          countOf(q),
-          q
-            .offset(skip)
-            .limit(limit)
-            .orderBy([(o) => o.popularity.desc(), (o) => o.averageScore.desc()])
-            .select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'description',
-              'coverImage',
-              'bannerImage',
-              'format',
-              'startDate',
-              'endDate',
-              'averageScore',
-              'favorites',
-              'popularity',
-              'progressFields',
-              'incrementFieldKey',
-              'creatorId'
-            )
-            .include('creator', (c) => c.select('id', 'username'))
-            .all(),
-        ])
-
-        const results = items.map((x) => ({
-          ...x,
-          mediaType: 'other',
-        }))
-
-        return {
-          success: true,
-          category,
-          query: cleanQuery,
-          results,
-          pagination: {
-            page,
-            limit,
-            total,
-            hasMore: skip + results.length < total,
-          },
-        }
+        return formatPaginated(results, total, skip + results.length < total, 'media')
       }
     }
   }

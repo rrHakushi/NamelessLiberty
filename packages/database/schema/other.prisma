@@ -1,25 +1,120 @@
 // use prisma-8
 
 model Other {
-    id          Int     @id @default(autoincrement())
-    creatorId   String
-    creator     User    @relation("CreatedOtherItems", fields: [creatorId], references: [id], onDelete: Cascade)
+    id        Int    @id @default(autoincrement())
+    creatorId String
+    creator   User   @relation("CreatedOtherItems", fields: [creatorId], references: [id], onDelete: Cascade)
 
     titlePrimary   String
     titleSecondary String?
+    titleNative    String?
+    synonyms       String[] @default([])
+    tagline        String?
     description    String?
+    hashtag        String?
 
-    coverImage     String?
-    bannerImage    String?
-    format         String?
+    coverImage  String?
+    bannerImage String?
+    format      String?
+    source      String?
+    status      MediaStatus @default(UNKNOWN)
 
+    // Partial & full release dates
     startDate      DateTime?
     endDate        DateTime?
+    startDateYear  Int?
+    startDateMonth Int?
+    startDateDay   Int?
+    endDateYear    Int?
+    endDateMonth   Int?
+    endDateDay     Int?
 
-    isPublished    Boolean @default(false)
+    // Airing / Schedule / Region
+    seasonSeason            AnimeSeason?
+    seasonYear              Int?
+    showType                String?
+    broadcastTime           String?
+    broadcastDays           String[]     @default([])
+    networks                String[]     @default([])
+    countryOfOrigin         String?
+    originalLanguage        String?
+    nextAiringEpisodeNumber Int?
+    nextAiringAt            DateTime?
+
+    // Classification & Ratings
+    isAdult        Boolean @default(false)
+    ageRating      String?
+    ageRatingGuide String?
+    esrbRating     String?
+    pegiRating     String?
+
+    // Counts & Durations
+    episodeCount    Int?
+    episodeDuration Int?
+    seasonCount     Int?
+    chapterCount    Int?
+    volumeCount     Int?
+    pageCount       Int?
+    runtime         Int?
+    duration        Int?
+    totalTracks     Int?
+
+    // Creators / Companies / Platforms / Books / Games
+    authors           String[] @default([])
+    developers        String[] @default([])
+    publishers        String[] @default([])
+    platforms         String[] @default([])
+    franchise         String?
+    series            String?
+    seriesPosition    Float?
+    subjects          String[] @default([])
+    gameModes         String[] @default([])
+    playerPerspectives String[] @default([])
+    controllerSupport String?
+    requirements      Jsonb?
+    languages         String[] @default([])
+
+    // Financials, Awards & Books
+    budget              Float?
+    revenue             Float?
+    awards              String[] @default([])
+    isbn10              String?
+    isbn13              String?
+    retailPrice         Float?
+    retailPriceCurrency String?
+
+    // Music
+    albumType       String?
+    label           String?
+    artist          String?
+    artists         String[] @default([])
+    artistPersonId  Int?
+    artistPerson    Person?  @relation("OtherArtist", fields: [artistPersonId], references: [id], onDelete: SetNull)
+    bpm             Float?
+    gain            Float?
+    explicitLyrics  Boolean  @default(false)
+    audioPreviewUrl String?
+    lyrics          String?
+    syncedLyrics    String?
+    isrc            String?
+
+    // Links, Assets & Media
+    siteUrl       String?
+    externalLinks Jsonb?
+    previewLink   String?
+    infoLink      String?
+    buyLink       String?
+    images        Jsonb?
+    trailers      Jsonb?
+    themeSongs    Jsonb?
+
+    isPublished Boolean @default(false)
+
+    // [{ label: string, value: string | string[], type: 'text' | 'link' | 'badges' }]
+    customFields Jsonb @default(json`[]`)
 
     // [{ key: string, label: string, unit?: string, max?: number }]
-    progressFields Jsonb   @default(json`[]`)
+    progressFields    Jsonb   @default(json`[]`)
     // The designated progress field key to increment in /increment route (max 1)
     incrementFieldKey String?
 
@@ -32,49 +127,199 @@ model Other {
     popularity         Int    @default(0)
     totalScoreSum      Int?
     scoredCount        Int?
-    statusDistribution Jsonb @default(json`{}`)
-    scoreDistribution Jsonb @default(json`{}`)
+    statusDistribution Jsonb  @default(json`{}`)
+    scoreDistribution  Jsonb  @default(json`{}`)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @onCreate(now()) @onUpdate(now())
+
+    // Strictly one-way relations owned by Other
+    genres     OtherGenre[]
+    tags       OtherTag[]
+    characters OtherCharacter[]
+    staff      OtherStaff[]
+    studios    OtherStudio[]
+    relations  OtherRelation[]
+    seasons    OtherSeason[]
+    episodes   OtherEpisode[]
+    tracks     OtherTrack[]
 
     userLists         OtherList[]
     customListEntries CustomListEntry[]
 
     @@index([creatorId])
-    @@index([titlePrimary])
     @@index([isPublished])
+    @@index([status])
+    @@index([format])
     @@index([popularity])
     @@index([averageScore])
+    @@index([startDateYear])
+    @@index([titlePrimary])
+}
+
+model OtherGenre {
+    otherId Int
+    genreId Int
+    other   Other @relation(fields: [otherId], references: [id], onDelete: Cascade)
+    genre   Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+    @@id([otherId, genreId])
+    @@index([genreId])
+}
+
+model OtherTag {
+    otherId   Int
+    tagId     Int
+    rank      Int?
+    isSpoiler Boolean @default(false)
+    other     Other   @relation(fields: [otherId], references: [id], onDelete: Cascade)
+    tag       Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+    @@id([otherId, tagId])
+    @@index([tagId])
+}
+
+model OtherCharacter {
+    id          Int           @id @default(autoincrement())
+    otherId     Int
+    characterId Int
+    actorId     Int?
+    role        CharacterRole @default(MAIN)
+    order       Int?
+
+    other     Other     @relation(fields: [otherId], references: [id], onDelete: Cascade)
+    character Character @relation("OtherCharacterRef", fields: [characterId], references: [id], onDelete: Cascade)
+    actor     Person?   @relation("OtherCharacterActor", fields: [actorId], references: [id], onDelete: SetNull)
+
+    @@unique([otherId, characterId, actorId])
+    @@index([otherId])
+    @@index([characterId])
+}
+
+model OtherStaff {
+    id         Int       @id @default(autoincrement())
+    otherId    Int
+    personId   Int
+    role       StaffRole @default(OTHER)
+    customRole String?
+
+    other  Other  @relation(fields: [otherId], references: [id], onDelete: Cascade)
+    person Person @relation("OtherStaffPerson", fields: [personId], references: [id], onDelete: Cascade)
+
+    @@unique([otherId, personId, role])
+    @@index([otherId])
+    @@index([personId])
+}
+
+model OtherStudio {
+    id       Int     @id @default(autoincrement())
+    otherId  Int
+    studioId Int
+    isMain   Boolean @default(false)
+
+    other  Other  @relation(fields: [otherId], references: [id], onDelete: Cascade)
+    studio Studio @relation("OtherStudioRef", fields: [studioId], references: [id], onDelete: Cascade)
+
+    @@unique([otherId, studioId])
+    @@index([otherId])
+    @@index([studioId])
+}
+
+model OtherRelation {
+    id           Int       @id @default(autoincrement())
+    otherId      Int
+    targetType   MediaType
+    targetId     Int
+    relationType String
+
+    other Other @relation(fields: [otherId], references: [id], onDelete: Cascade)
+
+    @@unique([otherId, targetType, targetId, relationType])
+    @@index([otherId])
+    @@index([targetType, targetId])
+}
+
+model OtherSeason {
+    id           Int       @id @default(autoincrement())
+    otherId      Int
+    seasonNumber Int
+    name         String?
+    overview     String?
+    posterPath   String?
+    airDate      DateTime?
+    episodeCount Int?
+
+    other    Other          @relation(fields: [otherId], references: [id], onDelete: Cascade)
+    episodes OtherEpisode[]
+
+    @@unique([otherId, seasonNumber])
+    @@index([otherId])
+}
+
+model OtherEpisode {
+    id            Int       @id @default(autoincrement())
+    otherId       Int
+    seasonId      Int?
+    episodeNumber Int
+    seasonNumber  Int?
+    name          String?
+    overview      String?
+    airDate       DateTime?
+    runtime       Int?
+    stillPath     String?
+    episodeType   String?
+
+    other  Other        @relation(fields: [otherId], references: [id], onDelete: Cascade)
+    season OtherSeason? @relation(fields: [seasonId], references: [id], onDelete: SetNull)
+
+    @@index([otherId])
+    @@index([seasonId])
+}
+
+model OtherTrack {
+    id              Int     @id @default(autoincrement())
+    otherId         Int
+    trackNumber     Int
+    discNumber      Int     @default(1)
+    titlePrimary    String
+    artistName      String?
+    artistPersonId  Int?
+    duration        Int?
+    explicitLyrics  Boolean @default(false)
+    audioPreviewUrl String?
+
+    other        Other   @relation(fields: [otherId], references: [id], onDelete: Cascade)
+    artistPerson Person? @relation("OtherTrackArtist", fields: [artistPersonId], references: [id], onDelete: SetNull)
+
+    @@index([otherId])
 }
 
 model OtherList {
-    id          Int       @id @default(autoincrement())
-    userId      String
-    user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-    otherId     Int
-    other       Other     @relation(fields: [otherId], references: [id], onDelete: Cascade)
+    id      String        @id @onCreate(uuid())
+    userId  String
+    otherId Int
+    status  ListStatus    @default(PLANNED)
+    priority EntryPriority @default(LOW)
 
-    status      ListStatus @default(PLANNED)
-    priority    EntryPriority @default(LOW)
-    // Map of progress field keys to values: { [key: string]: number }
+    // Map of fieldKey -> current numeric progress value
     progressValues Jsonb @default(json`{}`)
 
-    score       Float?
-    notes       String?
-    private     Boolean   @default(false)
+    score   Float?
+    notes   String?
+    private Boolean @default(false)
+
+    rewatched      Int    @default(0)
+    rewatchHistory Jsonb?
 
     startedAt   DateTime?
     completedAt DateTime?
-
     createdAt   DateTime  @default(now())
     updatedAt   DateTime  @onCreate(now()) @onUpdate(now())
 
+    user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+    other Other @relation(fields: [otherId], references: [id], onDelete: Cascade)
+
     @@unique([userId, otherId])
-    @@index([userId])
-    @@index([otherId])
-    @@index([status])
     @@index([userId, status])
-    @@index([userId, priority])
-    @@index([userId, score])
+    @@index([otherId])
 }

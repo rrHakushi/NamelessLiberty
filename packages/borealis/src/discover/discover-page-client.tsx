@@ -214,87 +214,88 @@ export function DiscoverPageClient({ category }: DiscoverPageClientProps) {
   // ---------------------------------------------------------------------------
   // 1. Fetch Filter Facets & Counts
   // ---------------------------------------------------------------------------
-const getMediaCategory = (cat: string): "anime" | "manga" | "movies" | "tv" | "games" | "books" | "music" => {
-  const c = cat.toLowerCase()
-  if (c === "movie" || c === "movies") return "movies"
-  if (c === "game" || c === "games") return "games"
-  if (c === "book" || c === "books") return "books"
-  if (c === "manga") return "manga"
-  if (c === "tv") return "tv"
-  if (c === "music") return "music"
-  return "anime"
-}
+  const getMediaCategory = (cat: string): "anime" | "manga" | "movies" | "tv" | "games" | "books" | "music" | "other" => {
+    const c = cat.toLowerCase()
+    if (c === "movie" || c === "movies") return "movies"
+    if (c === "game" || c === "games") return "games"
+    if (c === "book" || c === "books") return "books"
+    if (c === "manga") return "manga"
+    if (c === "tv") return "tv"
+    if (c === "music") return "music"
+    if (c === "other") return "other"
+    return "anime"
+  }
 
-const getEntitySortBy = (
-  sort: DiscoverSortByOption
-): "popularity" | "favorites" | "name" => {
-  if (sort === "title") return "name"
-  if (sort === "favorites") return "favorites"
-  return "popularity"
-}
+  const getEntitySortBy = (
+    sort: DiscoverSortByOption
+  ): "popularity" | "favorites" | "name" => {
+    if (sort === "title") return "name"
+    if (sort === "favorites") return "favorites"
+    return "popularity"
+  }
 
-const getStudioAnimationFilter = (formats: string[]): boolean | undefined => {
-  if (!formats || formats.length === 0) return undefined
-  const hasAnimation = formats.some((f) => f.toLowerCase().includes("animation"))
-  const hasOther = formats.some(
-    (f) => f.toLowerCase().includes("other") || f.toLowerCase() === "studio"
-  )
-  if (hasAnimation && !hasOther) return true
-  if (hasOther && !hasAnimation) return false
-  return undefined
-}
+  const getStudioAnimationFilter = (formats: string[]): boolean | undefined => {
+    if (!formats || formats.length === 0) return undefined
+    const hasAnimation = formats.some((f) => f.toLowerCase().includes("animation"))
+    const hasOther = formats.some(
+      (f) => f.toLowerCase().includes("other") || f.toLowerCase() === "studio"
+    )
+    if (hasAnimation && !hasOther) return true
+    if (hasOther && !hasAnimation) return false
+    return undefined
+  }
 
-const mapCharacterItem = (c: any): DiscoverItem => ({
-  id: c.id,
-  titlePrimary: c.namePrimary,
-  titleNative: c.nameNative,
-  coverImage: c.image,
-  format: c.gender || null,
-  favorites: c.favorites,
-  genres: c.age ? [`Age: ${c.age}`] : [],
-  isAdult: false,
-  ...c,
-  raw: c,
-})
+  const mapCharacterItem = (c: any): DiscoverItem => ({
+    id: c.id,
+    titlePrimary: c.namePrimary,
+    titleNative: c.nameNative,
+    coverImage: c.image,
+    format: c.gender || null,
+    favorites: c.favorites,
+    genres: c.age ? [`Age: ${c.age}`] : [],
+    isAdult: false,
+    ...c,
+    raw: c,
+  })
 
-const mapPersonItem = (p: any): DiscoverItem => ({
-  id: p.id,
-  titlePrimary: p.namePrimary,
-  titleNative: p.nameNative,
-  coverImage: p.image,
-  format: p.primaryOccupations?.[0] || p.gender || null,
-  favorites: p.favorites,
-  genres: p.primaryOccupations || [],
-  isAdult: false,
-  ...p,
-  raw: p,
-})
+  const mapPersonItem = (p: any): DiscoverItem => ({
+    id: p.id,
+    titlePrimary: p.namePrimary,
+    titleNative: p.nameNative,
+    coverImage: p.image,
+    format: p.primaryOccupations?.[0] || p.gender || null,
+    favorites: p.favorites,
+    genres: p.primaryOccupations || [],
+    isAdult: false,
+    ...p,
+    raw: p,
+  })
 
-const mapStudioItem = (s: any): DiscoverItem => ({
-  id: s.id,
-  titlePrimary: s.name,
-  coverImage: null,
-  format: s.isAnimationStudio ? "Animation Studio" : "Studio",
-  favorites: s.favorites,
-  genres: s.isAnimationStudio ? ["Animation"] : ["Production"],
-  isAdult: false,
-  ...s,
-  raw: s,
-})
+  const mapStudioItem = (s: any): DiscoverItem => ({
+    id: s.id,
+    titlePrimary: s.name,
+    coverImage: null,
+    format: s.isAnimationStudio ? "Animation Studio" : "Studio",
+    favorites: s.favorites,
+    genres: s.isAnimationStudio ? ["Animation"] : ["Production"],
+    isAdult: false,
+    ...s,
+    raw: s,
+  })
 
-const mapMediaItem = (x: any): DiscoverItem => ({
-  ...x,
-  raw: x,
-  genres: Array.isArray(x.genres)
-    ? x.genres
+  const mapMediaItem = (x: any): DiscoverItem => ({
+    ...x,
+    raw: x,
+    genres: Array.isArray(x.genres)
+      ? x.genres
         .map((g: any) =>
           typeof g === "string" ? g : g?.name || g?.genre?.name || ""
         )
         .filter(Boolean)
-    : [],
-  releaseYear: x.year ?? x.releaseYear ?? x.seasonYear,
-  seasonSeason: x.season ?? x.seasonSeason,
-})
+      : [],
+    releaseYear: x.year ?? x.releaseYear ?? x.seasonYear,
+    seasonSeason: x.season ?? x.seasonSeason,
+  })
 
   const fetchFacets = useCallback(
     async (force = false) => {
@@ -517,9 +518,10 @@ const mapMediaItem = (x: any): DiscoverItem => ({
           })
 
           if (!error && data && data.success) {
+            const pageHasMore = Boolean(data.pagination?.hasMore ?? (data as any).hasMore)
             setItems((data.items || []).map(mapMediaItem))
-            setNextCursor((data as any).nextCursor ?? (data.pagination?.hasMore ? 2 : null))
-            setHasMore(Boolean((data as any).hasMore ?? data.pagination?.hasMore))
+            setNextCursor(pageHasMore ? 2 : null)
+            setHasMore(pageHasMore)
             setTotalCount((data as any).total ?? data.pagination?.total ?? 0)
           } else {
             setItems([])
@@ -556,6 +558,14 @@ const mapMediaItem = (x: any): DiscoverItem => ({
   // ---------------------------------------------------------------------------
   // 3. Infinite Scrolling (Fetch Next Page)
   // ---------------------------------------------------------------------------
+  const appendUniqueItems = (
+    prev: DiscoverItem[],
+    incoming: DiscoverItem[]
+  ): DiscoverItem[] => {
+    const existingIds = new Set(prev.map((item) => item.id))
+    return [...prev, ...incoming.filter((item) => !existingIds.has(item.id))]
+  }
+
   const handleLoadMore = useCallback(async () => {
     if (!hasMore || !nextCursor || isFetchingMoreRef.current || isLoading)
       return
@@ -593,7 +603,7 @@ const mapMediaItem = (x: any): DiscoverItem => ({
 
         if (!error && data && data.success) {
           const newItems = (data.items || []).map(mapCharacterItem)
-          setItems((prev) => [...prev, ...newItems])
+          setItems((prev) => appendUniqueItems(prev, newItems))
           setNextCursor(data.pagination?.hasMore ? pageToFetch + 1 : null)
           setHasMore(Boolean(data.pagination?.hasMore))
         } else {
@@ -615,7 +625,7 @@ const mapMediaItem = (x: any): DiscoverItem => ({
 
         if (!error && data && data.success) {
           const newItems = (data.items || []).map(mapPersonItem)
-          setItems((prev) => [...prev, ...newItems])
+          setItems((prev) => appendUniqueItems(prev, newItems))
           setNextCursor(data.pagination?.hasMore ? pageToFetch + 1 : null)
           setHasMore(Boolean(data.pagination?.hasMore))
         } else {
@@ -636,7 +646,7 @@ const mapMediaItem = (x: any): DiscoverItem => ({
 
         if (!error && data && data.success) {
           const newItems = (data.items || []).map(mapStudioItem)
-          setItems((prev) => [...prev, ...newItems])
+          setItems((prev) => appendUniqueItems(prev, newItems))
           setNextCursor(data.pagination?.hasMore ? pageToFetch + 1 : null)
           setHasMore(Boolean(data.pagination?.hasMore))
         } else {
@@ -644,11 +654,9 @@ const mapMediaItem = (x: any): DiscoverItem => ({
         }
       } else {
         const targetCat = getMediaCategory(category)
-        const isCursor = typeof nextCursor === "number" && nextCursor > 100
         const { data, error } = await (elysia.borealis as any)[targetCat].get({
           query: {
-            cursor: isCursor ? nextCursor : undefined,
-            page: isCursor ? undefined : pageToFetch,
+            page: pageToFetch,
             limit: 50,
             statuses: statusParam,
             formats: formatsParam,
@@ -662,9 +670,10 @@ const mapMediaItem = (x: any): DiscoverItem => ({
 
         if (!error && data && data.success) {
           const newItems = (data.items || []).map(mapMediaItem)
-          setItems((prev) => [...prev, ...newItems])
-          setNextCursor((data as any).nextCursor ?? (data.pagination?.hasMore ? pageToFetch + 1 : null))
-          setHasMore(Boolean((data as any).hasMore ?? data.pagination?.hasMore))
+          const pageHasMore = Boolean(data.pagination?.hasMore ?? (data as any).hasMore)
+          setItems((prev) => appendUniqueItems(prev, newItems))
+          setNextCursor(pageHasMore ? pageToFetch + 1 : null)
+          setHasMore(pageHasMore)
         } else {
           setHasMore(false)
         }

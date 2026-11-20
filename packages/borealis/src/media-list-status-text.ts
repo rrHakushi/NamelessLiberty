@@ -92,6 +92,10 @@ export function getInProgressVerb(
     return { text: "Listening", i18nKey: "LISTENING" }
   }
 
+  if (normType === "other") {
+    return { text: "Tracking", i18nKey: "TRACKING" }
+  }
+
   // Anime, TV, Movie, Movies, default
   return { text: "Watching", i18nKey: "WATCHING" }
 }

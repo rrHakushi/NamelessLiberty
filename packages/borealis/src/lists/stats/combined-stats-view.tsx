@@ -21,6 +21,7 @@ import {
   IconDeviceGamepad,
   IconBook,
   IconMusic,
+  IconCategory,
 } from "@tabler/icons-react"
 import { ScoreDistributionChart } from "./score-distribution-chart"
 import { YearTimelineChart } from "./year-timeline-chart"
@@ -40,6 +41,7 @@ const MEDIA_ICONS: Record<string, React.ComponentType<{ className?: string }>> =
   game: IconDeviceGamepad,
   book: IconBook,
   music: IconMusic,
+  other: IconCategory,
 }
 
 const MEDIA_NAMES: Record<string, string> = {
@@ -50,6 +52,7 @@ const MEDIA_NAMES: Record<string, string> = {
   game: "Games",
   book: "Books",
   music: "Music",
+  other: "Other",
 }
 
 const combinedStatsClientCache = new Map<string, { data: any; timestamp: number }>()

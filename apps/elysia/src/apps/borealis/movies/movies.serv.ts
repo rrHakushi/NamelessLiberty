@@ -89,29 +89,35 @@ export class BorealisMoviesServ extends BaseBorealisMediaService {
 
     let itemsQ = q
     if (sortBy === 'score') {
-      itemsQ = itemsQ.orderBy((x) =>
-        sortOrder === 'asc' ? x.averageScore.asc() : x.averageScore.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (x) => sortOrder === 'asc' ? x.averageScore.asc({ nulls: 'last' }) : x.averageScore.desc({ nulls: 'last' }),
+        (x) => x.id.asc(),
+      ])
     } else if (sortBy === 'title') {
-      itemsQ = itemsQ.orderBy((x) =>
-        sortOrder === 'asc' ? x.titlePrimary.asc() : x.titlePrimary.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (x) => sortOrder === 'asc' ? x.titlePrimary.asc() : x.titlePrimary.desc(),
+        (x) => x.id.asc(),
+      ])
     } else if (sortBy === 'releaseDate') {
-      itemsQ = itemsQ.orderBy((x) =>
-        sortOrder === 'asc' ? x.releaseDateYear.asc() : x.releaseDateYear.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (x) => sortOrder === 'asc' ? x.releaseDateYear.asc({ nulls: 'last' }) : x.releaseDateYear.desc({ nulls: 'last' }),
+        (x) => x.id.asc(),
+      ])
     } else if (sortBy === 'trending' || sortBy === 'favorites') {
-      itemsQ = itemsQ.orderBy((x) =>
-        sortOrder === 'asc' ? x.favorites.asc() : x.favorites.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (x) => sortOrder === 'asc' ? x.favorites.asc() : x.favorites.desc(),
+        (x) => x.id.asc(),
+      ])
     } else if (sortBy === 'updatedAt') {
-      itemsQ = itemsQ.orderBy((x) =>
-        sortOrder === 'asc' ? x.updatedAt.asc() : x.updatedAt.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (x) => sortOrder === 'asc' ? x.updatedAt.asc() : x.updatedAt.desc(),
+        (x) => x.id.asc(),
+      ])
     } else {
-      itemsQ = itemsQ.orderBy((x) =>
-        sortOrder === 'asc' ? x.popularity.asc() : x.popularity.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (x) => sortOrder === 'asc' ? x.popularity.asc() : x.popularity.desc(),
+        (x) => x.id.asc(),
+      ])
     }
 
     const [total, rawItems] = await Promise.all([
@@ -197,7 +203,9 @@ export class BorealisMoviesServ extends BaseBorealisMediaService {
       success: true,
       statuses: Object.entries(statusCounts).map(([value, count]) => ({ value, count })),
       formats: [{ value: 'MOVIE', count: allMovies.length }],
-      genres: allGenres.map((g: any) => ({ value: g.name, count: g.movies ?? 0 })),
+      genres: allGenres
+        .map((g: any) => ({ value: g.name, count: g.movies ?? 0 }))
+        .filter((g) => g.count > 0),
       tags: [],
       years: Object.entries(yearCounts)
         .map(([value, count]) => ({ value: Number(value), count }))

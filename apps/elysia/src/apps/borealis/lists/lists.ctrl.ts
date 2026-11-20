@@ -1224,8 +1224,10 @@ const routes11 = new Elysia()
       },
     },
     async ({ query, session: userSession }) => {
+      const currentUser = userSession.user
       const targetUserId = query?.userId || userSession.requireUser().id
-      return await BorealisListsServ.getOtherStats(targetUserId)
+      const isOwner = Boolean(currentUser && currentUser.id === targetUserId)
+      return await BorealisListsServ.getOtherStats(targetUserId, query, isOwner)
     }
   )
 

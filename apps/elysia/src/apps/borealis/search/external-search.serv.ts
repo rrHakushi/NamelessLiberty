@@ -11,6 +11,7 @@ import {
   deezerProvider,
 } from '../providers'
 import { MediaPreviewSyncer, type PreviewResult } from '../sync/media-preview.syncer'
+import { resolveCharacterDescriptionLinks } from '../_shared/character-description.helper'
 
 const logger = new LogFactory('Borealis:ExternalSearch')
 const SEARCH_THROTTLE_TTL_SECONDS = 300 // 5 minutes
@@ -264,6 +265,8 @@ export class BorealisExternalSearchServ extends BaseService {
         logger.info(
           `${c.magenta('📡 [AniList]')} Received ${c.bold(String(items.length))} character search results for "${c.yellow(cleanQuery)}"`
         )
+        const syncedCharacterIds: number[] = []
+        const knownAnilistToLocal = new Map<number, number>()
         for (const item of items) {
           try {
             const charImage = item.image?.large || item.image?.medium || null
@@ -284,6 +287,8 @@ export class BorealisExternalSearchServ extends BaseService {
                 favorites: item.favourites || 0,
               })
             }
+            syncedCharacterIds.push(existing.id)
+            knownAnilistToLocal.set(item.id, existing.id)
             results.push({
               ...existing,
               mediaType: 'characters' as any,
@@ -292,6 +297,18 @@ export class BorealisExternalSearchServ extends BaseService {
             } as any)
           } catch (err: any) {
             logger.warn(`${c.red('⚠️ [Character Preview Error]')}: ${err?.message || err}`)
+          }
+        }
+        if (syncedCharacterIds.length > 0) {
+          const updatedDescriptions = await resolveCharacterDescriptionLinks(
+            syncedCharacterIds,
+            knownAnilistToLocal
+          ).catch(() => new Map<number, string>())
+          for (const entry of results as any[]) {
+            const updatedDesc = updatedDescriptions.get(entry.id)
+            if (updatedDesc !== undefined) {
+              entry.description = updatedDesc
+            }
           }
         }
         break

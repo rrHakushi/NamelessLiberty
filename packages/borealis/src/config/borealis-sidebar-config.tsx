@@ -9,7 +9,6 @@ import {
   IconMovie,
   IconTheater,
   IconCalendar,
-  IconTrophy,
   IconBook,
   IconList,
   IconMusic,
@@ -171,11 +170,6 @@ export function getBorealisSidebarConfig(
               icon: <IconSearch className="size-4" />,
             },
             {
-              label: t("rankings"),
-              href: "/borealis/rankings",
-              icon: <IconTrophy className="size-4" />,
-            },
-            {
               label: t("discover"),
               href: "/borealis/discover",
               icon: <IconSearch className="size-4" />,
@@ -266,11 +260,6 @@ export function getBorealisSidebarConfig(
           icon: <IconSearch className="size-4" />,
           position: 2,
           children: [
-            {
-              label: t("rankings"),
-              href: "/borealis/rankings",
-              icon: <IconTrophy className="size-4" />,
-            },
             {
               label: t("discover"),
               href: "/borealis/discover",

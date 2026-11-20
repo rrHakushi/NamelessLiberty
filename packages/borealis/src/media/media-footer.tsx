@@ -2,9 +2,11 @@
 
 import React, { useMemo, useState } from "react"
 import Link from "next/link"
+import dynamic from "next/dynamic"
 import { useRouter } from "next/navigation"
 import {
   IconClock,
+  IconEdit,
   IconExternalLink,
   IconRefresh,
   IconUser,
@@ -17,6 +19,14 @@ import { elysia } from "@/lib/elysia"
 import { toast } from "sonner"
 import type { NormalizedMediaData } from "./media-types"
 
+const CreateOtherItemDialog = dynamic(
+  () =>
+    import("../lists/other/create-other-item-dialog").then(
+      (m) => m.CreateOtherItemDialog
+    ),
+  { ssr: false }
+)
+
 interface MediaFooterProps {
   media: NormalizedMediaData
 }
@@ -25,6 +35,7 @@ export function MediaFooter({ media }: MediaFooterProps) {
   const router = useRouter()
   const { user } = useUser()
   const [isRefreshing, setIsRefreshing] = useState(false)
+  const [isEditOtherOpen, setIsEditOtherOpen] = useState(false)
 
   const isAdmin = useMemo(() => {
     if (!user) return false
@@ -312,21 +323,36 @@ export function MediaFooter({ media }: MediaFooterProps) {
 
         {/* Admin Actions & Last Updated Timestamp */}
         <div className="flex shrink-0 flex-col items-start gap-2.5 sm:items-end">
-          {isAdmin && (
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              isDisabled={isRefreshing}
-              onPress={handleRefresh}
-              className="cursor-pointer gap-1.5 rounded-xl border-border/70 text-xs font-medium hover:bg-accent hover:text-accent-foreground"
-            >
-              <IconRefresh
-                className={`size-3.5 ${isRefreshing ? "animate-spin" : ""}`}
-                aria-hidden="true"
-              />
-              <span>{isRefreshing ? "Refreshing..." : "Refresh data"}</span>
-            </Button>
+          {media.category === "other" ? (
+            (user?.id === media.creatorId || isAdmin) && (
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onPress={() => setIsEditOtherOpen(true)}
+                className="cursor-pointer gap-1.5 rounded-xl border-border/70 text-xs font-medium hover:bg-accent hover:text-accent-foreground"
+              >
+                <IconEdit className="size-3.5" aria-hidden="true" />
+                <span>Edit item</span>
+              </Button>
+            )
+          ) : (
+            isAdmin && (
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                isDisabled={isRefreshing}
+                onPress={handleRefresh}
+                className="cursor-pointer gap-1.5 rounded-xl border-border/70 text-xs font-medium hover:bg-accent hover:text-accent-foreground"
+              >
+                <IconRefresh
+                  className={`size-3.5 ${isRefreshing ? "animate-spin" : ""}`}
+                  aria-hidden="true"
+                />
+                <span>{isRefreshing ? "Refreshing..." : "Refresh data"}</span>
+              </Button>
+            )
           )}
 
           {updatedFormatted && (
@@ -337,6 +363,22 @@ export function MediaFooter({ media }: MediaFooterProps) {
           )}
         </div>
       </div>
+
+      {media.category === "other" && isEditOtherOpen && (
+        <CreateOtherItemDialog
+          isOpen={isEditOtherOpen}
+          onOpenChange={setIsEditOtherOpen}
+          editItem={media}
+          onSuccess={() => router.refresh()}
+          onDeleted={() =>
+            router.push(
+              user?.id
+                ? `/borealis/lists/${user.id}/other`
+                : "/borealis/discover/other"
+            )
+          }
+        />
+      )}
     </footer>
   )
 }

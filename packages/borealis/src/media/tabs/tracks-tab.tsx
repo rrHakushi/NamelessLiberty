@@ -10,6 +10,7 @@ interface TracksTabProps {
   tracks: MusicTrackItem[]
   albumTitle?: string
   albumArtistPersonId?: number | null
+  disableTrackLinks?: boolean
 }
 
 function formatTotalDuration(tracks: MusicTrackItem[]): string {
@@ -30,6 +31,7 @@ export function TracksTab({
   tracks,
   albumTitle,
   albumArtistPersonId,
+  disableTrackLinks = false,
 }: TracksTabProps) {
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -91,6 +93,7 @@ export function TracksTab({
         tracks={filteredTracks}
         albumTitle={albumTitle}
         albumArtistPersonId={albumArtistPersonId}
+        disableTrackLinks={disableTrackLinks}
       />
     </div>
   )

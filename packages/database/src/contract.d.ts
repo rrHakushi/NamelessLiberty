@@ -23,9 +23,9 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'b119fa79f2c33c50af65dc010cb5c42df04547a67ce1fb1840e80645e3555052'>;
+  StorageHashBase<'0ac6b2e8c58f9df86116ac1ef632eba15397c9020ed6b4f33989852bc402b36c'>;
 export type ExecutionHash =
-  ExecutionHashBase<'f5ecc1a037a7ef0f97905c773436b2ba5e8c339591992caf20c64334f3226678'>;
+  ExecutionHashBase<'53643411246bc7b72e9224163abe0c8d054bf2a51c9cb6bd2fc07064d61a141d'>;
 export type ProfileHash =
   ProfileHashBase<'3916f444a8a17ad749191acf9e08dad97d1a327b88c2f1d45d12f240296aa8b2'>;
 
@@ -101,7 +101,9 @@ export type AggregateTypes = {
         readonly nullable: true;
       };
       readonly 'pg/interval@1': { readonly output: 'pg/interval@1'; readonly nullable: true };
+      readonly 'pg/money@1': { readonly output: 'pg/money@1'; readonly nullable: true };
       readonly 'pg/numeric@1': { readonly output: 'pg/numeric@1'; readonly nullable: true };
+      readonly 'pg/oid@1': { readonly output: 'pg/oid@1'; readonly nullable: true };
       readonly 'pg/text-array@1': { readonly output: 'pg/text-array@1'; readonly nullable: true };
       readonly 'pg/text@1': { readonly output: 'pg/text@1'; readonly nullable: true };
       readonly 'pg/time-string@1': { readonly output: 'pg/time-string@1'; readonly nullable: true };
@@ -173,7 +175,9 @@ export type AggregateTypes = {
         readonly nullable: true;
       };
       readonly 'pg/interval@1': { readonly output: 'pg/interval@1'; readonly nullable: true };
+      readonly 'pg/money@1': { readonly output: 'pg/money@1'; readonly nullable: true };
       readonly 'pg/numeric@1': { readonly output: 'pg/numeric@1'; readonly nullable: true };
+      readonly 'pg/oid@1': { readonly output: 'pg/oid@1'; readonly nullable: true };
       readonly 'pg/text-array@1': { readonly output: 'pg/text-array@1'; readonly nullable: true };
       readonly 'pg/text@1': { readonly output: 'pg/text@1'; readonly nullable: true };
       readonly 'pg/time-string@1': { readonly output: 'pg/time-string@1'; readonly nullable: true };
@@ -237,6 +241,7 @@ export type AggregateTypes = {
         readonly nullable: true;
       };
       readonly 'pg/interval@1': { readonly output: 'pg/interval@1'; readonly nullable: true };
+      readonly 'pg/money@1': { readonly output: 'pg/money@1'; readonly nullable: true };
       readonly 'pg/numeric@1': { readonly output: 'pg/numeric@1'; readonly nullable: true };
       readonly 'pg/time-string@1': { readonly output: 'pg/interval@1'; readonly nullable: true };
       readonly 'pg/time-temporal@1': { readonly output: 'pg/interval@1'; readonly nullable: true };
@@ -960,6 +965,24 @@ type FieldTypeOverrides = {
           readonly input: 'INFO' | 'ACTION_CONFIRM' | 'ACTION_INPUT' | 'ACTION_SELECT';
         };
       };
+      readonly Other: {
+        readonly seasonSeason: {
+          readonly output: 'WINTER' | 'SPRING' | 'SUMMER' | 'FALL' | 'UNKNOWN';
+          readonly input: 'WINTER' | 'SPRING' | 'SUMMER' | 'FALL' | 'UNKNOWN';
+        };
+        readonly status: {
+          readonly output:
+            'RELEASED' | 'RELEASING' | 'UPCOMING' | 'CANCELLED' | 'HIATUS' | 'UNKNOWN';
+          readonly input:
+            'RELEASED' | 'RELEASING' | 'UPCOMING' | 'CANCELLED' | 'HIATUS' | 'UNKNOWN';
+        };
+      };
+      readonly OtherCharacter: {
+        readonly role: {
+          readonly output: 'MAIN' | 'SUPPORTING' | 'BACKGROUND';
+          readonly input: 'MAIN' | 'SUPPORTING' | 'BACKGROUND';
+        };
+      };
       readonly OtherList: {
         readonly priority: {
           readonly output: 'LOW' | 'MEDIUM' | 'HIGH' | 'ULTRA';
@@ -969,6 +992,82 @@ type FieldTypeOverrides = {
           readonly output:
             'IN_PROGRESS' | 'ON_HOLD' | 'DROPPED' | 'COMPLETED' | 'PLANNED' | 'MAYBE';
           readonly input: 'IN_PROGRESS' | 'ON_HOLD' | 'DROPPED' | 'COMPLETED' | 'PLANNED' | 'MAYBE';
+        };
+      };
+      readonly OtherRelation: {
+        readonly targetType: {
+          readonly output:
+            | 'ANIME'
+            | 'MANGA'
+            | 'MOVIE'
+            | 'TV'
+            | 'GAME'
+            | 'BOOK'
+            | 'MUSIC'
+            | 'MUSIC_ALBUM'
+            | 'MUSIC_TRACK'
+            | 'OTHER'
+            | 'UNKNOWN';
+          readonly input:
+            | 'ANIME'
+            | 'MANGA'
+            | 'MOVIE'
+            | 'TV'
+            | 'GAME'
+            | 'BOOK'
+            | 'MUSIC'
+            | 'MUSIC_ALBUM'
+            | 'MUSIC_TRACK'
+            | 'OTHER'
+            | 'UNKNOWN';
+        };
+      };
+      readonly OtherStaff: {
+        readonly role: {
+          readonly output:
+            | 'DIRECTOR'
+            | 'EPISODE_DIRECTOR'
+            | 'CHIEF_ANIMATION_DIRECTOR'
+            | 'CHARACTER_DESIGN'
+            | 'ART_DIRECTOR'
+            | 'COMPOSER'
+            | 'SOUND_DIRECTOR'
+            | 'ORIGINAL_CREATOR'
+            | 'SCRIPT'
+            | 'KEY_ANIMATION'
+            | 'COLOR_DESIGN'
+            | 'PRODUCER'
+            | 'EXECUTIVE_PRODUCER'
+            | 'AUTHOR'
+            | 'ILLUSTRATOR'
+            | 'CAST'
+            | 'ARTIST'
+            | 'FEATURED_ARTIST'
+            | 'LYRICIST'
+            | 'ARRANGER'
+            | 'OTHER';
+          readonly input:
+            | 'DIRECTOR'
+            | 'EPISODE_DIRECTOR'
+            | 'CHIEF_ANIMATION_DIRECTOR'
+            | 'CHARACTER_DESIGN'
+            | 'ART_DIRECTOR'
+            | 'COMPOSER'
+            | 'SOUND_DIRECTOR'
+            | 'ORIGINAL_CREATOR'
+            | 'SCRIPT'
+            | 'KEY_ANIMATION'
+            | 'COLOR_DESIGN'
+            | 'PRODUCER'
+            | 'EXECUTIVE_PRODUCER'
+            | 'AUTHOR'
+            | 'ILLUSTRATOR'
+            | 'CAST'
+            | 'ARTIST'
+            | 'FEATURED_ARTIST'
+            | 'LYRICIST'
+            | 'ARRANGER'
+            | 'OTHER';
         };
       };
       readonly PassCipher: {
@@ -1091,14 +1190,16 @@ export type FieldOutputTypes = FieldTypesFromDomain<
   CodecTypes,
   ParameterizedOutputTypeFunctions,
   FieldTypeOverrides,
-  'output'
+  'output',
+  ContractBase['storage']['namespaces']
 >;
 export type FieldInputTypes = FieldTypesFromDomain<
   ContractBase['domain']['namespaces'],
   CodecTypes,
   ParameterizedOutputTypeFunctions,
   FieldTypeOverrides,
-  'input'
+  'input',
+  ContractBase['storage']['namespaces']
 >;
 type ColumnTypeOverrides = {
   readonly public: {
@@ -1768,6 +1869,22 @@ type ColumnTypeOverrides = {
         readonly input: 'INFO' | 'ACTION_CONFIRM' | 'ACTION_INPUT' | 'ACTION_SELECT';
       };
     };
+    readonly Other: {
+      readonly seasonSeason: {
+        readonly output: 'WINTER' | 'SPRING' | 'SUMMER' | 'FALL' | 'UNKNOWN';
+        readonly input: 'WINTER' | 'SPRING' | 'SUMMER' | 'FALL' | 'UNKNOWN';
+      };
+      readonly status: {
+        readonly output: 'RELEASED' | 'RELEASING' | 'UPCOMING' | 'CANCELLED' | 'HIATUS' | 'UNKNOWN';
+        readonly input: 'RELEASED' | 'RELEASING' | 'UPCOMING' | 'CANCELLED' | 'HIATUS' | 'UNKNOWN';
+      };
+    };
+    readonly OtherCharacter: {
+      readonly role: {
+        readonly output: 'MAIN' | 'SUPPORTING' | 'BACKGROUND';
+        readonly input: 'MAIN' | 'SUPPORTING' | 'BACKGROUND';
+      };
+    };
     readonly OtherList: {
       readonly priority: {
         readonly output: 'LOW' | 'MEDIUM' | 'HIGH' | 'ULTRA';
@@ -1776,6 +1893,82 @@ type ColumnTypeOverrides = {
       readonly status: {
         readonly output: 'IN_PROGRESS' | 'ON_HOLD' | 'DROPPED' | 'COMPLETED' | 'PLANNED' | 'MAYBE';
         readonly input: 'IN_PROGRESS' | 'ON_HOLD' | 'DROPPED' | 'COMPLETED' | 'PLANNED' | 'MAYBE';
+      };
+    };
+    readonly OtherRelation: {
+      readonly targetType: {
+        readonly output:
+          | 'ANIME'
+          | 'MANGA'
+          | 'MOVIE'
+          | 'TV'
+          | 'GAME'
+          | 'BOOK'
+          | 'MUSIC'
+          | 'MUSIC_ALBUM'
+          | 'MUSIC_TRACK'
+          | 'OTHER'
+          | 'UNKNOWN';
+        readonly input:
+          | 'ANIME'
+          | 'MANGA'
+          | 'MOVIE'
+          | 'TV'
+          | 'GAME'
+          | 'BOOK'
+          | 'MUSIC'
+          | 'MUSIC_ALBUM'
+          | 'MUSIC_TRACK'
+          | 'OTHER'
+          | 'UNKNOWN';
+      };
+    };
+    readonly OtherStaff: {
+      readonly role: {
+        readonly output:
+          | 'DIRECTOR'
+          | 'EPISODE_DIRECTOR'
+          | 'CHIEF_ANIMATION_DIRECTOR'
+          | 'CHARACTER_DESIGN'
+          | 'ART_DIRECTOR'
+          | 'COMPOSER'
+          | 'SOUND_DIRECTOR'
+          | 'ORIGINAL_CREATOR'
+          | 'SCRIPT'
+          | 'KEY_ANIMATION'
+          | 'COLOR_DESIGN'
+          | 'PRODUCER'
+          | 'EXECUTIVE_PRODUCER'
+          | 'AUTHOR'
+          | 'ILLUSTRATOR'
+          | 'CAST'
+          | 'ARTIST'
+          | 'FEATURED_ARTIST'
+          | 'LYRICIST'
+          | 'ARRANGER'
+          | 'OTHER';
+        readonly input:
+          | 'DIRECTOR'
+          | 'EPISODE_DIRECTOR'
+          | 'CHIEF_ANIMATION_DIRECTOR'
+          | 'CHARACTER_DESIGN'
+          | 'ART_DIRECTOR'
+          | 'COMPOSER'
+          | 'SOUND_DIRECTOR'
+          | 'ORIGINAL_CREATOR'
+          | 'SCRIPT'
+          | 'KEY_ANIMATION'
+          | 'COLOR_DESIGN'
+          | 'PRODUCER'
+          | 'EXECUTIVE_PRODUCER'
+          | 'AUTHOR'
+          | 'ILLUSTRATOR'
+          | 'CAST'
+          | 'ARTIST'
+          | 'FEATURED_ARTIST'
+          | 'LYRICIST'
+          | 'ARRANGER'
+          | 'OTHER';
       };
     };
     readonly PassCipher: {
@@ -2297,7 +2490,8 @@ export namespace Models {
     tvDBId: FieldOutputTypes['public']['Character']['tvDBId'];
     updatedAt: FieldOutputTypes['public']['Character']['updatedAt'];
     mediaCharacters: public_MediaCharacter[];
-    readonly [RelationKeys]?: 'mediaCharacters';
+    otherCharacters: public_OtherCharacter[];
+    readonly [RelationKeys]?: 'mediaCharacters' | 'otherCharacters';
   };
   export type public_Connection = {
     authType: FieldOutputTypes['public']['Connection']['authType'];
@@ -2541,8 +2735,10 @@ export namespace Models {
     manga: public_MangaGenre[];
     movies: public_MovieGenre[];
     music: public_MusicGenre[];
+    others: public_OtherGenre[];
     tv: public_TvGenre[];
-    readonly [RelationKeys]?: 'anime' | 'books' | 'games' | 'manga' | 'movies' | 'music' | 'tv';
+    readonly [RelationKeys]?:
+      'anime' | 'books' | 'games' | 'manga' | 'movies' | 'music' | 'others' | 'tv';
   };
   export type public_ListComment = {
     authorId: FieldOutputTypes['public']['ListComment']['authorId'];
@@ -3126,33 +3322,168 @@ export namespace Models {
     readonly [RelationKeys]?: 'client' | 'user';
   };
   export type public_Other = {
+    ageRating: FieldOutputTypes['public']['Other']['ageRating'];
+    ageRatingGuide: FieldOutputTypes['public']['Other']['ageRatingGuide'];
+    albumType: FieldOutputTypes['public']['Other']['albumType'];
+    artist: FieldOutputTypes['public']['Other']['artist'];
+    artistPersonId: FieldOutputTypes['public']['Other']['artistPersonId'];
+    artists: FieldOutputTypes['public']['Other']['artists'];
+    audioPreviewUrl: FieldOutputTypes['public']['Other']['audioPreviewUrl'];
+    authors: FieldOutputTypes['public']['Other']['authors'];
     averageScore: FieldOutputTypes['public']['Other']['averageScore'];
+    awards: FieldOutputTypes['public']['Other']['awards'];
     bannerImage: FieldOutputTypes['public']['Other']['bannerImage'];
+    bpm: FieldOutputTypes['public']['Other']['bpm'];
+    broadcastDays: FieldOutputTypes['public']['Other']['broadcastDays'];
+    broadcastTime: FieldOutputTypes['public']['Other']['broadcastTime'];
+    budget: FieldOutputTypes['public']['Other']['budget'];
+    buyLink: FieldOutputTypes['public']['Other']['buyLink'];
+    chapterCount: FieldOutputTypes['public']['Other']['chapterCount'];
+    controllerSupport: FieldOutputTypes['public']['Other']['controllerSupport'];
+    countryOfOrigin: FieldOutputTypes['public']['Other']['countryOfOrigin'];
     coverImage: FieldOutputTypes['public']['Other']['coverImage'];
     createdAt: FieldOutputTypes['public']['Other']['createdAt'];
     creatorId: FieldOutputTypes['public']['Other']['creatorId'];
+    customFields: FieldOutputTypes['public']['Other']['customFields'];
     description: FieldOutputTypes['public']['Other']['description'];
+    developers: FieldOutputTypes['public']['Other']['developers'];
+    duration: FieldOutputTypes['public']['Other']['duration'];
     endDate: FieldOutputTypes['public']['Other']['endDate'];
+    endDateDay: FieldOutputTypes['public']['Other']['endDateDay'];
+    endDateMonth: FieldOutputTypes['public']['Other']['endDateMonth'];
+    endDateYear: FieldOutputTypes['public']['Other']['endDateYear'];
+    episodeCount: FieldOutputTypes['public']['Other']['episodeCount'];
+    episodeDuration: FieldOutputTypes['public']['Other']['episodeDuration'];
+    esrbRating: FieldOutputTypes['public']['Other']['esrbRating'];
+    explicitLyrics: FieldOutputTypes['public']['Other']['explicitLyrics'];
+    externalLinks: FieldOutputTypes['public']['Other']['externalLinks'];
     favorites: FieldOutputTypes['public']['Other']['favorites'];
     format: FieldOutputTypes['public']['Other']['format'];
+    franchise: FieldOutputTypes['public']['Other']['franchise'];
+    gain: FieldOutputTypes['public']['Other']['gain'];
+    gameModes: FieldOutputTypes['public']['Other']['gameModes'];
+    hashtag: FieldOutputTypes['public']['Other']['hashtag'];
     id: FieldOutputTypes['public']['Other']['id'];
+    images: FieldOutputTypes['public']['Other']['images'];
     incrementFieldKey: FieldOutputTypes['public']['Other']['incrementFieldKey'];
+    infoLink: FieldOutputTypes['public']['Other']['infoLink'];
+    isAdult: FieldOutputTypes['public']['Other']['isAdult'];
     isPublished: FieldOutputTypes['public']['Other']['isPublished'];
+    isbn10: FieldOutputTypes['public']['Other']['isbn10'];
+    isbn13: FieldOutputTypes['public']['Other']['isbn13'];
+    isrc: FieldOutputTypes['public']['Other']['isrc'];
+    label: FieldOutputTypes['public']['Other']['label'];
+    languages: FieldOutputTypes['public']['Other']['languages'];
+    lyrics: FieldOutputTypes['public']['Other']['lyrics'];
+    networks: FieldOutputTypes['public']['Other']['networks'];
+    nextAiringAt: FieldOutputTypes['public']['Other']['nextAiringAt'];
+    nextAiringEpisodeNumber: FieldOutputTypes['public']['Other']['nextAiringEpisodeNumber'];
+    originalLanguage: FieldOutputTypes['public']['Other']['originalLanguage'];
+    pageCount: FieldOutputTypes['public']['Other']['pageCount'];
+    pegiRating: FieldOutputTypes['public']['Other']['pegiRating'];
+    platforms: FieldOutputTypes['public']['Other']['platforms'];
+    playerPerspectives: FieldOutputTypes['public']['Other']['playerPerspectives'];
     popularity: FieldOutputTypes['public']['Other']['popularity'];
     preUpdateSnapshot: FieldOutputTypes['public']['Other']['preUpdateSnapshot'];
+    previewLink: FieldOutputTypes['public']['Other']['previewLink'];
     progressFields: FieldOutputTypes['public']['Other']['progressFields'];
+    publishers: FieldOutputTypes['public']['Other']['publishers'];
+    requirements: FieldOutputTypes['public']['Other']['requirements'];
+    retailPrice: FieldOutputTypes['public']['Other']['retailPrice'];
+    retailPriceCurrency: FieldOutputTypes['public']['Other']['retailPriceCurrency'];
+    revenue: FieldOutputTypes['public']['Other']['revenue'];
+    runtime: FieldOutputTypes['public']['Other']['runtime'];
     scoreDistribution: FieldOutputTypes['public']['Other']['scoreDistribution'];
     scoredCount: FieldOutputTypes['public']['Other']['scoredCount'];
+    seasonCount: FieldOutputTypes['public']['Other']['seasonCount'];
+    seasonSeason: FieldOutputTypes['public']['Other']['seasonSeason'];
+    seasonYear: FieldOutputTypes['public']['Other']['seasonYear'];
+    series: FieldOutputTypes['public']['Other']['series'];
+    seriesPosition: FieldOutputTypes['public']['Other']['seriesPosition'];
+    showType: FieldOutputTypes['public']['Other']['showType'];
+    siteUrl: FieldOutputTypes['public']['Other']['siteUrl'];
+    source: FieldOutputTypes['public']['Other']['source'];
     startDate: FieldOutputTypes['public']['Other']['startDate'];
+    startDateDay: FieldOutputTypes['public']['Other']['startDateDay'];
+    startDateMonth: FieldOutputTypes['public']['Other']['startDateMonth'];
+    startDateYear: FieldOutputTypes['public']['Other']['startDateYear'];
+    status: FieldOutputTypes['public']['Other']['status'];
     statusDistribution: FieldOutputTypes['public']['Other']['statusDistribution'];
+    subjects: FieldOutputTypes['public']['Other']['subjects'];
+    syncedLyrics: FieldOutputTypes['public']['Other']['syncedLyrics'];
+    synonyms: FieldOutputTypes['public']['Other']['synonyms'];
+    tagline: FieldOutputTypes['public']['Other']['tagline'];
+    themeSongs: FieldOutputTypes['public']['Other']['themeSongs'];
+    titleNative: FieldOutputTypes['public']['Other']['titleNative'];
     titlePrimary: FieldOutputTypes['public']['Other']['titlePrimary'];
     titleSecondary: FieldOutputTypes['public']['Other']['titleSecondary'];
     totalScoreSum: FieldOutputTypes['public']['Other']['totalScoreSum'];
+    totalTracks: FieldOutputTypes['public']['Other']['totalTracks'];
+    trailers: FieldOutputTypes['public']['Other']['trailers'];
     updatedAt: FieldOutputTypes['public']['Other']['updatedAt'];
+    volumeCount: FieldOutputTypes['public']['Other']['volumeCount'];
+    artistPerson: public_Person | null;
+    characters: public_OtherCharacter[];
     creator: public_User;
     customListEntries: public_CustomListEntry[];
+    episodes: public_OtherEpisode[];
+    genres: public_OtherGenre[];
+    relations: public_OtherRelation[];
+    seasons: public_OtherSeason[];
+    staff: public_OtherStaff[];
+    studios: public_OtherStudio[];
+    tags: public_OtherTag[];
+    tracks: public_OtherTrack[];
     userLists: public_OtherList[];
-    readonly [RelationKeys]?: 'creator' | 'customListEntries' | 'userLists';
+    readonly [RelationKeys]?:
+      | 'artistPerson'
+      | 'characters'
+      | 'creator'
+      | 'customListEntries'
+      | 'episodes'
+      | 'genres'
+      | 'relations'
+      | 'seasons'
+      | 'staff'
+      | 'studios'
+      | 'tags'
+      | 'tracks'
+      | 'userLists';
+  };
+  export type public_OtherCharacter = {
+    actorId: FieldOutputTypes['public']['OtherCharacter']['actorId'];
+    characterId: FieldOutputTypes['public']['OtherCharacter']['characterId'];
+    id: FieldOutputTypes['public']['OtherCharacter']['id'];
+    order: FieldOutputTypes['public']['OtherCharacter']['order'];
+    otherId: FieldOutputTypes['public']['OtherCharacter']['otherId'];
+    role: FieldOutputTypes['public']['OtherCharacter']['role'];
+    actor: public_Person | null;
+    character: public_Character;
+    other: public_Other;
+    readonly [RelationKeys]?: 'actor' | 'character' | 'other';
+  };
+  export type public_OtherEpisode = {
+    airDate: FieldOutputTypes['public']['OtherEpisode']['airDate'];
+    episodeNumber: FieldOutputTypes['public']['OtherEpisode']['episodeNumber'];
+    episodeType: FieldOutputTypes['public']['OtherEpisode']['episodeType'];
+    id: FieldOutputTypes['public']['OtherEpisode']['id'];
+    name: FieldOutputTypes['public']['OtherEpisode']['name'];
+    otherId: FieldOutputTypes['public']['OtherEpisode']['otherId'];
+    overview: FieldOutputTypes['public']['OtherEpisode']['overview'];
+    runtime: FieldOutputTypes['public']['OtherEpisode']['runtime'];
+    seasonId: FieldOutputTypes['public']['OtherEpisode']['seasonId'];
+    seasonNumber: FieldOutputTypes['public']['OtherEpisode']['seasonNumber'];
+    stillPath: FieldOutputTypes['public']['OtherEpisode']['stillPath'];
+    other: public_Other;
+    season: public_OtherSeason | null;
+    readonly [RelationKeys]?: 'other' | 'season';
+  };
+  export type public_OtherGenre = {
+    genreId: FieldOutputTypes['public']['OtherGenre']['genreId'];
+    otherId: FieldOutputTypes['public']['OtherGenre']['otherId'];
+    genre: public_Genre;
+    other: public_Other;
+    readonly [RelationKeys]?: 'genre' | 'other';
   };
   export type public_OtherList = {
     completedAt: FieldOutputTypes['public']['OtherList']['completedAt'];
@@ -3163,6 +3494,8 @@ export namespace Models {
     priority: FieldOutputTypes['public']['OtherList']['priority'];
     private: FieldOutputTypes['public']['OtherList']['private'];
     progressValues: FieldOutputTypes['public']['OtherList']['progressValues'];
+    rewatchHistory: FieldOutputTypes['public']['OtherList']['rewatchHistory'];
+    rewatched: FieldOutputTypes['public']['OtherList']['rewatched'];
     score: FieldOutputTypes['public']['OtherList']['score'];
     startedAt: FieldOutputTypes['public']['OtherList']['startedAt'];
     status: FieldOutputTypes['public']['OtherList']['status'];
@@ -3171,6 +3504,71 @@ export namespace Models {
     other: public_Other;
     user: public_User;
     readonly [RelationKeys]?: 'other' | 'user';
+  };
+  export type public_OtherRelation = {
+    id: FieldOutputTypes['public']['OtherRelation']['id'];
+    otherId: FieldOutputTypes['public']['OtherRelation']['otherId'];
+    relationType: FieldOutputTypes['public']['OtherRelation']['relationType'];
+    targetId: FieldOutputTypes['public']['OtherRelation']['targetId'];
+    targetType: FieldOutputTypes['public']['OtherRelation']['targetType'];
+    other: public_Other;
+    readonly [RelationKeys]?: 'other';
+  };
+  export type public_OtherSeason = {
+    airDate: FieldOutputTypes['public']['OtherSeason']['airDate'];
+    episodeCount: FieldOutputTypes['public']['OtherSeason']['episodeCount'];
+    id: FieldOutputTypes['public']['OtherSeason']['id'];
+    name: FieldOutputTypes['public']['OtherSeason']['name'];
+    otherId: FieldOutputTypes['public']['OtherSeason']['otherId'];
+    overview: FieldOutputTypes['public']['OtherSeason']['overview'];
+    posterPath: FieldOutputTypes['public']['OtherSeason']['posterPath'];
+    seasonNumber: FieldOutputTypes['public']['OtherSeason']['seasonNumber'];
+    episodes: public_OtherEpisode[];
+    other: public_Other;
+    readonly [RelationKeys]?: 'episodes' | 'other';
+  };
+  export type public_OtherStaff = {
+    customRole: FieldOutputTypes['public']['OtherStaff']['customRole'];
+    id: FieldOutputTypes['public']['OtherStaff']['id'];
+    otherId: FieldOutputTypes['public']['OtherStaff']['otherId'];
+    personId: FieldOutputTypes['public']['OtherStaff']['personId'];
+    role: FieldOutputTypes['public']['OtherStaff']['role'];
+    other: public_Other;
+    person: public_Person;
+    readonly [RelationKeys]?: 'other' | 'person';
+  };
+  export type public_OtherStudio = {
+    id: FieldOutputTypes['public']['OtherStudio']['id'];
+    isMain: FieldOutputTypes['public']['OtherStudio']['isMain'];
+    otherId: FieldOutputTypes['public']['OtherStudio']['otherId'];
+    studioId: FieldOutputTypes['public']['OtherStudio']['studioId'];
+    other: public_Other;
+    studio: public_Studio;
+    readonly [RelationKeys]?: 'other' | 'studio';
+  };
+  export type public_OtherTag = {
+    isSpoiler: FieldOutputTypes['public']['OtherTag']['isSpoiler'];
+    otherId: FieldOutputTypes['public']['OtherTag']['otherId'];
+    rank: FieldOutputTypes['public']['OtherTag']['rank'];
+    tagId: FieldOutputTypes['public']['OtherTag']['tagId'];
+    other: public_Other;
+    tag: public_Tag;
+    readonly [RelationKeys]?: 'other' | 'tag';
+  };
+  export type public_OtherTrack = {
+    artistName: FieldOutputTypes['public']['OtherTrack']['artistName'];
+    artistPersonId: FieldOutputTypes['public']['OtherTrack']['artistPersonId'];
+    audioPreviewUrl: FieldOutputTypes['public']['OtherTrack']['audioPreviewUrl'];
+    discNumber: FieldOutputTypes['public']['OtherTrack']['discNumber'];
+    duration: FieldOutputTypes['public']['OtherTrack']['duration'];
+    explicitLyrics: FieldOutputTypes['public']['OtherTrack']['explicitLyrics'];
+    id: FieldOutputTypes['public']['OtherTrack']['id'];
+    otherId: FieldOutputTypes['public']['OtherTrack']['otherId'];
+    titlePrimary: FieldOutputTypes['public']['OtherTrack']['titlePrimary'];
+    trackNumber: FieldOutputTypes['public']['OtherTrack']['trackNumber'];
+    artistPerson: public_Person | null;
+    other: public_Other;
+    readonly [RelationKeys]?: 'artistPerson' | 'other';
   };
   export type public_PassCipher = {
     createdAt: FieldOutputTypes['public']['PassCipher']['createdAt'];
@@ -3244,8 +3642,19 @@ export namespace Models {
     yearsActive: FieldOutputTypes['public']['Person']['yearsActive'];
     mediaStaff: public_MediaStaff[];
     musicTracks: public_Music[];
+    otherArtistItems: public_Other[];
+    otherStaff: public_OtherStaff[];
+    otherTracks: public_OtherTrack[];
+    otherVoicedCharacters: public_OtherCharacter[];
     voicedCharacters: public_MediaCharacter[];
-    readonly [RelationKeys]?: 'mediaStaff' | 'musicTracks' | 'voicedCharacters';
+    readonly [RelationKeys]?:
+      | 'mediaStaff'
+      | 'musicTracks'
+      | 'otherArtistItems'
+      | 'otherStaff'
+      | 'otherTracks'
+      | 'otherVoicedCharacters'
+      | 'voicedCharacters';
   };
   export type public_ReliquaryBookmark = {
     createdAt: FieldOutputTypes['public']['ReliquaryBookmark']['createdAt'];
@@ -3363,7 +3772,8 @@ export namespace Models {
     tvDBId: FieldOutputTypes['public']['Studio']['tvDBId'];
     updatedAt: FieldOutputTypes['public']['Studio']['updatedAt'];
     mediaStudios: public_MediaStudio[];
-    readonly [RelationKeys]?: 'mediaStudios';
+    otherStudios: public_OtherStudio[];
+    readonly [RelationKeys]?: 'mediaStudios' | 'otherStudios';
   };
   export type public_Tag = {
     category: FieldOutputTypes['public']['Tag']['category'];
@@ -3379,8 +3789,10 @@ export namespace Models {
     manga: public_MangaTag[];
     movies: public_MovieTag[];
     music: public_MusicTag[];
+    others: public_OtherTag[];
     tv: public_TvTag[];
-    readonly [RelationKeys]?: 'anime' | 'books' | 'games' | 'manga' | 'movies' | 'music' | 'tv';
+    readonly [RelationKeys]?:
+      'anime' | 'books' | 'games' | 'manga' | 'movies' | 'music' | 'others' | 'tv';
   };
   export type public_Tv = {
     ageRating: FieldOutputTypes['public']['Tv']['ageRating'];
@@ -3839,7 +4251,16 @@ export declare const models: {
     OAuthConsent: Models.public_OAuthConsent;
     OAuthRefreshToken: Models.public_OAuthRefreshToken;
     Other: Models.public_Other;
+    OtherCharacter: Models.public_OtherCharacter;
+    OtherEpisode: Models.public_OtherEpisode;
+    OtherGenre: Models.public_OtherGenre;
     OtherList: Models.public_OtherList;
+    OtherRelation: Models.public_OtherRelation;
+    OtherSeason: Models.public_OtherSeason;
+    OtherStaff: Models.public_OtherStaff;
+    OtherStudio: Models.public_OtherStudio;
+    OtherTag: Models.public_OtherTag;
+    OtherTrack: Models.public_OtherTrack;
     PassCipher: Models.public_PassCipher;
     Passkey: Models.public_Passkey;
     Person: Models.public_Person;
@@ -12935,13 +13356,131 @@ type ContractBase = Omit<
             };
             readonly Other: {
               columns: {
+                readonly ageRating: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly ageRatingGuide: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly albumType: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly artist: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly artistPersonId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly artists: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly audioPreviewUrl: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly authors: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
                 readonly averageScore: {
                   readonly dataType: 'pg/float8';
                   readonly codecId: 'pg/float8@1';
                   readonly nullable: true;
                   readonly many: false;
                 };
+                readonly awards: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
                 readonly bannerImage: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly bpm: {
+                  readonly dataType: 'pg/float8';
+                  readonly codecId: 'pg/float8@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly broadcastDays: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly broadcastTime: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly budget: {
+                  readonly dataType: 'pg/float8';
+                  readonly codecId: 'pg/float8@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly buyLink: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly chapterCount: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly controllerSupport: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly countryOfOrigin: {
                   readonly dataType: 'pg/text';
                   readonly codecId: 'pg/text@1';
                   readonly nullable: true;
@@ -12966,15 +13505,93 @@ type ContractBase = Omit<
                   readonly nullable: false;
                   readonly many: false;
                 };
+                readonly customFields: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/jsonb@1', readonly []>;
+                  };
+                  readonly many: false;
+                };
                 readonly description: {
                   readonly dataType: 'pg/text';
                   readonly codecId: 'pg/text@1';
                   readonly nullable: true;
                   readonly many: false;
                 };
+                readonly developers: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly duration: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
                 readonly endDate: {
                   readonly dataType: 'pg/timestamptz';
                   readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly endDateDay: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly endDateMonth: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly endDateYear: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly episodeCount: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly episodeDuration: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly esrbRating: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly explicitLyrics: {
+                  readonly dataType: 'pg/bool';
+                  readonly codecId: 'pg/bool@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/bool@1', false>;
+                  };
+                  readonly many: false;
+                };
+                readonly externalLinks: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
                   readonly nullable: true;
                   readonly many: false;
                 };
@@ -12994,6 +13611,34 @@ type ContractBase = Omit<
                   readonly nullable: true;
                   readonly many: false;
                 };
+                readonly franchise: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly gain: {
+                  readonly dataType: 'pg/float8';
+                  readonly codecId: 'pg/float8@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly gameModes: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly hashtag: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
                 readonly id: {
                   readonly dataType: 'pg/int4';
                   readonly codecId: 'pg/int4@1';
@@ -13004,10 +13649,32 @@ type ContractBase = Omit<
                   };
                   readonly many: false;
                 };
+                readonly images: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
                 readonly incrementFieldKey: {
                   readonly dataType: 'pg/text';
                   readonly codecId: 'pg/text@1';
                   readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly infoLink: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly isAdult: {
+                  readonly dataType: 'pg/bool';
+                  readonly codecId: 'pg/bool@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/bool@1', false>;
+                  };
                   readonly many: false;
                 };
                 readonly isPublished: {
@@ -13019,6 +13686,106 @@ type ContractBase = Omit<
                     readonly value: DefaultLiteralValue<'pg/bool@1', false>;
                   };
                   readonly many: false;
+                };
+                readonly isbn10: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly isbn13: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly isrc: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly label: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly languages: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly lyrics: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly networks: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly nextAiringAt: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly nextAiringEpisodeNumber: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly originalLanguage: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly pageCount: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly pegiRating: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly platforms: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly playerPerspectives: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
                 };
                 readonly popularity: {
                   readonly dataType: 'pg/int4';
@@ -13036,6 +13803,12 @@ type ContractBase = Omit<
                   readonly nullable: true;
                   readonly many: false;
                 };
+                readonly previewLink: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
                 readonly progressFields: {
                   readonly dataType: 'pg/jsonb';
                   readonly codecId: 'pg/jsonb@1';
@@ -13044,6 +13817,46 @@ type ContractBase = Omit<
                     readonly kind: 'literal';
                     readonly value: DefaultLiteralValue<'pg/jsonb@1', readonly []>;
                   };
+                  readonly many: false;
+                };
+                readonly publishers: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly requirements: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly retailPrice: {
+                  readonly dataType: 'pg/float8';
+                  readonly codecId: 'pg/float8@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly retailPriceCurrency: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly revenue: {
+                  readonly dataType: 'pg/float8';
+                  readonly codecId: 'pg/float8@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly runtime: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
                   readonly many: false;
                 };
                 readonly scoreDistribution: {
@@ -13062,10 +13875,86 @@ type ContractBase = Omit<
                   readonly nullable: true;
                   readonly many: false;
                 };
+                readonly seasonCount: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly seasonSeason: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly seasonYear: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly series: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly seriesPosition: {
+                  readonly dataType: 'pg/float8';
+                  readonly codecId: 'pg/float8@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly showType: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly siteUrl: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly source: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
                 readonly startDate: {
                   readonly dataType: 'pg/timestamptz';
                   readonly codecId: 'pg/timestamptz-date@1';
                   readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly startDateDay: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly startDateMonth: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly startDateYear: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly status: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', 'UNKNOWN'>;
+                  };
                   readonly many: false;
                 };
                 readonly statusDistribution: {
@@ -13076,6 +13965,50 @@ type ContractBase = Omit<
                     readonly kind: 'literal';
                     readonly value: DefaultLiteralValue<'pg/jsonb@1', {}>;
                   };
+                  readonly many: false;
+                };
+                readonly subjects: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly syncedLyrics: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly synonyms: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', readonly []>;
+                  };
+                  readonly many: { readonly elementNullable: false };
+                };
+                readonly tagline: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly themeSongs: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly titleNative: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
                   readonly many: false;
                 };
                 readonly titlePrimary: {
@@ -13096,16 +14029,40 @@ type ContractBase = Omit<
                   readonly nullable: true;
                   readonly many: false;
                 };
+                readonly totalTracks: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly trailers: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
                 readonly updatedAt: {
                   readonly dataType: 'pg/timestamptz';
                   readonly codecId: 'pg/timestamptz-date@1';
                   readonly nullable: false;
                   readonly many: false;
                 };
+                readonly volumeCount: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
               };
               primaryKey: { readonly columns: readonly ['id'] };
               uniques: readonly [];
               indexes: readonly [
+                {
+                  readonly name: 'Other_artistPersonId_idx_c9d1b42c';
+                  readonly prefix: 'Other_artistPersonId_idx';
+                  readonly columns: readonly ['artistPersonId'];
+                  readonly unique: false;
+                },
                 {
                   readonly name: 'Other_averageScore_idx_bf179ffc';
                   readonly prefix: 'Other_averageScore_idx';
@@ -13119,6 +14076,12 @@ type ContractBase = Omit<
                   readonly unique: false;
                 },
                 {
+                  readonly name: 'Other_format_idx_8b879d33';
+                  readonly prefix: 'Other_format_idx';
+                  readonly columns: readonly ['format'];
+                  readonly unique: false;
+                },
+                {
                   readonly name: 'Other_isPublished_idx_d7ee5985';
                   readonly prefix: 'Other_isPublished_idx';
                   readonly columns: readonly ['isPublished'];
@@ -13128,6 +14091,18 @@ type ContractBase = Omit<
                   readonly name: 'Other_popularity_idx_98cb0e33';
                   readonly prefix: 'Other_popularity_idx';
                   readonly columns: readonly ['popularity'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'Other_startDateYear_idx_51822d55';
+                  readonly prefix: 'Other_startDateYear_idx';
+                  readonly columns: readonly ['startDateYear'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'Other_status_idx_e98638ab';
+                  readonly prefix: 'Other_status_idx';
+                  readonly columns: readonly ['status'];
                   readonly unique: false;
                 },
                 {
@@ -13150,6 +14125,302 @@ type ContractBase = Omit<
                     readonly columns: readonly ['id'];
                   };
                 },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Other';
+                    readonly columns: readonly ['artistPersonId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Person';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly OtherCharacter: {
+              columns: {
+                readonly actorId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly characterId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly id: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'function';
+                    readonly expression: 'autoincrement()';
+                  };
+                  readonly many: false;
+                };
+                readonly order: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly otherId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly role: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', 'MAIN'>;
+                  };
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [
+                { readonly columns: readonly ['otherId', 'characterId', 'actorId'] },
+              ];
+              indexes: readonly [
+                {
+                  readonly name: 'OtherCharacter_actorId_idx_a58f6b4b';
+                  readonly prefix: 'OtherCharacter_actorId_idx';
+                  readonly columns: readonly ['actorId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'OtherCharacter_characterId_idx_2423fe9d';
+                  readonly prefix: 'OtherCharacter_characterId_idx';
+                  readonly columns: readonly ['characterId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'OtherCharacter_otherId_idx_ec5479b3';
+                  readonly prefix: 'OtherCharacter_otherId_idx';
+                  readonly columns: readonly ['otherId'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherCharacter';
+                    readonly columns: readonly ['otherId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Other';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherCharacter';
+                    readonly columns: readonly ['characterId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Character';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherCharacter';
+                    readonly columns: readonly ['actorId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Person';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly OtherEpisode: {
+              columns: {
+                readonly airDate: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly episodeNumber: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly episodeType: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly id: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'function';
+                    readonly expression: 'autoincrement()';
+                  };
+                  readonly many: false;
+                };
+                readonly name: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly otherId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly overview: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly runtime: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly seasonId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly seasonNumber: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly stillPath: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [];
+              indexes: readonly [
+                {
+                  readonly name: 'OtherEpisode_otherId_idx_ec5479b3';
+                  readonly prefix: 'OtherEpisode_otherId_idx';
+                  readonly columns: readonly ['otherId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'OtherEpisode_seasonId_idx_aa50cbae';
+                  readonly prefix: 'OtherEpisode_seasonId_idx';
+                  readonly columns: readonly ['seasonId'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherEpisode';
+                    readonly columns: readonly ['otherId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Other';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherEpisode';
+                    readonly columns: readonly ['seasonId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherSeason';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly OtherGenre: {
+              columns: {
+                readonly genreId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly otherId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['otherId', 'genreId'] };
+              uniques: readonly [];
+              indexes: readonly [
+                {
+                  readonly name: 'OtherGenre_genreId_idx_8fce6a7b';
+                  readonly prefix: 'OtherGenre_genreId_idx';
+                  readonly columns: readonly ['genreId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'OtherGenre_otherId_idx_ec5479b3';
+                  readonly prefix: 'OtherGenre_otherId_idx';
+                  readonly columns: readonly ['otherId'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherGenre';
+                    readonly columns: readonly ['otherId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Other';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherGenre';
+                    readonly columns: readonly ['genreId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Genre';
+                    readonly columns: readonly ['id'];
+                  };
+                },
               ];
             };
             readonly OtherList: {
@@ -13168,13 +14439,9 @@ type ContractBase = Omit<
                   readonly many: false;
                 };
                 readonly id: {
-                  readonly dataType: 'pg/int4';
-                  readonly codecId: 'pg/int4@1';
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
                   readonly nullable: false;
-                  readonly default: {
-                    readonly kind: 'function';
-                    readonly expression: 'autoincrement()';
-                  };
                   readonly many: false;
                 };
                 readonly notes: {
@@ -13216,6 +14483,22 @@ type ContractBase = Omit<
                   readonly default: {
                     readonly kind: 'literal';
                     readonly value: DefaultLiteralValue<'pg/jsonb@1', {}>;
+                  };
+                  readonly many: false;
+                };
+                readonly rewatchHistory: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly rewatched: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/int4@1', 0>;
                   };
                   readonly many: false;
                 };
@@ -13264,27 +14547,9 @@ type ContractBase = Omit<
                   readonly unique: false;
                 },
                 {
-                  readonly name: 'OtherList_status_idx_e98638ab';
-                  readonly prefix: 'OtherList_status_idx';
-                  readonly columns: readonly ['status'];
-                  readonly unique: false;
-                },
-                {
                   readonly name: 'OtherList_userId_idx_a489d58a';
                   readonly prefix: 'OtherList_userId_idx';
                   readonly columns: readonly ['userId'];
-                  readonly unique: false;
-                },
-                {
-                  readonly name: 'OtherList_userId_priority_idx_48571828';
-                  readonly prefix: 'OtherList_userId_priority_idx';
-                  readonly columns: readonly ['userId', 'priority'];
-                  readonly unique: false;
-                },
-                {
-                  readonly name: 'OtherList_userId_score_idx_5e26db88';
-                  readonly prefix: 'OtherList_userId_score_idx';
-                  readonly columns: readonly ['userId', 'score'];
                   readonly unique: false;
                 },
                 {
@@ -13316,6 +14581,512 @@ type ContractBase = Omit<
                   readonly target: {
                     readonly namespaceId: 'public' & NamespaceId;
                     readonly tableName: 'Other';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly OtherRelation: {
+              columns: {
+                readonly id: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'function';
+                    readonly expression: 'autoincrement()';
+                  };
+                  readonly many: false;
+                };
+                readonly otherId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly relationType: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly targetId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly targetType: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [
+                {
+                  readonly columns: readonly ['otherId', 'targetType', 'targetId', 'relationType'];
+                },
+              ];
+              indexes: readonly [
+                {
+                  readonly name: 'OtherRelation_otherId_idx_ec5479b3';
+                  readonly prefix: 'OtherRelation_otherId_idx';
+                  readonly columns: readonly ['otherId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'OtherRelation_targetType_targetId_idx_7a5ee9cb';
+                  readonly prefix: 'OtherRelation_targetType_targetId_idx';
+                  readonly columns: readonly ['targetType', 'targetId'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherRelation';
+                    readonly columns: readonly ['otherId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Other';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly OtherSeason: {
+              columns: {
+                readonly airDate: {
+                  readonly dataType: 'pg/timestamptz';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly episodeCount: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly id: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'function';
+                    readonly expression: 'autoincrement()';
+                  };
+                  readonly many: false;
+                };
+                readonly name: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly otherId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly overview: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly posterPath: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly seasonNumber: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [{ readonly columns: readonly ['otherId', 'seasonNumber'] }];
+              indexes: readonly [
+                {
+                  readonly name: 'OtherSeason_otherId_idx_ec5479b3';
+                  readonly prefix: 'OtherSeason_otherId_idx';
+                  readonly columns: readonly ['otherId'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherSeason';
+                    readonly columns: readonly ['otherId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Other';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly OtherStaff: {
+              columns: {
+                readonly customRole: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly id: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'function';
+                    readonly expression: 'autoincrement()';
+                  };
+                  readonly many: false;
+                };
+                readonly otherId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly personId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly role: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/text@1', 'OTHER'>;
+                  };
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [{ readonly columns: readonly ['otherId', 'personId', 'role'] }];
+              indexes: readonly [
+                {
+                  readonly name: 'OtherStaff_otherId_idx_ec5479b3';
+                  readonly prefix: 'OtherStaff_otherId_idx';
+                  readonly columns: readonly ['otherId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'OtherStaff_personId_idx_e5e06b80';
+                  readonly prefix: 'OtherStaff_personId_idx';
+                  readonly columns: readonly ['personId'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherStaff';
+                    readonly columns: readonly ['otherId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Other';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherStaff';
+                    readonly columns: readonly ['personId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Person';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly OtherStudio: {
+              columns: {
+                readonly id: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'function';
+                    readonly expression: 'autoincrement()';
+                  };
+                  readonly many: false;
+                };
+                readonly isMain: {
+                  readonly dataType: 'pg/bool';
+                  readonly codecId: 'pg/bool@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/bool@1', false>;
+                  };
+                  readonly many: false;
+                };
+                readonly otherId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly studioId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [{ readonly columns: readonly ['otherId', 'studioId'] }];
+              indexes: readonly [
+                {
+                  readonly name: 'OtherStudio_otherId_idx_ec5479b3';
+                  readonly prefix: 'OtherStudio_otherId_idx';
+                  readonly columns: readonly ['otherId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'OtherStudio_studioId_idx_efc35ac7';
+                  readonly prefix: 'OtherStudio_studioId_idx';
+                  readonly columns: readonly ['studioId'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherStudio';
+                    readonly columns: readonly ['otherId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Other';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherStudio';
+                    readonly columns: readonly ['studioId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Studio';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly OtherTag: {
+              columns: {
+                readonly isSpoiler: {
+                  readonly dataType: 'pg/bool';
+                  readonly codecId: 'pg/bool@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/bool@1', false>;
+                  };
+                  readonly many: false;
+                };
+                readonly otherId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly rank: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly tagId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['otherId', 'tagId'] };
+              uniques: readonly [];
+              indexes: readonly [
+                {
+                  readonly name: 'OtherTag_otherId_idx_ec5479b3';
+                  readonly prefix: 'OtherTag_otherId_idx';
+                  readonly columns: readonly ['otherId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'OtherTag_tagId_idx_86854244';
+                  readonly prefix: 'OtherTag_tagId_idx';
+                  readonly columns: readonly ['tagId'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherTag';
+                    readonly columns: readonly ['otherId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Other';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherTag';
+                    readonly columns: readonly ['tagId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Tag';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+              ];
+            };
+            readonly OtherTrack: {
+              columns: {
+                readonly artistName: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly artistPersonId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly audioPreviewUrl: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly discNumber: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/int4@1', 1>;
+                  };
+                  readonly many: false;
+                };
+                readonly duration: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly explicitLyrics: {
+                  readonly dataType: 'pg/bool';
+                  readonly codecId: 'pg/bool@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'literal';
+                    readonly value: DefaultLiteralValue<'pg/bool@1', false>;
+                  };
+                  readonly many: false;
+                };
+                readonly id: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly default: {
+                    readonly kind: 'function';
+                    readonly expression: 'autoincrement()';
+                  };
+                  readonly many: false;
+                };
+                readonly otherId: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly titlePrimary: {
+                  readonly dataType: 'pg/text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+                readonly trackNumber: {
+                  readonly dataType: 'pg/int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: false;
+                  readonly many: false;
+                };
+              };
+              primaryKey: { readonly columns: readonly ['id'] };
+              uniques: readonly [];
+              indexes: readonly [
+                {
+                  readonly name: 'OtherTrack_artistPersonId_idx_c9d1b42c';
+                  readonly prefix: 'OtherTrack_artistPersonId_idx';
+                  readonly columns: readonly ['artistPersonId'];
+                  readonly unique: false;
+                },
+                {
+                  readonly name: 'OtherTrack_otherId_idx_ec5479b3';
+                  readonly prefix: 'OtherTrack_otherId_idx';
+                  readonly columns: readonly ['otherId'];
+                  readonly unique: false;
+                },
+              ];
+              foreignKeys: readonly [
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherTrack';
+                    readonly columns: readonly ['otherId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Other';
+                    readonly columns: readonly ['id'];
+                  };
+                },
+                {
+                  readonly source: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'OtherTrack';
+                    readonly columns: readonly ['artistPersonId'];
+                  };
+                  readonly target: {
+                    readonly namespaceId: 'public' & NamespaceId;
+                    readonly tableName: 'Person';
                     readonly columns: readonly ['id'];
                   };
                 },
@@ -17023,7 +18794,40 @@ type ContractBase = Omit<
       readonly model: 'OAuthRefreshToken';
     };
     readonly Other: { readonly namespace: 'public' & NamespaceId; readonly model: 'Other' };
+    readonly OtherCharacter: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'OtherCharacter';
+    };
+    readonly OtherEpisode: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'OtherEpisode';
+    };
+    readonly OtherGenre: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'OtherGenre';
+    };
     readonly OtherList: { readonly namespace: 'public' & NamespaceId; readonly model: 'OtherList' };
+    readonly OtherRelation: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'OtherRelation';
+    };
+    readonly OtherSeason: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'OtherSeason';
+    };
+    readonly OtherStaff: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'OtherStaff';
+    };
+    readonly OtherStudio: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'OtherStudio';
+    };
+    readonly OtherTag: { readonly namespace: 'public' & NamespaceId; readonly model: 'OtherTag' };
+    readonly OtherTrack: {
+      readonly namespace: 'public' & NamespaceId;
+      readonly model: 'OtherTrack';
+    };
     readonly PassCipher: {
       readonly namespace: 'public' & NamespaceId;
       readonly model: 'PassCipher';
@@ -19331,6 +21135,17 @@ type ContractBase = Omit<
                   readonly targetFields: readonly ['characterId'];
                 };
               };
+              readonly otherCharacters: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherCharacter';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['characterId'];
+                };
+              };
             };
             readonly storage: {
               readonly table: 'Character';
@@ -20812,6 +22627,17 @@ type ContractBase = Omit<
                 readonly to: {
                   readonly namespace: 'public' & NamespaceId;
                   readonly model: 'MusicGenre';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['genreId'];
+                };
+              };
+              readonly others: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherGenre';
                 };
                 readonly cardinality: '1:N';
                 readonly on: {
@@ -24281,11 +26107,83 @@ type ContractBase = Omit<
           };
           readonly Other: {
             readonly fields: {
+              readonly ageRating: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly ageRatingGuide: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly albumType: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly artist: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly artistPersonId: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly artists: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly audioPreviewUrl: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly authors: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
               readonly averageScore: {
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/float8@1' };
               };
+              readonly awards: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
               readonly bannerImage: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly bpm: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/float8@1' };
+              };
+              readonly broadcastDays: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly broadcastTime: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly budget: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/float8@1' };
+              };
+              readonly buyLink: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly chapterCount: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly controllerSupport: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly countryOfOrigin: {
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
@@ -24304,9 +26202,22 @@ type ContractBase = Omit<
                 readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
+              readonly customFields: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
               readonly description: {
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly developers: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly duration: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
               };
               readonly endDate: {
                 readonly nullable: true;
@@ -24314,6 +26225,38 @@ type ContractBase = Omit<
                   readonly kind: 'scalar';
                   readonly codecId: 'pg/timestamptz-date@1';
                 };
+              };
+              readonly endDateDay: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly endDateMonth: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly endDateYear: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly episodeCount: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly episodeDuration: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly esrbRating: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly explicitLyrics: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/bool@1' };
+              };
+              readonly externalLinks: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
               };
               readonly favorites: {
                 readonly nullable: false;
@@ -24323,17 +26266,109 @@ type ContractBase = Omit<
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
+              readonly franchise: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly gain: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/float8@1' };
+              };
+              readonly gameModes: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly hashtag: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
               readonly id: {
                 readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly images: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
               };
               readonly incrementFieldKey: {
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
+              readonly infoLink: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly isAdult: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/bool@1' };
+              };
               readonly isPublished: {
                 readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/bool@1' };
+              };
+              readonly isbn10: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly isbn13: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly isrc: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly label: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly languages: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly lyrics: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly networks: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly nextAiringAt: {
+                readonly nullable: true;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly nextAiringEpisodeNumber: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly originalLanguage: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly pageCount: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly pegiRating: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly platforms: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly playerPerspectives: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
               };
               readonly popularity: {
                 readonly nullable: false;
@@ -24343,9 +26378,38 @@ type ContractBase = Omit<
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
               };
+              readonly previewLink: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
               readonly progressFields: {
                 readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
+              readonly publishers: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly requirements: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
+              readonly retailPrice: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/float8@1' };
+              };
+              readonly retailPriceCurrency: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly revenue: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/float8@1' };
+              };
+              readonly runtime: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
               };
               readonly scoreDistribution: {
                 readonly nullable: false;
@@ -24355,6 +26419,38 @@ type ContractBase = Omit<
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
               };
+              readonly seasonCount: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly seasonSeason: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly seasonYear: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly series: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly seriesPosition: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/float8@1' };
+              };
+              readonly showType: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly siteUrl: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly source: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
               readonly startDate: {
                 readonly nullable: true;
                 readonly type: {
@@ -24362,9 +26458,51 @@ type ContractBase = Omit<
                   readonly codecId: 'pg/timestamptz-date@1';
                 };
               };
+              readonly startDateDay: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly startDateMonth: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly startDateYear: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly status: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
               readonly statusDistribution: {
                 readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
+              readonly subjects: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly syncedLyrics: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly synonyms: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+                readonly many: { readonly elementNullable: false };
+              };
+              readonly tagline: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly themeSongs: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
+              readonly titleNative: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
               readonly titlePrimary: {
                 readonly nullable: false;
@@ -24378,6 +26516,14 @@ type ContractBase = Omit<
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
               };
+              readonly totalTracks: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly trailers: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
               readonly updatedAt: {
                 readonly nullable: false;
                 readonly type: {
@@ -24385,8 +26531,35 @@ type ContractBase = Omit<
                   readonly codecId: 'pg/timestamptz-date@1';
                 };
               };
+              readonly volumeCount: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
             };
             readonly relations: {
+              readonly artistPerson: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Person';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: true;
+                readonly on: {
+                  readonly localFields: readonly ['artistPersonId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly characters: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherCharacter';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['otherId'];
+                };
+              };
               readonly creator: {
                 readonly to: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
                 readonly cardinality: 'N:1';
@@ -24400,6 +26573,94 @@ type ContractBase = Omit<
                 readonly to: {
                   readonly namespace: 'public' & NamespaceId;
                   readonly model: 'CustomListEntry';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['otherId'];
+                };
+              };
+              readonly episodes: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherEpisode';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['otherId'];
+                };
+              };
+              readonly genres: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherGenre';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['otherId'];
+                };
+              };
+              readonly relations: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherRelation';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['otherId'];
+                };
+              };
+              readonly seasons: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherSeason';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['otherId'];
+                };
+              };
+              readonly staff: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherStaff';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['otherId'];
+                };
+              };
+              readonly studios: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherStudio';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['otherId'];
+                };
+              };
+              readonly tags: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherTag';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['otherId'];
+                };
+              };
+              readonly tracks: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherTrack';
                 };
                 readonly cardinality: '1:N';
                 readonly on: {
@@ -24423,29 +26684,324 @@ type ContractBase = Omit<
               readonly table: 'Other';
               readonly namespaceId: 'public';
               readonly fields: {
+                readonly ageRating: { readonly column: 'ageRating' };
+                readonly ageRatingGuide: { readonly column: 'ageRatingGuide' };
+                readonly albumType: { readonly column: 'albumType' };
+                readonly artist: { readonly column: 'artist' };
+                readonly artistPersonId: { readonly column: 'artistPersonId' };
+                readonly artists: { readonly column: 'artists' };
+                readonly audioPreviewUrl: { readonly column: 'audioPreviewUrl' };
+                readonly authors: { readonly column: 'authors' };
                 readonly averageScore: { readonly column: 'averageScore' };
+                readonly awards: { readonly column: 'awards' };
                 readonly bannerImage: { readonly column: 'bannerImage' };
+                readonly bpm: { readonly column: 'bpm' };
+                readonly broadcastDays: { readonly column: 'broadcastDays' };
+                readonly broadcastTime: { readonly column: 'broadcastTime' };
+                readonly budget: { readonly column: 'budget' };
+                readonly buyLink: { readonly column: 'buyLink' };
+                readonly chapterCount: { readonly column: 'chapterCount' };
+                readonly controllerSupport: { readonly column: 'controllerSupport' };
+                readonly countryOfOrigin: { readonly column: 'countryOfOrigin' };
                 readonly coverImage: { readonly column: 'coverImage' };
                 readonly createdAt: { readonly column: 'createdAt' };
                 readonly creatorId: { readonly column: 'creatorId' };
+                readonly customFields: { readonly column: 'customFields' };
                 readonly description: { readonly column: 'description' };
+                readonly developers: { readonly column: 'developers' };
+                readonly duration: { readonly column: 'duration' };
                 readonly endDate: { readonly column: 'endDate' };
+                readonly endDateDay: { readonly column: 'endDateDay' };
+                readonly endDateMonth: { readonly column: 'endDateMonth' };
+                readonly endDateYear: { readonly column: 'endDateYear' };
+                readonly episodeCount: { readonly column: 'episodeCount' };
+                readonly episodeDuration: { readonly column: 'episodeDuration' };
+                readonly esrbRating: { readonly column: 'esrbRating' };
+                readonly explicitLyrics: { readonly column: 'explicitLyrics' };
+                readonly externalLinks: { readonly column: 'externalLinks' };
                 readonly favorites: { readonly column: 'favorites' };
                 readonly format: { readonly column: 'format' };
+                readonly franchise: { readonly column: 'franchise' };
+                readonly gain: { readonly column: 'gain' };
+                readonly gameModes: { readonly column: 'gameModes' };
+                readonly hashtag: { readonly column: 'hashtag' };
                 readonly id: { readonly column: 'id' };
+                readonly images: { readonly column: 'images' };
                 readonly incrementFieldKey: { readonly column: 'incrementFieldKey' };
+                readonly infoLink: { readonly column: 'infoLink' };
+                readonly isAdult: { readonly column: 'isAdult' };
                 readonly isPublished: { readonly column: 'isPublished' };
+                readonly isbn10: { readonly column: 'isbn10' };
+                readonly isbn13: { readonly column: 'isbn13' };
+                readonly isrc: { readonly column: 'isrc' };
+                readonly label: { readonly column: 'label' };
+                readonly languages: { readonly column: 'languages' };
+                readonly lyrics: { readonly column: 'lyrics' };
+                readonly networks: { readonly column: 'networks' };
+                readonly nextAiringAt: { readonly column: 'nextAiringAt' };
+                readonly nextAiringEpisodeNumber: { readonly column: 'nextAiringEpisodeNumber' };
+                readonly originalLanguage: { readonly column: 'originalLanguage' };
+                readonly pageCount: { readonly column: 'pageCount' };
+                readonly pegiRating: { readonly column: 'pegiRating' };
+                readonly platforms: { readonly column: 'platforms' };
+                readonly playerPerspectives: { readonly column: 'playerPerspectives' };
                 readonly popularity: { readonly column: 'popularity' };
                 readonly preUpdateSnapshot: { readonly column: 'preUpdateSnapshot' };
+                readonly previewLink: { readonly column: 'previewLink' };
                 readonly progressFields: { readonly column: 'progressFields' };
+                readonly publishers: { readonly column: 'publishers' };
+                readonly requirements: { readonly column: 'requirements' };
+                readonly retailPrice: { readonly column: 'retailPrice' };
+                readonly retailPriceCurrency: { readonly column: 'retailPriceCurrency' };
+                readonly revenue: { readonly column: 'revenue' };
+                readonly runtime: { readonly column: 'runtime' };
                 readonly scoreDistribution: { readonly column: 'scoreDistribution' };
                 readonly scoredCount: { readonly column: 'scoredCount' };
+                readonly seasonCount: { readonly column: 'seasonCount' };
+                readonly seasonSeason: { readonly column: 'seasonSeason' };
+                readonly seasonYear: { readonly column: 'seasonYear' };
+                readonly series: { readonly column: 'series' };
+                readonly seriesPosition: { readonly column: 'seriesPosition' };
+                readonly showType: { readonly column: 'showType' };
+                readonly siteUrl: { readonly column: 'siteUrl' };
+                readonly source: { readonly column: 'source' };
                 readonly startDate: { readonly column: 'startDate' };
+                readonly startDateDay: { readonly column: 'startDateDay' };
+                readonly startDateMonth: { readonly column: 'startDateMonth' };
+                readonly startDateYear: { readonly column: 'startDateYear' };
+                readonly status: { readonly column: 'status' };
                 readonly statusDistribution: { readonly column: 'statusDistribution' };
+                readonly subjects: { readonly column: 'subjects' };
+                readonly syncedLyrics: { readonly column: 'syncedLyrics' };
+                readonly synonyms: { readonly column: 'synonyms' };
+                readonly tagline: { readonly column: 'tagline' };
+                readonly themeSongs: { readonly column: 'themeSongs' };
+                readonly titleNative: { readonly column: 'titleNative' };
                 readonly titlePrimary: { readonly column: 'titlePrimary' };
                 readonly titleSecondary: { readonly column: 'titleSecondary' };
                 readonly totalScoreSum: { readonly column: 'totalScoreSum' };
+                readonly totalTracks: { readonly column: 'totalTracks' };
+                readonly trailers: { readonly column: 'trailers' };
                 readonly updatedAt: { readonly column: 'updatedAt' };
+                readonly volumeCount: { readonly column: 'volumeCount' };
+              };
+            };
+          };
+          readonly OtherCharacter: {
+            readonly fields: {
+              readonly actorId: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly characterId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly order: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly otherId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly role: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+            };
+            readonly relations: {
+              readonly actor: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Person';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: true;
+                readonly on: {
+                  readonly localFields: readonly ['actorId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly character: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Character';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['characterId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly other: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Other';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['otherId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'OtherCharacter';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly actorId: { readonly column: 'actorId' };
+                readonly characterId: { readonly column: 'characterId' };
+                readonly id: { readonly column: 'id' };
+                readonly order: { readonly column: 'order' };
+                readonly otherId: { readonly column: 'otherId' };
+                readonly role: { readonly column: 'role' };
+              };
+            };
+          };
+          readonly OtherEpisode: {
+            readonly fields: {
+              readonly airDate: {
+                readonly nullable: true;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly episodeNumber: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly episodeType: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly name: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly otherId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly overview: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly runtime: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly seasonId: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly seasonNumber: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly stillPath: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+            };
+            readonly relations: {
+              readonly other: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Other';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['otherId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly season: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherSeason';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: true;
+                readonly on: {
+                  readonly localFields: readonly ['seasonId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'OtherEpisode';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly airDate: { readonly column: 'airDate' };
+                readonly episodeNumber: { readonly column: 'episodeNumber' };
+                readonly episodeType: { readonly column: 'episodeType' };
+                readonly id: { readonly column: 'id' };
+                readonly name: { readonly column: 'name' };
+                readonly otherId: { readonly column: 'otherId' };
+                readonly overview: { readonly column: 'overview' };
+                readonly runtime: { readonly column: 'runtime' };
+                readonly seasonId: { readonly column: 'seasonId' };
+                readonly seasonNumber: { readonly column: 'seasonNumber' };
+                readonly stillPath: { readonly column: 'stillPath' };
+              };
+            };
+          };
+          readonly OtherGenre: {
+            readonly fields: {
+              readonly genreId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly otherId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+            };
+            readonly relations: {
+              readonly genre: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Genre';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['genreId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly other: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Other';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['otherId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'OtherGenre';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly genreId: { readonly column: 'genreId' };
+                readonly otherId: { readonly column: 'otherId' };
               };
             };
           };
@@ -24467,7 +27023,7 @@ type ContractBase = Omit<
               };
               readonly id: {
                 readonly nullable: false;
-                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
               readonly notes: {
                 readonly nullable: true;
@@ -24488,6 +27044,14 @@ type ContractBase = Omit<
               readonly progressValues: {
                 readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
+              readonly rewatchHistory: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
+              readonly rewatched: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
               };
               readonly score: {
                 readonly nullable: true;
@@ -24551,11 +27115,396 @@ type ContractBase = Omit<
                 readonly priority: { readonly column: 'priority' };
                 readonly private: { readonly column: 'private' };
                 readonly progressValues: { readonly column: 'progressValues' };
+                readonly rewatchHistory: { readonly column: 'rewatchHistory' };
+                readonly rewatched: { readonly column: 'rewatched' };
                 readonly score: { readonly column: 'score' };
                 readonly startedAt: { readonly column: 'startedAt' };
                 readonly status: { readonly column: 'status' };
                 readonly updatedAt: { readonly column: 'updatedAt' };
                 readonly userId: { readonly column: 'userId' };
+              };
+            };
+          };
+          readonly OtherRelation: {
+            readonly fields: {
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly otherId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly relationType: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly targetId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly targetType: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+            };
+            readonly relations: {
+              readonly other: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Other';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['otherId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'OtherRelation';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly id: { readonly column: 'id' };
+                readonly otherId: { readonly column: 'otherId' };
+                readonly relationType: { readonly column: 'relationType' };
+                readonly targetId: { readonly column: 'targetId' };
+                readonly targetType: { readonly column: 'targetType' };
+              };
+            };
+          };
+          readonly OtherSeason: {
+            readonly fields: {
+              readonly airDate: {
+                readonly nullable: true;
+                readonly type: {
+                  readonly kind: 'scalar';
+                  readonly codecId: 'pg/timestamptz-date@1';
+                };
+              };
+              readonly episodeCount: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly name: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly otherId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly overview: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly posterPath: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly seasonNumber: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+            };
+            readonly relations: {
+              readonly episodes: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherEpisode';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['seasonId'];
+                };
+              };
+              readonly other: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Other';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['otherId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'OtherSeason';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly airDate: { readonly column: 'airDate' };
+                readonly episodeCount: { readonly column: 'episodeCount' };
+                readonly id: { readonly column: 'id' };
+                readonly name: { readonly column: 'name' };
+                readonly otherId: { readonly column: 'otherId' };
+                readonly overview: { readonly column: 'overview' };
+                readonly posterPath: { readonly column: 'posterPath' };
+                readonly seasonNumber: { readonly column: 'seasonNumber' };
+              };
+            };
+          };
+          readonly OtherStaff: {
+            readonly fields: {
+              readonly customRole: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly otherId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly personId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly role: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+            };
+            readonly relations: {
+              readonly other: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Other';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['otherId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly person: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Person';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['personId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'OtherStaff';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly customRole: { readonly column: 'customRole' };
+                readonly id: { readonly column: 'id' };
+                readonly otherId: { readonly column: 'otherId' };
+                readonly personId: { readonly column: 'personId' };
+                readonly role: { readonly column: 'role' };
+              };
+            };
+          };
+          readonly OtherStudio: {
+            readonly fields: {
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly isMain: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/bool@1' };
+              };
+              readonly otherId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly studioId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+            };
+            readonly relations: {
+              readonly other: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Other';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['otherId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly studio: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Studio';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['studioId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'OtherStudio';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly id: { readonly column: 'id' };
+                readonly isMain: { readonly column: 'isMain' };
+                readonly otherId: { readonly column: 'otherId' };
+                readonly studioId: { readonly column: 'studioId' };
+              };
+            };
+          };
+          readonly OtherTag: {
+            readonly fields: {
+              readonly isSpoiler: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/bool@1' };
+              };
+              readonly otherId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly rank: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly tagId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+            };
+            readonly relations: {
+              readonly other: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Other';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['otherId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly tag: {
+                readonly to: { readonly namespace: 'public' & NamespaceId; readonly model: 'Tag' };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['tagId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'OtherTag';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly isSpoiler: { readonly column: 'isSpoiler' };
+                readonly otherId: { readonly column: 'otherId' };
+                readonly rank: { readonly column: 'rank' };
+                readonly tagId: { readonly column: 'tagId' };
+              };
+            };
+          };
+          readonly OtherTrack: {
+            readonly fields: {
+              readonly artistName: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly artistPersonId: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly audioPreviewUrl: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly discNumber: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly duration: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly explicitLyrics: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/bool@1' };
+              };
+              readonly id: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly otherId: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+              readonly titlePrimary: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly trackNumber: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
+            };
+            readonly relations: {
+              readonly artistPerson: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Person';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: true;
+                readonly on: {
+                  readonly localFields: readonly ['artistPersonId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+              readonly other: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Other';
+                };
+                readonly cardinality: 'N:1';
+                readonly nullable: false;
+                readonly on: {
+                  readonly localFields: readonly ['otherId'];
+                  readonly targetFields: readonly ['id'];
+                };
+              };
+            };
+            readonly storage: {
+              readonly table: 'OtherTrack';
+              readonly namespaceId: 'public';
+              readonly fields: {
+                readonly artistName: { readonly column: 'artistName' };
+                readonly artistPersonId: { readonly column: 'artistPersonId' };
+                readonly audioPreviewUrl: { readonly column: 'audioPreviewUrl' };
+                readonly discNumber: { readonly column: 'discNumber' };
+                readonly duration: { readonly column: 'duration' };
+                readonly explicitLyrics: { readonly column: 'explicitLyrics' };
+                readonly id: { readonly column: 'id' };
+                readonly otherId: { readonly column: 'otherId' };
+                readonly titlePrimary: { readonly column: 'titlePrimary' };
+                readonly trackNumber: { readonly column: 'trackNumber' };
               };
             };
           };
@@ -24914,6 +27863,50 @@ type ContractBase = Omit<
                 readonly on: {
                   readonly localFields: readonly ['id'];
                   readonly targetFields: readonly ['artistId'];
+                };
+              };
+              readonly otherArtistItems: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'Other';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['artistPersonId'];
+                };
+              };
+              readonly otherStaff: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherStaff';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['personId'];
+                };
+              };
+              readonly otherTracks: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherTrack';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['artistPersonId'];
+                };
+              };
+              readonly otherVoicedCharacters: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherCharacter';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['actorId'];
                 };
               };
               readonly voicedCharacters: {
@@ -25679,6 +28672,17 @@ type ContractBase = Omit<
                   readonly targetFields: readonly ['studioId'];
                 };
               };
+              readonly otherStudios: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherStudio';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['studioId'];
+                };
+              };
             };
             readonly storage: {
               readonly table: 'Studio';
@@ -25798,6 +28802,17 @@ type ContractBase = Omit<
                 readonly to: {
                   readonly namespace: 'public' & NamespaceId;
                   readonly model: 'MusicTag';
+                };
+                readonly cardinality: '1:N';
+                readonly on: {
+                  readonly localFields: readonly ['id'];
+                  readonly targetFields: readonly ['tagId'];
+                };
+              };
+              readonly others: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId;
+                  readonly model: 'OtherTag';
                 };
                 readonly cardinality: '1:N';
                 readonly on: {
@@ -28678,6 +31693,7 @@ type ContractBase = Omit<
       readonly forShare: true;
       readonly forUpdate: true;
       readonly insertOnConflictSkip: true;
+      readonly insertOnConflictTarget: true;
       readonly insertOnConflictWithoutTarget: true;
       readonly lateral: true;
       readonly lockNowait: true;
@@ -29212,6 +32228,14 @@ type ContractBase = Omit<
           };
         },
         {
+          readonly onCreate: { readonly id: 'uuidv4'; readonly kind: 'generator' };
+          readonly ref: {
+            readonly entry: 'OtherList';
+            readonly field: 'id';
+            readonly namespace: 'public';
+          };
+        },
+        {
           readonly onCreate: { readonly id: 'timestampNow'; readonly kind: 'generator' };
           readonly onUpdate: { readonly id: 'timestampNow'; readonly kind: 'generator' };
           readonly ref: {
@@ -29447,7 +32471,6 @@ type ContractBase = Omit<
     };
   };
   readonly meta: {};
-
   readonly profileHash: ProfileHash;
 };
 

@@ -1,6 +1,7 @@
 import { BaseService } from '../../../core/base/base.serv'
 import { prisma, and, or, countOf } from '@NamelessLiberty/db'
 import { NotFound } from '../../../core/errors/http-errors'
+import { resolveSingleCharacterDescription } from '../_shared/character-description.helper'
 
 export interface CharacterCatalogQuery {
   page?: number
@@ -61,13 +62,15 @@ export class BorealisEntitiesServ extends BaseService {
 
     let itemsQ = q
     if (sortBy === 'name') {
-      itemsQ = itemsQ.orderBy((c) =>
-        sortOrder === 'desc' ? c.namePrimary.desc() : c.namePrimary.asc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (c) => sortOrder === 'desc' ? c.namePrimary.desc() : c.namePrimary.asc(),
+        (c) => c.id.asc(),
+      ])
     } else {
-      itemsQ = itemsQ.orderBy((c) =>
-        sortOrder === 'asc' ? c.favorites.asc() : c.favorites.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (c) => sortOrder === 'asc' ? c.favorites.asc() : c.favorites.desc(),
+        (c) => c.id.asc(),
+      ])
     }
 
     const [total, items] = await Promise.all([
@@ -145,67 +148,117 @@ export class BorealisEntitiesServ extends BaseService {
         mc
           .include('actor')
           .include('anime', (a) =>
-            a.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'titleNative',
-              'coverImage',
-              'bannerImage',
-              'format',
-              'seasonYear',
-              'averageScore'
-            )
+            a
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'format',
+                'status',
+                'seasonYear',
+                'startDateYear',
+                'episodeCount',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('manga', (m) =>
-            m.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'titleNative',
-              'coverImage',
-              'bannerImage',
-              'format',
-              'startDateYear',
-              'averageScore'
-            )
+            m
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'format',
+                'status',
+                'startDateYear',
+                'chapterCount',
+                'volumeCount',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('movie', (m) =>
-            m.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'titleNative',
-              'coverImage',
-              'bannerImage',
-              'releaseDateYear',
-              'averageScore'
-            )
+            m
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'status',
+                'releaseDateYear',
+                'runtime',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('tv', (t) =>
-            t.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'titleNative',
-              'coverImage',
-              'bannerImage',
-              'showType',
-              'firstAiredYear',
-              'averageScore'
-            )
+            t
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'showType',
+                'status',
+                'firstAiredYear',
+                'episodeCount',
+                'seasonCount',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('book', (b) =>
-            b.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'bannerImage',
-              'format',
-              'releaseDateYear',
-              'averageScore'
-            )
+            b
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'format',
+                'status',
+                'releaseDateYear',
+                'pageCount',
+                'chapterCount',
+                'volumeCount',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .orderBy((m) => m.order.asc())
       )
@@ -215,9 +268,14 @@ export class BorealisEntitiesServ extends BaseService {
       throw new NotFound(`Character with ID ${id} not found`)
     }
 
+    const resolvedDescription = await resolveSingleCharacterDescription(character)
+
     return {
       success: true,
-      character,
+      character:
+        resolvedDescription !== character.description
+          ? { ...character, description: resolvedDescription }
+          : character,
     }
   }
 
@@ -260,13 +318,15 @@ export class BorealisEntitiesServ extends BaseService {
 
     let itemsQ = q
     if (sortBy === 'name') {
-      itemsQ = itemsQ.orderBy((p) =>
-        sortOrder === 'desc' ? p.namePrimary.desc() : p.namePrimary.asc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (p) => sortOrder === 'desc' ? p.namePrimary.desc() : p.namePrimary.asc(),
+        (p) => p.id.asc(),
+      ])
     } else {
-      itemsQ = itemsQ.orderBy((p) =>
-        sortOrder === 'asc' ? p.favorites.asc() : p.favorites.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (p) => sortOrder === 'asc' ? p.favorites.asc() : p.favorites.desc(),
+        (p) => p.id.asc(),
+      ])
     }
 
     const [total, items] = await Promise.all([
@@ -373,112 +433,240 @@ export class BorealisEntitiesServ extends BaseService {
         vc
           .include('character')
           .include('anime', (a) =>
-            a.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'format',
-              'seasonYear',
-              'averageScore'
-            )
+            a
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'format',
+                'status',
+                'seasonYear',
+                'startDateYear',
+                'episodeCount',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('movie', (m) =>
-            m.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'releaseDateYear',
-              'averageScore'
-            )
+            m
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'status',
+                'releaseDateYear',
+                'runtime',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('tv', (t) =>
-            t.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'firstAiredYear',
-              'averageScore'
-            )
+            t
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'showType',
+                'status',
+                'firstAiredYear',
+                'episodeCount',
+                'seasonCount',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('book', (b) =>
-            b.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'releaseDateYear',
-              'averageScore'
-            )
+            b
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'format',
+                'status',
+                'releaseDateYear',
+                'pageCount',
+                'chapterCount',
+                'volumeCount',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .orderBy((v) => v.order.asc())
       )
       .include('mediaStaff', (ms) =>
         ms
           .include('anime', (a) =>
-            a.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'format',
-              'seasonYear',
-              'averageScore'
-            )
+            a
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'format',
+                'status',
+                'seasonYear',
+                'startDateYear',
+                'episodeCount',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('manga', (m) =>
-            m.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'format',
-              'startDateYear',
-              'averageScore'
-            )
+            m
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'format',
+                'status',
+                'startDateYear',
+                'chapterCount',
+                'volumeCount',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('movie', (m) =>
-            m.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'releaseDateYear',
-              'averageScore'
-            )
+            m
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'status',
+                'releaseDateYear',
+                'runtime',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('tv', (t) =>
-            t.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'firstAiredYear',
-              'averageScore'
-            )
+            t
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'showType',
+                'status',
+                'firstAiredYear',
+                'episodeCount',
+                'seasonCount',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('book', (b) =>
-            b.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'releaseDateYear',
-              'averageScore'
-            )
+            b
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'coverImage',
+                'bannerImage',
+                'description',
+                'format',
+                'status',
+                'releaseDateYear',
+                'pageCount',
+                'chapterCount',
+                'volumeCount',
+                'averageScore',
+                'popularity',
+                'favorites'
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
           .include('music', (mu) =>
-            mu.select(
-              'id',
-              'titlePrimary',
-              'titleSecondary',
-              'coverImage',
-              'type',
-              'releaseDateYear',
-              'popularity'
-            )
+            mu
+              .select(
+                'id',
+                'titlePrimary',
+                'titleSecondary',
+                'titleNative',
+                'coverImage',
+                'description',
+                'status',
+                'type',
+                'recordType',
+                'duration',
+                'listeners',
+                'playCount',
+                'popularity',
+                'favorites',
+                'releaseDateYear',
+                'albumId',
+                'trackPosition',
+                'artistName'
+              )
+              .include('album', (al) =>
+                al.select('id', 'titlePrimary', 'coverImage')
+              )
+              .include('genres', (g) =>
+                g.include('genre', (ge) => ge.select('id', 'name'))
+              )
           )
       )
       .include('musicTracks', (mt) =>
@@ -487,17 +675,27 @@ export class BorealisEntitiesServ extends BaseService {
             'id',
             'titlePrimary',
             'titleSecondary',
+            'titleNative',
             'type',
             'coverImage',
+            'description',
+            'status',
             'duration',
+            'listeners',
+            'playCount',
             'popularity',
+            'favorites',
             'releaseDateYear',
             'recordType',
             'albumId',
-            'trackPosition'
+            'trackPosition',
+            'artistName'
           )
           .include('album', (al) =>
             al.select('id', 'titlePrimary', 'coverImage')
+          )
+          .include('genres', (g) =>
+            g.include('genre', (ge) => ge.select('id', 'name'))
           )
           .orderBy((m) => m.popularity.desc())
           .limit(50)
@@ -517,17 +715,27 @@ export class BorealisEntitiesServ extends BaseService {
           'id',
           'titlePrimary',
           'titleSecondary',
+          'titleNative',
           'type',
           'coverImage',
+          'description',
+          'status',
           'duration',
+          'listeners',
+          'playCount',
           'popularity',
+          'favorites',
           'releaseDateYear',
           'recordType',
           'albumId',
-          'trackPosition'
+          'trackPosition',
+          'artistName'
         )
         .include('album', (al) =>
           al.select('id', 'titlePrimary', 'coverImage')
+        )
+        .include('genres', (g) =>
+          g.include('genre', (ge) => ge.select('id', 'name'))
         )
         .orderBy((m) => m.popularity.desc())
         .limit(50)
@@ -567,13 +775,15 @@ export class BorealisEntitiesServ extends BaseService {
 
     let itemsQ = q
     if (sortBy === 'name') {
-      itemsQ = itemsQ.orderBy((s) =>
-        sortOrder === 'desc' ? s.name.desc() : s.name.asc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (s) => sortOrder === 'desc' ? s.name.desc() : s.name.asc(),
+        (s) => s.id.asc(),
+      ])
     } else {
-      itemsQ = itemsQ.orderBy((s) =>
-        sortOrder === 'asc' ? s.favorites.asc() : s.favorites.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (s) => sortOrder === 'asc' ? s.favorites.asc() : s.favorites.desc(),
+        (s) => s.id.asc(),
+      ])
     }
 
     const [total, items] = await Promise.all([

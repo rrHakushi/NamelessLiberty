@@ -90,6 +90,10 @@ model Person {
     mediaStaff       MediaStaff[]
     voicedCharacters MediaCharacter[]
     musicTracks      Music[]          @relation("MusicArtist")
+    otherArtistItems Other[]          @relation("OtherArtist")
+    otherStaff       OtherStaff[]     @relation("OtherStaffPerson")
+    otherVoicedCharacters OtherCharacter[] @relation("OtherCharacterActor")
+    otherTracks      OtherTrack[]     @relation("OtherTrackArtist")
 
     @@index([namePrimary])
     @@index([deezerId])
