@@ -4,6 +4,7 @@ import type {
   BorealisBadge,
   BorealisEntityType,
   BorealisHoverDetails,
+  BorealisMediaAppearance,
   BorealisNormalizedData,
   BorealisProgressInfo,
 } from "./types"
@@ -483,6 +484,46 @@ export function normalizeBorealisData(
         }
         : null
 
+      const rawAppearances = Array.isArray(item.appearances)
+        ? item.appearances
+        : Array.isArray(raw?.appearances)
+          ? raw.appearances
+          : []
+      const appearances: BorealisMediaAppearance[] = rawAppearances
+        .filter((m: any) => m && m.id && m.mediaType)
+        .map((m: any) => ({
+          id: m.id,
+          mediaType: String(m.mediaType),
+          titlePrimary: m.titlePrimary ?? "Unknown Media",
+          titleSecondary: m.titleSecondary ?? null,
+          titleNative: m.titleNative ?? null,
+          coverImage: m.coverImage ?? null,
+          format: m.format ?? null,
+          year: m.year ?? null,
+        }))
+
+      const mediaRaw = item.media ?? raw?.media ?? null
+      const mediaAppearance: BorealisMediaAppearance | null =
+        mediaRaw && mediaRaw.id && mediaRaw.mediaType
+          ? {
+              id: mediaRaw.id,
+              mediaType: String(mediaRaw.mediaType),
+              titlePrimary: mediaRaw.titlePrimary ?? "Unknown Media",
+              titleSecondary: mediaRaw.titleSecondary ?? null,
+              titleNative: mediaRaw.titleNative ?? null,
+              coverImage: mediaRaw.coverImage ?? null,
+              format: mediaRaw.format ?? null,
+              year: mediaRaw.year ?? null,
+            }
+          : appearances[0] ?? null
+
+      const resolvedAppearances =
+        appearances.length > 0
+          ? appearances
+          : mediaAppearance
+            ? [mediaAppearance]
+            : undefined
+
       const dobParts = [
         character.dateOfBirthMonth ? `${character.dateOfBirthMonth}` : null,
         character.dateOfBirthDay ? `${character.dateOfBirthDay}` : null,
@@ -495,6 +536,8 @@ export function normalizeBorealisData(
         age: character.age ? String(character.age) : item.age ? String(item.age) : raw?.age ? String(raw.age) : null,
         dateOfBirth: dobParts.length > 0 ? dobParts.join("/") : null,
         actor,
+        media: mediaAppearance,
+        appearances: resolvedAppearances,
         roles: [roleLabel],
         isQueued,
         extraStats: [
@@ -518,6 +561,8 @@ export function normalizeBorealisData(
         aspectRatio: "poster",
         badges,
         actor,
+        media: mediaAppearance,
+        appearances: resolvedAppearances,
         hoverDetails,
         raw,
       }
@@ -585,7 +630,7 @@ export function normalizeBorealisData(
           image,
           aspectRatio: "poster",
           badges,
-          subtext: role,
+          subtext: item.subtext ?? role,
           hoverDetails,
           raw,
         }
@@ -735,7 +780,7 @@ export function normalizeBorealisData(
           })
         }
 
-        const seasonYear = item.seasonYear ?? item.startDateYear ?? item.releaseYear ?? item.year ?? null
+        const seasonYear = item.seasonYear ?? item.startDateYear ?? item.releaseDateYear ?? item.firstAiredYear ?? item.releaseYear ?? item.year ?? null
         const season = item.seasonSeason ?? item.season ?? null
         const yearOrSeason = season && seasonYear ? `${String(season).slice(0, 3)} ${seasonYear}` : seasonYear ? String(seasonYear) : null
 
@@ -817,7 +862,7 @@ export function normalizeBorealisData(
           image,
           aspectRatio,
           badges,
-          subtext: studios[0] ?? (isMusic ? item.artistName ?? item.artist : null) ?? null,
+          subtext: item.subtext ?? studios[0] ?? (isMusic ? item.artistName ?? item.artist : null) ?? null,
           metaPills,
           progress,
           connectedCount,

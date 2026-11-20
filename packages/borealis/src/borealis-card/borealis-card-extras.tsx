@@ -5,6 +5,7 @@ import React from "react"
 import { cn } from "@workspace/ui/lib/utils"
 
 import { useBorealisCard } from "../borealis-card-context"
+import { getMediaDetailHref } from "@NamelessLiberty/borealis/lib/media-routes"
 import type { BorealisCardExtrasProps } from "../types"
 
 // -----------------------------------------------------------------------------
@@ -60,6 +61,59 @@ export function BorealisCardExtras({
           {actor.language && (
             <span className="truncate text-[10px] text-muted-foreground/80">
               {actor.language}
+            </span>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  // 1b. Character Media Appearance row (used on Person/Staff voiced characters)
+  if (data.type === "character" && showActor && data.media) {
+    const media = data.media
+    const mediaHref = getMediaDetailHref(media.mediaType, media.id)
+    const extraCount =
+      data.appearances && data.appearances.length > 1
+        ? data.appearances.length - 1
+        : 0
+    const metaLabel = [
+      media.format,
+      media.year,
+      extraCount > 0 ? `+${extraCount} more` : null,
+    ]
+      .filter(Boolean)
+      .join(" • ")
+    return (
+      <div
+        className={cn(
+          "mt-auto flex items-center gap-2 border-t border-border/40 px-1 pt-1.5 pb-0.5 text-[10px]",
+          className
+        )}
+      >
+        {media.coverImage ? (
+          <img
+            src={media.coverImage}
+            alt={media.titlePrimary}
+            loading="lazy"
+            className="h-6 w-4.5 shrink-0 rounded-xs object-cover ring-1 ring-border/50"
+          />
+        ) : (
+          <div className="flex size-5 shrink-0 items-center justify-center rounded-xs bg-muted text-[8px] font-bold text-muted-foreground">
+            {media.mediaType.slice(0, 2)}
+          </div>
+        )}
+
+        <div className="flex min-w-0 flex-1 flex-col">
+          <a
+            href={mediaHref}
+            title={media.titlePrimary}
+            className="truncate text-[11px] font-semibold text-cyan-400 hover:text-cyan-300 hover:underline dark:text-cyan-400"
+          >
+            {media.titlePrimary}
+          </a>
+          {metaLabel && (
+            <span className="truncate text-[10px] text-muted-foreground/80">
+              {metaLabel}
             </span>
           )}
         </div>

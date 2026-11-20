@@ -44,6 +44,7 @@ import { BorealisFormattedText } from "../formatted-text"
 import { MediaStatusBadge } from "../media-status-badge"
 import { MediaListStatusBadge } from "../media-list-status-badge"
 import { FavoriteButton, type FavoriteType } from "../media/favorite-button"
+import { getMediaDetailHref } from "@NamelessLiberty/borealis/lib/media-routes"
 
 import { normalizeListStatus, type ListStatus } from "../media-list-status-text"
 import type { BorealisCardHoverContentProps, BorealisCardSavePayload } from "../types"
@@ -987,6 +988,65 @@ export function BorealisCardHoverContent({
                 </div>
               </div>
             )}
+
+            {/* Media Appearances Spotlight for Characters (when shown on Person pages) */}
+            {!details?.actor &&
+              (() => {
+                const appearances =
+                  details?.appearances && details.appearances.length > 0
+                    ? details.appearances
+                    : details?.media
+                      ? [details.media]
+                      : []
+                if (appearances.length === 0) return null
+
+                return (
+                  <div className="flex flex-col gap-2 rounded-xl border border-border/60 bg-muted/60 p-2.5 select-text">
+                    <span className="text-[10px] font-bold tracking-wide text-muted-foreground uppercase">
+                      {appearances.length === 1
+                        ? "Appearance"
+                        : `Appearances (${appearances.length})`}
+                    </span>
+                    <div className="flex max-h-48 flex-col gap-2 overflow-y-auto pe-1 [scrollbar-width:thin]">
+                      {appearances.map((app) => {
+                        const meta = [app.format, app.year]
+                          .filter(Boolean)
+                          .join(" • ")
+                        return (
+                          <a
+                            key={`${app.mediaType}-${app.id}`}
+                            href={getMediaDetailHref(app.mediaType, app.id)}
+                            onClick={(e) => e.stopPropagation()}
+                            className="group/app flex items-center gap-2.5 rounded-lg p-1 transition-colors hover:bg-muted/80"
+                          >
+                            {app.coverImage ? (
+                              <img
+                                src={app.coverImage}
+                                alt={app.titlePrimary}
+                                className="h-10 w-7 shrink-0 rounded-md object-cover ring-1 ring-border/50"
+                              />
+                            ) : (
+                              <div className="flex h-10 w-7 shrink-0 items-center justify-center rounded-md bg-muted text-xs font-bold text-primary">
+                                <IconDeviceTv className="size-3.5" />
+                              </div>
+                            )}
+                            <div className="flex min-w-0 flex-1 flex-col">
+                              <span className="truncate text-xs font-bold text-cyan-600 group-hover/app:underline dark:text-cyan-400">
+                                {app.titlePrimary}
+                              </span>
+                              {meta && (
+                                <span className="font-mono truncate text-[10px] text-muted-foreground">
+                                  {meta}
+                                </span>
+                              )}
+                            </div>
+                          </a>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )
+              })()}
 
             {/* Genres Pill List */}
             {details?.genres && details.genres.length > 0 && (

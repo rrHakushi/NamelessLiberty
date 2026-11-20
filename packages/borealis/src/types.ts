@@ -39,6 +39,17 @@ export interface BorealisActor {
   language?: string | null
 }
 
+export interface BorealisMediaAppearance {
+  id: number | string
+  mediaType: string
+  titlePrimary: string
+  titleSecondary?: string | null
+  titleNative?: string | null
+  coverImage?: string | null
+  format?: string | null
+  year?: number | string | null
+}
+
 export interface BorealisProgressInfo {
   current: number
   max?: number | null
@@ -102,6 +113,8 @@ export interface BorealisHoverDetails {
   primaryOccupations?: string[]
   roles?: string[]
   actor?: BorealisActor | null
+  media?: BorealisMediaAppearance | null
+  appearances?: BorealisMediaAppearance[]
   extraStats?: Array<{ label: string; value: string | number }>
   isQueued?: boolean
   relations?: any[]
@@ -124,6 +137,8 @@ export interface BorealisNormalizedData {
   aspectRatio: BorealisAspectRatio
   badges: BorealisBadge[]
   actor?: BorealisActor | null
+  media?: BorealisMediaAppearance | null
+  appearances?: BorealisMediaAppearance[]
   subtext?: string | null
   metaPills?: string[]
   progress?: BorealisProgressInfo | null

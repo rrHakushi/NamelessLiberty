@@ -178,6 +178,12 @@ export type BookDetails = Models.public_Book & {
 
 
 // 7. Character
+export interface EntityGenreRef {
+  id?: number
+  name?: string
+  genre?: { id: number; name: string } | null
+}
+
 export interface MediaAppearanceItem {
   id: number
   mediaType: string
@@ -190,6 +196,13 @@ export interface MediaAppearanceItem {
     nameNative?: string | null
     image: string | null
     language?: string | null
+    description?: string | null
+    gender?: string | null
+    age?: number | null
+    homeTown?: string | null
+    birthPlace?: string | null
+    primaryOccupations?: string[]
+    favorites?: number | null
   } | null
   anime: {
     id: number
@@ -198,9 +211,16 @@ export interface MediaAppearanceItem {
     titleNative: string | null
     coverImage: string | null
     bannerImage: string | null
+    description?: string | null
     format: string | null
+    status?: string | null
+    seasonYear?: number | null
     startDateYear: number | null
+    episodeCount?: number | null
     averageScore: number | null
+    popularity?: number | null
+    favorites?: number | null
+    genres?: EntityGenreRef[]
   } | null
   manga: {
     id: number
@@ -209,9 +229,16 @@ export interface MediaAppearanceItem {
     titleNative: string | null
     coverImage: string | null
     bannerImage: string | null
+    description?: string | null
     format: string | null
+    status?: string | null
     startDateYear: number | null
+    chapterCount?: number | null
+    volumeCount?: number | null
     averageScore: number | null
+    popularity?: number | null
+    favorites?: number | null
+    genres?: EntityGenreRef[]
   } | null
   movie: {
     id: number
@@ -220,8 +247,14 @@ export interface MediaAppearanceItem {
     titleNative: string | null
     coverImage: string | null
     bannerImage: string | null
+    description?: string | null
+    status?: string | null
     releaseDateYear: number | null
+    runtime?: number | null
     averageScore: number | null
+    popularity?: number | null
+    favorites?: number | null
+    genres?: EntityGenreRef[]
   } | null
   tv: {
     id: number
@@ -230,9 +263,16 @@ export interface MediaAppearanceItem {
     titleNative: string | null
     coverImage: string | null
     bannerImage: string | null
+    description?: string | null
     showType: string | null
+    status?: string | null
     firstAiredYear: number | null
+    episodeCount?: number | null
+    seasonCount?: number | null
     averageScore: number | null
+    popularity?: number | null
+    favorites?: number | null
+    genres?: EntityGenreRef[]
   } | null
   book: {
     id: number
@@ -240,9 +280,17 @@ export interface MediaAppearanceItem {
     titleSecondary: string | null
     coverImage: string | null
     bannerImage: string | null
+    description?: string | null
     format: string | null
+    status?: string | null
     releaseDateYear: number | null
+    pageCount?: number | null
+    chapterCount?: number | null
+    volumeCount?: number | null
     averageScore: number | null
+    popularity?: number | null
+    favorites?: number | null
+    genres?: EntityGenreRef[]
   } | null
 }
 
@@ -283,6 +331,13 @@ export interface VoicedCharacterItem {
     namePrimary: string
     nameNative: string | null
     image: string | null
+    description?: string | null
+    gender?: string | null
+    age?: string | null
+    dateOfBirthYear?: number | null
+    dateOfBirthMonth?: number | null
+    dateOfBirthDay?: number | null
+    favorites?: number | null
   } | null
   anime: {
     id: number
@@ -291,9 +346,16 @@ export interface VoicedCharacterItem {
     titleNative: string | null
     coverImage: string | null
     bannerImage: string | null
+    description?: string | null
     format: string | null
+    status?: string | null
+    seasonYear?: number | null
     startDateYear: number | null
+    episodeCount?: number | null
     averageScore: number | null
+    popularity?: number | null
+    favorites?: number | null
+    genres?: EntityGenreRef[]
   } | null
   movie: {
     id: number
@@ -302,8 +364,14 @@ export interface VoicedCharacterItem {
     titleNative: string | null
     coverImage: string | null
     bannerImage: string | null
+    description?: string | null
+    status?: string | null
     releaseDateYear: number | null
+    runtime?: number | null
     averageScore: number | null
+    popularity?: number | null
+    favorites?: number | null
+    genres?: EntityGenreRef[]
   } | null
   tv: {
     id: number
@@ -312,18 +380,34 @@ export interface VoicedCharacterItem {
     titleNative: string | null
     coverImage: string | null
     bannerImage: string | null
+    description?: string | null
     showType: string | null
+    status?: string | null
     firstAiredYear: number | null
+    episodeCount?: number | null
+    seasonCount?: number | null
     averageScore: number | null
+    popularity?: number | null
+    favorites?: number | null
+    genres?: EntityGenreRef[]
   } | null
   book?: {
     id: number
     titlePrimary: string
     titleSecondary: string | null
     coverImage: string | null
+    bannerImage?: string | null
+    description?: string | null
     format?: string | null
+    status?: string | null
     releaseDateYear: number | null
+    pageCount?: number | null
+    chapterCount?: number | null
+    volumeCount?: number | null
     averageScore: number | null
+    popularity?: number | null
+    favorites?: number | null
+    genres?: EntityGenreRef[]
   } | null
 }
 
@@ -363,15 +447,22 @@ export interface PersonDetails {
   tvDBId?: number | null
   bangumiId?: number | null
   imdbId?: string | null
+  deezerId?: string | null
+  deezerLink?: string | null
+  lastFmUrl?: string | null
+  spotifyId?: string | null
   musicBrainzId: string | null
   namePrimary: string
   nameNative: string | null
   nameAlternative: string[]
+  givenName?: string | null
+  familyName?: string | null
   image: string | null
   images: any | null
   description: string | null
   gender: string | null
   language?: string | null
+  bloodType?: string | null
   age: number | null
   dateOfBirthYear: number | null
   dateOfBirthMonth: number | null
@@ -380,13 +471,20 @@ export interface PersonDetails {
   dateOfDeathMonth: number | null
   dateOfDeathDay: number | null
   hometown: string | null
+  homeTown?: string | null
+  birthPlace?: string | null
+  yearsActive?: number[]
+  nbAlbum?: number | null
+  nbFan?: number | null
   primaryOccupations: string[]
   favorites: number | null
+  sources?: any | null
   createdAt: Date | string
   updatedAt: Date | string
   voicedCharacters: VoicedCharacterItem[]
   staffRoles: StaffRoleItem[]
   mediaStaff: MediaStaffItem[]
+  musicTracks?: any[]
 }
 
 // 9. Studio

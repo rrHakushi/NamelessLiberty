@@ -1,38 +1,37 @@
 "use client"
 
-import React, { useMemo, useState, useEffect } from "react"
-import Link from "next/link"
+import React, { useEffect, useMemo } from "react"
 import {
   IconBriefcase,
+  IconCalendarEvent,
+  IconChartBar,
   IconClock,
   IconDisc,
   IconExternalLink,
-  IconHeadphones,
-  IconHeart,
+  IconHash,
+  IconHeartFilled,
+  IconInfoCircle,
+  IconLanguage,
   IconMicrophone,
-  IconMovie,
-  IconMusic,
-  IconPhotoOff,
-  IconPlayerPlay,
-  IconUser,
   IconWorld,
 } from "@tabler/icons-react"
 import { Badge } from "@workspace/ui/components/badge"
-import { Button } from "@workspace/ui/components/button"
-import { cn } from "@workspace/ui/lib/utils"
 import type { PersonDetails } from "@NamelessLiberty/elysia"
+import { useUser } from "@/context/user-context"
+import { getMediaPreferences } from "@NamelessLiberty/shared"
+import { addBrowseVisitToStore } from "@NamelessLiberty/borealis/lib/browse-history"
+import {
+  BorealisCard,
+  BorealisCardGroup,
+  type BorealisEntityType,
+} from "@NamelessLiberty/borealis"
+import { GlassCard } from "../../glass-card"
 import { FormattedDescription } from "../formatted-description"
 import { FavoriteButton } from "../favorite-button"
-import { getMediaDetailHref } from "@NamelessLiberty/borealis/lib/media-routes"
-import { addBrowseVisitToStore } from "@NamelessLiberty/borealis/lib/browse-history"
 
 interface PersonDetailViewProps {
   person: PersonDetails
 }
-
-type MediaFilterKey = "ALL" | "ANIME" | "MANGA" | "MOVIE" | "TV" | "BOOK"
-type MusicFilterKey = "ALL" | "ALBUMS" | "TRACKS"
-type PersonTab = "DISCOGRAPHY" | "VOICED" | "STAFF"
 
 interface MusicAlbumItem {
   id: number
@@ -40,10 +39,15 @@ interface MusicAlbumItem {
   titleSecondary?: string | null
   titleNative?: string | null
   coverImage?: string | null
+  description?: string | null
+  status?: string | null
   albumType?: string | null
   releaseDateYear?: number | null
   listeners?: number | null
   playCount?: number | null
+  popularity?: number | null
+  favorites?: number | null
+  genres: string[]
   role: string
 }
 
@@ -53,13 +57,38 @@ interface MusicTrackItem {
   titleSecondary?: string | null
   titleNative?: string | null
   coverImage?: string | null
+  description?: string | null
+  status?: string | null
   albumId?: number | null
   albumTitle?: string | null
   trackNumber?: number | null
   duration?: number | null
+  releaseDateYear?: number | null
   listeners?: number | null
   playCount?: number | null
+  popularity?: number | null
+  favorites?: number | null
+  genres: string[]
   role: string
+}
+
+function toBorealisEntityType(mediaType: string): BorealisEntityType {
+  switch (mediaType.toUpperCase()) {
+    case "ANIME":
+      return "anime"
+    case "MANGA":
+      return "manga"
+    case "MOVIE":
+      return "movies"
+    case "TV":
+      return "tv"
+    case "BOOK":
+      return "books"
+    case "MUSIC":
+      return "music"
+    default:
+      return "anime"
+  }
 }
 
 function formatMediaFormat(format?: string | null, mediaType?: string): string {
@@ -100,11 +129,63 @@ function formatMediaFormat(format?: string | null, mediaType?: string): string {
         .replace(/\b\w/g, (c) => c.toUpperCase())
   }
 }
+
+function formatStaffRoleLabel(role: string): string {
+  return role
+    .replace(/_/g, " ")
+    .trim()
+    .split(/\s+/)
+    .map((word) => {
+      if (
+        word.length <= 3 &&
+        word === word.toUpperCase() &&
+        !/^[A-Z]$/.test(word)
+      ) {
+        return word
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+    })
+    .join(" ")
+}
+
+function formatPartialDate(
+  year?: number | null,
+  month?: number | null,
+  day?: number | null
+): string | null {
+  if (!month && !day && !year) return null
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ]
+  const monthName = month ? months[month - 1] ?? "" : ""
+  const dayStr = day ? `${day}` : ""
+  const md = [monthName, dayStr].filter(Boolean).join(" ")
+  if (md && year) return `${md}, ${year}`
+  if (md) return md
+  return year ? `${year}` : null
+}
+
+function extractGenreNames(genres: any): string[] {
+  if (!Array.isArray(genres)) return []
+  return genres
+    .map((g: any) => (typeof g === "string" ? g : g?.name || g?.genre?.name || ""))
+    .filter(Boolean)
+}
+
 export function PersonDetailView({ person }: PersonDetailViewProps) {
-  const [selectedVoicedMediaType, setSelectedVoicedMediaType] =
-    useState<MediaFilterKey>("ALL")
-  const [selectedStaffMediaType, setSelectedStaffMediaType] =
-    useState<MediaFilterKey>("ALL")
+  const { user } = useUser()
+  const titlePref = getMediaPreferences(user?.customization).title || "primary"
 
   // Track page visit in Browse recently visited
   useEffect(() => {
@@ -131,130 +212,163 @@ export function PersonDetailView({ person }: PersonDetailViewProps) {
     person.language,
   ])
 
-  // Deduplicate and process voiced characters
+  const formattedBirthday = useMemo(
+    () =>
+      formatPartialDate(
+        person.dateOfBirthYear,
+        person.dateOfBirthMonth,
+        person.dateOfBirthDay
+      ),
+    [
+      person.dateOfBirthYear,
+      person.dateOfBirthMonth,
+      person.dateOfBirthDay,
+    ]
+  )
+
+  const formattedDeathDate = useMemo(
+    () =>
+      formatPartialDate(
+        person.dateOfDeathYear,
+        person.dateOfDeathMonth,
+        person.dateOfDeathDay
+      ),
+    [
+      person.dateOfDeathYear,
+      person.dateOfDeathMonth,
+      person.dateOfDeathDay,
+    ]
+  )
+
+  // Deduplicate and merge voiced characters by characterId
   const deduplicatedVoicedRoles = useMemo(() => {
+    const roleRank = (r: string) =>
+      r?.toUpperCase() === "MAIN"
+        ? 0
+        : r?.toUpperCase() === "SUPPORTING"
+          ? 1
+          : 2
+
     const map = new Map<
-      string,
+      number,
       {
         key: string
         characterId: number
         characterNamePrimary: string
         characterNameNative: string | null
         characterImage: string | null
-        mediaType: "ANIME" | "MOVIE" | "TV" | "BOOK"
-        mediaId: number
-        mediaTitle: string
-        mediaTitleNative?: string | null
-        mediaCover?: string | null
-        mediaYear?: number | null
-        mediaScore?: number | null
-        mediaFormat?: string | null
+        characterDescription: string | null
+        characterGender: string | null
+        characterAge: string | null
+        characterFavorites: number | null
         role: string
+        order: number | null
+        appearances: Array<{
+          id: number
+          mediaType: "ANIME" | "MOVIE" | "TV" | "BOOK"
+          titlePrimary: string
+          titleSecondary?: string | null
+          titleNative?: string | null
+          coverImage?: string | null
+          format?: string | null
+          year?: number | null
+        }>
       }
     >()
 
     person.voicedCharacters.forEach((vc) => {
       if (!vc.character) return
       const type = vc.mediaType.toUpperCase() as
-        "ANIME" | "MOVIE" | "TV" | "BOOK"
-      const key = `${vc.character.id}-${type}-${vc.mediaId}`
+        | "ANIME"
+        | "MOVIE"
+        | "TV"
+        | "BOOK"
 
-      if (!map.has(key)) {
-        const mediaObj = vc.anime || vc.movie || vc.tv || vc.book
-        const mediaTitle =
-          mediaObj?.titlePrimary || `${vc.mediaType} #${vc.mediaId}`
-        const mediaNative = (mediaObj as any)?.titleNative
-        const mediaCover = mediaObj?.coverImage
-        const mediaYear =
-          vc.anime?.startDateYear ||
-          vc.movie?.releaseDateYear ||
-          vc.tv?.firstAiredYear ||
-          vc.book?.releaseDateYear
-        const mediaScore = mediaObj?.averageScore
-        const mediaFormat =
-          vc.anime?.format ||
-          (vc.tv ? vc.tv.showType || "TV" : null) ||
-          vc.book?.format ||
-          (vc.movie ? "MOVIE" : null)
+      const mediaObj = vc.anime || vc.movie || vc.tv || vc.book
+      const mediaTitle =
+        mediaObj?.titlePrimary || `${vc.mediaType} #${vc.mediaId}`
+      const mediaSecondary = mediaObj?.titleSecondary ?? null
+      const mediaNative = (mediaObj as any)?.titleNative ?? null
+      const mediaCover = mediaObj?.coverImage ?? null
+      const mediaYear =
+        vc.anime?.seasonYear ||
+        vc.anime?.startDateYear ||
+        vc.movie?.releaseDateYear ||
+        vc.tv?.firstAiredYear ||
+        vc.book?.releaseDateYear ||
+        null
+      const mediaFormat =
+        vc.anime?.format ||
+        (vc.tv ? vc.tv.showType || "TV" : null) ||
+        vc.book?.format ||
+        (vc.movie ? "MOVIE" : null)
 
-        map.set(key, {
-          key,
+      const appearanceEntry = {
+        id: vc.mediaId,
+        mediaType: type,
+        titlePrimary: mediaTitle,
+        titleSecondary: mediaSecondary,
+        titleNative: mediaNative,
+        coverImage: mediaCover,
+        format: formatMediaFormat(mediaFormat, type),
+        year: mediaYear,
+      }
+
+      let existing = map.get(vc.character.id)
+      if (!existing) {
+        existing = {
+          key: `char-${vc.character.id}`,
           characterId: vc.character.id,
           characterNamePrimary: vc.character.namePrimary,
-          characterNameNative: vc.character.nameNative,
-          characterImage: vc.character.image,
-          mediaType: type,
-          mediaId: vc.mediaId,
-          mediaTitle,
-          mediaTitleNative: mediaNative ?? null,
-          mediaCover: mediaCover ?? null,
-          mediaYear: mediaYear ?? null,
-          mediaScore: mediaScore ?? null,
-          mediaFormat: mediaFormat ?? null,
+          characterNameNative: vc.character.nameNative ?? null,
+          characterImage: vc.character.image ?? null,
+          characterDescription: vc.character.description ?? null,
+          characterGender: vc.character.gender ?? null,
+          characterAge: vc.character.age ?? null,
+          characterFavorites: vc.character.favorites ?? null,
           role: vc.role,
-        })
+          order: vc.order ?? null,
+          appearances: [appearanceEntry],
+        }
+        map.set(vc.character.id, existing)
+      } else {
+        if (roleRank(vc.role) < roleRank(existing.role)) {
+          existing.role = vc.role
+        }
+        if (
+          vc.order !== null &&
+          vc.order !== undefined &&
+          (existing.order === null || vc.order < existing.order)
+        ) {
+          existing.order = vc.order
+        }
+        const alreadyHasMedia = existing.appearances.some(
+          (a) => a.mediaType === type && a.id === vc.mediaId
+        )
+        if (!alreadyHasMedia) {
+          existing.appearances.push(appearanceEntry)
+        }
       }
     })
 
-    return Array.from(map.values())
+    const list = Array.from(map.values())
+    for (const item of list) {
+      item.appearances.sort((a, b) => {
+        if (a.year && b.year && a.year !== b.year) return a.year - b.year
+        if (a.year && !b.year) return -1
+        if (!a.year && b.year) return 1
+        return a.titlePrimary.localeCompare(b.titlePrimary)
+      })
+    }
+
+    return list.sort((a, b) => {
+      const rDiff = roleRank(a.role) - roleRank(b.role)
+      if (rDiff !== 0) return rDiff
+      return (a.order ?? 999) - (b.order ?? 999)
+    })
   }, [person.voicedCharacters])
 
-  // Group voiced characters by media type
-  const voicedByType = useMemo(() => {
-    const anime = deduplicatedVoicedRoles.filter((m) => m.mediaType === "ANIME")
-    const movies = deduplicatedVoicedRoles.filter(
-      (m) => m.mediaType === "MOVIE"
-    )
-    const tv = deduplicatedVoicedRoles.filter((m) => m.mediaType === "TV")
-    const books = deduplicatedVoicedRoles.filter((m) => m.mediaType === "BOOK")
-
-    return [
-      {
-        type: "ANIME" as const,
-        title: "Anime",
-        count: anime.length,
-        items: anime,
-      },
-      {
-        type: "MOVIE" as const,
-        title: "Movies",
-        count: movies.length,
-        items: movies,
-      },
-      { type: "TV" as const, title: "TV Shows", count: tv.length, items: tv },
-      {
-        type: "BOOK" as const,
-        title: "Books",
-        count: books.length,
-        items: books,
-      },
-    ].filter((group) => group.count > 0)
-  }, [deduplicatedVoicedRoles])
-
-  // Counts for voiced roles
-  const voicedCounts = useMemo(() => {
-    const counts: Record<MediaFilterKey, number> = {
-      ALL: deduplicatedVoicedRoles.length,
-      ANIME: 0,
-      MANGA: 0,
-      MOVIE: 0,
-      TV: 0,
-      BOOK: 0,
-    }
-    deduplicatedVoicedRoles.forEach((m) => {
-      counts[m.mediaType] += 1
-    })
-    return counts
-  }, [deduplicatedVoicedRoles])
-
-  const visibleVoicedGroups = useMemo(() => {
-    if (selectedVoicedMediaType === "ALL") {
-      return voicedByType
-    }
-    return voicedByType.filter((g) => g.type === selectedVoicedMediaType)
-  }, [voicedByType, selectedVoicedMediaType])
-
-  // Deduplicate and process media staff credits
+  // Deduplicate and combine roles per unique media for Production Staff credits
   const deduplicatedStaffRoles = useMemo(() => {
     const map = new Map<
       string,
@@ -262,14 +376,23 @@ export function PersonDetailView({ person }: PersonDetailViewProps) {
         key: string
         mediaType: "ANIME" | "MANGA" | "MOVIE" | "TV" | "BOOK"
         mediaId: number
-        role: string
-        customRole?: string | null
+        roles: string[]
         mediaTitle: string
+        mediaTitleSecondary?: string | null
         mediaTitleNative?: string | null
         mediaCover?: string | null
+        mediaBanner?: string | null
+        mediaDescription?: string | null
+        mediaStatus?: string | null
         mediaYear?: number | null
         mediaScore?: number | null
         mediaFormat?: string | null
+        episodeCount?: number | null
+        chapterCount?: number | null
+        volumeCount?: number | null
+        popularity?: number | null
+        favorites?: number | null
+        genres: string[]
       }
     >()
 
@@ -278,185 +401,77 @@ export function PersonDetailView({ person }: PersonDetailViewProps) {
         return
       }
       const type = ms.mediaType.toUpperCase() as
-        "ANIME" | "MANGA" | "MOVIE" | "TV" | "BOOK"
-      const key = `${type}-${ms.mediaId}-${ms.role}`
+        | "ANIME"
+        | "MANGA"
+        | "MOVIE"
+        | "TV"
+        | "BOOK"
+      const key = `${type}-${ms.mediaId}`
+      const roleLabel = formatStaffRoleLabel(ms.customRole || ms.role)
 
-      if (!map.has(key)) {
-        const mediaObj = ms.anime || ms.manga || ms.movie || ms.tv || ms.book
-        const mediaTitle =
-          mediaObj?.titlePrimary || `${ms.mediaType} #${ms.mediaId}`
-        const mediaNative = (mediaObj as any)?.titleNative
-        const mediaCover = mediaObj?.coverImage
-        const mediaYear =
-          ms.anime?.startDateYear ||
-          ms.manga?.startDateYear ||
-          ms.movie?.releaseDateYear ||
-          ms.tv?.firstAiredYear ||
-          ms.book?.releaseDateYear
-        const mediaScore = mediaObj?.averageScore
-        const mediaFormat =
-          ms.anime?.format ||
-          ms.manga?.format ||
-          (ms.tv ? ms.tv.showType || "TV" : null) ||
-          ms.book?.format ||
-          (ms.movie ? "MOVIE" : null)
-
-        map.set(key, {
-          key,
-          mediaType: type,
-          mediaId: ms.mediaId,
-          role: ms.role,
-          customRole: ms.customRole,
-          mediaTitle,
-          mediaTitleNative: mediaNative,
-          mediaCover,
-          mediaYear,
-          mediaScore,
-          mediaFormat,
-        })
+      const existing = map.get(key)
+      if (existing) {
+        if (roleLabel && !existing.roles.includes(roleLabel)) {
+          existing.roles.push(roleLabel)
+        }
+        return
       }
+
+      const mediaObj = ms.anime || ms.manga || ms.movie || ms.tv || ms.book
+      const mediaTitle =
+        mediaObj?.titlePrimary || `${ms.mediaType} #${ms.mediaId}`
+      const mediaSecondary = mediaObj?.titleSecondary ?? null
+      const mediaNative = (mediaObj as any)?.titleNative ?? null
+      const mediaCover = mediaObj?.coverImage ?? null
+      const mediaBanner = (mediaObj as any)?.bannerImage ?? null
+      const mediaDescription = (mediaObj as any)?.description ?? null
+      const mediaStatus = (mediaObj as any)?.status ?? null
+      const mediaYear =
+        ms.anime?.seasonYear ||
+        ms.anime?.startDateYear ||
+        ms.manga?.startDateYear ||
+        ms.movie?.releaseDateYear ||
+        ms.tv?.firstAiredYear ||
+        ms.book?.releaseDateYear ||
+        null
+      const mediaScore = mediaObj?.averageScore ?? null
+      const mediaFormat =
+        ms.anime?.format ||
+        ms.manga?.format ||
+        (ms.tv ? ms.tv.showType || "TV" : null) ||
+        ms.book?.format ||
+        (ms.movie ? "MOVIE" : null)
+
+      map.set(key, {
+        key,
+        mediaType: type,
+        mediaId: ms.mediaId,
+        roles: roleLabel ? [roleLabel] : [],
+        mediaTitle,
+        mediaTitleSecondary: mediaSecondary,
+        mediaTitleNative: mediaNative,
+        mediaCover,
+        mediaBanner,
+        mediaDescription,
+        mediaStatus,
+        mediaYear,
+        mediaScore,
+        mediaFormat,
+        episodeCount:
+          ms.anime?.episodeCount ?? ms.tv?.episodeCount ?? null,
+        chapterCount:
+          ms.manga?.chapterCount ?? ms.book?.chapterCount ?? null,
+        volumeCount:
+          ms.manga?.volumeCount ?? ms.book?.volumeCount ?? null,
+        popularity: (mediaObj as any)?.popularity ?? null,
+        favorites: (mediaObj as any)?.favorites ?? null,
+        genres: extractGenreNames((mediaObj as any)?.genres),
+      })
     })
 
     return Array.from(map.values())
   }, [person.mediaStaff])
 
-  // Deduplicate and process music releases (Albums & Tracks)
-  const { musicAlbums, musicTracks } = useMemo(() => {
-    const albumMap = new Map<number, MusicAlbumItem>()
-    const trackMap = new Map<number, MusicTrackItem>()
-
-    // Process direct artist music tracks & albums
-    const directTracks = ((person as any).musicTracks || []) as any[]
-    directTracks.forEach((m) => {
-      if (m.type === "ALBUM") {
-        if (!albumMap.has(m.id)) {
-          albumMap.set(m.id, {
-            id: m.id,
-            titlePrimary: m.titlePrimary || `Album #${m.id}`,
-            titleSecondary: m.titleSecondary,
-            titleNative: m.titleNative,
-            coverImage: m.coverImage,
-            albumType: m.recordType,
-            releaseDateYear: m.releaseDateYear,
-            listeners: m.listeners,
-            playCount: m.playCount,
-            role: "Artist",
-          })
-        }
-      } else {
-        if (!trackMap.has(m.id)) {
-          trackMap.set(m.id, {
-            id: m.id,
-            titlePrimary: m.titlePrimary || `Track #${m.id}`,
-            titleSecondary: m.titleSecondary,
-            titleNative: m.titleNative,
-            coverImage: m.coverImage || m.album?.coverImage,
-            albumId: m.albumId,
-            albumTitle: m.album?.titlePrimary,
-            trackNumber: m.trackPosition,
-            duration: m.duration,
-            listeners: m.listeners,
-            playCount: m.playCount,
-            role: "Artist",
-          })
-        }
-      }
-    })
-
-    person.mediaStaff.forEach((ms) => {
-      const music = (ms as any).music
-      if (music) {
-        if (music.type === "ALBUM" && !albumMap.has(music.id)) {
-          albumMap.set(music.id, {
-            id: music.id,
-            titlePrimary:
-              music.titlePrimary || ms.customRole || `Album #${music.id}`,
-            titleSecondary: music.titleSecondary,
-            titleNative: music.titleNative,
-            coverImage: music.coverImage,
-            albumType: music.recordType,
-            releaseDateYear: music.releaseDateYear,
-            listeners: music.listeners,
-            playCount: music.playCount,
-            role: ms.customRole || ms.role,
-          })
-        } else if (music.type === "TRACK" && !trackMap.has(music.id)) {
-          trackMap.set(music.id, {
-            id: music.id,
-            titlePrimary:
-              music.titlePrimary || ms.customRole || `Track #${music.id}`,
-            titleSecondary: music.titleSecondary,
-            titleNative: music.titleNative,
-            coverImage: music.coverImage || music.album?.coverImage,
-            albumId: music.albumId,
-            albumTitle: music.album?.titlePrimary,
-            trackNumber: music.trackPosition,
-            duration: music.duration,
-            listeners: music.listeners,
-            playCount: music.playCount,
-            role: ms.customRole || ms.role,
-          })
-        }
-      }
-    })
-
-    const albums = Array.from(albumMap.values()).sort((a, b) => {
-      if (
-        b.releaseDateYear &&
-        a.releaseDateYear &&
-        b.releaseDateYear !== a.releaseDateYear
-      ) {
-        return b.releaseDateYear - a.releaseDateYear
-      }
-      return a.titlePrimary.localeCompare(b.titlePrimary)
-    })
-
-    const tracks = Array.from(trackMap.values()).sort((a, b) => {
-      const bPlays = b.playCount || b.listeners || 0
-      const aPlays = a.playCount || a.listeners || 0
-      if (bPlays !== aPlays) return bPlays - aPlays
-      return a.titlePrimary.localeCompare(b.titlePrimary)
-    })
-
-    return { musicAlbums: albums, musicTracks: tracks }
-  }, [person.mediaStaff, (person as any).musicTracks])
-
-  const totalMusicReleases = musicAlbums.length + musicTracks.length
-
-  const defaultTab = useMemo<PersonTab>(() => {
-    if (totalMusicReleases > 0 && deduplicatedVoicedRoles.length === 0) {
-      return "DISCOGRAPHY"
-    }
-    if (deduplicatedVoicedRoles.length > 0) {
-      return "VOICED"
-    }
-    if (totalMusicReleases > 0) {
-      return "DISCOGRAPHY"
-    }
-    return "STAFF"
-  }, [totalMusicReleases, deduplicatedVoicedRoles.length])
-
-  const [activeTab, setActiveTab] = useState<PersonTab>(defaultTab)
-  const [selectedMusicFilter, setSelectedMusicFilter] =
-    useState<MusicFilterKey>("ALL")
-
-  const currentTab = useMemo<PersonTab>(() => {
-    if (activeTab === "DISCOGRAPHY" && totalMusicReleases > 0)
-      return "DISCOGRAPHY"
-    if (activeTab === "VOICED" && deduplicatedVoicedRoles.length > 0)
-      return "VOICED"
-    if (activeTab === "STAFF" && deduplicatedStaffRoles.length > 0)
-      return "STAFF"
-    return defaultTab
-  }, [
-    activeTab,
-    totalMusicReleases,
-    deduplicatedVoicedRoles.length,
-    deduplicatedStaffRoles.length,
-    defaultTab,
-  ])
-
-  // Group staff credits by media type
   const staffByType = useMemo(() => {
     const anime = deduplicatedStaffRoles.filter((m) => m.mediaType === "ANIME")
     const manga = deduplicatedStaffRoles.filter((m) => m.mediaType === "MANGA")
@@ -493,1132 +508,1076 @@ export function PersonDetailView({ person }: PersonDetailViewProps) {
     ].filter((group) => group.count > 0)
   }, [deduplicatedStaffRoles])
 
-  const staffCounts = useMemo(() => {
-    const counts: Record<MediaFilterKey, number> = {
-      ALL: deduplicatedStaffRoles.length,
-      ANIME: 0,
-      MANGA: 0,
-      MOVIE: 0,
-      TV: 0,
-      BOOK: 0,
-    }
-    deduplicatedStaffRoles.forEach((m) => {
-      counts[m.mediaType] += 1
-    })
-    return counts
-  }, [deduplicatedStaffRoles])
+  // Deduplicate and process music releases (Albums & Tracks)
+  const { musicAlbums, musicTracks } = useMemo(() => {
+    const albumMap = new Map<number, MusicAlbumItem>()
+    const trackMap = new Map<number, MusicTrackItem>()
 
-  const visibleStaffGroups = useMemo(() => {
-    if (selectedStaffMediaType === "ALL") {
-      return staffByType
+    const directTracks = (person.musicTracks || []) as any[]
+    directTracks.forEach((m) => {
+      if (m.type === "ALBUM") {
+        if (!albumMap.has(m.id)) {
+          albumMap.set(m.id, {
+            id: m.id,
+            titlePrimary: m.titlePrimary || `Album #${m.id}`,
+            titleSecondary: m.titleSecondary ?? null,
+            titleNative: m.titleNative ?? null,
+            coverImage: m.coverImage ?? null,
+            description: m.description ?? null,
+            status: m.status ?? null,
+            albumType: m.recordType ?? null,
+            releaseDateYear: m.releaseDateYear ?? null,
+            listeners: m.listeners ?? null,
+            playCount: m.playCount ?? null,
+            popularity: m.popularity ?? null,
+            favorites: m.favorites ?? null,
+            genres: extractGenreNames(m.genres),
+            role: "Artist",
+          })
+        }
+      } else {
+        if (!trackMap.has(m.id)) {
+          trackMap.set(m.id, {
+            id: m.id,
+            titlePrimary: m.titlePrimary || `Track #${m.id}`,
+            titleSecondary: m.titleSecondary ?? null,
+            titleNative: m.titleNative ?? null,
+            coverImage: m.coverImage || m.album?.coverImage || null,
+            description: m.description ?? null,
+            status: m.status ?? null,
+            albumId: m.albumId ?? null,
+            albumTitle: m.album?.titlePrimary ?? null,
+            trackNumber: m.trackPosition ?? null,
+            duration: m.duration ?? null,
+            releaseDateYear: m.releaseDateYear ?? null,
+            listeners: m.listeners ?? null,
+            playCount: m.playCount ?? null,
+            popularity: m.popularity ?? null,
+            favorites: m.favorites ?? null,
+            genres: extractGenreNames(m.genres),
+            role: "Artist",
+          })
+        }
+      }
+    })
+
+    person.mediaStaff.forEach((ms) => {
+      const music = ms.music
+      if (music) {
+        if (music.type === "ALBUM" && !albumMap.has(music.id)) {
+          albumMap.set(music.id, {
+            id: music.id,
+            titlePrimary:
+              music.titlePrimary || ms.customRole || `Album #${music.id}`,
+            titleSecondary: music.titleSecondary ?? null,
+            titleNative: music.titleNative ?? null,
+            coverImage: music.coverImage ?? null,
+            description: music.description ?? null,
+            status: music.status ?? null,
+            albumType: music.recordType ?? null,
+            releaseDateYear: music.releaseDateYear ?? null,
+            listeners: music.listeners ?? null,
+            playCount: music.playCount ?? null,
+            popularity: music.popularity ?? null,
+            favorites: music.favorites ?? null,
+            genres: extractGenreNames(music.genres),
+            role: formatStaffRoleLabel(ms.customRole || ms.role),
+          })
+        } else if (music.type === "TRACK" && !trackMap.has(music.id)) {
+          trackMap.set(music.id, {
+            id: music.id,
+            titlePrimary:
+              music.titlePrimary || ms.customRole || `Track #${music.id}`,
+            titleSecondary: music.titleSecondary ?? null,
+            titleNative: music.titleNative ?? null,
+            coverImage: music.coverImage || music.album?.coverImage || null,
+            description: music.description ?? null,
+            status: music.status ?? null,
+            albumId: music.albumId ?? null,
+            albumTitle: music.album?.titlePrimary ?? null,
+            trackNumber: music.trackPosition ?? null,
+            duration: music.duration ?? null,
+            releaseDateYear: music.releaseDateYear ?? null,
+            listeners: music.listeners ?? null,
+            playCount: music.playCount ?? null,
+            popularity: music.popularity ?? null,
+            favorites: music.favorites ?? null,
+            genres: extractGenreNames(music.genres),
+            role: formatStaffRoleLabel(ms.customRole || ms.role),
+          })
+        }
+      }
+    })
+
+    const albums = Array.from(albumMap.values()).sort((a, b) => {
+      if (
+        b.releaseDateYear &&
+        a.releaseDateYear &&
+        b.releaseDateYear !== a.releaseDateYear
+      ) {
+        return b.releaseDateYear - a.releaseDateYear
+      }
+      return a.titlePrimary.localeCompare(b.titlePrimary)
+    })
+
+    const tracks = Array.from(trackMap.values()).sort((a, b) => {
+      const bPlays = b.playCount || b.listeners || b.popularity || 0
+      const aPlays = a.playCount || a.listeners || a.popularity || 0
+      if (bPlays !== aPlays) return bPlays - aPlays
+      return a.titlePrimary.localeCompare(b.titlePrimary)
+    })
+
+    return { musicAlbums: albums, musicTracks: tracks }
+  }, [person.mediaStaff, person.musicTracks])
+
+  const totalMusicReleases = musicAlbums.length + musicTracks.length
+
+  const displayName =
+    titlePref === "native" && person.nameNative
+      ? person.nameNative
+      : person.namePrimary
+
+  const hometownDisplay = person.homeTown ?? person.hometown ?? null
+
+  const externalSources = useMemo(() => {
+    const items: Array<{ key: string; name: string; href: string }> = []
+    if (person.deezerLink || person.deezerId) {
+      items.push({
+        key: "deezer",
+        name: "Deezer",
+        href:
+          person.deezerLink ||
+          `https://www.deezer.com/artist/${person.deezerId}`,
+      })
     }
-    return staffByType.filter((g) => g.type === selectedStaffMediaType)
-  }, [staffByType, selectedStaffMediaType])
+    if (person.lastFmUrl) {
+      items.push({
+        key: "lastfm",
+        name: "Last.fm",
+        href: person.lastFmUrl,
+      })
+    }
+    if (person.spotifyId) {
+      items.push({
+        key: "spotify",
+        name: "Spotify",
+        href: `https://open.spotify.com/artist/${person.spotifyId}`,
+      })
+    }
+    if (person.anilistId) {
+      items.push({
+        key: "anilist",
+        name: "AniList",
+        href: `https://anilist.co/staff/${person.anilistId}`,
+      })
+    }
+    if (person.malId) {
+      items.push({
+        key: "mal",
+        name: "MyAnimeList",
+        href: `https://myanimelist.net/people/${person.malId}`,
+      })
+    }
+    if (person.aniDBId) {
+      items.push({
+        key: "anidb",
+        name: "AniDB",
+        href: `https://anidb.net/creator/${person.aniDBId}`,
+      })
+    }
+    if (person.tvDBId) {
+      items.push({
+        key: "tvdb",
+        name: "TheTVDB",
+        href: `https://thetvdb.com/dereferrer/people/${person.tvDBId}`,
+      })
+    }
+    if (person.bangumiId) {
+      items.push({
+        key: "bangumi",
+        name: "Bangumi",
+        href: `https://bgm.tv/person/${person.bangumiId}`,
+      })
+    }
+    if (person.imdbId) {
+      items.push({
+        key: "imdb",
+        name: "IMDb",
+        href: `https://www.imdb.com/name/${person.imdbId}`,
+      })
+    }
+    if (person.tmdbId) {
+      items.push({
+        key: "tmdb",
+        name: "TMDB",
+        href: `https://www.themoviedb.org/person/${person.tmdbId}`,
+      })
+    }
+    return items
+  }, [person])
+
+  const updatedFormatted = useMemo(() => {
+    const d = new Date(person.updatedAt)
+    if (isNaN(d.getTime())) return null
+    return d.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    })
+  }, [person.updatedAt])
+
+  const renderVoicedCard = (
+    item: (typeof deduplicatedVoicedRoles)[number]
+  ) => (
+    <BorealisCard
+      key={item.key}
+      type="character"
+      titlePreference={titlePref}
+      showSubtitle={false}
+      data={{
+        id: item.characterId,
+        characterId: item.characterId,
+        namePrimary: item.characterNamePrimary,
+        nameNative: item.characterNameNative,
+        image: item.characterImage,
+        role: item.role,
+        description: item.characterDescription,
+        gender: item.characterGender,
+        age: item.characterAge,
+        favorites: item.characterFavorites,
+        media: item.appearances[0] ?? null,
+        appearances: item.appearances,
+      }}
+    />
+  )
+
+  const renderStaffCard = (
+    item: (typeof deduplicatedStaffRoles)[number]
+  ) => {
+    const rolesText = item.roles.join(", ")
+    const subtext = [rolesText, item.mediaYear].filter(Boolean).join(" • ")
+    return (
+      <BorealisCard
+        key={item.key}
+        type={toBorealisEntityType(item.mediaType)}
+        titlePreference={titlePref}
+        showSubtitle={false}
+        showExtras={true}
+        showProgress={false}
+        data={{
+          id: item.mediaId,
+          titlePrimary: item.mediaTitle,
+          titleSecondary: item.mediaTitleSecondary,
+          titleNative: item.mediaTitleNative,
+          coverImage: item.mediaCover,
+          bannerImage: item.mediaBanner,
+          description: item.mediaDescription,
+          format: item.mediaFormat,
+          status: item.mediaStatus,
+          seasonYear: item.mediaYear,
+          year: item.mediaYear,
+          score: item.mediaScore,
+          averageScore: item.mediaScore,
+          episodeCount: item.episodeCount,
+          chapterCount: item.chapterCount,
+          volumeCount: item.volumeCount,
+          genres: item.genres,
+          popularity: item.popularity,
+          favorites: item.favorites,
+          subtext: subtext || undefined,
+        }}
+      />
+    )
+  }
+
+  const renderAlbumCard = (album: MusicAlbumItem) => (
+    <BorealisCard
+      key={`album-${album.id}`}
+      type="music"
+      href={`/borealis/music/albums/${album.id}`}
+      titlePreference={titlePref}
+      showSubtitle={false}
+      showExtras={true}
+      showProgress={false}
+      data={{
+        id: album.id,
+        titlePrimary: album.titlePrimary,
+        titleSecondary: album.titleSecondary,
+        titleNative: album.titleNative,
+        coverImage: album.coverImage,
+        description: album.description,
+        status: album.status,
+        format: album.albumType || "ALBUM",
+        releaseDateYear: album.releaseDateYear,
+        year: album.releaseDateYear,
+        popularity: album.popularity,
+        favorites: album.favorites,
+        genres: album.genres,
+        subtext:
+          [
+            album.role !== "Artist" ? album.role : null,
+            album.releaseDateYear,
+          ]
+            .filter(Boolean)
+            .join(" • ") || "Album",
+      }}
+    />
+  )
+
+  const renderTrackCard = (track: MusicTrackItem) => {
+    const durationStr =
+      typeof track.duration === "number" && track.duration > 0
+        ? `${Math.floor(track.duration / 60)}:${String(track.duration % 60).padStart(2, "0")}`
+        : null
+    return (
+      <BorealisCard
+        key={`track-${track.id}`}
+        type="music"
+        href={`/borealis/music/tracks/${track.id}`}
+        titlePreference={titlePref}
+        showSubtitle={false}
+        showExtras={true}
+        showProgress={false}
+        data={{
+          id: track.id,
+          titlePrimary: track.titlePrimary,
+          titleSecondary: track.titleSecondary,
+          titleNative: track.titleNative,
+          coverImage: track.coverImage,
+          description: track.description,
+          status: track.status,
+          format: "TRACK",
+          releaseDateYear: track.releaseDateYear,
+          year: track.releaseDateYear,
+          popularity: track.popularity,
+          favorites: track.favorites,
+          genres: track.genres,
+          subtext:
+            [track.albumTitle, durationStr].filter(Boolean).join(" • ") ||
+            track.role,
+        }}
+      />
+    )
+  }
+
+  const middleStatValue =
+    deduplicatedVoicedRoles.length > 0
+      ? deduplicatedVoicedRoles.length
+      : totalMusicReleases > 0
+        ? totalMusicReleases
+        : deduplicatedStaffRoles.length
+
+  const middleStatLabel =
+    deduplicatedVoicedRoles.length > 0
+      ? "Voiced"
+      : totalMusicReleases > 0
+        ? "Releases"
+        : "Credits"
+
+  const MiddleStatIcon =
+    deduplicatedVoicedRoles.length > 0
+      ? IconMicrophone
+      : totalMusicReleases > 0
+        ? IconDisc
+        : IconBriefcase
 
   return (
-    <div className="flex flex-col gap-6 pb-12 sm:gap-8">
-      {/* 1. Person Hero Header */}
-      <div className="relative overflow-hidden rounded-3xl border border-border/40 bg-card/60 p-5 shadow-xs sm:p-7">
-        <div className="flex flex-col items-start gap-5 sm:flex-row sm:gap-7">
-          {/* Portrait Image */}
-          <div className="relative aspect-[3/4] w-28 shrink-0 overflow-hidden rounded-2xl border border-border/40 bg-muted shadow-sm sm:w-36 md:w-44">
-            {person.image ? (
-              <img
-                src={person.image}
-                alt={person.namePrimary}
-                className="h-full w-full object-cover"
-              />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
-                <IconUser className="size-10" aria-hidden="true" />
-              </div>
-            )}
-          </div>
+    <div className="flex min-h-screen w-full flex-col bg-background">
+      {/* 1. Hero Header (matching MediaHero) */}
+      <div className="relative w-full">
+        {/* Backdrop Banner */}
+        <div className="relative h-40 w-full overflow-hidden bg-muted sm:h-52 md:h-60">
+          {person.image ? (
+            <img
+              src={person.image}
+              alt=""
+              aria-hidden="true"
+              className="h-full w-full scale-125 object-cover object-center blur-xl brightness-50"
+            />
+          ) : (
+            <div className="h-full w-full bg-gradient-to-b from-muted/80 via-muted/40 to-background" />
+          )}
+        </div>
 
-          {/* Names, Badges, and Actions */}
-          <div className="flex min-w-0 flex-1 flex-col gap-2">
-            <div className="flex items-center gap-2">
-              {typeof person.favorites === "number" && person.favorites > 0 && (
-                <Badge
+        {/* Hero Row: BorealisCard Portrait + Title GlassCard */}
+        <div className="relative z-10 -mt-28 w-full px-4 sm:-mt-36 sm:px-6 md:-mt-40 lg:px-8">
+          <div className="flex items-end gap-3 sm:gap-4 md:gap-5">
+            {/* Portrait BorealisCard */}
+            <div className="shrink-0">
+              <BorealisCard
+                type="staff"
+                data={person}
+                href="#"
+                titlePreference={titlePref}
+                showHoverCard={false}
+                showSubtitle={false}
+                showHoverSubtitle={false}
+                showBadges={false}
+                className="w-28 shadow-2xl sm:w-32 md:w-36"
+              >
+                <BorealisCard.Image aspectRatio="poster" showBadges={false} />
+              </BorealisCard>
+            </div>
+
+            {/* Title GlassCard */}
+            <div className="min-w-0 pb-1">
+              <GlassCard
+                variant="tinted"
+                className="flex w-fit max-w-full flex-wrap items-center gap-3 p-2.5 sm:px-5 sm:py-4"
+              >
+                <h1 className="font-mono text-base leading-tight font-bold tracking-tight text-balance text-foreground sm:text-2xl lg:text-3xl">
+                  {displayName}
+                </h1>
+                <FavoriteButton
+                  targetId={person.id}
+                  type="PERSON"
+                  title={person.namePrimary}
+                  size="sm"
                   variant="secondary"
-                  className="gap-1 text-[11px] font-semibold text-rose-500"
-                >
-                  <IconHeart
-                    className="size-3 fill-current"
-                    aria-hidden="true"
-                  />
-                  <span>{person.favorites.toLocaleString()}</span>
-                </Badge>
-              )}
-              <FavoriteButton
-                targetId={person.id}
-                type="PERSON"
-                title={person.namePrimary}
-                size="sm"
-                variant="secondary"
-                showLabel
-              />
+                  showLabel
+                  className="h-7 rounded-xl px-2.5"
+                />
+              </GlassCard>
             </div>
-
-            {/* Primary Name */}
-            <h1 className="text-2xl font-bold tracking-tight text-balance text-foreground sm:text-3xl lg:text-4xl">
-              {person.namePrimary}
-            </h1>
-
-            {/* Native Name */}
-            {person.nameNative && (
-              <p className="font-japanese text-sm text-muted-foreground sm:text-base">
-                {person.nameNative}
-              </p>
-            )}
-
-            {/* Quick Profile Chips */}
-            <div className="flex flex-wrap items-center gap-1.5 pt-1.5 text-xs text-muted-foreground">
-              {person.language && (
-                <span className="inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-0.5 font-medium text-foreground">
-                  <IconWorld
-                    className="size-3 text-muted-foreground"
-                    aria-hidden="true"
-                  />
-                  <span>{person.language}</span>
-                </span>
-              )}
-              {musicAlbums.length > 0 && (
-                <span className="inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-0.5 font-medium text-foreground">
-                  <IconDisc
-                    className="size-3 text-muted-foreground"
-                    aria-hidden="true"
-                  />
-                  <span>
-                    {musicAlbums.length}{" "}
-                    {musicAlbums.length === 1 ? "Album" : "Albums"}
-                  </span>
-                </span>
-              )}
-              {musicTracks.length > 0 && (
-                <span className="inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-0.5 font-medium text-foreground">
-                  <IconMusic
-                    className="size-3 text-muted-foreground"
-                    aria-hidden="true"
-                  />
-                  <span>
-                    {musicTracks.length}{" "}
-                    {musicTracks.length === 1 ? "Track" : "Tracks"}
-                  </span>
-                </span>
-              )}
-              {deduplicatedVoicedRoles.length > 0 && (
-                <span className="inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-0.5 font-medium text-foreground">
-                  <IconMicrophone
-                    className="size-3 text-muted-foreground"
-                    aria-hidden="true"
-                  />
-                  <span>{deduplicatedVoicedRoles.length} Roles</span>
-                </span>
-              )}
-              {deduplicatedStaffRoles.length > 0 && (
-                <span className="inline-flex items-center gap-1 rounded-lg bg-muted px-2 py-0.5 font-medium text-foreground">
-                  <IconBriefcase
-                    className="size-3 text-muted-foreground"
-                    aria-hidden="true"
-                  />
-                  <span>{deduplicatedStaffRoles.length} Staff Credits</span>
-                </span>
-              )}
-            </div>
-
-            {/* Alternative Names (Aliases) */}
-            {person.nameAlternative && person.nameAlternative.length > 0 && (
-              <div className="flex flex-wrap items-center gap-1 pt-1.5">
-                <span className="mr-1 text-[11px] font-medium text-muted-foreground">
-                  Aliases:
-                </span>
-                {person.nameAlternative.map((alias, idx) => (
-                  <Badge
-                    key={idx}
-                    variant="outline"
-                    className="text-[10px] font-normal text-muted-foreground"
-                  >
-                    {alias}
-                  </Badge>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </div>
 
-      {/* 2. Main Two-Column Layout */}
-      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-4">
-        {/* Left Column: Information Sidebar (1 col) */}
-        <aside className="order-2 flex flex-col gap-4 lg:order-1">
-          {/* Information Card */}
-          <div className="flex flex-col gap-3 rounded-2xl border border-border/40 bg-card/60 p-4 text-xs shadow-xs">
-            <h3 className="text-[11px] font-semibold tracking-wider text-foreground text-muted-foreground uppercase">
-              Person Information
-            </h3>
+      {/* 2. Main Content Pane (matching General / Overview tab) */}
+      <main className="w-full flex-1 px-4 pt-6 pb-8 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_260px]">
+          {/* Main Column */}
+          <div className="flex min-w-0 flex-col gap-8">
+            {/* Biography */}
+            <section aria-labelledby="bio-heading">
+              <GlassCard variant="normal" className="p-4 sm:p-5">
+                <h2
+                  id="bio-heading"
+                  className="mb-2.5 text-base font-semibold text-foreground"
+                >
+                  Biography
+                </h2>
+                <FormattedDescription
+                  text={person.description}
+                  fallbackText="No biography available for this person."
+                />
+              </GlassCard>
+            </section>
 
-            <div className="flex flex-col divide-y divide-border/20">
-              {person.nameNative && (
-                <div className="flex items-start justify-between gap-3 py-1.5 text-xs">
-                  <span className="shrink-0 text-muted-foreground">
-                    Native Name
-                  </span>
-                  <span className="font-japanese text-end font-medium text-foreground">
-                    {person.nameNative}
-                  </span>
-                </div>
-              )}
+            {/* Voiced Characters */}
+            {deduplicatedVoicedRoles.length > 0 && (
+              <BorealisCardGroup
+                title="Voiced Characters"
+                rowCount={1}
+                dragFree
+                expandable
+                variant="none"
+              >
+                {deduplicatedVoicedRoles.map(renderVoicedCard)}
+              </BorealisCardGroup>
+            )}
 
-              {person.language && (
-                <div className="flex items-start justify-between gap-3 py-1.5 text-xs">
-                  <span className="shrink-0 text-muted-foreground">
-                    Language
-                  </span>
-                  <span className="text-end font-medium text-foreground">
-                    {person.language}
-                  </span>
-                </div>
-              )}
+            {/* Production Staff */}
+            {staffByType.map((group) => (
+              <BorealisCardGroup
+                key={group.type}
+                title={
+                  staffByType.length === 1
+                    ? "Production Staff"
+                    : `${group.title} Staff Credits`
+                }
+                rowCount={1}
+                dragFree
+                expandable
+                variant="none"
+              >
+                {group.items.map(renderStaffCard)}
+              </BorealisCardGroup>
+            ))}
 
-              {typeof person.favorites === "number" && (
-                <div className="flex items-start justify-between gap-3 py-1.5 text-xs">
-                  <span className="shrink-0 text-muted-foreground">
-                    Favorites
-                  </span>
-                  <span className="text-end font-medium text-foreground tabular-nums">
-                    {person.favorites.toLocaleString()}
-                  </span>
-                </div>
-              )}
+            {/* Discography */}
+            {musicAlbums.length > 0 && (
+              <BorealisCardGroup
+                title="Albums & Releases"
+                rowCount={1}
+                dragFree
+                expandable
+                variant="none"
+              >
+                {musicAlbums.map(renderAlbumCard)}
+              </BorealisCardGroup>
+            )}
 
-              {person.nameAlternative && person.nameAlternative.length > 0 && (
-                <div className="flex flex-col gap-1 py-1.5 text-xs">
-                  <span className="text-muted-foreground">
-                    Alternative Names
-                  </span>
-                  <div className="flex flex-wrap justify-end gap-1">
-                    {person.nameAlternative.map((alt, idx) => (
-                      <span
-                        key={idx}
-                        className="text-end text-[11px] break-words text-foreground"
-                      >
-                        {alt}
-                        {idx < person.nameAlternative.length - 1 ? "," : ""}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+            {musicTracks.length > 0 && (
+              <BorealisCardGroup
+                title="Popular Tracks"
+                rowCount={1}
+                dragFree
+                expandable
+                variant="none"
+              >
+                {musicTracks.map(renderTrackCard)}
+              </BorealisCardGroup>
+            )}
           </div>
 
-          {/* Provider IDs Card */}
-          {(person.anilistId ||
-            person.malId ||
-            person.aniDBId ||
-            person.tvDBId ||
-            person.bangumiId ||
-            person.imdbId ||
-            person.tmdbId ||
-            (person as any).deezerId) && (
-            <div className="flex flex-col gap-2.5 rounded-2xl border border-border/40 bg-card/60 p-4 text-xs shadow-xs">
-              <h3 className="text-[11px] font-semibold tracking-wider text-foreground text-muted-foreground uppercase">
-                External IDs
-              </h3>
-              <div className="flex flex-col divide-y divide-border/20">
-                {(person as any).deezerId && (
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="text-muted-foreground">Deezer</span>
+          {/* Right Narrow Sidebar (260px, matching OverviewTab) */}
+          <aside className="flex flex-col gap-3.5">
+            {/* 1. Stats Card */}
+            <GlassCard
+              variant="normal"
+              className="flex flex-col gap-3 p-4 text-xs"
+            >
+              <div className="flex items-center justify-between border-b border-border/30 pb-2">
+                <span className="text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
+                  Stats
+                </span>
+                <IconChartBar
+                  className="size-3.5 text-muted-foreground"
+                  aria-hidden="true"
+                />
+              </div>
+
+              <div className="grid grid-cols-3 gap-2">
+                <div className="flex flex-col items-center justify-center gap-1 rounded-xl border border-border/30 bg-muted/30 px-2 py-2.5 text-center">
+                  <div className="flex items-center gap-1 text-primary">
+                    <IconHeartFilled
+                      className="size-3.5"
+                      aria-hidden="true"
+                    />
+                    <span className="text-sm font-bold text-foreground tabular-nums">
+                      {typeof person.favorites === "number"
+                        ? person.favorites.toLocaleString()
+                        : "0"}
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-muted-foreground">
+                    Favorites
+                  </span>
+                </div>
+
+                <div className="flex flex-col items-center justify-center gap-1 rounded-xl border border-border/30 bg-muted/30 px-2 py-2.5 text-center">
+                  <div className="flex items-center gap-1 text-primary">
+                    <MiddleStatIcon
+                      className="size-3.5"
+                      aria-hidden="true"
+                    />
+                    <span className="text-sm font-bold text-foreground tabular-nums">
+                      {middleStatValue}
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-muted-foreground">
+                    {middleStatLabel}
+                  </span>
+                </div>
+
+                <div className="flex flex-col items-center justify-center gap-1 rounded-xl border border-border/30 bg-muted/30 px-2 py-2.5 text-center">
+                  <div className="flex items-center gap-1 text-primary">
+                    <IconBriefcase
+                      className="size-3.5"
+                      aria-hidden="true"
+                    />
+                    <span className="text-sm font-bold text-foreground tabular-nums">
+                      {deduplicatedStaffRoles.length}
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-muted-foreground">
+                    Staff
+                  </span>
+                </div>
+              </div>
+            </GlassCard>
+
+            {/* 2. Information Card */}
+            {(person.nameNative ||
+              person.language ||
+              person.gender ||
+              typeof person.age === "number" ||
+              person.bloodType ||
+              person.birthPlace ||
+              hometownDisplay ||
+              (person.primaryOccupations &&
+                person.primaryOccupations.length > 0) ||
+              (person.yearsActive && person.yearsActive.length > 0)) && (
+              <GlassCard
+                variant="normal"
+                className="flex flex-col gap-2 p-4 text-xs"
+              >
+                <div className="flex items-center justify-between border-b border-border/30 pb-2">
+                  <span className="text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
+                    Information
+                  </span>
+                  <IconInfoCircle
+                    className="size-3.5 text-muted-foreground"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <div className="flex flex-col divide-y divide-border/20">
+                  {person.nameNative && (
+                    <div className="flex items-start justify-between gap-3 py-1.5">
+                      <span className="shrink-0 text-muted-foreground">
+                        Native Name
+                      </span>
+                      <span className="font-japanese text-end font-medium text-foreground">
+                        {person.nameNative}
+                      </span>
+                    </div>
+                  )}
+
+                  {person.language && (
+                    <div className="flex items-center justify-between gap-3 py-1.5">
+                      <span className="shrink-0 text-muted-foreground">
+                        Language
+                      </span>
+                      <span className="text-end font-medium text-foreground">
+                        {person.language}
+                      </span>
+                    </div>
+                  )}
+
+                  {person.gender && (
+                    <div className="flex items-center justify-between gap-3 py-1.5">
+                      <span className="shrink-0 text-muted-foreground">
+                        Gender
+                      </span>
+                      <span className="text-end font-medium text-foreground">
+                        {person.gender}
+                      </span>
+                    </div>
+                  )}
+
+                  {typeof person.age === "number" && person.age > 0 && (
+                    <div className="flex items-center justify-between gap-3 py-1.5">
+                      <span className="shrink-0 text-muted-foreground">
+                        Age
+                      </span>
+                      <span className="text-end font-medium text-foreground tabular-nums">
+                        {person.age}
+                      </span>
+                    </div>
+                  )}
+
+                  {person.bloodType && (
+                    <div className="flex items-center justify-between gap-3 py-1.5">
+                      <span className="shrink-0 text-muted-foreground">
+                        Blood Type
+                      </span>
+                      <span className="text-end font-medium text-foreground">
+                        {person.bloodType}
+                      </span>
+                    </div>
+                  )}
+
+                  {person.birthPlace && (
+                    <div className="flex items-start justify-between gap-3 py-1.5">
+                      <span className="shrink-0 text-muted-foreground">
+                        Birthplace
+                      </span>
+                      <span className="text-end font-medium text-foreground">
+                        {person.birthPlace}
+                      </span>
+                    </div>
+                  )}
+
+                  {hometownDisplay &&
+                    hometownDisplay !== person.birthPlace && (
+                      <div className="flex items-start justify-between gap-3 py-1.5">
+                        <span className="shrink-0 text-muted-foreground">
+                          Hometown
+                        </span>
+                        <span className="text-end font-medium text-foreground">
+                          {hometownDisplay}
+                        </span>
+                      </div>
+                    )}
+
+                  {person.yearsActive && person.yearsActive.length > 0 && (
+                    <div className="flex items-center justify-between gap-3 py-1.5">
+                      <span className="shrink-0 text-muted-foreground">
+                        Years Active
+                      </span>
+                      <span className="text-end font-medium text-foreground tabular-nums">
+                        {person.yearsActive.length >= 2
+                          ? `${person.yearsActive[0]} – ${person.yearsActive[1] || "Present"}`
+                          : `${person.yearsActive[0]} – Present`}
+                      </span>
+                    </div>
+                  )}
+
+                  {person.primaryOccupations &&
+                    person.primaryOccupations.length > 0 && (
+                      <div className="flex flex-col gap-1.5 py-1.5">
+                        <span className="text-muted-foreground">
+                          Occupations
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                          {person.primaryOccupations.map((occ, idx) => (
+                            <Badge
+                              key={idx}
+                              variant="secondary"
+                              className="text-[10px] font-medium"
+                            >
+                              {occ}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                </div>
+              </GlassCard>
+            )}
+
+            {/* 3. Dates Card */}
+            {(formattedBirthday || formattedDeathDate) && (
+              <GlassCard
+                variant="normal"
+                className="flex flex-col gap-2 p-4 text-xs"
+              >
+                <div className="flex items-center justify-between border-b border-border/30 pb-2">
+                  <span className="text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
+                    Dates
+                  </span>
+                  <IconCalendarEvent
+                    className="size-3.5 text-muted-foreground"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <div className="flex flex-col divide-y divide-border/20">
+                  {formattedBirthday && (
+                    <div className="flex items-center justify-between gap-3 py-1.5">
+                      <span className="shrink-0 text-muted-foreground">
+                        Born
+                      </span>
+                      <span className="text-end font-medium text-foreground">
+                        {formattedBirthday}
+                      </span>
+                    </div>
+                  )}
+                  {formattedDeathDate && (
+                    <div className="flex items-center justify-between gap-3 py-1.5">
+                      <span className="shrink-0 text-muted-foreground">
+                        Died
+                      </span>
+                      <span className="text-end font-medium text-foreground">
+                        {formattedDeathDate}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </GlassCard>
+            )}
+
+            {/* 4. Alternative Names Card */}
+            {(person.givenName ||
+              person.familyName ||
+              (person.nameAlternative &&
+                person.nameAlternative.length > 0)) && (
+              <GlassCard
+                variant="normal"
+                className="flex flex-col gap-2 p-4 text-xs"
+              >
+                <div className="flex items-center justify-between border-b border-border/30 pb-2">
+                  <span className="text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
+                    Alternative Names
+                  </span>
+                  <IconLanguage
+                    className="size-3.5 text-muted-foreground"
+                    aria-hidden="true"
+                  />
+                </div>
+                <ul className="flex flex-col divide-y divide-border/15">
+                  {person.givenName && (
+                    <li className="flex items-baseline justify-between gap-3 py-1 text-[11px] leading-snug">
+                      <span className="shrink-0 text-muted-foreground">
+                        Given
+                      </span>
+                      <span className="text-end break-words text-foreground/85">
+                        {person.givenName}
+                      </span>
+                    </li>
+                  )}
+                  {person.familyName && (
+                    <li className="flex items-baseline justify-between gap-3 py-1 text-[11px] leading-snug">
+                      <span className="shrink-0 text-muted-foreground">
+                        Family
+                      </span>
+                      <span className="text-end break-words text-foreground/85">
+                        {person.familyName}
+                      </span>
+                    </li>
+                  )}
+                  {(person.nameAlternative ?? [])
+                    .filter((alt) => alt !== person.namePrimary)
+                    .map((alt, idx) => (
+                      <li
+                        key={idx}
+                        className="py-1 text-end text-[11px] leading-snug break-words text-foreground/85"
+                      >
+                        {alt}
+                      </li>
+                    ))}
+                </ul>
+              </GlassCard>
+            )}
+
+            {/* 5. External Links Card */}
+            {(person.deezerLink ||
+              person.deezerId ||
+              person.lastFmUrl ||
+              person.spotifyId) && (
+              <GlassCard
+                variant="normal"
+                className="flex flex-col gap-2.5 p-4 text-xs"
+              >
+                <div className="flex items-center justify-between border-b border-border/30 pb-2">
+                  <span className="text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
+                    External Links
+                  </span>
+                  <IconWorld
+                    className="size-3.5 text-muted-foreground"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {(person.deezerLink || person.deezerId) && (
                     <a
-                      href={`https://www.deezer.com/artist/${(person as any).deezerId}`}
+                      href={
+                        person.deezerLink ||
+                        `https://www.deezer.com/artist/${person.deezerId}`
+                      }
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
+                      className="inline-flex items-center gap-1 rounded-lg border border-border/40 bg-muted/40 px-2.5 py-1 text-[11px] font-medium text-foreground transition-colors hover:border-border hover:bg-muted"
                     >
-                      <span>Artist</span>
+                      <span>Deezer</span>
                       <IconExternalLink
                         className="size-3 opacity-60"
                         aria-hidden="true"
                       />
                     </a>
-                  </div>
-                )}
-                {person.anilistId && (
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="text-muted-foreground">AniList</span>
-                    <a
-                      href={`https://anilist.co/staff/${person.anilistId}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-medium text-primary hover:underline"
-                    >
-                      #{person.anilistId}
-                    </a>
-                  </div>
-                )}
-                {person.malId && (
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="text-muted-foreground">MyAnimeList</span>
-                    <a
-                      href={`https://myanimelist.net/people/${person.malId}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-medium text-primary hover:underline"
-                    >
-                      #{person.malId}
-                    </a>
-                  </div>
-                )}
-                {person.aniDBId && (
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="text-muted-foreground">AniDB</span>
-                    <a
-                      href={`https://anidb.net/creator/${person.aniDBId}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-medium text-primary hover:underline"
-                    >
-                      #{person.aniDBId}
-                    </a>
-                  </div>
-                )}
-                {person.tvDBId && (
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="text-muted-foreground">TheTVDB</span>
-                    <a
-                      href={`https://thetvdb.com/dereferrer/people/${person.tvDBId}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-medium text-primary hover:underline"
-                    >
-                      #{person.tvDBId}
-                    </a>
-                  </div>
-                )}
-                {person.bangumiId && (
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="text-muted-foreground">Bangumi</span>
-                    <a
-                      href={`https://bgm.tv/person/${person.bangumiId}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-medium text-primary hover:underline"
-                    >
-                      #{person.bangumiId}
-                    </a>
-                  </div>
-                )}
-                {person.imdbId && (
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="text-muted-foreground">IMDb</span>
-                    <a
-                      href={`https://www.imdb.com/name/${person.imdbId}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-medium text-primary hover:underline"
-                    >
-                      {person.imdbId}
-                    </a>
-                  </div>
-                )}
-                {person.tmdbId && (
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="text-muted-foreground">TMDB</span>
-                    <a
-                      href={`https://www.themoviedb.org/person/${person.tmdbId}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-medium text-primary hover:underline"
-                    >
-                      #{person.tmdbId}
-                    </a>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-
-          {/* Database Info Card */}
-          <div className="flex flex-col gap-2 rounded-2xl border border-border/40 bg-card/60 p-4 text-xs shadow-xs">
-            <h3 className="text-[11px] font-semibold tracking-wider text-foreground text-muted-foreground uppercase">
-              Database Info
-            </h3>
-            <div className="flex flex-col divide-y divide-border/20">
-              <div className="flex items-center justify-between py-1.5">
-                <span className="text-muted-foreground">Created</span>
-                <span className="text-muted-foreground tabular-nums">
-                  {new Date(person.createdAt).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
-                </span>
-              </div>
-              <div className="flex items-center justify-between py-1.5">
-                <span className="text-muted-foreground">Updated</span>
-                <span className="text-muted-foreground tabular-nums">
-                  {new Date(person.updatedAt).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
-                </span>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        {/* Right Column: Biography, Roles Tabs (Voiced Roles & Staff Credits) */}
-        <div className="order-1 flex flex-col gap-6 lg:order-2 lg:col-span-3">
-          {/* Biography Card */}
-          <section
-            aria-labelledby="bio-heading"
-            className="rounded-2xl border border-border/40 bg-card/60 p-5 shadow-xs"
-          >
-            <h2
-              id="bio-heading"
-              className="mb-2.5 text-base font-semibold text-foreground"
-            >
-              Biography
-            </h2>
-            <FormattedDescription
-              text={person.description}
-              fallbackText="No biography available for this person."
-            />
-          </section>
-
-          {/* Tab Switcher (Discography, Voiced Roles, Staff Credits) */}
-          {(totalMusicReleases > 0 ? 1 : 0) +
-            (deduplicatedVoicedRoles.length > 0 ? 1 : 0) +
-            (deduplicatedStaffRoles.length > 0 ? 1 : 0) >
-            1 && (
-            <div className="flex items-center gap-2 border-b border-border/40 pb-2">
-              {totalMusicReleases > 0 && (
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("DISCOGRAPHY")}
-                  className={cn(
-                    "inline-flex cursor-pointer items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                    currentTab === "DISCOGRAPHY"
-                      ? "bg-primary text-primary-foreground shadow-xs"
-                      : "bg-muted/70 text-muted-foreground hover:bg-muted hover:text-foreground"
                   )}
-                >
-                  <IconDisc className="size-3.5" aria-hidden="true" />
-                  <span>Discography</span>
-                  <span
-                    className={cn(
-                      "py-0.2 rounded-full px-1.5 text-[10px] font-bold",
-                      currentTab === "DISCOGRAPHY"
-                        ? "bg-primary-foreground/20 text-primary-foreground"
-                        : "bg-background/80 text-muted-foreground"
-                    )}
-                  >
-                    {totalMusicReleases}
-                  </span>
-                </button>
-              )}
-
-              {deduplicatedVoicedRoles.length > 0 && (
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("VOICED")}
-                  className={cn(
-                    "inline-flex cursor-pointer items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                    currentTab === "VOICED"
-                      ? "bg-primary text-primary-foreground shadow-xs"
-                      : "bg-muted/70 text-muted-foreground hover:bg-muted hover:text-foreground"
+                  {person.lastFmUrl && (
+                    <a
+                      href={person.lastFmUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 rounded-lg bg-red-600/10 px-2.5 py-1 text-[11px] font-medium text-red-600 transition-colors hover:bg-red-600/20"
+                    >
+                      <span>Last.fm</span>
+                      <IconExternalLink
+                        className="size-3 opacity-60"
+                        aria-hidden="true"
+                      />
+                    </a>
                   )}
-                >
-                  <IconMicrophone className="size-3.5" aria-hidden="true" />
-                  <span>Voiced Characters</span>
-                  <span
-                    className={cn(
-                      "py-0.2 rounded-full px-1.5 text-[10px] font-bold",
-                      currentTab === "VOICED"
-                        ? "bg-primary-foreground/20 text-primary-foreground"
-                        : "bg-background/80 text-muted-foreground"
-                    )}
-                  >
-                    {deduplicatedVoicedRoles.length}
-                  </span>
-                </button>
-              )}
-
-              {deduplicatedStaffRoles.length > 0 && (
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("STAFF")}
-                  className={cn(
-                    "inline-flex cursor-pointer items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                    currentTab === "STAFF"
-                      ? "bg-primary text-primary-foreground shadow-xs"
-                      : "bg-muted/70 text-muted-foreground hover:bg-muted hover:text-foreground"
-                  )}
-                >
-                  <IconBriefcase className="size-3.5" aria-hidden="true" />
-                  <span>Production Staff</span>
-                  <span
-                    className={cn(
-                      "py-0.2 rounded-full px-1.5 text-[10px] font-bold",
-                      currentTab === "STAFF"
-                        ? "bg-primary-foreground/20 text-primary-foreground"
-                        : "bg-background/80 text-muted-foreground"
-                    )}
-                  >
-                    {deduplicatedStaffRoles.length}
-                  </span>
-                </button>
-              )}
-            </div>
-          )}
-
-          {/* 1. Discography Section */}
-          {currentTab === "DISCOGRAPHY" && totalMusicReleases > 0 && (
-            <section
-              aria-labelledby="discography-heading"
-              className="flex flex-col gap-5"
-            >
-              <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex items-center gap-2">
-                  <IconDisc
-                    className="size-4 text-primary"
-                    aria-hidden="true"
-                  />
-                  <h2
-                    id="discography-heading"
-                    className="text-base font-semibold text-foreground"
-                  >
-                    Discography ({totalMusicReleases})
-                  </h2>
-                </div>
-
-                {/* Music Filter Pills (All / Albums / Tracks) */}
-                {musicAlbums.length > 0 && musicTracks.length > 0 && (
-                  <div className="flex flex-wrap items-center gap-1">
-                    {(
-                      [
-                        { key: "ALL", label: "All", count: totalMusicReleases },
-                        {
-                          key: "ALBUMS",
-                          label: "Albums",
-                          count: musicAlbums.length,
-                        },
-                        {
-                          key: "TRACKS",
-                          label: "Tracks",
-                          count: musicTracks.length,
-                        },
-                      ] as const
-                    ).map((filter) => {
-                      const isSelected = selectedMusicFilter === filter.key
-                      return (
-                        <button
-                          key={filter.key}
-                          type="button"
-                          onClick={() => setSelectedMusicFilter(filter.key)}
-                          className={cn(
-                            "inline-flex cursor-pointer items-center gap-1 rounded-xl px-2.5 py-1 text-xs font-semibold transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                            isSelected
-                              ? "bg-primary text-primary-foreground shadow-xs"
-                              : "bg-muted/70 text-muted-foreground hover:bg-muted hover:text-foreground"
-                          )}
-                        >
-                          <span>{filter.label}</span>
-                          <span
-                            className={cn(
-                              "py-0.2 rounded-full px-1.5 text-[9px] font-bold",
-                              isSelected
-                                ? "bg-primary-foreground/20 text-primary-foreground"
-                                : "bg-background/80 text-muted-foreground"
-                            )}
-                          >
-                            {filter.count}
-                          </span>
-                        </button>
-                      )
-                    })}
-                  </div>
-                )}
-              </div>
-
-              {/* Albums Sub-section */}
-              {(selectedMusicFilter === "ALL" ||
-                selectedMusicFilter === "ALBUMS") &&
-                musicAlbums.length > 0 && (
-                  <div className="flex flex-col gap-3">
-                    {selectedMusicFilter === "ALL" &&
-                      musicTracks.length > 0 && (
-                        <div className="flex items-center gap-2 border-b border-border/20 pb-1.5">
-                          <h3 className="text-xs font-bold tracking-wider text-muted-foreground uppercase">
-                            Albums & Releases
-                          </h3>
-                          <span className="py-0.2 rounded-full bg-muted px-2 text-[10px] font-semibold text-muted-foreground tabular-nums">
-                            {musicAlbums.length}
-                          </span>
-                        </div>
-                      )}
-
-                    <div className="grid grid-cols-[repeat(auto-fill,140px)] gap-2.5 sm:gap-3">
-                      {musicAlbums.map((album) => {
-                        const albumHref = `/borealis/music/albums/${album.id}`
-                        return (
-                          <Link
-                            key={`album-${album.id}`}
-                            href={albumHref}
-                            className="group flex flex-col overflow-hidden rounded-2xl border border-border/40 bg-card/60 p-2.5 transition-all outline-none hover:border-border/80 hover:bg-card hover:shadow-xs focus-visible:ring-2 focus-visible:ring-ring"
-                          >
-                            <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-muted">
-                              {album.coverImage ? (
-                                <img
-                                  src={album.coverImage}
-                                  alt={album.titlePrimary}
-                                  loading="lazy"
-                                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                />
-                              ) : (
-                                <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
-                                  <IconDisc
-                                    className="size-8"
-                                    aria-hidden="true"
-                                  />
-                                </div>
-                              )}
-                              {album.albumType && (
-                                <div className="absolute start-2 top-2">
-                                  <Badge
-                                    variant="secondary"
-                                    className="bg-background/85 px-1.5 py-0 text-[9px] font-semibold uppercase shadow-xs backdrop-blur-xs"
-                                  >
-                                    {album.albumType}
-                                  </Badge>
-                                </div>
-                              )}
-                            </div>
-
-                            <div className="flex flex-1 flex-col justify-between pt-2.5">
-                              <div>
-                                <h4 className="line-clamp-1 text-xs font-semibold text-foreground transition-colors group-hover:text-primary">
-                                  {album.titlePrimary}
-                                </h4>
-                                {album.titleNative &&
-                                  album.titleNative !== album.titlePrimary && (
-                                    <p className="font-japanese line-clamp-1 text-[10px] text-muted-foreground opacity-80">
-                                      {album.titleNative}
-                                    </p>
-                                  )}
-                              </div>
-
-                              <div className="flex items-center justify-between pt-1 text-[10px] text-muted-foreground">
-                                {album.releaseDateYear ? (
-                                  <span>{album.releaseDateYear}</span>
-                                ) : (
-                                  <span />
-                                )}
-                                {typeof album.listeners === "number" &&
-                                  album.listeners > 0 && (
-                                    <span className="inline-flex items-center gap-1 font-medium tabular-nums">
-                                      <IconHeadphones
-                                        className="size-3 opacity-60"
-                                        aria-hidden="true"
-                                      />
-                                      <span>
-                                        {album.listeners.toLocaleString()}
-                                      </span>
-                                    </span>
-                                  )}
-                              </div>
-                            </div>
-                          </Link>
-                        )
-                      })}
-                    </div>
-                  </div>
-                )}
-
-              {/* Tracks Sub-section */}
-              {(selectedMusicFilter === "ALL" ||
-                selectedMusicFilter === "TRACKS") &&
-                musicTracks.length > 0 && (
-                  <div className="flex flex-col gap-3">
-                    {selectedMusicFilter === "ALL" &&
-                      musicAlbums.length > 0 && (
-                        <div className="flex items-center gap-2 border-b border-border/20 pt-2 pb-1.5">
-                          <h3 className="text-xs font-bold tracking-wider text-muted-foreground uppercase">
-                            Popular Tracks
-                          </h3>
-                          <span className="py-0.2 rounded-full bg-muted px-2 text-[10px] font-semibold text-muted-foreground tabular-nums">
-                            {musicTracks.length}
-                          </span>
-                        </div>
-                      )}
-
-                    <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-                      {musicTracks.map((track) => {
-                        const trackHref = `/borealis/music/tracks/${track.id}`
-                        return (
-                          <div
-                            key={`track-${track.id}`}
-                            className="group flex items-center justify-between gap-3 rounded-2xl border border-border/40 bg-card/60 p-2.5 transition-colors hover:border-border/60 hover:bg-card"
-                          >
-                            <Link
-                              href={trackHref}
-                              className="flex min-w-0 flex-1 items-center gap-3 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                            >
-                              <div className="relative aspect-square w-12 shrink-0 overflow-hidden rounded-xl bg-muted">
-                                {track.coverImage ? (
-                                  <img
-                                    src={track.coverImage}
-                                    alt={track.titlePrimary}
-                                    loading="lazy"
-                                    className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                                  />
-                                ) : (
-                                  <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
-                                    <IconMusic
-                                      className="size-5"
-                                      aria-hidden="true"
-                                    />
-                                  </div>
-                                )}
-                              </div>
-
-                              <div className="flex min-w-0 flex-1 flex-col">
-                                <span className="truncate text-xs font-semibold text-foreground transition-colors group-hover:text-primary">
-                                  {track.titlePrimary}
-                                </span>
-                                {track.albumTitle && (
-                                  <span className="truncate text-[10px] text-muted-foreground">
-                                    {track.albumTitle}
-                                  </span>
-                                )}
-                                {track.titleNative &&
-                                  track.titleNative !== track.titlePrimary &&
-                                  !track.albumTitle && (
-                                    <span className="font-japanese truncate text-[10px] text-muted-foreground opacity-80">
-                                      {track.titleNative}
-                                    </span>
-                                  )}
-                              </div>
-                            </Link>
-
-                            <div className="flex shrink-0 items-center gap-2.5 text-end text-[11px] text-muted-foreground">
-                              {typeof track.duration === "number" &&
-                                track.duration > 0 && (
-                                  <span className="tabular-nums">
-                                    {Math.floor(track.duration / 60)}:
-                                    {String(track.duration % 60).padStart(
-                                      2,
-                                      "0"
-                                    )}
-                                  </span>
-                                )}
-                              {typeof track.playCount === "number" &&
-                              track.playCount > 0 ? (
-                                <span className="inline-flex items-center gap-0.5 font-medium text-foreground/80 tabular-nums">
-                                  <IconPlayerPlay
-                                    className="size-3 opacity-60"
-                                    aria-hidden="true"
-                                  />
-                                  <span>
-                                    {track.playCount.toLocaleString()}
-                                  </span>
-                                </span>
-                              ) : typeof track.listeners === "number" &&
-                                track.listeners > 0 ? (
-                                <span className="inline-flex items-center gap-0.5 font-medium text-foreground/80 tabular-nums">
-                                  <IconHeadphones
-                                    className="size-3 opacity-60"
-                                    aria-hidden="true"
-                                  />
-                                  <span>
-                                    {track.listeners.toLocaleString()}
-                                  </span>
-                                </span>
-                              ) : null}
-                            </div>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
-                )}
-            </section>
-          )}
-
-          {/* 2. Voiced Roles Section */}
-          {currentTab === "VOICED" && deduplicatedVoicedRoles.length > 0 && (
-            <section
-              aria-labelledby="voiced-heading"
-              className="flex flex-col gap-4"
-            >
-              <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex items-center gap-2">
-                  <IconMicrophone
-                    className="size-4 text-primary"
-                    aria-hidden="true"
-                  />
-                  <h2
-                    id="voiced-heading"
-                    className="text-base font-semibold text-foreground"
-                  >
-                    Voiced Characters ({deduplicatedVoicedRoles.length})
-                  </h2>
-                </div>
-
-                {/* Media Type Filter Pills */}
-                <div className="flex flex-wrap items-center gap-1">
-                  {(["ALL", "ANIME", "MOVIE", "TV", "BOOK"] as const).map(
-                    (type) => {
-                      const count = voicedCounts[type]
-                      if (type !== "ALL" && count === 0) return null
-                      const isSelected = selectedVoicedMediaType === type
-                      const labelMap: Record<MediaFilterKey, string> = {
-                        ALL: "All",
-                        ANIME: "Anime",
-                        MANGA: "Manga",
-                        MOVIE: "Movies",
-                        TV: "TV Shows",
-                        BOOK: "Books",
-                      }
-                      return (
-                        <button
-                          key={type}
-                          type="button"
-                          onClick={() => setSelectedVoicedMediaType(type)}
-                          className={cn(
-                            "inline-flex cursor-pointer items-center gap-1 rounded-xl px-2.5 py-1 text-xs font-semibold transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                            isSelected
-                              ? "bg-primary text-primary-foreground shadow-xs"
-                              : "bg-muted/70 text-muted-foreground hover:bg-muted hover:text-foreground"
-                          )}
-                        >
-                          <span>{labelMap[type]}</span>
-                          <span
-                            className={cn(
-                              "py-0.2 rounded-full px-1.5 text-[9px] font-bold",
-                              isSelected
-                                ? "bg-primary-foreground/20 text-primary-foreground"
-                                : "bg-background/80 text-muted-foreground"
-                            )}
-                          >
-                            {count}
-                          </span>
-                        </button>
-                      )
-                    }
+                  {person.spotifyId && (
+                    <a
+                      href={`https://open.spotify.com/artist/${person.spotifyId}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/10 px-2.5 py-1 text-[11px] font-medium text-emerald-500 transition-colors hover:bg-emerald-500/20"
+                    >
+                      <span>Spotify</span>
+                      <IconExternalLink
+                        className="size-3 opacity-60"
+                        aria-hidden="true"
+                      />
+                    </a>
                   )}
                 </div>
-              </div>
-
-              {/* Render Voiced Groups Separated by Media Type */}
-              {visibleVoicedGroups.length === 0 ? (
-                <div className="rounded-2xl border border-dashed border-border/60 p-8 text-center text-sm text-muted-foreground">
-                  No voiced roles found in this category.
-                </div>
-              ) : (
-                <div className="flex flex-col gap-6">
-                  {visibleVoicedGroups.map((group) => (
-                    <div key={group.type} className="flex flex-col gap-3">
-                      {/* Section Header */}
-                      <div className="flex items-center gap-2 border-b border-border/20 pb-1.5">
-                        <h3 className="text-xs font-bold tracking-wider text-muted-foreground uppercase">
-                          {group.title}
-                        </h3>
-                        <span className="py-0.2 rounded-full bg-muted px-2 text-[10px] font-semibold text-muted-foreground tabular-nums">
-                          {group.count}
-                        </span>
-                      </div>
-
-                      {/* Voiced Roles Grid: Left Character, Right Media */}
-                      <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-                        {group.items.map((item) => {
-                          const mediaHref = getMediaDetailHref(
-                            item.mediaType,
-                            item.mediaId
-                          )
-                          const characterHref = `/borealis/characters/${item.characterId}`
-
-                          return (
-                            <div
-                              key={item.key}
-                              className="flex items-center justify-between gap-2.5 rounded-xl border border-border/40 bg-card/60 p-2 transition-colors hover:border-border/60"
-                            >
-                              {/* Left Side: Character Details */}
-                              <div className="flex min-w-0 flex-1 items-center gap-2.5">
-                                <Link
-                                  href={characterHref}
-                                  className="relative aspect-[3/4] w-12 shrink-0 overflow-hidden rounded-xl bg-muted outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                                >
-                                  {item.characterImage ? (
-                                    <img
-                                      src={item.characterImage}
-                                      alt={item.characterNamePrimary}
-                                      loading="lazy"
-                                      className="h-full w-full object-cover"
-                                    />
-                                  ) : (
-                                    <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
-                                      <IconPhotoOff
-                                        className="size-4"
-                                        aria-hidden="true"
-                                      />
-                                    </div>
-                                  )}
-                                </Link>
-
-                                <div className="flex min-w-0 flex-1 flex-col">
-                                  <Link
-                                    href={characterHref}
-                                    className="truncate text-xs font-semibold text-foreground outline-none hover:underline focus-visible:underline"
-                                  >
-                                    {item.characterNamePrimary}
-                                  </Link>
-                                  {item.characterNameNative && (
-                                    <span className="font-japanese truncate text-[10px] text-muted-foreground opacity-75">
-                                      {item.characterNameNative}
-                                    </span>
-                                  )}
-                                  <div className="pt-0.5">
-                                    <Badge
-                                      variant="outline"
-                                      className="px-1.5 py-0 text-[9px] font-semibold uppercase"
-                                    >
-                                      {item.role}
-                                    </Badge>
-                                  </div>
-                                </div>
-                              </div>
-
-                              {/* Right Side: Media Details */}
-                              <Link
-                                href={mediaHref}
-                                className="flex max-w-[150px] shrink-0 items-center gap-2 rounded-xl bg-muted/40 p-1.5 transition-colors hover:bg-muted/80"
-                              >
-                                <div className="flex min-w-0 flex-col text-end">
-                                  <span className="truncate text-[10px] font-semibold text-foreground">
-                                    {item.mediaTitle}
-                                  </span>
-                                  <div className="flex items-center justify-end gap-1 text-[9px] text-muted-foreground">
-                                    <span>
-                                      {formatMediaFormat(
-                                        item.mediaFormat,
-                                        item.mediaType
-                                      )}
-                                    </span>
-                                    {item.mediaYear && (
-                                      <span>• {item.mediaYear}</span>
-                                    )}
-                                  </div>
-                                </div>
-                                <div className="relative aspect-[3/4] w-8 shrink-0 overflow-hidden rounded-lg bg-muted">
-                                  {item.mediaCover ? (
-                                    <img
-                                      src={item.mediaCover}
-                                      alt={item.mediaTitle}
-                                      loading="lazy"
-                                      className="h-full w-full object-cover"
-                                    />
-                                  ) : (
-                                    <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
-                                      <IconPhotoOff
-                                        className="size-3"
-                                        aria-hidden="true"
-                                      />
-                                    </div>
-                                  )}
-                                </div>
-                              </Link>
-                            </div>
-                          )
-                        })}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </section>
-          )}
-
-          {/* 3. Staff Credits Section */}
-          {currentTab === "STAFF" && deduplicatedStaffRoles.length > 0 && (
-            <section
-              aria-labelledby="staff-heading"
-              className="flex flex-col gap-4"
-            >
-              <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex items-center gap-2">
-                  <IconBriefcase
-                    className="size-4 text-primary"
-                    aria-hidden="true"
-                  />
-                  <h2
-                    id="staff-heading"
-                    className="text-base font-semibold text-foreground"
-                  >
-                    Production Staff ({deduplicatedStaffRoles.length})
-                  </h2>
-                </div>
-
-                {/* Media Type Filter Pills */}
-                <div className="flex flex-wrap items-center gap-1">
-                  {(
-                    ["ALL", "ANIME", "MANGA", "MOVIE", "TV", "BOOK"] as const
-                  ).map((type) => {
-                    const count = staffCounts[type]
-                    if (type !== "ALL" && count === 0) return null
-                    const isSelected = selectedStaffMediaType === type
-                    const labelMap: Record<MediaFilterKey, string> = {
-                      ALL: "All",
-                      ANIME: "Anime",
-                      MANGA: "Manga",
-                      MOVIE: "Movies",
-                      TV: "TV Shows",
-                      BOOK: "Books",
-                    }
-                    return (
-                      <button
-                        key={type}
-                        type="button"
-                        onClick={() => setSelectedStaffMediaType(type)}
-                        className={cn(
-                          "inline-flex cursor-pointer items-center gap-1 rounded-xl px-2.5 py-1 text-xs font-semibold transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                          isSelected
-                            ? "bg-primary text-primary-foreground shadow-xs"
-                            : "bg-muted/70 text-muted-foreground hover:bg-muted hover:text-foreground"
-                        )}
-                      >
-                        <span>{labelMap[type]}</span>
-                        <span
-                          className={cn(
-                            "py-0.2 rounded-full px-1.5 text-[9px] font-bold",
-                            isSelected
-                              ? "bg-primary-foreground/20 text-primary-foreground"
-                              : "bg-background/80 text-muted-foreground"
-                          )}
-                        >
-                          {count}
-                        </span>
-                      </button>
-                    )
-                  })}
-                </div>
-              </div>
-
-              {/* Render Staff Groups Separated by Media Type */}
-              {visibleStaffGroups.length === 0 ? (
-                <div className="rounded-2xl border border-dashed border-border/60 p-8 text-center text-sm text-muted-foreground">
-                  No staff credits found in this category.
-                </div>
-              ) : (
-                <div className="flex flex-col gap-6">
-                  {visibleStaffGroups.map((group) => (
-                    <div key={group.type} className="flex flex-col gap-3">
-                      {/* Section Header */}
-                      <div className="flex items-center gap-2 border-b border-border/20 pb-1.5">
-                        <h3 className="text-xs font-bold tracking-wider text-muted-foreground uppercase">
-                          {group.title}
-                        </h3>
-                        <span className="py-0.2 rounded-full bg-muted px-2 text-[10px] font-semibold text-muted-foreground tabular-nums">
-                          {group.count}
-                        </span>
-                      </div>
-
-                      {/* Staff Cards Grid */}
-                      <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-                        {group.items.map((item) => {
-                          const mediaHref = getMediaDetailHref(
-                            item.mediaType,
-                            item.mediaId
-                          )
-
-                          return (
-                            <div
-                              key={item.key}
-                              className="flex items-center gap-2.5 rounded-xl border border-border/40 bg-card/60 p-2 transition-colors hover:border-border/60"
-                            >
-                              <Link
-                                href={mediaHref}
-                                className="relative aspect-[3/4] w-14 shrink-0 overflow-hidden rounded-xl bg-muted outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                              >
-                                {item.mediaCover ? (
-                                  <img
-                                    src={item.mediaCover}
-                                    alt={item.mediaTitle}
-                                    loading="lazy"
-                                    className="h-full w-full object-cover"
-                                  />
-                                ) : (
-                                  <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
-                                    <IconPhotoOff
-                                      className="size-4"
-                                      aria-hidden="true"
-                                    />
-                                  </div>
-                                )}
-                              </Link>
-
-                              <div className="flex min-w-0 flex-1 flex-col">
-                                <Link
-                                  href={mediaHref}
-                                  className="truncate text-xs font-semibold text-foreground outline-none hover:underline focus-visible:underline"
-                                >
-                                  {item.mediaTitle}
-                                </Link>
-
-                                {item.mediaTitleNative &&
-                                  item.mediaTitleNative !== item.mediaTitle && (
-                                    <span className="font-japanese truncate text-[10px] text-muted-foreground opacity-75">
-                                      {item.mediaTitleNative}
-                                    </span>
-                                  )}
-
-                                <div className="flex items-center gap-1.5 pt-1 text-[10px] text-muted-foreground">
-                                  <Badge
-                                    variant="outline"
-                                    className="px-1.5 py-0 text-[9px] font-semibold uppercase"
-                                  >
-                                    {item.customRole ||
-                                      item.role.replace(/_/g, " ")}
-                                  </Badge>
-                                  <span>
-                                    {formatMediaFormat(
-                                      item.mediaFormat,
-                                      item.mediaType
-                                    )}
-                                  </span>
-                                  {item.mediaYear && (
-                                    <span>• {item.mediaYear}</span>
-                                  )}
-                                  {typeof item.mediaScore === "number" &&
-                                    item.mediaScore > 0 && (
-                                      <span className="font-medium text-amber-500 tabular-nums">
-                                        • {item.mediaScore}%
-                                      </span>
-                                    )}
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        })}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </section>
-          )}
-
-          {totalMusicReleases === 0 &&
-            deduplicatedVoicedRoles.length === 0 &&
-            deduplicatedStaffRoles.length === 0 && (
-              <div className="rounded-2xl border border-dashed border-border/60 p-8 text-center text-sm text-muted-foreground">
-                No roles, credits, or discography found for this person.
-              </div>
+              </GlassCard>
             )}
+
+            {/* 6. IDs Card */}
+            {externalSources.length > 0 && (
+              <GlassCard
+                variant="normal"
+                className="flex flex-col gap-2 p-4 text-xs"
+              >
+                <div className="flex items-center justify-between border-b border-border/30 pb-2">
+                  <span className="text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
+                    IDs
+                  </span>
+                  <IconHash
+                    className="size-3.5 text-muted-foreground"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div className="flex flex-col divide-y divide-border/20 text-xs">
+                  {person.deezerId && (
+                    <div className="flex items-center justify-between py-1.5">
+                      <span className="text-muted-foreground">Deezer</span>
+                      <a
+                        href={`https://www.deezer.com/artist/${person.deezerId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-end font-mono text-[11px] font-medium text-primary hover:underline"
+                      >
+                        #{person.deezerId}
+                      </a>
+                    </div>
+                  )}
+                  {person.anilistId && (
+                    <div className="flex items-center justify-between py-1.5">
+                      <span className="text-muted-foreground">AniList</span>
+                      <a
+                        href={`https://anilist.co/staff/${person.anilistId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-end font-mono text-[11px] font-medium text-primary hover:underline"
+                      >
+                        #{person.anilistId}
+                      </a>
+                    </div>
+                  )}
+                  {person.malId && (
+                    <div className="flex items-center justify-between py-1.5">
+                      <span className="text-muted-foreground">MyAnimeList</span>
+                      <a
+                        href={`https://myanimelist.net/people/${person.malId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-end font-mono text-[11px] font-medium text-primary hover:underline"
+                      >
+                        #{person.malId}
+                      </a>
+                    </div>
+                  )}
+                  {person.aniDBId && (
+                    <div className="flex items-center justify-between py-1.5">
+                      <span className="text-muted-foreground">AniDB</span>
+                      <a
+                        href={`https://anidb.net/creator/${person.aniDBId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-end font-mono text-[11px] font-medium text-primary hover:underline"
+                      >
+                        #{person.aniDBId}
+                      </a>
+                    </div>
+                  )}
+                  {person.tvDBId && (
+                    <div className="flex items-center justify-between py-1.5">
+                      <span className="text-muted-foreground">TheTVDB</span>
+                      <a
+                        href={`https://thetvdb.com/dereferrer/people/${person.tvDBId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-end font-mono text-[11px] font-medium text-primary hover:underline"
+                      >
+                        #{person.tvDBId}
+                      </a>
+                    </div>
+                  )}
+                  {person.bangumiId && (
+                    <div className="flex items-center justify-between py-1.5">
+                      <span className="text-muted-foreground">Bangumi</span>
+                      <a
+                        href={`https://bgm.tv/person/${person.bangumiId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-end font-mono text-[11px] font-medium text-primary hover:underline"
+                      >
+                        #{person.bangumiId}
+                      </a>
+                    </div>
+                  )}
+                  {person.imdbId && (
+                    <div className="flex items-center justify-between py-1.5">
+                      <span className="text-muted-foreground">IMDb</span>
+                      <a
+                        href={`https://www.imdb.com/name/${person.imdbId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-end font-mono text-[11px] font-medium text-primary hover:underline"
+                      >
+                        {person.imdbId}
+                      </a>
+                    </div>
+                  )}
+                  {person.tmdbId && (
+                    <div className="flex items-center justify-between py-1.5">
+                      <span className="text-muted-foreground">TMDB</span>
+                      <a
+                        href={`https://www.themoviedb.org/person/${person.tmdbId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-end font-mono text-[11px] font-medium text-primary hover:underline"
+                      >
+                        #{person.tmdbId}
+                      </a>
+                    </div>
+                  )}
+                  {person.spotifyId && (
+                    <div className="flex items-center justify-between py-1.5">
+                      <span className="text-muted-foreground">Spotify</span>
+                      <a
+                        href={`https://open.spotify.com/artist/${person.spotifyId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-end font-mono text-[11px] font-medium text-primary hover:underline"
+                      >
+                        {person.spotifyId}
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </GlassCard>
+            )}
+          </aside>
         </div>
-      </div>
+      </main>
+
+      {/* 3. Footer (matching MediaFooter) */}
+      <footer className="mt-12 border-t border-border/40 bg-card/30 py-8 text-xs text-muted-foreground">
+        <div className="flex w-full flex-col items-start justify-between gap-4 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-1.5 text-xs font-medium text-foreground">
+              <IconWorld className="size-4 text-primary" aria-hidden="true" />
+              <span>Data Sources</span>
+            </div>
+            {externalSources.length > 0 ? (
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
+                {externalSources.map((source) => (
+                  <a
+                    key={source.key}
+                    href={source.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-muted-foreground outline-none hover:text-foreground hover:underline focus-visible:underline"
+                  >
+                    <span>{source.name}</span>
+                    <IconExternalLink
+                      className="size-3 opacity-60"
+                      aria-hidden="true"
+                    />
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <span className="text-muted-foreground/70 italic">
+                External sources not linked
+              </span>
+            )}
+          </div>
+
+          {updatedFormatted && (
+            <div
+              className="flex items-center gap-1.5 text-muted-foreground"
+              suppressHydrationWarning
+            >
+              <IconClock className="size-3.5" aria-hidden="true" />
+              <span suppressHydrationWarning>
+                Last updated: {updatedFormatted}
+              </span>
+            </div>
+          )}
+        </div>
+      </footer>
     </div>
   )
 }
