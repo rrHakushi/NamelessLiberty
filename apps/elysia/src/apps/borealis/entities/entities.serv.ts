@@ -1,6 +1,7 @@
 import { BaseService } from '../../../core/base/base.serv'
 import { prisma, and, or, countOf } from '@NamelessLiberty/db'
 import { NotFound } from '../../../core/errors/http-errors'
+import { resolveSingleCharacterDescription } from '../_shared/character-description.helper'
 
 export interface CharacterCatalogQuery {
   page?: number
@@ -217,9 +218,14 @@ export class BorealisEntitiesServ extends BaseService {
       throw new NotFound(`Character with ID ${id} not found`)
     }
 
+    const resolvedDescription = await resolveSingleCharacterDescription(character)
+
     return {
       success: true,
-      character,
+      character:
+        resolvedDescription !== character.description
+          ? { ...character, description: resolvedDescription }
+          : character,
     }
   }
 
