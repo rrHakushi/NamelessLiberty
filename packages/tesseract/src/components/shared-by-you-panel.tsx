@@ -4,33 +4,21 @@ import React, { useRef, useState } from "react"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import {
-  IconAdjustmentsHorizontal,
   IconCheck,
   IconClipboardText,
   IconFile,
   IconFolderPlus,
   IconLink,
   IconLock,
-  IconLogin2,
   IconPencil,
   IconPlus,
-  IconShieldLock,
   IconTrash,
   IconUpload,
   IconX,
 } from "@tabler/icons-react"
-import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { Input } from "@workspace/ui/components/input"
-import {
-  Popover,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "@workspace/ui/components/popover"
 import { ScrollArea } from "@workspace/ui/components/scroll-area"
-import { Switch } from "@workspace/ui/components/switch"
 import { Textarea } from "@workspace/ui/components/textarea"
 import { cn } from "@workspace/ui/lib/utils"
 import { useTesseract } from "@NamelessLiberty/tesseract/context/tesseract-context"
@@ -48,10 +36,6 @@ export function SharedByYouPanel() {
     setAlias,
     deviceInfo,
     sharedByYou,
-    requireShelfApproval,
-    setRequireShelfApproval,
-    autoAcceptOwnDevices,
-    setAutoAcceptOwnDevices,
     addFilesToShelf,
     addFoldersToShelf,
     addTextToShelf,
@@ -112,18 +96,6 @@ export function SharedByYouPanel() {
           <h2 className="text-base font-semibold text-foreground">
             {t("sharedByYou.title")}
           </h2>
-          <Badge variant="secondary" className="text-xs">
-            {sharedByYou.length}
-          </Badge>
-          {isAuthenticated && requireShelfApproval && (
-            <Badge
-              variant="outline"
-              className="gap-1 border-amber-500/40 bg-amber-500/10 text-[11px] text-amber-600 dark:text-amber-400"
-            >
-              <IconShieldLock className="size-3" />
-              <span>{t("sharedByYou.approvalActive")}</span>
-            </Badge>
-          )}
         </div>
 
         <div className="flex flex-wrap items-center gap-1.5">
@@ -179,74 +151,6 @@ export function SharedByYouPanel() {
               <IconPencil className="size-3 text-muted-foreground" />
             </button>
           )}
-
-          <PopoverTrigger>
-            <Button
-              type="button"
-              size="icon-xs"
-              variant="outline"
-              aria-label={t("header.preferences")}
-            >
-              <IconAdjustmentsHorizontal className="size-3.5" />
-            </Button>
-            <Popover className="w-80">
-              <PopoverHeader>
-                <PopoverTitle>{t("preferences.title")}</PopoverTitle>
-                <PopoverDescription>
-                  {t("preferences.subtitle")}
-                </PopoverDescription>
-              </PopoverHeader>
-
-              <div className="flex flex-col gap-3">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="space-y-0.5">
-                    <div className="text-xs font-medium text-foreground">
-                      {t("preferences.autoAcceptOwnTitle")}
-                    </div>
-                    <p className="text-[11px] text-muted-foreground">
-                      {t("preferences.autoAcceptOwnDesc")}
-                    </p>
-                  </div>
-                  <Switch
-                    size="sm"
-                    isDisabled={!isAuthenticated}
-                    isSelected={isAuthenticated && autoAcceptOwnDevices}
-                    onChange={setAutoAcceptOwnDevices}
-                    aria-label={t("preferences.autoAcceptOwnTitle")}
-                  />
-                </div>
-
-                <div className="flex items-start justify-between gap-3">
-                  <div className="space-y-0.5">
-                    <div className="flex items-center gap-1 text-xs font-medium text-foreground">
-                      <IconShieldLock className="size-3.5 text-lime-500" />
-                      <span>{t("preferences.requireApprovalTitle")}</span>
-                    </div>
-                    <p className="text-[11px] text-muted-foreground">
-                      {t("preferences.requireApprovalDesc")}
-                    </p>
-                  </div>
-                  <Switch
-                    size="sm"
-                    isDisabled={!isAuthenticated}
-                    isSelected={isAuthenticated && requireShelfApproval}
-                    onChange={setRequireShelfApproval}
-                    aria-label={t("preferences.requireApprovalTitle")}
-                  />
-                </div>
-
-                {!isAuthenticated && (
-                  <Link
-                    href="/carina/auth/login"
-                    className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-lime-500/15 px-2.5 py-2 text-xs font-medium text-lime-600 transition-colors hover:bg-lime-500/25 dark:text-lime-400"
-                  >
-                    <IconLogin2 className="size-3.5" />
-                    <span>{t("header.guestSignIn")}</span>
-                  </Link>
-                )}
-              </div>
-            </Popover>
-          </PopoverTrigger>
 
           {sharedByYou.length > 0 && (
             <Button

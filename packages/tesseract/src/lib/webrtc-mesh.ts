@@ -14,10 +14,15 @@ const HIGH_WATER_MARK = 1024 * 1024 // 1 MB backpressure high-water mark
 const LOW_WATER_THRESHOLD = 256 * 1024 // 256 KB resume threshold
 const UNREACHABLE_TIMEOUT_MS = 10_000
 
-// Strict local-network-only WebRTC config: zero STUN/TURN servers
-const HOST_ONLY_RTC_CONFIG: RTCConfiguration = {
-  iceServers: [],
-  iceCandidatePoolSize: 0,
+// Include public STUN servers (no TURN) so peers on Tailscale, VPNs, or
+// mDNS-restricted LANs can discover reflexive candidates while keeping transfers P2P.
+export const DEFAULT_RTC_CONFIG: RTCConfiguration = {
+  iceServers: [
+    { urls: "stun:stun.l.google.com:19302" },
+    { urls: "stun:stun1.l.google.com:19302" },
+    { urls: "stun:stun.cloudflare.com:3478" },
+  ],
+  iceCandidatePoolSize: 4,
 }
 
 export interface PullRequestPayload {
@@ -173,7 +178,7 @@ function sanitizeDiagnosticCandidate(type?: string, protocol?: string): string {
   const parts = ["host"]
   if (type && type !== "host") parts[0] = type
   if (protocol) parts.push(protocol.toLowerCase())
-  return parts.join(" Â· ")
+  return parts.join(" · ")
 }
 
 export class TesseractWebRtcMesh {
@@ -287,12 +292,15 @@ export class TesseractWebRtcMesh {
     const incomingSessionId = extractSdpSessionId(sdp)
     let slot = this.peers.get(fromPeerId)
 
-    // Detect if remote peer tore down and created a brand-new RTCPeerConnection
+    // Detect if remote peer tore down and created a brand-new RTCPeerConnection,
+    // or if our existing connection already failed/closed and needs a clean reset.
     if (
       slot &&
-      incomingSessionId &&
-      slot.lastRemoteSessionId &&
-      slot.lastRemoteSessionId !== incomingSessionId
+      (slot.pc.connectionState === "failed" ||
+        slot.pc.connectionState === "closed" ||
+        (incomingSessionId &&
+          slot.lastRemoteSessionId &&
+          slot.lastRemoteSessionId !== incomingSessionId))
     ) {
       this.teardownPeerSlot(slot, "Peer reset connection")
       this.peers.delete(fromPeerId)
@@ -548,7 +556,7 @@ export class TesseractWebRtcMesh {
   }
 
   private createPeerSlot(peerId: string): PeerSlot {
-    const pc = new RTCPeerConnection(HOST_ONLY_RTC_CONFIG)
+    const pc = new RTCPeerConnection(DEFAULT_RTC_CONFIG)
     const slot: PeerSlot = {
       peerId,
       pc,
@@ -592,7 +600,7 @@ export class TesseractWebRtcMesh {
       } else if (state === "disconnected") {
         this.updateDiagnostics(slot, {
           state: "connecting",
-          errorReason: "Connection interrupted, attempting recoveryâ€¦",
+          errorReason: "Connection interrupted, attempting recovery…",
         })
         this.armUnreachableTimer(slot)
       }

@@ -79,7 +79,7 @@ export function detectDeviceMetadata(): {
     deviceType,
     os,
     browser,
-    defaultAlias: `${adj} ${noun} Â· ${os}`,
+    defaultAlias: `${adj} ${noun} · ${os}`,
   }
 }
 

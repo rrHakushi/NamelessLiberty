@@ -1,6 +1,4 @@
 export * from "./components/device-icon"
-export * from "./components/direct-send-dialog"
-export * from "./components/incoming-transfer-dialog"
 export * from "./components/shared-by-others-panel"
 export * from "./components/shared-by-you-panel"
 export * from "./components/shelf-approval-dialog"
