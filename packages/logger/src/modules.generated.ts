@@ -21,6 +21,7 @@ export interface KnownModules {
   "BullMQ:Emails": true
   "BullMQ:MediaQueue": true
   "BullMQ:Queue:email-queue": true
+  "BullMQ:Queue:media-updates": true
   "BullMQ:Redis": true
   "BullMQ:Registry": true
   "BullMQ:Worker:connection-sync-anilist": true
@@ -69,7 +70,6 @@ export interface KnownModules {
   "Scoped": true
   "Servarr:Realtime": true
   "SubModule": true
-  "Test": true
   "TestMediaService": true
   "TestService": true
   "UserMediaStatsServ": true
