@@ -17,7 +17,7 @@ import {
   calculatePasswordEntropy,
   type PasswordGeneratorOptions,
   type PassphraseGeneratorOptions,
-} from "@/lib/pass-generator"
+} from "@NamelessLiberty/akaromi"
 import { toast } from "sonner"
 
 type GeneratorMode = "password" | "passphrase"

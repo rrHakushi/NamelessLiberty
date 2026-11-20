@@ -21,7 +21,7 @@ import { PeopleTab } from "./tabs/people-tab"
 import { RecommendationsMediaTab } from "./tabs/recommendations-tab"
 import { MediaFooter } from "./media-footer"
 import { useMediaSection, pickList, type MediaSection } from "./use-media-section"
-import { addBrowseVisitToStore, type BrowseCategory } from "@/lib/browse-history"
+import { addBrowseVisitToStore, type BrowseCategory } from "@NamelessLiberty/borealis/lib/browse-history"
 import type {
   MediaTabItem,
   MediaTabKey,

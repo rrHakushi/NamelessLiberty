@@ -12,15 +12,16 @@ import { WebSocketProvider } from "@/context/websocket-context"
 import { NotificationProvider } from "@/context/notification-context"
 import { Toaster } from "@/components/ui/sonner"
 import { LastAppTracker } from "@/components/navigation/last-app-tracker"
+import { setRuntimeEnabledApps } from "@/config/enabled-apps"
 
 import dynamic from "next/dynamic"
 
-const MetadataDevTool =
+const IrisDevTools =
   process.env.NODE_ENV === "development"
     ? dynamic(
         () =>
-          import("@/components/dev/metadata-dev-tool").then(
-            (m) => m.MetadataDevTool
+          import("@/components/dev/iris-dev-tools").then(
+            (m) => m.IrisDevTools
           ),
         { ssr: false }
       )
@@ -53,7 +54,16 @@ if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
   }
 }
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({
+  children,
+  enabledApps,
+}: {
+  children: React.ReactNode
+  enabledApps?: readonly string[]
+}) {
+  if (enabledApps) {
+    setRuntimeEnabledApps(enabledApps)
+  }
   const router = useRouter()
 
   return (
@@ -72,7 +82,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
                   <IrisSidebarProvider>{children}</IrisSidebarProvider>
                   <Toaster closeButton position="top-center" />
                   {process.env.NODE_ENV === "development" && (
-                    <MetadataDevTool />
+                    <IrisDevTools />
                   )}
                 </DirectionProvider>
               </NotificationProvider>

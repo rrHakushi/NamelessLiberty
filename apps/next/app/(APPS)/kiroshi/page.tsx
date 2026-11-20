@@ -16,15 +16,19 @@ import { IconSearch, IconInfoCircle, IconSparkles } from "@tabler/icons-react"
 import { Button } from "@workspace/ui/components/button"
 import { cn } from "@workspace/ui/lib/utils"
 
-import type { SearchResult, InfoboxItem, HistoryItem } from "./components/types"
-import { KiroshiHome } from "./components/kiroshi-home"
-import { KiroshiHistoryView } from "./components/kiroshi-history-view"
-import { KiroshiResultsHeader } from "./components/kiroshi-results-header"
-import { KiroshiWebResults } from "./components/kiroshi-web-results"
-import { KiroshiImagesGrid } from "./components/kiroshi-images-grid"
-import { KiroshiVideosList } from "./components/kiroshi-videos-list"
-import { KiroshiAnswersCard } from "./components/kiroshi-answers-card"
-import { KiroshiInfobox } from "./components/kiroshi-infobox"
+import {
+  type SearchResult,
+  type InfoboxItem,
+  type HistoryItem,
+  KiroshiHome,
+  KiroshiHistoryView,
+  KiroshiResultsHeader,
+  KiroshiWebResults,
+  KiroshiImagesGrid,
+  KiroshiVideosList,
+  KiroshiAnswersCard,
+  KiroshiInfobox,
+} from "@NamelessLiberty/kiroshi"
 
 interface CachedSearchPayload {
   results: SearchResult[]

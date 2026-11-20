@@ -4,6 +4,7 @@ import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } 
 import { createPortal } from "react-dom"
 
 import {
+  IconActivity,
   IconCalendar,
   IconCheck,
   IconClock,
@@ -37,6 +38,7 @@ import {
   BorealisCardHoverConnectionsTab,
   BorealisCardHoverWatchlistsTab,
 } from "./borealis-card-hover-tabs"
+import { BorealisCardHoverTrackingTab } from "./borealis-card-hover-tracking-tab"
 import { BorealisFormattedText } from "../formatted-text"
 
 import { MediaStatusBadge } from "../media-status-badge"
@@ -72,8 +74,16 @@ export function BorealisCardHoverContent({
   } = useBorealisCard()
 
   const [activeTab, setActiveTab] = useState<
-    "general" | "episodes" | "repeats" | "connections" | "watchlists"
+    "general" | "episodes" | "repeats" | "connections" | "watchlists" | "tracking"
   >("general")
+  const [isTauri, setIsTauri] = useState(false)
+
+  useEffect(() => {
+    setIsTauri(
+      typeof window !== "undefined" &&
+        Boolean((window as unknown as { __TAURI__?: unknown }).__TAURI__)
+    )
+  }, [])
 
   const rawEntry = data.raw?.entry ?? data.raw?.listEntry ?? data.raw
   const rawMedia = data.raw?.media ?? data.raw
@@ -462,6 +472,9 @@ export function BorealisCardHoverContent({
   const showEpisodesTab = data.type === "tv" || data.type === "anime"
   const showRepeatsTab = data.type !== "music"
   const showConnectionsTab = data.type !== "other"
+  const showTrackingTab =
+    isTauri &&
+    (data.type === "game" || data.type === "games" || data.type === "other")
   const repeatLabel = getRepeatLabel(data.type)
 
   const relationsCount = Array.isArray(rawMedia?.relations)
@@ -668,6 +681,23 @@ export function BorealisCardHoverContent({
               <IconFolder className="size-4 shrink-0" />
               {activeTab === "watchlists" && <span className="whitespace-nowrap">Custom Lists</span>}
             </button>
+            {showTrackingTab && (
+              <button
+                type="button"
+                onClick={() => setActiveTab("tracking")}
+                title="Tracking"
+                aria-label="Tracking"
+                className={cn(
+                  "relative z-20 flex h-7 items-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 shrink-0 cursor-pointer border select-none backdrop-blur-md",
+                  activeTab === "tracking"
+                    ? "border-primary/50 bg-primary/15 text-foreground shadow-xs px-2.5 [&_svg]:text-primary"
+                    : "border-transparent text-foreground/80 hover:bg-muted/70 hover:text-primary px-2 dark:text-foreground/80 dark:hover:bg-zinc-800/60 dark:hover:text-primary"
+                )}
+              >
+                <IconActivity className="size-4 shrink-0" />
+                {activeTab === "tracking" && <span className="whitespace-nowrap">Tracking</span>}
+              </button>
+            )}
           </div>
 
           {/* Edit button (pencil) -> save + cancel icons while editing */}
@@ -1028,6 +1058,14 @@ export function BorealisCardHoverContent({
           newLists={draftNewLists}
           setNewLists={setDraftNewLists}
           refreshKey={playlistRefreshKey}
+        />
+      )}
+
+      {/* Tab 6: Tracking (Tauri-only, games & other) */}
+      {activeTab === "tracking" && showTrackingTab && (
+        <BorealisCardHoverTrackingTab
+          data={data}
+          isHoverCardEditing={isHoverCardEditing}
         />
       )}
 

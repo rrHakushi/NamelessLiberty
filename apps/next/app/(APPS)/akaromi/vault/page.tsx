@@ -2,7 +2,7 @@
 
 import React, { Suspense } from "react"
 import Image from "next/image"
-import { AkaromiVaultView } from "../components/akaromi-vault-view"
+import { AkaromiVaultView } from "@NamelessLiberty/akaromi"
 
 export default function VaultPage() {
   return (

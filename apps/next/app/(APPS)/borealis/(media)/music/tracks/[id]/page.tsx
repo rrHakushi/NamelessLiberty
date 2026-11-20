@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import type { MusicDetails, SimilarMediaItem } from "@NamelessLiberty/elysia"
 import { elysia } from "@/lib/elysia"
+import { buildBorealisDetailMetadata } from "@/lib/borealis-metadata"
 import { MediaDetailView } from "@NamelessLiberty/borealis"
 import type {
   NormalizedMediaData,
@@ -34,17 +35,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const title =
       trackData.titlePrimary || trackData.titleSecondary || `Track #${numericId}`
     const artist = trackData.artist ? ` by ${trackData.artist}` : ""
-    return {
+    return buildBorealisDetailMetadata({
       title: `Borealis | Music > Tracks > ${title}${artist}`,
       description: trackData.description
         ? trackData.description.slice(0, 160).replace(/<[^>]*>/g, "")
         : `${title}${artist} track details on Borealis`,
-      openGraph: trackData.coverImage
-        ? {
-            images: [{ url: trackData.coverImage }],
-          }
-        : undefined,
-    }
+      image: trackData.coverImage,
+    })
   } catch {
     return {
       title: `Borealis | Music > Tracks > #${numericId}`,

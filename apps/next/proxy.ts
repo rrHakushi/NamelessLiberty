@@ -1,7 +1,18 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { getDomainConfig } from "@/lib/domain"
+import { ALL_APPS } from "@/config/enabled-apps"
+import { isServerAppEnabled } from "@/config/enabled-apps-server"
 
 export default function proxy(request: NextRequest) {
+  const firstSegment = request.nextUrl.pathname.split("/")[1]?.toLowerCase()
+  if (
+    firstSegment &&
+    (ALL_APPS as readonly string[]).includes(firstSegment) &&
+    !isServerAppEnabled(firstSegment)
+  ) {
+    return new NextResponse("Not Found", { status: 404 })
+  }
+
   const response = NextResponse.next()
   const { cookieDomain, isSecure } = getDomainConfig()
 

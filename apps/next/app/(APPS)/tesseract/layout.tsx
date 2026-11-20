@@ -1,7 +1,9 @@
 import type { Metadata } from "next"
 import React from "react"
-import IrisTesseractNavProvider from "@/components/navigation/providers/iris-tesseract-nav-provider"
-import { TesseractProvider } from "@/context/tesseract-context"
+import {
+  IrisTesseractNavProvider,
+  TesseractProvider,
+} from "@NamelessLiberty/tesseract"
 
 export const metadata: Metadata = {
   title: {

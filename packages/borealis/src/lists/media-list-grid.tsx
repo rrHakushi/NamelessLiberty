@@ -32,7 +32,7 @@ import {
   MEDIA_CATEGORIES,
 } from "./types"
 import { BorealisCard, BorealisCardGroup, BorealisSectionHeader, type ListStatus } from "@NamelessLiberty/borealis"
-import { saveListEntry } from "@/lib/save-list-entry"
+import { saveListEntry } from "@NamelessLiberty/borealis/lib/save-list-entry"
 
 export function MediaListCardSkeleton({
   isMusic = false,

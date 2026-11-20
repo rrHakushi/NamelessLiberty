@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { fetchCarinaUser } from "@/lib/user-profile"
 import { getProfileCustomization } from "@NamelessLiberty/shared"
-import { UserProfileView } from "@/components/account/user-profile-view"
+import { UserProfileView } from "@NamelessLiberty/carina"
 
 type Props = {
   params: Promise<{ userId: string }>

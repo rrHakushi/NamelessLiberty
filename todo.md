@@ -23,6 +23,7 @@
     - .md version of every single page
     - mcp server for all the apps
 
+
 # Apertune [Music player]
     - 
 
@@ -80,7 +81,4 @@
 
 # Akaromi For Firefox
     - 
-
-# Borealis Extra
-    - Add support for other list
 

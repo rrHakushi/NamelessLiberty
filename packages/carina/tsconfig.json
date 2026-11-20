@@ -1,0 +1,20 @@
+{
+  "extends": "@workspace/typescript-config/react-library.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "paths": {
+      "@workspace/ui/*": ["../ui/src/*"],
+      "@NamelessLiberty/carina": ["./src/index.ts"],
+      "@NamelessLiberty/carina/*": ["./src/*"],
+      "@NamelessLiberty/borealis": ["../borealis/src/index.ts"],
+      "@NamelessLiberty/borealis/*": ["../borealis/src/*"],
+      "@NamelessLiberty/shared": ["../shared/src/index.ts"],
+      "@NamelessLiberty/shared/*": ["../shared/src/*"],
+      "@NamelessLiberty/elysia": ["../../apps/elysia/src/index.ts"],
+      "@NamelessLiberty/elysia/*": ["../../apps/elysia/src/*"],
+      "@/*": ["../../apps/next/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

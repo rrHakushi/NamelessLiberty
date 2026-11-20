@@ -30,10 +30,10 @@ import { toast } from "sonner"
 import type { StudioDetails, StudioCreationItem } from "@NamelessLiberty/elysia"
 import { elysia } from "@/lib/elysia"
 import { FavoriteButton } from "../favorite-button"
-import { getMediaDetailHref } from "@/lib/media-routes"
+import { getMediaDetailHref } from "@NamelessLiberty/borealis/lib/media-routes"
 import { useUser } from "@/context/user-context"
 import { getMediaPreferences } from "@NamelessLiberty/shared"
-import { addBrowseVisitToStore } from "@/lib/browse-history"
+import { addBrowseVisitToStore } from "@NamelessLiberty/borealis/lib/browse-history"
 
 interface StudioDetailViewProps {
   studio: StudioDetails

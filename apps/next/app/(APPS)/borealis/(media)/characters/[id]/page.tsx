@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import type { CharacterDetails } from "@NamelessLiberty/elysia"
 import { elysia } from "@/lib/elysia"
+import { buildBorealisDetailMetadata } from "@/lib/borealis-metadata"
 import { CharacterDetailView } from "@NamelessLiberty/borealis"
 
 type Props = {
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const name =
       charData.namePrimary || charData.nameNative || `Character #${numericId}`
-    return {
+    return buildBorealisDetailMetadata({
       title: `Borealis | Characters > ${name}`,
       description: charData.description
         ? charData.description
@@ -36,12 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             .replace(/<[^>]*>/g, "")
             .trim()
         : `${name} character information and appearances on Borealis`,
-      openGraph: charData.image
-        ? {
-            images: [{ url: charData.image }],
-          }
-        : undefined,
-    }
+      image: charData.image,
+    })
   } catch {
     return {
       title: `Borealis | Characters > #${numericId}`,

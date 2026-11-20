@@ -14,6 +14,7 @@ RUN printf '#!/bin/sh\nexec bun "$@"\n' > /usr/local/bin/npm && chmod +x /usr/lo
 FROM base AS pruner
 WORKDIR /app
 COPY . .
+RUN bun apps/next/scripts/configure-apps.ts
 RUN bun x turbo prune @NamelessLiberty/next --docker --use-gitignore=false
 
 # ==========================================
@@ -28,6 +29,7 @@ RUN bun install --frozen-lockfile
 
 # Copy full pruned source code and build Next.js application with BuildKit secret mount
 COPY --from=pruner /app/out/full/ .
+COPY --from=pruner /app/iris.json ./iris.json
 RUN ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/') && \
     bun -e "const r = await fetch('https://github.com/Infisical/cli/releases/download/v0.45.6/cli_0.45.6_linux_${ARCH}.tar.gz'); if (!r.ok) throw new Error('Failed to download infisical CLI: ' + r.statusText); await Bun.write('/tmp/infisical.tar.gz', r);" && \
     tar -xzf /tmp/infisical.tar.gz -C /usr/local/bin infisical && \
@@ -65,6 +67,7 @@ RUN groupadd --system --gid 1001 nextjs && \
 
 # Copy Next.js standalone output, package.json for version tracking, public directory, and static assets
 COPY --from=pruner --chown=nextjs:nextjs /app/out/json/apps/next/package.json ./package.json
+COPY --from=pruner --chown=nextjs:nextjs /app/iris.json ./iris.json
 COPY --from=builder --chown=nextjs:nextjs /app/apps/next/public ./apps/next/public
 COPY --from=builder --chown=nextjs:nextjs /app/apps/next/public ./public
 COPY --from=builder --chown=nextjs:nextjs /app/apps/next/.next/standalone ./

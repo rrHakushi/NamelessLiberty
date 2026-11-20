@@ -18,6 +18,7 @@ RUN bun install --frozen-lockfile
 
 # Copy full source and compile standalone binary with Bun
 COPY --from=pruner /app/out/full/ .
+COPY --from=pruner /app/iris.json /app/iris.json
 RUN ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/') && \
     bun -e "const r = await fetch('https://github.com/Infisical/cli/releases/download/v0.45.6/cli_0.45.6_linux_' + process.argv[1] + '.tar.gz'); if (!r.ok) throw new Error('Failed to download infisical CLI: ' + r.statusText); await Bun.write('/tmp/infisical.tar.gz', r);" "$ARCH" && \
     tar -xzf /tmp/infisical.tar.gz -C /usr/local/bin infisical && \
@@ -53,6 +54,7 @@ LABEL org.opencontainers.image.title="NamelessLiberty-Elysia" \
       org.opencontainers.image.version="${APP_VERSION}"
 
 COPY --from=pruner --chown=nonroot:nonroot /app/out/json/apps/elysia/package.json ./package.json
+COPY --from=pruner --chown=nonroot:nonroot /app/iris.json ./iris.json
 COPY --from=builder --chown=nonroot:nonroot /app/apps/elysia/server ./server
 
 ENV BUN_ENV=production

@@ -7,7 +7,7 @@ import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { cn } from "@workspace/ui/lib/utils"
 import { BorealisCard, BorealisCardGroup, type BorealisEntityType } from "@NamelessLiberty/borealis"
-import type { BrowseCategory, VisitedMediaItem } from "@/lib/browse-history"
+import type { BrowseCategory, VisitedMediaItem } from "@NamelessLiberty/borealis/lib/browse-history"
 
 interface BrowseVisitedGridProps {
   items: VisitedMediaItem[]

@@ -1,0 +1,16 @@
+{
+  "extends": "@workspace/typescript-config/react-library.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "paths": {
+      "@workspace/ui/*": ["../ui/src/*"],
+      "@NamelessLiberty/tesseract": ["./src/index.ts"],
+      "@NamelessLiberty/tesseract/*": ["./src/*"],
+      "@NamelessLiberty/shared": ["../shared/src/index.ts"],
+      "@NamelessLiberty/shared/*": ["../shared/src/*"],
+      "@/*": ["../../apps/next/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

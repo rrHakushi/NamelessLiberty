@@ -43,8 +43,12 @@ import type {
   SidebarConfig,
 } from "@/types/sidebar-config"
 import { filterSidebarConfig } from "@/lib/navigation"
-import { useAllAppSidebarConfigs } from "@/config/sidebars"
-import { getCarinaUserSidebarConfig } from "@/config/sidebars/carinaUserSidebarConfig"
+import {
+  useAllAppSidebarConfigs,
+  // @app:carina:start
+  getCarinaUserSidebarConfig,
+  // @app:carina:end
+} from "@/config/sidebars"
 import { renderDockGroupIcon } from "@/config/dock-group-icons"
 import { SidebarNavigationContext } from "../../sidebar-provider"
 import { IrisBottomDock } from "../../iris-bottom-dock"
@@ -153,12 +157,15 @@ export function DockSettingsTab({
         currentActiveConfig.length > 0
       ) {
         resolvedConfig = currentActiveConfig
-      } else if (app.appId === "carina" && resolvedConfig.length === 0) {
+      }
+      // @app:carina:start
+      else if (app.appId === "carina" && resolvedConfig.length === 0) {
         resolvedConfig = getCarinaUserSidebarConfig({
           userId: session?.user?.id ?? undefined,
           username: session?.user?.username ?? undefined,
         })
       }
+      // @app:carina:end
       return {
         ...app,
         config: resolvedConfig,

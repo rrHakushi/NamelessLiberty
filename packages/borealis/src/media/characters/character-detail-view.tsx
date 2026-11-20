@@ -20,8 +20,8 @@ import { cn } from "@workspace/ui/lib/utils"
 import type { CharacterDetails } from "@NamelessLiberty/elysia"
 import { FormattedDescription } from "../formatted-description"
 import { FavoriteButton } from "../favorite-button"
-import { getMediaDetailHref } from "@/lib/media-routes"
-import { addBrowseVisitToStore } from "@/lib/browse-history"
+import { getMediaDetailHref } from "@NamelessLiberty/borealis/lib/media-routes"
+import { addBrowseVisitToStore } from "@NamelessLiberty/borealis/lib/browse-history"
 
 interface CharacterDetailViewProps {
   character: CharacterDetails

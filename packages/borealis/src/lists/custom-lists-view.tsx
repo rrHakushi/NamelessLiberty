@@ -52,7 +52,7 @@ import {
 } from "@workspace/ui/components/dialog"
 import { toast } from "sonner"
 import { elysia, API_URL } from "@/lib/elysia"
-import { getMediaDetailHref } from "@/lib/media-routes"
+import { getMediaDetailHref } from "@NamelessLiberty/borealis/lib/media-routes"
 import type { UserProfileCustomization } from "@NamelessLiberty/shared"
 import { cn } from "@workspace/ui/lib/utils"
 import {

@@ -12,7 +12,16 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  transpilePackages: ["@workspace/ui", "@NamelessLiberty/borealis"],
+  transpilePackages: [
+    "@workspace/ui",
+    "@NamelessLiberty/akaromi",
+    "@NamelessLiberty/borealis",
+    "@NamelessLiberty/carina",
+    "@NamelessLiberty/iris",
+    "@NamelessLiberty/kiroshi",
+    "@NamelessLiberty/reliquary",
+    "@NamelessLiberty/tesseract",
+  ],
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 180, // 6 months (180 days)
