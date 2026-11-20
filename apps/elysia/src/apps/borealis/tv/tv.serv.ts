@@ -97,7 +97,7 @@ export class BorealisTvServ extends BaseBorealisMediaService {
     let itemsQ = q
     if (sortBy === 'score') {
       itemsQ = itemsQ.orderBy([
-        (x) => sortOrder === 'asc' ? x.averageScore.asc() : x.averageScore.desc(),
+        (x) => sortOrder === 'asc' ? x.averageScore.asc({ nulls: 'last' }) : x.averageScore.desc({ nulls: 'last' }),
         (x) => x.id.asc(),
       ])
     } else if (sortBy === 'title') {
@@ -107,7 +107,7 @@ export class BorealisTvServ extends BaseBorealisMediaService {
       ])
     } else if (sortBy === 'releaseDate') {
       itemsQ = itemsQ.orderBy([
-        (x) => sortOrder === 'asc' ? x.firstAiredYear.asc() : x.firstAiredYear.desc(),
+        (x) => sortOrder === 'asc' ? x.firstAiredYear.asc({ nulls: 'last' }) : x.firstAiredYear.desc({ nulls: 'last' }),
         (x) => x.id.asc(),
       ])
     } else if (sortBy === 'trending' || sortBy === 'favorites') {

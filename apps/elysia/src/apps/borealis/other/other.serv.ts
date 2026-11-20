@@ -54,7 +54,7 @@ export class BorealisOtherServ extends BaseBorealisMediaService {
     let itemsQ = q
     if (sortBy === 'score') {
       itemsQ = itemsQ.orderBy((x) =>
-        sortOrder === 'asc' ? x.averageScore.asc() : x.averageScore.desc()
+        sortOrder === 'asc' ? x.averageScore.asc({ nulls: 'last' }) : x.averageScore.desc({ nulls: 'last' })
       )
     } else if (sortBy === 'title') {
       itemsQ = itemsQ.orderBy((x) =>
@@ -62,7 +62,7 @@ export class BorealisOtherServ extends BaseBorealisMediaService {
       )
     } else if (sortBy === 'releaseDate') {
       itemsQ = itemsQ.orderBy((x) =>
-        sortOrder === 'asc' ? x.startDate.asc() : x.startDate.desc()
+        sortOrder === 'asc' ? x.startDate.asc({ nulls: 'last' }) : x.startDate.desc({ nulls: 'last' })
       )
     } else if (sortBy === 'favorites') {
       itemsQ = itemsQ.orderBy((x) =>

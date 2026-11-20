@@ -89,7 +89,7 @@ export class BorealisBooksServ extends BaseBorealisMediaService {
     let itemsQ = q
     if (sortBy === 'score') {
       itemsQ = itemsQ.orderBy([
-        (x) => sortOrder === 'asc' ? x.averageScore.asc() : x.averageScore.desc(),
+        (x) => sortOrder === 'asc' ? x.averageScore.asc({ nulls: 'last' }) : x.averageScore.desc({ nulls: 'last' }),
         (x) => x.id.asc(),
       ])
     } else if (sortBy === 'title') {
@@ -99,7 +99,7 @@ export class BorealisBooksServ extends BaseBorealisMediaService {
       ])
     } else if (sortBy === 'releaseDate') {
       itemsQ = itemsQ.orderBy([
-        (x) => sortOrder === 'asc' ? x.releaseDateYear.asc() : x.releaseDateYear.desc(),
+        (x) => sortOrder === 'asc' ? x.releaseDateYear.asc({ nulls: 'last' }) : x.releaseDateYear.desc({ nulls: 'last' }),
         (x) => x.id.asc(),
       ])
     } else if (sortBy === 'favorites') {
