@@ -309,7 +309,7 @@ steps:
       - curl -sSL https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -o /tmp/cmdline-tools.zip
       - unzip -q /tmp/cmdline-tools.zip -d /tmp/cmdline-tools && mv /tmp/cmdline-tools/cmdline-tools "$ANDROID_HOME/cmdline-tools/latest" && rm -rf /tmp/cmdline-tools /tmp/cmdline-tools.zip
       - yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
-      - "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platform-tools" "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018"
+      - '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platform-tools" "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018"'
       - if [ ! -d apps/tauri/src-tauri/gen/android ]; then bun --cwd apps/tauri tauri android init; fi
       - bun --cwd apps/tauri tauri android build --apk
       - mkdir -p releases/NamelessLiberty
