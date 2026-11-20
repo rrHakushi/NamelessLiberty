@@ -216,10 +216,14 @@ const OTHER_ROW_SPEC: RowSpec = {
   id: 'pg/int4@1',
   titlePrimary: 'pg/text@1',
   titleSecondary: 'pg/text@1',
+  titleNative: 'pg/text@1',
   description: 'pg/text@1',
   coverImage: 'pg/text@1',
   bannerImage: 'pg/text@1',
   format: 'pg/text@1',
+  status: 'pg/text@1',
+  isPublished: 'pg/bool@1',
+  startDateYear: 'pg/int4@1',
   startDate: 'pg/timestamp-date@1',
   endDate: 'pg/timestamp-date@1',
   averageScore: 'pg/float8@1',
@@ -886,10 +890,14 @@ export async function searchOtherRaw(
       o."id",
       o."titlePrimary",
       o."titleSecondary",
+      o."titleNative",
       o."description",
       o."coverImage",
       o."bannerImage",
       o."format",
+      o."status"::text AS "status",
+      o."isPublished",
+      o."startDateYear",
       o."startDate",
       o."endDate",
       o."averageScore",
@@ -920,9 +928,11 @@ export async function searchOtherRaw(
       AND (
         public.iris_normalize_search(o."titlePrimary") LIKE '%' || q.nq || '%'
         OR public.iris_normalize_search(o."titleSecondary") LIKE '%' || q.nq || '%'
+        OR public.iris_normalize_search(o."titleNative") LIKE '%' || q.nq || '%'
         OR public.iris_normalize_search(o."description") LIKE '%' || q.nq || '%'
         OR public.iris_normalize_search(o."titlePrimary") %> q.nq
         OR public.iris_normalize_search(o."titleSecondary") %> q.nq
+        OR public.iris_normalize_search(o."titleNative") %> q.nq
       )
     ORDER BY "_score" DESC, o."popularity" DESC NULLS LAST, o."averageScore" DESC NULLS LAST
     LIMIT ${fetchLimit} OFFSET ${skip}

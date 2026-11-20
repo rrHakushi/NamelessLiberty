@@ -20,6 +20,7 @@ interface MusicTracklistProps {
   className?: string
   limit?: number
   onViewAll?: () => void
+  disableTrackLinks?: boolean
 }
 
 function formatDuration(seconds?: number | null): string {
@@ -36,6 +37,7 @@ export function MusicTracklist({
   className,
   limit,
   onViewAll,
+  disableTrackLinks = false,
 }: MusicTracklistProps) {
   const [playingTrackId, setPlayingTrackId] = useState<number | null>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
@@ -200,13 +202,22 @@ export function MusicTracklist({
 
                     {/* Track Title and Artist */}
                     <div className="flex min-w-0 flex-1 flex-col">
-                      <Link
-                        href={`/borealis/music/tracks/${track.id}`}
-                        className="truncate text-sm font-medium text-foreground transition-colors hover:text-primary focus-visible:underline focus-visible:outline-hidden"
-                        title={track.titlePrimary}
-                      >
-                        {track.titlePrimary}
-                      </Link>
+                      {disableTrackLinks ? (
+                        <span
+                          className="truncate text-sm font-medium text-foreground"
+                          title={track.titlePrimary}
+                        >
+                          {track.titlePrimary}
+                        </span>
+                      ) : (
+                        <Link
+                          href={`/borealis/music/tracks/${track.id}`}
+                          className="truncate text-sm font-medium text-foreground transition-colors hover:text-primary focus-visible:underline focus-visible:outline-hidden"
+                          title={track.titlePrimary}
+                        >
+                          {track.titlePrimary}
+                        </Link>
+                      )}
                       {track.artistName &&
                         (track.artistPersonId || albumArtistPersonId ? (
                           <Link
@@ -236,13 +247,15 @@ export function MusicTracklist({
                     <span className="font-mono text-xs text-muted-foreground tabular-nums">
                       {formatDuration(track.duration)}
                     </span>
-                    <Link
-                      href={`/borealis/music/tracks/${track.id}`}
-                      className="rounded-lg p-1 text-muted-foreground/60 transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
-                      aria-label={`View track details for ${track.titlePrimary}`}
-                    >
-                      <IconMusic className="size-4" aria-hidden="true" />
-                    </Link>
+                    {!disableTrackLinks && (
+                      <Link
+                        href={`/borealis/music/tracks/${track.id}`}
+                        className="rounded-lg p-1 text-muted-foreground/60 transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
+                        aria-label={`View track details for ${track.titlePrimary}`}
+                      >
+                        <IconMusic className="size-4" aria-hidden="true" />
+                      </Link>
+                    )}
                   </div>
                 </div>
               )

@@ -14,6 +14,7 @@ model Tag {
     games GameTag[]
     books BookTag[]
     music MusicTag[]
+    others OtherTag[]
 
     createdAt   DateTime @default(now())
     updatedAt   DateTime @onCreate(now()) @onUpdate(now())

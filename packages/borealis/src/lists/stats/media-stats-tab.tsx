@@ -100,6 +100,9 @@ export function MediaStatsTab({
             case "music":
               res = await elysia.borealis.lists.music.stats.get({ query })
               break
+            case "other":
+              res = await elysia.borealis.lists.other.stats.get({ query })
+              break
           }
           return res
         })().finally(() => {

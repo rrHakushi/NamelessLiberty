@@ -381,7 +381,7 @@ export function BorealisCardHoverEditForm({
   return (
     <div className="flex flex-col gap-3 p-4 shrink-0 select-none">
       {/* Row 1: STATUS (Dropdown) | SCORE (with steppers) | REWATCHES (with steppers) */}
-      <div className={cn("grid grid-cols-3 gap-2", statusDropdownOpen ? "relative z-50" : "relative z-20")}>
+      <div className={cn("grid grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)_minmax(0,0.8fr)] gap-1.5", statusDropdownOpen ? "relative z-50" : "relative z-20")}>
         {/* Status Dropdown - High Z-index with frosted blur surface */}
         <div className="flex flex-col gap-1 min-w-0">
           <label className="flex items-center gap-1 text-[10px] font-bold text-primary uppercase tracking-wider truncate">

@@ -636,7 +636,10 @@ export function OverviewTab({
           </section>
 
           {/* Awards & Accolades */}
-          {media.awards && (
+          {media.awards &&
+            (Array.isArray(media.awards)
+              ? media.awards.length > 0
+              : String(media.awards).trim().length > 0) && (
             <div className="flex items-start gap-3 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 text-xs shadow-xs">
               <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
                 <IconTrophy className="size-5" aria-hidden="true" />
@@ -646,7 +649,9 @@ export function OverviewTab({
                   Awards & Accolades
                 </span>
                 <p className="text-xs leading-relaxed text-foreground/90">
-                  {media.awards}
+                  {Array.isArray(media.awards)
+                    ? media.awards.join(", ")
+                    : media.awards}
                 </p>
               </div>
             </div>
@@ -807,8 +812,8 @@ export function OverviewTab({
             </section>
           )}
 
-          {/* Music: Album Tracklist Preview for Albums */}
-          {media.category === "music" &&
+          {/* Music / Other: Album Tracklist Preview */}
+          {(media.category === "music" || media.category === "other") &&
             media.tracks &&
             media.tracks.length > 0 && (
               <section
@@ -850,12 +855,13 @@ export function OverviewTab({
                   albumArtistPersonId={media.artistPersonId}
                   limit={8}
                   onViewAll={onViewAllTracks}
+                  disableTrackLinks={media.category === "other"}
                 />
               </section>
             )}
 
-          {/* Music: Lyrics for Tracks */}
-          {media.category === "music" &&
+          {/* Music / Other: Lyrics */}
+          {(media.category === "music" || media.category === "other") &&
             (media.lyrics || media.syncedLyrics) && (
               <MusicLyrics
                 lyrics={media.lyrics}
@@ -1046,6 +1052,65 @@ export function OverviewTab({
               </div>
             </div>
           </GlassCard>
+
+          {/* Custom Metadata Card (Other category) */}
+          {media.customFields && media.customFields.length > 0 && (
+            <GlassCard variant="normal" className="flex flex-col gap-2 p-4 text-xs">
+              <div className="flex items-center justify-between border-b border-border/30 pb-2">
+                <span className="text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
+                  Custom Information
+                </span>
+                <IconInfoCircle
+                  className="size-3.5 text-muted-foreground"
+                  aria-hidden="true"
+                />
+              </div>
+              <div className="flex flex-col divide-y divide-border/20">
+                {media.customFields.map((cf, idx) => (
+                  <div
+                    key={`${cf.label}-${idx}`}
+                    className="flex flex-col gap-1 py-1.5"
+                  >
+                    <span className="text-[11px] text-muted-foreground">
+                      {cf.label}
+                    </span>
+                    {cf.type === "badges" ? (
+                      <div className="flex flex-wrap gap-1 pt-0.5">
+                        {(Array.isArray(cf.value)
+                          ? cf.value
+                          : String(cf.value)
+                              .split(",")
+                              .map((s) => s.trim())
+                              .filter(Boolean)
+                        ).map((badge, bIdx) => (
+                          <Badge
+                            key={`${badge}-${bIdx}`}
+                            variant="secondary"
+                            className="h-5 px-2 text-[11px] font-normal"
+                          >
+                            {badge}
+                          </Badge>
+                        ))}
+                      </div>
+                    ) : cf.type === "link" && typeof cf.value === "string" ? (
+                      <a
+                        href={cf.value}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="truncate font-medium text-primary hover:underline"
+                      >
+                        {cf.value}
+                      </a>
+                    ) : (
+                      <span className="font-medium break-words text-foreground">
+                        {Array.isArray(cf.value) ? cf.value.join(", ") : cf.value}
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+          )}
 
           {/* 2. INFORMATION CARD: Remaining general metadata */}
           <GlassCard variant="normal" className="flex flex-col gap-2 p-4 text-xs">

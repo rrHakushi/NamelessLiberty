@@ -2,9 +2,10 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { IconAlertTriangle } from "@tabler/icons-react"
+import { IconAlertTriangle, IconLock, IconWorld } from "@tabler/icons-react"
 import { toast } from "sonner"
 import { cn } from "@workspace/ui/lib/utils"
+import { Badge } from "@workspace/ui/components/badge"
 import { useSession } from "@/context/session-context"
 import { useUser } from "@/context/user-context"
 import { elysia } from "@/lib/elysia"
@@ -329,6 +330,27 @@ export function MediaHero({
               <h1 className="font-mono text-base leading-tight font-bold tracking-tight text-balance text-foreground sm:text-2xl lg:text-3xl">
                 {mainTitle}
               </h1>
+
+              {media.category === "other" && (
+                <div className="mt-1 flex flex-wrap items-center gap-2">
+                  <Badge
+                    variant={media.isPublished ? "secondary" : "outline"}
+                    className="gap-1 text-[11px] font-medium"
+                  >
+                    {media.isPublished ? (
+                      <>
+                        <IconWorld className="size-3" aria-hidden="true" />
+                        <span>Public</span>
+                      </>
+                    ) : (
+                      <>
+                        <IconLock className="size-3" aria-hidden="true" />
+                        <span>Private</span>
+                      </>
+                    )}
+                  </Badge>
+                </div>
+              )}
 
               {/* Music: Artist and Album info */}
               {media.category === "music" &&

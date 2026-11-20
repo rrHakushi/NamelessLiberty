@@ -18,6 +18,7 @@ import {
   IconUserHeart,
   IconUserCheck,
   IconBuildingSkyscraper,
+  IconCategory,
 } from "@tabler/icons-react"
 import { DialogTrigger, Popover, Dialog } from "react-aria-components"
 import { cn } from "@workspace/ui/lib/utils"
@@ -66,6 +67,7 @@ const CATEGORY_ICON_MAP: Record<DiscoverCategory, React.ReactNode> = {
   games: <IconDeviceGamepad className="size-4 shrink-0" />,
   books: <IconBook className="size-4 shrink-0" />,
   music: <IconMusic className="size-4 shrink-0" />,
+  other: <IconCategory className="size-4 shrink-0" />,
   characters: <IconUserHeart className="size-4 shrink-0" />,
   staff: <IconUserCheck className="size-4 shrink-0" />,
   studios: <IconBuildingSkyscraper className="size-4 shrink-0" />,

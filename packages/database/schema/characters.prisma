@@ -35,6 +35,7 @@ model Character {
     updatedAt DateTime @onCreate(now()) @onUpdate(now())
 
     mediaCharacters MediaCharacter[]
+    otherCharacters OtherCharacter[] @relation("OtherCharacterRef")
 
     @@index([namePrimary])
 }

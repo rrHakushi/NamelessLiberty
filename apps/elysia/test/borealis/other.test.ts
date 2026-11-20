@@ -3,6 +3,7 @@ import { Elysia, ValidationError } from 'elysia'
 import { prisma } from '@NamelessLiberty/db'
 import { IRISFlags } from '@NamelessLiberty/permissions'
 import { isHttpError } from '../../src/core/errors/http-errors'
+import { BorealisAnimeServ } from '../../src/apps/borealis/anime/anime.serv'
 import { borealisOther } from '../../src/apps/borealis/other/other.ctrl'
 import { borealisLists } from '../../src/apps/borealis/lists/lists.ctrl'
 import { signUserJwt } from '../../src/core/utils/auth-crypto'
@@ -57,41 +58,43 @@ describe('Borealis Other & Custom Item System', () => {
       .use(borealisOther)
       .use(borealisLists)
 
-    // Ensure mock users exist in test database
-    await (prisma as any).user.upsert({
-      where: { id: '00000000-0000-0000-0000-000000000001' },
-      create: {
-        id: '00000000-0000-0000-0000-000000000001',
-        username: 'alice',
-        email: 'alice@example.com',
-        passwordHash: 'test-hash-alice',
-        permissions: [],
-      },
-      update: {},
+    const ensureUser = async (u: {
+      id: string
+      username: string
+      email: string
+      passwordHash: string
+      permissions: number[]
+    }) => {
+      const existing = await prisma.orm.public.User.where({ id: u.id })
+        .select('id')
+        .first()
+      if (!existing) {
+        await prisma.orm.public.User.create(u)
+      }
+    }
+
+    await ensureUser({
+      id: '00000000-0000-0000-0000-000000000001',
+      username: 'alice',
+      email: 'alice@example.com',
+      passwordHash: 'test-hash-alice',
+      permissions: [],
     })
 
-    await (prisma as any).user.upsert({
-      where: { id: '00000000-0000-0000-0000-000000000002' },
-      create: {
-        id: '00000000-0000-0000-0000-000000000002',
-        username: 'bob',
-        email: 'bob@example.com',
-        passwordHash: 'test-hash-bob',
-        permissions: [],
-      },
-      update: {},
+    await ensureUser({
+      id: '00000000-0000-0000-0000-000000000002',
+      username: 'bob',
+      email: 'bob@example.com',
+      passwordHash: 'test-hash-bob',
+      permissions: [],
     })
 
-    await (prisma as any).user.upsert({
-      where: { id: '00000000-0000-0000-0000-000000000003' },
-      create: {
-        id: '00000000-0000-0000-0000-000000000003',
-        username: 'admin',
-        email: 'admin@example.com',
-        passwordHash: 'test-hash-admin',
-        permissions: [1],
-      },
-      update: {},
+    await ensureUser({
+      id: '00000000-0000-0000-0000-000000000003',
+      username: 'admin',
+      email: 'admin@example.com',
+      passwordHash: 'test-hash-admin',
+      permissions: [1],
     })
   })
 
@@ -158,11 +161,11 @@ describe('Borealis Other & Custom Item System', () => {
     expect(res.status).toBe(200)
     const data = (await res.json()) as any
     expect(data.success).toBe(true)
-    expect(data.item.titlePrimary).toBe('Learn TypeScript 6')
-    expect(data.item.creatorId).toBe('00000000-0000-0000-0000-000000000001')
-    expect(data.item.incrementFieldKey).toBe('chapters')
-    expect(data.item.progressFields.length).toBe(2)
-    expect(data.item.isPublished).toBe(true)
+    expect(data.media.titlePrimary).toBe('Learn TypeScript 6')
+    expect(data.media.creatorId).toBe('00000000-0000-0000-0000-000000000001')
+    expect(data.media.incrementFieldKey).toBe('chapters')
+    expect(data.media.progressFields.length).toBe(2)
+    expect(data.media.isPublished).toBe(true)
   })
 
   it('allows another user to add published item to their list and increment designated field', async () => {
@@ -182,7 +185,7 @@ describe('Borealis Other & Custom Item System', () => {
         }),
       })
     )
-    const createdItem = ((await createRes.json()) as any).item
+    const createdItem = ((await createRes.json()) as any).media
 
     // 2. Bob adds to his Other list
     const addRes = await app.handle(
@@ -254,7 +257,7 @@ describe('Borealis Other & Custom Item System', () => {
         }),
       })
     )
-    const item = ((await createRes.json()) as any).item
+    const item = ((await createRes.json()) as any).media
 
     // 2. Bob adds it to his list
     await app.handle(
@@ -299,9 +302,9 @@ describe('Borealis Other & Custom Item System', () => {
     expect(forkRes.status).toBe(200)
     const forkData = (await forkRes.json()) as any
     expect(forkData.success).toBe(true)
-    expect(forkData.item.creatorId).toBe('00000000-0000-0000-0000-000000000002')
-    expect(forkData.item.titlePrimary).toContain('Original Recipe Guide')
-    expect(forkData.item.isPublished).toBe(false)
+    expect(forkData.media.creatorId).toBe('00000000-0000-0000-0000-000000000002')
+    expect(forkData.media.titlePrimary).toContain('Original Recipe Guide')
+    expect(forkData.media.isPublished).toBe(false)
   })
 
   it('allows deletion when only the creator has it in their list', async () => {
@@ -321,7 +324,7 @@ describe('Borealis Other & Custom Item System', () => {
         }),
       })
     )
-    const item = ((await createRes.json()) as any).item
+    const item = ((await createRes.json()) as any).media
 
     // 2. Alice adds to her list
     await app.handle(
@@ -331,7 +334,7 @@ describe('Borealis Other & Custom Item System', () => {
           authorization: `Bearer ${aliceToken}`,
           'content-type': 'application/json',
         },
-        body: JSON.stringify({ status: 'PLANNING' }),
+        body: JSON.stringify({ status: 'PLANNED' }),
       })
     )
 
@@ -372,7 +375,7 @@ describe('Borealis Other & Custom Item System', () => {
       })
     )
     expect(createRes.status).toBe(200)
-    const item = ((await createRes.json()) as any).item
+    const item = ((await createRes.json()) as any).media
     expect(item.format).toBe('workout')
 
     // 2. Alice adds item to her list with TRACKING status
@@ -384,7 +387,7 @@ describe('Borealis Other & Custom Item System', () => {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
-          status: 'TRACKING',
+          status: 'IN_PROGRESS',
           progress: 5,
         }),
       })
@@ -395,13 +398,11 @@ describe('Borealis Other & Custom Item System', () => {
     await new Promise((resolve) => setTimeout(resolve, 50))
 
     // 3. Verify ActivityLog was recorded
-    const activities = await (prisma as any).activityLog.findMany({
-      where: {
-        userId: '00000000-0000-0000-0000-000000000001',
-        mediaType: 'OTHER',
-        mediaId: item.id,
-      },
-    })
+    const activities = await prisma.orm.public.ActivityLog.where({
+      userId: '00000000-0000-0000-0000-000000000001',
+      mediaType: 'OTHER',
+      mediaId: item.id,
+    }).all()
     expect(activities.length).toBeGreaterThan(0)
     const firstAct = activities[0]!
     expect(firstAct.title).toBe('Morning Workout Routine')
@@ -427,7 +428,7 @@ describe('Borealis Other & Custom Item System', () => {
     )
     expect(filtersData.statuses).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ value: 'TRACKING' }),
+        expect.objectContaining({ value: 'IN_PROGRESS' }),
       ])
     )
 
@@ -458,5 +459,89 @@ describe('Borealis Other & Custom Item System', () => {
     expect(emptyListRes.status).toBe(200)
     const emptyListData = (await emptyListRes.json()) as any
     expect(emptyListData.items.length).toBe(0)
+  })
+
+  it('supports MediaStatus, customFields, inline taxonomy, one-way isolation, MAYBE status, and UserStats', async () => {
+    const uniqueGenre = `OtherExclusiveGenre_${Date.now()}`
+    const uniqueTag = `OtherExclusiveTag_${Date.now()}`
+
+    const createRes = await app.handle(
+      new Request('http://localhost/borealis/other', {
+        method: 'POST',
+        headers: {
+          authorization: `Bearer ${aliceToken}`,
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          titlePrimary: 'Unified All-In-One Item',
+          titleNative: '統合カスタム',
+          format: 'webnovel',
+          status: 'RELEASING',
+          isPublished: true,
+          startDateYear: 2026,
+          genres: [uniqueGenre],
+          tags: [uniqueTag],
+          customFields: [
+            { label: 'Difficulty', value: 'Hardcore', type: 'text' },
+            { label: 'Stacks', value: ['TS', 'Bun'], type: 'badges' },
+          ],
+          episodes: [{ episodeNumber: 1, seasonNumber: 1, name: 'Pilot', runtime: 24 }],
+          tracks: [{ trackNumber: 1, titlePrimary: 'Opening Theme', duration: 90 }],
+          progressFields: [{ key: 'ep', label: 'Episodes', unit: 'eps', max: 12 }],
+          incrementFieldKey: 'ep',
+        }),
+      })
+    )
+    expect(createRes.status).toBe(200)
+    const created = ((await createRes.json()) as any).media
+    expect(created.status).toBe('RELEASING')
+    expect(created.hasEpisodes).toBe(true)
+    expect(created.hasTracks).toBe(true)
+    expect(created.hasCharacters).toBe(false)
+    expect(created.customFields).toHaveLength(2)
+    expect(created.genres.map((g: any) => g.name)).toContain(uniqueGenre)
+
+    // One-way isolation: Other-only genres with 0 anime count must not leak into Anime Discover filters
+    const animeFilters = await BorealisAnimeServ.getFilters()
+    expect(animeFilters.genres.map((g: any) => g.value)).not.toContain(uniqueGenre)
+
+    // Other catalog filters expose RELEASING and the new genre
+    const otherFiltersRes = await app.handle(
+      new Request('http://localhost/borealis/other/filters')
+    )
+    expect(otherFiltersRes.status).toBe(200)
+    const otherFilters = (await otherFiltersRes.json()) as any
+    expect(otherFilters.statuses.map((s: any) => s.value)).toContain('RELEASING')
+    expect(otherFilters.genres.map((g: any) => g.value)).toContain(uniqueGenre)
+
+    // Add to OtherList with MAYBE status + rewatched count, then check full UserStats
+    const listRes = await app.handle(
+      new Request(`http://localhost/borealis/lists/other/${created.id}`, {
+        method: 'POST',
+        headers: {
+          authorization: `Bearer ${aliceToken}`,
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          status: 'MAYBE',
+          rewatched: 2,
+          progressValues: { ep: 3 },
+          score: 9,
+        }),
+      })
+    )
+    expect(listRes.status).toBe(200)
+
+    const statsRes = await app.handle(
+      new Request('http://localhost/borealis/lists/other/stats?userId=00000000-0000-0000-0000-000000000001', {
+        headers: {
+          authorization: `Bearer ${aliceToken}`,
+        },
+      })
+    )
+    expect(statsRes.status).toBe(200)
+    const statsJson = (await statsRes.json()) as any
+    expect(statsJson.success).toBe(true)
+    expect(statsJson.data?.mediaType).toBe('other')
   })
 })

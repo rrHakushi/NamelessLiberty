@@ -214,7 +214,7 @@ export function DiscoverPageClient({ category }: DiscoverPageClientProps) {
   // ---------------------------------------------------------------------------
   // 1. Fetch Filter Facets & Counts
   // ---------------------------------------------------------------------------
-  const getMediaCategory = (cat: string): "anime" | "manga" | "movies" | "tv" | "games" | "books" | "music" => {
+  const getMediaCategory = (cat: string): "anime" | "manga" | "movies" | "tv" | "games" | "books" | "music" | "other" => {
     const c = cat.toLowerCase()
     if (c === "movie" || c === "movies") return "movies"
     if (c === "game" || c === "games") return "games"
@@ -222,6 +222,7 @@ export function DiscoverPageClient({ category }: DiscoverPageClientProps) {
     if (c === "manga") return "manga"
     if (c === "tv") return "tv"
     if (c === "music") return "music"
+    if (c === "other") return "other"
     return "anime"
   }
 

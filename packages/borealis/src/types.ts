@@ -54,6 +54,7 @@ export interface BorealisProgressInfo {
   current: number
   max?: number | null
   unit?: string
+  label?: string
   seasonNumber?: number | null
   episodeNumber?: number | null
   seasonEpisodeCount?: number | null

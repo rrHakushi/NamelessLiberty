@@ -286,6 +286,27 @@ function extractProgress(type: BorealisEntityType, item: any, raw: any): Boreali
     unit = "Hours"
   } else if (type === "music") {
     unit = "Plays"
+  } else if (type === "other") {
+    const fields: Array<{ key: string; label?: string; unit?: string; max?: number }> =
+      Array.isArray(item?.progressFields) ? item.progressFields : []
+    const activeField =
+      fields.find((f) => f.key === item?.incrementFieldKey) || fields[0]
+    const pv = (entry?.progressValues && typeof entry.progressValues === "object"
+      ? entry.progressValues
+      : {}) as Record<string, number>
+    if (activeField) {
+      const val = Number(pv[activeField.key] ?? entry?.progress ?? 0)
+      const safeCurrent = isNaN(val) ? 0 : val
+      max = typeof activeField.max === "number" ? activeField.max : max
+      unit = activeField.unit || activeField.label || "Unit"
+      return {
+        current: safeCurrent,
+        max,
+        unit,
+        label: activeField.label || activeField.unit || "Progress",
+      }
+    }
+    unit = "Unit"
   } else {
     unit = "Hours"
   }

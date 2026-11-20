@@ -27,13 +27,12 @@ const routes1 = new Elysia()
     }
   )
 
-  // GET /borealis/other/filters (Aggregated filters)
   .get(
     '/filters',
     {
       detail: {
         summary: 'Get catalog filters for custom items',
-        description: 'Returns available formats and statuses for custom items.',
+        description: 'Returns available formats, statuses, genres, tags, years, and seasons.',
         tags: ['Borealis - Other'],
       },
       response: {
@@ -45,246 +44,330 @@ const routes1 = new Elysia()
     }
   )
 
-  // POST /borealis/other/upload (Upload image asset <= 1MB)
-  .post(
-    '/upload',
+  .get(
+    '/taxonomy',
     {
-      body: BorealisOtherModel.uploadAssetBody,
       detail: {
-        summary: 'Upload cover or banner image asset (max 1MB)',
-        description: 'Uploads and converts an image to WebP format. Maximum file size is 1MB.',
+        summary: 'Get shared genres and tags for autocomplete',
+        description: 'Returns existing Genre and Tag entries for the Other item editor.',
         tags: ['Borealis - Other'],
       },
       response: {
-        200: BorealisOtherModel.uploadAssetResponse,
-        400: BorealisOtherModel.validationError,
-        401: BorealisOtherModel.unauthorizedError,
+        200: BorealisOtherModel.taxonomyResponse,
       },
     },
-    async ({ body, session: userSession }) => {
+    async () => {
+      return await BorealisOtherServ.getTaxonomy()
+    }
+  )
+
+  .get(
+    '/my-items',
+    {
+      detail: {
+        summary: 'Get items created by current user',
+        description: 'Returns all custom items created by the authenticated user.',
+        tags: ['Borealis - Other'],
+      },
+      response: {
+        200: BorealisOtherModel.myItemsResponse,
+      },
+    },
+    async ({ session: userSession }) => {
+      const user = userSession.requireUser()
+      return await BorealisOtherServ.getMyItems(user.id)
+    }
+  )
+
+  .post(
+    '/upload',
+    {
+      body: BorealisOtherModel.uploadBody,
+      detail: {
+        summary: 'Upload cover, banner, or gallery image for a custom item',
+        tags: ['Borealis - Other'],
+      },
+      response: {
+        200: BorealisOtherModel.uploadResponse,
+        422: BorealisOtherModel.validationError,
+      },
+    },
+    async ({ session: userSession, body }) => {
       const user = userSession.requireUser()
       return await BorealisOtherServ.uploadAsset(user.id, body.file, body.type)
     }
   )
 
-  // POST /borealis/other (Create custom item)
+const routes2 = new Elysia()
+  .use(session())
+
   .post(
     '',
     {
-      body: BorealisOtherModel.createOtherBody,
+      body: BorealisOtherModel.createBody,
       detail: {
-        summary: 'Create custom trackable item',
-        description:
-          'Creates a new custom item in the catalog. Normal users have a limit of 500 items, while administrators have unlimited creations.',
+        summary: 'Create a new custom item',
         tags: ['Borealis - Other'],
       },
       response: {
         200: BorealisOtherModel.itemResponse,
-        400: BorealisOtherModel.validationError,
-        401: BorealisOtherModel.unauthorizedError,
         403: BorealisOtherModel.forbiddenError,
         422: BorealisOtherModel.validationError,
       },
     },
-    async ({ body, session: userSession }) => {
+    async ({ session: userSession, body }) => {
       const user = userSession.requireUser()
       const isAdmin = hasPermission(user.permissions, IRISFlags.ADMINISTRATOR)
       return await BorealisOtherServ.createItem(user.id, body, isAdmin)
     }
   )
 
-  // GET /borealis/other/:otherId (Get custom item details)
-
-const routes2 = new Elysia()
-  .use(session())
-
   .get(
     '/:otherId',
     {
       params: BorealisOtherModel.otherParam,
       detail: {
-        summary: 'Get custom item details',
-        description: 'Retrieves custom item details by ID.',
+        summary: 'Get custom item by ID',
         tags: ['Borealis - Other'],
       },
       response: {
         200: BorealisOtherModel.itemResponse,
+        403: BorealisOtherModel.forbiddenError,
         404: BorealisOtherModel.notFoundError,
-        422: BorealisOtherModel.validationError,
       },
     },
     async ({ params: { otherId }, session: userSession }) => {
       const user = userSession.getUser()
-      const isAdmin = hasPermission(user?.permissions ?? null, IRISFlags.ADMINISTRATOR)
+      const isAdmin = user ? hasPermission(user.permissions, IRISFlags.ADMINISTRATOR) : false
       return await BorealisOtherServ.getItem(otherId, user?.id, isAdmin)
     }
   )
 
-  // PUT /borealis/other/:otherId (Update custom item)
-  .put(
+  .patch(
     '/:otherId',
     {
       params: BorealisOtherModel.otherParam,
-      body: BorealisOtherModel.updateOtherBody,
+      body: BorealisOtherModel.updateBody,
       detail: {
         summary: 'Update custom item',
-        description:
-          'Updates custom item details. If the item is published and tracked by other users, creates a pre-update snapshot and dispatches in-app notifications with a one-click fork action.',
         tags: ['Borealis - Other'],
       },
       response: {
         200: BorealisOtherModel.itemResponse,
-        400: BorealisOtherModel.validationError,
-        401: BorealisOtherModel.unauthorizedError,
         403: BorealisOtherModel.forbiddenError,
         404: BorealisOtherModel.notFoundError,
         422: BorealisOtherModel.validationError,
       },
     },
-    async ({ params: { otherId }, body, session: userSession }) => {
+    async ({ session: userSession, params: { otherId }, body }) => {
       const user = userSession.requireUser()
       const isAdmin = hasPermission(user.permissions, IRISFlags.ADMINISTRATOR)
       return await BorealisOtherServ.updateItem(user.id, otherId, body, isAdmin)
     }
   )
 
-  // DELETE /borealis/other/:otherId (Delete custom item)
+  .put(
+    '/:otherId',
+    {
+      params: BorealisOtherModel.otherParam,
+      body: BorealisOtherModel.updateBody,
+      detail: {
+        summary: 'Update custom item (PUT alias)',
+        tags: ['Borealis - Other'],
+      },
+      response: {
+        200: BorealisOtherModel.itemResponse,
+        403: BorealisOtherModel.forbiddenError,
+        404: BorealisOtherModel.notFoundError,
+        422: BorealisOtherModel.validationError,
+      },
+    },
+    async ({ session: userSession, params: { otherId }, body }) => {
+      const user = userSession.requireUser()
+      const isAdmin = hasPermission(user.permissions, IRISFlags.ADMINISTRATOR)
+      return await BorealisOtherServ.updateItem(user.id, otherId, body, isAdmin)
+    }
+  )
+
   .delete(
     '/:otherId',
     {
       params: BorealisOtherModel.otherParam,
       detail: {
         summary: 'Delete custom item',
-        description:
-          'Deletes custom item if no other users have it tracked or favorited. Strict deletion integrity is enforced even for administrators.',
         tags: ['Borealis - Other'],
       },
       response: {
         200: BorealisOtherModel.deleteResponse,
-        401: BorealisOtherModel.unauthorizedError,
         403: BorealisOtherModel.forbiddenError,
         404: BorealisOtherModel.notFoundError,
         409: BorealisOtherModel.conflictError,
-        422: BorealisOtherModel.validationError,
       },
     },
-    async ({ params: { otherId }, session: userSession }) => {
+    async ({ session: userSession, params: { otherId } }) => {
       const user = userSession.requireUser()
       const isAdmin = hasPermission(user.permissions, IRISFlags.ADMINISTRATOR)
       return await BorealisOtherServ.deleteItem(user.id, otherId, isAdmin)
     }
   )
 
-  // POST /borealis/other/:otherId/fork (Fork pre-update copy)
   .post(
     '/:otherId/fork',
     {
       params: BorealisOtherModel.otherParam,
       detail: {
-        summary: 'Fork pre-update copy into private item',
-        description:
-          'Clones pre-update snapshot into a new private item for the requesting user and repoints their list entry.',
+        summary: 'Fork a custom item into a personal private copy',
         tags: ['Borealis - Other'],
       },
       response: {
         200: BorealisOtherModel.forkResponse,
-        401: BorealisOtherModel.unauthorizedError,
         403: BorealisOtherModel.forbiddenError,
         404: BorealisOtherModel.notFoundError,
-        422: BorealisOtherModel.validationError,
       },
     },
-    async ({ params: { otherId }, session: userSession }) => {
+    async ({ session: userSession, params: { otherId } }) => {
       const user = userSession.requireUser()
       const isAdmin = hasPermission(user.permissions, IRISFlags.ADMINISTRATOR)
       return await BorealisOtherServ.forkItem(user.id, otherId, isAdmin)
     }
   )
 
-  // GET /borealis/other/:otherId/stats (Stats)
-
 const routes3 = new Elysia()
+  .use(session())
+
+  .get(
+    '/:otherId/similar',
+    {
+      params: BorealisOtherModel.otherParam,
+      query: BorealisOtherModel.similarQuery,
+      detail: { summary: 'Get similar published custom items', tags: ['Borealis - Other'] },
+      response: { 200: BorealisOtherModel.similarResponse, 404: BorealisOtherModel.notFoundError },
+    },
+    async ({ params: { otherId }, query }) => {
+      return await BorealisOtherServ.getSimilar(otherId, query.limit ?? 24)
+    }
+  )
+
+  .get(
+    '/:otherId/relations',
+    {
+      params: BorealisOtherModel.otherParam,
+      detail: { summary: 'Get one-way media relations', tags: ['Borealis - Other'] },
+      response: { 200: BorealisOtherModel.relationsResponse, 404: BorealisOtherModel.notFoundError },
+    },
+    async ({ params: { otherId } }) => {
+      return await BorealisOtherServ.getRelations(otherId)
+    }
+  )
+
+  .get(
+    '/:otherId/characters',
+    {
+      params: BorealisOtherModel.otherParam,
+      detail: { summary: 'Get linked characters', tags: ['Borealis - Other'] },
+      response: { 200: BorealisOtherModel.charactersResponse, 404: BorealisOtherModel.notFoundError },
+    },
+    async ({ params: { otherId } }) => {
+      return await BorealisOtherServ.getCharacters(otherId)
+    }
+  )
+
+  .get(
+    '/:otherId/staff',
+    {
+      params: BorealisOtherModel.otherParam,
+      detail: { summary: 'Get linked staff', tags: ['Borealis - Other'] },
+      response: { 200: BorealisOtherModel.staffResponse, 404: BorealisOtherModel.notFoundError },
+    },
+    async ({ params: { otherId } }) => {
+      return await BorealisOtherServ.getStaff(otherId)
+    }
+  )
+
+  .get(
+    '/:otherId/episodes',
+    {
+      params: BorealisOtherModel.otherParam,
+      detail: { summary: 'Get custom item episodes', tags: ['Borealis - Other'] },
+      response: { 200: BorealisOtherModel.episodesResponse, 404: BorealisOtherModel.notFoundError },
+    },
+    async ({ params: { otherId } }) => {
+      return await BorealisOtherServ.getEpisodes(otherId)
+    }
+  )
+
+  .get(
+    '/:otherId/seasons',
+    {
+      params: BorealisOtherModel.otherParam,
+      detail: { summary: 'Get custom item seasons', tags: ['Borealis - Other'] },
+      response: { 200: BorealisOtherModel.seasonsResponse, 404: BorealisOtherModel.notFoundError },
+    },
+    async ({ params: { otherId } }) => {
+      return await BorealisOtherServ.getSeasons(otherId)
+    }
+  )
+
+  .get(
+    '/:otherId/images',
+    {
+      params: BorealisOtherModel.otherParam,
+      detail: { summary: 'Get custom item images', tags: ['Borealis - Other'] },
+      response: { 200: BorealisOtherModel.imagesResponse, 404: BorealisOtherModel.notFoundError },
+    },
+    async ({ params: { otherId } }) => {
+      return await BorealisOtherServ.getImages(otherId)
+    }
+  )
+
+const routes4 = new Elysia()
   .use(session())
 
   .get(
     '/:otherId/stats',
     {
       params: BorealisOtherModel.otherParam,
-      detail: {
-        summary: 'Get stats for custom item',
-        description: 'Returns score and status distributions, favorites, and popularity.',
-        tags: ['Borealis - Other'],
-      },
-      response: {
-        200: BorealisOtherModel.statsResponse,
-        404: BorealisOtherModel.notFoundError,
-        422: BorealisOtherModel.validationError,
-      },
+      detail: { summary: 'Get stats for this custom item', tags: ['Borealis - Other'] },
+      response: { 200: BorealisOtherModel.statsResponse, 404: BorealisOtherModel.notFoundError },
     },
     async ({ params: { otherId } }) => {
       return await BorealisOtherServ.getStats(otherId)
     }
   )
 
-  // GET /borealis/other/:otherId/friends (Friends list entries)
   .get(
     '/:otherId/friends',
     {
       params: BorealisOtherModel.otherParam,
-      detail: {
-        summary: 'Get friends tracking this custom item',
-        description: 'Returns public list entries for accepted friends tracking this custom item.',
-        tags: ['Borealis - Other'],
-      },
-      response: {
-        200: BorealisOtherModel.friendsResponse,
-        404: BorealisOtherModel.notFoundError,
-        422: BorealisOtherModel.validationError,
-      },
+      query: BorealisOtherModel.friendsQuery,
+      detail: { summary: 'Get friends tracking this custom item', tags: ['Borealis - Other'] },
+      response: { 200: BorealisOtherModel.friendsResponse, 404: BorealisOtherModel.notFoundError },
     },
-    async ({ params: { otherId }, session: userSession }) => {
+    async ({ params: { otherId }, session: userSession, query }) => {
       const user = userSession.getUser()
-      return await BorealisOtherServ.getFriends(otherId, user?.id)
+      return await BorealisOtherServ.getFriends(otherId, user?.id, query)
     }
   )
 
-  // GET /borealis/other/:otherId/people (All public list entries)
   .get(
     '/:otherId/people',
     {
       params: BorealisOtherModel.otherParam,
       query: BorealisOtherModel.peopleQuery,
-      detail: {
-        summary: 'Get all public users tracking this custom item',
-        description: 'Paginated list of users tracking this item with primary and secondary progress.',
-        tags: ['Borealis - Other'],
-      },
-      response: {
-        200: BorealisOtherModel.peopleResponse,
-        404: BorealisOtherModel.notFoundError,
-        422: BorealisOtherModel.validationError,
-      },
+      detail: { summary: 'Get all public users tracking this custom item', tags: ['Borealis - Other'] },
+      response: { 200: BorealisOtherModel.peopleResponse, 404: BorealisOtherModel.notFoundError },
     },
     async ({ params: { otherId }, query }) => {
       return await BorealisOtherServ.getPeople(otherId, query)
     }
   )
 
-  // GET /borealis/other/:otherId/recommendations (Recommendations)
   .get(
     '/:otherId/recommendations',
     {
       params: BorealisOtherModel.otherParam,
-      detail: {
-        summary: 'Get recommendations for this custom item',
-        description: 'Returns community recommendations for this custom item.',
-        tags: ['Borealis - Other'],
-      },
-      response: {
-        200: BorealisOtherModel.recommendationsResponse,
-        404: BorealisOtherModel.notFoundError,
-        422: BorealisOtherModel.validationError,
-      },
+      detail: { summary: 'Get recommendations for this custom item', tags: ['Borealis - Other'] },
+      response: { 200: BorealisOtherModel.recommendationsResponse, 404: BorealisOtherModel.notFoundError },
     },
     async ({ params: { otherId } }) => {
       return await BorealisOtherServ.getRecommendations(otherId)
@@ -295,5 +378,6 @@ export const borealisOther = new Elysia({ prefix: '/borealis/other' })
   .use(routes1)
   .use(routes2)
   .use(routes3)
+  .use(routes4)
 
 export default borealisOther

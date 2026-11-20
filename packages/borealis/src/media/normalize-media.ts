@@ -72,8 +72,11 @@ export function toNormalizedMediaOverview(
     externalLinks,
     sources: r.sources ?? null,
     characters: r.characters ?? [],
-    staff: [],
-    relations: [],
+    staff: r.staff ?? [],
+    relations: r.relations ?? [],
+    creatorId: r.creatorId ?? r.creator?.id ?? null,
+    creatorUsername: r.creatorUsername ?? r.creator?.username ?? null,
+    creatorDisplayName: r.creatorDisplayName ?? r.creator?.displayName ?? null,
     updatedAt: r.updatedAt,
   } as NormalizedMediaData
 }

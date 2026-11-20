@@ -9,6 +9,7 @@ import {
   IconUserHeart,
   IconUserCheck,
   IconBuildingSkyscraper,
+  IconCategory,
 } from "@tabler/icons-react"
 
 export type DiscoverCategory =
@@ -19,6 +20,7 @@ export type DiscoverCategory =
   | "games"
   | "books"
   | "music"
+  | "other"
   | "characters"
   | "staff"
   | "studios"
@@ -143,6 +145,15 @@ export const DISCOVER_MEDIA_METAS: DiscoverMediaMeta[] = [
       "Listen to trending audio tracks, acclaimed studio albums, and chart hits.",
     href: "/borealis/discover/music",
     icon: IconMusic,
+  },
+  {
+    key: "other",
+    label: "Other",
+    singularLabel: "Other",
+    description:
+      "Discover community-created custom items across all formats.",
+    href: "/borealis/discover/other",
+    icon: IconCategory,
   },
   {
     key: "characters",

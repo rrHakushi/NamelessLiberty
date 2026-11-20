@@ -204,8 +204,44 @@
       "model": "Other",
       "namespace": "public"
     },
+    "OtherCharacter": {
+      "model": "OtherCharacter",
+      "namespace": "public"
+    },
+    "OtherEpisode": {
+      "model": "OtherEpisode",
+      "namespace": "public"
+    },
+    "OtherGenre": {
+      "model": "OtherGenre",
+      "namespace": "public"
+    },
     "OtherList": {
       "model": "OtherList",
+      "namespace": "public"
+    },
+    "OtherRelation": {
+      "model": "OtherRelation",
+      "namespace": "public"
+    },
+    "OtherSeason": {
+      "model": "OtherSeason",
+      "namespace": "public"
+    },
+    "OtherStaff": {
+      "model": "OtherStaff",
+      "namespace": "public"
+    },
+    "OtherStudio": {
+      "model": "OtherStudio",
+      "namespace": "public"
+    },
+    "OtherTag": {
+      "model": "OtherTag",
+      "namespace": "public"
+    },
+    "OtherTrack": {
+      "model": "OtherTrack",
       "namespace": "public"
     },
     "PassCipher": {
@@ -5103,6 +5139,21 @@
                   "model": "MediaCharacter",
                   "namespace": "public"
                 }
+              },
+              "otherCharacters": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "characterId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherCharacter",
+                  "namespace": "public"
+                }
               }
             },
             "storage": {
@@ -7650,6 +7701,21 @@
                 },
                 "to": {
                   "model": "MusicGenre",
+                  "namespace": "public"
+                }
+              },
+              "others": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "genreId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherGenre",
                   "namespace": "public"
                 }
               },
@@ -13499,6 +13565,68 @@
           },
           "Other": {
             "fields": {
+              "ageRating": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "ageRatingGuide": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "albumType": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "artist": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "artistPersonId": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "artists": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "audioPreviewUrl": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "authors": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
               "averageScore": {
                 "nullable": true,
                 "type": {
@@ -13506,7 +13634,76 @@
                   "kind": "scalar"
                 }
               },
+              "awards": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
               "bannerImage": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "bpm": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/float8@1",
+                  "kind": "scalar"
+                }
+              },
+              "broadcastDays": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "broadcastTime": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "budget": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/float8@1",
+                  "kind": "scalar"
+                }
+              },
+              "buyLink": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "chapterCount": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "controllerSupport": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "countryOfOrigin": {
                 "nullable": true,
                 "type": {
                   "codecId": "pg/text@1",
@@ -13534,6 +13731,13 @@
                   "kind": "scalar"
                 }
               },
+              "customFields": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
               "description": {
                 "nullable": true,
                 "type": {
@@ -13541,10 +13745,83 @@
                   "kind": "scalar"
                 }
               },
+              "developers": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "duration": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
               "endDate": {
                 "nullable": true,
                 "type": {
                   "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "endDateDay": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "endDateMonth": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "endDateYear": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "episodeCount": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "episodeDuration": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "esrbRating": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "explicitLyrics": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/bool@1",
+                  "kind": "scalar"
+                }
+              },
+              "externalLinks": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/jsonb@1",
                   "kind": "scalar"
                 }
               },
@@ -13562,10 +13839,48 @@
                   "kind": "scalar"
                 }
               },
+              "franchise": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "gain": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/float8@1",
+                  "kind": "scalar"
+                }
+              },
+              "gameModes": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "hashtag": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
               "id": {
                 "nullable": false,
                 "type": {
                   "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "images": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/jsonb@1",
                   "kind": "scalar"
                 }
               },
@@ -13576,10 +13891,134 @@
                   "kind": "scalar"
                 }
               },
+              "infoLink": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "isAdult": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/bool@1",
+                  "kind": "scalar"
+                }
+              },
               "isPublished": {
                 "nullable": false,
                 "type": {
                   "codecId": "pg/bool@1",
+                  "kind": "scalar"
+                }
+              },
+              "isbn10": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "isbn13": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "isrc": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "label": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "languages": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "lyrics": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "networks": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "nextAiringAt": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "nextAiringEpisodeNumber": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "originalLanguage": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "pageCount": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "pegiRating": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "platforms": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "playerPerspectives": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
                   "kind": "scalar"
                 }
               },
@@ -13597,10 +14036,62 @@
                   "kind": "scalar"
                 }
               },
+              "previewLink": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
               "progressFields": {
                 "nullable": false,
                 "type": {
                   "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
+              "publishers": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "requirements": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
+              "retailPrice": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/float8@1",
+                  "kind": "scalar"
+                }
+              },
+              "retailPriceCurrency": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "revenue": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/float8@1",
+                  "kind": "scalar"
+                }
+              },
+              "runtime": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
                   "kind": "scalar"
                 }
               },
@@ -13618,6 +14109,68 @@
                   "kind": "scalar"
                 }
               },
+              "seasonCount": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "seasonSeason": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                },
+                "valueSet": {
+                  "entityKind": "enum",
+                  "entityName": "AnimeSeason",
+                  "namespaceId": "public",
+                  "plane": "domain"
+                }
+              },
+              "seasonYear": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "series": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "seriesPosition": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/float8@1",
+                  "kind": "scalar"
+                }
+              },
+              "showType": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "siteUrl": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "source": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
               "startDate": {
                 "nullable": true,
                 "type": {
@@ -13625,10 +14178,92 @@
                   "kind": "scalar"
                 }
               },
+              "startDateDay": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "startDateMonth": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "startDateYear": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "status": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                },
+                "valueSet": {
+                  "entityKind": "enum",
+                  "entityName": "MediaStatus",
+                  "namespaceId": "public",
+                  "plane": "domain"
+                }
+              },
               "statusDistribution": {
                 "nullable": false,
                 "type": {
                   "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
+              "subjects": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "syncedLyrics": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "synonyms": {
+                "many": {
+                  "elementNullable": false
+                },
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "tagline": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "themeSongs": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
+              "titleNative": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
                   "kind": "scalar"
                 }
               },
@@ -13653,15 +14288,67 @@
                   "kind": "scalar"
                 }
               },
+              "totalTracks": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "trailers": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
               "updatedAt": {
                 "nullable": false,
                 "type": {
                   "codecId": "pg/timestamptz-date@1",
                   "kind": "scalar"
                 }
+              },
+              "volumeCount": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
               }
             },
             "relations": {
+              "artistPerson": {
+                "cardinality": "N:1",
+                "nullable": true,
+                "on": {
+                  "localFields": [
+                    "artistPersonId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Person",
+                  "namespace": "public"
+                }
+              },
+              "characters": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "otherId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherCharacter",
+                  "namespace": "public"
+                }
+              },
               "creator": {
                 "cardinality": "N:1",
                 "nullable": false,
@@ -13693,6 +14380,126 @@
                   "namespace": "public"
                 }
               },
+              "episodes": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "otherId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherEpisode",
+                  "namespace": "public"
+                }
+              },
+              "genres": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "otherId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherGenre",
+                  "namespace": "public"
+                }
+              },
+              "relations": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "otherId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherRelation",
+                  "namespace": "public"
+                }
+              },
+              "seasons": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "otherId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherSeason",
+                  "namespace": "public"
+                }
+              },
+              "staff": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "otherId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherStaff",
+                  "namespace": "public"
+                }
+              },
+              "studios": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "otherId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherStudio",
+                  "namespace": "public"
+                }
+              },
+              "tags": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "otherId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherTag",
+                  "namespace": "public"
+                }
+              },
+              "tracks": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "otherId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherTrack",
+                  "namespace": "public"
+                }
+              },
               "userLists": {
                 "cardinality": "1:N",
                 "on": {
@@ -13711,11 +14518,62 @@
             },
             "storage": {
               "fields": {
+                "ageRating": {
+                  "column": "ageRating"
+                },
+                "ageRatingGuide": {
+                  "column": "ageRatingGuide"
+                },
+                "albumType": {
+                  "column": "albumType"
+                },
+                "artist": {
+                  "column": "artist"
+                },
+                "artistPersonId": {
+                  "column": "artistPersonId"
+                },
+                "artists": {
+                  "column": "artists"
+                },
+                "audioPreviewUrl": {
+                  "column": "audioPreviewUrl"
+                },
+                "authors": {
+                  "column": "authors"
+                },
                 "averageScore": {
                   "column": "averageScore"
                 },
+                "awards": {
+                  "column": "awards"
+                },
                 "bannerImage": {
                   "column": "bannerImage"
+                },
+                "bpm": {
+                  "column": "bpm"
+                },
+                "broadcastDays": {
+                  "column": "broadcastDays"
+                },
+                "broadcastTime": {
+                  "column": "broadcastTime"
+                },
+                "budget": {
+                  "column": "budget"
+                },
+                "buyLink": {
+                  "column": "buyLink"
+                },
+                "chapterCount": {
+                  "column": "chapterCount"
+                },
+                "controllerSupport": {
+                  "column": "controllerSupport"
+                },
+                "countryOfOrigin": {
+                  "column": "countryOfOrigin"
                 },
                 "coverImage": {
                   "column": "coverImage"
@@ -13726,11 +14584,44 @@
                 "creatorId": {
                   "column": "creatorId"
                 },
+                "customFields": {
+                  "column": "customFields"
+                },
                 "description": {
                   "column": "description"
                 },
+                "developers": {
+                  "column": "developers"
+                },
+                "duration": {
+                  "column": "duration"
+                },
                 "endDate": {
                   "column": "endDate"
+                },
+                "endDateDay": {
+                  "column": "endDateDay"
+                },
+                "endDateMonth": {
+                  "column": "endDateMonth"
+                },
+                "endDateYear": {
+                  "column": "endDateYear"
+                },
+                "episodeCount": {
+                  "column": "episodeCount"
+                },
+                "episodeDuration": {
+                  "column": "episodeDuration"
+                },
+                "esrbRating": {
+                  "column": "esrbRating"
+                },
+                "explicitLyrics": {
+                  "column": "explicitLyrics"
+                },
+                "externalLinks": {
+                  "column": "externalLinks"
                 },
                 "favorites": {
                   "column": "favorites"
@@ -13738,14 +14629,77 @@
                 "format": {
                   "column": "format"
                 },
+                "franchise": {
+                  "column": "franchise"
+                },
+                "gain": {
+                  "column": "gain"
+                },
+                "gameModes": {
+                  "column": "gameModes"
+                },
+                "hashtag": {
+                  "column": "hashtag"
+                },
                 "id": {
                   "column": "id"
+                },
+                "images": {
+                  "column": "images"
                 },
                 "incrementFieldKey": {
                   "column": "incrementFieldKey"
                 },
+                "infoLink": {
+                  "column": "infoLink"
+                },
+                "isAdult": {
+                  "column": "isAdult"
+                },
                 "isPublished": {
                   "column": "isPublished"
+                },
+                "isbn10": {
+                  "column": "isbn10"
+                },
+                "isbn13": {
+                  "column": "isbn13"
+                },
+                "isrc": {
+                  "column": "isrc"
+                },
+                "label": {
+                  "column": "label"
+                },
+                "languages": {
+                  "column": "languages"
+                },
+                "lyrics": {
+                  "column": "lyrics"
+                },
+                "networks": {
+                  "column": "networks"
+                },
+                "nextAiringAt": {
+                  "column": "nextAiringAt"
+                },
+                "nextAiringEpisodeNumber": {
+                  "column": "nextAiringEpisodeNumber"
+                },
+                "originalLanguage": {
+                  "column": "originalLanguage"
+                },
+                "pageCount": {
+                  "column": "pageCount"
+                },
+                "pegiRating": {
+                  "column": "pegiRating"
+                },
+                "platforms": {
+                  "column": "platforms"
+                },
+                "playerPerspectives": {
+                  "column": "playerPerspectives"
                 },
                 "popularity": {
                   "column": "popularity"
@@ -13753,8 +14707,29 @@
                 "preUpdateSnapshot": {
                   "column": "preUpdateSnapshot"
                 },
+                "previewLink": {
+                  "column": "previewLink"
+                },
                 "progressFields": {
                   "column": "progressFields"
+                },
+                "publishers": {
+                  "column": "publishers"
+                },
+                "requirements": {
+                  "column": "requirements"
+                },
+                "retailPrice": {
+                  "column": "retailPrice"
+                },
+                "retailPriceCurrency": {
+                  "column": "retailPriceCurrency"
+                },
+                "revenue": {
+                  "column": "revenue"
+                },
+                "runtime": {
+                  "column": "runtime"
                 },
                 "scoreDistribution": {
                   "column": "scoreDistribution"
@@ -13762,11 +14737,65 @@
                 "scoredCount": {
                   "column": "scoredCount"
                 },
+                "seasonCount": {
+                  "column": "seasonCount"
+                },
+                "seasonSeason": {
+                  "column": "seasonSeason"
+                },
+                "seasonYear": {
+                  "column": "seasonYear"
+                },
+                "series": {
+                  "column": "series"
+                },
+                "seriesPosition": {
+                  "column": "seriesPosition"
+                },
+                "showType": {
+                  "column": "showType"
+                },
+                "siteUrl": {
+                  "column": "siteUrl"
+                },
+                "source": {
+                  "column": "source"
+                },
                 "startDate": {
                   "column": "startDate"
                 },
+                "startDateDay": {
+                  "column": "startDateDay"
+                },
+                "startDateMonth": {
+                  "column": "startDateMonth"
+                },
+                "startDateYear": {
+                  "column": "startDateYear"
+                },
+                "status": {
+                  "column": "status"
+                },
                 "statusDistribution": {
                   "column": "statusDistribution"
+                },
+                "subjects": {
+                  "column": "subjects"
+                },
+                "syncedLyrics": {
+                  "column": "syncedLyrics"
+                },
+                "synonyms": {
+                  "column": "synonyms"
+                },
+                "tagline": {
+                  "column": "tagline"
+                },
+                "themeSongs": {
+                  "column": "themeSongs"
+                },
+                "titleNative": {
+                  "column": "titleNative"
                 },
                 "titlePrimary": {
                   "column": "titlePrimary"
@@ -13777,12 +14806,365 @@
                 "totalScoreSum": {
                   "column": "totalScoreSum"
                 },
+                "totalTracks": {
+                  "column": "totalTracks"
+                },
+                "trailers": {
+                  "column": "trailers"
+                },
                 "updatedAt": {
                   "column": "updatedAt"
+                },
+                "volumeCount": {
+                  "column": "volumeCount"
                 }
               },
               "namespaceId": "public",
               "table": "Other"
+            }
+          },
+          "OtherCharacter": {
+            "fields": {
+              "actorId": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "characterId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "order": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "otherId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "role": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                },
+                "valueSet": {
+                  "entityKind": "enum",
+                  "entityName": "CharacterRole",
+                  "namespaceId": "public",
+                  "plane": "domain"
+                }
+              }
+            },
+            "relations": {
+              "actor": {
+                "cardinality": "N:1",
+                "nullable": true,
+                "on": {
+                  "localFields": [
+                    "actorId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Person",
+                  "namespace": "public"
+                }
+              },
+              "character": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "characterId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Character",
+                  "namespace": "public"
+                }
+              },
+              "other": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "otherId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Other",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "actorId": {
+                  "column": "actorId"
+                },
+                "characterId": {
+                  "column": "characterId"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "order": {
+                  "column": "order"
+                },
+                "otherId": {
+                  "column": "otherId"
+                },
+                "role": {
+                  "column": "role"
+                }
+              },
+              "namespaceId": "public",
+              "table": "OtherCharacter"
+            }
+          },
+          "OtherEpisode": {
+            "fields": {
+              "airDate": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "episodeNumber": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "episodeType": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "name": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "otherId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "overview": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "runtime": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "seasonId": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "seasonNumber": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "stillPath": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "other": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "otherId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Other",
+                  "namespace": "public"
+                }
+              },
+              "season": {
+                "cardinality": "N:1",
+                "nullable": true,
+                "on": {
+                  "localFields": [
+                    "seasonId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "OtherSeason",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "airDate": {
+                  "column": "airDate"
+                },
+                "episodeNumber": {
+                  "column": "episodeNumber"
+                },
+                "episodeType": {
+                  "column": "episodeType"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "name": {
+                  "column": "name"
+                },
+                "otherId": {
+                  "column": "otherId"
+                },
+                "overview": {
+                  "column": "overview"
+                },
+                "runtime": {
+                  "column": "runtime"
+                },
+                "seasonId": {
+                  "column": "seasonId"
+                },
+                "seasonNumber": {
+                  "column": "seasonNumber"
+                },
+                "stillPath": {
+                  "column": "stillPath"
+                }
+              },
+              "namespaceId": "public",
+              "table": "OtherEpisode"
+            }
+          },
+          "OtherGenre": {
+            "fields": {
+              "genreId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "otherId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "genre": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "genreId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Genre",
+                  "namespace": "public"
+                }
+              },
+              "other": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "otherId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Other",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "genreId": {
+                  "column": "genreId"
+                },
+                "otherId": {
+                  "column": "otherId"
+                }
+              },
+              "namespaceId": "public",
+              "table": "OtherGenre"
             }
           },
           "OtherList": {
@@ -13804,7 +15186,7 @@
               "id": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/int4@1",
+                  "codecId": "pg/text@1",
                   "kind": "scalar"
                 }
               },
@@ -13846,6 +15228,20 @@
                 "nullable": false,
                 "type": {
                   "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
+              "rewatchHistory": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
+              "rewatched": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
                   "kind": "scalar"
                 }
               },
@@ -13951,6 +15347,12 @@
                 "progressValues": {
                   "column": "progressValues"
                 },
+                "rewatchHistory": {
+                  "column": "rewatchHistory"
+                },
+                "rewatched": {
+                  "column": "rewatched"
+                },
                 "score": {
                   "column": "score"
                 },
@@ -13969,6 +15371,625 @@
               },
               "namespaceId": "public",
               "table": "OtherList"
+            }
+          },
+          "OtherRelation": {
+            "fields": {
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "otherId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "relationType": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "targetId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "targetType": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                },
+                "valueSet": {
+                  "entityKind": "enum",
+                  "entityName": "MediaType",
+                  "namespaceId": "public",
+                  "plane": "domain"
+                }
+              }
+            },
+            "relations": {
+              "other": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "otherId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Other",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "id": {
+                  "column": "id"
+                },
+                "otherId": {
+                  "column": "otherId"
+                },
+                "relationType": {
+                  "column": "relationType"
+                },
+                "targetId": {
+                  "column": "targetId"
+                },
+                "targetType": {
+                  "column": "targetType"
+                }
+              },
+              "namespaceId": "public",
+              "table": "OtherRelation"
+            }
+          },
+          "OtherSeason": {
+            "fields": {
+              "airDate": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "kind": "scalar"
+                }
+              },
+              "episodeCount": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "name": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "otherId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "overview": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "posterPath": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "seasonNumber": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "episodes": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "seasonId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherEpisode",
+                  "namespace": "public"
+                }
+              },
+              "other": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "otherId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Other",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "airDate": {
+                  "column": "airDate"
+                },
+                "episodeCount": {
+                  "column": "episodeCount"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "name": {
+                  "column": "name"
+                },
+                "otherId": {
+                  "column": "otherId"
+                },
+                "overview": {
+                  "column": "overview"
+                },
+                "posterPath": {
+                  "column": "posterPath"
+                },
+                "seasonNumber": {
+                  "column": "seasonNumber"
+                }
+              },
+              "namespaceId": "public",
+              "table": "OtherSeason"
+            }
+          },
+          "OtherStaff": {
+            "fields": {
+              "customRole": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "otherId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "personId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "role": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                },
+                "valueSet": {
+                  "entityKind": "enum",
+                  "entityName": "StaffRole",
+                  "namespaceId": "public",
+                  "plane": "domain"
+                }
+              }
+            },
+            "relations": {
+              "other": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "otherId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Other",
+                  "namespace": "public"
+                }
+              },
+              "person": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "personId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Person",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "customRole": {
+                  "column": "customRole"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "otherId": {
+                  "column": "otherId"
+                },
+                "personId": {
+                  "column": "personId"
+                },
+                "role": {
+                  "column": "role"
+                }
+              },
+              "namespaceId": "public",
+              "table": "OtherStaff"
+            }
+          },
+          "OtherStudio": {
+            "fields": {
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "isMain": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/bool@1",
+                  "kind": "scalar"
+                }
+              },
+              "otherId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "studioId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "other": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "otherId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Other",
+                  "namespace": "public"
+                }
+              },
+              "studio": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "studioId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Studio",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "id": {
+                  "column": "id"
+                },
+                "isMain": {
+                  "column": "isMain"
+                },
+                "otherId": {
+                  "column": "otherId"
+                },
+                "studioId": {
+                  "column": "studioId"
+                }
+              },
+              "namespaceId": "public",
+              "table": "OtherStudio"
+            }
+          },
+          "OtherTag": {
+            "fields": {
+              "isSpoiler": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/bool@1",
+                  "kind": "scalar"
+                }
+              },
+              "otherId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "rank": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "tagId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "other": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "otherId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Other",
+                  "namespace": "public"
+                }
+              },
+              "tag": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "tagId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Tag",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "isSpoiler": {
+                  "column": "isSpoiler"
+                },
+                "otherId": {
+                  "column": "otherId"
+                },
+                "rank": {
+                  "column": "rank"
+                },
+                "tagId": {
+                  "column": "tagId"
+                }
+              },
+              "namespaceId": "public",
+              "table": "OtherTag"
+            }
+          },
+          "OtherTrack": {
+            "fields": {
+              "artistName": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "artistPersonId": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "audioPreviewUrl": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "discNumber": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "duration": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "explicitLyrics": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/bool@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "otherId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "titlePrimary": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "trackNumber": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "artistPerson": {
+                "cardinality": "N:1",
+                "nullable": true,
+                "on": {
+                  "localFields": [
+                    "artistPersonId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Person",
+                  "namespace": "public"
+                }
+              },
+              "other": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "otherId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Other",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "artistName": {
+                  "column": "artistName"
+                },
+                "artistPersonId": {
+                  "column": "artistPersonId"
+                },
+                "audioPreviewUrl": {
+                  "column": "audioPreviewUrl"
+                },
+                "discNumber": {
+                  "column": "discNumber"
+                },
+                "duration": {
+                  "column": "duration"
+                },
+                "explicitLyrics": {
+                  "column": "explicitLyrics"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "otherId": {
+                  "column": "otherId"
+                },
+                "titlePrimary": {
+                  "column": "titlePrimary"
+                },
+                "trackNumber": {
+                  "column": "trackNumber"
+                }
+              },
+              "namespaceId": "public",
+              "table": "OtherTrack"
             }
           },
           "PassCipher": {
@@ -14560,6 +16581,66 @@
                 },
                 "to": {
                   "model": "Music",
+                  "namespace": "public"
+                }
+              },
+              "otherArtistItems": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "artistPersonId"
+                  ]
+                },
+                "to": {
+                  "model": "Other",
+                  "namespace": "public"
+                }
+              },
+              "otherStaff": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "personId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherStaff",
+                  "namespace": "public"
+                }
+              },
+              "otherTracks": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "artistPersonId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherTrack",
+                  "namespace": "public"
+                }
+              },
+              "otherVoicedCharacters": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "actorId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherCharacter",
                   "namespace": "public"
                 }
               },
@@ -15849,6 +17930,21 @@
                   "model": "MediaStudio",
                   "namespace": "public"
                 }
+              },
+              "otherStudios": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "studioId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherStudio",
+                  "namespace": "public"
+                }
               }
             },
             "storage": {
@@ -16040,6 +18136,21 @@
                 },
                 "to": {
                   "model": "MusicTag",
+                  "namespace": "public"
+                }
+              },
+              "others": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "tagId"
+                  ]
+                },
+                "to": {
+                  "model": "OtherTag",
                   "namespace": "public"
                 }
               },
@@ -29631,13 +31742,203 @@
               ]
             },
             "Other": {
+              "checks": [
+                {
+                  "expression": "array_position(\"artists\", NULL) IS NULL",
+                  "name": "Other_artists_elem_not_null_4e4db46e",
+                  "prefix": "Other_artists_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"authors\", NULL) IS NULL",
+                  "name": "Other_authors_elem_not_null_2033f92a",
+                  "prefix": "Other_authors_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"awards\", NULL) IS NULL",
+                  "name": "Other_awards_elem_not_null_2c73d5dc",
+                  "prefix": "Other_awards_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"broadcastDays\", NULL) IS NULL",
+                  "name": "Other_broadcastDays_elem_not_null_5dd622b6",
+                  "prefix": "Other_broadcastDays_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"developers\", NULL) IS NULL",
+                  "name": "Other_developers_elem_not_null_1e5704c0",
+                  "prefix": "Other_developers_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"gameModes\", NULL) IS NULL",
+                  "name": "Other_gameModes_elem_not_null_3bf04981",
+                  "prefix": "Other_gameModes_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"languages\", NULL) IS NULL",
+                  "name": "Other_languages_elem_not_null_d4aa0a00",
+                  "prefix": "Other_languages_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"networks\", NULL) IS NULL",
+                  "name": "Other_networks_elem_not_null_a20a6562",
+                  "prefix": "Other_networks_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"platforms\", NULL) IS NULL",
+                  "name": "Other_platforms_elem_not_null_53a1bdb5",
+                  "prefix": "Other_platforms_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"playerPerspectives\", NULL) IS NULL",
+                  "name": "Other_playerPerspectives_elem_not_null_56fa4c4a",
+                  "prefix": "Other_playerPerspectives_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"publishers\", NULL) IS NULL",
+                  "name": "Other_publishers_elem_not_null_9efe1e7e",
+                  "prefix": "Other_publishers_elem_not_null"
+                },
+                {
+                  "expression": "\"seasonSeason\" IN ('WINTER', 'SPRING', 'SUMMER', 'FALL', 'UNKNOWN')",
+                  "name": "Other_seasonSeason_check_e97d8350",
+                  "prefix": "Other_seasonSeason_check"
+                },
+                {
+                  "expression": "\"status\" IN ('RELEASED', 'RELEASING', 'UPCOMING', 'CANCELLED', 'HIATUS', 'UNKNOWN')",
+                  "name": "Other_status_check_645a4e8b",
+                  "prefix": "Other_status_check"
+                },
+                {
+                  "expression": "array_position(\"subjects\", NULL) IS NULL",
+                  "name": "Other_subjects_elem_not_null_ce05f898",
+                  "prefix": "Other_subjects_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"synonyms\", NULL) IS NULL",
+                  "name": "Other_synonyms_elem_not_null_1b00b9ae",
+                  "prefix": "Other_synonyms_elem_not_null"
+                }
+              ],
               "columns": {
+                "ageRating": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "ageRatingGuide": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "albumType": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "artist": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "artistPersonId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "artists": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "audioPreviewUrl": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "authors": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
                 "averageScore": {
                   "codecId": "pg/float8@1",
                   "dataType": "pg/float8",
                   "nullable": true
                 },
+                "awards": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
                 "bannerImage": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "bpm": {
+                  "codecId": "pg/float8@1",
+                  "dataType": "pg/float8",
+                  "nullable": true
+                },
+                "broadcastDays": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "broadcastTime": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "budget": {
+                  "codecId": "pg/float8@1",
+                  "dataType": "pg/float8",
+                  "nullable": true
+                },
+                "buyLink": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "chapterCount": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "controllerSupport": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "countryOfOrigin": {
                   "codecId": "pg/text@1",
                   "dataType": "pg/text",
                   "nullable": true
@@ -29661,14 +31962,84 @@
                   "dataType": "pg/text",
                   "nullable": false
                 },
+                "customFields": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "nullable": false
+                },
                 "description": {
                   "codecId": "pg/text@1",
                   "dataType": "pg/text",
                   "nullable": true
                 },
+                "developers": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "duration": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
                 "endDate": {
                   "codecId": "pg/timestamptz-date@1",
                   "dataType": "pg/timestamptz",
+                  "nullable": true
+                },
+                "endDateDay": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "endDateMonth": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "endDateYear": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "episodeCount": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "episodeDuration": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "esrbRating": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "explicitLyrics": {
+                  "codecId": "pg/bool@1",
+                  "dataType": "pg/bool",
+                  "default": {
+                    "kind": "literal",
+                    "value": false
+                  },
+                  "nullable": false
+                },
+                "externalLinks": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
                   "nullable": true
                 },
                 "favorites": {
@@ -29685,6 +32056,33 @@
                   "dataType": "pg/text",
                   "nullable": true
                 },
+                "franchise": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "gain": {
+                  "codecId": "pg/float8@1",
+                  "dataType": "pg/float8",
+                  "nullable": true
+                },
+                "gameModes": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "hashtag": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
                 "id": {
                   "codecId": "pg/int4@1",
                   "dataType": "pg/int4",
@@ -29694,10 +32092,29 @@
                   },
                   "nullable": false
                 },
+                "images": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
+                  "nullable": true
+                },
                 "incrementFieldKey": {
                   "codecId": "pg/text@1",
                   "dataType": "pg/text",
                   "nullable": true
+                },
+                "infoLink": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "isAdult": {
+                  "codecId": "pg/bool@1",
+                  "dataType": "pg/bool",
+                  "default": {
+                    "kind": "literal",
+                    "value": false
+                  },
+                  "nullable": false
                 },
                 "isPublished": {
                   "codecId": "pg/bool@1",
@@ -29705,6 +32122,104 @@
                   "default": {
                     "kind": "literal",
                     "value": false
+                  },
+                  "nullable": false
+                },
+                "isbn10": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "isbn13": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "isrc": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "label": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "languages": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "lyrics": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "networks": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "nextAiringAt": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "nullable": true
+                },
+                "nextAiringEpisodeNumber": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "originalLanguage": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "pageCount": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "pegiRating": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "platforms": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "playerPerspectives": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
                   },
                   "nullable": false
                 },
@@ -29722,6 +32237,11 @@
                   "dataType": "pg/jsonb",
                   "nullable": true
                 },
+                "previewLink": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
                 "progressFields": {
                   "codecId": "pg/jsonb@1",
                   "dataType": "pg/jsonb",
@@ -29730,6 +32250,43 @@
                     "value": []
                   },
                   "nullable": false
+                },
+                "publishers": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "requirements": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
+                  "nullable": true
+                },
+                "retailPrice": {
+                  "codecId": "pg/float8@1",
+                  "dataType": "pg/float8",
+                  "nullable": true
+                },
+                "retailPriceCurrency": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "revenue": {
+                  "codecId": "pg/float8@1",
+                  "dataType": "pg/float8",
+                  "nullable": true
+                },
+                "runtime": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
                 },
                 "scoreDistribution": {
                   "codecId": "pg/jsonb@1",
@@ -29745,10 +32302,86 @@
                   "dataType": "pg/int4",
                   "nullable": true
                 },
+                "seasonCount": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "seasonSeason": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true,
+                  "valueSet": {
+                    "entityKind": "valueSet",
+                    "entityName": "AnimeSeason",
+                    "namespaceId": "public",
+                    "plane": "storage"
+                  }
+                },
+                "seasonYear": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "series": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "seriesPosition": {
+                  "codecId": "pg/float8@1",
+                  "dataType": "pg/float8",
+                  "nullable": true
+                },
+                "showType": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "siteUrl": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "source": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
                 "startDate": {
                   "codecId": "pg/timestamptz-date@1",
                   "dataType": "pg/timestamptz",
                   "nullable": true
+                },
+                "startDateDay": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "startDateMonth": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "startDateYear": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "status": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": "UNKNOWN"
+                  },
+                  "nullable": false,
+                  "valueSet": {
+                    "entityKind": "valueSet",
+                    "entityName": "MediaStatus",
+                    "namespaceId": "public",
+                    "plane": "storage"
+                  }
                 },
                 "statusDistribution": {
                   "codecId": "pg/jsonb@1",
@@ -29758,6 +32391,50 @@
                     "value": {}
                   },
                   "nullable": false
+                },
+                "subjects": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "syncedLyrics": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "synonyms": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": []
+                  },
+                  "many": {
+                    "elementNullable": false
+                  },
+                  "nullable": false
+                },
+                "tagline": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "themeSongs": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
+                  "nullable": true
+                },
+                "titleNative": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
                 },
                 "titlePrimary": {
                   "codecId": "pg/text@1",
@@ -29774,10 +32451,25 @@
                   "dataType": "pg/int4",
                   "nullable": true
                 },
+                "totalTracks": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "trailers": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
+                  "nullable": true
+                },
                 "updatedAt": {
                   "codecId": "pg/timestamptz-date@1",
                   "dataType": "pg/timestamptz",
                   "nullable": false
+                },
+                "volumeCount": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
                 }
               },
               "foreignKeys": [
@@ -29800,9 +32492,37 @@
                     "namespaceId": "public",
                     "tableName": "User"
                   }
+                },
+                {
+                  "index": {
+                    "name": "Other_artistPersonId_idx_c9d1b42c"
+                  },
+                  "onDelete": "setNull",
+                  "source": {
+                    "columns": [
+                      "artistPersonId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Other"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Person"
+                  }
                 }
               ],
               "indexes": [
+                {
+                  "columns": [
+                    "artistPersonId"
+                  ],
+                  "name": "Other_artistPersonId_idx_c9d1b42c",
+                  "prefix": "Other_artistPersonId_idx",
+                  "unique": false
+                },
                 {
                   "columns": [
                     "averageScore"
@@ -29817,6 +32537,14 @@
                   ],
                   "name": "Other_creatorId_idx_3a77d800",
                   "prefix": "Other_creatorId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "format"
+                  ],
+                  "name": "Other_format_idx_8b879d33",
+                  "prefix": "Other_format_idx",
                   "unique": false
                 },
                 {
@@ -29837,6 +32565,22 @@
                 },
                 {
                   "columns": [
+                    "startDateYear"
+                  ],
+                  "name": "Other_startDateYear_idx_51822d55",
+                  "prefix": "Other_startDateYear_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "status"
+                  ],
+                  "name": "Other_status_idx_e98638ab",
+                  "prefix": "Other_status_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
                     "titlePrimary"
                   ],
                   "name": "Other_titlePrimary_idx_c2d2a137",
@@ -29847,6 +32591,373 @@
               "primaryKey": {
                 "columns": [
                   "id"
+                ]
+              },
+              "uniques": []
+            },
+            "OtherCharacter": {
+              "checks": [
+                {
+                  "expression": "\"role\" IN ('MAIN', 'SUPPORTING', 'BACKGROUND')",
+                  "name": "OtherCharacter_role_check_0b01f89a",
+                  "prefix": "OtherCharacter_role_check"
+                }
+              ],
+              "columns": {
+                "actorId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "characterId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "id": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "default": {
+                    "expression": "autoincrement()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                },
+                "order": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "otherId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "role": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": "MAIN"
+                  },
+                  "nullable": false,
+                  "valueSet": {
+                    "entityKind": "valueSet",
+                    "entityName": "CharacterRole",
+                    "namespaceId": "public",
+                    "plane": "storage"
+                  }
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "OtherCharacter_otherId_idx_ec5479b3"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "otherId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherCharacter"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Other"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "OtherCharacter_characterId_idx_2423fe9d"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "characterId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherCharacter"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Character"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "OtherCharacter_actorId_idx_a58f6b4b"
+                  },
+                  "onDelete": "setNull",
+                  "source": {
+                    "columns": [
+                      "actorId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherCharacter"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Person"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "actorId"
+                  ],
+                  "name": "OtherCharacter_actorId_idx_a58f6b4b",
+                  "prefix": "OtherCharacter_actorId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "characterId"
+                  ],
+                  "name": "OtherCharacter_characterId_idx_2423fe9d",
+                  "prefix": "OtherCharacter_characterId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "otherId"
+                  ],
+                  "name": "OtherCharacter_otherId_idx_ec5479b3",
+                  "prefix": "OtherCharacter_otherId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": [
+                {
+                  "columns": [
+                    "otherId",
+                    "characterId",
+                    "actorId"
+                  ]
+                }
+              ]
+            },
+            "OtherEpisode": {
+              "columns": {
+                "airDate": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "nullable": true
+                },
+                "episodeNumber": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "episodeType": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "id": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "default": {
+                    "expression": "autoincrement()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                },
+                "name": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "otherId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "overview": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "runtime": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "seasonId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "seasonNumber": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "stillPath": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "OtherEpisode_otherId_idx_ec5479b3"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "otherId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherEpisode"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Other"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "OtherEpisode_seasonId_idx_aa50cbae"
+                  },
+                  "onDelete": "setNull",
+                  "source": {
+                    "columns": [
+                      "seasonId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherEpisode"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherSeason"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "otherId"
+                  ],
+                  "name": "OtherEpisode_otherId_idx_ec5479b3",
+                  "prefix": "OtherEpisode_otherId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "seasonId"
+                  ],
+                  "name": "OtherEpisode_seasonId_idx_aa50cbae",
+                  "prefix": "OtherEpisode_seasonId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": []
+            },
+            "OtherGenre": {
+              "columns": {
+                "genreId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "otherId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "OtherGenre_otherId_idx_ec5479b3"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "otherId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherGenre"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Other"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "OtherGenre_genreId_idx_8fce6a7b"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "genreId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherGenre"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Genre"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "genreId"
+                  ],
+                  "name": "OtherGenre_genreId_idx_8fce6a7b",
+                  "prefix": "OtherGenre_genreId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "otherId"
+                  ],
+                  "name": "OtherGenre_otherId_idx_ec5479b3",
+                  "prefix": "OtherGenre_otherId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "otherId",
+                  "genreId"
                 ]
               },
               "uniques": []
@@ -29880,12 +32991,8 @@
                   "nullable": false
                 },
                 "id": {
-                  "codecId": "pg/int4@1",
-                  "dataType": "pg/int4",
-                  "default": {
-                    "expression": "autoincrement()",
-                    "kind": "function"
-                  },
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
                   "nullable": false
                 },
                 "notes": {
@@ -29928,6 +33035,20 @@
                   "default": {
                     "kind": "literal",
                     "value": {}
+                  },
+                  "nullable": false
+                },
+                "rewatchHistory": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
+                  "nullable": true
+                },
+                "rewatched": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "default": {
+                    "kind": "literal",
+                    "value": 0
                   },
                   "nullable": false
                 },
@@ -30020,36 +33141,10 @@
                 },
                 {
                   "columns": [
-                    "status"
-                  ],
-                  "name": "OtherList_status_idx_e98638ab",
-                  "prefix": "OtherList_status_idx",
-                  "unique": false
-                },
-                {
-                  "columns": [
                     "userId"
                   ],
                   "name": "OtherList_userId_idx_a489d58a",
                   "prefix": "OtherList_userId_idx",
-                  "unique": false
-                },
-                {
-                  "columns": [
-                    "userId",
-                    "priority"
-                  ],
-                  "name": "OtherList_userId_priority_idx_48571828",
-                  "prefix": "OtherList_userId_priority_idx",
-                  "unique": false
-                },
-                {
-                  "columns": [
-                    "userId",
-                    "score"
-                  ],
-                  "name": "OtherList_userId_score_idx_5e26db88",
-                  "prefix": "OtherList_userId_score_idx",
                   "unique": false
                 },
                 {
@@ -30075,6 +33170,657 @@
                   ]
                 }
               ]
+            },
+            "OtherRelation": {
+              "checks": [
+                {
+                  "expression": "\"targetType\" IN ('ANIME', 'MANGA', 'MOVIE', 'TV', 'GAME', 'BOOK', 'MUSIC', 'MUSIC_ALBUM', 'MUSIC_TRACK', 'OTHER', 'UNKNOWN')",
+                  "name": "OtherRelation_targetType_check_45a45c57",
+                  "prefix": "OtherRelation_targetType_check"
+                }
+              ],
+              "columns": {
+                "id": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "default": {
+                    "expression": "autoincrement()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                },
+                "otherId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "relationType": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "targetId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "targetType": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false,
+                  "valueSet": {
+                    "entityKind": "valueSet",
+                    "entityName": "MediaType",
+                    "namespaceId": "public",
+                    "plane": "storage"
+                  }
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "OtherRelation_otherId_idx_ec5479b3"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "otherId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherRelation"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Other"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "otherId"
+                  ],
+                  "name": "OtherRelation_otherId_idx_ec5479b3",
+                  "prefix": "OtherRelation_otherId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "targetType",
+                    "targetId"
+                  ],
+                  "name": "OtherRelation_targetType_targetId_idx_7a5ee9cb",
+                  "prefix": "OtherRelation_targetType_targetId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": [
+                {
+                  "columns": [
+                    "otherId",
+                    "targetType",
+                    "targetId",
+                    "relationType"
+                  ]
+                }
+              ]
+            },
+            "OtherSeason": {
+              "columns": {
+                "airDate": {
+                  "codecId": "pg/timestamptz-date@1",
+                  "dataType": "pg/timestamptz",
+                  "nullable": true
+                },
+                "episodeCount": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "id": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "default": {
+                    "expression": "autoincrement()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                },
+                "name": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "otherId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "overview": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "posterPath": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "seasonNumber": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "OtherSeason_otherId_idx_ec5479b3"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "otherId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherSeason"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Other"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "otherId"
+                  ],
+                  "name": "OtherSeason_otherId_idx_ec5479b3",
+                  "prefix": "OtherSeason_otherId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": [
+                {
+                  "columns": [
+                    "otherId",
+                    "seasonNumber"
+                  ]
+                }
+              ]
+            },
+            "OtherStaff": {
+              "checks": [
+                {
+                  "expression": "\"role\" IN ('DIRECTOR', 'EPISODE_DIRECTOR', 'CHIEF_ANIMATION_DIRECTOR', 'CHARACTER_DESIGN', 'ART_DIRECTOR', 'COMPOSER', 'SOUND_DIRECTOR', 'ORIGINAL_CREATOR', 'SCRIPT', 'KEY_ANIMATION', 'COLOR_DESIGN', 'PRODUCER', 'EXECUTIVE_PRODUCER', 'AUTHOR', 'ILLUSTRATOR', 'CAST', 'ARTIST', 'FEATURED_ARTIST', 'LYRICIST', 'ARRANGER', 'OTHER')",
+                  "name": "OtherStaff_role_check_2993ba42",
+                  "prefix": "OtherStaff_role_check"
+                }
+              ],
+              "columns": {
+                "customRole": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "id": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "default": {
+                    "expression": "autoincrement()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                },
+                "otherId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "personId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "role": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "default": {
+                    "kind": "literal",
+                    "value": "OTHER"
+                  },
+                  "nullable": false,
+                  "valueSet": {
+                    "entityKind": "valueSet",
+                    "entityName": "StaffRole",
+                    "namespaceId": "public",
+                    "plane": "storage"
+                  }
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "OtherStaff_otherId_idx_ec5479b3"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "otherId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherStaff"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Other"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "OtherStaff_personId_idx_e5e06b80"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "personId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherStaff"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Person"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "otherId"
+                  ],
+                  "name": "OtherStaff_otherId_idx_ec5479b3",
+                  "prefix": "OtherStaff_otherId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "personId"
+                  ],
+                  "name": "OtherStaff_personId_idx_e5e06b80",
+                  "prefix": "OtherStaff_personId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": [
+                {
+                  "columns": [
+                    "otherId",
+                    "personId",
+                    "role"
+                  ]
+                }
+              ]
+            },
+            "OtherStudio": {
+              "columns": {
+                "id": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "default": {
+                    "expression": "autoincrement()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                },
+                "isMain": {
+                  "codecId": "pg/bool@1",
+                  "dataType": "pg/bool",
+                  "default": {
+                    "kind": "literal",
+                    "value": false
+                  },
+                  "nullable": false
+                },
+                "otherId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "studioId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "OtherStudio_otherId_idx_ec5479b3"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "otherId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherStudio"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Other"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "OtherStudio_studioId_idx_efc35ac7"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "studioId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherStudio"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Studio"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "otherId"
+                  ],
+                  "name": "OtherStudio_otherId_idx_ec5479b3",
+                  "prefix": "OtherStudio_otherId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "studioId"
+                  ],
+                  "name": "OtherStudio_studioId_idx_efc35ac7",
+                  "prefix": "OtherStudio_studioId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": [
+                {
+                  "columns": [
+                    "otherId",
+                    "studioId"
+                  ]
+                }
+              ]
+            },
+            "OtherTag": {
+              "columns": {
+                "isSpoiler": {
+                  "codecId": "pg/bool@1",
+                  "dataType": "pg/bool",
+                  "default": {
+                    "kind": "literal",
+                    "value": false
+                  },
+                  "nullable": false
+                },
+                "otherId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "rank": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "tagId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "OtherTag_otherId_idx_ec5479b3"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "otherId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherTag"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Other"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "OtherTag_tagId_idx_86854244"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "tagId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherTag"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Tag"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "otherId"
+                  ],
+                  "name": "OtherTag_otherId_idx_ec5479b3",
+                  "prefix": "OtherTag_otherId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "tagId"
+                  ],
+                  "name": "OtherTag_tagId_idx_86854244",
+                  "prefix": "OtherTag_tagId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "otherId",
+                  "tagId"
+                ]
+              },
+              "uniques": []
+            },
+            "OtherTrack": {
+              "columns": {
+                "artistName": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "artistPersonId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "audioPreviewUrl": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": true
+                },
+                "discNumber": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "default": {
+                    "kind": "literal",
+                    "value": 1
+                  },
+                  "nullable": false
+                },
+                "duration": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": true
+                },
+                "explicitLyrics": {
+                  "codecId": "pg/bool@1",
+                  "dataType": "pg/bool",
+                  "default": {
+                    "kind": "literal",
+                    "value": false
+                  },
+                  "nullable": false
+                },
+                "id": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "default": {
+                    "expression": "autoincrement()",
+                    "kind": "function"
+                  },
+                  "nullable": false
+                },
+                "otherId": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                },
+                "titlePrimary": {
+                  "codecId": "pg/text@1",
+                  "dataType": "pg/text",
+                  "nullable": false
+                },
+                "trackNumber": {
+                  "codecId": "pg/int4@1",
+                  "dataType": "pg/int4",
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [
+                {
+                  "index": {
+                    "name": "OtherTrack_otherId_idx_ec5479b3"
+                  },
+                  "onDelete": "cascade",
+                  "source": {
+                    "columns": [
+                      "otherId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherTrack"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Other"
+                  }
+                },
+                {
+                  "index": {
+                    "name": "OtherTrack_artistPersonId_idx_c9d1b42c"
+                  },
+                  "onDelete": "setNull",
+                  "source": {
+                    "columns": [
+                      "artistPersonId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "OtherTrack"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "Person"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "artistPersonId"
+                  ],
+                  "name": "OtherTrack_artistPersonId_idx_c9d1b42c",
+                  "prefix": "OtherTrack_artistPersonId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "otherId"
+                  ],
+                  "name": "OtherTrack_otherId_idx_ec5479b3",
+                  "prefix": "OtherTrack_otherId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": []
             },
             "PassCipher": {
               "checks": [
@@ -35440,10 +39186,10 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "b119fa79f2c33c50af65dc010cb5c42df04547a67ce1fb1840e80645e3555052"
+    "storageHash": "0ac6b2e8c58f9df86116ac1ef632eba15397c9020ed6b4f33989852bc402b36c"
   },
   "execution": {
-    "executionHash": "f5ecc1a037a7ef0f97905c773436b2ba5e8c339591992caf20c64334f3226678",
+    "executionHash": "53643411246bc7b72e9224163abe0c8d054bf2a51c9cb6bd2fc07064d61a141d",
     "mutations": {
       "defaults": [
         {
@@ -36264,6 +40010,17 @@
         },
         {
           "onCreate": {
+            "id": "uuidv4",
+            "kind": "generator"
+          },
+          "ref": {
+            "entry": "OtherList",
+            "field": "id",
+            "namespace": "public"
+          }
+        },
+        {
+          "onCreate": {
             "id": "timestampNow",
             "kind": "generator"
           },
@@ -36644,6 +40401,7 @@
       "forShare": true,
       "forUpdate": true,
       "insertOnConflictSkip": true,
+      "insertOnConflictTarget": true,
       "insertOnConflictWithoutTarget": true,
       "lateral": true,
       "lockNowait": true,

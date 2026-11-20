@@ -2,10 +2,9 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { elysia } from "@/lib/elysia"
 import { buildBorealisDetailMetadata } from "@/lib/borealis-metadata"
-import { MediaDetailView } from "@NamelessLiberty/borealis"
-import type {
-  NormalizedMediaData,
-  SimilarMediaCardItem,
+import {
+  MediaDetailView,
+  toNormalizedMediaOverview,
 } from "@NamelessLiberty/borealis"
 
 type Props = {
@@ -23,8 +22,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   try {
-    const { data } = await elysia.borealis.other({ otherId: numericId }).get()
-    const item = data?.item
+    const { data } = await (elysia.borealis as any)
+      .other({ otherId: numericId })
+      .get()
+    const item = (data as any)?.media ?? data
     if (!item) {
       return {
         title: `Borealis | Other > #${numericId}`,
@@ -32,12 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     const title =
-      item.titlePrimary || item.titleSecondary || `Custom Item #${numericId}`
+      item.titlePrimary || item.titleSecondary || `Other #${numericId}`
     return buildBorealisDetailMetadata({
       title: `Borealis | Other > ${title}`,
       description: item.description
         ? item.description.slice(0, 160).replace(/<[^>]*>/g, "")
-        : `${title} custom item tracking on Borealis`,
+        : `${title} details on Borealis`,
       image: item.coverImage,
     })
   } catch {
@@ -57,65 +58,18 @@ export default async function OtherDetailPage({ params, searchParams }: Props) {
     notFound()
   }
 
-  const { data, error } = await elysia.borealis.other({ otherId: numericId }).get()
-
-  if (error || !data?.item) {
+  const res = await (elysia.borealis as any)
+    .other({ otherId: numericId })
+    .get()
+  if (res.error || !res.data) {
     notFound()
   }
 
-  const item = data.item as any
-  const creatorObj = Array.isArray(item.creator) ? item.creator[0] : item.creator
-
-  const startDateObj = item.startDate ? new Date(item.startDate) : null
-  const endDateObj = item.endDate ? new Date(item.endDate) : null
-
-  const normalized: NormalizedMediaData = {
-    id: item.id,
-    category: "other",
-    creatorId: item.creatorId ?? creatorObj?.id ?? null,
-    creatorUsername: creatorObj?.username ?? null,
-    creatorDisplayName: creatorObj?.displayName ?? creatorObj?.username ?? null,
-    titlePrimary: item.titlePrimary,
-    titleSecondary: item.titleSecondary || null,
-    titleNative: null,
-    coverImage: item.coverImage || null,
-    bannerImage: item.bannerImage || null,
-    description: item.description || null,
-    format: item.format
-      ? item.format.charAt(0).toUpperCase() + item.format.slice(1)
-      : "Other",
-    status: item.isPublished ? "PUBLISHED" : "PRIVATE",
-    startDateYear: startDateObj ? startDateObj.getFullYear() : null,
-    startDateMonth: startDateObj ? startDateObj.getMonth() + 1 : null,
-    startDateDay: startDateObj ? startDateObj.getDate() : null,
-    endDateYear: endDateObj ? endDateObj.getFullYear() : null,
-    endDateMonth: endDateObj ? endDateObj.getMonth() + 1 : null,
-    endDateDay: endDateObj ? endDateObj.getDate() : null,
-    isAdult: false,
-    averageScore: item.averageScore ?? null,
-    favorites: item.favorites ?? 0,
-    popularity: item.popularity ?? 0,
-    statusDistribution: (item.statusDistribution as Record<string, number>) || null,
-    scoreDistribution: (item.scoreDistribution as Record<string, number>) || null,
-    genres: [],
-    tags: [],
-    characters: [],
-    staff: [],
-    studios: [],
-    relations: [],
-    episodeCount: null,
-    seasonCount: null,
-    chapterCount: null,
-    volumeCount: null,
-    updatedAt: item.updatedAt ? new Date(item.updatedAt) : new Date(),
-  }
-
-  const similarList: SimilarMediaCardItem[] = []
+  const raw = (res.data as any)?.media ?? res.data
 
   return (
     <MediaDetailView
-      media={normalized}
-      similarList={similarList}
+      media={toNormalizedMediaOverview("other", raw)}
       isQueuedFetch={isQueued}
     />
   )

@@ -218,7 +218,9 @@ export class BorealisTvServ extends BaseBorealisMediaService {
       success: true,
       statuses: Object.entries(statusCounts).map(([value, count]) => ({ value, count })),
       formats: Object.entries(formatCounts).map(([value, count]) => ({ value, count })),
-      genres: allGenres.map((g: any) => ({ value: g.name, count: g.tv ?? 0 })),
+      genres: allGenres
+        .map((g: any) => ({ value: g.name, count: g.tv ?? 0 }))
+        .filter((g) => g.count > 0),
       tags: [],
       years: Object.entries(yearCounts)
         .map(([value, count]) => ({ value: Number(value), count }))
