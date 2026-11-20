@@ -165,27 +165,36 @@ const mockOther = [
 ]
 
 function setupPrismaMock() {
-  function bindSearchMock(modelName: string, items: any[]) {
-    const model = (prisma as any)[modelName]
-    model.count = async ({ where }: any) => {
-      return items.length
-    }
-    model.findMany = async ({ where, skip = 0, take = 20 }: any) => {
-      return items.slice(skip, skip + take)
-    }
+  const tableMap: Array<[string, any[]]> = [
+    ['FROM "Anime"', mockAnime],
+    ['FROM "Manga"', mockManga],
+    ['FROM "Movie"', mockMovies],
+    ['FROM "Tv"', mockTv],
+    ['FROM "Game"', mockGames],
+    ['FROM "Book"', mockBooks],
+    ['FROM "Music"', mockMusic],
+    ['FROM "Character"', mockCharacters],
+    ['FROM "Person"', mockPeople],
+    ['FROM "Studio"', mockStudios],
+    ['FROM "Other"', mockOther],
+  ]
+
+  ;(prisma as any).raw = {
+    sql: (strings: TemplateStringsArray, ...values: unknown[]) => ({
+      returnsRow: () => ({
+        build: () => ({ sql: strings.join(' '), values }),
+      }),
+    }),
   }
 
-  bindSearchMock('anime', mockAnime)
-  bindSearchMock('manga', mockManga)
-  bindSearchMock('movie', mockMovies)
-  bindSearchMock('tv', mockTv)
-  bindSearchMock('game', mockGames)
-  bindSearchMock('book', mockBooks)
-  bindSearchMock('music', mockMusic)
-  bindSearchMock('character', mockCharacters)
-  bindSearchMock('person', mockPeople)
-  bindSearchMock('studio', mockStudios)
-  bindSearchMock('other', mockOther)
+  ;(prisma as any).query = async (plan: { sql: string; values: unknown[] }) => {
+    for (const [marker, items] of tableMap) {
+      if (plan.sql.includes(marker)) {
+        return items.map((item) => ({ ...item, _score: 1 }))
+      }
+    }
+    return []
+  }
 }
 
 const app = new Elysia()

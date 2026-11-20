@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback, useMemo } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useSession } from "@/context/session-context"
+import { matchesAnyFuzzy } from "../lib/fuzzy-search"
 import {
   IconListDetails,
   IconPlus,
@@ -875,19 +876,13 @@ export function CustomListsView({
 
       // Search query filter
       if (entrySearchQuery.trim()) {
-        const q = entrySearchQuery.toLowerCase().trim()
-        const titlePrimary = item.media?.titlePrimary?.toLowerCase() || ""
-        const titleEnglish = item.media?.titleEnglish?.toLowerCase() || ""
-        const titleRomaji = item.media?.titleRomaji?.toLowerCase() || ""
-        const artist = item.media?.artistName?.toLowerCase() || ""
-        const notes = item.entry.customNotes?.toLowerCase() || ""
-        return (
-          titlePrimary.includes(q) ||
-          titleEnglish.includes(q) ||
-          titleRomaji.includes(q) ||
-          artist.includes(q) ||
-          notes.includes(q)
-        )
+        return matchesAnyFuzzy(entrySearchQuery, [
+          item.media?.titlePrimary,
+          item.media?.titleEnglish,
+          item.media?.titleRomaji,
+          item.media?.artistName,
+          item.entry.customNotes,
+        ])
       }
 
       return true
@@ -1076,9 +1071,8 @@ export function CustomListsView({
   // Overview lists filtered by overviewSearchQuery
   const filteredListsOverview = useMemo(() => {
     if (!overviewSearchQuery.trim()) return lists
-    const q = overviewSearchQuery.toLowerCase().trim()
-    return lists.filter(
-      (l) => l.name.toLowerCase().includes(q) || (l.description && l.description.toLowerCase().includes(q))
+    return lists.filter((l) =>
+      matchesAnyFuzzy(overviewSearchQuery, [l.name, l.description])
     )
   }, [lists, overviewSearchQuery])
 

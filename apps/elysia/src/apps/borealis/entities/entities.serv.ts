@@ -61,13 +61,15 @@ export class BorealisEntitiesServ extends BaseService {
 
     let itemsQ = q
     if (sortBy === 'name') {
-      itemsQ = itemsQ.orderBy((c) =>
-        sortOrder === 'desc' ? c.namePrimary.desc() : c.namePrimary.asc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (c) => sortOrder === 'desc' ? c.namePrimary.desc() : c.namePrimary.asc(),
+        (c) => c.id.asc(),
+      ])
     } else {
-      itemsQ = itemsQ.orderBy((c) =>
-        sortOrder === 'asc' ? c.favorites.asc() : c.favorites.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (c) => sortOrder === 'asc' ? c.favorites.asc() : c.favorites.desc(),
+        (c) => c.id.asc(),
+      ])
     }
 
     const [total, items] = await Promise.all([
@@ -260,13 +262,15 @@ export class BorealisEntitiesServ extends BaseService {
 
     let itemsQ = q
     if (sortBy === 'name') {
-      itemsQ = itemsQ.orderBy((p) =>
-        sortOrder === 'desc' ? p.namePrimary.desc() : p.namePrimary.asc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (p) => sortOrder === 'desc' ? p.namePrimary.desc() : p.namePrimary.asc(),
+        (p) => p.id.asc(),
+      ])
     } else {
-      itemsQ = itemsQ.orderBy((p) =>
-        sortOrder === 'asc' ? p.favorites.asc() : p.favorites.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (p) => sortOrder === 'asc' ? p.favorites.asc() : p.favorites.desc(),
+        (p) => p.id.asc(),
+      ])
     }
 
     const [total, items] = await Promise.all([
@@ -567,13 +571,15 @@ export class BorealisEntitiesServ extends BaseService {
 
     let itemsQ = q
     if (sortBy === 'name') {
-      itemsQ = itemsQ.orderBy((s) =>
-        sortOrder === 'desc' ? s.name.desc() : s.name.asc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (s) => sortOrder === 'desc' ? s.name.desc() : s.name.asc(),
+        (s) => s.id.asc(),
+      ])
     } else {
-      itemsQ = itemsQ.orderBy((s) =>
-        sortOrder === 'asc' ? s.favorites.asc() : s.favorites.desc()
-      )
+      itemsQ = itemsQ.orderBy([
+        (s) => sortOrder === 'asc' ? s.favorites.asc() : s.favorites.desc(),
+        (s) => s.id.asc(),
+      ])
     }
 
     const [total, items] = await Promise.all([

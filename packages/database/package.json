@@ -16,7 +16,8 @@
   "scripts": {
     "build": "bun run contract:emit && tsc && cp src/contract.d.ts src/contract.json dist/",
     "contract:emit": "bun -e \"process.exit(Bun.spawnSync(['infisical', 'run', '--env=' + (process.env.INFISICAL_ENV || 'dev'), '--', 'prisma', 'contract', 'emit'], { stdio: ['inherit', 'inherit', 'inherit'] }).exitCode ?? 1)\"",
-    "db:update": "bun -e \"process.exit(Bun.spawnSync(['infisical', 'run', '--env=' + (process.env.INFISICAL_ENV || 'dev'), '--', 'prisma', 'db', 'update'], { stdio: ['inherit', 'inherit', 'inherit'] }).exitCode ?? 1)\"",
+    "db:update": "bun -e \"const run = (cmd) => { const r = Bun.spawnSync(cmd, { stdio: ['inherit', 'inherit', 'inherit'] }); if ((r.exitCode ?? 1) !== 0) process.exit(r.exitCode ?? 1); }; const env = process.env.INFISICAL_ENV || 'dev'; run(['infisical', 'run', '--env=' + env, '--', 'prisma', 'db', 'update']); run(['infisical', 'run', '--env=' + env, '--', 'bun', 'run', 'scripts/setup-search-indexes.ts']);\"",
+    "db:setup-search": "bun -e \"process.exit(Bun.spawnSync(['infisical', 'run', '--env=' + (process.env.INFISICAL_ENV || 'dev'), '--', 'bun', 'run', 'scripts/setup-search-indexes.ts'], { stdio: ['inherit', 'inherit', 'inherit'] }).exitCode ?? 1)\"",
     "db:verify": "bun -e \"process.exit(Bun.spawnSync(['infisical', 'run', '--env=' + (process.env.INFISICAL_ENV || 'dev'), '--', 'prisma', 'db', 'verify'], { stdio: ['inherit', 'inherit', 'inherit'] }).exitCode ?? 1)\"",
     "db:migrate": "bun -e \"process.exit(Bun.spawnSync(['infisical', 'run', '--env=' + (process.env.INFISICAL_ENV || 'dev'), '--', 'prisma', 'db', 'migrate'], { stdio: ['inherit', 'inherit', 'inherit'] }).exitCode ?? 1)\"",
     "db:prepare-prisma8": "bun -e \"process.exit(Bun.spawnSync(['infisical', 'run', '--env=' + (process.env.INFISICAL_ENV || 'dev'), '--', 'bun', 'run', 'scripts/prepare-prisma8.ts'], { stdio: ['inherit', 'inherit', 'inherit'] }).exitCode ?? 1)\"",
