@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NamelessLiberty</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #000000;
+        --card: #09090b;
+        --border: #27272a;
+        --text: #fafafa;
+        --muted: #a1a1aa;
+        --input: #000000;
+        --primary: #fafafa;
+        --primary-fg: #09090b;
+        --secondary: #18181b;
+        --danger: #ef4444;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg);
+        color: var(--text);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .titlebar {
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #09090b;
+        border-bottom: 1px solid var(--border);
+        user-select: none;
+        -webkit-user-select: none;
+        flex-shrink: 0;
+      }
+
+      .titlebar-group {
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+
+      .titlebar-drag {
+        flex: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+
+      .tb-btn {
+        width: 38px;
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+      }
+
+      .tb-btn:hover {
+        background: #27272a;
+        color: var(--text);
+      }
+
+      .tb-btn:disabled {
+        opacity: 0.3;
+        pointer-events: none;
+      }
+
+      .tb-btn.close:hover {
+        background: #dc2626;
+        color: #ffffff;
+      }
+
+      .content {
+        flex: 1;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 440px;
+        padding: 1.75rem;
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        background: var(--card);
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .badge {
+        display: inline-block;
+        margin-bottom: 0.75rem;
+        padding: 0.2rem 0.55rem;
+        border: 1px solid var(--border);
+        border-radius: 9999px;
+        background: var(--secondary);
+        color: var(--muted);
+        font-size: 0.75rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+
+      h1 {
+        margin: 0 0 0.4rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+
+      .subtitle {
+        margin: 0 0 1.25rem;
+        color: var(--muted);
+        font-size: 0.875rem;
+        line-height: 1.5;
+        word-break: break-word;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.625rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        background: var(--input);
+        color: var(--text);
+        font-size: 0.9rem;
+        outline: none;
+      }
+
+      input:focus {
+        border-color: #52525b;
+      }
+
+      .presets {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.625rem;
+      }
+
+      .preset-btn {
+        padding: 0.3rem 0.6rem;
+        border: 1px solid var(--border);
+        border-radius: 0.375rem;
+        background: transparent;
+        color: var(--muted);
+        font-size: 0.75rem;
+        cursor: pointer;
+      }
+
+      .preset-btn:hover {
+        color: var(--text);
+        border-color: #3f3f46;
+      }
+
+      .error {
+        margin-top: 0.75rem;
+        color: var(--danger);
+        font-size: 0.825rem;
+        min-height: 1.2em;
+      }
+
+      .actions {
+        display: flex;
+        gap: 0.625rem;
+        margin-top: 1rem;
+      }
+
+      .btn {
+        flex: 1;
+        padding: 0.65rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        border: none;
+        background: var(--primary);
+        color: var(--primary-fg);
+      }
+
+      .btn-secondary {
+        border: 1px solid var(--border);
+        background: var(--secondary);
+        color: var(--text);
+      }
+
+      .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .url-pill {
+        padding: 0.55rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        background: var(--bg);
+        color: var(--muted);
+        font-size: 0.825rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        word-break: break-all;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="titlebar">
+      <div class="titlebar-group">
+        <button id="tb-back" type="button" class="tb-btn" title="Back" aria-label="Back" disabled>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l14 0"/><path d="M5 12l6 6"/><path d="M5 12l6 -6"/></svg>
+        </button>
+        <button id="tb-forward" type="button" class="tb-btn" title="Forward" aria-label="Forward" disabled>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l14 0"/><path d="M13 18l6 -6"/><path d="M13 6l6 6"/></svg>
+        </button>
+      </div>
+      <div class="titlebar-drag" data-tauri-drag-region>NamelessLiberty</div>
+      <div class="titlebar-group">
+        <button id="tb-min" type="button" class="tb-btn" title="Minimize" aria-label="Minimize">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l14 0"/></svg>
+        </button>
+        <button id="tb-max" type="button" class="tb-btn" title="Maximize" aria-label="Maximize">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+        </button>
+        <button id="tb-close" type="button" class="tb-btn close" title="Close" aria-label="Close">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="content">
+      <main class="card">
+        <!-- View 1: Connecting -->
+        <section id="view-connecting" class="hidden">
+          <span class="badge">CONNECTING</span>
+          <h1>NamelessLiberty</h1>
+          <p class="subtitle">Connecting to your server...</p>
+          <div id="connecting-url" class="url-pill"></div>
+        </section>
+
+        <!-- View 2: Custom Unreachable / Offline 404 Page -->
+        <section id="view-unreachable" class="hidden">
+          <span class="badge">SERVER UNREACHABLE</span>
+          <h1>Can't reach this server</h1>
+          <p id="unreachable-reason" class="subtitle">
+            The configured server did not respond. Make sure it is running or update the server URL.
+          </p>
+          <div id="unreachable-url" class="url-pill"></div>
+          <div class="actions">
+            <button id="retry-btn" type="button" class="btn btn-primary">Retry</button>
+            <button id="change-url-btn" type="button" class="btn btn-secondary">Change Server</button>
+          </div>
+        </section>
+
+        <!-- View 3: Server URL Setup Form -->
+        <section id="view-setup" class="hidden">
+          <h1>NamelessLiberty</h1>
+          <p class="subtitle">
+            Enter the URL of your IRIS / Next.js server to connect. This will be saved for future launches.
+          </p>
+
+          <form id="server-form">
+            <label for="server-url">Server URL</label>
+            <input
+              id="server-url"
+              name="serverUrl"
+              type="text"
+              placeholder="http://localhost:3000"
+              autocomplete="url"
+              required
+            />
+
+            <div class="presets">
+              <button type="button" class="preset-btn" data-url="http://localhost:3000">
+                Local Dev (localhost:3000)
+              </button>
+            </div>
+
+            <div id="error" class="error" role="alert"></div>
+
+            <div class="actions">
+              <button id="submit-btn" type="submit" class="btn btn-primary">
+                Save &amp; Connect
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const viewConnecting = document.getElementById("view-connecting")
+      const viewUnreachable = document.getElementById("view-unreachable")
+      const viewSetup = document.getElementById("view-setup")
+
+      const connectingUrlEl = document.getElementById("connecting-url")
+      const unreachableUrlEl = document.getElementById("unreachable-url")
+      const unreachableReasonEl = document.getElementById("unreachable-reason")
+      const retryBtn = document.getElementById("retry-btn")
+      const changeUrlBtn = document.getElementById("change-url-btn")
+
+      const form = document.getElementById("server-form")
+      const input = document.getElementById("server-url")
+      const errorEl = document.getElementById("error")
+      const submitBtn = document.getElementById("submit-btn")
+
+      const invoke = () => window.__TAURI__?.core?.invoke
+      const getWin = () => window.__TAURI__?.window?.getCurrentWindow?.()
+
+      document.getElementById("tb-back")?.addEventListener("click", () => window.history.back())
+      document.getElementById("tb-forward")?.addEventListener("click", () => window.history.forward())
+      document.getElementById("tb-min")?.addEventListener("click", () => getWin()?.minimize())
+      document.getElementById("tb-max")?.addEventListener("click", () => getWin()?.toggleMaximize())
+      document.getElementById("tb-close")?.addEventListener("click", () => getWin()?.close())
+
+      function showView(name) {
+        viewConnecting.classList.toggle("hidden", name !== "connecting")
+        viewUnreachable.classList.toggle("hidden", name !== "unreachable")
+        viewSetup.classList.toggle("hidden", name !== "setup")
+      }
+
+      async function tryConnectSaved(savedUrl) {
+        connectingUrlEl.textContent = savedUrl
+        showView("connecting")
+        try {
+          await invoke()("connect_saved_server")
+        } catch (err) {
+          unreachableUrlEl.textContent = savedUrl
+          unreachableReasonEl.textContent =
+            typeof err === "string"
+              ? err
+              : "The configured server did not respond. Make sure it is running or change the URL."
+          showView("unreachable")
+        }
+      }
+
+      document.querySelectorAll("[data-url]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          input.value = btn.getAttribute("data-url") || ""
+          errorEl.textContent = ""
+          input.focus()
+        })
+      })
+
+      retryBtn.addEventListener("click", async () => {
+        const savedUrl = unreachableUrlEl.textContent || ""
+        await tryConnectSaved(savedUrl)
+      })
+
+      changeUrlBtn.addEventListener("click", () => {
+        input.value = unreachableUrlEl.textContent || ""
+        errorEl.textContent = ""
+        showView("setup")
+        input.focus()
+      })
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault()
+        errorEl.textContent = ""
+
+        const call = invoke()
+        if (!call) {
+          errorEl.textContent = "Tauri runtime not detected."
+          return
+        }
+
+        submitBtn.disabled = true
+        submitBtn.textContent = "Connecting..."
+
+        try {
+          await call("save_and_connect", { url: input.value })
+        } catch (err) {
+          const msg = typeof err === "string" ? err : "Failed to connect to server."
+          if (msg.includes("unreachable")) {
+            unreachableUrlEl.textContent = input.value.trim()
+            unreachableReasonEl.textContent = msg
+            showView("unreachable")
+          } else {
+            errorEl.textContent = msg
+          }
+        } finally {
+          submitBtn.disabled = false
+          submitBtn.textContent = "Save & Connect"
+        }
+      })
+
+      window.addEventListener("DOMContentLoaded", async () => {
+        const call = invoke()
+        if (!call) {
+          showView("setup")
+          return
+        }
+
+        const savedUrl = await call("get_server_url")
+        if (savedUrl) {
+          await tryConnectSaved(savedUrl)
+        } else {
+          showView("setup")
+        }
+      })
+    </script>
+  </body>
+</html>
