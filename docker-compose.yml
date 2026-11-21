@@ -3,7 +3,7 @@ name: namelessliberty
 services:
   postgre:
     container_name: NamelessLiberty-Postgre
-    image: postgres:latest
+    image: postgres:18
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
