@@ -70,7 +70,7 @@ steps:
           sleep 2
         done
       - |
-        MSG=$(printf '%s' "${DRONE_COMMIT_MESSAGE:-}" | tr '[:upper:]' '[:lower:]')
+        MSG=$( (printenv DRONE_COMMIT_MESSAGE 2>/dev/null || true) | tr '[:upper:]' '[:lower:]' )
         FORCE_ALL=0
         case "$MSG" in *"[rebuild all]"*) FORCE_ALL=1 ;; esac
 
@@ -86,7 +86,7 @@ steps:
           case "$MSG" in *"$TAG"*) FORCE=1 ;; esac
 
           if [ "$FORCE" = "1" ] || [ "$RUNNING" != "true" ] || [ "$DESIRED" != "$CURRENT" ]; then
-            echo "BUILD=1 (desired=$DESIRED, running=${CURRENT:-none}, state=$RUNNING, force=$FORCE)" >&2
+            echo "BUILD=1 (desired=$DESIRED, running=$CURRENT, state=$RUNNING, force=$FORCE)" >&2
             printf '1 %s' "$DESIRED"
           else
             echo "SKIP (running v$CURRENT)" >&2
@@ -287,7 +287,7 @@ steps:
         mkdir -p /ci-cache/bun /ci-cache/rustup /ci-cache/cargo /ci-cache/xwin /ci-cache/android-sdk /ci-cache/gradle /ci-cache/tauri-targets/linux /ci-cache/tauri-targets/windows /ci-cache/tauri-targets/android releases/NamelessLiberty
 
         # Keep tauri.conf.json version aligned with apps/tauri/package.json
-        bun -e "const p='apps/tauri/src-tauri/tauri.conf.json'; const j=await Bun.file(p).json(); if (j.version !== '$TAURI_VER') { j.version = '$TAURI_VER'; await Bun.write(p, JSON.stringify(j, null, 2) + '\n'); }"
+        bun -e "const p='apps/tauri/src-tauri/tauri.conf.json'; const j=await Bun.file(p).json(); if (j.version !== '$TAURI_VER') { j.version = '$TAURI_VER'; await Bun.write(p, JSON.stringify(j, null, 2) + String.fromCharCode(10)); }"
 
         if [ ! -d node_modules ]; then
           bun install --frozen-lockfile
@@ -338,56 +338,49 @@ steps:
         cp -f /ci-cache/tauri-targets/linux/release/bundle/rpm/*.rpm releases/NamelessLiberty/ 2>/dev/null || true
 
         echo "=== [2/3] Building NamelessLiberty Windows ==="
+        if [ -z "$WINDOWS_CERT_BASE64" ] || [ -z "$WINDOWS_CERT_PASSWORD" ]; then
+          echo "ERROR: WINDOWS_CERT_BASE64 or WINDOWS_CERT_PASSWORD secret is not set!" >&2
+          exit 1
+        fi
         CARGO_TARGET_DIR=/ci-cache/tauri-targets/windows bun --cwd apps/tauri tauri build --runner cargo-xwin --target x86_64-pc-windows-msvc
         cp -f /ci-cache/tauri-targets/windows/x86_64-pc-windows-msvc/release/bundle/nsis/*.exe releases/NamelessLiberty/ 2>/dev/null || true
-        if [ -n "${WINDOWS_CERT_BASE64:-}" ]; then
-          printf '%s' "$WINDOWS_CERT_BASE64" | base64 -d > /tmp/windows.pfx
-          for exe in releases/NamelessLiberty/*.exe; do
-            [ -f "$exe" ] || continue
-            osslsigncode sign \
-              -pkcs12 /tmp/windows.pfx \
-              -pass "${WINDOWS_CERT_PASSWORD:-}" \
-              -n "NamelessLiberty" \
-              -h sha256 \
-              -t http://timestamp.digicert.com \
-              -in "$exe" \
-              -out "${exe}.signed"
-            mv -f "${exe}.signed" "$exe"
-          done
-          rm -f /tmp/windows.pfx
-        else
-          echo "WARNING: WINDOWS_CERT_BASE64 not set; skipping Windows code signing."
-        fi
+        printf '%s' "$WINDOWS_CERT_BASE64" | base64 -d > /tmp/windows.pfx
+        for exe in releases/NamelessLiberty/*.exe; do
+          [ -f "$exe" ] || continue
+          osslsigncode sign \
+            -pkcs12 /tmp/windows.pfx \
+            -pass "$WINDOWS_CERT_PASSWORD" \
+            -n "NamelessLiberty" \
+            -h sha256 \
+            -t http://timestamp.digicert.com \
+            -in "$exe" \
+            -out "$exe.signed"
+          mv -f "$exe.signed" "$exe"
+        done
+        rm -f /tmp/windows.pfx
 
         echo "=== [3/3] Building NamelessLiberty Android ==="
+        if [ -z "$ANDROID_KEYSTORE_BASE64" ] || [ -z "$ANDROID_KEYSTORE_PASSWORD" ] || [ -z "$ANDROID_KEY_ALIAS" ] || [ -z "$ANDROID_KEY_PASSWORD" ]; then
+          echo "ERROR: Android signing secrets (ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS, ANDROID_KEY_PASSWORD) are not set!" >&2
+          exit 1
+        fi
         if [ ! -d apps/tauri/src-tauri/gen/android ]; then
           bun --cwd apps/tauri tauri android init
         fi
         CARGO_TARGET_DIR=/ci-cache/tauri-targets/android bun --cwd apps/tauri tauri android build --apk
         KEYSTORE_PATH="/tmp/android.keystore"
-        if [ -n "${ANDROID_KEYSTORE_BASE64:-}" ]; then
-          printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 -d > "$KEYSTORE_PATH"
-          KEYSTORE_PASS="$ANDROID_KEYSTORE_PASSWORD"
-          KEY_ALIAS="$ANDROID_KEY_ALIAS"
-          KEY_PASS="${ANDROID_KEY_PASSWORD:-$ANDROID_KEYSTORE_PASSWORD}"
-        else
-          echo "WARNING: ANDROID_KEYSTORE_BASE64 not set; generating an ephemeral keystore (app updates will require uninstalling first)."
-          KEYSTORE_PASS="namelessliberty"
-          KEY_ALIAS="namelessliberty"
-          KEY_PASS="namelessliberty"
-          keytool -genkeypair -noprompt -keystore "$KEYSTORE_PATH" -storetype PKCS12 -keyalg RSA -keysize 2048 -validity 10000 -alias "$KEY_ALIAS" -storepass "$KEYSTORE_PASS" -keypass "$KEY_PASS" -dname "CN=NamelessLiberty, O=NamelessLiberty, C=US"
-        fi
+        printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 -d > "$KEYSTORE_PATH"
         for apk in $(find apps/tauri/src-tauri/gen/android/app/build/outputs/apk -name "*.apk"); do
           out_name="$(basename "$apk" | sed 's/-unsigned//')"
-          "$ANDROID_HOME/build-tools/35.0.0/zipalign" -f -p 4 "$apk" "${apk}.aligned"
+          "$ANDROID_HOME/build-tools/35.0.0/zipalign" -f -p 4 "$apk" "$apk.aligned"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" sign \
             --ks "$KEYSTORE_PATH" \
-            --ks-pass "pass:$KEYSTORE_PASS" \
-            --ks-key-alias "$KEY_ALIAS" \
-            --key-pass "pass:$KEY_PASS" \
+            --ks-pass "pass:$ANDROID_KEYSTORE_PASSWORD" \
+            --ks-key-alias "$ANDROID_KEY_ALIAS" \
+            --key-pass "pass:$ANDROID_KEY_PASSWORD" \
             --out "releases/NamelessLiberty/$out_name" \
-            "${apk}.aligned"
-          rm -f "${apk}.aligned"
+            "$apk.aligned"
+          rm -f "$apk.aligned"
         done
         rm -f "$KEYSTORE_PATH"
 
