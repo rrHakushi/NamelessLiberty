@@ -70,7 +70,7 @@ steps:
           sleep 2
         done
       - |
-        MSG=$(printf '%s' "${DRONE_COMMIT_MESSAGE:-}" | tr '[:upper:]' '[:lower:]')
+        MSG=$( (printenv DRONE_COMMIT_MESSAGE 2>/dev/null || true) | tr '[:upper:]' '[:lower:]' )
         FORCE_ALL=0
         case "$MSG" in *"[rebuild all]"*) FORCE_ALL=1 ;; esac
 
