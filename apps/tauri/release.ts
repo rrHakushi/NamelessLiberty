@@ -41,6 +41,11 @@ async function main() {
     return
   }
 
+  const files = readdirSync(RELEASES_DIR).filter((f) => !f.startsWith("."))
+  if (files.length === 0) {
+    throw new Error(`No release artifacts found in ${RELEASES_DIR}; aborting GitHub release creation.`)
+  }
+
   const createRes = await fetch(
     `https://api.github.com/repos/${REPO_SLUG}/releases`,
     {
@@ -49,7 +54,7 @@ async function main() {
       body: JSON.stringify({
         tag_name: tag,
         name: `NamelessLiberty v${pkg.version}`,
-        body: `NamelessLiberty desktop release v${pkg.version}`,
+        body: `NamelessLiberty release v${pkg.version}`,
         draft: false,
         prerelease: false,
       }),
@@ -65,7 +70,6 @@ async function main() {
   const release = (await createRes.json()) as { upload_url: string }
   const uploadBase = release.upload_url.replace(/\{[^}]+\}$/, "")
 
-  const files = readdirSync(RELEASES_DIR).filter((f) => !f.startsWith("."))
   for (const file of files) {
     const filePath = join(RELEASES_DIR, file)
     const data = readFileSync(filePath)
