@@ -1,6 +1,7 @@
 # Borealis [Media tracker]
     - Stremio plugin for borealis
     - Link manga list entries to books since its kinda the same
+    - if status is releasing dont allow setting status to completed
 
 # Akaromi [Password manager]
     - 
