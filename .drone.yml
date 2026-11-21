@@ -40,31 +40,13 @@ steps:
         EOF
       - chmod 600 .env
 
-  - name: Redis
+  - name: Infra
     image: docker:latest
     volumes:
       - name: docker_sock
         path: /var/run/docker.sock
     commands:
-      - docker compose up -d redis
-      - |
-        for i in $(seq 1 30); do
-          if [ "$(docker inspect -f '{{.State.Health.Status}}' NamelessLiberty-Redis 2>/dev/null)" = "healthy" ]; then
-            echo "NamelessLiberty-Redis is healthy."
-            break
-          fi
-          sleep 2
-        done
-    depends_on:
-      - Clone
-
-  - name: Postgre
-    image: docker:latest
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
-    commands:
-      - docker compose up -d postgre
+      - docker compose up -d postgre redis infisical databasus
       - |
         for i in $(seq 1 30); do
           if [ "$(docker inspect -f '{{.State.Health.Status}}' NamelessLiberty-Postgre 2>/dev/null)" = "healthy" ]; then
@@ -73,27 +55,13 @@ steps:
           fi
           sleep 2
         done
-    depends_on:
-      - Clone
-
-  - name: databasus
-    image: docker:latest
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
-    commands:
-      - docker compose up -d --no-deps databasus
-    depends_on:
-      - Clone
-
-  - name: infisical
-    image: docker:latest
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
-    commands:
-      - docker compose up -d --no-deps infisical
-      - |
+        for i in $(seq 1 30); do
+          if [ "$(docker inspect -f '{{.State.Health.Status}}' NamelessLiberty-Redis 2>/dev/null)" = "healthy" ]; then
+            echo "NamelessLiberty-Redis is healthy."
+            break
+          fi
+          sleep 2
+        done
         for i in $(seq 1 30); do
           if [ "$(docker inspect -f '{{.State.Running}}' NamelessLiberty-Infisical 2>/dev/null)" = "true" ]; then
             echo "NamelessLiberty-Infisical is running."
@@ -101,10 +69,49 @@ steps:
           fi
           sleep 2
         done
+      - |
+        MSG=$(printf '%s' "${DRONE_COMMIT_MESSAGE:-}" | tr '[:upper:]' '[:lower:]')
+        FORCE_ALL=0
+        case "$MSG" in *"[rebuild all]"*) FORCE_ALL=1 ;; esac
+
+        check_app() {
+          NAME="$1"
+          PKG_FILE="$2"
+          TAG="$3"
+          DESIRED=$(sed -n 's/.*"version":[[:space:]]*"\([^"]*\)".*/\1/p' "$PKG_FILE" | head -n 1)
+          RUNNING=$(docker inspect -f '{{.State.Running}}' "$NAME" 2>/dev/null || echo "false")
+          CURRENT=$(docker inspect -f '{{index .Config.Labels "org.opencontainers.image.version"}}' "$NAME" 2>/dev/null || echo "")
+          FORCE=0
+          [ "$FORCE_ALL" = "1" ] && FORCE=1
+          case "$MSG" in *"$TAG"*) FORCE=1 ;; esac
+
+          if [ "$FORCE" = "1" ] || [ "$RUNNING" != "true" ] || [ "$DESIRED" != "$CURRENT" ]; then
+            echo "BUILD=1 (desired=$DESIRED, running=${CURRENT:-none}, state=$RUNNING, force=$FORCE)" >&2
+            printf '1 %s' "$DESIRED"
+          else
+            echo "SKIP (running v$CURRENT)" >&2
+            printf '0 %s' "$DESIRED"
+          fi
+        }
+
+        echo "Checking Elysia..." >&2
+        set -- $(check_app "NamelessLiberty-Elysia" "apps/elysia/package.json" "[rebuild elysia]")
+        BUILD_ELYSIA="$1"; ELYSIAVER="$2"
+
+        echo "Checking Next..." >&2
+        set -- $(check_app "NamelessLiberty-Next" "apps/next/package.json" "[rebuild next]")
+        BUILD_NEXT="$1"; NEXTVER="$2"
+
+        cat << EOF > .ci-flags
+        BUILD_ELYSIA=$BUILD_ELYSIA
+        ELYSIA_VER=$ELYSIAVER
+        BUILD_NEXT=$BUILD_NEXT
+        NEXT_VER=$NEXTVER
+        EOF
     depends_on:
       - Clone
 
-  - name: Environment
+  - name: Env & DB
     image: oven/bun:latest
     environment:
       INFISICAL_TOKEN:
@@ -113,230 +120,88 @@ steps:
         from_secret: INFISICAL_PROJECT_ID
       INFISICAL_SITE_URL:
         from_secret: INFISICAL_SITE_URL
+      GITHUB_TOKEN:
+        from_secret: github_token
+      BUN_INSTALL_CACHE_DIR: /ci-cache/bun
+    volumes:
+      - name: ci_cache
+        path: /ci-cache
     commands:
+      - mkdir -p /ci-cache/bin /ci-cache/bun /ci-cache/state
       - |
-        ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
-        bun -e "const r = await fetch('https://github.com/Infisical/cli/releases/download/v0.45.6/cli_0.45.6_linux_' + process.argv[1] + '.tar.gz'); if (!r.ok) throw new Error('Failed to download infisical CLI: ' + r.statusText); await Bun.write('/tmp/infisical.tar.gz', r);" "$ARCH"
-        tar -xzf /tmp/infisical.tar.gz -C /usr/local/bin infisical
-        rm -f /tmp/infisical.tar.gz
+        if [ ! -x /ci-cache/bin/infisical-0.45.6 ]; then
+          ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
+          bun -e "const r = await fetch('https://github.com/Infisical/cli/releases/download/v0.45.6/cli_0.45.6_linux_' + process.argv[1] + '.tar.gz'); if (!r.ok) throw new Error('Failed to download infisical CLI: ' + r.statusText); await Bun.write('/tmp/infisical.tar.gz', r);" "$ARCH"
+          tar -xzf /tmp/infisical.tar.gz -C /ci-cache/bin infisical
+          mv /ci-cache/bin/infisical /ci-cache/bin/infisical-0.45.6
+          rm -f /tmp/infisical.tar.gz
+        fi
+        cp /ci-cache/bin/infisical-0.45.6 /usr/local/bin/infisical
+      - |
         infisical export --token="$INFISICAL_TOKEN" --projectId="$INFISICAL_PROJECT_ID" --env="prod" --domain="$(printf '%s' "$INFISICAL_SITE_URL" | sed 's|/$||')/api" --format=dotenv >> .env
-      - chmod 600 .env
-      - bun install --frozen-lockfile
-      - cp /usr/local/bin/infisical node_modules/.bin/infisical
-    depends_on:
-      - Redis
-      - Postgre
-      - databasus
-      - infisical
+        chmod 600 .env
+      - bun scripts/ci-check.ts
+      - |
+        set -a && . ./.ci-flags && set +a
+        if [ "$UPDATE_DB" = "1" ] || [ "$BUILD_ELYSIA" = "1" ] || [ "$BUILD_NEXT" = "1" ]; then
+          bun install --frozen-lockfile
+          cp /usr/local/bin/infisical node_modules/.bin/infisical
+        else
+          echo "DB, Elysia, and Next unchanged; skipping bun install and package build."
+        fi
 
-  - name: RustFS
+        if [ "$UPDATE_DB" = "1" ]; then
+          INFISICAL_ENV=prod INFISICAL_API_URL="$(printf '%s' "$INFISICAL_SITE_URL" | sed 's|/$||')/api" bun run --filter=@NamelessLiberty/db contract:emit
+          HOST_IP=$(bun -e "const gw = (await Bun.file('/proc/net/route').text()).split(String.fromCharCode(10)).map(l => l.trim().split(String.fromCharCode(9))).find(c => c[1] === '00000000')?.[2]; console.log(gw ? gw.match(/../g).reverse().map(h => parseInt(h, 16)).join('.') : '172.17.0.1');")
+          PATH="$PWD/node_modules/.bin:$PATH" INFISICAL_API_URL="$(printf '%s' "$INFISICAL_SITE_URL" | sed 's|/$||')/api" infisical run --env=prod -- sh -c "cd packages/database && POSTGRE_HOST=$HOST_IP POSTGRE_PORT=10001 bunx prisma db update && POSTGRE_HOST=$HOST_IP POSTGRE_PORT=10001 bun run scripts/setup-search-indexes.ts"
+          printf '%s' "$DB_VER" > /ci-cache/state/db-version
+        fi
+
+        if [ "$BUILD_ELYSIA" = "1" ] || [ "$BUILD_NEXT" = "1" ]; then
+          INFISICAL_ENV=prod INFISICAL_API_URL="$(printf '%s' "$INFISICAL_SITE_URL" | sed 's|/$||')/api" bun run build:packages
+        fi
+    depends_on:
+      - Infra
+
+  - name: Deploy & Verify
     image: docker:latest
+    environment:
+      INFISICAL_TOKEN:
+        from_secret: INFISICAL_TOKEN
+      INFISICAL_SITE_URL:
+        from_secret: INFISICAL_SITE_URL
     volumes:
       - name: docker_sock
         path: /var/run/docker.sock
     commands:
-      - docker compose up -d rustfs
-    depends_on:
-      - Environment
-
-  - name: deemix
-    image: docker:latest
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
-    commands:
-      - docker compose up -d deemix
-    depends_on:
-      - Environment
-
-  - name: searxng
-    image: docker:latest
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
-    commands:
+      - export DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1
+      - docker compose up -d rustfs deemix
       - docker compose create searxng
       - docker cp core-config/settings.yml NamelessLiberty-SearXNG:/etc/searxng/settings.yml
       - docker cp core-config/limiter.toml NamelessLiberty-SearXNG:/etc/searxng/limiter.toml
       - docker compose up -d searxng
       - docker compose restart searxng
-    depends_on:
-      - Environment
-
-  - name: Prisma Contract
-    image: oven/bun:latest
-    environment:
-      INFISICAL_TOKEN:
-        from_secret: INFISICAL_TOKEN
-      INFISICAL_SITE_URL:
-        from_secret: INFISICAL_SITE_URL
-      INFISICAL_ENV: prod
-    commands:
-      - INFISICAL_API_URL="$(printf '%s' "$INFISICAL_SITE_URL" | sed 's|/$||')/api" bun run --filter=@NamelessLiberty/db contract:emit
-    depends_on:
-      - RustFS
-      - deemix
-      - searxng
-
-  - name: Prisma Update
-    image: oven/bun:latest
-    environment:
-      INFISICAL_TOKEN:
-        from_secret: INFISICAL_TOKEN
-      INFISICAL_SITE_URL:
-        from_secret: INFISICAL_SITE_URL
-    commands:
       - |
-        HOST_IP=$(bun -e "const gw = (await Bun.file('/proc/net/route').text()).split(String.fromCharCode(10)).map(l => l.trim().split(String.fromCharCode(9))).find(c => c[1] === '00000000')?.[2]; console.log(gw ? gw.match(/../g).reverse().map(h => parseInt(h, 16)).join('.') : '172.17.0.1');")
-        PATH="$PWD/node_modules/.bin:$PATH" INFISICAL_API_URL="$(printf '%s' "$INFISICAL_SITE_URL" | sed 's|/$||')/api" infisical run --env=prod -- sh -c "cd packages/database && POSTGRE_HOST=$HOST_IP POSTGRE_PORT=10001 bunx prisma db update && POSTGRE_HOST=$HOST_IP POSTGRE_PORT=10001 bun run scripts/setup-search-indexes.ts"
-    depends_on:
-      - Prisma Contract
+        set -a && . ./.ci-flags && set +a
+        if [ "$BUILD_ELYSIA" = "1" ]; then
+          echo "Building NamelessLiberty-Elysia v$ELYSIA_VER..."
+          APP_VERSION="$ELYSIA_VER" docker compose build --build-arg APP_VERSION="$ELYSIA_VER" elysia
+          APP_VERSION="$ELYSIA_VER" docker compose up -d --no-deps elysia
+        else
+          echo "Skipping Elysia rebuild (already at v$ELYSIA_VER)."
+          APP_VERSION="$ELYSIA_VER" docker compose up -d --no-deps elysia
+        fi
 
-  - name: Packages
-    image: oven/bun:latest
-    environment:
-      INFISICAL_TOKEN:
-        from_secret: INFISICAL_TOKEN
-      INFISICAL_SITE_URL:
-        from_secret: INFISICAL_SITE_URL
-      INFISICAL_ENV: prod
-    commands:
-      - INFISICAL_API_URL="$(printf '%s' "$INFISICAL_SITE_URL" | sed 's|/$||')/api" bun run build:packages
-    depends_on:
-      - Prisma Update
-
-  - name: Elysia
-    image: docker:latest
-    environment:
-      INFISICAL_TOKEN:
-        from_secret: INFISICAL_TOKEN
-      INFISICAL_SITE_URL:
-        from_secret: INFISICAL_SITE_URL
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
-    commands:
-      - export DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1
+        if [ "$BUILD_NEXT" = "1" ]; then
+          echo "Building NamelessLiberty-Next v$NEXT_VER..."
+          APP_VERSION="$NEXT_VER" docker compose build --build-arg APP_VERSION="$NEXT_VER" next
+          APP_VERSION="$NEXT_VER" docker compose up -d --no-deps next
+        else
+          echo "Skipping Next rebuild (already at v$NEXT_VER)."
+          APP_VERSION="$NEXT_VER" docker compose up -d --no-deps next
+        fi
       - |
-        PKG_VERSION=$(sed -n 's/.*"version":[[:space:]]*"\([^"]*\)".*/\1/p' apps/elysia/package.json | head -n 1)
-        echo "Building NamelessLiberty-Elysia v$PKG_VERSION..."
-        APP_VERSION="$PKG_VERSION" docker compose build --build-arg APP_VERSION="$PKG_VERSION" elysia
-        APP_VERSION="$PKG_VERSION" docker compose up -d --no-deps elysia
-    depends_on:
-      - Packages
-
-  - name: Next
-    image: docker:latest
-    environment:
-      INFISICAL_TOKEN:
-        from_secret: INFISICAL_TOKEN
-      INFISICAL_SITE_URL:
-        from_secret: INFISICAL_SITE_URL
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
-    commands:
-      - export DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1
-      - |
-        PKG_VERSION=$(sed -n 's/.*"version":[[:space:]]*"\([^"]*\)".*/\1/p' apps/next/package.json | head -n 1)
-        echo "Building NamelessLiberty-Next v$PKG_VERSION..."
-        APP_VERSION="$PKG_VERSION" docker compose build --build-arg APP_VERSION="$PKG_VERSION" next
-        APP_VERSION="$PKG_VERSION" docker compose up -d --no-deps next
-    depends_on:
-      - Elysia
-
-  - name: Jellyborealis - Build
-    image: mcr.microsoft.com/dotnet/sdk:10.0
-    environment:
-      GITHUB_TOKEN:
-        from_secret: github_token
-    commands:
-      - apt-get update && apt-get install -y python3
-      - python3 plugins/JellyBorealis/package.py
-    depends_on:
-      - Next
-
-  - name: Jellyborealis - Release
-    image: mcr.microsoft.com/dotnet/sdk:10.0
-    environment:
-      GITHUB_TOKEN:
-        from_secret: github_token
-    commands:
-      - apt-get update && apt-get install -y python3
-      - python3 plugins/JellyBorealis/package.py --ci --skip-build
-    depends_on:
-      - Jellyborealis - Build
-
-  - name: NamelessLiberty - Build Linux
-    image: oven/bun:latest
-    commands:
-      - apt-get update && apt-get install -y libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev patchelf
-      - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-      - export PATH="$HOME/.cargo/bin:$PATH"
-      - bun --cwd apps/tauri tauri build
-      - mkdir -p releases/NamelessLiberty
-      - cp -f apps/tauri/src-tauri/target/release/bundle/appimage/*.AppImage releases/NamelessLiberty/ 2>/dev/null || true
-      - cp -f apps/tauri/src-tauri/target/release/bundle/deb/*.deb releases/NamelessLiberty/ 2>/dev/null || true
-      - cp -f apps/tauri/src-tauri/target/release/bundle/rpm/*.rpm releases/NamelessLiberty/ 2>/dev/null || true
-    depends_on:
-      - Jellyborealis - Release
-
-  - name: NamelessLiberty - Build Windows
-    image: oven/bun:latest
-    commands:
-      - apt-get update && apt-get install -y build-essential curl nsis lld llvm clang
-      - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-      - export PATH="$HOME/.cargo/bin:$PATH"
-      - rustup target add x86_64-pc-windows-msvc
-      - cargo install cargo-xwin
-      - bun --cwd apps/tauri tauri build --runner cargo-xwin --target x86_64-pc-windows-msvc
-      - mkdir -p releases/NamelessLiberty
-      - cp -f apps/tauri/src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis/*.exe releases/NamelessLiberty/ 2>/dev/null || true
-    depends_on:
-      - Jellyborealis - Release
-
-  - name: NamelessLiberty - Build Android
-    image: oven/bun:latest
-    commands:
-      - apt-get update && apt-get install -y build-essential curl unzip default-jdk
-      - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-      - export PATH="$HOME/.cargo/bin:$PATH"
-      - rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android i686-linux-android
-      - export ANDROID_HOME=/opt/android-sdk
-      - export NDK_HOME="$ANDROID_HOME/ndk/27.2.12479018"
-      - export JAVA_HOME="$(dirname "$(dirname "$(readlink -f "$(which javac)")")")"
-      - mkdir -p "$ANDROID_HOME/cmdline-tools"
-      - curl -sSL https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -o /tmp/cmdline-tools.zip
-      - unzip -q /tmp/cmdline-tools.zip -d /tmp/cmdline-tools && mv /tmp/cmdline-tools/cmdline-tools "$ANDROID_HOME/cmdline-tools/latest" && rm -rf /tmp/cmdline-tools /tmp/cmdline-tools.zip
-      - yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
-      - '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platform-tools" "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018"'
-      - if [ ! -d apps/tauri/src-tauri/gen/android ]; then bun --cwd apps/tauri tauri android init; fi
-      - bun --cwd apps/tauri tauri android build --apk
-      - mkdir -p releases/NamelessLiberty
-      - find apps/tauri/src-tauri/gen/android/app/build/outputs/apk -name "*.apk" -exec cp -f {} releases/NamelessLiberty/ \;
-    depends_on:
-      - Jellyborealis - Release
-
-  - name: NamelessLiberty - Release
-    image: oven/bun:latest
-    environment:
-      GITHUB_TOKEN:
-        from_secret: github_token
-    commands:
-      - bun apps/tauri/release.ts
-    depends_on:
-      - NamelessLiberty - Build Linux
-      - NamelessLiberty - Build Windows
-      - NamelessLiberty - Build Android
-
-  - name: Verify its running
-    image: docker:latest
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
-    commands:
-      - docker compose ps
-      - |
+        docker compose ps
         FAILED=0
         for CONTAINER in \
           NamelessLiberty-Redis \
@@ -357,23 +222,201 @@ steps:
             echo "OK: $CONTAINER is running."
           fi
         done
-        docker compose logs elysia --tail=30
-        docker compose logs next --tail=30
+        docker compose logs elysia --tail=20
+        docker compose logs next --tail=20
         exit $FAILED
     depends_on:
-      - NamelessLiberty - Release
-      - databasus
+      - Env & DB
+
+  - name: JellyBorealis
+    image: mcr.microsoft.com/dotnet/sdk:10.0
+    environment:
+      GITHUB_TOKEN:
+        from_secret: github_token
+      NUGET_PACKAGES: /ci-cache/nuget
+    volumes:
+      - name: ci_cache
+        path: /ci-cache
+    commands:
+      - |
+        set -a && . ./.ci-flags && set +a
+        if [ "$BUILD_JELLYBOREALIS" != "1" ]; then
+          echo "JellyBorealis v$JELLYBOREALIS_VER is <= latest GitHub release; skipping build and release."
+          exit 0
+        fi
+        mkdir -p /ci-cache/nuget
+        apt-get update && apt-get install -y python3
+        python3 plugins/JellyBorealis/package.py --ci
+    depends_on:
+      - Deploy & Verify
+
+  - name: NamelessLiberty
+    image: oven/bun:latest
+    environment:
+      GITHUB_TOKEN:
+        from_secret: github_token
+      WINDOWS_CERT_BASE64:
+        from_secret: WINDOWS_CERT_BASE64
+      WINDOWS_CERT_PASSWORD:
+        from_secret: WINDOWS_CERT_PASSWORD
+      ANDROID_KEYSTORE_BASE64:
+        from_secret: ANDROID_KEYSTORE_BASE64
+      ANDROID_KEYSTORE_PASSWORD:
+        from_secret: ANDROID_KEYSTORE_PASSWORD
+      ANDROID_KEY_ALIAS:
+        from_secret: ANDROID_KEY_ALIAS
+      ANDROID_KEY_PASSWORD:
+        from_secret: ANDROID_KEY_PASSWORD
+      BUN_INSTALL_CACHE_DIR: /ci-cache/bun
+      RUSTUP_HOME: /ci-cache/rustup
+      CARGO_HOME: /ci-cache/cargo
+      XWIN_CACHE_DIR: /ci-cache/xwin
+      ANDROID_HOME: /ci-cache/android-sdk
+      GRADLE_USER_HOME: /ci-cache/gradle
+    volumes:
+      - name: ci_cache
+        path: /ci-cache
+    commands:
+      - |
+        set -a && . ./.ci-flags && set +a
+        if [ "$BUILD_TAURI" != "1" ]; then
+          echo "NamelessLiberty v$TAURI_VER is <= latest GitHub release; skipping Linux/Windows/Android builds."
+          exit 0
+        fi
+
+        mkdir -p /ci-cache/bun /ci-cache/rustup /ci-cache/cargo /ci-cache/xwin /ci-cache/android-sdk /ci-cache/gradle /ci-cache/tauri-targets/linux /ci-cache/tauri-targets/windows /ci-cache/tauri-targets/android releases/NamelessLiberty
+
+        # Keep tauri.conf.json version aligned with apps/tauri/package.json
+        bun -e "const p='apps/tauri/src-tauri/tauri.conf.json'; const j=await Bun.file(p).json(); if (j.version !== '$TAURI_VER') { j.version = '$TAURI_VER'; await Bun.write(p, JSON.stringify(j, null, 2) + '\n'); }"
+
+        if [ ! -d node_modules ]; then
+          bun install --frozen-lockfile
+        fi
+
+        apt-get update && apt-get install -y \
+          libwebkit2gtk-4.1-dev build-essential curl wget file libxdo-dev libssl-dev \
+          libayatana-appindicator3-dev librsvg2-dev patchelf \
+          nsis lld llvm clang osslsigncode \
+          unzip default-jdk
+
+        export PATH="$CARGO_HOME/bin:$PATH"
+        if [ ! -x "$CARGO_HOME/bin/rustup" ]; then
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+        fi
+
+        INSTALLED_TARGETS=$(rustup target list --installed)
+        for tgt in x86_64-pc-windows-msvc aarch64-linux-android armv7-linux-androideabi x86_64-linux-android i686-linux-android; do
+          case "$INSTALLED_TARGETS" in
+            *"$tgt"*) ;;
+            *) rustup target add "$tgt" ;;
+          esac
+        done
+
+        if [ ! -x "$CARGO_HOME/bin/cargo-xwin" ]; then
+          cargo install cargo-xwin
+        fi
+
+        export NDK_HOME="$ANDROID_HOME/ndk/27.2.12479018"
+        export JAVA_HOME="$(dirname "$(dirname "$(readlink -f "$(which javac)")")")"
+        if [ ! -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
+          mkdir -p "$ANDROID_HOME/cmdline-tools"
+          curl -sSL https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -o /tmp/cmdline-tools.zip
+          unzip -q /tmp/cmdline-tools.zip -d /tmp/cmdline-tools
+          mv /tmp/cmdline-tools/cmdline-tools "$ANDROID_HOME/cmdline-tools/latest"
+          rm -rf /tmp/cmdline-tools /tmp/cmdline-tools.zip
+        fi
+
+        if [ ! -d "$ANDROID_HOME/platforms/android-35" ] || [ ! -d "$ANDROID_HOME/build-tools/35.0.0" ] || [ ! -d "$NDK_HOME" ]; then
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platform-tools" "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018"
+        fi
+
+        echo "=== [1/3] Building NamelessLiberty Linux ==="
+        CARGO_TARGET_DIR=/ci-cache/tauri-targets/linux bun --cwd apps/tauri tauri build
+        cp -f /ci-cache/tauri-targets/linux/release/bundle/appimage/*.AppImage releases/NamelessLiberty/ 2>/dev/null || true
+        cp -f /ci-cache/tauri-targets/linux/release/bundle/deb/*.deb releases/NamelessLiberty/ 2>/dev/null || true
+        cp -f /ci-cache/tauri-targets/linux/release/bundle/rpm/*.rpm releases/NamelessLiberty/ 2>/dev/null || true
+
+        echo "=== [2/3] Building NamelessLiberty Windows ==="
+        CARGO_TARGET_DIR=/ci-cache/tauri-targets/windows bun --cwd apps/tauri tauri build --runner cargo-xwin --target x86_64-pc-windows-msvc
+        cp -f /ci-cache/tauri-targets/windows/x86_64-pc-windows-msvc/release/bundle/nsis/*.exe releases/NamelessLiberty/ 2>/dev/null || true
+        if [ -n "${WINDOWS_CERT_BASE64:-}" ]; then
+          printf '%s' "$WINDOWS_CERT_BASE64" | base64 -d > /tmp/windows.pfx
+          for exe in releases/NamelessLiberty/*.exe; do
+            [ -f "$exe" ] || continue
+            osslsigncode sign \
+              -pkcs12 /tmp/windows.pfx \
+              -pass "${WINDOWS_CERT_PASSWORD:-}" \
+              -n "NamelessLiberty" \
+              -h sha256 \
+              -t http://timestamp.digicert.com \
+              -in "$exe" \
+              -out "${exe}.signed"
+            mv -f "${exe}.signed" "$exe"
+          done
+          rm -f /tmp/windows.pfx
+        else
+          echo "WARNING: WINDOWS_CERT_BASE64 not set; skipping Windows code signing."
+        fi
+
+        echo "=== [3/3] Building NamelessLiberty Android ==="
+        if [ ! -d apps/tauri/src-tauri/gen/android ]; then
+          bun --cwd apps/tauri tauri android init
+        fi
+        CARGO_TARGET_DIR=/ci-cache/tauri-targets/android bun --cwd apps/tauri tauri android build --apk
+        KEYSTORE_PATH="/tmp/android.keystore"
+        if [ -n "${ANDROID_KEYSTORE_BASE64:-}" ]; then
+          printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 -d > "$KEYSTORE_PATH"
+          KEYSTORE_PASS="$ANDROID_KEYSTORE_PASSWORD"
+          KEY_ALIAS="$ANDROID_KEY_ALIAS"
+          KEY_PASS="${ANDROID_KEY_PASSWORD:-$ANDROID_KEYSTORE_PASSWORD}"
+        else
+          echo "WARNING: ANDROID_KEYSTORE_BASE64 not set; generating an ephemeral keystore (app updates will require uninstalling first)."
+          KEYSTORE_PASS="namelessliberty"
+          KEY_ALIAS="namelessliberty"
+          KEY_PASS="namelessliberty"
+          keytool -genkeypair -noprompt -keystore "$KEYSTORE_PATH" -storetype PKCS12 -keyalg RSA -keysize 2048 -validity 10000 -alias "$KEY_ALIAS" -storepass "$KEYSTORE_PASS" -keypass "$KEY_PASS" -dname "CN=NamelessLiberty, O=NamelessLiberty, C=US"
+        fi
+        for apk in $(find apps/tauri/src-tauri/gen/android/app/build/outputs/apk -name "*.apk"); do
+          out_name="$(basename "$apk" | sed 's/-unsigned//')"
+          "$ANDROID_HOME/build-tools/35.0.0/zipalign" -f -p 4 "$apk" "${apk}.aligned"
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" sign \
+            --ks "$KEYSTORE_PATH" \
+            --ks-pass "pass:$KEYSTORE_PASS" \
+            --ks-key-alias "$KEY_ALIAS" \
+            --key-pass "pass:$KEY_PASS" \
+            --out "releases/NamelessLiberty/$out_name" \
+            "${apk}.aligned"
+          rm -f "${apk}.aligned"
+        done
+        rm -f "$KEYSTORE_PATH"
+
+        bun apps/tauri/release.ts
+    depends_on:
+      - JellyBorealis
 
   - name: Cleanup
     image: docker:latest
     volumes:
       - name: docker_sock
         path: /var/run/docker.sock
+      - name: ci_cache
+        path: /ci-cache
     commands:
-      - rm -f .env
+      - rm -f .env .ci-flags
       - docker image prune -f
+      - docker builder prune -f --keep-storage=15gb
+      - |
+        if [ -d /ci-cache ]; then
+          CACHE_KB=$(du -sk /ci-cache | awk '{print $1}')
+          echo "Host CI cache size: $((CACHE_KB / 1024)) MB"
+          if [ "$CACHE_KB" -gt 15728640 ]; then
+            echo "Host CI cache exceeds 15 GB; pruning Tauri target dirs..."
+            rm -rf /ci-cache/tauri-targets/*
+          fi
+        fi
     depends_on:
-      - Verify its running
+      - NamelessLiberty
     when:
       status:
         - success
@@ -383,6 +426,9 @@ volumes:
   - name: docker_sock
     host:
       path: /var/run/docker.sock
+  - name: ci_cache
+    host:
+      path: /var/cache/namelessliberty-ci
 
 trigger:
   branch:
