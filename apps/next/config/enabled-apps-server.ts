@@ -3,7 +3,7 @@ import path from "node:path"
 import bundledConfig from "../../../iris.json"
 import { ALL_APPS, type IrisAppId } from "./enabled-apps"
 
-type IrisAppsConfig = Record<string, { enabled?: boolean } | undefined>
+type IrisAppsConfig = Record<string, any>
 
 let cachedConfig: IrisAppsConfig | null = null
 
@@ -36,4 +36,9 @@ export function isServerAppEnabled(appId: string): boolean {
 
 export function getRuntimeEnabledApps(): IrisAppId[] {
   return ALL_APPS.filter((id) => isServerAppEnabled(id))
+}
+
+export function isAccountCreationAllowed(): boolean {
+  const config = readLiveIrisConfig()
+  return config?.carina?.auth?.register?.allowAccountCreation !== false
 }

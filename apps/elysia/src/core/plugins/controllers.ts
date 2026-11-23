@@ -332,7 +332,7 @@ export function generateStaticManifest(
   fs.writeFileSync(outputFile, code, 'utf-8')
 }
 
-type IrisAppConfig = Record<string, { enabled?: boolean } | undefined>
+type IrisAppConfig = Record<string, any>
 
 let cachedIrisAppConfig: IrisAppConfig | null = null
 
@@ -367,6 +367,11 @@ export function isElysiaAppEnabled(appId: string): boolean {
     return config.borealis?.enabled !== false && config.servarr?.enabled !== false
   }
   return config[key]?.enabled !== false
+}
+
+export function isAccountCreationAllowed(): boolean {
+  const config = loadIrisAppConfig()
+  return config?.carina?.auth?.register?.allowAccountCreation !== false
 }
 
 function isControllerFileDisabled(

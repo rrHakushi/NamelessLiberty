@@ -1,5 +1,7 @@
 import { Elysia } from 'elysia'
 import { session } from '../../../core/plugins/session'
+import { isAccountCreationAllowed } from '../../../core/plugins/controllers'
+import { Forbidden } from '../../../core/errors/http-errors'
 import { CarinaAuthModel } from './auth.model'
 import { CarinaAuthServ } from './auth.serv'
 import { getDomainConfig } from '../../../core/utils/domain'
@@ -81,6 +83,9 @@ export const carinaAuth = new Elysia({ prefix: '/carina/auth' })
       },
     },
     async ({ body }) => {
+      if (!isAccountCreationAllowed()) {
+        throw new Forbidden('Account creation is disabled')
+      }
       return await CarinaAuthServ.register(body)
     }
   )
