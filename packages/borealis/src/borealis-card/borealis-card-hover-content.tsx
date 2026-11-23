@@ -216,6 +216,9 @@ export function BorealisCardHoverContent({
 
   const [isSaving, setIsSaving] = useState(false)
 
+  const isReleasingMedia =
+    String(rawMedia?.status ?? "").toUpperCase() === "RELEASING"
+
   // Only auto-complete when progress is actively increased by the user to reach or exceed maxCount
   const prevProgRef = useRef({ progress: draftProgress, chapters: draftChaptersProgress })
   useEffect(() => {
@@ -223,7 +226,7 @@ export function BorealisCardHoverContent({
     const progIncreased = draftProgress > prev.progress || draftChaptersProgress > prev.chapters
     prevProgRef.current = { progress: draftProgress, chapters: draftChaptersProgress }
 
-    if (progIncreased) {
+    if (progIncreased && !isReleasingMedia) {
       if (
         ((maxUnits && draftProgress >= maxUnits) ||
           (maxChapters && draftChaptersProgress >= maxChapters)) &&

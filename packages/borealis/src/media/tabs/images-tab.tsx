@@ -1,29 +1,47 @@
 "use client"
 
 import React, { useMemo, useState } from "react"
+import { IconCheck, IconCopy, IconDownload } from "@tabler/icons-react"
+import { Button } from "@workspace/ui/components/button"
 import {
   Dialog,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@workspace/ui/components/dialog"
+import { toast } from "sonner"
 
 interface ImagesTabProps {
   coverImage: string | null
   bannerImage: string | null
   images: Record<string, string[] | string | null> | null
+  characters?: Array<{ image?: string | null; actor?: { image?: string | null } | null }>
+  staff?: Array<{ image?: string | null; person?: { image?: string | null } | null }>
+  seasons?: Array<{ posterImage?: string | null; image?: string | null }>
+  episodes?: Array<{ thumbnail?: string | null; image?: string | null }>
 }
 
 type ImageCategoryKey =
-  "all" | "posters" | "backgrounds" | "banners" | "screencaps"
+  | "all"
+  | "posters"
+  | "backgrounds"
+  | "banners"
+  | "screencaps"
+  | "seasons"
+  | "episodes"
+  | "characters"
+  | "people"
 
 function classifyImageUrl(
   url: string,
-  context?: "cover" | "banner"
+  context?: Exclude<ImageCategoryKey, "all">
 ): Exclude<ImageCategoryKey, "all"> {
-  if (context === "cover") return "posters"
-  if (context === "banner") return "banners"
+  if (context) return context
 
   const lower = url.toLowerCase()
+  if (lower.includes("/character/")) return "characters"
+  if (lower.includes("/staff/") || lower.includes("/person")) return "people"
+  if (lower.includes("/seasons/")) return "seasons"
   if (
     lower.includes("/posters/") ||
     lower.includes("/poster") ||
@@ -68,19 +86,35 @@ export interface ProcessedMediaImage {
 export function extractMediaImages(
   coverImage?: string | null,
   bannerImage?: string | null,
-  images?: any
+  images?: any,
+  extras?: {
+    characters?: ImagesTabProps["characters"]
+    staff?: ImagesTabProps["staff"]
+    seasons?: ImagesTabProps["seasons"]
+    episodes?: ImagesTabProps["episodes"]
+  }
 ): ProcessedMediaImage[] {
   const result: ProcessedMediaImage[] = []
   const seen = new Set<string>()
 
   const collectCandidate = (
     url?: string | null,
-    context?: "cover" | "banner"
+    context?: Exclude<ImageCategoryKey, "all">
   ) => {
     if (!url || typeof url !== "string") return
     const trimmed = url.trim()
     if (!trimmed) return
     const normalized = trimmed.replace(/^http:\/\//i, "https://")
+    const lower = normalized.toLowerCase()
+    if (
+      lower.includes("/banners/images/missing/") ||
+      lower.includes("/images/missing/movie.jpg") ||
+      lower.includes("/images/missing/series.jpg") ||
+      lower.includes("/images/missing/person.jpg") ||
+      (lower.includes("anilistcdn/") && lower.endsWith("/default.jpg"))
+    ) {
+      return
+    }
     if (seen.has(normalized)) return
     seen.add(normalized)
     result.push({
@@ -90,8 +124,8 @@ export function extractMediaImages(
   }
 
   // 1. Cover and banner first
-  if (coverImage) collectCandidate(coverImage, "cover")
-  if (bannerImage) collectCandidate(bannerImage, "banner")
+  if (coverImage) collectCandidate(coverImage, "posters")
+  if (bannerImage) collectCandidate(bannerImage, "banners")
 
   // 2. Extra images (array or object)
   if (images) {
@@ -107,10 +141,22 @@ export function extractMediaImages(
       }
     } else if (typeof images === "object") {
       for (const [key, val] of Object.entries(images)) {
-        let context: "cover" | "banner" | undefined
+        let context: Exclude<ImageCategoryKey, "all"> | undefined
         const lKey = key.toLowerCase()
-        if (lKey.includes("banner")) context = "banner"
-        if (lKey.includes("cover") || lKey.includes("poster")) context = "cover"
+        if (lKey.includes("banner")) context = "banners"
+        else if (lKey.includes("background")) context = "backgrounds"
+        else if (lKey.includes("screencap")) context = "screencaps"
+        else if (lKey.includes("episode")) context = "episodes"
+        else if (lKey.includes("season")) context = "seasons"
+        else if (lKey.includes("character")) context = "characters"
+        else if (lKey.includes("people") || lKey.includes("staff"))
+          context = "people"
+        else if (
+          lKey.includes("cover") ||
+          lKey.includes("poster") ||
+          lKey.includes("mal")
+        )
+          context = "posters"
 
         if (Array.isArray(val)) {
           for (const item of val) {
@@ -131,7 +177,30 @@ export function extractMediaImages(
     }
   }
 
-  // 3. Deduplicate lower resolution variants ONLY when higher resolution exists in the set
+  // 3. Fallback from already-loaded relation records (for media synced prior to worker update)
+  if (extras?.seasons) {
+    for (const s of extras.seasons) {
+      collectCandidate(s?.posterImage || s?.image, "seasons")
+    }
+  }
+  if (extras?.episodes) {
+    for (const ep of extras.episodes) {
+      collectCandidate(ep?.thumbnail || ep?.image, "episodes")
+    }
+  }
+  if (extras?.characters) {
+    for (const ch of extras.characters) {
+      collectCandidate(ch?.image, "characters")
+      collectCandidate(ch?.actor?.image, "people")
+    }
+  }
+  if (extras?.staff) {
+    for (const st of extras.staff) {
+      collectCandidate(st?.person?.image || st?.image, "people")
+    }
+  }
+
+  // 4. Deduplicate lower resolution variants ONLY when higher resolution exists in the set
   const filtered = result.filter((item) => {
     // MAL: if ...l.jpg exists, drop ...jpg or ...m.jpg
     if (item.url.endsWith(".jpg") && !item.url.endsWith("l.jpg")) {
@@ -153,68 +222,65 @@ export function extractMediaImages(
   return filtered
 }
 
-export function ImagesTab({ coverImage, bannerImage, images }: ImagesTabProps) {
+export function ImagesTab({
+  coverImage,
+  bannerImage,
+  images,
+  characters,
+  staff,
+  seasons,
+  episodes,
+}: ImagesTabProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [activeCategory, setActiveCategory] = useState<ImageCategoryKey>("all")
 
   // Categorize and deduplicate images
   const categorizedImages = useMemo(() => {
-    const list = extractMediaImages(coverImage, bannerImage, images)
-    const posters = list
-      .filter((i) => i.category === "posters")
-      .map((i) => i.url)
-    const backgrounds = list
-      .filter((i) => i.category === "backgrounds")
-      .map((i) => i.url)
-    const banners = list
-      .filter((i) => i.category === "banners")
-      .map((i) => i.url)
-    const screencaps = list
-      .filter((i) => i.category === "screencaps")
-      .map((i) => i.url)
-    const all = list.map((i) => i.url)
+    const list = extractMediaImages(coverImage, bannerImage, images, {
+      characters,
+      staff,
+      seasons,
+      episodes,
+    })
+    const byCat = (cat: Exclude<ImageCategoryKey, "all">) =>
+      list.filter((i) => i.category === cat).map((i) => i.url)
 
     return {
-      all,
-      posters,
-      backgrounds,
-      banners,
-      screencaps,
+      all: list.map((i) => i.url),
+      posters: byCat("posters"),
+      backgrounds: byCat("backgrounds"),
+      banners: byCat("banners"),
+      screencaps: byCat("screencaps"),
+      seasons: byCat("seasons"),
+      episodes: byCat("episodes"),
+      characters: byCat("characters"),
+      people: byCat("people"),
     }
-  }, [coverImage, bannerImage, images])
+  }, [coverImage, bannerImage, images, characters, staff, seasons, episodes])
 
   // Build category tabs - ONLY SHOW IF AVAILABLE
   const availableCategories = useMemo(() => {
+    const defs: Array<{
+      key: Exclude<ImageCategoryKey, "all">
+      label: string
+    }> = [
+      { key: "posters", label: "Posters & Covers" },
+      { key: "backgrounds", label: "Backgrounds" },
+      { key: "banners", label: "Banners" },
+      { key: "screencaps", label: "Screencaps" },
+      { key: "seasons", label: "Seasons" },
+      { key: "episodes", label: "Episodes" },
+      { key: "characters", label: "Characters" },
+      { key: "people", label: "People" },
+    ]
     const tabs: Array<{ key: ImageCategoryKey; label: string; count: number }> =
       [{ key: "all", label: "All", count: categorizedImages.all.length }]
 
-    if (categorizedImages.posters.length > 0) {
-      tabs.push({
-        key: "posters",
-        label: "Posters & Covers",
-        count: categorizedImages.posters.length,
-      })
-    }
-    if (categorizedImages.backgrounds.length > 0) {
-      tabs.push({
-        key: "backgrounds",
-        label: "Backgrounds",
-        count: categorizedImages.backgrounds.length,
-      })
-    }
-    if (categorizedImages.banners.length > 0) {
-      tabs.push({
-        key: "banners",
-        label: "Banners",
-        count: categorizedImages.banners.length,
-      })
-    }
-    if (categorizedImages.screencaps.length > 0) {
-      tabs.push({
-        key: "screencaps",
-        label: "Screencaps",
-        count: categorizedImages.screencaps.length,
-      })
+    for (const d of defs) {
+      const len = categorizedImages[d.key].length
+      if (len > 0) {
+        tabs.push({ key: d.key, label: d.label, count: len })
+      }
     }
 
     return tabs
@@ -282,28 +348,109 @@ export function ImagesTab({ coverImage, bannerImage, images }: ImagesTabProps) {
 
       {/* Full Image Popup Modal */}
       {selectedImage && (
-        <Dialog
-          isOpen={Boolean(selectedImage)}
-          onOpenChange={(isOpen) => {
-            if (!isOpen) setSelectedImage(null)
-          }}
-          className="gap-3 p-3 sm:max-w-5xl"
-        >
-          <DialogHeader className="border-b border-border/40 pb-2">
-            <DialogTitle className="text-sm font-semibold">
-              Artwork Preview
-            </DialogTitle>
-          </DialogHeader>
-
-          <div className="relative flex max-h-[82vh] w-full items-center justify-center overflow-auto rounded-xl bg-black/40 p-2">
-            <img
-              src={selectedImage}
-              alt="Artwork preview"
-              className="max-h-[78vh] w-auto max-w-full rounded-lg object-contain"
-            />
-          </div>
-        </Dialog>
+        <ImagePreviewDialog
+          imageUrl={selectedImage}
+          onClose={() => setSelectedImage(null)}
+        />
       )}
     </div>
+  )
+}
+
+function ImagePreviewDialog({
+  imageUrl,
+  onClose,
+}: {
+  imageUrl: string
+  onClose: () => void
+}) {
+  const [copied, setCopied] = useState(false)
+  const [downloading, setDownloading] = useState(false)
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(imageUrl)
+      setCopied(true)
+      toast.success("Image URL copied to clipboard")
+      window.setTimeout(() => setCopied(false), 1800)
+    } catch {
+      toast.error("Failed to copy image URL")
+    }
+  }
+
+  const handleDownload = async () => {
+    setDownloading(true)
+    try {
+      const res = await fetch(imageUrl)
+      if (!res.ok) throw new Error("Fetch failed")
+      const blob = await res.blob()
+      const objectUrl = URL.createObjectURL(blob)
+      const ext = blob.type.split("/")[1]?.split(";")[0] || "png"
+      const filename =
+        imageUrl.split("/").pop()?.split("?")[0] || `artwork.${ext}`
+      const a = document.createElement("a")
+      a.href = objectUrl
+      a.download = filename
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(objectUrl)
+    } catch {
+      window.open(imageUrl, "_blank", "noopener,noreferrer")
+    } finally {
+      setDownloading(false)
+    }
+  }
+
+  return (
+    <Dialog
+      isOpen={true}
+      onOpenChange={(isOpen) => {
+        if (!isOpen) onClose()
+      }}
+      className="w-max max-w-[95vw] sm:max-w-[95vw] gap-2.5 p-3"
+    >
+      <DialogHeader className="border-b border-border/40 pb-2">
+        <DialogTitle className="text-sm font-semibold">
+          Artwork Preview
+        </DialogTitle>
+      </DialogHeader>
+
+      <div className="relative flex min-h-0 min-w-0 items-center justify-center rounded-xl bg-black/40">
+        <img
+          src={imageUrl}
+          alt="Artwork preview"
+          className="block max-h-[78vh] max-w-[calc(95vw-1.5rem)] w-auto h-auto rounded-lg object-contain"
+        />
+      </div>
+
+      <DialogFooter className="border-t border-border/40 pt-2.5 flex-row justify-end gap-2">
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          onClick={() => void handleCopy()}
+          className="gap-1.5 cursor-pointer"
+        >
+          {copied ? (
+            <IconCheck className="size-3.5 text-emerald-400" />
+          ) : (
+            <IconCopy className="size-3.5" />
+          )}
+          <span>{copied ? "Copied" : "Copy Link"}</span>
+        </Button>
+        <Button
+          type="button"
+          variant="default"
+          size="sm"
+          isDisabled={downloading}
+          onClick={() => void handleDownload()}
+          className="gap-1.5 cursor-pointer"
+        >
+          <IconDownload className="size-3.5" />
+          <span>{downloading ? "Downloading..." : "Download"}</span>
+        </Button>
+      </DialogFooter>
+    </Dialog>
   )
 }

@@ -119,9 +119,13 @@ export function BorealisCardStatusProgress() {
 
   if (isEntity || config.showExtras === false) return null
 
+  const isMovie = data.type === "movie" || data.type === "movies"
+  const isReleasingMedia =
+    String((data.raw?.media ?? data.raw)?.status ?? "").toUpperCase() ===
+    "RELEASING"
   const hasListStatus = Boolean(data.listStatus)
   const shouldShowProgress =
-    config.showProgress !== false && Boolean(data.progress)
+    !isMovie && config.showProgress !== false && Boolean(data.progress)
 
   if (!hasListStatus && !shouldShowProgress) return null
 
@@ -168,7 +172,9 @@ export function BorealisCardStatusProgress() {
                 placement="bottom start"
                 className="w-auto min-w-[120px] whitespace-nowrap text-[10px] border border-primary/40 bg-black/65 text-foreground shadow-2xl backdrop-blur-md z-[100]"
               >
-                {STATUS_DROPDOWN_OPTIONS.map((opt) => {
+                {STATUS_DROPDOWN_OPTIONS.filter(
+                  (opt) => !(isReleasingMedia && opt === "COMPLETED")
+                ).map((opt) => {
                   const OptIcon = getMediaListStatusIcon(opt)
                   const optColor = getMediaListStatusColor(opt)
                   const optLabel = getMediaListStatusText(opt, data.type)
@@ -349,7 +355,7 @@ export function BorealisCardStatusProgress() {
                         onApply={(amount) => config.onIncrement?.(amount)}
                       />
                     </DropdownMenuItem>
-                    {remainingTotal > 1 && (
+                    {!isReleasingMedia && remainingTotal > 1 && (
                       <DropdownMenuItem
                         onAction={() => config.onIncrement?.(remainingTotal)}
                         className="text-emerald-400 font-semibold whitespace-nowrap text-[10px] py-1 px-2 min-h-6"

@@ -80,7 +80,6 @@ export interface UserListFilterState {
   seasons: string[]
   countries: string[]
   staff?: string[]
-  licensed?: "all" | "yes" | "no"
 }
 
 export const DEFAULT_USER_LIST_FILTER_STATE: UserListFilterState = {
@@ -118,7 +117,6 @@ export const DEFAULT_USER_LIST_FILTER_STATE: UserListFilterState = {
   seasons: [],
   countries: [],
   staff: [],
-  licensed: "all",
 }
 
 export interface UserListFilterFacets {
@@ -192,7 +190,6 @@ export function countActiveFilters(filters: UserListFilterState): number {
     filters.seriesScoreMax !== undefined
   )
     count++
-  if (filters.licensed && filters.licensed !== "all") count++
   if (filters.staff && filters.staff.length > 0) count += filters.staff.length
   if (filters.adult !== "all") count++
   if (filters.years.length > 0) count += filters.years.length
@@ -393,15 +390,17 @@ export function UserListFilterSheet({
   const seriesProgressLabel =
     mediaType === "manga" || mediaType === "book"
       ? "Chapters & Volumes"
-      : mediaType === "anime" || mediaType === "tv"
+      : mediaType === "tv"
         ? "Episodes & Seasons"
-        : mediaType === "game"
-          ? "Hours / Length"
-          : mediaType === "music"
-            ? "Tracks / Length"
-            : mediaType === "movie"
-              ? "Duration"
-              : "Total Length"
+        : mediaType === "anime"
+          ? "Episodes"
+          : mediaType === "game"
+            ? "Hours / Length"
+            : mediaType === "music"
+              ? "Tracks / Length"
+              : mediaType === "movie"
+                ? "Duration"
+                : "Total Length"
 
   const seriesPrimaryUnit =
     mediaType === "manga" || mediaType === "book"
@@ -417,7 +416,7 @@ export function UserListFilterSheet({
   const seriesSecondaryUnit =
     mediaType === "manga" || mediaType === "book"
       ? "Volumes"
-      : mediaType === "anime" || mediaType === "tv"
+      : mediaType === "tv"
         ? "Seasons"
         : null
 
@@ -1392,54 +1391,7 @@ export function UserListFilterSheet({
           </div>
         </FilterAccordionRow>
 
-        {/* 7. Licensed? Dropdown */}
-        <FilterAccordionRow
-          id="licensed"
-          label="Licensed?"
-          icon={IconCertificate}
-          activeCount={localFilters.licensed && localFilters.licensed !== "all" ? 1 : 0}
-          isOpen={Boolean(openDropdowns.licensed)}
-          onToggle={() => toggleDropdown("licensed")}
-        >
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={() =>
-                setLocalFilters((prev) => ({
-                  ...prev,
-                  licensed: prev.licensed === "yes" ? "all" : "yes",
-                }))
-              }
-              className={cn(
-                "rounded-xl border py-2 text-xs font-semibold transition-all select-none cursor-pointer",
-                localFilters.licensed === "yes"
-                  ? "border-primary bg-primary text-primary-foreground shadow-xs"
-                  : "border-frost bg-frost/50 text-zinc-400 hover:text-zinc-200"
-              )}
-            >
-              Licensed
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                setLocalFilters((prev) => ({
-                  ...prev,
-                  licensed: prev.licensed === "no" ? "all" : "no",
-                }))
-              }
-              className={cn(
-                "rounded-xl border py-2 text-xs font-semibold transition-all select-none cursor-pointer",
-                localFilters.licensed === "no"
-                  ? "border-primary bg-primary text-primary-foreground shadow-xs"
-                  : "border-frost bg-frost/50 text-zinc-400 hover:text-zinc-200"
-              )}
-            >
-              Unlicensed
-            </button>
-          </div>
-        </FilterAccordionRow>
-
-        {/* 8. Rating (Series Average Rating) Dropdown */}
+        {/* 7. Rating (Series Average Rating) Dropdown */}
         <FilterAccordionRow
           id="seriesRating"
           label="Rating"

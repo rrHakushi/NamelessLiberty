@@ -25,6 +25,23 @@ export const STATUS_DROPDOWN_OPTIONS: ListStatus[] = [
 
 export const SCORE_OPTIONS = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
+/**
+ * Strips HTML tags, converts `<br>` to newlines, and collapses consecutive
+ * horizontal whitespace (double/triple spaces) while preserving line breaks.
+ */
+export function cleanMediaDescription(raw?: string | null): string | null {
+  if (!raw) return null
+  const cleaned = raw
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<[^>]*>/g, "")
+    .replace(/[^\S\r\n]{2,}/g, " ")
+    .split("\n")
+    .map((line) => line.trim())
+    .join("\n")
+    .trim()
+  return cleaned || null
+}
+
 // -----------------------------------------------------------------------------
 // Fallback Icon Helper
 // -----------------------------------------------------------------------------

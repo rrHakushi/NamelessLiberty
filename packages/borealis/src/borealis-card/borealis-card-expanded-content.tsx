@@ -10,7 +10,7 @@ import { useBorealisCard } from "../borealis-card-context"
 
 import type { BorealisCardExpandedContentProps } from "../types"
 
-import { getEntityFallbackIcon } from "./shared"
+import { cleanMediaDescription, getEntityFallbackIcon } from "./shared"
 import { BorealisCardHoverContent } from "./borealis-card-hover-content"
 
 // 5.5 BorealisCard.ExpandedContent
@@ -29,7 +29,10 @@ export function BorealisCardExpandedContent({
   const details = data.hoverDetails
   const shouldShowSubtitle = config.showSubtitle ?? true
   const shouldShowDescription = config.showDescription ?? false
-  const descriptionText = data.description || details?.description
+  const descriptionText = useMemo(
+    () => cleanMediaDescription(data.description || details?.description),
+    [data.description, details?.description]
+  )
 
   return (
     <>

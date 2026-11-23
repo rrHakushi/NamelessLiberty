@@ -409,7 +409,12 @@ export function BorealisCardHoverEditForm({
                 }}
                 className="absolute top-full left-0 z-[99999] mt-1 w-48 rounded-2xl border border-frost bg-zinc-950/80 p-1.5 text-zinc-100 shadow-2xl backdrop-blur-2xl"
               >
-                {STATUS_DROPDOWN_OPTIONS.map((st) => {
+                {STATUS_DROPDOWN_OPTIONS.filter((st) => {
+                  const mediaStatus = String(
+                    (data.raw?.media ?? data.raw)?.status ?? ""
+                  ).toUpperCase()
+                  return !(mediaStatus === "RELEASING" && st === "COMPLETED")
+                }).map((st) => {
                   const IconComp = getMediaListStatusIcon(st)
                   const stColor = getMediaListStatusColor(st)
                   const label = getMediaListStatusText(st, data.type)

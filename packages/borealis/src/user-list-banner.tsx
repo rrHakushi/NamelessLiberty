@@ -14,6 +14,7 @@ export interface UserListBannerProps {
   username?: string
   profile?: UserProfileCustomization | null
   currentMediaType?: string
+  extended?: boolean
   className?: string
 }
 
@@ -33,6 +34,7 @@ function isValidFrameUrl(url?: string | null): url is string {
 export function UserListBanner({
   username = "User",
   profile,
+  extended = false,
   className,
 }: UserListBannerProps): React.JSX.Element {
   const displayName = profile?.displayName?.trim()
@@ -54,7 +56,10 @@ export function UserListBanner({
   return (
     <div
       className={cn(
-        "relative w-full shrink-0 h-44 sm:h-52 md:h-56 min-h-44 sm:min-h-52 md:min-h-56 overflow-hidden border-b border-white/10",
+        "relative w-full shrink-0 overflow-hidden",
+        extended
+          ? "h-60 sm:h-72 md:h-76 min-h-60 sm:min-h-72 md:min-h-76"
+          : "h-44 sm:h-52 md:h-56 min-h-44 sm:min-h-52 md:min-h-56",
         className
       )}
     >
@@ -76,10 +81,18 @@ export function UserListBanner({
 
         {/* Subtle dark tint to ensure text contrast while keeping artwork 100% visible */}
         <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+        {extended && (
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background via-background/40 to-transparent pointer-events-none" />
+        )}
       </div>
 
       {/* 2. Frosted Glass Profile Card overlaid directly over the banner */}
-      <div className="absolute bottom-3 sm:bottom-4 inset-x-4 sm:inset-x-6 lg:inset-x-8 z-10 flex justify-start">
+      <div
+        className={cn(
+          "absolute inset-x-4 sm:inset-x-6 lg:inset-x-8 z-10 flex justify-start",
+          extended ? "bottom-18 sm:bottom-22" : "bottom-3 sm:bottom-4"
+        )}
+      >
         <GlassCard
           variant="tinted"
           className="flex w-fit max-w-full flex-col gap-3 p-2.5 sm:p-3 transition-all sm:flex-row sm:items-center sm:justify-between"

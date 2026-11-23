@@ -27,6 +27,103 @@ import { MediaQueueManager, type MediaType } from './media.queue'
 
 const logger = new LogFactory('Borealis:EntitySyncer')
 
+/**
+ * Normalizes `http://` -> `https://` and rejects known placeholder image URLs
+ * (TheTVDB `/images/missing/...` and AniList `anilistcdn/.../default.jpg`).
+ */
+function sanitizeImageUrl(url?: string | null): string | null {
+  if (!url || typeof url !== 'string') return null
+  const trimmed = url.trim()
+  if (!trimmed) return null
+  const normalized = trimmed.replace(/^http:\/\//i, 'https://')
+  const lower = normalized.toLowerCase()
+
+  if (
+    lower.includes('/banners/images/missing/') ||
+    lower.includes('/images/missing/movie.jpg') ||
+    lower.includes('/images/missing/series.jpg') ||
+    lower.includes('/images/missing/person.jpg') ||
+    (lower.includes('anilistcdn/') && lower.endsWith('/default.jpg'))
+  ) {
+    return null
+  }
+  return normalized
+}
+
+type MediaImageBucketsInput = {
+  posters?: Array<string | null | undefined>
+  banners?: Array<string | null | undefined>
+  backgrounds?: Array<string | null | undefined>
+  screencaps?: Array<string | null | undefined>
+  seasons?: Array<string | null | undefined>
+  episodes?: Array<string | null | undefined>
+  characters?: Array<string | null | undefined>
+  people?: Array<string | null | undefined>
+  thetvdb?: Array<string | null | undefined>
+  igdb?: Array<string | null | undefined>
+  mal?: Array<string | null | undefined>
+}
+
+function buildCategorizedImages(
+  buckets: MediaImageBucketsInput
+): Record<string, string[]> | undefined {
+  const seen = new Set<string>()
+  const result: Record<string, string[]> = {}
+
+  for (const [key, list] of Object.entries(buckets)) {
+    if (!Array.isArray(list) || list.length === 0) continue
+    const cleanList: string[] = []
+    for (const raw of list) {
+      const clean = sanitizeImageUrl(raw)
+      if (!clean || seen.has(clean)) continue
+      seen.add(clean)
+      cleanList.push(clean)
+    }
+    if (cleanList.length > 0) {
+      result[key] = cleanList
+    }
+  }
+
+  return Object.keys(result).length > 0 ? result : undefined
+}
+
+async function fetchJikanPictures(
+  type: 'anime' | 'manga',
+  malId?: number | null
+): Promise<string[]> {
+  if (!malId || malId <= 0) return []
+  try {
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 5000)
+    const res = await fetch(`https://api.jikan.moe/v4/${type}/${malId}/pictures`, {
+      signal: controller.signal,
+    })
+    clearTimeout(timeout)
+    if (!res.ok) return []
+    const json = (await res.json()) as {
+      data?: Array<{
+        jpg?: { large_image_url?: string; image_url?: string }
+        webp?: { large_image_url?: string; image_url?: string }
+      }>
+    }
+    const urls: string[] = []
+    for (const pic of json?.data ?? []) {
+      const candidate =
+        pic?.jpg?.large_image_url ||
+        pic?.webp?.large_image_url ||
+        pic?.jpg?.image_url ||
+        pic?.webp?.image_url
+      const clean = sanitizeImageUrl(candidate)
+      if (clean && !urls.includes(clean)) {
+        urls.push(clean)
+      }
+    }
+    return urls
+  } catch {
+    return []
+  }
+}
+
 export interface DiscoveredRelation {
   sourceType: MediaType
   sourceId: number
@@ -216,7 +313,7 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
       let personRecord: { id: number; image?: string | null } | null = null
       if (c.personName || c.peopleId) {
         const pName = (c.personName || 'Unknown Person').trim()
-        const pImg = normalizeTvdbImageUrl(c.personImgURL)
+        const pImg = sanitizeImageUrl(normalizeTvdbImageUrl(c.personImgURL))
         if (c.peopleId) {
           personRecord = await prisma.orm.public.Person.where({ tvDBId: c.peopleId }).select('id', 'image').first()
         }
@@ -240,7 +337,7 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
       let charRecord: { id: number; image?: string | null } | null = null
       if (c.name && isActor) {
         const cName = c.name.trim()
-        const cImg = normalizeTvdbImageUrl(c.image)
+        const cImg = sanitizeImageUrl(normalizeTvdbImageUrl(c.image))
         if (c.id) {
           charRecord = await prisma.orm.public.Character.where({ tvDBId: c.id }).select('id', 'image').first()
         }
@@ -406,7 +503,9 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
     for (const edge of characters.edges) {
       if (!edge?.node?.name?.full) continue
       const anilistCharId = edge.node.id
-      const charImage = edge.node.image?.large || edge.node.image?.medium || null
+      const charImage = sanitizeImageUrl(
+        edge.node.image?.large || edge.node.image?.medium || null
+      )
 
       try {
         let char = await prisma.orm.public.Character.where({ anilistId: anilistCharId })
@@ -451,7 +550,9 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         if (voiceActors && Array.isArray(voiceActors) && voiceActors.length > 0) {
           for (const va of voiceActors) {
             if (!va?.name?.full) continue
-            const vaImage = va.image?.large || va.image?.medium || null
+            const vaImage = sanitizeImageUrl(
+              va.image?.large || va.image?.medium || null
+            )
             let person = await prisma.orm.public.Person.where({ anilistId: va.id })
               .select('id', 'image')
               .first()
@@ -545,7 +646,9 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
     for (const edge of staff.edges) {
       if (!edge?.node?.name?.full) continue
       const anilistPersonId = edge.node.id
-      const staffImage = edge.node.image?.large || edge.node.image?.medium || null
+      const staffImage = sanitizeImageUrl(
+        edge.node.image?.large || edge.node.image?.medium || null
+      )
 
       try {
         let person = await prisma.orm.public.Person.where({ anilistId: anilistPersonId })
@@ -698,6 +801,37 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         } catch {}
       }
 
+      // Fetch MAL pictures via Jikan if malId is available
+      const malPictures = await fetchJikanPictures('anime', alData.idMal)
+
+      const animeCover = sanitizeImageUrl(
+        alData.coverImage?.extraLarge || alData.coverImage?.large || alData.coverImage?.medium
+      )
+      const animeBanner = sanitizeImageUrl(alData.bannerImage)
+      const animeCharImages: string[] = []
+      const animePeopleImages: string[] = []
+      for (const edge of alData.characters?.edges ?? []) {
+        const cImg = edge?.node?.image?.large || edge?.node?.image?.medium
+        if (cImg) animeCharImages.push(cImg)
+        for (const va of ((edge as any)?.voiceActors ?? [])) {
+          const vImg = va?.image?.large || va?.image?.medium
+          if (vImg) animePeopleImages.push(vImg)
+        }
+      }
+      for (const edge of alData.staff?.edges ?? []) {
+        const sImg = edge?.node?.image?.large || edge?.node?.image?.medium
+        if (sImg) animePeopleImages.push(sImg)
+      }
+      const animeImages = buildCategorizedImages({
+        posters: [animeCover],
+        banners: [animeBanner],
+        screencaps: [(alData.trailer as any)?.thumbnail],
+        thetvdb: tvdbImages,
+        mal: malPictures,
+        characters: animeCharImages,
+        people: animePeopleImages,
+      })
+
       const now = new Date()
       const nowUnix = Math.floor(now.getTime() / 1000)
 
@@ -711,8 +845,8 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         titleSecondary: alData.title.romaji || alData.title.english || undefined,
         titleNative: alData.title.native || undefined,
         description: alData.description || undefined,
-        coverImage: alData.coverImage?.extraLarge || alData.coverImage?.large || alData.coverImage?.medium || undefined,
-        bannerImage: alData.bannerImage || undefined,
+        coverImage: animeCover || undefined,
+        bannerImage: animeBanner || undefined,
         episodeCount: alData.episodes || undefined,
         alAverageScore: alData.averageScore || undefined,
         alPopularity: alData.popularity || undefined,
@@ -736,7 +870,7 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         bangumiId: mappedIds?.bangumiId || undefined,
         kitsuId: mappedIds?.kitsuId || undefined,
         sources: sources as any,
-        images: tvdbImages.length > 0 ? (tvdbImages as any) : undefined,
+        images: animeImages as any,
         alUpdatedAt: nowUnix,
         updatedAt: now,
       })
@@ -937,6 +1071,31 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         })
         .catch(() => ({} as any))
 
+      // Fetch MAL pictures via Jikan if malId is available
+      const malPictures = await fetchJikanPictures('manga', alData.idMal)
+
+      const mangaCover = sanitizeImageUrl(
+        alData.coverImage?.extraLarge || alData.coverImage?.large || alData.coverImage?.medium
+      )
+      const mangaBanner = sanitizeImageUrl(alData.bannerImage)
+      const mangaCharImages: string[] = []
+      const mangaPeopleImages: string[] = []
+      for (const edge of alData.characters?.edges ?? []) {
+        const cImg = edge?.node?.image?.large || edge?.node?.image?.medium
+        if (cImg) mangaCharImages.push(cImg)
+      }
+      for (const edge of alData.staff?.edges ?? []) {
+        const sImg = edge?.node?.image?.large || edge?.node?.image?.medium
+        if (sImg) mangaPeopleImages.push(sImg)
+      }
+      const mangaImages = buildCategorizedImages({
+        posters: [mangaCover],
+        banners: [mangaBanner],
+        mal: malPictures,
+        characters: mangaCharImages,
+        people: mangaPeopleImages,
+      })
+
       const now = new Date()
       const nowUnix = Math.floor(now.getTime() / 1000)
 
@@ -950,8 +1109,9 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         titleSecondary: alData.title.romaji || alData.title.english || undefined,
         titleNative: alData.title.native || undefined,
         description: alData.description || undefined,
-        coverImage: alData.coverImage?.extraLarge || alData.coverImage?.large || alData.coverImage?.medium || undefined,
-        bannerImage: alData.bannerImage || undefined,
+        coverImage: mangaCover || undefined,
+        bannerImage: mangaBanner || undefined,
+        images: mangaImages as any,
         chapterCount: alData.chapters || undefined,
         volumeCount: alData.volumes || undefined,
         alAverageScore: alData.averageScore || undefined,
@@ -1221,12 +1381,12 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
       // Artworks
       const seriesImages: string[] = []
       if (series.image) {
-        const norm = normalizeTvdbImageUrl(series.image)
+        const norm = sanitizeImageUrl(normalizeTvdbImageUrl(series.image))
         if (norm) seriesImages.push(norm)
       }
       if (series.artworks && Array.isArray(series.artworks)) {
         for (const art of series.artworks) {
-          const norm = normalizeTvdbImageUrl(art.image)
+          const norm = sanitizeImageUrl(normalizeTvdbImageUrl(art.image))
           if (norm && !seriesImages.includes(norm)) seriesImages.push(norm)
         }
       }
@@ -1236,7 +1396,7 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         (a) => a.type === 3 || (a.image && a.image.includes('/backgrounds/'))
       )
       if (backgroundArtworks.length > 0) {
-        bannerImage = normalizeTvdbImageUrl(backgroundArtworks[0]?.image) || undefined
+        bannerImage = sanitizeImageUrl(normalizeTvdbImageUrl(backgroundArtworks[0]?.image)) || undefined
       } else if (seriesImages.length > 1) {
         bannerImage = seriesImages[1]
       }
@@ -1298,15 +1458,41 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         seasonNumbers.add(ep.seasonNumber)
       }
 
+      const tvCover = series.image
+        ? sanitizeImageUrl(normalizeTvdbImageUrl(series.image)) || undefined
+        : undefined
+      const tvSeasonImages = (series.seasons || [])
+        .map((s) => (s.image ? normalizeTvdbImageUrl(s.image) : null))
+        .filter(Boolean)
+      const tvEpisodeImages = validEpisodes
+        .map((ep) => (ep.image ? normalizeTvdbImageUrl(ep.image) : null))
+        .filter(Boolean)
+      const tvCastAll = [...(tvCharacters || []), ...(series.characters || [])]
+      const tvCharImages = tvCastAll
+        .map((c) => (c.image ? normalizeTvdbImageUrl(c.image) : null))
+        .filter(Boolean)
+      const tvPeopleImages = tvCastAll
+        .map((c) => (c.personImgURL ? normalizeTvdbImageUrl(c.personImgURL) : null))
+        .filter(Boolean)
+      const tvAllImages = buildCategorizedImages({
+        posters: [tvCover],
+        banners: [bannerImage],
+        thetvdb: seriesImages,
+        seasons: tvSeasonImages,
+        episodes: tvEpisodeImages,
+        characters: tvCharImages,
+        people: tvPeopleImages,
+      })
+
       logger.info(`${c.blue('💾 [2/2]')} Upserting TV Series #${tvId} record to database...`)
       await prisma.orm.public.Tv.where({ id: tvId }).update({
         titlePrimary,
         titleSecondary: titleSecondary || undefined,
         titleNative: titleNative || undefined,
         description: description || undefined,
-        coverImage: series.image ? normalizeTvdbImageUrl(series.image) || undefined : undefined,
+        coverImage: tvCover,
         bannerImage: bannerImage || undefined,
-        images: seriesImages.length > 0 ? { thetvdb: seriesImages } : undefined,
+        images: tvAllImages as any,
         sources: sources as any,
         firstAiredYear,
         firstAiredMonth,
@@ -1373,7 +1559,9 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
           airDateYear = parseInt(seasonMeta.year, 10) || undefined
         }
 
-        const seasonPoster = seasonMeta?.image ? normalizeTvdbImageUrl(seasonMeta.image) : undefined
+        const seasonPoster = seasonMeta?.image
+          ? sanitizeImageUrl(normalizeTvdbImageUrl(seasonMeta.image)) ?? undefined
+          : undefined
 
         let localSeason = await prisma.orm.public.TvSeason.where({
           tvId,
@@ -1424,7 +1612,9 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         }).select('id').first()
 
         const epTitle = ep.name || `Episode ${ep.number}`
-        const epThumb = ep.image ? normalizeTvdbImageUrl(ep.image) : undefined
+        const epThumb = ep.image
+          ? sanitizeImageUrl(normalizeTvdbImageUrl(ep.image)) ?? undefined
+          : undefined
 
         if (existingEp) {
           await prisma.orm.public.TvEpisode.where({ id: existingEp.id }).update({
@@ -1586,12 +1776,12 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
       // Artworks, Cover, Banner, Images
       const movieImages: string[] = []
       if (movie.image) {
-        const norm = normalizeTvdbImageUrl(movie.image)
+        const norm = sanitizeImageUrl(normalizeTvdbImageUrl(movie.image))
         if (norm) movieImages.push(norm)
       }
       if (movie.artworks && Array.isArray(movie.artworks)) {
         for (const art of movie.artworks) {
-          const norm = normalizeTvdbImageUrl(art.image)
+          const norm = sanitizeImageUrl(normalizeTvdbImageUrl(art.image))
           if (norm && !movieImages.includes(norm)) movieImages.push(norm)
         }
       }
@@ -1601,7 +1791,7 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         (a) => a.type === 3 || (a.image && a.image.includes('/backgrounds/'))
       )
       if (backgroundArtworks.length > 0) {
-        bannerImage = normalizeTvdbImageUrl(backgroundArtworks[0]?.image) || undefined
+        bannerImage = sanitizeImageUrl(normalizeTvdbImageUrl(backgroundArtworks[0]?.image)) || undefined
       } else if (movieImages.length > 1) {
         bannerImage = movieImages[1]
       }
@@ -1655,15 +1845,33 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         movie.production_countries?.[0]?.name ||
         (movie.originalLanguage ? movie.originalLanguage.toUpperCase() : undefined)
 
+      const movieCover = movie.image
+        ? sanitizeImageUrl(normalizeTvdbImageUrl(movie.image)) || undefined
+        : undefined
+      const movieCastAll = movie.characters || []
+      const movieCharImages = movieCastAll
+        .map((c) => (c.image ? normalizeTvdbImageUrl(c.image) : null))
+        .filter(Boolean)
+      const moviePeopleImages = movieCastAll
+        .map((c) => (c.personImgURL ? normalizeTvdbImageUrl(c.personImgURL) : null))
+        .filter(Boolean)
+      const movieAllImages = buildCategorizedImages({
+        posters: [movieCover],
+        banners: [bannerImage],
+        thetvdb: movieImages,
+        characters: movieCharImages,
+        people: moviePeopleImages,
+      })
+
       logger.info(`${c.blue('💾 [2/2]')} Upserting Movie #${movieId} record to database...`)
       await prisma.orm.public.Movie.where({ id: movieId }).update({
         titlePrimary,
         titleSecondary: titleSecondary || undefined,
         titleNative: titleNative || undefined,
         description: description || undefined,
-        coverImage: movie.image ? normalizeTvdbImageUrl(movie.image) || undefined : undefined,
+        coverImage: movieCover,
         bannerImage: bannerImage || undefined,
-        images: movieImages.length > 0 ? { thetvdb: movieImages } : undefined,
+        images: movieAllImages as any,
         sources: sources as any,
         runtime: movie.runtime || undefined,
         releaseDateYear,
@@ -1823,15 +2031,21 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         }
       }
 
+      const gameCover = game.cover?.image_id
+        ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`
+        : undefined
+      const gameAllImages = buildCategorizedImages({
+        posters: [gameCover],
+        igdb: gameImages,
+      })
+
       logger.info(`${c.blue('💾 [2/2]')} Upserting Game #${gameId} record to database...`)
       await prisma.orm.public.Game.where({ id: gameId }).update({
         titlePrimary: game.name || undefined,
         description: game.summary || game.storyline || undefined,
-        coverImage: game.cover?.image_id
-          ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`
-          : undefined,
+        coverImage: gameCover,
         bannerImage,
-        images: gameImages.length > 0 ? { igdb: gameImages } : undefined,
+        images: gameAllImages as any,
         releaseDateYear: game.first_release_date
           ? new Date(game.first_release_date * 1000).getUTCFullYear()
           : undefined,
@@ -1938,15 +2152,23 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
 
       const cleanDescription = info.description ? info.description.replace(/<[^>]*>/g, '').trim() : undefined
       const imageLinks = (info as any).imageLinks
-      let coverImage =
-        imageLinks?.extraLarge ||
-        imageLinks?.large ||
-        imageLinks?.medium ||
-        imageLinks?.thumbnail ||
-        undefined
-      if (coverImage && coverImage.startsWith('http://')) {
-        coverImage = coverImage.replace('http://', 'https://')
-      }
+      const coverImage =
+        sanitizeImageUrl(
+          imageLinks?.extraLarge ||
+            imageLinks?.large ||
+            imageLinks?.medium ||
+            imageLinks?.thumbnail ||
+            imageLinks?.smallThumbnail
+        ) || undefined
+      const bookImages = buildCategorizedImages({
+        posters: [
+          imageLinks?.extraLarge,
+          imageLinks?.large,
+          imageLinks?.medium,
+          imageLinks?.thumbnail,
+          imageLinks?.smallThumbnail,
+        ],
+      })
 
       const sources: Record<string, unknown> = {
         googleBooks: { id: volumeId, url: `https://books.google.com/books?id=${volumeId}` },
@@ -1964,6 +2186,7 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         titleSecondary: info.subtitle || undefined,
         description: cleanDescription,
         coverImage,
+        images: bookImages as any,
         pageCount: info.pageCount || undefined,
         authors: info.authors || undefined,
         publishers: info.publisher ? [info.publisher] : undefined,
@@ -2034,12 +2257,35 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         logger.info(
           `${c.cyan('📥 [1/2]')} Deezer received Track: "${c.bold(track.title)}" (artist=${track.artist?.name || 'N/A'}, duration=${track.duration || 0}s)`
         )
+        const trackCover =
+          sanitizeImageUrl(
+            (track.album as any)?.cover_xl ||
+              track.album?.cover_big ||
+              track.album?.cover_medium ||
+              track.album?.cover
+          ) || undefined
+        const trackImages = buildCategorizedImages({
+          posters: [
+            (track.album as any)?.cover_xl,
+            track.album?.cover_big,
+            track.album?.cover_medium,
+            track.album?.cover,
+          ],
+          people: [
+            (track.artist as any)?.picture_xl,
+            (track.artist as any)?.picture_big,
+            track.artist?.picture_medium,
+            track.artist?.picture,
+          ],
+        })
         logger.info(`${c.blue('💾 [2/2]')} Upserting Music Track #${musicId} record to database...`)
         await prisma.orm.public.Music.where({ id: musicId }).update({
           titlePrimary: track.title || undefined,
           artistName: track.artist?.name || undefined,
           duration: track.duration || undefined,
           audioPreviewUrl: track.preview || undefined,
+          coverImage: trackCover,
+          images: trackImages as any,
           deezerUpdatedAt: nowUnix,
           updatedAt: now,
         })
@@ -2054,11 +2300,34 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
         logger.info(
           `${c.cyan('📥 [1/2]')} Deezer received Album: "${c.bold(album.title)}" (artist=${album.artist?.name || 'N/A'}, duration=${album.duration || 0}s)`
         )
+        const albumCover =
+          sanitizeImageUrl(
+            (album as any)?.cover_xl ||
+              album.cover_big ||
+              album.cover_medium ||
+              album.cover
+          ) || undefined
+        const albumImages = buildCategorizedImages({
+          posters: [
+            (album as any)?.cover_xl,
+            album.cover_big,
+            album.cover_medium,
+            album.cover,
+          ],
+          people: [
+            (album.artist as any)?.picture_xl,
+            (album.artist as any)?.picture_big,
+            (album.artist as any)?.picture_medium,
+            album.artist?.picture,
+          ],
+        })
         logger.info(`${c.blue('💾 [2/2]')} Upserting Music Album #${musicId} record to database...`)
         await prisma.orm.public.Music.where({ id: musicId }).update({
           titlePrimary: album.title || undefined,
           artistName: album.artist?.name || undefined,
           duration: album.duration || undefined,
+          coverImage: albumCover,
+          images: albumImages as any,
           deezerUpdatedAt: nowUnix,
           updatedAt: now,
         })

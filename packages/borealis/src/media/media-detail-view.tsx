@@ -427,6 +427,10 @@ export function MediaDetailView({
             coverImage={media.coverImage}
             bannerImage={media.bannerImage}
             images={fullMedia.images ?? null}
+            characters={fullMedia.characters ?? undefined}
+            staff={fullMedia.staff ?? undefined}
+            seasons={fullMedia.seasons ?? undefined}
+            episodes={fullMedia.episodes ?? undefined}
           />
         )}
 

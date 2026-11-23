@@ -137,9 +137,14 @@ export function MediaListModal({
 
   const category = toCanonicalCategory(media.category)
   const backendMediaType = toBackendMediaType(category)
+  const isReleasingMedia =
+    String(media.status ?? "").toUpperCase() === "RELEASING"
   const availableStatuses = useMemo(
-    () => getAvailableStatuses(category),
-    [category]
+    () =>
+      getAvailableStatuses(category).filter(
+        (s) => !(isReleasingMedia && s.value === "COMPLETED")
+      ),
+    [category, isReleasingMedia]
   )
   const inProgressStatus = useMemo(
     () => getInProgressStatus(category),

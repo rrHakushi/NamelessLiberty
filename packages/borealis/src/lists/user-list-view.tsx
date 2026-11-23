@@ -1289,24 +1289,36 @@ export function UserListView({
       })
     }
 
-    // 14. Companies (Studios / Publishers / Developers / Label)
+    // 14. Companies (Studios / Publishers / Developers / Networks / Label)
     if (filterState.companies.length > 0) {
       const lowerCompanies = new Set(
         filterState.companies.map((c) => c.toLowerCase())
       )
       result = result.filter(({ media }) => {
         const m = media as any
-        const studioList: string[] = []
-        if (Array.isArray(m.studios)) {
-          m.studios.forEach((s: any) => {
-            const name = typeof s === "string" ? s : s?.studio?.name || s?.name
-            if (name) studioList.push(name.toLowerCase())
-          })
+        const companyList: string[] = []
+        const pushList = (val: unknown) => {
+          if (Array.isArray(val)) {
+            val.forEach((item: any) => {
+              const name =
+                typeof item === "string"
+                  ? item
+                  : item?.studio?.name || item?.name
+              if (name) companyList.push(String(name).toLowerCase())
+            })
+          } else if (val) {
+            companyList.push(String(val).toLowerCase())
+          }
         }
-        if (m.publisher) studioList.push(String(m.publisher).toLowerCase())
-        if (m.developer) studioList.push(String(m.developer).toLowerCase())
-        if (m.label) studioList.push(String(m.label).toLowerCase())
-        return studioList.some((c) => lowerCompanies.has(c))
+        pushList(m.studios)
+        pushList(m.developers)
+        pushList(m.publishers)
+        pushList(m.networks)
+        pushList(m.companies)
+        pushList(m.publisher)
+        pushList(m.developer)
+        pushList(m.label)
+        return companyList.some((c) => lowerCompanies.has(c))
       })
     }
 
@@ -1407,14 +1419,7 @@ export function UserListView({
       })
     }
 
-    // 16d. Licensed
-    if (filterState.licensed === "yes") {
-      result = result.filter(({ media }) => Boolean((media as any)?.isLicensed))
-    } else if (filterState.licensed === "no") {
-      result = result.filter(({ media }) => !(media as any)?.isLicensed)
-    }
-
-    // 16e. Staff
+    // 16c. Staff
     if (filterState.staff && filterState.staff.length > 0) {
       const staffQueries = filterState.staff.map((s) => s.toLowerCase())
       result = result.filter(({ media }) => {
@@ -1460,7 +1465,9 @@ export function UserListView({
         filterState.seasons.map((s) => s.toUpperCase())
       )
       result = result.filter(({ media }) => {
-        const season = (media as any)?.season?.toUpperCase()
+        const season = (
+          (media as any)?.season ?? (media as any)?.seasonSeason
+        )?.toUpperCase()
         return season && seasonSet.has(season)
       })
     }
@@ -1532,11 +1539,12 @@ export function UserListView({
         username={username || "User"}
         profile={profileToDisplay}
         currentMediaType={mediaType}
+        extended
         className="shrink-0"
       />
 
       {/* 2. Main Content Area */}
-      <main className="w-full flex-1 space-y-6 px-4 py-6 sm:px-6 lg:px-8">
+      <main className="relative z-20 -mt-16 sm:-mt-20 w-full flex-1 space-y-6 px-4 pb-6 pt-2 sm:px-6 lg:px-8">
         {/* Sleek Glassmorphic Toolbar */}
         <UserListToolbar
           className="sticky top-2 z-30"

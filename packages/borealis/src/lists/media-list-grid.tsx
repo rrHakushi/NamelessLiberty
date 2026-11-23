@@ -6,6 +6,8 @@ import {
   IconInbox,
   IconChevronDown,
   IconChevronRight,
+  IconChevronUp,
+  IconLayoutGrid,
 } from "@tabler/icons-react"
 import { cn } from "@workspace/ui/lib/utils"
 import { Button } from "@workspace/ui/components/button"
@@ -246,6 +248,7 @@ interface MemoizedMediaListCardProps {
   viewMode: "standard" | "compact" | "covers"
   isOwner: boolean
   priority: boolean
+  inCarousel?: boolean
   onOpenEditModal: (item: ListEntryData) => void
   onStatusChange?: (item: ListEntryData, newStatus: ListStatus) => Promise<void>
   onIncrementProgress?: (item: ListEntryData, count: number) => Promise<void>
@@ -265,6 +268,7 @@ const MemoizedMediaListCard = React.memo(function MemoizedMediaListCard({
   viewMode,
   isOwner,
   priority,
+  inCarousel = false,
   onOpenEditModal,
   onStatusChange,
   onIncrementProgress,
@@ -329,10 +333,132 @@ const MemoizedMediaListCard = React.memo(function MemoizedMediaListCard({
       onScoreChange={isOwner && onScoreChange ? handleScoreChange : undefined}
       onSaveEntry={isOwner ? handleSaveEntry : undefined}
       priority={priority}
-      className="w-full [content-visibility:auto] [contain-intrinsic-size:auto_280px]"
+      className={cn(
+        "[content-visibility:auto] [contain-intrinsic-size:auto_280px]",
+        !inCarousel && "w-full"
+      )}
     />
   )
 })
+
+interface LibraryStatusSectionProps {
+  section: {
+    key: string
+    title: string
+    items: ListEntryData[]
+    expectedCount: number
+  }
+  sectionIdx: number
+  isCollapsed: boolean
+  onToggleCollapse: (key: string) => void
+  hasMore?: boolean
+  isLoadingMore?: boolean
+  mediaType: MediaListType
+  mediaTitlePreference: "primary" | "secondary" | "native"
+  viewMode: "standard" | "compact" | "covers"
+  isOwner: boolean
+  onOpenEditModal: (item: ListEntryData) => void
+  onStatusChange?: (item: ListEntryData, newStatus: ListStatus) => Promise<void>
+  onIncrementProgress?: (item: ListEntryData, count: number) => Promise<void>
+  onIncrementVolume?: (item: ListEntryData, count: number) => Promise<void>
+  onScoreChange?: (item: ListEntryData, newScore: number | null) => Promise<void>
+  onItemUpdated?: (
+    entryId: number,
+    updatedEntry: MediaListEntryData | null
+  ) => void
+}
+
+function LibraryStatusSection({
+  section,
+  sectionIdx,
+  isCollapsed,
+  onToggleCollapse,
+  hasMore,
+  isLoadingMore,
+  mediaType,
+  mediaTitlePreference,
+  viewMode,
+  isOwner,
+  onOpenEditModal,
+  onStatusChange,
+  onIncrementProgress,
+  onIncrementVolume,
+  onScoreChange,
+  onItemUpdated,
+}: LibraryStatusSectionProps): React.JSX.Element {
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [isOverflowing, setIsOverflowing] = useState(false)
+
+  const displayCount =
+    section.expectedCount > 0 && (hasMore || isLoadingMore)
+      ? section.expectedCount
+      : section.items.length
+
+  return (
+    <div className="flex flex-col gap-3">
+      <BorealisSectionHeader
+        title={section.title}
+        count={displayCount}
+        isCollapsed={isCollapsed}
+        onToggle={() => onToggleCollapse(section.key)}
+        headerClassName="border-b-0 pb-0"
+        actions={
+          !isCollapsed && (isOverflowing || isExpanded) ? (
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsExpanded((prev) => !prev)}
+              className="h-7 gap-1.5 px-2 text-xs text-zinc-400 hover:text-zinc-100 cursor-pointer"
+            >
+              {isExpanded ? (
+                <>
+                  <span>Show less</span>
+                  <IconChevronUp className="size-3.5" />
+                </>
+              ) : (
+                <>
+                  <span>Show more</span>
+                  <IconLayoutGrid className="size-3.5" />
+                </>
+              )}
+            </Button>
+          ) : undefined
+        }
+      />
+
+      {!isCollapsed && (
+        <BorealisCardGroup
+          rowCount={1}
+          dragFree
+          grid={isExpanded}
+          onOverflowChange={setIsOverflowing}
+          gap={viewMode === "compact" ? "sm" : "md"}
+          className="w-full"
+        >
+          {section.items.map((item, idx) => (
+            <MemoizedMediaListCard
+              key={`${item.entry.id}-${item.media.id}`}
+              item={item}
+              mediaType={mediaType}
+              mediaTitlePreference={mediaTitlePreference}
+              viewMode={viewMode}
+              isOwner={isOwner}
+              priority={sectionIdx === 0 && idx < 6}
+              inCarousel={!isExpanded}
+              onOpenEditModal={onOpenEditModal}
+              onStatusChange={onStatusChange}
+              onIncrementProgress={onIncrementProgress}
+              onIncrementVolume={onIncrementVolume}
+              onScoreChange={onScoreChange}
+              onItemUpdated={onItemUpdated}
+            />
+          ))}
+        </BorealisCardGroup>
+      )}
+    </div>
+  )
+}
 
 export const MediaListGrid = React.memo(function MediaListGrid({
   mediaType,
@@ -599,52 +725,27 @@ export const MediaListGrid = React.memo(function MediaListGrid({
     <div className={cn("flex flex-col gap-6", className)}>
       {groupedSections ? (
         <div className="flex flex-col gap-8">
-          {groupedSections.map((section, sectionIdx) => {
-            const isCollapsed = Boolean(collapsedSections[section.key])
-            const displayCount =
-              section.expectedCount > 0 && (hasMore || isLoadingMore)
-                ? section.expectedCount
-                : section.items.length
-
-            return (
-              <div key={section.key} className="flex flex-col gap-3">
-                <BorealisSectionHeader
-                  title={section.title}
-                  count={displayCount}
-                  isCollapsed={isCollapsed}
-                  onToggle={() => toggleSection(section.key)}
-                />
-
-                {/* Items Grid (if not collapsed) */}
-                {!isCollapsed && (
-                  <BorealisCardGroup
-                    grid
-                    variant="none"
-                    gap={viewMode === "compact" ? "sm" : "md"}
-                    className="w-full"
-                  >
-                    {section.items.map((item, idx) => (
-                      <MemoizedMediaListCard
-                        key={`${item.entry.id}-${item.media.id}`}
-                        item={item}
-                        mediaType={mediaType}
-                        mediaTitlePreference={mediaTitlePreference}
-                        viewMode={viewMode}
-                        isOwner={isOwner}
-                        priority={sectionIdx === 0 && idx < 6}
-                        onOpenEditModal={handleOpenEditModal}
-                        onStatusChange={onStatusChange}
-                        onIncrementProgress={onIncrementProgress}
-                        onIncrementVolume={onIncrementVolume}
-                        onScoreChange={onScoreChange}
-                        onItemUpdated={onItemUpdated}
-                      />
-                    ))}
-                  </BorealisCardGroup>
-                )}
-              </div>
-            )
-          })}
+          {groupedSections.map((section, sectionIdx) => (
+            <LibraryStatusSection
+              key={section.key}
+              section={section}
+              sectionIdx={sectionIdx}
+              isCollapsed={Boolean(collapsedSections[section.key])}
+              onToggleCollapse={toggleSection}
+              hasMore={hasMore}
+              isLoadingMore={isLoadingMore}
+              mediaType={mediaType}
+              mediaTitlePreference={mediaTitlePreference}
+              viewMode={viewMode}
+              isOwner={isOwner}
+              onOpenEditModal={handleOpenEditModal}
+              onStatusChange={onStatusChange}
+              onIncrementProgress={onIncrementProgress}
+              onIncrementVolume={onIncrementVolume}
+              onScoreChange={onScoreChange}
+              onItemUpdated={onItemUpdated}
+            />
+          ))}
         </div>
       ) : (
         <BorealisCardGroup

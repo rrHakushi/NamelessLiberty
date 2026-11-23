@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useMemo, useState, useEffect } from "react"
-import type { SidebarConfig, SidebarItem } from "@/types/sidebar-config"
+import React, { useMemo } from "react"
+import type { SidebarConfig } from "@/types/sidebar-config"
 import { useTranslations } from "next-intl"
 import {
   IconHome,
@@ -17,130 +17,19 @@ import {
   IconBook2,
   IconListDetails,
   IconListCheck,
-  IconCloudDownload,
-  IconShieldLock,
   IconCode,
   IconSettings,
-  IconServer,
   IconCompass,
   IconFolders,
 } from "@tabler/icons-react"
 import type { Session } from "@/context/session-context"
-import { elysia } from "@/lib/elysia"
-
-let cachedServarrProviders: string[] | null = null
-let inFlightConnectionsPromise: Promise<string[] | null> | null = null
 
 export function getBorealisSidebarConfig(
   session: Session | null,
   t: (key: string) => string,
-  connectedServarr: string[] = []
+  _connectedServarr: string[] = []
 ): SidebarConfig {
   const userId = session?.user?.id
-
-  // Build servarr items based on connected servarr applications
-  const servarrItems: SidebarItem[] = []
-  const normalizedConnected = connectedServarr.map((s) => s.toUpperCase())
-
-  if (normalizedConnected.includes("SONARR")) {
-    servarrItems.push({
-      label: t("sonarr") || "Sonarr",
-      dataKey: "servarr-sonarr",
-      href: `/borealis/servarr/sonarr/series`,
-      icon: <IconDeviceTv className="size-4" />,
-      children: [
-        {
-          label: t("series") || "Series",
-          href: `/borealis/servarr/sonarr/series`,
-          icon: <IconDeviceTv className="size-4" />,
-        },
-        {
-          label: t("activityQueue") || "Activity Queue",
-          href: `/borealis/servarr/sonarr/queue`,
-          icon: <IconCloudDownload className="size-4" />,
-        },
-        {
-          label: t("wanted") || "Wanted & Cutoff",
-          href: `/borealis/servarr/sonarr/wanted`,
-          icon: <IconSearch className="size-4" />,
-        },
-        {
-          label: t("history") || "History",
-          href: `/borealis/servarr/sonarr/history`,
-          icon: <IconListDetails className="size-4" />,
-        },
-        {
-          label: t("blocklist") || "Blocklist",
-          href: `/borealis/servarr/sonarr/blocklist`,
-          icon: <IconShieldLock className="size-4" />,
-        },
-        {
-          label: t("system") || "System",
-          href: `/borealis/servarr/sonarr/system`,
-          icon: <IconServer className="size-4" />,
-        },
-      ],
-    })
-  }
-
-  if (normalizedConnected.includes("RADARR")) {
-    servarrItems.push({
-      label: t("radarr") || "Radarr",
-      dataKey: "servarr-radarr",
-      href: `/borealis/servarr/radarr/movies`,
-      icon: <IconMovie className="size-4" />,
-      children: [
-        {
-          label: t("movies") || "Movies",
-          href: `/borealis/servarr/radarr/movies`,
-          icon: <IconMovie className="size-4" />,
-        },
-        {
-          label: t("activityQueue") || "Activity Queue",
-          href: `/borealis/servarr/radarr/queue`,
-          icon: <IconCloudDownload className="size-4" />,
-        },
-        {
-          label: t("wanted") || "Wanted & Cutoff",
-          href: `/borealis/servarr/radarr/wanted`,
-          icon: <IconSearch className="size-4" />,
-        },
-        {
-          label: t("history") || "History",
-          href: `/borealis/servarr/radarr/history`,
-          icon: <IconListDetails className="size-4" />,
-        },
-        {
-          label: t("blocklist") || "Blocklist",
-          href: `/borealis/servarr/radarr/blocklist`,
-          icon: <IconShieldLock className="size-4" />,
-        },
-        {
-          label: t("system") || "System",
-          href: `/borealis/servarr/radarr/system`,
-          icon: <IconServer className="size-4" />,
-        },
-      ],
-    })
-  }
-
-  if (normalizedConnected.includes("READARR")) {
-    servarrItems.push({
-      label: t("readarr") || "Readarr",
-      dataKey: "servarr-readarr",
-      href: `/borealis/servarr/readarr`,
-      icon: <IconBook2 className="size-4" />,
-    })
-  }
-
-  if (normalizedConnected.includes("LIDARR")) {
-    servarrItems.push({
-      label: t("lidarr") || "Lidarr",
-      dataKey: "servarr-lidarr",
-      href: `/borealis/servarr/lidarr`,
-      icon: <IconMusic className="size-4" />,
-    })
-  }
 
   return [
     // ----------------------------------------------------
@@ -340,115 +229,18 @@ export function getBorealisSidebarConfig(
           },
         ]
       : []),
-
-    ...(userId && servarrItems.length > 0
-      ? [
-          {
-            section: t("servarr") || "Servarr",
-            dataKey: "servarr",
-            items: servarrItems,
-          },
-        ]
-      : []),
   ]
 }
 
 export function useBorealisSidebarConfig(
   session: Session | null,
-  initialConnectedServarr?: string[]
+  _initialConnectedServarr?: string[]
 ): SidebarConfig {
   const t = useTranslations("navigation.listSidebar")
-  const userId = session?.user?.id
-
-  const [connectedServarr, setConnectedServarr] = useState<string[]>(
-    () => initialConnectedServarr ?? cachedServarrProviders ?? []
-  )
-
-  useEffect(() => {
-    if (!userId) {
-      cachedServarrProviders = null
-      setConnectedServarr([])
-      return
-    }
-
-    let isMounted = true
-
-    async function fetchConnections(force = false) {
-      if (!force && cachedServarrProviders !== null) {
-        if (isMounted) setConnectedServarr(cachedServarrProviders)
-        return
-      }
-
-      if (inFlightConnectionsPromise) {
-        const result = await inFlightConnectionsPromise
-        if (result && isMounted) {
-          setConnectedServarr(result)
-        }
-        return
-      }
-
-      inFlightConnectionsPromise = (async () => {
-        try {
-          const { data, error } = await elysia.carina.connections.get({
-            fetch: { credentials: "include" },
-          })
-
-          if (!error && data?.success) {
-            const servarrSet = new Set<string>()
-            for (const conn of data.connections) {
-              if (conn.status === "CONNECTED") {
-                const prov = conn.provider.toUpperCase()
-                if (["SONARR", "RADARR", "READARR", "LIDARR"].includes(prov)) {
-                  servarrSet.add(prov)
-                }
-              }
-            }
-            const list = Array.from(servarrSet)
-            cachedServarrProviders = list
-            return list
-          }
-          return null
-        } catch {
-          return null
-        } finally {
-          inFlightConnectionsPromise = null
-        }
-      })()
-
-      const list = await inFlightConnectionsPromise
-      if (list && isMounted) {
-        setConnectedServarr((prev) => {
-          if (
-            prev.length === list.length &&
-            prev.every((p) => list.includes(p))
-          ) {
-            return prev
-          }
-          return list
-        })
-      }
-    }
-
-    if (cachedServarrProviders === null) {
-      fetchConnections()
-    }
-
-    const handleUpdate = () => {
-      fetchConnections(true)
-    }
-    window.addEventListener("iris-connections-changed", handleUpdate)
-    window.addEventListener("iris-sidebar-changed", handleUpdate)
-
-    return () => {
-      isMounted = false
-      window.removeEventListener("iris-connections-changed", handleUpdate)
-      window.removeEventListener("iris-sidebar-changed", handleUpdate)
-    }
-  }, [userId])
 
   return useMemo(
-    () => getBorealisSidebarConfig(session, t, connectedServarr),
-    [session, t, connectedServarr]
+    () => getBorealisSidebarConfig(session, t),
+    [session, t]
   )
 }
 
