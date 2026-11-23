@@ -16,33 +16,34 @@ import { borealisMusic as _ctrl_11 } from './borealis/music/music.ctrl'
 import { borealisOther as _ctrl_12 } from './borealis/other/other.ctrl'
 import { borealisPlaylists as _ctrl_13 } from './borealis/playlists/playlists.ctrl'
 import { borealisSearch as _ctrl_14 } from './borealis/search/search.ctrl'
-import { borealisTv as _ctrl_15 } from './borealis/tv/tv.ctrl'
-import { carinaActivity as _ctrl_16 } from './carina/activity/activity.ctrl'
-import { carinaApiKeys as _ctrl_17 } from './carina/apikeys/apikeys.ctrl'
-import { carinaAuth as _ctrl_18 } from './carina/auth/auth.ctrl'
-import { carinaBackupCodes as _ctrl_19 } from './carina/backupcodes/backupcodes.ctrl'
-import { carinaBookmarks as _ctrl_20 } from './carina/bookmarks/bookmarks.ctrl'
-import { carinaComments as _ctrl_21 } from './carina/comments/comments.ctrl'
-import { carinaConnections as _ctrl_22 } from './carina/connections/connections.ctrl'
-import { carinaEmail2fa as _ctrl_23 } from './carina/email-2fa/email-2fa.ctrl'
-import { carinaFavorites as _ctrl_24 } from './carina/favorites/favorites.ctrl'
-import { carinaFriends as _ctrl_25 } from './carina/friends/friends.ctrl'
-import { carinaNotifications as _ctrl_26 } from './carina/notifications/notifications.ctrl'
-import { carinaOAuthDiscovery as _ctrl_27 } from './carina/oauth/oauth-discovery.ctrl'
-import { carinaOAuth as _ctrl_28 } from './carina/oauth/oauth.ctrl'
-import { carinaPasskeys as _ctrl_29 } from './carina/passkeys/passkeys.ctrl'
-import { carinaPublic as _ctrl_30 } from './carina/public/public.ctrl'
-import { carinaQc as _ctrl_31 } from './carina/qc/qc.ctrl'
-import { carinaRecommendations as _ctrl_32 } from './carina/recommendations/recommendations.ctrl'
-import { carinaTotp as _ctrl_33 } from './carina/totp/totp.ctrl'
-import { carinaUsers as _ctrl_34 } from './carina/users/users.ctrl'
-import { kiroshiHistory as _ctrl_35 } from './kiroshi/history/history.ctrl'
-import { kiroshiSearch as _ctrl_36 } from './kiroshi/search/search.ctrl'
-import { kiroshiSettings as _ctrl_37 } from './kiroshi/settings/settings.ctrl'
-import { reliquary as _ctrl_38 } from './reliquary/reliquary.ctrl'
-import { servarrController as _ctrl_39 } from './servarr/core/servarr.ctrl'
-import { servarrExtendedRouter as _ctrl_40 } from './servarr/extended/servarr-extended.ctrl'
-import { tesseractController as _ctrl_41 } from './tesseract/signaling/tesseract.ctrl'
+import { borealisFullUpdate as _ctrl_15 } from './borealis/sync/full-update.ctrl'
+import { borealisTv as _ctrl_16 } from './borealis/tv/tv.ctrl'
+import { carinaActivity as _ctrl_17 } from './carina/activity/activity.ctrl'
+import { carinaApiKeys as _ctrl_18 } from './carina/apikeys/apikeys.ctrl'
+import { carinaAuth as _ctrl_19 } from './carina/auth/auth.ctrl'
+import { carinaBackupCodes as _ctrl_20 } from './carina/backupcodes/backupcodes.ctrl'
+import { carinaBookmarks as _ctrl_21 } from './carina/bookmarks/bookmarks.ctrl'
+import { carinaComments as _ctrl_22 } from './carina/comments/comments.ctrl'
+import { carinaConnections as _ctrl_23 } from './carina/connections/connections.ctrl'
+import { carinaEmail2fa as _ctrl_24 } from './carina/email-2fa/email-2fa.ctrl'
+import { carinaFavorites as _ctrl_25 } from './carina/favorites/favorites.ctrl'
+import { carinaFriends as _ctrl_26 } from './carina/friends/friends.ctrl'
+import { carinaNotifications as _ctrl_27 } from './carina/notifications/notifications.ctrl'
+import { carinaOAuthDiscovery as _ctrl_28 } from './carina/oauth/oauth-discovery.ctrl'
+import { carinaOAuth as _ctrl_29 } from './carina/oauth/oauth.ctrl'
+import { carinaPasskeys as _ctrl_30 } from './carina/passkeys/passkeys.ctrl'
+import { carinaPublic as _ctrl_31 } from './carina/public/public.ctrl'
+import { carinaQc as _ctrl_32 } from './carina/qc/qc.ctrl'
+import { carinaRecommendations as _ctrl_33 } from './carina/recommendations/recommendations.ctrl'
+import { carinaTotp as _ctrl_34 } from './carina/totp/totp.ctrl'
+import { carinaUsers as _ctrl_35 } from './carina/users/users.ctrl'
+import { kiroshiHistory as _ctrl_36 } from './kiroshi/history/history.ctrl'
+import { kiroshiSearch as _ctrl_37 } from './kiroshi/search/search.ctrl'
+import { kiroshiSettings as _ctrl_38 } from './kiroshi/settings/settings.ctrl'
+import { reliquary as _ctrl_39 } from './reliquary/reliquary.ctrl'
+import { servarrController as _ctrl_40 } from './servarr/core/servarr.ctrl'
+import { servarrExtendedRouter as _ctrl_41 } from './servarr/extended/servarr-extended.ctrl'
+import { tesseractController as _ctrl_42 } from './tesseract/signaling/tesseract.ctrl'
 
 const _group_0 = new Elysia()
   .use(_ctrl_0)
@@ -93,6 +94,8 @@ const _group_6 = new Elysia()
   .use(_ctrl_39)
   .use(_ctrl_40)
   .use(_ctrl_41)
+const _group_7 = new Elysia()
+  .use(_ctrl_42)
 
 export const controllers = new Elysia({ name: 'controllers' })
   .use(_group_0)
@@ -102,5 +105,6 @@ export const controllers = new Elysia({ name: 'controllers' })
   .use(_group_4)
   .use(_group_5)
   .use(_group_6)
+  .use(_group_7)
 
 export type ControllersApp = typeof controllers

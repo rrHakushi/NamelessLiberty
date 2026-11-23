@@ -13,6 +13,22 @@ import { CarinaUsersServ } from '../../carina/users/users.serv'
 import { MediaStatsServ } from '../_shared/media-stats.serv'
 import { mediaStatsService } from './user-stats.serv'
 
+function isReleasingMediaStatus(mediaStatus?: string | null): boolean {
+  return String(mediaStatus ?? '').toUpperCase() === 'RELEASING'
+}
+
+function assertNotCompletingReleasing(
+  mediaStatus?: string | null,
+  targetStatus?: string | null
+): void {
+  if (
+    isReleasingMediaStatus(mediaStatus) &&
+    String(targetStatus ?? '').toUpperCase() === 'COMPLETED'
+  ) {
+    throw new BadRequest('Cannot mark releasing media as completed')
+  }
+}
+
 export interface ListQuery {
   page?: number
   limit?: number
@@ -675,6 +691,8 @@ export class BorealisListsServ extends BaseBorealisListService {
       throw new NotFound(`Anime with ID ${animeId} does not exist`)
     }
 
+    assertNotCompletingReleasing(anime.status, body?.status)
+
     const existing = await prisma.orm.public.AnimeList.where({ userId, animeId }).first()
 
     let progress = body.progress !== undefined ? Number(body.progress) : undefined
@@ -808,6 +826,8 @@ export class BorealisListsServ extends BaseBorealisListService {
       throw new NotFound(`Anime with ID ${animeId} does not exist`)
     }
 
+    assertNotCompletingReleasing(anime.status, body?.status)
+
     const existing = await prisma.orm.public.AnimeList.where({ userId, animeId }).first()
 
     const count = Math.max(1, body?.count ?? 1)
@@ -822,9 +842,13 @@ export class BorealisListsServ extends BaseBorealisListService {
 
     if (anime.episodeCount && anime.episodeCount > 0 && newProgress >= anime.episodeCount) {
       newProgress = anime.episodeCount
-      newStatus = 'COMPLETED'
-      if (!completedAt) {
-        completedAt = new Date()
+      if (!isReleasingMediaStatus(anime.status)) {
+        newStatus = 'COMPLETED'
+        if (!completedAt) {
+          completedAt = new Date()
+        }
+      } else {
+        completedAt = null
       }
     } else {
       completedAt = null
@@ -1105,6 +1129,7 @@ export class BorealisListsServ extends BaseBorealisListService {
         'id',
         'chapterCount',
         'volumeCount',
+        'status',
         'titlePrimary',
         'titleSecondary',
         'coverImage',
@@ -1115,6 +1140,8 @@ export class BorealisListsServ extends BaseBorealisListService {
     if (!manga) {
       throw new NotFound(`Manga with ID ${mangaId} does not exist`)
     }
+
+    assertNotCompletingReleasing(manga.status, body?.status)
 
     const existing = await prisma.orm.public.MangaList.where({ userId, mangaId }).first()
 
@@ -1245,6 +1272,7 @@ export class BorealisListsServ extends BaseBorealisListService {
         'id',
         'chapterCount',
         'volumeCount',
+        'status',
         'titlePrimary',
         'titleSecondary',
         'coverImage',
@@ -1255,6 +1283,8 @@ export class BorealisListsServ extends BaseBorealisListService {
     if (!manga) {
       throw new NotFound(`Manga with ID ${mangaId} does not exist`)
     }
+
+    assertNotCompletingReleasing(manga.status, body?.status)
 
     const existing = await prisma.orm.public.MangaList.where({ userId, mangaId }).first()
 
@@ -1273,9 +1303,13 @@ export class BorealisListsServ extends BaseBorealisListService {
       volumesProgress += count
       if (manga.volumeCount && manga.volumeCount > 0 && volumesProgress >= manga.volumeCount) {
         volumesProgress = manga.volumeCount
-        newStatus = 'COMPLETED'
-        if (!completedAt) {
-          completedAt = new Date()
+        if (!isReleasingMediaStatus(manga.status)) {
+          newStatus = 'COMPLETED'
+          if (!completedAt) {
+            completedAt = new Date()
+          }
+        } else {
+          completedAt = null
         }
       } else {
         completedAt = null
@@ -1284,9 +1318,13 @@ export class BorealisListsServ extends BaseBorealisListService {
       chaptersProgress += count
       if (manga.chapterCount && manga.chapterCount > 0 && chaptersProgress >= manga.chapterCount) {
         chaptersProgress = manga.chapterCount
-        newStatus = 'COMPLETED'
-        if (!completedAt) {
-          completedAt = new Date()
+        if (!isReleasingMediaStatus(manga.status)) {
+          newStatus = 'COMPLETED'
+          if (!completedAt) {
+            completedAt = new Date()
+          }
+        } else {
+          completedAt = null
         }
       } else {
         completedAt = null
@@ -1551,11 +1589,13 @@ export class BorealisListsServ extends BaseBorealisListService {
 
   public static async upsertMovieEntry(userId: string, movieId: number, body: any) {
     const movie = await prisma.orm.public.Movie.where({ id: movieId })
-      .select('id', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
+      .select('id', 'status', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
       .first()
     if (!movie) {
       throw new NotFound(`Movie with ID ${movieId} does not exist`)
     }
+
+    assertNotCompletingReleasing(movie.status, body.status)
 
     const existing = await prisma.orm.public.MovieList.where({ userId, movieId }).first()
 
@@ -1668,11 +1708,13 @@ export class BorealisListsServ extends BaseBorealisListService {
 
   public static async incrementMovie(userId: string, movieId: number, body?: { count?: number; connections?: any } | null) {
     const movie = await prisma.orm.public.Movie.where({ id: movieId })
-      .select('id', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
+      .select('id', 'status', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
       .first()
     if (!movie) {
       throw new NotFound(`Movie with ID ${movieId} does not exist`)
     }
+
+    assertNotCompletingReleasing(movie.status, 'COMPLETED')
 
     const existing = await prisma.orm.public.MovieList.where({ userId, movieId }).first()
 
@@ -1959,11 +2001,13 @@ export class BorealisListsServ extends BaseBorealisListService {
 
   public static async upsertTvEntry(userId: string, tvId: number, body: any) {
     const tv = await prisma.orm.public.Tv.where({ id: tvId })
-      .select('id', 'episodeCount', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
+      .select('id', 'episodeCount', 'status', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
       .first()
     if (!tv) {
       throw new NotFound(`TV series with ID ${tvId} does not exist`)
     }
+
+    assertNotCompletingReleasing(tv.status, body.status)
 
     const existing = await prisma.orm.public.TvList.where({ userId, tvId }).first()
 
@@ -2083,11 +2127,13 @@ export class BorealisListsServ extends BaseBorealisListService {
 
   public static async incrementTv(userId: string, tvId: number, body?: { count?: number; status?: string; connections?: any } | null) {
     const tv = await prisma.orm.public.Tv.where({ id: tvId })
-      .select('id', 'episodeCount', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
+      .select('id', 'episodeCount', 'status', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
       .first()
     if (!tv) {
       throw new NotFound(`TV series with ID ${tvId} does not exist`)
     }
+
+    assertNotCompletingReleasing(tv.status, body?.status)
 
     const existing = await prisma.orm.public.TvList.where({ userId, tvId }).first()
 
@@ -2103,9 +2149,13 @@ export class BorealisListsServ extends BaseBorealisListService {
 
     if (tv.episodeCount && tv.episodeCount > 0 && newProgress >= tv.episodeCount) {
       newProgress = tv.episodeCount
-      newStatus = 'COMPLETED'
-      if (!completedAt) {
-        completedAt = new Date()
+      if (!isReleasingMediaStatus(tv.status)) {
+        newStatus = 'COMPLETED'
+        if (!completedAt) {
+          completedAt = new Date()
+        }
+      } else {
+        completedAt = null
       }
     } else {
       completedAt = null
@@ -2381,11 +2431,13 @@ export class BorealisListsServ extends BaseBorealisListService {
 
   public static async upsertGameEntry(userId: string, gameId: number, body: any) {
     const game = await prisma.orm.public.Game.where({ id: gameId })
-      .select('id', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
+      .select('id', 'status', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
       .first()
     if (!game) {
       throw new NotFound(`Game with ID ${gameId} does not exist`)
     }
+
+    assertNotCompletingReleasing(game.status, body.status)
 
     const existing = await prisma.orm.public.GameList.where({ userId, gameId }).first()
 
@@ -2789,11 +2841,13 @@ export class BorealisListsServ extends BaseBorealisListService {
 
   public static async upsertBookEntry(userId: string, bookId: number, body: any) {
     const book = await prisma.orm.public.Book.where({ id: bookId })
-      .select('id', 'pageCount', 'chapterCount', 'volumeCount', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
+      .select('id', 'pageCount', 'chapterCount', 'volumeCount', 'status', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage')
       .first()
     if (!book) {
       throw new NotFound(`Book with ID ${bookId} does not exist`)
     }
+
+    assertNotCompletingReleasing(book.status, body.status)
 
     const existing = await prisma.orm.public.BookList.where({ userId, bookId }).first()
 
@@ -2920,11 +2974,13 @@ export class BorealisListsServ extends BaseBorealisListService {
     body?: { count?: number; type?: 'page' | 'chapter' | 'volume'; status?: string; connections?: any } | null
   ) {
     const book = await prisma.orm.public.Book.where({ id: bookId })
-      .select('id', 'pageCount', 'chapterCount', 'volumeCount', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage', 'format')
+      .select('id', 'pageCount', 'chapterCount', 'volumeCount', 'status', 'titlePrimary', 'titleSecondary', 'coverImage', 'bannerImage', 'format')
       .first()
     if (!book) {
       throw new NotFound(`Book with ID ${bookId} does not exist`)
     }
+
+    assertNotCompletingReleasing(book.status, body?.status)
 
     const existing = await prisma.orm.public.BookList.where({ userId, bookId }).first()
 
@@ -2944,9 +3000,13 @@ export class BorealisListsServ extends BaseBorealisListService {
       progressChapters += count
       if (book.chapterCount && book.chapterCount > 0 && progressChapters >= book.chapterCount) {
         progressChapters = book.chapterCount
-        newStatus = 'COMPLETED'
-        if (!completedAt) {
-          completedAt = new Date()
+        if (!isReleasingMediaStatus(book.status)) {
+          newStatus = 'COMPLETED'
+          if (!completedAt) {
+            completedAt = new Date()
+          }
+        } else {
+          completedAt = null
         }
       } else {
         completedAt = null
@@ -2955,9 +3015,13 @@ export class BorealisListsServ extends BaseBorealisListService {
       progressVolumes += count
       if (book.volumeCount && book.volumeCount > 0 && progressVolumes >= book.volumeCount) {
         progressVolumes = book.volumeCount
-        newStatus = 'COMPLETED'
-        if (!completedAt) {
-          completedAt = new Date()
+        if (!isReleasingMediaStatus(book.status)) {
+          newStatus = 'COMPLETED'
+          if (!completedAt) {
+            completedAt = new Date()
+          }
+        } else {
+          completedAt = null
         }
       } else {
         completedAt = null
@@ -2966,9 +3030,13 @@ export class BorealisListsServ extends BaseBorealisListService {
       progressPages += count
       if (book.pageCount && book.pageCount > 0 && progressPages >= book.pageCount) {
         progressPages = book.pageCount
-        newStatus = 'COMPLETED'
-        if (!completedAt) {
-          completedAt = new Date()
+        if (!isReleasingMediaStatus(book.status)) {
+          newStatus = 'COMPLETED'
+          if (!completedAt) {
+            completedAt = new Date()
+          }
+        } else {
+          completedAt = null
         }
       } else {
         completedAt = null
@@ -3678,6 +3746,8 @@ export class BorealisListsServ extends BaseBorealisListService {
       throw new NotFound(`Custom item with ID ${otherId} does not exist`)
     }
 
+    assertNotCompletingReleasing((item as any).status, body?.status)
+
     const existing = await prisma.orm.public.OtherList.where({ userId, otherId }).first()
 
     const status = body?.status ?? existing?.status ?? 'PLANNED'
@@ -3845,6 +3915,8 @@ export class BorealisListsServ extends BaseBorealisListService {
       throw new NotFound(`Custom item with ID ${otherId} does not exist`)
     }
 
+    assertNotCompletingReleasing((item as any).status, body?.status)
+
     const existing = await prisma.orm.public.OtherList.where({ userId, otherId }).first()
 
     const incKey =
@@ -3867,9 +3939,13 @@ export class BorealisListsServ extends BaseBorealisListService {
 
     if (maxVal && maxVal > 0 && newVal >= maxVal) {
       newVal = maxVal
-      newStatus = 'COMPLETED'
-      if (!completedAt) {
-        completedAt = new Date()
+      if (!isReleasingMediaStatus((item as any).status)) {
+        newStatus = 'COMPLETED'
+        if (!completedAt) {
+          completedAt = new Date()
+        }
+      } else {
+        completedAt = null
       }
     } else {
       completedAt = null
@@ -5087,13 +5163,15 @@ export class BorealisListsServ extends BaseBorealisListService {
       if (mediaObj?.genres && Array.isArray(mediaObj.genres)) {
         for (const g of mediaObj.genres) {
           const gName = g.name || 'General'
-          if (!genreMap[gName]) {
-            genreMap[gName] = { count: 0, scoreSum: 0, scoredCount: 0 }
+          let genreEntry = genreMap[gName]
+          if (!genreEntry) {
+            genreEntry = { count: 0, scoreSum: 0, scoredCount: 0 }
+            genreMap[gName] = genreEntry
           }
-          genreMap[gName].count++
+          genreEntry.count++
           if (e.score != null && e.score > 0) {
-            genreMap[gName].scoreSum += Number(e.score)
-            genreMap[gName].scoredCount++
+            genreEntry.scoreSum += Number(e.score)
+            genreEntry.scoredCount++
           }
         }
       }

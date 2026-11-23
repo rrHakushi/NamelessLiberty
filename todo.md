@@ -4,8 +4,7 @@
 # Borealis [Media tracker]
     - Stremio plugin for borealis
     - Link manga list entries to books since its kinda the same
-    - if status is releasing dont allow setting status to completed
-    - Servarr integration completely unuseable primarily on phones, it always refreshes 
+    - 
 
 # Akaromi [Password manager]
     - 

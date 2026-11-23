@@ -284,6 +284,7 @@ export class BorealisExternalSearchServ extends BaseService {
                 description: item.description || null,
                 gender: item.gender || null,
                 age: item.age || null,
+                height: (item.height ?? null) as any,
                 favorites: item.favourites || 0,
               })
             }
@@ -334,6 +335,7 @@ export class BorealisExternalSearchServ extends BaseService {
                 nameAlternative: item.name.alternative || [],
                 image: staffImage,
                 description: item.description || null,
+                height: (item.height ?? null) as any,
                 primaryOccupations: item.primaryOccupations || [],
               })
             }

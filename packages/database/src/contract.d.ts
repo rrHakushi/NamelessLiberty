@@ -23,7 +23,7 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'0ac6b2e8c58f9df86116ac1ef632eba15397c9020ed6b4f33989852bc402b36c'>;
+  StorageHashBase<'f6b2556d3b67f79848e535df79446a5c5a57648661d488d82241ab83f0fecb52'>;
 export type ExecutionHash =
   ExecutionHashBase<'53643411246bc7b72e9224163abe0c8d054bf2a51c9cb6bd2fc07064d61a141d'>;
 export type ProfileHash =
@@ -2479,6 +2479,7 @@ export namespace Models {
     description: FieldOutputTypes['public']['Character']['description'];
     favorites: FieldOutputTypes['public']['Character']['favorites'];
     gender: FieldOutputTypes['public']['Character']['gender'];
+    height: FieldOutputTypes['public']['Character']['height'];
     id: FieldOutputTypes['public']['Character']['id'];
     image: FieldOutputTypes['public']['Character']['image'];
     images: FieldOutputTypes['public']['Character']['images'];
@@ -3620,6 +3621,7 @@ export namespace Models {
     gender: FieldOutputTypes['public']['Person']['gender'];
     givenName: FieldOutputTypes['public']['Person']['givenName'];
     hasRadio: FieldOutputTypes['public']['Person']['hasRadio'];
+    height: FieldOutputTypes['public']['Person']['height'];
     homeTown: FieldOutputTypes['public']['Person']['homeTown'];
     id: FieldOutputTypes['public']['Person']['id'];
     image: FieldOutputTypes['public']['Person']['image'];
@@ -7569,6 +7571,12 @@ type ContractBase = Omit<
                 readonly gender: {
                   readonly dataType: 'pg/text';
                   readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
+                readonly height: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
                   readonly nullable: true;
                   readonly many: false;
                 };
@@ -15443,6 +15451,12 @@ type ContractBase = Omit<
                   };
                   readonly many: false;
                 };
+                readonly height: {
+                  readonly dataType: 'pg/jsonb';
+                  readonly codecId: 'pg/jsonb@1';
+                  readonly nullable: true;
+                  readonly many: false;
+                };
                 readonly homeTown: {
                   readonly dataType: 'pg/text';
                   readonly codecId: 'pg/text@1';
@@ -21077,6 +21091,10 @@ type ContractBase = Omit<
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
+              readonly height: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
               readonly id: {
                 readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
@@ -21162,6 +21180,7 @@ type ContractBase = Omit<
                 readonly description: { readonly column: 'description' };
                 readonly favorites: { readonly column: 'favorites' };
                 readonly gender: { readonly column: 'gender' };
+                readonly height: { readonly column: 'height' };
                 readonly id: { readonly column: 'id' };
                 readonly image: { readonly column: 'image' };
                 readonly images: { readonly column: 'images' };
@@ -27755,6 +27774,10 @@ type ContractBase = Omit<
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/bool@1' };
               };
+              readonly height: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/jsonb@1' };
+              };
               readonly homeTown: {
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
@@ -27949,6 +27972,7 @@ type ContractBase = Omit<
                 readonly gender: { readonly column: 'gender' };
                 readonly givenName: { readonly column: 'givenName' };
                 readonly hasRadio: { readonly column: 'hasRadio' };
+                readonly height: { readonly column: 'height' };
                 readonly homeTown: { readonly column: 'homeTown' };
                 readonly id: { readonly column: 'id' };
                 readonly image: { readonly column: 'image' };

@@ -10,6 +10,7 @@ export interface KnownModules {
   "Borealis:EntitySyncer": true
   "Borealis:ExternalSearch": true
   "Borealis:Freshness": true
+  "Borealis:FullUpdate": true
   "Borealis:PreviewSyncer": true
   "Borealis:Provider:AniList": true
   "Borealis:Provider:AnimeMapping": true
@@ -68,6 +69,7 @@ export interface KnownModules {
   "PublicAssetsServ": true
   "Reliquary": true
   "Scoped": true
+  "Script:UpdateAllMedia": true
   "Servarr:Realtime": true
   "SubModule": true
   "TestMediaService": true

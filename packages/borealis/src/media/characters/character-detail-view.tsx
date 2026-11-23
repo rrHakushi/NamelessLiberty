@@ -89,6 +89,76 @@ function formatPartialDate(
   return year ? `${year}` : null
 }
 
+function formatSingleHeight(
+  val?: { metric?: number | null; imperial?: string | null } | null
+): string | null {
+  if (!val) return null
+  const metric = typeof val.metric === "number" ? `${val.metric} cm` : null
+  const imperial = val.imperial?.trim() || null
+  if (metric && imperial) return `${metric} (${imperial})`
+  return metric || imperial
+}
+
+function formatHeight(
+  height?: {
+    initial?: { metric?: number | null; imperial?: string | null } | null
+    min?: { metric?: number | null; imperial?: string | null } | null
+    max?: { metric?: number | null; imperial?: string | null } | null
+  } | null
+): string | null {
+  if (!height || typeof height !== "object") return null
+
+  const { initial, min, max } = height
+  if (initial && (initial.metric != null || initial.imperial)) {
+    const formatted = formatSingleHeight(initial)
+    return formatted ? `${formatted} (initial)` : null
+  }
+
+  const hasMin = Boolean(min && (min.metric != null || min.imperial))
+  const hasMax = Boolean(max && (max.metric != null || max.imperial))
+
+  if (hasMin && hasMax) {
+    const sameMetric =
+      min!.metric != null && max!.metric != null && min!.metric === max!.metric
+    const sameImperial =
+      min!.imperial != null &&
+      max!.imperial != null &&
+      min!.imperial.trim() === max!.imperial.trim()
+
+    if (
+      sameMetric ||
+      (min!.metric == null && max!.metric == null && sameImperial)
+    ) {
+      return formatSingleHeight(min)
+    }
+
+    const metricRange =
+      min!.metric != null && max!.metric != null
+        ? `${min!.metric}–${max!.metric} cm`
+        : min!.metric != null
+          ? `${min!.metric} cm`
+          : max!.metric != null
+            ? `${max!.metric} cm`
+            : null
+
+    const minImp = min!.imperial?.trim() || null
+    const maxImp = max!.imperial?.trim() || null
+    const imperialRange =
+      minImp && maxImp
+        ? minImp === maxImp
+          ? minImp
+          : `${minImp}–${maxImp}`
+        : minImp || maxImp
+
+    if (metricRange && imperialRange) return `${metricRange} (${imperialRange})`
+    return metricRange || imperialRange
+  }
+
+  if (hasMin) return formatSingleHeight(min)
+  if (hasMax) return formatSingleHeight(max)
+  return null
+}
+
 function extractGenreNames(genres: any): string[] {
   if (!Array.isArray(genres)) return []
   return genres
@@ -124,6 +194,11 @@ export function CharacterDetailView({ character }: CharacterDetailViewProps) {
     character.gender,
     character.age,
   ])
+
+  const formattedHeight = useMemo(
+    () => formatHeight(character.height),
+    [character.height]
+  )
 
   const formattedBirthday = useMemo(
     () =>
@@ -635,6 +710,7 @@ export function CharacterDetailView({ character }: CharacterDetailViewProps) {
             {/* 2. Information Card */}
             {(character.gender ||
               character.age ||
+              formattedHeight ||
               formattedBirthday ||
               character.nameNative) && (
               <GlassCard
@@ -681,6 +757,17 @@ export function CharacterDetailView({ character }: CharacterDetailViewProps) {
                       </span>
                       <span className="text-end font-medium text-foreground">
                         {character.age}
+                      </span>
+                    </div>
+                  )}
+
+                  {formattedHeight && (
+                    <div className="flex items-center justify-between gap-3 py-1.5">
+                      <span className="shrink-0 text-muted-foreground">
+                        Height
+                      </span>
+                      <span className="text-end font-medium text-foreground tabular-nums">
+                        {formattedHeight}
                       </span>
                     </div>
                   )}

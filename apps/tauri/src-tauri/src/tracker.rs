@@ -65,7 +65,12 @@ fn tracker_file_path(app: &AppHandle) -> Result<PathBuf, String> {
         .app_config_dir()
         .map_err(|e| format!("Failed to resolve config directory: {e}"))?;
     fs::create_dir_all(&dir).map_err(|e| format!("Failed to create config directory: {e}"))?;
-    Ok(dir.join("tracker.json"))
+    let filename = if cfg!(debug_assertions) {
+        "tracker.dev.json"
+    } else {
+        "tracker.json"
+    };
+    Ok(dir.join(filename))
 }
 
 fn load_store(app: &AppHandle) -> TrackerStore {

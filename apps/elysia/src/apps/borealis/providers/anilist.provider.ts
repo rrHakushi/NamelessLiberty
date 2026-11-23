@@ -3,6 +3,17 @@ import { BaseMediaProvider } from '../_shared/base-provider'
 
 const logger = new LogFactory('Borealis:Provider:AniList')
 
+export interface AniListHeightValue {
+  metric?: number | null
+  imperial?: string | null
+}
+
+export interface AniListHeight {
+  initial?: AniListHeightValue | null
+  min?: AniListHeightValue | null
+  max?: AniListHeightValue | null
+}
+
 export interface AniListMediaRelationNode {
   id: number
   type: 'ANIME' | 'MANGA'
@@ -110,6 +121,7 @@ export interface AniListAnimePayload {
         description?: string
         gender?: string
         age?: string
+        height?: AniListHeight | null
         bloodType?: string
         dateOfBirth?: { year?: number; month?: number; day?: number }
         favourites?: number
@@ -119,6 +131,7 @@ export interface AniListAnimePayload {
         name: { full: string; native?: string; alternative?: string[] }
         image?: { large?: string; medium?: string }
         description?: string
+        height?: AniListHeight | null
         languageV2?: string
       }>
     }>
@@ -131,6 +144,7 @@ export interface AniListAnimePayload {
         name: { full: string; native?: string; alternative?: string[] }
         image?: { large?: string; medium?: string }
         description?: string
+        height?: AniListHeight | null
         primaryOccupations?: string[]
       }
     }>
@@ -200,6 +214,7 @@ export interface AniListMangaPayload {
         description?: string
         gender?: string
         age?: string
+        height?: AniListHeight | null
         bloodType?: string
         dateOfBirth?: { year?: number; month?: number; day?: number }
         favourites?: number
@@ -214,6 +229,7 @@ export interface AniListMangaPayload {
         name: { full: string; native?: string; alternative?: string[] }
         image?: { large?: string; medium?: string }
         description?: string
+        height?: AniListHeight | null
         primaryOccupations?: string[]
       }
     }>
@@ -277,6 +293,7 @@ export interface AniListCharacterPayload {
   description?: string
   gender?: string
   age?: string
+  height?: AniListHeight | null
   bloodType?: string
   dateOfBirth?: { year?: number; month?: number; day?: number }
   favourites?: number
@@ -296,6 +313,7 @@ export interface AniListStaffPayload {
   description?: string
   gender?: string
   age?: string
+  height?: AniListHeight | null
   dateOfBirth?: { year?: number; month?: number; day?: number }
   primaryOccupations?: string[]
   favourites?: number
@@ -649,6 +667,20 @@ export class AniListProvider extends BaseMediaProvider {
                 description
                 gender
                 age
+                height {
+                  initial {
+                    metric
+                    imperial
+                  }
+                  min {
+                    metric
+                    imperial
+                  }
+                  max {
+                    metric
+                    imperial
+                  }
+                }
                 bloodType
                 dateOfBirth {
                   year
@@ -666,6 +698,20 @@ export class AniListProvider extends BaseMediaProvider {
                 image {
                   medium
                   large
+                }
+                height {
+                  initial {
+                    metric
+                    imperial
+                  }
+                  min {
+                    metric
+                    imperial
+                  }
+                  max {
+                    metric
+                    imperial
+                  }
                 }
                 languageV2
               }
@@ -686,6 +732,20 @@ export class AniListProvider extends BaseMediaProvider {
                   large
                 }
                 description
+                height {
+                  initial {
+                    metric
+                    imperial
+                  }
+                  min {
+                    metric
+                    imperial
+                  }
+                  max {
+                    metric
+                    imperial
+                  }
+                }
                 primaryOccupations
               }
             }
@@ -795,6 +855,20 @@ export class AniListProvider extends BaseMediaProvider {
                 description
                 gender
                 age
+                height {
+                  initial {
+                    metric
+                    imperial
+                  }
+                  min {
+                    metric
+                    imperial
+                  }
+                  max {
+                    metric
+                    imperial
+                  }
+                }
               }
             }
           }
@@ -812,6 +886,20 @@ export class AniListProvider extends BaseMediaProvider {
                   large
                 }
                 description
+                height {
+                  initial {
+                    metric
+                    imperial
+                  }
+                  min {
+                    metric
+                    imperial
+                  }
+                  max {
+                    metric
+                    imperial
+                  }
+                }
               }
             }
           }
@@ -865,6 +953,20 @@ export class AniListProvider extends BaseMediaProvider {
           description(asHtml: false)
           gender
           age
+          height {
+            initial {
+              metric
+              imperial
+            }
+            min {
+              metric
+              imperial
+            }
+            max {
+              metric
+              imperial
+            }
+          }
           bloodType
           dateOfBirth {
             year
@@ -908,6 +1010,20 @@ export class AniListProvider extends BaseMediaProvider {
             }
             gender
             age
+            height {
+              initial {
+                metric
+                imperial
+              }
+              min {
+                metric
+                imperial
+              }
+              max {
+                metric
+                imperial
+              }
+            }
             description(asHtml: false)
             favourites
           }
@@ -947,6 +1063,20 @@ export class AniListProvider extends BaseMediaProvider {
           description(asHtml: false)
           gender
           age
+          height {
+            initial {
+              metric
+              imperial
+            }
+            min {
+              metric
+              imperial
+            }
+            max {
+              metric
+              imperial
+            }
+          }
           dateOfBirth {
             year
             month
@@ -989,6 +1119,20 @@ export class AniListProvider extends BaseMediaProvider {
               large
             }
             primaryOccupations
+            height {
+              initial {
+                metric
+                imperial
+              }
+              min {
+                metric
+                imperial
+              }
+              max {
+                metric
+                imperial
+              }
+            }
             description(asHtml: false)
             favourites
           }

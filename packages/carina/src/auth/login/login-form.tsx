@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect, useRef } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { signIn } from "@/context/session-context"
+import { signIn, useSession } from "@/context/session-context"
+import { Button } from "@workspace/ui/components/button"
+import { IconArrowRight } from "@tabler/icons-react"
 import { useTranslations } from "next-intl"
 import { startAuthentication } from "@simplewebauthn/browser"
 import { elysia } from "@/lib/elysia"
@@ -24,6 +26,25 @@ export function LoginForm({ header, footer }: LoginFormProps) {
   const searchParams = useSearchParams()
   const callbackUrl = searchParams.get("callbackUrl") || "/"
   const { unlockVault } = useEncryption()
+  const { data: session, status: sessionStatus } = useSession()
+
+  const handleContinueToLastApp = () => {
+    let target = "/borealis"
+    try {
+      const saved = window.localStorage.getItem("iris_last_app")
+      if (
+        saved &&
+        saved.startsWith("/") &&
+        !saved.startsWith("//") &&
+        !saved.includes("/auth/")
+      ) {
+        target = saved
+      }
+    } catch {
+      // ignore storage errors
+    }
+    router.push(target)
+  }
 
   // Form View State
   const [view, setView] = useState<LoginView>("credentials")
@@ -376,6 +397,33 @@ export function LoginForm({ header, footer }: LoginFormProps) {
 
   return (
     <>
+      {view === "credentials" &&
+        sessionStatus === "authenticated" &&
+        session?.user && (
+          <div className="rounded-xl border border-primary/30 bg-primary/10 p-3 flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <p className="text-xs font-medium text-foreground truncate">
+                Already signed in as{" "}
+                <span className="font-semibold text-primary">
+                  {session.user.username || session.user.name || session.user.email}
+                </span>
+              </p>
+              <p className="text-[11px] text-muted-foreground">
+                Continue to your last visited app
+              </p>
+            </div>
+            <Button
+              type="button"
+              size="sm"
+              onClick={handleContinueToLastApp}
+              className="shrink-0 gap-1.5 cursor-pointer"
+            >
+              <span>Continue</span>
+              <IconArrowRight className="size-3.5" />
+            </Button>
+          </div>
+        )}
+
       {view === "credentials" && (
         <LoginCredentials
           identifier={identifier}

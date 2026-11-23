@@ -5,6 +5,7 @@ import { AuthHeader } from "@NamelessLiberty/carina"
 import { AuthFooterLink } from "@NamelessLiberty/carina"
 import { LoginForm } from "@NamelessLiberty/carina"
 import { LanguageSelector } from "@NamelessLiberty/carina"
+import { isAccountCreationAllowed } from "@/config/enabled-apps-server"
 
 export const metadata: Metadata = {
   title: "Carina | Auth > Login",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 
 export default async function LoginPage() {
   const t = await getTranslations("auth.login")
+  const allowRegistration = isAccountCreationAllowed()
 
   return (
     <main className="relative flex min-h-svh w-full flex-col items-center justify-center overflow-hidden bg-background p-4 sm:p-6 md:p-10 lg:p-12">
@@ -31,11 +33,13 @@ export default async function LoginPage() {
               />
             }
             footer={
-              <AuthFooterLink
-                promptText={t("dontHaveAccount")}
-                linkText={t("signUp")}
-                href="/carina/auth/register"
-              />
+              allowRegistration ? (
+                <AuthFooterLink
+                  promptText={t("dontHaveAccount")}
+                  linkText={t("signUp")}
+                  href="/carina/auth/register"
+                />
+              ) : undefined
             }
           />
         </AuthCard>

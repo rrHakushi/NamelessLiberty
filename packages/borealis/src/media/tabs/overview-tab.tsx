@@ -52,6 +52,7 @@ import { MusicTracklist } from "../music/music-tracklist"
 import { MusicPlayerPreview } from "../music/music-player-preview"
 import { MusicLyrics } from "../music/music-lyrics"
 import { BorealisCard, BorealisCardGroup } from "@NamelessLiberty/borealis"
+import { cleanMediaDescription } from "../../borealis-card/shared"
 
 interface OverviewTabProps {
   media: NormalizedMediaData
@@ -183,13 +184,10 @@ export function OverviewTab({
   const synopsisRef = useRef<HTMLParagraphElement>(null)
 
   // Parse description cleanly
-  const cleanDescription = useMemo(() => {
-    if (!media.description) return null
-    return media.description
-      .replace(/<br\s*\/?>/gi, "\n")
-      .replace(/<[^>]*>/g, "")
-      .trim()
-  }, [media.description])
+  const cleanDescription = useMemo(
+    () => cleanMediaDescription(media.description),
+    [media.description]
+  )
 
   useEffect(() => {
     setIsSynopsisExpanded(false)

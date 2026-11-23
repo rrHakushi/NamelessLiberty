@@ -177,6 +177,17 @@ export type BookDetails = Models.public_Book & {
 }
 
 
+export interface EntityHeightValue {
+  metric?: number | null
+  imperial?: string | null
+}
+
+export interface EntityHeight {
+  initial?: EntityHeightValue | null
+  min?: EntityHeightValue | null
+  max?: EntityHeightValue | null
+}
+
 // 7. Character
 export interface EntityGenreRef {
   id?: number
@@ -310,6 +321,7 @@ export interface CharacterDetails {
   description: string | null
   gender: string | null
   age: string | null
+  height?: EntityHeight | null
   dateOfBirthYear: number | null
   dateOfBirthMonth: number | null
   dateOfBirthDay: number | null
@@ -461,6 +473,7 @@ export interface PersonDetails {
   images: any | null
   description: string | null
   gender: string | null
+  height?: EntityHeight | null
   language?: string | null
   bloodType?: string | null
   age: number | null

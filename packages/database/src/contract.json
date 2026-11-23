@@ -5047,6 +5047,13 @@
                   "kind": "scalar"
                 }
               },
+              "height": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
               "id": {
                 "nullable": false,
                 "type": {
@@ -5190,6 +5197,9 @@
                 },
                 "gender": {
                   "column": "gender"
+                },
+                "height": {
+                  "column": "height"
                 },
                 "id": {
                   "column": "id"
@@ -16403,6 +16413,13 @@
                   "kind": "scalar"
                 }
               },
+              "height": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/jsonb@1",
+                  "kind": "scalar"
+                }
+              },
               "homeTown": {
                 "nullable": true,
                 "type": {
@@ -16733,6 +16750,9 @@
                 },
                 "hasRadio": {
                   "column": "hasRadio"
+                },
+                "height": {
+                  "column": "height"
                 },
                 "homeTown": {
                   "column": "homeTown"
@@ -24552,6 +24572,11 @@
                 "gender": {
                   "codecId": "pg/text@1",
                   "dataType": "pg/text",
+                  "nullable": true
+                },
+                "height": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
                   "nullable": true
                 },
                 "id": {
@@ -34232,6 +34257,11 @@
                   },
                   "nullable": true
                 },
+                "height": {
+                  "codecId": "pg/jsonb@1",
+                  "dataType": "pg/jsonb",
+                  "nullable": true
+                },
                 "homeTown": {
                   "codecId": "pg/text@1",
                   "dataType": "pg/text",
@@ -39186,7 +39216,7 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "0ac6b2e8c58f9df86116ac1ef632eba15397c9020ed6b4f33989852bc402b36c"
+    "storageHash": "f6b2556d3b67f79848e535df79446a5c5a57648661d488d82241ab83f0fecb52"
   },
   "execution": {
     "executionHash": "53643411246bc7b72e9224163abe0c8d054bf2a51c9cb6bd2fc07064d61a141d",

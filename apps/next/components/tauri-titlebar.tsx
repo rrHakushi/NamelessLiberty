@@ -112,6 +112,8 @@ function formatDuration(seconds: number): string {
 
 export function TauriTitlebar(): React.JSX.Element | null {
   const [isTauri, setIsTauri] = useState(false)
+  const [isDesktopTauri, setIsDesktopTauri] = useState(false)
+  const [pageTitle, setPageTitle] = useState("NamelessLiberty")
   const [isMaximized, setIsMaximized] = useState(false)
   const [globalPaused, setGlobalPaused] = useState(false)
   const [trackedEntries, setTrackedEntries] = useState<TrackedEntry[]>([])
@@ -129,7 +131,19 @@ export function TauriTitlebar(): React.JSX.Element | null {
     const win = getTauriWindow()
     if (!win) return
 
+    const isMobilePlatform = /Android|iPhone|iPad|iPod/i.test(
+      navigator.userAgent
+    )
     setIsTauri(true)
+    setIsDesktopTauri(!isMobilePlatform)
+
+    if (isMobilePlatform) {
+      document.documentElement.classList.add("tauri-mobile")
+      return () => {
+        document.documentElement.classList.remove("tauri-mobile")
+      }
+    }
+
     document.documentElement.classList.add("tauri-shell")
 
     win
@@ -150,6 +164,29 @@ export function TauriTitlebar(): React.JSX.Element | null {
       document.documentElement.classList.remove("tauri-shell")
     }
   }, [])
+
+  // Sync desktop titlebar text with document.title
+  useEffect(() => {
+    if (!isDesktopTauri) return
+
+    const syncTitle = () => {
+      const next = document.title?.trim()
+      setPageTitle(next || "NamelessLiberty")
+    }
+
+    syncTitle()
+    const titleEl = document.querySelector("title")
+    if (!titleEl) return
+
+    const observer = new MutationObserver(syncTitle)
+    observer.observe(titleEl, {
+      childList: true,
+      characterData: true,
+      subtree: true,
+    })
+
+    return () => observer.disconnect()
+  }, [isDesktopTauri, pathname])
 
   // Track route history index for accurate Back / Forward disabled state
   useEffect(() => {
@@ -281,7 +318,7 @@ export function TauriTitlebar(): React.JSX.Element | null {
     }
   }, [isTauri])
 
-  if (!isTauri) return null
+  if (!isTauri || !isDesktopTauri) return null
 
   const win = getTauriWindow()
   const canGoBack = navState.index > 0
@@ -356,9 +393,9 @@ export function TauriTitlebar(): React.JSX.Element | null {
 
       <div
         data-tauri-drag-region
-        className="flex h-full flex-1 items-center justify-center text-xs font-medium text-zinc-400"
+        className="flex h-full flex-1 items-center justify-center truncate px-2 text-xs font-medium text-zinc-400"
       >
-        NamelessLiberty
+        {pageTitle}
       </div>
 
       <div className="flex h-full items-center">

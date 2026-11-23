@@ -578,17 +578,6 @@ export function IrisBottomDock({
   const item3 = resolveSlotItem("3")
   const item4 = resolveSlotItem("4")
 
-  if (
-    !item1 &&
-    !item2 &&
-    !item3 &&
-    !item4 &&
-    rawItems.length === 0 &&
-    !customMap
-  ) {
-    return null
-  }
-
   const checkActive = (item: SidebarItem) => {
     if (item.isActive !== undefined) return item.isActive
     if (!item.href && (!item.children || item.children.length === 0)) return false
