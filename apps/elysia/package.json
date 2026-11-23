@@ -17,6 +17,7 @@
     "typecheck": "tsc --noEmit",
     "codegen": "bun -e \"process.exit(Bun.spawnSync(['infisical', 'run', '--env=' + (process.env.INFISICAL_ENV || 'dev'), '--', 'bun', 'src/core/plugins/controllers.ts'], { stdio: ['inherit', 'inherit', 'inherit'] }).exitCode ?? 1)\"",
     "docs:generate": "bun scripts/generate-docs.ts",
+    "media:update-all": "bun -e \"process.exit(Bun.spawnSync(['infisical', 'run', '--env=' + (process.env.INFISICAL_ENV || 'dev'), '--', 'bun', 'scripts/update-all-media.ts', ...process.argv.slice(2)], { stdio: ['inherit', 'inherit', 'inherit'] }).exitCode ?? 1)\"",
     "build:binary": "bun run codegen && bun -e \"process.exit(Bun.spawnSync(['infisical', 'run', '--env=' + (process.env.INFISICAL_ENV || 'dev'), '--', 'bun', 'build', '--compile', '--minify-whitespace', '--minify-syntax', '--target', 'bun-linux-x64', '--outfile', 'server', 'src/index.ts'], { stdio: ['inherit', 'inherit', 'inherit'] }).exitCode ?? 1)\"",
     "start": "./server",
     "test": "bun test"

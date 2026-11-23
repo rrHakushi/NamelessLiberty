@@ -33,8 +33,11 @@ import {
   IconApps,
   IconSearch,
   IconDeviceDesktop,
+  IconServer,
 } from "@tabler/icons-react"
 import { cn } from "@workspace/ui/lib/utils"
+import { hasPermission, IRISFlags } from "@NamelessLiberty/permissions"
+import { useUser } from "@/context/user-context"
 
 // Account Tabs
 import { ProfileSettingsTab } from "./settings-tabs/account/profile-tab"
@@ -71,6 +74,9 @@ import { SearchSettingsTab } from "@NamelessLiberty/kiroshi"
 // Tauri App Tab
 import { AppSettingsTab } from "./settings-tabs/tauri/app-tab"
 
+// Server Tab (Admin only)
+import { ServerSettingsTab } from "./settings-tabs/server/server-tab"
+
 import { useIsMobile } from "@workspace/ui/hooks/use-mobile"
 
 export type IrisSettingsCategory =
@@ -92,6 +98,7 @@ export type IrisSettingsCategory =
   | "accounts"
   | "search"
   | "app"
+  | "server"
 
 export interface SettingItemMeta {
   id: IrisSettingsCategory
@@ -233,6 +240,13 @@ function renderTabContent(
     // @app:kiroshi:end
     case "app":
       return <AppSettingsTab />
+    case "server":
+      return (
+        <ServerSettingsTab
+          onOpenChange={onOpenChange}
+          setFooterContent={setFooterContent}
+        />
+      )
     default:
       return null
   }
@@ -250,6 +264,8 @@ export function IrisSettingsModal({
   defaultCategory = "profile",
 }: IrisSettingsModalProps): React.JSX.Element {
   const t = useTranslations("navigation.settings")
+  const { user } = useUser()
+  const isAdmin = hasPermission(user?.permissions ?? null, IRISFlags.ADMINISTRATOR)
   const isMobile = useIsMobile()
   const [isTauri, setIsTauri] = useState(false)
 
@@ -385,8 +401,20 @@ export function IrisSettingsModal({
             },
           ]
         : []),
+
+      // Server (Admin only)
+      ...(isAdmin
+        ? [
+            {
+              id: "server" as const,
+              name: "Server",
+              icon: IconServer,
+              group: "Server",
+            },
+          ]
+        : []),
     ],
-    [t, isTauri]
+    [t, isTauri, isAdmin]
   )
 
   const [desktopCategory, setDesktopCategory] = useState<IrisSettingsCategory>(
