@@ -3,6 +3,7 @@ import { LogFactory, c } from '@NamelessLiberty/logger'
 import {
   anilistProvider,
   type AniListAnimePayload,
+  type AniListHeight,
   type AniListMangaPayload,
   tvdbProvider,
   normalizeTvdbImageUrl,
@@ -26,6 +27,25 @@ import {
 import { MediaQueueManager, type MediaType } from './media.queue'
 
 const logger = new LogFactory('Borealis:EntitySyncer')
+
+/**
+ * Normalizes AniList's structured Height object, returning null if no values are present.
+ */
+function normalizeAniListHeight(height?: AniListHeight | null): AniListHeight | null {
+  if (!height || typeof height !== 'object') return null
+  const cleanVal = (v?: { metric?: number | null; imperial?: string | null } | null) => {
+    if (!v || (v.metric == null && !v.imperial)) return null
+    return {
+      metric: typeof v.metric === 'number' ? v.metric : null,
+      imperial: typeof v.imperial === 'string' && v.imperial.trim() ? v.imperial.trim() : null,
+    }
+  }
+  const initial = cleanVal(height.initial)
+  const min = cleanVal(height.min)
+  const max = cleanVal(height.max)
+  if (!initial && !min && !max) return null
+  return { initial, min, max }
+}
 
 /**
  * Normalizes `http://` -> `https://` and rejects known placeholder image URLs
@@ -512,6 +532,8 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
           .select('id', 'image')
           .first()
 
+        const charHeight = normalizeAniListHeight(edge.node.height)
+
         if (!char) {
           char = await prisma.orm.public.Character.create({
             anilistId: anilistCharId,
@@ -523,6 +545,7 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
             description: edge.node.description || null,
             gender: edge.node.gender || null,
             age: edge.node.age || null,
+            height: charHeight as any,
             favorites: edge.node.favourites || 0,
           })
         } else {
@@ -531,6 +554,7 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
             ...(edge.node.description ? { description: edge.node.description } : {}),
             ...(edge.node.gender ? { gender: edge.node.gender } : {}),
             ...(edge.node.age ? { age: edge.node.age } : {}),
+            ...(charHeight ? { height: charHeight as any } : {}),
           }).catch(() => {})
         }
 
@@ -553,6 +577,7 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
             const vaImage = sanitizeImageUrl(
               va.image?.large || va.image?.medium || null
             )
+            const vaHeight = normalizeAniListHeight(va.height)
             let person = await prisma.orm.public.Person.where({ anilistId: va.id })
               .select('id', 'image')
               .first()
@@ -563,13 +588,15 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
                 nameNative: va.name.native || null,
                 nameAlternative: [],
                 image: vaImage,
+                height: vaHeight as any,
                 language: va.languageV2 || null,
                 primaryOccupations: [],
                 yearsActive: [],
               })
-            } else if (!person.image && vaImage) {
+            } else if ((!person.image && vaImage) || vaHeight) {
               await prisma.orm.public.Person.where({ id: person.id }).update({
-                image: vaImage,
+                ...(!person.image && vaImage ? { image: vaImage } : {}),
+                ...(vaHeight ? { height: vaHeight as any } : {}),
               }).catch(() => {})
             }
 
@@ -655,6 +682,8 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
           .select('id', 'image')
           .first()
 
+        const staffHeight = normalizeAniListHeight(edge.node.height)
+
         if (!person) {
           person = await prisma.orm.public.Person.create({
             anilistId: anilistPersonId,
@@ -663,6 +692,7 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
             nameAlternative: edge.node.name.alternative || [],
             image: staffImage,
             description: edge.node.description || null,
+            height: staffHeight as any,
             primaryOccupations: edge.node.primaryOccupations || [],
             yearsActive: [],
           })
@@ -670,6 +700,7 @@ export class MediaEntitySyncer extends BaseMediaSyncer {
           await prisma.orm.public.Person.where({ id: person.id }).update({
             ...(!person.image && staffImage ? { image: staffImage } : {}),
             ...(edge.node.description ? { description: edge.node.description } : {}),
+            ...(staffHeight ? { height: staffHeight as any } : {}),
           }).catch(() => {})
         }
 
