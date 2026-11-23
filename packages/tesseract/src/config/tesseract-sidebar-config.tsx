@@ -14,6 +14,19 @@ export function getTesseractSidebarConfig(
 ): SidebarConfig {
   return [
     {
+      section: "#$Phone",
+      dataKey: "tesseract-main-phone",
+      items: [
+        {
+          label: "Home",
+          dataKey: "tesseract-home-phone",
+          href: "/tesseract",
+          icon: <IconHome className="size-4 shrink-0" />,
+          position: 1,
+        },
+      ]
+    },
+    {
       section: "",
       dataKey: "tesseract-main",
       items: [
