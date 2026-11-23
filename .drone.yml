@@ -317,25 +317,34 @@ steps:
           esac
         done
 
+        if [ ! -x /ci-cache/bin/sccache-0.10.0 ]; then
+          SCCACHE_ARCH=$(uname -m)
+          if curl -fsSL --retry 3 --retry-delay 2 "https://github.com/mozilla/sccache/releases/download/v0.10.0/sccache-v0.10.0-${SCCACHE_ARCH}-unknown-linux-musl.tar.gz" -o /tmp/sccache.tar.gz; then
+            tar -xzf /tmp/sccache.tar.gz -C /tmp
+            mv "/tmp/sccache-v0.10.0-${SCCACHE_ARCH}-unknown-linux-musl/sccache" /ci-cache/bin/sccache-0.10.0
+            chmod +x /ci-cache/bin/sccache-0.10.0
+            rm -rf "/tmp/sccache-v0.10.0-${SCCACHE_ARCH}-unknown-linux-musl" /tmp/sccache.tar.gz
+          else
+            echo "WARNING: Failed to download sccache; continuing without RUSTC_WRAPPER." >&2
+            rm -f /tmp/sccache.tar.gz
+            unset RUSTC_WRAPPER
+          fi
+        fi
+        if [ -x /ci-cache/bin/sccache-0.10.0 ]; then
+          ln -sf /ci-cache/bin/sccache-0.10.0 /ci-cache/bin/sccache
+        else
+          unset RUSTC_WRAPPER
+        fi
+
         if [ ! -x "$CARGO_HOME/bin/cargo-xwin" ]; then
           cargo install cargo-xwin
         fi
-
-        if [ ! -x /ci-cache/bin/sccache-0.10.0 ]; then
-          SCCACHE_ARCH=$(uname -m)
-          curl -sSL "https://github.com/mozilla/sccache/releases/download/v0.10.0/sccache-v0.10.0-${SCCACHE_ARCH}-unknown-linux-musl.tar.gz" -o /tmp/sccache.tar.gz
-          tar -xzf /tmp/sccache.tar.gz -C /tmp
-          mv "/tmp/sccache-v0.10.0-${SCCACHE_ARCH}-unknown-linux-musl/sccache" /ci-cache/bin/sccache-0.10.0
-          chmod +x /ci-cache/bin/sccache-0.10.0
-          rm -rf "/tmp/sccache-v0.10.0-${SCCACHE_ARCH}-unknown-linux-musl" /tmp/sccache.tar.gz
-        fi
-        ln -sf /ci-cache/bin/sccache-0.10.0 /ci-cache/bin/sccache
 
         export NDK_HOME="$ANDROID_HOME/ndk/27.2.12479018"
         export JAVA_HOME="$(dirname "$(dirname "$(readlink -f "$(which javac)")")")"
         if [ ! -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
           mkdir -p "$ANDROID_HOME/cmdline-tools"
-          curl -sSL https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -o /tmp/cmdline-tools.zip
+          curl -fsSL --retry 3 --retry-delay 2 https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -o /tmp/cmdline-tools.zip
           unzip -q /tmp/cmdline-tools.zip -d /tmp/cmdline-tools
           mv /tmp/cmdline-tools/cmdline-tools "$ANDROID_HOME/cmdline-tools/latest"
           rm -rf /tmp/cmdline-tools /tmp/cmdline-tools.zip
