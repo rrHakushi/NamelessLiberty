@@ -32,6 +32,7 @@ import {
   IconWorld,
   IconApps,
   IconSearch,
+  IconDeviceDesktop,
 } from "@tabler/icons-react"
 import { cn } from "@workspace/ui/lib/utils"
 
@@ -57,9 +58,6 @@ import {
   MediaPreferencesSettingsTab,
   ListsImportSettingsTab,
   ListsExportSettingsTab,
-  SonarrSettingsTab,
-  RadarrSettingsTab,
-  ReadarrSettingsTab,
 } from "@NamelessLiberty/borealis"
 // @app:borealis:end
 
@@ -69,6 +67,9 @@ import { EmailAccountsSettingsTab } from "./settings-tabs/email/email-accounts-t
 // @app:kiroshi:start
 import { SearchSettingsTab } from "@NamelessLiberty/kiroshi"
 // @app:kiroshi:end
+
+// Tauri App Tab
+import { AppSettingsTab } from "./settings-tabs/tauri/app-tab"
 
 import { useIsMobile } from "@workspace/ui/hooks/use-mobile"
 
@@ -88,11 +89,9 @@ export type IrisSettingsCategory =
   | "mediaPreferences"
   | "import"
   | "export"
-  | "sonarr"
-  | "radarr"
-  | "readarr"
   | "accounts"
   | "search"
+  | "app"
 
 export interface SettingItemMeta {
   id: IrisSettingsCategory
@@ -215,27 +214,6 @@ function renderTabContent(
           setFooterContent={setFooterContent}
         />
       )
-    case "sonarr":
-      return (
-        <SonarrSettingsTab
-          onOpenChange={onOpenChange}
-          setFooterContent={setFooterContent}
-        />
-      )
-    case "radarr":
-      return (
-        <RadarrSettingsTab
-          onOpenChange={onOpenChange}
-          setFooterContent={setFooterContent}
-        />
-      )
-    case "readarr":
-      return (
-        <ReadarrSettingsTab
-          onOpenChange={onOpenChange}
-          setFooterContent={setFooterContent}
-        />
-      )
     // @app:borealis:end
     case "accounts":
       return (
@@ -253,6 +231,8 @@ function renderTabContent(
         />
       )
     // @app:kiroshi:end
+    case "app":
+      return <AppSettingsTab />
     default:
       return null
   }
@@ -271,6 +251,14 @@ export function IrisSettingsModal({
 }: IrisSettingsModalProps): React.JSX.Element {
   const t = useTranslations("navigation.settings")
   const isMobile = useIsMobile()
+  const [isTauri, setIsTauri] = useState(false)
+
+  useEffect(() => {
+    setIsTauri(
+      typeof window !== "undefined" &&
+        Boolean((window as unknown as { __TAURI__?: unknown }).__TAURI__)
+    )
+  }, [])
 
   const navItems: SettingItemMeta[] = useMemo(
     () => [
@@ -370,26 +358,6 @@ export function IrisSettingsModal({
         group: t("groups.lists"),
       },
 
-      // Servarr
-      {
-        id: "sonarr",
-        name: t("tabs.sonarr"),
-        icon: IconDeviceTv,
-        group: t("groups.servarr"),
-      },
-      {
-        id: "radarr",
-        name: t("tabs.radarr"),
-        icon: IconMovie,
-        group: t("groups.servarr"),
-      },
-      {
-        id: "readarr",
-        name: t("tabs.readarr"),
-        icon: IconBook,
-        group: t("groups.servarr"),
-      },
-
       // Email
       {
         id: "accounts",
@@ -405,8 +373,20 @@ export function IrisSettingsModal({
         icon: IconSearch,
         group: "Search",
       },
+
+      // Tauri App (only visible inside NamelessLiberty Tauri)
+      ...(isTauri
+        ? [
+            {
+              id: "app" as const,
+              name: "App",
+              icon: IconDeviceDesktop,
+              group: "App",
+            },
+          ]
+        : []),
     ],
-    [t]
+    [t, isTauri]
   )
 
   const [desktopCategory, setDesktopCategory] = useState<IrisSettingsCategory>(

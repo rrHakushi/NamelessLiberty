@@ -5,11 +5,14 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::net::{TcpStream, ToSocketAddrs};
 use std::path::PathBuf;
+use std::sync::Mutex;
 use std::time::Duration;
-use tauri::{AppHandle, Manager, Url, WebviewWindow};
+use tauri::{AppHandle, Manager, State, Url, WebviewWindow};
 
 #[cfg(desktop)]
 use tauri::{image::Image, PhysicalPosition, PhysicalSize, WindowEvent};
+
+struct InitialUrlState(Mutex<Option<Url>>);
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 struct WindowState {
@@ -25,6 +28,15 @@ struct AppConfig {
     server_url: Option<String>,
     last_app: Option<String>,
     window_state: Option<WindowState>,
+    #[serde(default)]
+    zoom: Option<f64>,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct AppSettingsPayload {
+    server_url: Option<String>,
+    zoom: f64,
 }
 
 #[cfg(desktop)]
@@ -60,7 +72,12 @@ fn config_path(app: &AppHandle) -> Result<PathBuf, String> {
         .app_config_dir()
         .map_err(|e| format!("Failed to resolve config directory: {e}"))?;
     fs::create_dir_all(&dir).map_err(|e| format!("Failed to create config directory: {e}"))?;
-    Ok(dir.join("config.json"))
+    let filename = if cfg!(debug_assertions) {
+        "config.dev.json"
+    } else {
+        "config.json"
+    };
+    Ok(dir.join(filename))
 }
 
 fn load_config(app: &AppHandle) -> AppConfig {
@@ -186,6 +203,76 @@ fn clear_server_url(app: AppHandle) -> Result<(), String> {
 }
 
 #[tauri::command]
+fn get_app_settings(app: AppHandle) -> AppSettingsPayload {
+    let config = load_config(&app);
+    AppSettingsPayload {
+        server_url: config.server_url,
+        zoom: config.zoom.unwrap_or(1.0).clamp(0.5, 2.0),
+    }
+}
+
+#[tauri::command]
+fn set_zoom(app: AppHandle, window: WebviewWindow, zoom: f64) -> Result<f64, String> {
+    let clamped = zoom.clamp(0.5, 2.0);
+    let mut config = load_config(&app);
+    config.zoom = Some(clamped);
+    save_config(&app, &config)?;
+    window
+        .set_zoom(clamped)
+        .map_err(|e| format!("Failed to apply zoom: {e}"))?;
+    Ok(clamped)
+}
+
+#[tauri::command]
+fn reset_window_state(app: AppHandle, window: WebviewWindow) -> Result<(), String> {
+    let mut config = load_config(&app);
+    config.window_state = None;
+    save_config(&app, &config)?;
+    #[cfg(desktop)]
+    {
+        if window.is_maximized().unwrap_or(false) {
+            let _ = window.unmaximize();
+        }
+        let _ = window.set_size(PhysicalSize::new(1280, 800));
+        let _ = window.center();
+    }
+    #[cfg(not(desktop))]
+    let _ = window;
+    Ok(())
+}
+
+#[tauri::command]
+fn reset_and_disconnect(
+    app: AppHandle,
+    window: WebviewWindow,
+    initial_url: State<'_, InitialUrlState>,
+) -> Result<(), String> {
+    let mut config = load_config(&app);
+    config.server_url = None;
+    config.last_app = None;
+    save_config(&app, &config)?;
+
+    let _ = window.clear_all_browsing_data();
+
+    let fallback = if cfg!(target_os = "windows") {
+        Url::parse("http://tauri.localhost").map_err(|e| e.to_string())?
+    } else {
+        Url::parse("tauri://localhost").map_err(|e| e.to_string())?
+    };
+
+    let target = initial_url
+        .0
+        .lock()
+        .ok()
+        .and_then(|guard| guard.clone())
+        .unwrap_or(fallback);
+
+    window
+        .navigate(target)
+        .map_err(|e| format!("Failed to navigate to setup screen: {e}"))
+}
+
+#[tauri::command]
 fn set_active_app(app: AppHandle, window: WebviewWindow, app_id: String) -> Result<(), String> {
     let normalized = app_id.trim().to_lowercase();
     apply_app_icon(&window, &normalized)?;
@@ -281,30 +368,40 @@ fn save_window_state(window: &tauri::Window) {
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    let builder = tauri::Builder::default().setup(|app| {
-        #[cfg(desktop)]
-        {
-            tracker::start_tracker_loop(app.handle().clone(), tracker::TrackerState::new());
+    let builder = tauri::Builder::default()
+        .manage(InitialUrlState(Mutex::new(None)))
+        .setup(|app| {
             let config = load_config(app.handle());
             if let Some(window) = app.get_webview_window("main") {
-                if let Some(last_app) = config.last_app.as_deref() {
-                    let _ = apply_app_icon(&window, last_app);
-                }
-                if let Some(state) = config.window_state {
-                    if state.width >= 400 && state.height >= 300 {
-                        let _ = window.set_size(PhysicalSize::new(state.width, state.height));
-                        let _ = window.set_position(PhysicalPosition::new(state.x, state.y));
+                if let Ok(url) = window.url() {
+                    if let Ok(mut guard) = app.state::<InitialUrlState>().0.lock() {
+                        *guard = Some(url);
                     }
-                    if state.maximized {
-                        let _ = window.maximize();
+                }
+                if let Some(zoom) = config.zoom {
+                    let _ = window.set_zoom(zoom.clamp(0.5, 2.0));
+                }
+
+                #[cfg(desktop)]
+                {
+                    if let Some(last_app) = config.last_app.as_deref() {
+                        let _ = apply_app_icon(&window, last_app);
+                    }
+                    if let Some(state) = config.window_state {
+                        if state.width >= 400 && state.height >= 300 {
+                            let _ = window.set_size(PhysicalSize::new(state.width, state.height));
+                            let _ = window.set_position(PhysicalPosition::new(state.x, state.y));
+                        }
+                        if state.maximized {
+                            let _ = window.maximize();
+                        }
                     }
                 }
             }
-        }
-        #[cfg(not(desktop))]
-        let _ = app;
-        Ok(())
-    });
+            #[cfg(desktop)]
+            tracker::start_tracker_loop(app.handle().clone(), tracker::TrackerState::new());
+            Ok(())
+        });
 
     #[cfg(desktop)]
     let builder = builder
@@ -326,6 +423,10 @@ pub fn run() {
             connect_saved_server,
             save_and_connect,
             clear_server_url,
+            get_app_settings,
+            set_zoom,
+            reset_window_state,
+            reset_and_disconnect,
             set_active_app,
             tracker::tracker_get_running_processes,
             tracker::tracker_get_global_paused,
@@ -343,6 +444,10 @@ pub fn run() {
         connect_saved_server,
         save_and_connect,
         clear_server_url,
+        get_app_settings,
+        set_zoom,
+        reset_window_state,
+        reset_and_disconnect,
         set_active_app,
         mobile_tracker_stubs::tracker_get_running_processes,
         mobile_tracker_stubs::tracker_get_global_paused,
